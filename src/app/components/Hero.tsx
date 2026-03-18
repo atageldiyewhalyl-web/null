@@ -3,10 +3,10 @@ import { ContainerScroll } from "./ContainerScroll";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
-import d3BeautyImage from "figma:asset/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png";
-import besirYamanImage from "figma:asset/1f4c4e77ddd345f7d1a5e23c5495771814d1ca1f.png";
-import d3BeautyMobile from "figma:asset/fbe8286d4fda872ae933fe2b0da1a3cc56d11943.png";
-import besirYamanMobile from "figma:asset/60ce2e9d07e1dfb48ed5fab776f6bf1453a9d568.png";
+import d3BeautyImage from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png";
+import besirYamanImage from "../../assets/1f4c4e77ddd345f7d1a5e23c5495771814d1ca1f.png";
+import d3BeautyMobile from "../../assets/fbe8286d4fda872ae933fe2b0da1a3cc56d11943.png";
+import besirYamanMobile from "../../assets/60ce2e9d07e1dfb48ed5fab776f6bf1453a9d568.png";
 
 export function Hero() {
   const { lang } = useLanguage();
