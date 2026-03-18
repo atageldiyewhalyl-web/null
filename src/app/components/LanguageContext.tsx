@@ -1,0 +1,184 @@
+import { createContext, useContext, useState, ReactNode } from "react";
+
+export type Language = "en" | "de" | "tr";
+
+const LanguageContext = createContext<{
+  lang: Language;
+  setLang: (lang: Language) => void;
+}>({ lang: "en", setLang: () => {} });
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [lang, setLang] = useState<Language>("de");
+  return (
+    <LanguageContext.Provider value={{ lang, setLang }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLanguage() {
+  return useContext(LanguageContext);
+}
+
+const labels: Record<string, Record<Language, string>> = {
+  "nav.services": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
+  "nav.work": { en: "Work", de: "Projekte", tr: "Projeler" },
+  "nav.pricing": { en: "Pricing", de: "Preise", tr: "Fiyatlar" },
+  "nav.blog": { en: "Blog", de: "Blog", tr: "Blog" },
+  "nav.contact": { en: "Contact", de: "Kontakt", tr: "İletişim" },
+  "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Başlayın" },
+
+  "hero.badge": { en: "Available for new projects", de: "Verfügbar für neue Projekte", tr: "Yeni projeler için müsait" },
+  "hero.line1": { en: "Your website isn't", de: "Ihre Website bringt", tr: "Web siteniz size" },
+  "hero.line2": { en: "bringing you clients.", de: "Ihnen keine Kunden.", tr: "müşteri kazandırmıyor." },
+  "hero.line3": { en: "We fix that.", de: "Wir ändern das.", tr: "Bunu biz çözüyoruz." },
+  "hero.description": {
+    en: "We design high-converting websites for consultants and local businesses in Germany — more leads, more trust, more booked calls.",
+    de: "Wir erstellen Websites mit hoher Conversion-Rate für Berater und lokale Unternehmen in Deutschland — mehr Leads, mehr Vertrauen, mehr gebuchte Termine.",
+    tr: "Danışmanlar ve yerel işletmeler için yüksek dönüşüm sağlayan web siteleri tasarlıyoruz — daha fazla müşteri adayı, daha fazla güven, daha fazla randevu.",
+  },
+  "hero.cta": { en: "Get a Free Consultation", de: "Kostenlose Erstberatung sichern", tr: "Ücretsiz danışmanlık al" },
+  "hero.secondary": { en: "See Case Studies", de: "Fallstudien ansehen", tr: "Vaka çalışmalarını incele" },
+
+  "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
+  "services.title1": { en: "Everything you need.", de: "Alles, was Sie brauchen.", tr: "İhtiyacınız olan her şey." },
+  "services.title2": { en: "Nothing you don't.", de: "Nichts, was Sie nicht brauchen.", tr: "Gereksiz hiçbir şey yok." },
+  "services.description": {
+    en: "We handle the full spectrum of web presence — design, code, search visibility, brand identity, and ongoing care — so you can focus on what you do best.",
+    de: "Wir kümmern uns um Ihre gesamte Online-Präsenz — Design, Entwicklung, Sichtbarkeit in Suchmaschinen, Markenauftritt und laufende Betreuung — damit Sie sich auf Ihr Kerngeschäft konzentrieren können.",
+    tr: "Tasarım, geliştirme, arama görünürlüğü, marka kimliği ve sürekli bakım dahil olmak üzere tüm dijital varlığınızı biz yönetiyoruz — böylece siz en iyi yaptığınız işe odaklanabilirsiniz.",
+  },
+  "services.webdesign": { en: "Web Design", de: "Webdesign", tr: "Web Tasarım" },
+  "services.webdesign.desc": {
+    en: "Clean, conversion-focused designs that reflect your brand and resonate with your audience. We craft every pixel to turn visitors into clients.",
+    de: "Klares, conversion-orientiertes Design, das Ihre Marke widerspiegelt und Ihre Zielgruppe anspricht. Jedes Detail wird darauf ausgelegt, Besucher in Kunden zu verwandeln.",
+    tr: "Markanızı yansıtan ve hedef kitlenizle bağ kuran, dönüşüm odaklı temiz tasarımlar. Her detayı ziyaretçileri müşteriye dönüştürmek için kurguluyoruz.",
+  },
+  "services.development": { en: "Development", de: "Entwicklung", tr: "Geliştirme" },
+  "services.development.desc": {
+    en: "Fast, responsive, and SEO-ready websites built with modern technologies. Performance isn't optional — it's the standard.",
+    de: "Schnelle, responsive und SEO-optimierte Websites auf Basis moderner Technologien. Performance ist kein Extra — sie ist Standard.",
+    tr: "Modern teknolojilerle geliştirilmiş, hızlı, mobil uyumlu ve SEO hazır web siteleri. Performans bir seçenek değil — standarttır.",
+  },
+  "services.seo": { en: "SEO", de: "SEO", tr: "SEO" },
+  "services.seo.desc": {
+    en: "On-page optimization and technical SEO so your ideal clients can find you on Google.",
+    de: "On-Page-Optimierung und technische SEO, damit Ihre Wunschkunden Sie bei Google finden.",
+    tr: "Hedef müşterilerinizin sizi Google'da bulabilmesi için sayfa içi optimizasyon ve teknik SEO.",
+  },
+  "services.branding": { en: "Branding", de: "Branding", tr: "Markalaşma" },
+  "services.branding.desc": {
+    en: "Logo design, color systems, and visual identity that set you apart from competitors.",
+    de: "Logo, Farbkonzept und visuelle Identität, die Sie klar von der Konkurrenz abheben.",
+    tr: "Rakiplerinizden ayrışmanızı sağlayan logo, renk sistemi ve görsel kimlik.",
+  },
+  "services.maintenance": { en: "Maintenance", de: "Wartung", tr: "Bakım" },
+  "services.maintenance.desc": {
+    en: "Ongoing updates, security patches, and performance monitoring — we keep it running.",
+    de: "Regelmäßige Updates, Sicherheitsmaßnahmen und Performance-Monitoring — wir halten alles am Laufen.",
+    tr: "Düzenli güncellemeler, güvenlik önlemleri ve performans takibi — her şeyin sorunsuz çalışmasını sağlıyoruz.",
+  },
+  "services.learnMore": { en: "Learn more", de: "Mehr erfahren", tr: "Daha fazla bilgi" },
+
+  "work.label": { en: "Selected Work", de: "Ausgewählte Projekte", tr: "Seçili Çalışmalar" },
+  "work.title": { en: "Projects that speak for themselves.", de: "Arbeiten, die für sich sprechen.", tr: "Kendini anlatan projeler." },
+  "work.d3.category": { en: "Beauty & Wellness · Web Design & Branding", de: "Beauty & Wellness · Webdesign & Branding", tr: "Güzellik & Wellness · Web Tasarım & Marka Kimliği" },
+  "work.d3.desc": {
+    en: "A refined website for a Mannheim beauty studio. Elegant typography, seamless Treatwell booking integration, and a design that mirrors the salon's premium experience.",
+    de: "Eine elegante Website für ein Mannheimer Beauty-Studio. Hochwertige Typografie, nahtlose Treatwell-Integration und ein Design, das die Premium-Erfahrung des Salons widerspiegelt.",
+    tr: "Mannheim'daki bir güzellik salonu için zarif bir web sitesi. Şık tipografi, Treatwell ile sorunsuz rezervasyon entegrasyonu ve salonun premium deneyimini yansıtan bir tasarım.",
+  },
+  "work.besir.category": { en: "Consultant · Personal Brand & Web Design", de: "Berater · Personal Branding & Webdesign", tr: "Danışman · Kişisel Marka & Web Tasarım" },
+  "work.besir.desc": {
+    en: "Positioning and branding for a finance and insurance consultant looking to build an online presence. We crafted his message, designed his brand identity, and built a site that establishes authority and trust.",
+    de: "Positionierung und Markenaufbau für einen Finanz- und Versicherungsberater, der seine Online-Präsenz stärken möchte. Wir haben seine Botschaft geschärft, seine Markenidentität entwickelt und eine Website erstellt, die Autorität und Vertrauen vermittelt.",
+    tr: "Online varlığını güçlendirmek isteyen bir finans ve sigorta danışmanı için konumlandırma ve marka çalışması. Mesajını netleştirdik, marka kimliğini oluşturduk ve otorite ile güven sağlayan bir web sitesi geliştirdik.",
+  },
+
+  // Pricing
+  "pricing.label": { en: "Pricing", de: "Preise", tr: "Fiyatlandırma" },
+  "pricing.title1": { en: "Transparent pricing.", de: "Transparente Preise.", tr: "Şeffaf fiyatlar." },
+  "pricing.title2": { en: "No surprises.", de: "Keine Überraschungen.", tr: "Sürpriz yok." },
+  "pricing.description": {
+    en: "Choose the package that fits your stage. Every plan includes a fully responsive, performance-optimized website.",
+    de: "Wählen Sie das Paket, das zu Ihrer aktuellen Situation passt. Jedes Paket beinhaltet eine vollständig responsive und performance-optimierte Website.",
+    tr: "İşinizin aşamasına en uygun paketi seçin. Tüm paketler tamamen responsive ve performans odaklı web sitesi içerir.",
+  },
+  "pricing.popular": { en: "Most Popular", de: "Beliebt", tr: "En Popüler" },
+  "pricing.starter": { en: "Starter", de: "Starter", tr: "Başlangıç" },
+  "pricing.starter.desc": {
+    en: "For solo consultants who need a polished online presence, fast.",
+    de: "Für Einzelberater, die schnell eine professionelle Online-Präsenz benötigen.",
+    tr: "Hızlı ve profesyonel bir online varlığa ihtiyaç duyan bireysel danışmanlar için.",
+  },
+  "pricing.growth": { en: "Growth", de: "Growth", tr: "Growth" },
+  "pricing.growth.desc": {
+    en: "For businesses ready to stand out and attract more clients.",
+    de: "Für Unternehmen, die sich abheben und mehr Kunden gewinnen möchten.",
+    tr: "Öne çıkmak ve daha fazla müşteri kazanmak isteyen işletmeler için.",
+  },
+  "pricing.premium": { en: "Premium", de: "Premium", tr: "Premium" },
+  "pricing.premium.desc": {
+    en: "The full package for brands that demand excellence.",
+    de: "Das Komplettpaket für Marken mit höchsten Ansprüchen.",
+    tr: "En iyisini isteyen markalar için tam kapsamlı çözüm.",
+  },
+  "pricing.starter.f1": { en: "1-page responsive website", de: "1-seitige responsive Website", tr: "Tek sayfalık responsive web sitesi" },
+  "pricing.starter.f2": { en: "Custom design (from template)", de: "Individuelles Design (auf Template-Basis)", tr: "Şablon bazlı özel tasarım" },
+  "pricing.starter.f3": { en: "Basic SEO setup", de: "Grundlegende SEO-Einrichtung", tr: "Temel SEO kurulumu" },
+  "pricing.starter.f4": { en: "Contact form integration", de: "Kontaktformular-Integration", tr: "İletişim formu entegrasyonu" },
+  "pricing.starter.f5": { en: "Mobile-optimized", de: "Für Mobilgeräte optimiert", tr: "Mobil uyumlu" },
+  "pricing.starter.f6": { en: "1 round of revisions", de: "1 Korrekturrunde", tr: "1 revizyon hakkı" },
+  "pricing.starter.f7": { en: "Delivery in 5–7 days", de: "Lieferung in 5–7 Tagen", tr: "5–7 gün teslim" },
+  "pricing.growth.f1": { en: "Up to 5-page website", de: "Bis zu 5 Seiten", tr: "5 sayfaya kadar" },
+  "pricing.growth.f2": { en: "Fully custom design", de: "Individuelles Design", tr: "Tamamen özel tasarım" },
+  "pricing.growth.f3": { en: "Advanced on-page SEO", de: "Erweiterte On-Page-SEO", tr: "Gelişmiş sayfa içi SEO" },
+  "pricing.growth.f4": { en: "Blog or news section", de: "Blog- oder News-Bereich", tr: "Blog veya haber bölümü" },
+  "pricing.growth.f5": { en: "Social media integration", de: "Social-Media-Integration", tr: "Sosyal medya entegrasyonu" },
+  "pricing.growth.f6": { en: "Basic branding package", de: "Basis-Branding-Paket", tr: "Temel marka paketi" },
+  "pricing.growth.f7": { en: "3 rounds of revisions", de: "3 Korrekturrunden", tr: "3 revizyon hakkı" },
+  "pricing.growth.f8": { en: "Delivery in 10–14 days", de: "Lieferung in 10–14 Tagen", tr: "10–14 gün teslim" },
+  "pricing.premium.f1": { en: "Up to 10-page website", de: "Bis zu 10 Seiten", tr: "10 sayfaya kadar" },
+  "pricing.premium.f2": { en: "Premium custom design", de: "Premium-Design", tr: "Premium özel tasarım" },
+  "pricing.premium.f3": { en: "Complete SEO strategy", de: "Umfassende SEO-Strategie", tr: "Kapsamlı SEO stratejisi" },
+  "pricing.premium.f4": { en: "Full branding & logo design", de: "Komplettes Branding & Logo-Design", tr: "Tam marka kimliği & logo tasarımı" },
+  "pricing.premium.f5": { en: "Copywriting assistance", de: "Unterstützung beim Copywriting", tr: "Metin yazımı desteği" },
+  "pricing.premium.f6": { en: "Analytics & tracking setup", de: "Analytics- & Tracking-Setup", tr: "Analitik ve takip kurulumu" },
+  "pricing.premium.f7": { en: "Priority support (30 days)", de: "Priorisierter Support (30 Tage)", tr: "Öncelikli destek (30 gün)" },
+  "pricing.premium.f8": { en: "Unlimited revisions", de: "Unbegrenzte Korrekturen", tr: "Sınırsız revizyon" },
+  "pricing.premium.f9": { en: "Delivery in 14–21 days", de: "Lieferung in 14–21 Tagen", tr: "14–21 gün teslim" },
+
+  // Contact
+  "contact.label": { en: "Contact", de: "Kontakt", tr: "İletişim" },
+  "contact.title1": { en: "Let's build something", de: "Lassen Sie uns etwas", tr: "Birlikte" },
+  "contact.title2": { en: "remarkable.", de: "Außergewöhnliches schaffen.", tr: "harika bir şey inşa edelim." },
+  "contact.description": {
+    en: "Tell us about your project, and we'll get back to you within 24 hours with a tailored plan.",
+    de: "Erzählen Sie uns von Ihrem Projekt — wir melden uns innerhalb von 24 Stunden mit einem maßgeschneiderten Plan.",
+    tr: "Projenizi anlatın — size 24 saat içinde özel bir planla geri dönelim.",
+  },
+  "contact.location": { en: "Mannheim, Germany", de: "Mannheim, Deutschland", tr: "Mannheim, Almanya" },
+  "contact.name": { en: "Name", de: "Name", tr: "İsim" },
+  "contact.namePlaceholder": { en: "Your name", de: "Ihr Name", tr: "Adınız" },
+  "contact.email": { en: "Email", de: "E-Mail", tr: "E-posta" },
+  "contact.emailPlaceholder": { en: "you@company.com", de: "sie@unternehmen.de", tr: "you@company.com" },
+  "contact.details": { en: "Project Details", de: "Projektdetails", tr: "Proje Detayları" },
+  "contact.detailsPlaceholder": {
+    en: "Tell us about your project, goals, and timeline...",
+    de: "Erzählen Sie uns von Ihrem Projekt, Ihren Zielen und Ihrem Zeitplan…",
+    tr: "Projenizi, hedeflerinizi ve zaman planınızı anlatın…",
+  },
+  "contact.send": { en: "Send Message", de: "Nachricht senden", tr: "Mesaj Gönder" },
+  "contact.sending": { en: "Sending...", de: "Wird gesendet...", tr: "Gönderiliyor..." },
+  "contact.sent": { en: "Message sent!", de: "Nachricht gesendet!", tr: "Mesaj gönderildi!" },
+  "contact.sentDesc": { en: "We'll be in touch within 24 hours.", de: "Wir melden uns innerhalb von 24 Stunden.", tr: "24 saat içinde size dönüş yapacağız." },
+  "contact.error": { en: "Something went wrong. Please try again.", de: "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.", tr: "Bir hata oluştu. Lütfen tekrar deneyin." },
+  "contact.networkError": { en: "Network error. Please try again.", de: "Netzwerkfehler. Bitte versuchen Sie es erneut.", tr: "Ağ hatası. Lütfen tekrar deneyin." },
+
+  // Footer
+  "footer.rights": { en: "All rights reserved.", de: "Alle Rechte vorbehalten.", tr: "Tüm hakları saklıdır." },
+};
+
+export function t(key: string, lang: Language): string {
+  return labels[key]?.[lang] ?? key;
+}
