@@ -3,10 +3,8 @@ import { ContainerScroll } from "./ContainerScroll";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
-import d3BeautyImage from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png";
-import besirYamanImage from "../../assets/1f4c4e77ddd345f7d1a5e23c5495771814d1ca1f.png";
-import d3BeautyMobile from "../../assets/fbe8286d4fda872ae933fe2b0da1a3cc56d11943.png";
-import besirYamanMobile from "../../assets/60ce2e9d07e1dfb48ed5fab776f6bf1453a9d568.png";
+import oldAzazi from "../../assets/Old azazi.png";
+import newAzazi from "../../assets/New azazi.png";
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -59,8 +57,8 @@ export function Hero() {
         {/* Desktop Compare */}
         <div className="hidden md:block w-full h-full">
           <Compare
-            firstImage={d3BeautyImage}
-            secondImage={besirYamanImage}
+            firstImage={oldAzazi}
+            secondImage={newAzazi}
             firstImageClassName="object-cover object-left-top"
             secondImageClassname="object-cover object-left-top"
             className="w-full h-full"
@@ -72,8 +70,8 @@ export function Hero() {
         {/* Mobile Compare */}
         <div className="block md:hidden w-full h-full">
           <Compare
-            firstImage={d3BeautyMobile}
-            secondImage={besirYamanMobile}
+            firstImage={oldAzazi}
+            secondImage={newAzazi}
             firstImageClassName="object-cover object-top"
             secondImageClassname="object-cover object-top"
             className="w-full h-full"
