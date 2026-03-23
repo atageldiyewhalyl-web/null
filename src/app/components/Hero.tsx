@@ -5,6 +5,8 @@ import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
 import oldAzazi from "../../assets/Old azazi.png";
 import newAzazi from "../../assets/New azazi.png";
+import mobileOldAzazi from "../../assets/Dolmetscher- und Übersetzungsbüro Azazi.png";
+import mobileNewAzazi from "../../assets/Übersetzungsbüro Ali Azazi.png";
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -20,18 +22,18 @@ export function Hero() {
             </span>
 
             <h1
-              className="text-[clamp(1.75rem,5.5vw,4rem)] leading-[1.18] tracking-[-0.03em] mb-5 md:mb-8"
+              className="text-[clamp(2.125rem,10vw,3.5rem)] md:text-[clamp(1.75rem,5.5vw,4rem)] leading-[1.2] md:leading-[1.18] tracking-[-0.02em] md:tracking-[-0.03em] mb-4 md:mb-8"
               style={{ fontWeight: 600 }}
             >
-              {t("hero.line1", lang)}
-              <br />
-              {t("hero.line2", lang)}
-              <br />
-              <span className="text-[#0071e3]">{t("hero.line3", lang)}</span>
+              <span className="block md:inline">{t("hero.line1", lang)}</span>
+              {" "}
+              <span className="block md:inline">{t("hero.line2", lang)}</span>
+              <br className="hidden md:block" />
+              <span className="text-[#0071e3] block md:inline mt-1 md:mt-0">{t("hero.line3", lang)}</span>
             </h1>
 
             <p
-              className="text-[0.9375rem] md:text-[1.125rem] text-muted-foreground max-w-xl mb-6 md:mb-10 leading-[1.7] px-2 md:px-0"
+              className="text-[0.9375rem] md:text-[1.125rem] text-muted-foreground max-w-[40ch] md:max-w-xl mb-8 md:mb-10 leading-[1.6] md:leading-[1.7] px-4 md:px-0"
               style={{ fontWeight: 400 }}
             >
               {t("hero.description", lang)}
@@ -70,8 +72,8 @@ export function Hero() {
         {/* Mobile Compare */}
         <div className="block md:hidden w-full h-full">
           <Compare
-            firstImage={oldAzazi}
-            secondImage={newAzazi}
+            firstImage={mobileOldAzazi}
+            secondImage={mobileNewAzazi}
             firstImageClassName="object-cover object-top"
             secondImageClassname="object-cover object-top"
             className="w-full h-full"
