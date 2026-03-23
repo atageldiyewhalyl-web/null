@@ -3,10 +3,12 @@ import { ContainerScroll } from "./ContainerScroll";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
-import oldAzazi from "../../assets/old_azazi.png";
-import newAzazi from "../../assets/new_azazi.png";
-import mobileOldAzazi from "../../assets/dolmetscher_azazi_old.png";
-import mobileNewAzazi from "../../assets/dolmetscher_azazi_new.png";
+import mobileBefore from "../../assets/IMG_3274.PNG";
+import mobileAfter from "../../assets/IMG_3275.PNG";
+import desktopBefore from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png";
+import desktopAfter from "../../assets/1f4c4e77ddd345f7d1a5e23c5495771814d1ca1f.png";
+
+
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -59,8 +61,8 @@ export function Hero() {
         {/* Desktop Compare */}
         <div className="hidden md:block w-full h-full">
           <Compare
-            firstImage={oldAzazi}
-            secondImage={newAzazi}
+            firstImage={desktopBefore}
+            secondImage={desktopAfter}
             firstImageClassName="object-cover object-left-top"
             secondImageClassname="object-cover object-left-top"
             className="w-full h-full"
@@ -72,8 +74,8 @@ export function Hero() {
         {/* Mobile Compare */}
         <div className="block md:hidden w-full h-full">
           <Compare
-            firstImage={mobileOldAzazi}
-            secondImage={mobileNewAzazi}
+            firstImage={mobileBefore}
+            secondImage={mobileAfter}
             firstImageClassName="object-cover object-top"
             secondImageClassname="object-cover object-top"
             className="w-full h-full"
