@@ -3,10 +3,10 @@ import { ContainerScroll } from "./ContainerScroll";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
-import oldAzazi from "../../assets/Old azazi.png";
-import newAzazi from "../../assets/New azazi.png";
-import mobileOldAzazi from "../../assets/Dolmetscher- und Übersetzungsbüro Azazi.png";
-import mobileNewAzazi from "../../assets/Übersetzungsbüro Ali Azazi.png";
+import oldAzazi from "../../assets/old_azazi.png";
+import newAzazi from "../../assets/new_azazi.png";
+import mobileOldAzazi from "../../assets/dolmetscher_azazi_old.png";
+import mobileNewAzazi from "../../assets/dolmetscher_azazi_new.png";
 
 export function Hero() {
   const { lang } = useLanguage();

@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage, t } from "./LanguageContext";
 import d3BeautyImage from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png";
-import besirYamanImage from "../../assets/Screenshot 2026-03-21 at 12.26.21 AM.png";
+import besirYamanImage from "../../assets/screenshot_21_12_26.png";
 
 const projects = [
   {
