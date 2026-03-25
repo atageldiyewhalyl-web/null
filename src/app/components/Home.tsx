@@ -1,9 +1,12 @@
+import { Suspense, lazy } from 'react';
 import { Hero } from "./Hero";
-import { Services } from "./Services";
-import { Work } from "./Work";
-import { Pricing } from "./Pricing";
-import { Contact } from "./Contact";
 import { SEO, StructuredData } from "./SEO";
+
+const Services = lazy(() => import("./Services").then(m => ({ default: m.Services })));
+const Work = lazy(() => import("./Work").then(m => ({ default: m.Work })));
+const Pricing = lazy(() => import("./Pricing").then(m => ({ default: m.Pricing })));
+const Contact = lazy(() => import("./Contact").then(m => ({ default: m.Contact })));
+
 
 const organizationData = {
   "@context": "https://schema.org",
@@ -76,10 +79,12 @@ export function Home() {
       <StructuredData data={organizationData} />
       <StructuredData data={websiteData} />
       <Hero />
-      <Services />
-      <Work />
-      <Pricing />
-      <Contact />
+      <Suspense fallback={<div className="min-h-[50vh]" />}>
+        <Services />
+        <Work />
+        <Pricing />
+        <Contact />
+      </Suspense>
     </>
   );
 }
