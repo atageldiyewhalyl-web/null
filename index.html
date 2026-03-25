@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Preload self-hosted Inter font to avoid render-blocking -->
+    <link rel="preload" href="/fonts/Inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Preload LCP hero image for faster initial paint -->
+    <link rel="preload" href="/assets/IMG_3275.PNG" as="image" fetchpriority="high" />
+
     <title>Null - Web Design Agency Mannheim</title>       
     <meta name="description" content="Premium web design, development, SEO, and branding for local businesses in Mannheim and throughout Germany. Clean, conversion-focused websites that establish authority." />
     <meta name="robots" content="index, follow, max-image-preview:large" />   

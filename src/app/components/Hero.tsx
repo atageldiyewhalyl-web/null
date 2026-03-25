@@ -3,10 +3,17 @@ import { ContainerScroll } from "./ContainerScroll";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
-import mobileBefore from "../../assets/IMG_3274.PNG";
-import mobileAfter from "../../assets/IMG_3275.PNG";
-import desktopBefore from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png";
-import desktopAfter from "../../assets/1f4c4e77ddd345f7d1a5e23c5495771814d1ca1f.png";
+// @ts-ignore – vite-imagetools resolves these at build time
+import mobileBefore from "../../assets/img_3274_mobile.png?format=webp&w=630";
+// @ts-ignore – vite-imagetools resolves these at build time
+import mobileAfter from "../../assets/img_3275_mobile.png?format=webp&w=630";
+
+// @ts-ignore – vite-imagetools resolves these at build time
+import desktopBefore from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
+// @ts-ignore – vite-imagetools resolves these at build time
+import desktopAfter from "../../assets/1f4c4e77ddd345f7d1a5e23c5495771814d1ca1f.png?format=webp&w=1400";
+
+
 
 
 
