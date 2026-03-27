@@ -99,8 +99,8 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.label": { en: "Pricing", de: "Preise", tr: "Fiyatlandırma" },
   "pricing.title1": { en: "Transparent pricing.", de: "Transparente Preise.", tr: "Şeffaf fiyatlar." },
   "pricing.title2": { en: "No surprises.", de: "Keine Überraschungen.", tr: "Sürpriz yok." },
-  "pricing.billing.onetime": { en: "One-time", de: "Einmalig", tr: "Tek Seferlik" },
-  "pricing.billing.monthly": { en: "Monthly", de: "Monatlich", tr: "Aylık" },
+  "pricing.billing.onetime": { en: "Website Creation", de: "Website-Pakete", tr: "Web Tasarım" },
+  "pricing.billing.monthly": { en: "Monthly Maintenance Services", de: "Monatliche Betreuung", tr: "Aylık Bakım ve SEO" },
   "pricing.description": {
     en: "Choose the package that fits your stage. Every plan includes a fully responsive, performance-optimized website.",
     de: "Wählen Sie das Paket, das zu Ihrer aktuellen Situation passt. Jedes Paket beinhaltet eine vollständig responsive und performance-optimierte Website.",
