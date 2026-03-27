@@ -9,13 +9,13 @@ export function BlogList() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Null Blog - Web Design Insights",
+    name: "Nüll. Blog - Web Design Insights",
     description:
       "Practical web design, SEO, and branding insights for local businesses and consultants.",
     url: "https://null.design/blog",
     publisher: {
       "@type": "Organization",
-      name: "Null",
+      name: "Nüll.",
       url: "https://null.design",
     },
   };

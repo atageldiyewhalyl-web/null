@@ -10,7 +10,7 @@ interface SEOProps {
   author?: string;
 }
 
-const SITE_NAME = "Null - Web Design Agency Mannheim";
+const SITE_NAME = "Nüll. - Web Design Agency Mannheim";
 const BASE_URL = "https://null.design";
 const DEFAULT_DESC =
   "Premium web design, development, SEO, and branding for local businesses in Mannheim and throughout Germany. Clean, conversion-focused websites that establish authority.";

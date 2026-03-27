@@ -11,7 +11,7 @@ const Contact = lazy(() => import("./Contact").then(m => ({ default: m.Contact }
 const organizationData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Null",
+  name: "Nüll.",
   description:
     "Premium web design, development, SEO, and branding agency for local businesses in Mannheim and throughout Germany.",
   url: "https://null.design",
@@ -41,19 +41,19 @@ const organizationData = {
       {
         "@type": "Offer",
         name: "Starter",
-        price: "250",
-        priceCurrency: "EUR",
-      },
-      {
-        "@type": "Offer",
-        name: "Growth",
         price: "400",
         priceCurrency: "EUR",
       },
       {
         "@type": "Offer",
+        name: "Growth",
+        price: "650",
+        priceCurrency: "EUR",
+      },
+      {
+        "@type": "Offer",
         name: "Premium",
-        price: "600",
+        price: "1000",
         priceCurrency: "EUR",
       },
     ],
@@ -63,11 +63,11 @@ const organizationData = {
 const websiteData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Null",
+  name: "Nüll.",
   url: "https://null.design",
   publisher: {
     "@type": "Organization",
-    name: "Null",
+    name: "Nüll.",
     logo: "https://null.design/favicon.svg",
   },
 };

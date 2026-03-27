@@ -42,13 +42,13 @@ export function BlogPost() {
     datePublished: post.date,
     author: {
       "@type": "Organization",
-      name: "Null",
+      name: "Nüll.",
       url: "https://null.design",
       logo: "https://null.design/favicon.svg",
     },
     publisher: {
       "@type": "Organization",
-      name: "Null",
+      name: "Nüll.",
       url: "https://null.design",
       logo: {
         "@type": "ImageObject",
@@ -98,7 +98,7 @@ export function BlogPost() {
         type="article"
         image={post.image}
         publishedTime={post.date}
-        author="Null"
+        author="Nüll."
       />
       <StructuredData data={structuredData} />
       <StructuredData data={breadcrumbData} />
