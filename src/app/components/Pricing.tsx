@@ -10,7 +10,7 @@ export function Pricing() {
   const oneTimePlans = [
     {
       nameKey: "pricing.starter",
-      price: "400",
+      price: "549",
       descKey: "pricing.starter.desc",
       featureKeys: [
         "pricing.starter.f1", "pricing.starter.f2", "pricing.starter.f3",
@@ -20,7 +20,7 @@ export function Pricing() {
     },
     {
       nameKey: "pricing.growth",
-      price: "650",
+      price: "849",
       descKey: "pricing.growth.desc",
       featureKeys: [
         "pricing.growth.f1", "pricing.growth.f2", "pricing.growth.f3", "pricing.growth.f4",
@@ -30,7 +30,7 @@ export function Pricing() {
     },
     {
       nameKey: "pricing.premium",
-      price: "1000",
+      price: "1199",
       descKey: "pricing.premium.desc",
       featureKeys: [
         "pricing.premium.f1", "pricing.premium.f2", "pricing.premium.f3", "pricing.premium.f4",

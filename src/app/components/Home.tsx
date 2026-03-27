@@ -41,19 +41,19 @@ const organizationData = {
       {
         "@type": "Offer",
         name: "Starter",
-        price: "400",
+        price: "549",
         priceCurrency: "EUR",
       },
       {
         "@type": "Offer",
         name: "Growth",
-        price: "650",
+        price: "849",
         priceCurrency: "EUR",
       },
       {
         "@type": "Offer",
         name: "Premium",
-        price: "1000",
+        price: "1199",
         priceCurrency: "EUR",
       },
     ],
