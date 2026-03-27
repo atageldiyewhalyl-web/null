@@ -55,12 +55,12 @@ export function Contact() {
               {t("contact.label", lang)}
             </p>
             <h2
-              className="text-[clamp(1.75rem,4vw,2.75rem)] tracking-[-0.03em] leading-[1.15] mb-6"
+              className="text-[clamp(1.625rem,7vw,2.75rem)] tracking-[-0.03em] leading-[1.15] mb-6"
               style={{ fontWeight: 600 }}
             >
               {t("contact.title1", lang)}
-              <br />
-              {t("contact.title2", lang)}
+              <br className="hidden sm:block" />
+              {" "}{t("contact.title2", lang)}
             </h2>
             <p className="text-[1.0625rem] text-muted-foreground leading-relaxed mb-10">
               {t("contact.description", lang)}
