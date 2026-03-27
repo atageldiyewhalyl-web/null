@@ -187,14 +187,6 @@ export function Pricing() {
                     ))}
                   </ul>
 
-                  {plan.nameKey === "pricing.premium" && billingType === "onetime" && (
-                    <div className="mb-8 p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                      <p className="text-[0.8125rem] text-[#0071e3] font-semibold text-center">
-                        {t("pricing.premium.bonus", lang)}
-                      </p>
-                    </div>
-                  )}
-
                   <a
                     href="#contact"
                     className={`block text-center text-[0.875rem] py-3.5 rounded-full font-semibold transition-all duration-300 ${
