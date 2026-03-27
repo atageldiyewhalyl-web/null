@@ -8,7 +8,7 @@ export function Services() {
   return (
     <section id="services" className="py-16 md:py-20 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="max-w-2xl mb-10 md:mb-12">
+        <div className="max-w-3xl mb-10 md:mb-12">
           <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#0071e3] mb-4">
             {t("services.label", lang)}
           </p>

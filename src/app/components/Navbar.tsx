@@ -33,7 +33,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/5" role="navigation" aria-label="Main navigation">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="text-[1.25rem] tracking-[-0.03em]" style={{ fontWeight: 600 }}>
+        <Link to="/" className="text-[1.25rem] md:text-[1.35rem] tracking-[-0.03em]" style={{ fontWeight: 600 }}>
           nüll<span className="text-[#0071e3]">.</span>
         </Link>
 

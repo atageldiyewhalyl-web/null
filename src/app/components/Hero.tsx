@@ -31,7 +31,7 @@ export function Hero() {
             </span>
 
             <h1
-              className="text-[clamp(2.125rem,10vw,3.5rem)] md:text-[clamp(1.75rem,5.5vw,4rem)] leading-[1.2] md:leading-[1.18] tracking-[-0.02em] md:tracking-[-0.03em] mb-4 md:mb-8"
+              className="text-[clamp(2.125rem,10vw,3rem)] md:text-[clamp(1.75rem,5.5vw,3.625rem)] leading-[1.2] md:leading-[1.18] tracking-[-0.02em] md:tracking-[-0.03em] mb-4 md:mb-8"
               style={{ fontWeight: 600 }}
             >
               <span className="block md:inline">{t("hero.line1", lang)}</span>

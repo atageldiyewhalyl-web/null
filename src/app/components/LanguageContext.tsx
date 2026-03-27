@@ -5,7 +5,7 @@ export type Language = "en" | "de" | "tr";
 const LanguageContext = createContext<{
   lang: Language;
   setLang: (lang: Language) => void;
-}>({ lang: "en", setLang: () => {} });
+}>({ lang: "en", setLang: () => { } });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>("de");
@@ -26,12 +26,12 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.pricing": { en: "Pricing", de: "Preise", tr: "Fiyatlar" },
   "nav.blog": { en: "Blog", de: "Blog", tr: "Blog" },
   "nav.contact": { en: "Contact", de: "Kontakt", tr: "İletişim" },
-  "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Başlayın" },
+  "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
   "hero.badge": { en: "Available for new projects", de: "Verfügbar für neue Projekte", tr: "Yeni projeler için müsait" },
-  "hero.line1": { en: "Your website isn't", de: "Ihre Website bringt", tr: "Web siteniz size" },
-  "hero.line2": { en: "bringing you clients.", de: "Ihnen keine Kunden.", tr: "müşteri kazandırmıyor." },
-  "hero.line3": { en: "We fix that.", de: "Wir ändern das.", tr: "Bunu biz çözüyoruz." },
+  "hero.line1": { en: "Your website should sell for you.", de: "Ihre Website sollte für Sie verkaufen.", tr: "Web siteniz sizin yerinize satış yapmalı." },
+  "hero.line2": { en: "", de: "", tr: "" },
+  "hero.line3": { en: "Does it?", de: "Tut sie das?", tr: "Peki gerçekten yapıyor mu?" },
   "hero.description": {
     en: "We design high-converting websites for consultants and local businesses in Germany — more leads, more trust, more booked calls.",
     de: "Wir erstellen Websites mit hoher Conversion-Rate für Berater und lokale Unternehmen in Deutschland — mehr Leads, mehr Vertrauen, mehr gebuchte Termine.",
@@ -42,7 +42,7 @@ const labels: Record<string, Record<Language, string>> = {
 
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
   "services.title1": { en: "Everything you need.", de: "Alles, was Sie brauchen.", tr: "İhtiyacınız olan her şey." },
-  "services.title2": { en: "Nothing you don't.", de: "Nichts, was Sie nicht brauchen.", tr: "Gereksiz hiçbir şey yok." },
+  "services.title2": { en: "Designed to add real value to your business.", de: "Mit echtem Mehrwert für Ihr Geschäft.", tr: "İşinize değer katacak şekilde." },
   "services.description": {
     en: "We handle the full spectrum of web presence — design, code, search visibility, brand identity, and ongoing care — so you can focus on what you do best.",
     de: "Wir kümmern uns um Ihre gesamte Online-Präsenz — Design, Entwicklung, Sichtbarkeit in Suchmaschinen, Markenauftritt und laufende Betreuung — damit Sie sich auf Ihr Kerngeschäft konzentrieren können.",
@@ -97,8 +97,8 @@ const labels: Record<string, Record<Language, string>> = {
 
   // Pricing
   "pricing.label": { en: "Pricing", de: "Preise", tr: "Fiyatlandırma" },
-  "pricing.title1": { en: "Transparent pricing.", de: "Transparente Preise.", tr: "Şeffaf fiyatlar." },
-  "pricing.title2": { en: "No surprises.", de: "Keine Überraschungen.", tr: "Sürpriz yok." },
+  "pricing.title1": { en: "Full clarity", de: "Volle Klarheit", tr: "İlk günden itibaren" },
+  "pricing.title2": { en: "From day one.", de: "von Anfang an.", tr: "Tam netlik." },
   "pricing.billing.onetime": { en: "Website Creation", de: "Website-Pakete", tr: "Web Tasarım" },
   "pricing.billing.monthly": { en: "Monthly Maintenance Services", de: "Monatliche Betreuung", tr: "Aylık Bakım ve SEO" },
   "pricing.description": {

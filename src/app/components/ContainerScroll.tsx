@@ -65,7 +65,7 @@ export const Header = ({
       style={{
         translateY: translate,
       }}
-      className="max-w-5xl mx-auto text-center relative z-0"
+      className="max-w-[1240px] mx-auto text-center relative z-0"
     >
       {titleComponent}
     </motion.div>
