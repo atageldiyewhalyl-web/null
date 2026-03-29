@@ -25,10 +25,7 @@ export function Hero() {
       <ContainerScroll
         titleComponent={
           <div className="flex flex-col items-center">
-            <span className="hidden md:inline-flex items-center gap-1.5 text-[0.8125rem] text-muted-foreground bg-[#f5f5f7] px-3.5 py-1.5 rounded-full mb-10">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#30d158]" />
-              {t("hero.badge", lang)}
-            </span>
+
 
             <h1
               className="text-[clamp(2.125rem,10vw,3rem)] md:text-[clamp(1.75rem,5.5vw,3.625rem)] leading-[1.2] md:leading-[1.18] tracking-[-0.02em] md:tracking-[-0.03em] mb-4 md:mb-8"

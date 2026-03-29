@@ -29,9 +29,9 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
   "hero.badge": { en: "Available for new projects", de: "Verfügbar für neue Projekte", tr: "Yeni projeler için müsait" },
-  "hero.line1": { en: "Your website should sell for you.", de: "Ihre Website sollte für Sie verkaufen.", tr: "Web siteniz sizin yerinize satış yapmalı." },
+  "hero.line1": { en: "Turn your website into your", de: "Machen Sie Ihre Website zu Ihrer", tr: "Web sitenizi bir" },
   "hero.line2": { en: "", de: "", tr: "" },
-  "hero.line3": { en: "Does it?", de: "Tut sie das?", tr: "Peki gerçekten yapıyor mu?" },
+  "hero.line3": { en: "growth engine.", de: "Wachstumsmaschine.", tr: "büyüme motoruna dönüştürün." },
   "hero.description": {
     en: "We design high-converting websites for consultants and local businesses in Germany — more leads, more trust, more booked calls.",
     de: "Wir erstellen Websites mit hoher Conversion-Rate für Berater und lokale Unternehmen in Deutschland — mehr Leads, mehr Vertrauen, mehr gebuchte Termine.",

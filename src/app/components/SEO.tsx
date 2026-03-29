@@ -1,34 +1,52 @@
 import { useEffect, useId } from "react";
+import { useLanguage, type Language } from "./LanguageContext";
 
 interface SEOProps {
   title?: string;
   description?: string;
   canonical?: string;
   type?: "website" | "article";
-  image?: string;
+  image?: string | null;
   publishedTime?: string;
   author?: string;
 }
 
-const SITE_NAME = "Nüll. - Web Design Agency Mannheim";
+const SITE_NAME = "Nüll. - Web Design Agentur Mannheim";
 const BASE_URL = "https://null.design";
 const DEFAULT_DESC =
-  "Premium web design, development, SEO, and branding for local businesses in Mannheim and throughout Germany. Clean, conversion-focused websites that establish authority.";
-const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
+  "Premium Webdesign, Entwicklung, SEO und Branding für lokale Unternehmen in Mannheim und ganz Deutschland. Klare, conversion-orientierte Websites, die Autorität schaffen.";
+// TODO: Add OG image once available (1200x630px recommended)
+// const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
+
+const LOCALE_MAP: Record<Language, string> = {
+  de: "de_DE",
+  en: "en_US",
+  tr: "tr_TR",
+};
+
+const HTML_LANG_MAP: Record<Language, string> = {
+  de: "de",
+  en: "en",
+  tr: "tr",
+};
 
 export function SEO({
   title,
   description = DEFAULT_DESC,
   canonical,
   type = "website",
-  image = DEFAULT_IMAGE,
+  image,
   publishedTime,
   author,
 }: SEOProps) {
+  const { lang } = useLanguage();
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
 
   useEffect(() => {
+    // Update <html lang="..."> dynamically
+    document.documentElement.lang = HTML_LANG_MAP[lang];
+
     document.title = fullTitle;
 
     const setMeta = (name: string, content: string, property = false) => {
@@ -50,15 +68,19 @@ export function SEO({
     setMeta("og:description", description, true);
     setMeta("og:type", type, true);
     setMeta("og:url", canonicalUrl, true);
-    setMeta("og:image", image, true);
+    if (image) {
+      setMeta("og:image", image, true);
+    }
     setMeta("og:site_name", SITE_NAME, true);
-    setMeta("og:locale", "en_US", true);
+    setMeta("og:locale", LOCALE_MAP[lang], true);
 
     // Twitter
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", description);
-    setMeta("twitter:image", image);
+    if (image) {
+      setMeta("twitter:image", image);
+    }
 
     if (publishedTime) {
       setMeta("article:published_time", publishedTime, true);
@@ -77,7 +99,7 @@ export function SEO({
       document.head.appendChild(link);
     }
     link.href = canonicalUrl;
-  }, [fullTitle, description, canonicalUrl, type, image, publishedTime, author]);
+  }, [fullTitle, description, canonicalUrl, type, image, publishedTime, author, lang]);
 
   return null;
 }
