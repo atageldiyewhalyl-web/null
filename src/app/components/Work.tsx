@@ -5,7 +5,7 @@ import { useLanguage, t } from "./LanguageContext";
 // @ts-ignore – vite-imagetools resolves these at build time
 import d3BeautyImage from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
 // @ts-ignore – vite-imagetools resolves these at build time
-import besirYamanImage from "../../assets/screenshot_21_12_26.png?format=webp&w=1400";
+import besirYamanImage from "../../assets/Besiryaman .png?format=webp&w=1400";
 
 
 
@@ -22,7 +22,7 @@ const projects = [
     categoryKey: "work.besir.category",
     descKey: "work.besir.desc",
     image: besirYamanImage,
-    link: "https://besir-yaman-b2b.vercel.app",
+    link: "https://www.besiryaman-mentoring.de",
   },
 ];
 

@@ -12,7 +12,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "Nüll. - Web Design Agentur Mannheim";
-const BASE_URL = "https://null.design";
+const BASE_URL = "https://xn--nll-hoa.com";
 const DEFAULT_DESC =
   "Premium Webdesign, Entwicklung, SEO und Branding für lokale Unternehmen in Mannheim und ganz Deutschland. Klare, conversion-orientierte Websites, die Autorität schaffen.";
 // TODO: Add OG image once available (1200x630px recommended)

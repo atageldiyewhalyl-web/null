@@ -14,9 +14,9 @@ const organizationData = {
   name: "Nüll.",
   description:
     "Premium web design, development, SEO, and branding agency for local businesses in Mannheim and throughout Germany.",
-  url: "https://null.design",
-  email: "hello@null.design",
-  logo: "https://null.design/favicon.svg",
+  url: "https://xn--nll-hoa.com",
+  email: "hello@xn--nll-hoa.com",
+  logo: "https://xn--nll-hoa.com/favicon.svg",
   areaServed: [
     { "@type": "City", name: "Mannheim" },
     { "@type": "Country", name: "Germany" },
@@ -64,11 +64,11 @@ const websiteData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Nüll.",
-  url: "https://null.design",
+  url: "https://xn--nll-hoa.com",
   publisher: {
     "@type": "Organization",
     name: "Nüll.",
-    logo: "https://null.design/favicon.svg",
+    logo: "https://xn--nll-hoa.com/favicon.svg",
   },
 };
 
