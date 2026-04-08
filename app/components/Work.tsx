@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage, t } from "./LanguageContext";
 // @ts-ignore – vite-imagetools resolves these at build time
-import d3BeautyImage from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
+import d3BeautyImage from "../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
 // @ts-ignore – vite-imagetools resolves these at build time
-import besirYamanImage from "../../assets/Besiryaman .png?format=webp&w=1400";
+import besirYamanImage from "../assets/Besiryaman .png?format=webp&w=1400";
 
 
 

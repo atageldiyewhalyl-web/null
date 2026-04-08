@@ -4,14 +4,14 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
 // @ts-ignore – vite-imagetools resolves these at build time
-import mobileBefore from "../../assets/img_3274_mobile.png?format=webp&w=630";
+import mobileBefore from "../assets/img_3274_mobile.png?format=webp&w=630";
 // @ts-ignore – vite-imagetools resolves these at build time
-import mobileAfter from "../../assets/img_3254.png?format=webp&w=630";
+import mobileAfter from "../assets/img_3254.png?format=webp&w=630";
 
 // @ts-ignore – vite-imagetools resolves these at build time
-import desktopBefore from "../../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
+import desktopBefore from "../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
 // @ts-ignore – vite-imagetools resolves these at build time
-import desktopAfter from "../../assets/Besiryaman .png?format=webp&w=1400";
+import desktopAfter from "../assets/Besiryaman .png?format=webp&w=1400";
 
 
 
