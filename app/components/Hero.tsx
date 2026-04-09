@@ -68,7 +68,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="w-full max-w-5xl mb-24 md:mb-32"
+            className="hidden md:block w-full max-w-5xl mb-24 md:mb-32"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {/* Card 1: Conversion */}
