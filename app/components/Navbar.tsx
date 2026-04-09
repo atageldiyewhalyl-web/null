@@ -23,6 +23,30 @@ export function Navbar() {
     { name: t("nav.blog", lang), href: "/blog" },
   ];
 
+  const LanguageSwitcher = ({ className = "" }: { className?: string }) => (
+    <div className={`flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner ${className}`}>
+      {(["en", "de", "tr"] as Language[]).map((l) => (
+        <button
+          key={l}
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setLang(l);
+          }}
+          className={`px-3 md:px-4 py-1.5 rounded-full text-[0.7rem] md:text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-90 touch-manipulation ${
+            lang === l 
+              ? "bg-white text-[#0e0e10] shadow-md" 
+              : "text-[#86868b] hover:text-[#0e0e10]"
+          }`}
+          style={{ WebkitTapHighlightColor: "transparent" }}
+        >
+          {l.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 px-4 md:px-10 py-5 pointer-events-none ${
@@ -55,30 +79,9 @@ export function Navbar() {
             ))}
           </div>
 
+          {/* Desktop Right Actions */}
           <div className="hidden md:flex items-center gap-6">
-            <div className="relative z-[100000] flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner">
-              {(["en", "de", "tr"] as Language[]).map((l) => (
-                <button
-                  key={l}
-                  type="button"
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log("Language click:", l);
-                    setLang(l);
-                  }}
-                  className={`relative z-10 px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-90 touch-manipulation ${
-                    lang === l 
-                      ? "bg-white text-[#0e0e10] shadow-md" 
-                      : "text-[#86868b] hover:text-[#0e0e10]"
-                  }`}
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
+            <LanguageSwitcher />
             
             <a
               href="#contact"
@@ -88,10 +91,12 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="md:hidden flex items-center gap-4">
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center gap-3">
+            <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-[#0e0e10]"
+              className="p-1.5 text-[#0e0e10] hover:bg-black/5 rounded-full transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -119,19 +124,6 @@ export function Navbar() {
             ))}
             <hr className="border-[#f2f2f7]" />
             <div className="flex flex-col gap-4">
-               <div className="flex justify-center gap-4 py-2 bg-[#f2f2f7] rounded-2xl p-2">
-                {(["en", "de", "tr"] as Language[]).map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => { setLang(l); setIsOpen(false); }}
-                    className={`px-6 py-2 rounded-xl text-sm font-bold ${
-                      lang === l ? "bg-white text-black shadow-sm" : "text-[#86868b]"
-                    }`}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                ))}
-              </div>
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
