@@ -14,9 +14,11 @@ export function Contact() {
   const [form, setForm] = useState({ 
     name: "", 
     email: "", 
+    phone: "",
     city: "",
     practiceArea: "",
-    hasWebsite: "no" as "yes" | "no"
+    hasWebsite: "no" as "yes" | "no",
+    websiteUrl: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,9 +70,69 @@ export function Contact() {
               <br className="hidden sm:block" />
               {" "}{t("contact.title2", lang)}
             </h2>
-            <p className="text-[1.125rem] text-muted-foreground leading-relaxed max-w-lg">
+            <p className="text-[1.125rem] text-muted-foreground leading-relaxed max-w-lg mb-12">
               {t("contact.description", lang)}
             </p>
+
+            <div className="space-y-8 max-w-lg">
+              <div className="flex items-start gap-5 group">
+                <div className="w-11 h-11 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#25D366] shrink-0 transition-transform group-hover:scale-105 border border-black/5">
+                  <MessageSquare size={20} />
+                </div>
+                <div>
+                  <h4 className="text-[1rem] font-semibold mb-1">WhatsApp</h4>
+                  <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
+                    {t("contact.whatsapp.cta", lang)}
+                  </p>
+                  <a 
+                    href="https://wa.me/491627176334" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[0.875rem] text-[#0071e3] font-medium hover:underline flex items-center gap-1"
+                  >
+                    {lang === 'tr' ? 'Mesaj Gönder' : (lang === 'de' ? 'Nachricht senden' : 'Send Message')} <span className="text-[1.1em]">&rarr;</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5 group">
+                <div className="w-11 h-11 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#ea4335] shrink-0 transition-transform group-hover:scale-105 border border-black/5">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <h4 className="text-[1rem] font-semibold mb-1">Email</h4>
+                  <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
+                    {t("contact.email.cta", lang)}
+                  </p>
+                  <a 
+                    href="mailto:Halyl@nüll.com" 
+                    className="text-[0.875rem] text-[#0071e3] font-medium hover:underline"
+                  >
+                    Halyl@nüll.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-5 group">
+                <div className="w-11 h-11 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#0071e3] shrink-0 transition-transform group-hover:scale-105 border border-black/5">
+                  <Calendar size={20} />
+                </div>
+                <div>
+                  <h4 className="text-[1rem] font-semibold mb-1">Calendly</h4>
+                  <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
+                    {t("contact.calendly.cta", lang)}
+                  </p>
+                  <a 
+                    href="https://calendly.com/atageldiyewhalyl/kostenlose-kanzlei-beratung" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[0.875rem] text-[#0071e3] font-medium hover:underline flex items-center gap-1"
+                  >
+                    {lang === 'tr' ? 'Randevu Al' : (lang === 'de' ? 'Termin buchen' : 'Book Call')} <span className="text-[1.1em]">&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -133,6 +195,18 @@ export function Contact() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                          {t("contact.phone", lang)}
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={form.phone}
+                          onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
                           {t("contact.city", lang)}
                         </label>
                         <input
@@ -143,18 +217,19 @@ export function Contact() {
                           className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                          {t("contact.practiceArea", lang)}
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={form.practiceArea}
-                          onChange={(e) => setForm({ ...form, practiceArea: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                        />
-                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                        {t("contact.practiceArea", lang)}
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={form.practiceArea}
+                        onChange={(e) => setForm({ ...form, practiceArea: e.target.value })}
+                        className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                      />
                     </div>
 
                     <div className="space-y-4 pt-2">
@@ -185,6 +260,29 @@ export function Contact() {
                           {t("contact.websiteOpt.no", lang)}
                         </button>
                       </div>
+
+                      <AnimatePresence>
+                        {form.hasWebsite === "yes" && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                            className="space-y-2 overflow-hidden"
+                          >
+                            <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                              {t("contact.websiteUrl", lang)}
+                            </label>
+                            <input
+                              type="url"
+                              required
+                              placeholder="https://"
+                              value={form.websiteUrl}
+                              onChange={(e) => setForm({ ...form, websiteUrl: e.target.value })}
+                              className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
 
                     {error && (
@@ -214,67 +312,6 @@ export function Contact() {
             </AnimatePresence>
           </motion.div>
         </div>
-
-        {/* Horizontal Outreach Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-12"
-        >
-          <div className="text-center group">
-            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#25D366] mx-auto mb-4 transition-transform group-hover:scale-110">
-              <MessageSquare size={22} />
-            </div>
-            <h4 className="text-[1.125rem] font-semibold mb-2">WhatsApp</h4>
-            <p className="text-[0.875rem] text-muted-foreground mb-3">
-              {t("contact.whatsapp.cta", lang)}
-            </p>
-            <a 
-              href="https://wa.me/491627176334" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[0.9375rem] text-[#0071e3] font-medium hover:underline"
-            >
-              {lang === 'tr' ? 'Mesaj Gönder' : (lang === 'de' ? 'Nachricht senden' : 'Send Message')} &rarr;
-            </a>
-          </div>
-
-          <div className="text-center group">
-            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#ea4335] mx-auto mb-4 transition-transform group-hover:scale-110">
-              <Mail size={22} />
-            </div>
-            <h4 className="text-[1.125rem] font-semibold mb-2">Email</h4>
-            <p className="text-[0.875rem] text-muted-foreground mb-3">
-              {t("contact.email.cta", lang)}
-            </p>
-            <a 
-              href="mailto:Halyl@nüll.com" 
-              className="text-[0.9375rem] text-[#0071e3] font-medium hover:underline"
-            >
-              Halyl@nüll.com
-            </a>
-          </div>
-
-          <div className="text-center group">
-            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#0071e3] mx-auto mb-4 transition-transform group-hover:scale-110">
-              <Calendar size={22} />
-            </div>
-            <h4 className="text-[1.125rem] font-semibold mb-2">Calendly</h4>
-            <p className="text-[0.875rem] text-muted-foreground mb-3">
-              {t("contact.calendly.cta", lang)}
-            </p>
-            <a 
-              href="https://calendly.com/atageldiyewhalyl/kostenlose-kanzlei-beratung" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[0.9375rem] text-[#0071e3] font-medium hover:underline"
-            >
-              {lang === 'tr' ? 'Randevu Al' : (lang === 'de' ? 'Termin buchen' : 'Book Call')} &rarr;
-            </a>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
