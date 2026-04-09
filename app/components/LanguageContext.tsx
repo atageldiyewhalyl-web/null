@@ -1,23 +1,48 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 export type Language = "en" | "de" | "tr";
 
 const LanguageContext = createContext<{
   lang: Language;
   setLang: (lang: Language) => void;
-}>({ lang: "en", setLang: () => { } });
+}>({ lang: "de", setLang: () => { } });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("de");
+  const [lang, setLangState] = useState<Language>("de");
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Sync with localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("nll_lang") as Language;
+    if (saved && (saved === "en" || saved === "de" || saved === "tr")) {
+      setLangState(saved);
+    }
+    setIsHydrated(true);
+  }, []);
+
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    localStorage.setItem("nll_lang", newLang);
+    // Force a small update to the HTML lang attribute for accessibility/SEO
+    document.documentElement.lang = newLang;
+  };
+
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
-      {children}
+      {/* Avoid flash of untranslated content if possible, but prioritize interactivity */}
+      <div style={{ visibility: isHydrated ? "visible" : "visible" }}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 }
 
 export function useLanguage() {
-  return useContext(LanguageContext);
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider");
+  }
+  return context;
 }
 
 const labels: Record<string, Record<Language, string>> = {
@@ -258,5 +283,7 @@ const labels: Record<string, Record<Language, string>> = {
 };
 
 export function t(key: string, lang: Language): string {
-  return labels[key]?.[lang] ?? key;
+  // If we're during hydration, we might not have 'lang' correctly set yet
+  // but labels should still work
+  return labels[key]?.[lang] ?? labels[key]?.["de"] ?? key;
 }

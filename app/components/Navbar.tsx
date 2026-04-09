@@ -25,12 +25,12 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-10 py-5 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 px-4 md:px-10 py-5 ${
         scrolled ? "md:py-3" : "md:py-6"
       }`}
     >
       <div 
-        className={`max-w-[1240px] mx-auto transition-all duration-500 rounded-[1.25rem] px-6 py-2.5 ${
+        className={`max-w-[1240px] mx-auto transition-all duration-500 rounded-[1.25rem] px-6 py-2.5 pointer-events-auto ${
           scrolled 
             ? "bg-white/70 backdrop-blur-xl border border-[#d2d2d7] shadow-[0_4px_20px_rgba(0,0,0,0.05)]" 
             : "bg-transparent px-2"
@@ -40,6 +40,12 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <a href="/" className="text-[1.25rem] font-bold tracking-[-0.03em] text-[#0e0e10] group flex items-center gap-1">
               nüll<span className="text-[#007aff]">.</span>
+              {/* Debug Indicator: Changes color based on language */}
+              <div 
+                className={`w-1.5 h-1.5 rounded-full mt-1.5 ${
+                  lang === "de" ? "bg-red-500" : lang === "en" ? "bg-blue-500" : "bg-green-500"
+                }`} 
+              />
             </a>
           </div>
 
@@ -56,17 +62,24 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <div className="relative z-50 flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30">
+            <div className="relative z-[10000] flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner">
               {(["en", "de", "tr"] as Language[]).map((l) => (
                 <button
                   key={l}
                   type="button"
-                  onClick={() => setLang(l)}
-                  className={`px-3 py-1 rounded-full text-[0.75rem] font-bold transition-all cursor-pointer ${
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log("Language click:", l);
+                    setLang(l);
+                  }}
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-95 ${
                     lang === l 
-                      ? "bg-white text-[#0e0e10] shadow-sm" 
+                      ? "bg-white text-[#0e0e10] shadow-md" 
                       : "text-[#86868b] hover:text-[#0e0e10]"
                   }`}
+                  style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   {l.toUpperCase()}
                 </button>
