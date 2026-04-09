@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, CheckCircle2, TrendingUp, Search } from "lucide-react";
+import { ArrowRight, ChevronRight, CheckCircle2, TrendingUp, Search, Globe, Layout, ShieldCheck } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
 import { motion } from "motion/react";
 
@@ -67,71 +67,68 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-full max-w-4xl bg-[#f5f5f7] border border-[#d2d2d7] rounded-[2.5rem] p-4 md:p-8 overflow-hidden shadow-2xl"
+            className="relative w-full max-w-4xl bg-[#f5f5f7] border border-[#d2d2d7] rounded-[2.5rem] p-4 md:p-8 overflow-hidden shadow-2xl mb-12"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent" />
             
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
               {/* Card 1: Visibility */}
               <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#d2d2d7]/30">
                 <div className="flex items-center justify-between mb-4">
                   <div className="p-2.5 bg-blue-50 text-[#007aff] rounded-2xl">
-                    <Search size={20} />
+                    <Globe size={20} />
                   </div>
-                  <span className="text-[0.8125rem] font-bold text-green-500 flex items-center gap-1">
-                    <TrendingUp size={14} /> +12%
-                  </span>
+                  <span className="text-[0.75rem] font-bold text-green-500 bg-green-50 px-2 py-0.5 rounded-full">LIVE</span>
                 </div>
-                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1">Impact</div>
-                <div className="text-2xl font-extrabold tracking-tight">Top 1 Ranking</div>
-                <div className="mt-5 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: "94%" }}
-                    transition={{ duration: 1.5, delay: 1 }}
-                    className="h-full bg-[#007aff]" 
-                  />
-                </div>
+                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1">{t("hero.card1.label", lang)}</div>
+                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2">{t("hero.card1.value", lang)}</div>
+                <div className="text-[0.875rem] text-[#86868b] font-medium leading-normal">{t("hero.card1.sub", lang)}</div>
               </div>
 
                {/* Card 2: Status */}
                <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#d2d2d7]/30">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-green-50 text-green-600 rounded-2xl">
-                    <CheckCircle2 size={20} />
+                  <div className="p-2.5 bg-slate-50 text-slate-900 rounded-2xl">
+                    <Layout size={20} />
                   </div>
+                  <span className="text-[0.75rem] font-bold text-[#007aff] bg-blue-50 px-2 py-0.5 rounded-full">v4.0</span>
                 </div>
-                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1">Authority</div>
-                <div className="text-2xl font-extrabold tracking-tight">Kanzlei Elite</div>
-                <div className="flex gap-1.5 mt-5">
-                  {[1,2,3,4,5].map(i => (
-                    <motion.div 
-                      key={i} 
-                      initial={{ scaleY: 0 }}
-                      animate={{ scaleY: 1 }}
-                      transition={{ delay: 1 + (i * 0.1) }}
-                      className="h-7 w-2 bg-[#007aff] rounded-full" 
-                      style={{ opacity: i * 0.2 }} 
-                    />
-                  ))}
-                </div>
+                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1">{t("hero.card2.label", lang)}</div>
+                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2">{t("hero.card2.value", lang)}</div>
+                <div className="text-[0.875rem] text-[#86868b] font-medium leading-normal">{t("hero.card2.sub", lang)}</div>
               </div>
 
               {/* Card 3: Growth */}
-              <div className="bg-[#007aff] text-white rounded-3xl p-6 shadow-xl shadow-blue-500/20">
+              <div className="bg-[#0e0e10] text-white rounded-3xl p-6 shadow-xl shadow-black/10">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-white/20 text-white rounded-2xl">
-                    <TrendingUp size={20} />
+                  <div className="p-2.5 bg-white/10 text-white rounded-2xl">
+                    <ShieldCheck size={20} />
                   </div>
                 </div>
-                <div className="text-[0.8125rem] text-white/60 font-bold uppercase tracking-wider mb-1">Growth</div>
-                <div className="text-2xl font-extrabold tracking-tight">High Conversion</div>
-                <div className="mt-5 flex items-baseline gap-1">
-                  <span className="text-3xl font-bold">5.2k</span>
-                  <span className="text-white/60 text-sm font-bold tracking-tight">leads/mo</span>
-                </div>
+                <div className="text-[0.8125rem] text-white/40 font-bold uppercase tracking-wider mb-1">{t("hero.card3.label", lang)}</div>
+                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2">{t("hero.card3.value", lang)}</div>
+                <div className="text-[0.875rem] text-white/40 font-medium leading-normal">{t("hero.card3.sub", lang)}</div>
               </div>
             </div>
+          </motion.div>
+
+          {/* Trust Bar Line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 1 }}
+            className="flex flex-col md:flex-row items-center justify-center gap-4 text-center"
+          >
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center">
+                  <span className="text-[0.625rem] font-bold text-slate-400">⚖️</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-[0.9375rem] md:text-[1rem] text-[#86868b] font-medium max-w-2xl px-4">
+              {t("hero.trustBar", lang)}
+            </p>
           </motion.div>
         </div>
       </div>

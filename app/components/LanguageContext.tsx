@@ -59,6 +59,25 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Örnek projeleri gör" 
   },
 
+  // Social Proof Cards
+  "hero.card1.label": { en: "Law firm website", de: "Kanzlei-Website", tr: "Hukuk bürosu sitesi" },
+  "hero.card1.value": { en: "1 completed", de: "1 fertiggestellt", tr: "1 tamamlandı" },
+  "hero.card1.sub": { en: "built with a real lawyer", de: "mit einem echten Anwalt entwickelt", tr: "gerçek bir avukatla geliştirildi" },
+
+  "hero.card2.label": { en: "Design", de: "Design", tr: "Tasarım" },
+  "hero.card2.value": { en: "Fully responsive", de: "Vollständig responsiv", tr: "Tam uyumlu" },
+  "hero.card2.sub": { en: "looks great on every device", de: "auf jedem Gerät perfekt", tr: "her cihazda kusursuz görünüm" },
+
+  "hero.card3.label": { en: "SEO", de: "SEO", tr: "SEO" },
+  "hero.card3.value": { en: "Foundation in place", de: "Grundlage gelegt", tr: "Altyapı kuruldu" },
+  "hero.card3.sub": { en: "results on the way", de: "Ergebnisse folgen", tr: "sonuçlar yolda" },
+
+  "hero.trustBar": {
+    en: "Already trusted by lawyers in Germany. Every website built to win clients, not just look good.",
+    de: "Bereits von Rechtsanwälten in Deutschland vertraut. Jede Website gebaut, um Mandanten zu gewinnen, nicht nur um zu beeindrucken.",
+    tr: "Almanya'daki avukatlar tarafından tercih ediliyor. Her web sitesi, sadece iyi görünmek için değil, müvekkil kazanmak için tasarlandı.",
+  },
+
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
   "services.title1": { en: "Everything you need.", de: "Alles, was Sie brauchen.", tr: "İhtiyacınız olan her şey." },
   "services.title2": { en: "Designed to add real value to your business.", de: "Mit echtem Mehrwert für Ihr Geschäft.", tr: "İşinize değer katacak şekilde." },
@@ -198,9 +217,9 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.monthly.f4": { en: "Monthly summary report", de: "Monatlicher Kurzbericht", tr: "Aylık özet rapor" },
   "pricing.monthly.f5": { en: "2 SEO blog articles per month", de: "2 SEO-Blogartikel pro Monat", tr: "Ayda 2 SEO blog yazısı" },
   "pricing.monthly.f6": { en: "Keyword research", de: "Keyword-Recherche", tr: "Anahtar kelime araştırması" },
-  "pricing.monthly.f7": { en: "In German, Turkish or both", de: "Auf Deutsch, Türkisch oder beides", tr: "Almanca, Türkçe veya her ikisi" },
+  "pricing.monthly.f7": { en: "In German, Turkish or both", de: "Auf Deutsch, Türkisch oder beides", tr: "Almanca, Türkçe oder her ikisi" },
   "pricing.monthly.f8": { en: "Current site maintenance", de: "Aktuelle Seitenpflege", tr: "Güncel sayfa bakımı" },
-  "pricing.monthly.f9": { en: "Topics matching your industry", de: "Themen passend zu Ihrer Branche", tr: "Sektörünüze uygun konular" },
+  "pricing.monthly.f9": { en: "Topics matching your industry", de: "Themen passend zu Ihrer Branche", tr: "Sektörünüize uygun konular" },
   "pricing.monthly.f10": { en: "2 SEO articles per month", de: "2 SEO-Artikel pro Monat", tr: "Ayda 2 SEO makalesi" },
   "pricing.monthly.f11": { en: "New page design and integration", de: "Neue Seitengestaltung und -einbindung", tr: "Yeni sayfa tasarımı ve entegrasyonu" },
   "pricing.monthly.f12": { en: "Landing page development", de: "Landing-Page-Entwicklung", tr: "Landing page geliştirme" },
