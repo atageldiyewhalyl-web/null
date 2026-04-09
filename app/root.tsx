@@ -24,7 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <LanguageProvider>
-          <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
+          <div className="min-h-screen bg-white transition-colors duration-500">
             <Navbar />
             {children}
             <Footer />
