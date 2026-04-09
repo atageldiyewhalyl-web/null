@@ -63,33 +63,45 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Mobile Trust Ribbon */}
+          {/* Mobile Trust Ribbon (Infinite Marquee) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="md:hidden w-full overflow-hidden mb-8"
+            className="md:hidden w-full overflow-hidden mb-16 relative"
           >
-            <div className="flex items-center justify-center gap-8 py-3 opacity-60">
-              <div className="flex items-center gap-2 grayscale">
-                <ShieldCheck size={18} className="text-black" />
-                <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
-                  {t("hero.trustRibbon.t1", lang)}
-                </span>
-              </div>
-              <div className="flex items-center gap-2 grayscale">
-                <TrendingUp size={18} className="text-black" />
-                <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
-                  {t("hero.trustRibbon.t2", lang)}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-2 py-2 opacity-60 grayscale">
-              <Zap size={18} className="text-[#007aff] grayscale-0 opacity-100" />
-              <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
-                {t("hero.trustRibbon.t3", lang)}
-              </span>
-            </div>
+            {/* Gradient Fades for a feathered edge */}
+            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+            
+            <motion.div
+              animate={{ x: [0, -1200] }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              className="flex items-center gap-16 py-6 whitespace-nowrap"
+            >
+              {[1, 2, 3, 4].map((set) => (
+                <div key={set} className="flex items-center gap-16">
+                  <div className="flex items-center gap-4 grayscale opacity-60">
+                    <ShieldCheck size={24} className="text-black" />
+                    <span className="text-[0.875rem] font-bold uppercase tracking-[0.2em]">
+                      {t("hero.trustRibbon.t1", lang)}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 grayscale opacity-60">
+                    <TrendingUp size={24} className="text-black" />
+                    <span className="text-[0.875rem] font-bold uppercase tracking-[0.2em]">
+                      {t("hero.trustRibbon.t2", lang)}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 grayscale opacity-60 px-4">
+                    <Zap size={24} className="text-[#007aff] grayscale-0 opacity-100" />
+                    <span className="text-[0.875rem] font-bold uppercase tracking-[0.2em]">
+                      {t("hero.trustRibbon.t3", lang)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* Performance Cards - Desktop Only */}
