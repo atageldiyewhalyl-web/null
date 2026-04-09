@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, TrendingUp, Search, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronRight, TrendingUp, Search, ShieldCheck, Zap } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
 import { motion } from "motion/react";
 
@@ -6,7 +6,7 @@ export function Hero() {
   const { lang } = useLanguage();
 
   return (
-    <section aria-label="Hero" className="relative pt-24 pb-20 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
+    <section aria-label="Hero" className="relative pt-24 pb-16 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
       {/* Precision Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,122,255,0.03)_0%,transparent_50%)]" />
@@ -63,7 +63,36 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Performance Cards */}
+          {/* Mobile Trust Ribbon */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="md:hidden w-full overflow-hidden mb-12"
+          >
+            <div className="flex items-center justify-center gap-8 py-2 opacity-50">
+              <div className="flex items-center gap-1.5 grayscale">
+                <ShieldCheck size={14} className="text-black" />
+                <span className="text-[0.6875rem] font-bold uppercase tracking-widest whitespace-nowrap">
+                  {t("hero.trustRibbon.t1", lang)}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 grayscale">
+                <TrendingUp size={14} className="text-black" />
+                <span className="text-[0.6875rem] font-bold uppercase tracking-widest whitespace-nowrap">
+                  {t("hero.trustRibbon.t2", lang)}
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-1.5 py-1 opacity-50 grayscale">
+              <Zap size={14} className="text-[#007aff] grayscale-0 opacity-100" />
+              <span className="text-[0.6875rem] font-bold uppercase tracking-widest whitespace-nowrap">
+                {t("hero.trustRibbon.t3", lang)}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Performance Cards - Desktop Only */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,7 +138,7 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Trust Bar Line */}
+          {/* Trust Bar Line - Desktop Only */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

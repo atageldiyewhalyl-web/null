@@ -127,6 +127,9 @@ const labels: Record<string, Record<Language, string>> = {
   "hero.card3.label": { en: "SEO", de: "SEO", tr: "SEO" },
   "hero.card3.value": { en: "Foundation in place", de: "Grundlage gelegt", tr: "Altyapı kuruldu" },
   "hero.card3.sub": { en: "results on the way", de: "Ergebnisse folgen", tr: "sonuçlar yolda" },
+  "hero.trustRibbon.t1": { en: "Legal Industry Expert", de: "Kanzlei-Experten", tr: "Hukuk Sektörü Uzmanı" },
+  "hero.trustRibbon.t2": { en: "Conversion Focused", de: "Conversion-Fokus", tr: "Dönüşüm Odaklı" },
+  "hero.trustRibbon.t3": { en: "Digital Excellence", de: "Digitale Exzellenz", tr: "Dijital Mükemmellik" },
 
   "hero.trustBar": {
     en: "Already trusted by lawyers in Germany. Every website built to win clients, not just look good.",
