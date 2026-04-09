@@ -1,0 +1,148 @@
+
+> @figma/my-make-file@0.0.1 build
+> react-router build && rm -rf dist && mv build/client dist
+
+vite v6.3.5 building for production...
+transforming...
+✓ 2034 modules transformed.
+✗ Build failed in 1.26s
+app/components/ui/image-comparison-slider.tsx (2:9): "ChevronLeftRight" is not exported by "node_modules/lucide-react/dist/esm/lucide-react.js", imported by "app/components/ui/image-comparison-slider.tsx".
+file: /Users/halyl.atageldiyev/Desktop/Null/app/components/ui/image-comparison-slider.tsx:2:9
+
+1: import React, { useState, useRef, useCallback, useEffect } from 'react';
+2: import { ChevronLeftRight } from 'lucide-react';
+            ^
+3: 
+4: interface ImageComparisonProps {
+
+    at getRollupError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/parseAst.js:402:41)
+    at error (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/parseAst.js:398:42)
+    at Module.error (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:17040:16)
+    at Module.traceVariable (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:17452:29)
+    at ModuleScope.findVariable (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:15070:39)
+    at ReturnValueScope.findVariable (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:5673:38)
+    at FunctionBodyScope.findVariable (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:5673:38)
+    at Identifier.bind (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:5447:40)
+    at CallExpression.bind (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:2825:28)
+    at CallExpression.bind (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/rollup/dist/es/shared/node-entry.js:12179:15) {
+  binding: 'ChevronLeftRight',
+  code: 'MISSING_EXPORT',
+  exporter: '/Users/halyl.atageldiyev/Desktop/Null/node_modules/lucide-react/dist/esm/lucide-react.js',
+  id: '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/image-comparison-slider.tsx',
+  url: 'https://rollupjs.org/troubleshooting/#error-name-is-not-exported-by-module',
+  pos: 122,
+  loc: {
+    column: 9,
+    file: '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/image-comparison-slider.tsx',
+    line: 2
+  },
+  frame: "1: import React, { useState, useRef, useCallback, useEffect } from 'react';\n" +
+    "2: import { ChevronLeftRight } from 'lucide-react';\n" +
+    '            ^\n' +
+    '3: \n' +
+    '4: interface ImageComparisonProps {',
+  watchFiles: [
+    '/Users/halyl.atageldiyev/Desktop/Null/app/root.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/routes/home.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/routes/blog-post.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/entry.client.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/routes/blog-list.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/package.json',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react/jsx-runtime.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-dom/client.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/dom-export.mjs',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react/cjs/react-jsx-runtime.production.min.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-dom/index.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react/index.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/index.mjs',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/BlogList.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/BlogPost.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Navbar.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Home.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/LanguageContext.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/react-dom/cjs/react-dom.production.min.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Footer.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/styles/index.css',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/tailwindcss/index.css',
+    '/Users/halyl.atageldiyev/Desktop/Null/node_modules/scheduler/index.js',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/app/+types/root.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/app/routes/+types/blog-post.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/app/routes/+types/blog-list.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/app/routes/+types/home.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/+future.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/+routes.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/.react-router/types/+server-build.d.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/routes.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/entry.server.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/imports/pasted_text/container-scroll-animation.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/imports/pasted_text/pricing-packages.md',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/imports/pasted_text/compare-images.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/imports/pasted_text/website-conversion-critique.md',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/imports/pasted_text/pasted-attachment.txt',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/styles/fonts.css',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Hero.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/aspect-ratio.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/alert-dialog.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/pagination.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/tabs.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/card.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/slider.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/popover.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/progress.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/input-otp.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/chart.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/hover-card.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/sheet.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/scroll-area.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/resizable.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/label.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/sonner.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/utils.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/navigation-menu.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/use-mobile.ts',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/accordion.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/drawer.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/tooltip.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/alert.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/image-comparison-slider.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/switch.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/calendar.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/breadcrumb.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/radio-group.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/command.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/toggle-group.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/avatar.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/menubar.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/dialog.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/badge.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/sidebar.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/table.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/separator.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/button.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/toggle.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/compare.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/checkbox.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/collapsible.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/dropdown-menu.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/select.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/textarea.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/input.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/skeleton.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/context-menu.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/form.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ui/carousel.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Pricing.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Work.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/ContainerScroll.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Contact.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/SEO.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Services.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/figma/ImageWithFallback.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/Layout.tsx',
+    '/Users/halyl.atageldiyev/Desktop/Null/app/components/blogData.tsx',
+    ... 1996 more items
+  ],
+  Symbol(augmented): true
+}

@@ -38,7 +38,7 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <a href="/" className="text-[1.625rem] font-bold tracking-[-0.03em] text-[#0e0e10] group flex items-center gap-1">
+            <a href="/" className="text-[1.5rem] font-bold tracking-[-0.03em] text-[#0e0e10] group flex items-center gap-1">
               nüll<span className="text-[#007aff]">.</span>
             </a>
           </div>

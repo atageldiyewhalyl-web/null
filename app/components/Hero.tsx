@@ -1,6 +1,7 @@
 import { ArrowRight, ChevronRight, CheckCircle2, TrendingUp, Search, Globe, Layout, ShieldCheck } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
 import { motion } from "motion/react";
+import { ImageComparison } from "./ui/image-comparison-slider";
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -129,6 +130,26 @@ export function Hero() {
             <p className="text-[0.9375rem] md:text-[1rem] text-[#86868b] font-medium max-w-2xl px-4">
               {t("hero.trustBar", lang)}
             </p>
+          </motion.div>
+
+          {/* Transformation Showcase */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-full mt-24 mb-10"
+          >
+            <div className="text-center mb-10">
+              <h3 className="text-[1.5rem] md:text-[2rem] font-bold tracking-tight mb-3">Legacy to Authority</h3>
+              <p className="text-[#86868b] font-medium">Experience the digital transformation of the top 1% law firms.</p>
+            </div>
+            
+            <ImageComparison
+                beforeImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200"
+                afterImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"
+                altBefore="Traditional legal office"
+                altAfter="Modern authoritative law firm dashboard"
+            />
           </motion.div>
         </div>
       </div>
