@@ -28,17 +28,36 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.contact": { en: "Contact", de: "Kontakt", tr: "İletişim" },
   "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
-  "hero.badge": { en: "Available for new projects", de: "Verfügbar für neue Projekte", tr: "Yeni projeler için müsait" },
-  "hero.line1": { en: "Your law firm deserves", de: "Ihre Kanzlei verdient", tr: "Hukuk büronuz" },
-  "hero.line2": { en: "better than", de: "mehr als", tr: "3. sayfadan" },
-  "hero.line3": { en: "page 3.", de: "Seite 3.", tr: "fazlasını hak ediyor." },
-  "hero.description": {
-    en: "Positioning and web design for German-Turkish lawyers in Germany. We turn your firm into a digital authority — for more trust and the right clients.",
-    de: "Positionierung und Webdesign für deutsch-türkische Rechtsanwälte in Deutschland. Wir verwandeln Ihre Kanzlei in eine digitale Autorität — für mehr Vertrauen und die richtigen Mandanten.",
-    tr: "Almanya'daki Türk avukatlar için dijital varlık ve stratejik tasarım. Büronuzu dijital bir otoriteye dönüştürüyoruz — daha fazla güven ve doğru müvekkiller için.",
+  "hero.eyebrow": { 
+    en: "Web design & positioning for lawyers", 
+    de: "Webdesign & Positionierung für Rechtsanwälte", 
+    tr: "Avukatlar için web tasarımı ve konumlandırma" 
   },
-  "hero.cta": { en: "Get a Free Consultation", de: "Kostenlose Erstberatung sichern", tr: "Ücretsiz danışmanlık al" },
-  "hero.secondary": { en: "See Case Studies", de: "Fallstudien ansehen", tr: "Vaka çalışmalarını incele" },
+  "hero.line1": { 
+    en: "Clients are searching.", 
+    de: "Mandanten suchen.", 
+    tr: "Müvekkiller arıyor." 
+  },
+  "hero.line2": { 
+    en: "Your firm should be the answer.", 
+    de: "Ihre Kanzlei sollte die Antwort sein.", 
+    tr: "Büronuz cevap olmalı." 
+  },
+  "hero.description": {
+    en: "We build digital presences for Turkish-German lawyers in Germany so you get found, earn trust, and win the right clients. Whether you have no website yet or one that isn't working: we make your firm the first choice.",
+    de: "Wir bauen digitale Präsenzen für deutsch-türkische Rechtsanwälte in Deutschland, damit Sie gefunden werden, Vertrauen gewinnen und die richtigen Mandanten gewinnen. Ob Sie noch keine Website haben oder eine, die nicht funktioniert: Wir machen Ihre Kanzlei zur ersten Wahl.",
+    tr: "Almanya'daki Türk-Alman avukatlar için dijital varlık oluşturuyoruz. Bulunmanız, güven kazanmanız ve doğru müvekkilleri çekmeniz için. Henüz bir web siteniz yoksa ya da işe yaramayanı varsa: Büronuzu ilk tercih haline getiriyoruz.",
+  },
+  "hero.cta": { 
+    en: "Book a free consultation", 
+    de: "Kostenlose Erstberatung sichern", 
+    tr: "Ücretsiz danışmanlık al" 
+  },
+  "hero.secondary": { 
+    en: "View case studies", 
+    de: "Fallstudien ansehen", 
+    tr: "Örnek projeleri gör" 
+  },
 
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
   "services.title1": { en: "Everything you need.", de: "Alles, was Sie brauchen.", tr: "İhtiyacınız olan her şey." },
@@ -142,7 +161,7 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.growth.f8": { en: "Live in 7–10 days", de: "In 7–10 Tagen live", tr: "7–10 günde yayında" },
   "pricing.premium.f1": { en: "Up to 10-page website", de: "Bis zu 10 Seiten", tr: "10 sayfaya kadar" },
   "pricing.premium.f2": { en: "Premium custom design", de: "Premium-Design", tr: "Premium tasarım" },
-  "pricing.premium.f3": { en: "Full SEO strategy", de: "Vollständige SEO-Strategie", tr: "Tam SEO stratejisi" },
+  "pricing.premium.f3": { en: "Full SEO strategy", de: "Tam SEO stratejisi", tr: "Tam SEO stratejisi" },
   "pricing.premium.f4": { en: "Logo and brand identity", de: "Logo und Markenidentität", tr: "Logo ve marka kimliği" },
   "pricing.premium.f5": { en: "Texting assistance", de: "Unterstützung beim Texten", tr: "İçerik yazımı desteği" },
   "pricing.premium.f6": { en: "Analytics setup", de: "Analytics-Einrichtung", tr: "Analytics kurulumu" },
