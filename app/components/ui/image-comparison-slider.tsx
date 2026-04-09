@@ -19,22 +19,27 @@ export const ImageComparison: React.FC<ImageComparisonProps> = ({
     const containerRef = useRef<HTMLDivElement>(null);
 
     const handleMove = useCallback((clientX: number) => {
-        if (!isDragging || !containerRef.current) return;
+        if (!containerRef.current) return;
         
         const rect = containerRef.current.getBoundingClientRect();
         let newPosition = ((clientX - rect.left) / rect.width) * 100;
         newPosition = Math.max(0, Math.min(100, newPosition));
         
         setSliderPosition(newPosition);
-    }, [isDragging]);
+    }, []);
 
     const handleMouseDown = () => setIsDragging(true);
     const handleMouseUp = useCallback(() => setIsDragging(false), []);
+    
+    // Mouse move now follows cursor directly on hover
     const handleMouseMove = (e: React.MouseEvent) => handleMove(e.clientX);
     
+    // Touch still uses drag logic for better control
     const handleTouchStart = () => setIsDragging(true);
     const handleTouchEnd = () => setIsDragging(false);
-    const handleTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (isDragging) handleMove(e.touches[0].clientX);
+    };
 
     useEffect(() => {
         window.addEventListener('mouseup', handleMouseUp);
