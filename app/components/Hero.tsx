@@ -149,7 +149,7 @@ export function Hero() {
               <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#007aff] font-bold mb-4">
                 {t("hero.comparison.label", lang)}
               </p>
-              <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-bold tracking-tight mb-6 text-[#0e0e10] whitespace-pre-line">
+              <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-bold tracking-tight mb-6 text-[#0e0e10]">
                 {t("hero.comparison.title", lang)}
               </h2>
               <p className="text-[1.125rem] md:text-[1.25rem] text-[#86868b] font-medium leading-relaxed max-w-2xl">
