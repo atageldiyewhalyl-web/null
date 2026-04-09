@@ -4,15 +4,26 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "react-router";
-import { LanguageProvider } from "./components/LanguageContext";
+import type { LoaderFunctionArgs } from "react-router";
+import { LanguageProvider, type Language } from "./components/LanguageContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import "./styles/index.css";
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  const cookie = request.headers.get("Cookie");
+  const match = cookie?.match(/nll_lang=([^;]+)/);
+  const lang = (match ? match[1] : "de") as Language;
+  return { lang };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { lang } = useLoaderData<typeof loader>() || { lang: "de" };
+
   return (
-    <html lang="de">
+    <html lang={lang}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,7 +31,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <LanguageProvider>
+        <LanguageProvider initialLang={lang}>
           <div className="min-h-screen bg-white transition-colors duration-500">
             <Navbar />
             {children}

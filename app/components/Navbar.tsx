@@ -30,6 +30,7 @@ export function Navbar() {
           key={l}
           type="button"
           onClick={() => setLang(l)}
+          suppressHydrationWarning
           className={`px-3 md:px-4 py-1.5 rounded-full text-[0.7rem] md:text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-95 touch-manipulation ${
             lang === l 
               ? "bg-white text-[#0e0e10] shadow-md" 

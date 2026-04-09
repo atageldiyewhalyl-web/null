@@ -5,7 +5,8 @@ export type Language = "en" | "de" | "tr";
 const LanguageContext = createContext<{
   lang: Language;
   setLang: (lang: Language) => void;
-}>({ lang: "de", setLang: () => { } });
+  isHydrated: boolean;
+}>({ lang: "de", setLang: () => { }, isHydrated: false });
 
 // Cookie Helpers for Bulletproof Persistence
 const setCookie = (name: string, value: string, days: number) => {
@@ -20,8 +21,8 @@ const getCookie = (name: string): string | null => {
   return match ? match[2] : null;
 };
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>("de");
+export function LanguageProvider({ children, initialLang = "de" }: { children: ReactNode, initialLang?: Language }) {
+  const [lang, setLangState] = useState<Language>(initialLang);
   const [isHydrated, setIsHydrated] = useState(false);
 
   // Sync with cookies/localStorage on mount
@@ -49,7 +50,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang }}>
+    <LanguageContext.Provider value={{ lang, setLang, isHydrated }}>
       <div 
         data-lang={lang} 
         style={{ 
