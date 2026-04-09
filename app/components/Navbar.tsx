@@ -24,17 +24,13 @@ export function Navbar() {
   ];
 
   const LanguageSwitcher = ({ className = "" }: { className?: string }) => (
-    <div className={`flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner ${className}`}>
+    <div className={`flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner pointer-events-auto ${className}`}>
       {(["en", "de", "tr"] as Language[]).map((l) => (
         <button
           key={l}
           type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setLang(l);
-          }}
-          className={`px-3 md:px-4 py-1.5 rounded-full text-[0.7rem] md:text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-90 touch-manipulation ${
+          onClick={() => setLang(l)}
+          className={`px-3 md:px-4 py-1.5 rounded-full text-[0.7rem] md:text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-95 touch-manipulation ${
             lang === l 
               ? "bg-white text-[#0e0e10] shadow-md" 
               : "text-[#86868b] hover:text-[#0e0e10]"
