@@ -86,7 +86,7 @@ const labels: Record<string, Record<Language, string>> = {
 
   // Social Proof Cards
   "hero.card1.label": { en: "Law firm website", de: "Kanzlei-Website", tr: "Hukuk bürosu sitesi" },
-  "hero.card1.value": { en: "1 completed", de: "1 fertiggestellt", tr: "1 tamamlandı" },
+  "hero.card1.value": { en: "4 completed", de: "4 fertiggestellt", tr: "4 tamamlandı" },
   "hero.card1.sub": { en: "built with a real lawyer", de: "mit einem echten Anwalt entwickelt", tr: "gerçek bir avukatla geliştirildi" },
 
   "hero.card2.label": { en: "Design", de: "Design", tr: "Tasarım" },
