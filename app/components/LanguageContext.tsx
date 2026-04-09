@@ -36,7 +36,7 @@ const labels: Record<string, Record<Language, string>> = {
   "hero.line1": { 
     en: "Clients are searching.", 
     de: "Mandanten suchen.", 
-    tr: "Müvekkiller arıyor." 
+    tr: "Müvekkiller avukat arıyor." 
   },
   "hero.line2": { 
     en: "Your firm should be the answer.", 
