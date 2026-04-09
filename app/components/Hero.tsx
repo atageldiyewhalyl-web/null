@@ -6,7 +6,7 @@ export function Hero() {
   const { lang } = useLanguage();
 
   return (
-    <section aria-label="Hero" className="relative pt-24 pb-16 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
+    <section aria-label="Hero" className="relative pt-32 pb-24 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
       {/* Precision Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,122,255,0.03)_0%,transparent_50%)]" />
@@ -18,7 +18,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] md:text-[0.875rem] font-bold mb-8 md:mb-10 transition-transform hover:scale-[1.02]"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] md:text-[0.875rem] font-bold mb-10 md:mb-12 transition-transform hover:scale-[1.02]"
           >
             {t("hero.eyebrow", lang)}
           </motion.div>
@@ -27,7 +27,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-[clamp(1.5rem,7.5vw,4.5rem)] leading-[1.1] tracking-[-0.04em] font-bold text-[#0e0e10] mb-6 md:mb-8"
+            className="text-[clamp(1.5rem,7.5vw,4.5rem)] leading-[1.15] tracking-[-0.04em] font-bold text-[#0e0e10] mb-8 md:mb-10"
           >
             <span className="block whitespace-nowrap">{t("hero.line1", lang)}</span>
             <span className="block text-[#86868b] whitespace-nowrap">{t("hero.line2", lang)}</span>
@@ -37,7 +37,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-[1.0625rem] md:text-[1.375rem] text-[#86868b] max-w-4xl mb-10 md:mb-14 leading-relaxed font-medium text-balance"
+            className="text-[1.125rem] md:text-[1.375rem] text-[#86868b] max-w-4xl mb-12 md:mb-16 leading-relaxed font-medium text-balance"
           >
             <span className="md:hidden">{t("hero.descriptionMobile", lang)}</span>
             <span className="hidden md:block">{t("hero.description", lang)}</span>
@@ -47,19 +47,19 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-16 md:mb-24"
+            className="flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-20 md:mb-24"
           >
             <a
               href="#contact"
-              className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-[#007aff] text-white px-8 md:px-10 py-4 md:py-5 rounded-full text-[1rem] md:text-[1.0625rem] font-bold hover:bg-[#0066d6] transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-blue-500/10"
+              className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-[#007aff] text-white px-10 md:px-12 py-5 md:py-6 rounded-full text-[1.0625rem] md:text-[1.125rem] font-bold hover:bg-[#0066d6] transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-blue-500/10"
             >
-              {t("hero.cta", lang)} <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              {t("hero.cta", lang)} <ArrowRight size={22} className="transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#work"
-              className="inline-flex items-center justify-center gap-1 text-[1rem] md:text-[1.0625rem] font-bold text-[#0e0e10] hover:text-[#007aff] transition-colors group px-4 py-2"
+              className="inline-flex items-center justify-center gap-1 text-[1.0625rem] md:text-[1.125rem] font-bold text-[#0e0e10] hover:text-[#007aff] transition-colors group px-4 py-2"
             >
-              {t("hero.secondary", lang)} <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
+              {t("hero.secondary", lang)} <ChevronRight size={22} className="transition-transform group-hover:translate-x-1" />
             </a>
           </motion.div>
 
@@ -68,25 +68,25 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="md:hidden w-full overflow-hidden mb-12"
+            className="md:hidden w-full overflow-hidden mb-8"
           >
-            <div className="flex items-center justify-center gap-8 py-2 opacity-50">
-              <div className="flex items-center gap-1.5 grayscale">
-                <ShieldCheck size={14} className="text-black" />
-                <span className="text-[0.6875rem] font-bold uppercase tracking-widest whitespace-nowrap">
+            <div className="flex items-center justify-center gap-8 py-3 opacity-60">
+              <div className="flex items-center gap-2 grayscale">
+                <ShieldCheck size={18} className="text-black" />
+                <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
                   {t("hero.trustRibbon.t1", lang)}
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 grayscale">
-                <TrendingUp size={14} className="text-black" />
-                <span className="text-[0.6875rem] font-bold uppercase tracking-widest whitespace-nowrap">
+              <div className="flex items-center gap-2 grayscale">
+                <TrendingUp size={18} className="text-black" />
+                <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
                   {t("hero.trustRibbon.t2", lang)}
                 </span>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-1.5 py-1 opacity-50 grayscale">
-              <Zap size={14} className="text-[#007aff] grayscale-0 opacity-100" />
-              <span className="text-[0.6875rem] font-bold uppercase tracking-widest whitespace-nowrap">
+            <div className="flex items-center justify-center gap-2 py-2 opacity-60 grayscale">
+              <Zap size={18} className="text-[#007aff] grayscale-0 opacity-100" />
+              <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
                 {t("hero.trustRibbon.t3", lang)}
               </span>
             </div>
