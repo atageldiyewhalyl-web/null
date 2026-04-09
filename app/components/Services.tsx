@@ -13,7 +13,7 @@ export function Services() {
       <div className="max-w-7xl mx-auto">
 
         {/* ── Header ───────────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-end mb-16 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-8 lg:gap-20 items-end mb-16 md:mb-20">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -30,8 +30,7 @@ export function Services() {
               transition={{ delay: 0.08 }}
               className="text-[clamp(2.25rem,5.5vw,3.75rem)] font-bold tracking-tight leading-[1.08] text-[#0e0e10]"
             >
-              {t("services.title1", lang)}
-              <br />
+              {t("services.title1", lang)}{" "}
               <span className="text-[#86868b]">{t("services.title2", lang)}</span>
             </motion.h2>
           </div>
