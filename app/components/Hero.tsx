@@ -114,7 +114,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 1 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-4 text-center"
+            className="hidden md:flex flex-col md:flex-row items-center justify-center gap-4 text-center"
           >
             <div className="flex -space-x-2">
               {[1, 2, 3].map((i) => (
