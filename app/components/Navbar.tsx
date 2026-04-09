@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage, t, type Language } from "./LanguageContext";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -21,97 +21,103 @@ export function Navbar() {
     { name: t("nav.work", lang), href: "#work" },
     { name: t("nav.pricing", lang), href: "#pricing" },
     { name: t("nav.blog", lang), href: "/blog" },
-    { name: t("nav.contact", lang), href: "#contact" },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-10 py-5 ${
-        scrolled ? "bg-white/80 backdrop-blur-xl border-b border-slate-200 py-3 shadow-sm" : "bg-transparent py-5"
+        scrolled ? "md:py-3" : "md:py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <a href="/" className="text-2xl font-bold tracking-tighter text-slate-900 group flex items-center gap-1">
-            nüll<span className="text-[#0071e3] transition-transform group-hover:scale-125">.</span>
-          </a>
-        </div>
-
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-[0.9375rem] font-medium text-slate-600 hover:text-slate-900 transition-colors relative group"
-            >
-              {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#0071e3] transition-all duration-300 group-hover:w-full" />
+      <div 
+        className={`max-w-[1240px] mx-auto transition-all duration-500 rounded-[1.25rem] px-6 py-2.5 ${
+          scrolled 
+            ? "bg-white/70 backdrop-blur-xl border border-[#d2d2d7] shadow-[0_4px_20px_rgba(0,0,0,0.05)]" 
+            : "bg-transparent px-2"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <a href="/" className="text-[1.25rem] font-bold tracking-[-0.03em] text-[#0e0e10] group flex items-center gap-1">
+              nüll<span className="text-[#007aff]">.</span>
             </a>
-          ))}
-        </div>
+          </div>
 
-        <div className="hidden md:flex items-center gap-6">
-          <div className="flex items-center bg-slate-100 rounded-full p-1 border border-slate-200">
-            {(["en", "de", "tr"] as Language[]).map((l) => (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                className={`px-3 py-1 rounded-full text-[0.75rem] font-semibold transition-all ${
-                  lang === l 
-                    ? "bg-white text-slate-900 shadow-sm" 
-                    : "text-slate-500 hover:text-slate-900"
-                }`}
+          <div className="hidden md:flex items-center gap-10">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-[0.875rem] font-semibold text-[#86868b] hover:text-[#0e0e10] transition-colors flex items-center gap-1"
               >
-                {l.toUpperCase()}
-              </button>
+                {item.name}
+              </a>
             ))}
           </div>
-          
-          <a
-            href="#contact"
-            className="bg-[#0071e3] text-white px-6 py-2.5 rounded-full text-[0.875rem] font-semibold hover:bg-[#0077ed] transition-all active:scale-95 shadow-md shadow-blue-200"
-          >
-            {t("nav.getStarted", lang)}
-          </a>
-        </div>
 
-        <div className="md:hidden flex items-center gap-4">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-slate-600 hover:text-slate-900"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30">
+              {(["en", "de", "tr"] as Language[]).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`px-3 py-1 rounded-full text-[0.75rem] font-bold transition-all ${
+                    lang === l 
+                      ? "bg-white text-[#0e0e10] shadow-sm" 
+                      : "text-[#86868b] hover:text-[#0e0e10]"
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            
+            <a
+              href="#contact"
+              className="bg-[#0e0e10] text-white px-6 py-2.5 rounded-full text-[0.875rem] font-bold hover:bg-[#1c1c1e] transition-all active:scale-95 shadow-lg shadow-black/10"
+            >
+              {t("nav.getStarted", lang)}
+            </a>
+          </div>
+
+          <div className="md:hidden flex items-center gap-4">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-[#0e0e10]"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-20 left-4 right-4 bg-white border border-slate-200 rounded-2xl p-6 flex flex-col gap-5 md:hidden shadow-2xl"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="absolute top-20 left-4 right-4 bg-white border border-[#d2d2d7] rounded-[2rem] p-8 flex flex-col gap-6 md:hidden shadow-2xl"
           >
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-slate-900"
+                className="text-2xl font-bold text-[#0e0e10]"
               >
                 {item.name}
               </a>
             ))}
-            <hr className="border-slate-100" />
+            <hr className="border-[#f2f2f7]" />
             <div className="flex flex-col gap-4">
-               <div className="flex justify-center gap-4 py-2">
+               <div className="flex justify-center gap-4 py-2 bg-[#f2f2f7] rounded-2xl p-2">
                 {(["en", "de", "tr"] as Language[]).map((l) => (
                   <button
                     key={l}
                     onClick={() => { setLang(l); setIsOpen(false); }}
-                    className={`px-4 py-2 rounded-xl text-sm font-bold ${
-                      lang === l ? "bg-slate-100 text-slate-900" : "text-slate-500"
+                    className={`px-6 py-2 rounded-xl text-sm font-bold ${
+                      lang === l ? "bg-white text-black shadow-sm" : "text-[#86868b]"
                     }`}
                   >
                     {l.toUpperCase()}
@@ -121,7 +127,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="bg-[#0071e3] text-white text-center py-4 rounded-xl font-bold"
+                className="bg-[#007aff] text-white text-center py-5 rounded-2xl font-bold"
               >
                 {t("nav.getStarted", lang)}
               </a>
