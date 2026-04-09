@@ -14,18 +14,6 @@ export function Hero() {
 
       <div className="max-w-[1200px] mx-auto relative z-10">
         <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] font-semibold mb-10"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#007aff]"></span>
-            </span>
-            {t("hero.badge", lang)}
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
