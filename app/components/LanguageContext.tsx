@@ -242,7 +242,7 @@ const labels: Record<string, Record<Language, string>> = {
   "work.dogru.desc": {
     en: "A bilingual law firm website for a Mannheim lawyer with ties to Ankara. We developed his brand identity, sharpened his message and built a website that radiates authority and convinces clients.",
     de: "Eine zweisprachige Kanzlei-Website für einen Mannheimer Rechtsanwalt mit Verbindungen nach Ankara. Wir haben seine Markenidentität entwickelt, seine Botschaft geschärft und eine Website gebaut, die Autorität ausstrahlt und Mandanten überzeugt.",
-    tr: "Ankara bağlantılı bir Mannheim avukatı için iki dilli hukuk bürosu web sitesi. Marka kimliğini geliştirdik, mesajını netleştirdik ve otorite yayan, müvekkilleri ikna eden bir web sitesi inşa ettik.",
+    tr: "Mannheim'da faaliyet gösteren avukat Hasan Doğru, hem Alman hem de Türk müvekkillere hitap eden güçlü bir dijital kimlik istiyordu. Marka kimliğinden web sitesine kadar her detayı birlikte geliştirdik. Sonuç: İki dilde güven veren, kararlı ve özgün bir Kanzlei.",
   },
   "work.besir.category": { en: "Consultant · Personal Brand & Web Design", de: "Berater · Personal Branding & Webdesign", tr: "Danışman · Kişisel Marka & Web Tasarım" },
   "work.besir.desc": {
