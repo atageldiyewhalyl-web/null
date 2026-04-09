@@ -139,14 +139,22 @@ export function Hero() {
 
           {/* Transformation Showcase */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="w-full max-w-7xl mt-24 mb-10"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-full max-w-7xl mt-40 mb-20 relative"
           >
-            <div className="text-center mb-10">
-              <h3 className="text-[1.5rem] md:text-[2rem] font-bold tracking-tight mb-3">Legacy to Authority</h3>
-              <p className="text-[#86868b] font-medium">Experience the digital transformation of the top 1% law firms.</p>
+            {/* Visual Bridge */}
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-[#d2d2d7]/50 to-transparent" />
+            
+            <div className="text-center mb-16 px-4">
+              <h2 className="text-[clamp(1.75rem,5vw,3rem)] font-bold tracking-tight mb-6 text-[#0e0e10]">
+                {t("hero.comparison.title", lang)}
+              </h2>
+              <p className="text-[1.125rem] md:text-[1.25rem] text-[#86868b] font-medium max-w-2xl mx-auto leading-relaxed">
+                {t("hero.comparison.subtitle", lang)}
+              </p>
             </div>
             
             <ImageComparison
