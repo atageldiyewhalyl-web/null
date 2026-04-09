@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, MapPin, Loader2, Mail, MessageSquare, Calendar } from "lucide-react";
+import { Send, Loader2, Mail, MessageSquare, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { projectId, publicAnonKey } from "/utils/supabase/info";
 import { useLanguage, t } from "./LanguageContext";
@@ -50,13 +50,12 @@ export function Contact() {
   return (
     <section id="contact" className="py-20 md:py-32 px-4 md:px-6 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start pb-20 border-b border-black/5 mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center"
           >
             <p className="text-[0.8125rem] tracking-[0.15em] uppercase text-[#0070e3] mb-6 font-semibold">
               {t("contact.label", lang)}
@@ -69,75 +68,9 @@ export function Contact() {
               <br className="hidden sm:block" />
               {" "}{t("contact.title2", lang)}
             </h2>
-            <p className="text-[1.125rem] text-muted-foreground leading-relaxed mb-12 max-w-lg">
+            <p className="text-[1.125rem] text-muted-foreground leading-relaxed max-w-lg">
               {t("contact.description", lang)}
             </p>
-
-            <div className="space-y-8">
-              <div className="group cursor-default">
-                <div className="flex items-start gap-4 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#25D366]">
-                    <MessageSquare size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-[1rem] font-semibold mb-1">WhatsApp</h4>
-                    <p className="text-[0.875rem] text-muted-foreground">
-                      {t("contact.whatsapp.cta", lang)}
-                    </p>
-                    <a 
-                      href="https://wa.me/491627176334" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
-                    >
-                      WhatsApp &rarr;
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group cursor-default">
-                <div className="flex items-start gap-4 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#ea4335]">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-[1rem] font-semibold mb-1">Email</h4>
-                    <p className="text-[0.875rem] text-muted-foreground">
-                      {t("contact.email.cta", lang)}
-                    </p>
-                    <a 
-                      href="mailto:Halyl@nüll.com" 
-                      className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
-                    >
-                      Halyl@nüll.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group cursor-default">
-                <div className="flex items-start gap-4 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#0071e3]">
-                    <Calendar size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-[1rem] font-semibold mb-1">Calendly</h4>
-                    <p className="text-[0.875rem] text-muted-foreground">
-                      {t("contact.calendly.cta", lang)}
-                    </p>
-                    <a 
-                      href="https://calendly.com/atageldiyewhalyl/kostenlose-kanzlei-beratung" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
-                    >
-                      Calendly &rarr;
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
@@ -262,7 +195,7 @@ export function Contact() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-foreground text-background py-4.5 h-14 rounded-full text-[1rem] font-medium hover:bg-foreground/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60 disabled:pointer-events-none"
+                        className="w-full bg-foreground text-background py-4.5 h-14 rounded-full text-[1rem] font-medium hover:bg-foreground/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60 disabled:pointer-events-none shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
                       >
                         {loading ? (
                           <>{t("contact.sending", lang)} <Loader2 size={18} className="animate-spin" /></>
@@ -281,6 +214,67 @@ export function Contact() {
             </AnimatePresence>
           </motion.div>
         </div>
+
+        {/* Horizontal Outreach Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-12"
+        >
+          <div className="text-center group">
+            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#25D366] mx-auto mb-4 transition-transform group-hover:scale-110">
+              <MessageSquare size={22} />
+            </div>
+            <h4 className="text-[1.125rem] font-semibold mb-2">WhatsApp</h4>
+            <p className="text-[0.875rem] text-muted-foreground mb-3">
+              {t("contact.whatsapp.cta", lang)}
+            </p>
+            <a 
+              href="https://wa.me/491627176334" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[0.9375rem] text-[#0071e3] font-medium hover:underline"
+            >
+              {lang === 'tr' ? 'Mesaj Gönder' : (lang === 'de' ? 'Nachricht senden' : 'Send Message')} &rarr;
+            </a>
+          </div>
+
+          <div className="text-center group">
+            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#ea4335] mx-auto mb-4 transition-transform group-hover:scale-110">
+              <Mail size={22} />
+            </div>
+            <h4 className="text-[1.125rem] font-semibold mb-2">Email</h4>
+            <p className="text-[0.875rem] text-muted-foreground mb-3">
+              {t("contact.email.cta", lang)}
+            </p>
+            <a 
+              href="mailto:Halyl@nüll.com" 
+              className="text-[0.9375rem] text-[#0071e3] font-medium hover:underline"
+            >
+              Halyl@nüll.com
+            </a>
+          </div>
+
+          <div className="text-center group">
+            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#0071e3] mx-auto mb-4 transition-transform group-hover:scale-110">
+              <Calendar size={22} />
+            </div>
+            <h4 className="text-[1.125rem] font-semibold mb-2">Calendly</h4>
+            <p className="text-[0.875rem] text-muted-foreground mb-3">
+              {t("contact.calendly.cta", lang)}
+            </p>
+            <a 
+              href="https://calendly.com/atageldiyewhalyl/kostenlose-kanzlei-beratung" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[0.9375rem] text-[#0071e3] font-medium hover:underline"
+            >
+              {lang === 'tr' ? 'Randevu Al' : (lang === 'de' ? 'Termin buchen' : 'Book Call')} &rarr;
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
