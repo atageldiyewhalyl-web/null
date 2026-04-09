@@ -19,7 +19,7 @@ const projects = [
     descKey: "work.dogru.desc",
     image: dogruNew,
     beforeImage: dogruOld,
-    link: "https://kanzlei-dogru.de",
+    link: "https://hasandogru.de",
     isComparison: true
   },
   {
