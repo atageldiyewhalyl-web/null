@@ -40,12 +40,12 @@ export default function App() {
 
 export function meta() {
   return [
-    { title: "Nüll. - Web Design Agentur Mannheim" },
-    { name: "description", content: "Premium Webdesign, Entwicklung, SEO und Branding für lokale Unternehmen in Mannheim und ganz Deutschland. Klare, conversion-orientierte Websites, die Autorität schaffen." },
+    { title: "Nüll. - Kanzlei Marketing & Webdesign" },
+    { name: "description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Rechtsanwälte in Deutschland. Wir machen Ihre Kanzlei zur digitalen Autorität." },
     { name: "robots", content: "index, follow, max-image-preview:large" },
     { property: "og:type", content: "website" },
-    { property: "og:title", content: "Nüll. - Web Design Agentur Mannheim" },
-    { property: "og:description", content: "Premium Webdesign, Entwicklung, SEO und Branding für lokale Unternehmen in Mannheim und ganz Deutschland. Klare, conversion-orientierte Websites, die Autorität schaffen." },
+    { property: "og:title", content: "Nüll. - Kanzlei Marketing & Webdesign" },
+    { property: "og:description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Rechtsanwälte in Deutschland. Wir machen Ihre Kanzlei zur digitalen Autorität." },
     { property: "og:url", content: "https://xn--nll-hoa.com" },
     { property: "og:site_name", content: "Nüll. - Web Design Agentur Mannheim" },
     { property: "og:locale", content: "de_DE" },

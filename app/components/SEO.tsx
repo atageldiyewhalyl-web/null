@@ -11,10 +11,10 @@ interface SEOProps {
   author?: string;
 }
 
-const SITE_NAME = "Nüll. - Web Design Agentur Mannheim";
+const SITE_NAME = "Nüll. - Kanzlei Marketing & Webdesign";
 const BASE_URL = "https://xn--nll-hoa.com";
 const DEFAULT_DESC =
-  "Premium Webdesign, Entwicklung, SEO und Branding für lokale Unternehmen in Mannheim und ganz Deutschland. Klare, conversion-orientierte Websites, die Autorität schaffen.";
+  "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Rechtsanwälte in Deutschland. Wir machen Ihre Kanzlei zur digitalen Autorität.";
 // TODO: Add OG image once available (1200x630px recommended)
 // const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 

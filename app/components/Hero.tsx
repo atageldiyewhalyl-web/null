@@ -1,94 +1,75 @@
 import { ArrowRight } from "lucide-react";
-import { ContainerScroll } from "./ContainerScroll";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Compare } from "./ui/compare";
 import { useLanguage, t } from "./LanguageContext";
-// @ts-ignore – vite-imagetools resolves these at build time
-import mobileBefore from "../assets/img_3274_mobile.png?format=webp&w=630";
-// @ts-ignore – vite-imagetools resolves these at build time
-import mobileAfter from "../assets/img_3254.png?format=webp&w=630";
-
-// @ts-ignore – vite-imagetools resolves these at build time
-import desktopBefore from "../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
-// @ts-ignore – vite-imagetools resolves these at build time
-import desktopAfter from "../assets/Besiryaman .png?format=webp&w=1400";
-
-
-
-
+import { motion } from "motion/react";
 
 export function Hero() {
   const { lang } = useLanguage();
 
   return (
-    <section aria-label="Hero" className="flex flex-col overflow-hidden">
-      <ContainerScroll
-        titleComponent={
-          <div className="flex flex-col items-center">
+    <section aria-label="Hero" className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 overflow-hidden bg-white">
+      {/* Subtle background element for an elite feel */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-slate-50 rounded-full blur-[100px]" />
+      </div>
 
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-[0.8125rem] mb-8"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0071e3] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0071e3]"></span>
+            </span>
+            {t("hero.badge", lang)}
+          </motion.div>
 
-            <h1
-              className="text-[clamp(2.125rem,10vw,3rem)] md:text-[clamp(1.75rem,5.5vw,3.625rem)] leading-[1.2] md:leading-[1.18] tracking-[-0.02em] md:tracking-[-0.03em] mb-4 md:mb-8"
-              style={{ fontWeight: 600 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-[clamp(2.25rem,8vw,4.5rem)] leading-[1.1] tracking-[-0.04em] mb-8 font-semibold text-slate-900"
+          >
+            <span className="block">{t("hero.line1", lang)}</span>
+            <span className="block text-slate-400">{t("hero.line2", lang)}</span>
+            <span className="block text-[#0071e3]">{t("hero.line3", lang)}</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[1rem] md:text-[1.25rem] text-slate-500 max-w-2xl mb-12 leading-relaxed"
+          >
+            {t("hero.description", lang)}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+          >
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 bg-[#0071e3] text-white px-8 py-4 rounded-full text-[1rem] font-medium hover:bg-[#0077ed] transition-all hover:scale-[1.02] shadow-xl shadow-blue-500/20 w-full sm:w-auto"
             >
-              <span className="block md:inline">{t("hero.line1", lang)}</span>
-              {" "}
-              <span className="block md:inline">{t("hero.line2", lang)}</span>
-              <br className="hidden md:block" />
-              <span className="text-[#0071e3] block md:inline mt-1 md:mt-0">{t("hero.line3", lang)}</span>
-            </h1>
-
-            <p
-              className="text-[0.9375rem] md:text-[1.125rem] text-muted-foreground max-w-[40ch] md:max-w-xl mb-8 md:mb-10 leading-[1.6] md:leading-[1.7] px-4 md:px-0"
-              style={{ fontWeight: 400 }}
+              {t("hero.cta", lang)} <ArrowRight size={18} />
+            </a>
+            <a
+              href="#work"
+              className="inline-flex items-center justify-center gap-2 text-[1rem] text-slate-600 hover:text-slate-900 font-medium transition-colors w-full sm:w-auto group"
             >
-              {t("hero.description", lang)}
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#0071e3] text-white px-7 py-3.5 rounded-full text-[0.9375rem] hover:bg-[#0077ed] transition-colors shadow-[0_2px_16px_rgba(0,113,227,0.3)] w-full sm:w-auto"
-              >
-                {t("hero.cta", lang)} <ArrowRight size={16} />
-              </a>
-              <a
-                href="#work"
-                className="inline-flex items-center justify-center gap-2 text-[0.9375rem] text-muted-foreground hover:text-foreground transition-colors w-full sm:w-auto"
-              >
-                {t("hero.secondary", lang)}
-              </a>
-            </div>
-          </div>
-        }
-      >
-        {/* Desktop Compare */}
-        <div className="hidden md:block w-full h-full">
-          <Compare
-            firstImage={desktopBefore}
-            secondImage={desktopAfter}
-            firstImageClassName="object-cover object-left-top"
-            secondImageClassname="object-cover object-left-top"
-            className="w-full h-full"
-            slideMode="hover"
-            autoplay
-            autoplayDuration={4000}
-          />
+              {t("hero.secondary", lang)}
+              <span className="block w-0 h-px bg-slate-400 transition-all group-hover:w-full" />
+            </a>
+          </motion.div>
         </div>
-        {/* Mobile Compare */}
-        <div className="block md:hidden w-full h-full">
-          <Compare
-            firstImage={mobileBefore}
-            secondImage={mobileAfter}
-            firstImageClassName="object-cover object-top"
-            secondImageClassname="object-cover object-top"
-            className="w-full h-full"
-            slideMode="drag"
-            autoplay
-            autoplayDuration={4000}
-          />
-        </div>
-      </ContainerScroll>
+      </div>
     </section>
   );
 }
