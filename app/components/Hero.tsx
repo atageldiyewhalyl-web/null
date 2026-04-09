@@ -27,11 +27,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-4xl text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.05] tracking-[-0.04em] font-bold text-[#0e0e10] mb-8"
+            className="text-[clamp(2.5rem,8vw,5rem)] leading-[1.05] tracking-[-0.04em] font-bold text-[#0e0e10] mb-8"
           >
-            {t("hero.line1", lang)}
-            <br />
-            <span className="text-[#86868b]">{t("hero.line2", lang)}</span>
+            <span className="block">{t("hero.line1", lang)}</span>
+            <span className="block text-[#86868b] whitespace-nowrap">{t("hero.line2", lang)}</span>
           </motion.h1>
 
           <motion.p
