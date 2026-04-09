@@ -143,6 +143,36 @@ const labels: Record<string, Record<Language, string>> = {
     de: "Jedes Detail darauf ausgelegt, Vertrauen zu schaffen und Mandanten zu gewinnen.",
     tr: "Her detay, güven oluşturmak ve müvekkil kazanmak için tasarlanmıştır.",
   },
+  "problem.header": {
+    en: "Most law firms lose clients before they ever speak to them.",
+    de: "Die meisten Kanzleien verlieren Mandanten, bevor sie überhaupt sprechen.",
+    tr: "Çoğu hukuk bürosu, henüz konuşmadan müvekkil kaybediyor.",
+  },
+  "problem.subHeader": {
+    en: "Not because they are bad lawyers. But because they don't exist online.",
+    de: "Nicht weil sie schlechte Anwälte sind. Sondern weil sie online nicht existieren.",
+    tr: "Kötü avukat oldukları için değil. Çevrimiçi var olmadıkları için.",
+  },
+  "problem.p1": {
+    en: "Someone is searching for a lawyer in your city right now. They type into Google. They find your competition. Not you.",
+    de: "Jemand sucht gerade nach einem Anwalt in Ihrer Stadt. Er tippt bei Google. Er findet Ihre Konkurrenz. Nicht Sie.",
+    tr: "Şu an birileri bulunduğunuz şehirde avukat arıyor. Google'a yazıyor. Rakiplerinizi buluyor. Sizi değil.",
+  },
+  "problem.p2": {
+    en: "Your website exists, but it looks outdated. First impressions matter — and right now your first impression is costing you clients.",
+    de: "Ihre Website existiert, aber sie wirkt veraltet. Der erste Eindruck zählt — und der erste Eindruck kostet Sie Mandanten.",
+    tr: "Web siteniz var ama eski görünüyor. İlk izlenim önemlidir ve şu an bu izlenim size müvekkil kaybettiriyor.",
+  },
+  "problem.p3": {
+    en: "You have no website. The lawyer down the street does. And they are getting the enquiries that should be yours.",
+    de: "Sie haben keine Website. Ihr Nachbar, der auch Anwalt ist, schon. Und er bekommt die Anfragen, die eigentlich Ihnen gehören sollten.",
+    tr: "Web siteniz yok. Yakınınızdaki avukatın var. Ve size gelmesi gereken talepler ona gidiyor.",
+  },
+  "problem.turn": {
+    en: "It doesn't have to stay this way. And it's easier to change than you think.",
+    de: "Das muss nicht so bleiben. Und es ist einfacher zu ändern, als Sie denken.",
+    tr: "Böyle kalmak zorunda değil. Ve değiştirmek düşündüğünüzden çok daha kolay.",
+  },
 
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
   "services.title1": { en: "Everything you need.", de: "Alles, was Sie brauchen.", tr: "İhtiyacınız olan her şey." },

@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Hero } from "./Hero";
 import { SEO, StructuredData } from "./SEO";
 
+const Problem = lazy(() => import("./Problem").then(m => ({ default: m.Problem })));
 const Services = lazy(() => import("./Services").then(m => ({ default: m.Services })));
 const Work = lazy(() => import("./Work").then(m => ({ default: m.Work })));
 const Pricing = lazy(() => import("./Pricing").then(m => ({ default: m.Pricing })));
@@ -73,6 +74,7 @@ export function Home() {
       <StructuredData data={websiteData} />
       <Hero />
       <Suspense fallback={<div className="min-h-[50vh]" />}>
+        <Problem />
         <Services />
         <Work />
         <Pricing />
