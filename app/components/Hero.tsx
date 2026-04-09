@@ -39,7 +39,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-[1.0625rem] md:text-[1.375rem] text-[#86868b] max-w-4xl mb-10 md:mb-14 leading-relaxed font-medium text-balance"
           >
-            {t("hero.description", lang)}
+            <span className="md:hidden">{t("hero.descriptionMobile", lang)}</span>
+            <span className="hidden md:block">{t("hero.description", lang)}</span>
           </motion.p>
 
           <motion.div

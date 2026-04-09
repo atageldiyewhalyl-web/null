@@ -99,6 +99,11 @@ const labels: Record<string, Record<Language, string>> = {
     de: "Wir schaffen digitale Präsenz für deutsch-türkische Rechtsanwälte in Deutschland, damit Sie gefunden werden, Vertrauen aufbauen und die richtigen Mandanten gewinnen. Ob Sie noch keine Website haben oder eine, die nicht funktioniert, wir machen Ihre Kanzlei zur ersten Wahl.",
     tr: "Almanya'daki Türk-Alman avukatlar için dijital varlık oluşturuyoruz. Bulunmanız, güven kazanmanız ve doğru müvekkilleri çekmeniz için. Henüz bir web siteniz yoksa ya da işe yaramayanı varsa: Büronuzu ilk tercih haline getiriyoruz.",
   },
+  "hero.descriptionMobile": {
+    en: "Whether you have no website or one that isn't working: we make your law firm the first choice online.",
+    de: "Egal ob Sie noch keine Website haben oder eine, die nicht das leistet, was sie soll, wir sorgen dafür, dass Ihre Kanzlei online gefunden wird.",
+    tr: "Henüz web siteniz olmasa da, olanı işe yaramasa da, büronuzu internette öne çıkarıyoruz.",
+  },
   "hero.cta": { 
     en: "Book a free consultation", 
     de: "Jetzt kostenlos beraten lassen", 
