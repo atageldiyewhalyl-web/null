@@ -25,7 +25,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 px-4 md:px-10 py-5 ${
+      className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 px-4 md:px-10 py-5 pointer-events-none ${
         scrolled ? "md:py-3" : "md:py-6"
       }`}
     >
@@ -56,7 +56,7 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <div className="relative z-[10000] flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner">
+            <div className="relative z-[100000] flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner">
               {(["en", "de", "tr"] as Language[]).map((l) => (
                 <button
                   key={l}
@@ -68,7 +68,7 @@ export function Navbar() {
                     console.log("Language click:", l);
                     setLang(l);
                   }}
-                  className={`relative z-10 px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-95 ${
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-90 touch-manipulation ${
                     lang === l 
                       ? "bg-white text-[#0e0e10] shadow-md" 
                       : "text-[#86868b] hover:text-[#0e0e10]"
@@ -105,7 +105,7 @@ export function Navbar() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute top-20 left-4 right-4 bg-white border border-[#d2d2d7] rounded-[2rem] p-8 flex flex-col gap-6 md:hidden shadow-2xl"
+            className="absolute top-20 left-4 right-4 bg-white border border-[#d2d2d7] rounded-[2rem] p-8 flex flex-col gap-6 md:hidden shadow-2xl pointer-events-auto z-[100000]"
           >
             {navItems.map((item) => (
               <a

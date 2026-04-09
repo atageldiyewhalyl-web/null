@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from "react";
 
 export type Language = "en" | "de" | "tr";
 
@@ -7,30 +7,56 @@ const LanguageContext = createContext<{
   setLang: (lang: Language) => void;
 }>({ lang: "de", setLang: () => { } });
 
+// Cookie Helpers for Bulletproof Persistence
+const setCookie = (name: string, value: string, days: number) => {
+  if (typeof document === "undefined") return;
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+};
+
+const getCookie = (name: string): string | null => {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+};
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Language>("de");
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Sync with localStorage on mount
+  // Sync with cookies/localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("nll_lang") as Language;
+    const saved = (getCookie("nll_lang") || localStorage.getItem("nll_lang")) as Language;
     if (saved && (saved === "en" || saved === "de" || saved === "tr")) {
       setLangState(saved);
+      document.documentElement.lang = saved;
     }
     setIsHydrated(true);
   }, []);
 
-  const setLang = (newLang: Language) => {
+  const setLang = useCallback((newLang: Language) => {
     setLangState(newLang);
+    // Persist everywhere
+    setCookie("nll_lang", newLang, 365);
     localStorage.setItem("nll_lang", newLang);
-    // Force a small update to the HTML lang attribute for accessibility/SEO
-    document.documentElement.lang = newLang;
-  };
+    
+    // Immediate DOM update
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = newLang;
+    }
+    
+    console.log("Language updated to:", newLang);
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
-      {/* Avoid flash of untranslated content if possible, but prioritize interactivity */}
-      <div style={{ visibility: isHydrated ? "visible" : "visible" }}>
+      <div 
+        data-lang={lang} 
+        style={{ 
+          opacity: isHydrated ? 1 : 1, 
+          transition: "opacity 0.2s ease" 
+        }}
+      >
         {children}
       </div>
     </LanguageContext.Provider>
@@ -64,7 +90,7 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Müvekkiller avukat arıyor." 
   },
   "hero.line2": { 
-    en: "Your firm should be the answer.", 
+    en: "Your firm is the answer.", 
     de: "Ihre Kanzlei ist die Antwort.", 
     tr: "Büronuz cevap olmalı." 
   },
@@ -283,7 +309,5 @@ const labels: Record<string, Record<Language, string>> = {
 };
 
 export function t(key: string, lang: Language): string {
-  // If we're during hydration, we might not have 'lang' correctly set yet
-  // but labels should still work
   return labels[key]?.[lang] ?? labels[key]?.["de"] ?? key;
 }
