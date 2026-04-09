@@ -13,7 +13,7 @@ export function Hero() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,122,255,0.03)_0%,transparent_50%)]" />
       </div>
 
-      <div className="max-w-[1200px] mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -137,7 +137,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="w-full mt-24 mb-10"
+            className="w-full max-w-7xl mt-24 mb-10"
           >
             <div className="text-center mb-10">
               <h3 className="text-[1.5rem] md:text-[2rem] font-bold tracking-tight mb-3">Legacy to Authority</h3>
