@@ -61,8 +61,11 @@ export function meta() {
   ];
 }
 
+import stylesheet from "./styles/index.css?url";
+
 export function links() {
   return [
+    { rel: "stylesheet", href: stylesheet },
     { rel: "canonical", href: "https://xn--nll-hoa.com" },
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     { rel: "alternate", hrefLang: "de", href: "https://xn--nll-hoa.com" },
