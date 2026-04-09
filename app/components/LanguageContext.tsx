@@ -128,6 +128,11 @@ const labels: Record<string, Record<Language, string>> = {
     de: "Bereits von Rechtsanwälten in Deutschland vertraut. Jede Website gebaut, um Mandanten zu gewinnen, nicht nur um zu beeindrucken.",
     tr: "Almanya'daki avukatlar tarafından tercih ediliyoruz. Her web sitesi, sadece iyi görünmek için değil, müvekkil kazanmak için tasarlandı.",
   },
+  "hero.comparison.label": {
+    en: "Digital Transformation",
+    de: "Digitale Transformation",
+    tr: "Dijital Dönüşüm",
+  },
   "hero.comparison.title": {
     en: "This is what a law firm that wins trust looks like.",
     de: "So sieht eine Kanzlei aus, die überzeugt.",

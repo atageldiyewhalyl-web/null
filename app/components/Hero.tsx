@@ -143,16 +143,16 @@ export function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="w-full max-w-7xl mt-40 mb-20 relative"
+            className="w-full max-w-7xl mt-64 mb-32 relative text-left"
           >
-            {/* Visual Bridge */}
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-[#d2d2d7]/50 to-transparent" />
-            
-            <div className="text-center mb-16 px-4">
-              <h2 className="text-[clamp(1.75rem,5vw,3rem)] font-bold tracking-tight mb-6 text-[#0e0e10]">
+            <div className="max-w-4xl mb-20">
+              <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#007aff] font-bold mb-4">
+                {t("hero.comparison.label", lang)}
+              </p>
+              <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-bold tracking-tight mb-6 text-[#0e0e10]">
                 {t("hero.comparison.title", lang)}
               </h2>
-              <p className="text-[1.125rem] md:text-[1.25rem] text-[#86868b] font-medium max-w-2xl mx-auto leading-relaxed">
+              <p className="text-[1.125rem] md:text-[1.25rem] text-[#86868b] font-medium leading-relaxed max-w-2xl">
                 {t("hero.comparison.subtitle", lang)}
               </p>
             </div>
