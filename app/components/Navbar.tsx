@@ -56,12 +56,13 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <div className="flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30">
+            <div className="relative z-50 flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30">
               {(["en", "de", "tr"] as Language[]).map((l) => (
                 <button
                   key={l}
+                  type="button"
                   onClick={() => setLang(l)}
-                  className={`px-3 py-1 rounded-full text-[0.75rem] font-bold transition-all ${
+                  className={`px-3 py-1 rounded-full text-[0.75rem] font-bold transition-all cursor-pointer ${
                     lang === l 
                       ? "bg-white text-[#0e0e10] shadow-sm" 
                       : "text-[#86868b] hover:text-[#0e0e10]"
