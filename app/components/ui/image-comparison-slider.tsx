@@ -57,7 +57,7 @@ export const ImageComparison: React.FC<ImageComparisonProps> = ({
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
         >
-            {/* After Image (Top Layer) - Modern Authority */}
+            {/* After Image (Top Layer) */}
             <div
                 className="absolute top-0 left-0 h-full w-full overflow-hidden z-10"
                 style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
@@ -68,20 +68,20 @@ export const ImageComparison: React.FC<ImageComparisonProps> = ({
                     className="h-full w-full object-cover"
                     draggable="false"
                 />
-                <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-[#007aff] text-white text-[0.75rem] font-bold shadow-lg">
-                    MODERN AUTHORITY
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[0.625rem] font-bold tracking-widest uppercase shadow-sm">
+                    After
                 </div>
             </div>
 
-            {/* Before Image (Bottom Layer) - Legacy Library */}
+            {/* Before Image (Bottom Layer) */}
             <img
                 src={beforeImage}
                 alt={altBefore}
                 className="block h-full w-full object-cover"
                 draggable="false"
             />
-            <div className="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[0.75rem] font-bold shadow-lg">
-                LEGACY FIRM
+            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white/70 text-[0.625rem] font-bold tracking-widest uppercase shadow-sm">
+                Before
             </div>
 
             {/* Slider Handle */}

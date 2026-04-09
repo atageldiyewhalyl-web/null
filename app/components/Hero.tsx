@@ -3,6 +3,11 @@ import { useLanguage, t } from "./LanguageContext";
 import { motion } from "motion/react";
 import { ImageComparison } from "./ui/image-comparison-slider";
 
+// @ts-ignore
+import dogruOld from "../assets/Dogru kanzlei old.png";
+// @ts-ignore
+import dogruNew from "../assets/Dogru kanzlei new.png";
+
 export function Hero() {
   const { lang } = useLanguage();
 
@@ -145,8 +150,8 @@ export function Hero() {
             </div>
             
             <ImageComparison
-                beforeImage="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200"
-                afterImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"
+                beforeImage={dogruOld}
+                afterImage={dogruNew}
                 altBefore="Traditional legal office"
                 altAfter="Modern authoritative law firm dashboard"
             />
