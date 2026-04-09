@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Send, MapPin, Loader2, Mail } from "lucide-react";
-import { motion } from "motion/react";
+import { Send, MapPin, Loader2, Mail, MessageSquare, Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { projectId, publicAnonKey } from "/utils/supabase/info";
 import { useLanguage, t } from "./LanguageContext";
 
@@ -11,7 +11,13 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ 
+    name: "", 
+    email: "", 
+    city: "",
+    practiceArea: "",
+    hasWebsite: "no" as "yes" | "no"
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,122 +50,235 @@ export function Contact() {
   return (
     <section id="contact" className="py-20 md:py-32 px-4 md:px-6 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
           >
-            <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#0071e3] mb-4">
+            <p className="text-[0.8125rem] tracking-[0.15em] uppercase text-[#0070e3] mb-6 font-semibold">
               {t("contact.label", lang)}
             </p>
             <h2
-              className="text-[clamp(1.625rem,7vw,2.75rem)] tracking-[-0.03em] leading-[1.15] mb-6"
+              className="text-[clamp(1.75rem,8vw,3.25rem)] tracking-[-0.035em] leading-[1.08] mb-8"
               style={{ fontWeight: 600 }}
             >
               {t("contact.title1", lang)}
               <br className="hidden sm:block" />
               {" "}{t("contact.title2", lang)}
             </h2>
-            <p className="text-[1.0625rem] text-muted-foreground leading-relaxed mb-10">
+            <p className="text-[1.125rem] text-muted-foreground leading-relaxed mb-12 max-w-lg">
               {t("contact.description", lang)}
             </p>
 
-            <div className="space-y-4">
-              <a href="https://wa.me/17736561156" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[0.9375rem] text-muted-foreground hover:text-foreground transition-colors">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                WhatsApp
-              </a>
-              <a href="mailto:Halyl@nüll.com" className="flex items-center gap-3 text-[0.9375rem] text-muted-foreground hover:text-foreground transition-colors">
-                <Mail size={18} />
-                Halyl@nüll.com
-              </a>
-              <div className="flex items-center gap-3 text-[0.9375rem] text-muted-foreground">
-                <MapPin size={18} />
-                {t("contact.location", lang)}
+            <div className="space-y-8">
+              <div className="group cursor-default">
+                <div className="flex items-start gap-4 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#25D366]">
+                    <MessageSquare size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-[1rem] font-semibold mb-1">WhatsApp</h4>
+                    <p className="text-[0.875rem] text-muted-foreground">
+                      {t("contact.whatsapp.cta", lang)}
+                    </p>
+                    <a 
+                      href="https://wa.me/17736561156" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
+                    >
+                      WhatsApp &rarr;
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group cursor-default">
+                <div className="flex items-start gap-4 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#ea4335]">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-[1rem] font-semibold mb-1">Email</h4>
+                    <p className="text-[0.875rem] text-muted-foreground">
+                      {t("contact.email.cta", lang)}
+                    </p>
+                    <a 
+                      href="mailto:Halyl@nüll.com" 
+                      className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
+                    >
+                      Halyl@nüll.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group cursor-default">
+                <div className="flex items-start gap-4 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#0071e3]">
+                    <Calendar size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-[1rem] font-semibold mb-1">Calendly</h4>
+                    <p className="text-[0.875rem] text-muted-foreground">
+                      {t("contact.calendly.cta", lang)}
+                    </p>
+                    <a 
+                      href="https://calendly.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
+                    >
+                      Calendly &rarr;
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {submitted ? (
-              <div className="bg-white rounded-2xl border border-black/5 p-12 text-center">
-                <div className="w-12 h-12 rounded-full bg-[#30d158]/10 flex items-center justify-center mx-auto mb-4">
-                  <Send size={20} className="text-[#30d158]" />
-                </div>
-                <h3 className="text-[1.25rem] mb-2" style={{ fontWeight: 600 }}>
-                  {t("contact.sent", lang)}
-                </h3>
-                <p className="text-[0.9375rem] text-muted-foreground">
-                  {t("contact.sentDesc", lang)}
-                </p>
-              </div>
-            ) : (
-              <form
-                className="bg-white rounded-2xl border border-black/5 p-8 space-y-5"
-                onSubmit={handleSubmit}
-              >
-                <div>
-                  <label className="block text-[0.8125rem] text-muted-foreground mb-1.5">
-                    {t("contact.name", lang)}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/30 outline-none transition-all text-[0.9375rem]"
-                    placeholder={t("contact.namePlaceholder", lang)}
-                  />
-                </div>
-                <div>
-                  <label className="block text-[0.8125rem] text-muted-foreground mb-1.5">
-                    {t("contact.email", lang)}
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/30 outline-none transition-all text-[0.9375rem]"
-                    placeholder={t("contact.emailPlaceholder", lang)}
-                  />
-                </div>
-                <div>
-                  <label className="block text-[0.8125rem] text-muted-foreground mb-1.5">
-                    {t("contact.details", lang)}
-                  </label>
-                  <textarea
-                    rows={4}
-                    required
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/30 outline-none transition-all text-[0.9375rem] resize-none"
-                    placeholder={t("contact.detailsPlaceholder", lang)}
-                  />
-                </div>
-                {error && (
-                  <p className="text-red-500 text-sm">{error}</p>
-                )}
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-foreground text-background py-3.5 rounded-full text-[0.9375rem] hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+            <AnimatePresence mode="wait">
+              {submitted ? (
+                <motion.div 
+                  key="sent"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-black/5 p-12 text-center"
                 >
-                  {loading ? (
-                    <>{t("contact.sending", lang)} <Loader2 size={16} className="animate-spin" /></>
-                  ) : (
-                    <>{t("contact.send", lang)} <Send size={16} /></>
-                  )}
-                </button>
-              </form>
-            )}
+                  <div className="w-16 h-16 rounded-full bg-[#34c759]/10 flex items-center justify-center mx-auto mb-6">
+                    <Send size={24} className="text-[#34c759]" />
+                  </div>
+                  <h3 className="text-[1.5rem] mb-3" style={{ fontWeight: 600 }}>
+                    {t("contact.sent", lang)}
+                  </h3>
+                  <p className="text-[1rem] text-muted-foreground">
+                    {t("contact.sentDesc", lang)}
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div key="form" className="space-y-8">
+                  <form
+                    className="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-black/5 p-8 md:p-10 space-y-6"
+                    onSubmit={handleSubmit}
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                          {t("contact.name", lang)}
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={form.name}
+                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                          {t("contact.email", lang)}
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={form.email}
+                          onChange={(e) => setForm({ ...form, email: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                          {t("contact.city", lang)}
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={form.city}
+                          onChange={(e) => setForm({ ...form, city: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                          {t("contact.practiceArea", lang)}
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={form.practiceArea}
+                          onChange={(e) => setForm({ ...form, practiceArea: e.target.value })}
+                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 pt-2">
+                      <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
+                        {t("contact.hasWebsite", lang)}
+                      </label>
+                      <div className="flex p-1.5 bg-[#f5f5f7] rounded-2xl w-full max-w-[400px]">
+                        <button
+                          type="button"
+                          onClick={() => setForm({ ...form, hasWebsite: "yes" })}
+                          className={`flex-1 py-2.5 rounded-xl text-[0.875rem] font-medium transition-all ${
+                            form.hasWebsite === "yes" 
+                              ? "bg-white text-foreground shadow-sm" 
+                              : "text-muted-foreground"
+                          }`}
+                        >
+                          {t("contact.websiteOpt.yes", lang)}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setForm({ ...form, hasWebsite: "no" })}
+                          className={`flex-1 py-2.5 rounded-xl text-[0.875rem] font-medium transition-all ${
+                            form.hasWebsite === "no" 
+                              ? "bg-white text-foreground shadow-sm" 
+                              : "text-muted-foreground"
+                          }`}
+                        >
+                          {t("contact.websiteOpt.no", lang)}
+                        </button>
+                      </div>
+                    </div>
+
+                    {error && (
+                      <p className="text-red-500 text-sm px-1">{error}</p>
+                    )}
+
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-foreground text-background py-4.5 h-14 rounded-full text-[1rem] font-medium hover:bg-foreground/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60 disabled:pointer-events-none"
+                      >
+                        {loading ? (
+                          <>{t("contact.sending", lang)} <Loader2 size={18} className="animate-spin" /></>
+                        ) : (
+                          <>{t("contact.send", lang)} <Send size={18} /></>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                  
+                  <p className="text-[0.875rem] text-muted-foreground text-center leading-relaxed px-4 opacity-70">
+                    {t("contact.reassurance", lang)}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
