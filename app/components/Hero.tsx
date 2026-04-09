@@ -132,8 +132,8 @@ export function Hero() {
                 </div>
               ))}
             </div>
-            <p className="text-[0.9375rem] md:text-[1rem] text-[#86868b] font-medium max-w-2xl px-4">
-              {t("hero.trustBar", lang)}
+            <p className="text-[0.9375rem] md:text-[1rem] text-[#86868b] font-medium px-4">
+                {t("hero.trustBar", lang)}
             </p>
           </motion.div>
 
