@@ -85,7 +85,7 @@ export function Contact() {
                       {t("contact.whatsapp.cta", lang)}
                     </p>
                     <a 
-                      href="https://wa.me/17736561156" 
+                      href="https://wa.me/491627176334" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
