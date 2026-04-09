@@ -40,17 +40,17 @@ const labels: Record<string, Record<Language, string>> = {
   },
   "hero.line2": { 
     en: "Your firm should be the answer.", 
-    de: "Ihre Kanzlei sollte die Antwort sein.", 
+    de: "Ihre Kanzlei ist die Antwort.", 
     tr: "Büronuz cevap olmalı." 
   },
   "hero.description": {
     en: "We build digital presences for Turkish-German lawyers in Germany so you get found, earn trust, and win the right clients. Whether you have no website yet or one that isn't working: we make your firm the first choice.",
-    de: "Wir bauen digitale Präsenzen für deutsch-türkische Rechtsanwälte in Deutschland, damit Sie gefunden werden, Vertrauen gewinnen und die richtigen Mandanten gewinnen. Ob Sie noch keine Website haben oder eine, die nicht funktioniert: Wir machen Ihre Kanzlei zur ersten Wahl.",
+    de: "Wir schaffen digitale Präsenz für deutsch-türkische Rechtsanwälte in Deutschland, damit Sie gefunden werden, Vertrauen aufbauen und die richtigen Mandanten gewinnen. Ob Sie noch keine Website haben oder eine, die nicht funktioniert — wir machen Ihre Kanzlei zur ersten Wahl.",
     tr: "Almanya'daki Türk-Alman avukatlar için dijital varlık oluşturuyoruz. Bulunmanız, güven kazanmanız ve doğru müvekkilleri çekmeniz için. Henüz bir web siteniz yoksa ya da işe yaramayanı varsa: Büronuzu ilk tercih haline getiriyoruz.",
   },
   "hero.cta": { 
     en: "Book a free consultation", 
-    de: "Kostenlose Erstberatung sichern", 
+    de: "Jetzt kostenlos beraten lassen", 
     tr: "Ücretsiz danışmanlık al" 
   },
   "hero.secondary": { 
