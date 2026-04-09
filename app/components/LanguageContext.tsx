@@ -140,7 +140,7 @@ const labels: Record<string, Record<Language, string>> = {
   },
   "hero.comparison.subtitle": {
     en: "Every detail designed to build trust and win clients.",
-    de: "Jedes Detail darauf ausgelegt, Vertrauen zu schaffen und Mandanten zu gewinnen.",
+    de: "Jedes detail darauf ausgelegt, Vertrauen zu schaffen und Mandanten zu gewinnen.",
     tr: "Her detay, güven oluşturmak ve müvekkil kazanmak için tasarlanmıştır.",
   },
   "problem.header": {
@@ -252,8 +252,7 @@ const labels: Record<string, Record<Language, string>> = {
   },
 
   // Pricing
-  // Pricing
-  "pricing.label": { en: "Pricing", de: "Preise", tr: "FİYATLAR" },
+  "pricing.label": { en: "Pricing", de: "PREISE", tr: "FİYATLAR" },
   "pricing.title1": {
     en: "Full clarity",
     de: "Volle Klarheit",
@@ -266,7 +265,7 @@ const labels: Record<string, Record<Language, string>> = {
   },
   "pricing.description": {
     en: "Choose the package that fits your law firm. Monthly care is included in every package.",
-    de: "Wählen Sie das Paket, das zu Ihrer Kanzlei passt. Monatliche Betreuung ist in jedem Paket enthalten.",
+    de: "Wählen Sie das Paket, das zu Ihrer Kanzlei passt. Monatliche Betreuung ist in jedem Paket dabei.",
     tr: "Büronuza en uygun paketi seçin. Aylık bakım her pakete dahildir.",
   },
   "pricing.tab.websites": { en: "Website Packages", de: "Website-Pakete", tr: "Web Sitesi Paketleri" },
@@ -276,13 +275,13 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.starter": { en: "STARTER", de: "STARTER", tr: "STARTER" },
   "pricing.starter.desc": {
     en: "A fast start with a solid foundation.",
-    de: "Ein schneller Start mit solidem Fundament.",
+    de: "Schnell online. Solide aufgestellt.",
     tr: "Hızlı ve sağlam bir başlangıç.",
   },
   "pricing.starter.f1": { en: "One page, perfect on all devices", de: "Eine Seite, auf allen Geräten perfekt", tr: "Tüm cihazlarda kusursuz tek sayfa" },
   "pricing.starter.f2": { en: "Individual design", de: "Individuelles Design", tr: "Kişiye özel tasarım" },
   "pricing.starter.f3": { en: "Basic SEO setup", de: "Grundlegende SEO-Einrichtung", tr: "Temel SEO kurulumu" },
-  "pricing.starter.f4": { en: "Contact form integration", de: "Kontaktformular-Integration", tr: "İletişim formu" },
+  "pricing.starter.f4": { en: "Contact form integration", de: "Kontaktformular", tr: "İletişim formu" },
   "pricing.starter.f5": { en: "1 revision round", de: "1 Korrekturrunde", tr: "1 revizyon hakkı" },
 
   "pricing.growth": { en: "GROWTH", de: "GROWTH", tr: "GROWTH" },
@@ -296,14 +295,14 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.growth.f2": { en: "Individual design", de: "Individuelles Design", tr: "Kişiye özel tasarım" },
   "pricing.growth.f3": { en: "Comprehensive on-page SEO", de: "Umfassendes On-Page SEO", tr: "Kapsamlı sayfa içi SEO" },
   "pricing.growth.f4": { en: "Blog and news section", de: "Blog- und Newsbereich", tr: "Blog ve haber bölümü" },
-  "pricing.growth.f5": { en: "Social media integration", de: "Social-Media-Integration", tr: "Sosyal medya entegrasyonu" },
+  "pricing.growth.f5": { en: "Social media integration", de: "Social-Media-Anbindung", tr: "Sosyal medya entegrasyonu" },
   "pricing.growth.f6": { en: "Basic branding package", de: "Basis-Branding-Paket", tr: "Temel marka paketi" },
   "pricing.growth.f7": { en: "3 revision rounds", de: "3 Korrekturrunden", tr: "3 revizyon hakkı" },
 
   "pricing.premium": { en: "PREMIUM", de: "PREMIUM", tr: "PREMIUM" },
   "pricing.premium.desc": {
     en: "For law firms that want to stay one step ahead of their competition.",
-    de: "Für Kanzleien, die ihrer Konkurrenz einen Schritt voraus sein wollen.",
+    de: "Für Kanzleien, die in ihrer Stadt die erste Wahl sein wollen.",
     tr: "Rakiplerinin önünde olmak isteyen bürolar için.",
   },
   "pricing.premium.f1": { en: "Up to 10 pages", de: "Bis zu 10 Seiten", tr: "10 sayfaya kadar" },
@@ -312,7 +311,7 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.premium.f4": { en: "Logo and brand identity", de: "Logo und Markenidentität", tr: "Logo ve marka kimliği" },
   "pricing.premium.f5": { en: "Copywriting support", de: "Unterstützung beim Texten", tr: "Metin yazarlığı desteği" },
   "pricing.premium.f6": { en: "Analytics setup", de: "Analytics-Einrichtung", tr: "Analitik kurulumu" },
-  "pricing.premium.f7": { en: "Priority support 30 days", de: "Priorisierter Support 30 Tage", tr: "30 gün öncelikli destek" },
+  "pricing.premium.f7": { en: "Priority support 30 days", de: "30 Tage priorisierter Support", tr: "30 gün öncelikli destek" },
   "pricing.premium.f8": { en: "Unlimited revisions", de: "Unbegrenzte Korrekturen", tr: "Sınırsız revizyon hakkı" },
 
   "pricing.includedRetainer": {
@@ -360,6 +359,7 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Aylık €99 temel bakım tüm paketlere dahildir ve ayrıca satın alınamaz.",
   },
   "pricing.cta.upgrade": { en: "Upgrade now", de: "Jetzt wechseln", tr: "Şimdi geç" },
+  
   // Contact
   "contact.label": { en: "Contact", de: "Kontakt", tr: "İletişim" },
   "contact.title1": { en: "Let's build something", de: "Lassen Sie uns etwas", tr: "Birlikte" },
