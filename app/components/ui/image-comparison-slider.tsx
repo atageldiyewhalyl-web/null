@@ -57,22 +57,6 @@ export const ImageComparison: React.FC<ImageComparisonProps> = ({
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
         >
-            {/* After Image (Top Layer) */}
-            <div
-                className="absolute top-0 left-0 h-full w-full overflow-hidden z-10"
-                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-            >
-                <img
-                    src={afterImage}
-                    alt={altAfter}
-                    className="h-full w-full object-cover"
-                    draggable="false"
-                />
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[0.625rem] font-bold tracking-widest uppercase shadow-sm">
-                    After
-                </div>
-            </div>
-
             {/* Before Image (Bottom Layer) */}
             <img
                 src={beforeImage}
@@ -80,8 +64,24 @@ export const ImageComparison: React.FC<ImageComparisonProps> = ({
                 className="block h-full w-full object-cover"
                 draggable="false"
             />
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white/70 text-[0.625rem] font-bold tracking-widest uppercase shadow-sm">
+            <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white/70 text-[0.625rem] font-bold tracking-widest uppercase shadow-sm">
                 Before
+            </div>
+
+            {/* After Image (Top Layer) */}
+            <div
+                className="absolute top-0 left-0 h-full w-full overflow-hidden z-10"
+                style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
+            >
+                <img
+                    src={afterImage}
+                    alt={altAfter}
+                    className="h-full w-full object-cover"
+                    draggable="false"
+                />
+                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[0.625rem] font-bold tracking-widest uppercase shadow-sm">
+                    After
+                </div>
             </div>
 
             {/* Slider Handle */}
