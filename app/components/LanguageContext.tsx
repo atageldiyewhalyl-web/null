@@ -315,8 +315,8 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.premium.f8": { en: "Unlimited revisions", de: "Unbegrenzte Korrekturen", tr: "Sınırsız revizyon hakkı" },
 
   "pricing.includedRetainer": {
-    en: "Incl. €99/month law firm care",
-    de: "Inkl. €99/Monat Kanzlei-Betreuung",
+    en: "Care & hosting: €99/month",
+    de: "Betreuung & Hosting: €99/Monat",
     tr: "Bakım ve hosting: aylık €99",
   },
   "pricing.cta.start": { en: "Get started", de: "Jetzt starten", tr: "Hemen başlayın" },
