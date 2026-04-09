@@ -100,7 +100,7 @@ const labels: Record<string, Record<Language, string>> = {
   "hero.trustBar": {
     en: "Already trusted by lawyers in Germany. Every website built to win clients, not just look good.",
     de: "Bereits von Rechtsanwälten in Deutschland vertraut. Jede Website gebaut, um Mandanten zu gewinnen, nicht nur um zu beeindrucken.",
-    tr: "Almanya'daki avukatlar tarafından tercih ediliyor. Her web sitesi, sadece iyi görünmek için değil, müvekkil kazanmak için tasarlandı.",
+    tr: "Almanya'daki avukatlar tarafından tercih ediliyoruz. Her web sitesi, sadece iyi görünmek için değil, müvekkil kazanmak için tasarlandı.",
   },
 
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
