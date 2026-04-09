@@ -2,27 +2,34 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage, t } from "./LanguageContext";
+import { ImageComparison } from "./ui/image-comparison-slider";
+
 // @ts-ignore – vite-imagetools resolves these at build time
-import d3BeautyImage from "../assets/473bb093f01af6c805c30e6d4d64e82d9ede35f4.png?format=webp&w=1400";
+import dogruOld from "../assets/Dogru kanzlei old.png";
+// @ts-ignore – vite-imagetools resolves these at build time
+import dogruNew from "../assets/Dogru kanzlei new.png";
 // @ts-ignore – vite-imagetools resolves these at build time
 import besirYamanImage from "../assets/Besiryaman .png?format=webp&w=1400";
 
-
-
 const projects = [
   {
-    title: "D3 Beauty Salon",
-    categoryKey: "work.d3.category",
-    descKey: "work.d3.desc",
-    image: d3BeautyImage,
-    link: "https://d3-beuty-salon.vercel.app",
+    id: "dogru",
+    title: "Doğru Kanzlei",
+    categoryKey: "work.dogru.category",
+    descKey: "work.dogru.desc",
+    image: dogruNew,
+    beforeImage: dogruOld,
+    link: "https://kanzlei-dogru.de",
+    isComparison: true
   },
   {
+    id: "besir",
     title: "Besir Yaman",
     categoryKey: "work.besir.category",
     descKey: "work.besir.desc",
     image: besirYamanImage,
     link: "https://www.besiryaman-mentoring.de",
+    isComparison: false
   },
 ];
 
@@ -53,37 +60,50 @@ export function Work() {
 
         <div className="space-y-16 md:space-y-24">
           {projects.map((project, i) => (
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={project.title}
+            <motion.div
+              key={project.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
               className="block group"
             >
-              <div className="aspect-video w-full overflow-hidden rounded-xl md:rounded-2xl bg-neutral-100 mb-5 md:mb-8">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+              <div className="aspect-video w-full overflow-hidden rounded-xl md:rounded-2xl bg-neutral-100 mb-5 md:mb-8 relative">
+                {project.isComparison ? (
+                  <div className="w-full h-full pointer-events-auto">
+                    <ImageComparison
+                      beforeImage={project.beforeImage}
+                      afterImage={project.image}
+                      altBefore="Old website"
+                      altAfter="Transformed website"
+                    />
+                  </div>
+                ) : (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                    <ImageWithFallback
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </a>
+                )}
               </div>
+              
               <div className="flex justify-between items-start gap-4">
-                <div>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex flex-col flex-1">
                   <p className="text-neutral-500 text-xs md:text-sm mb-1.5 md:mb-2">
                     {t(project.categoryKey, lang)}
                   </p>
-                  <h3 className="mb-2 md:mb-3 text-[1.125rem] md:text-[1.5rem]">{project.title}</h3>
+                  <h3 className="mb-2 md:mb-3 text-[1.125rem] md:text-[1.5rem] group-hover:text-[#0071e3] transition-colors">{project.title}</h3>
                   <p className="text-neutral-600 max-w-2xl text-[0.875rem] md:text-base">
                     {t(project.descKey, lang)}
                   </p>
-                </div>
-                <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-neutral-400 group-hover:text-black transition-colors mt-1 flex-shrink-0" />
+                </a>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-neutral-400 group-hover:text-black transition-colors mt-1 flex-shrink-0" />
+                </a>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>

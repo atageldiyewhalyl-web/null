@@ -234,11 +234,15 @@ const labels: Record<string, Record<Language, string>> = {
 
   "work.label": { en: "Selected Work", de: "Ausgewählte Projekte", tr: "Seçili Çalışmalar" },
   "work.title": { en: "Projects that speak for themselves.", de: "Arbeiten, die für sich sprechen.", tr: "Kendini anlatan projeler." },
-  "work.d3.category": { en: "Beauty & Wellness · Web Design & Branding", de: "Beauty & Wellness · Webdesign & Branding", tr: "Güzellik & Wellness · Web Tasarım & Marka Kimliği" },
-  "work.d3.desc": {
-    en: "A refined website for a Mannheim beauty studio. Elegant typography, seamless Treatwell booking integration, and a design that mirrors the salon's premium experience.",
-    de: "Eine elegante Website für ein Mannheimer Beauty-Studio. Hochwertige Typografie, nahtlose Treatwell-Integration und ein Design, das die Premium-Erfahrung des Salons widerspiegelt.",
-    tr: "Mannheim'daki bir güzellik salonu için zarif bir web sitesi. Şık tipografi, Treatwell ile sorunsuz rezervasyon entegrasyonu ve salonun premium deneyimini yansıtan bir tasarım.",
+  "work.dogru.category": {
+    en: "Web design & brand identity",
+    de: "Webdesign & Markenidentität",
+    tr: "Web tasarımı ve marka kimliği",
+  },
+  "work.dogru.desc": {
+    en: "A bilingual law firm website for a Mannheim lawyer with ties to Ankara. We developed his brand identity, sharpened his message and built a website that radiates authority and convinces clients.",
+    de: "Eine zweisprachige Kanzlei-Website für einen Mannheimer Rechtsanwalt mit Verbindungen nach Ankara. Wir haben seine Markenidentität entwickelt, seine Botschaft geschärft und eine Website gebaut, die Autorität ausstrahlt und Mandanten überzeugt.",
+    tr: "Ankara bağlantılı bir Mannheim avukatı için iki dilli hukuk bürosu web sitesi. Marka kimliğini geliştirdik, mesajını netleştirdik ve otorite yayan, müvekkilleri ikna eden bir web sitesi inşa ettik.",
   },
   "work.besir.category": { en: "Consultant · Personal Brand & Web Design", de: "Berater · Personal Branding & Webdesign", tr: "Danışman · Kişisel Marka & Web Tasarım" },
   "work.besir.desc": {

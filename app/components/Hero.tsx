@@ -1,12 +1,6 @@
-import { ArrowRight, ChevronRight, CheckCircle2, TrendingUp, Search, Globe, Layout, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronRight, TrendingUp, Search, ShieldCheck } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
 import { motion } from "motion/react";
-import { ImageComparison } from "./ui/image-comparison-slider";
-
-// @ts-ignore
-import dogruOld from "../assets/Dogru kanzlei old.png";
-// @ts-ignore
-import dogruNew from "../assets/Dogru kanzlei new.png";
 
 export function Hero() {
   const { lang } = useLanguage();
@@ -68,40 +62,37 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Precision Strategy Visual: The Authority Dash */}
+          {/* Performance Cards */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative w-full max-w-4xl bg-[#f5f5f7] border border-[#d2d2d7] rounded-[2.5rem] p-4 md:p-8 overflow-hidden shadow-2xl mb-12"
+            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-full max-w-5xl mb-32"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent" />
-            
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              {/* Card 1: Visibility */}
-              <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#d2d2d7]/30">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              {/* Card 1: Conversion */}
+              <div className="bg-[#f5f5f7] rounded-3xl p-6 border border-[#d2d2d7]/30">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-blue-50 text-[#007aff] rounded-2xl">
-                    <Globe size={20} />
+                  <div className="p-2.5 bg-white text-[#007aff] rounded-2xl shadow-sm">
+                    <TrendingUp size={20} />
                   </div>
-                  <span className="text-[0.75rem] font-bold text-green-500 bg-green-50 px-2 py-0.5 rounded-full">LIVE</span>
                 </div>
-                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1">{t("hero.card1.label", lang)}</div>
-                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2">{t("hero.card1.value", lang)}</div>
-                <div className="text-[0.875rem] text-[#86868b] font-medium leading-normal">{t("hero.card1.sub", lang)}</div>
+                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1 text-left">{t("hero.card1.label", lang)}</div>
+                <div className="text-[1.5rem] font-extrabold tracking-tight leading-tight mb-2 text-[#0e0e10] text-left">{t("hero.card1.value", lang)}</div>
+                <div className="text-[0.875rem] text-[#86868b] font-medium leading-normal text-left">{t("hero.card1.sub", lang)}</div>
               </div>
 
-               {/* Card 2: Status */}
-               <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#d2d2d7]/30">
+              {/* Card 2: Speed */}
+              <div className="bg-[#f5f5f7] rounded-3xl p-6 border border-[#d2d2d7]/30">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-slate-50 text-slate-900 rounded-2xl">
-                    <Layout size={20} />
+                  <div className="p-2.5 bg-white text-[#34c759] rounded-2xl shadow-sm">
+                    <Search size={20} />
                   </div>
                   <span className="text-[0.75rem] font-bold text-[#007aff] bg-blue-50 px-2 py-0.5 rounded-full">v4.0</span>
                 </div>
-                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1">{t("hero.card2.label", lang)}</div>
-                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2">{t("hero.card2.value", lang)}</div>
-                <div className="text-[0.875rem] text-[#86868b] font-medium leading-normal">{t("hero.card2.sub", lang)}</div>
+                <div className="text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1 text-left">{t("hero.card2.label", lang)}</div>
+                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2 text-left">{t("hero.card2.value", lang)}</div>
+                <div className="text-[0.875rem] text-[#86868b] font-medium leading-normal text-left">{t("hero.card2.sub", lang)}</div>
               </div>
 
               {/* Card 3: Growth */}
@@ -111,9 +102,9 @@ export function Hero() {
                     <ShieldCheck size={20} />
                   </div>
                 </div>
-                <div className="text-[0.8125rem] text-white/40 font-bold uppercase tracking-wider mb-1">{t("hero.card3.label", lang)}</div>
-                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2">{t("hero.card3.value", lang)}</div>
-                <div className="text-[0.875rem] text-white/40 font-medium leading-normal">{t("hero.card3.sub", lang)}</div>
+                <div className="text-[0.8125rem] text-white/40 font-bold uppercase tracking-wider mb-1 text-left">{t("hero.card3.label", lang)}</div>
+                <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2 text-left">{t("hero.card3.value", lang)}</div>
+                <div className="text-[0.875rem] text-white/40 font-medium leading-normal text-left">{t("hero.card3.sub", lang)}</div>
               </div>
             </div>
           </motion.div>
@@ -135,34 +126,6 @@ export function Hero() {
             <p className="text-[0.9375rem] md:text-[1rem] text-[#86868b] font-medium px-4">
                 {t("hero.trustBar", lang)}
             </p>
-          </motion.div>
-
-          {/* Transformation Showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="w-full max-w-7xl mt-64 mb-32 relative text-left"
-          >
-            <div className="max-w-full mb-20">
-              <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#007aff] font-bold mb-4">
-                {t("hero.comparison.label", lang)}
-              </p>
-              <h2 className="text-[clamp(1.75rem,5vw,2.75rem)] font-bold tracking-tight mb-6 text-[#0e0e10]">
-                {t("hero.comparison.title", lang)}
-              </h2>
-              <p className="text-[1.125rem] md:text-[1.25rem] text-[#86868b] font-medium leading-relaxed">
-                {t("hero.comparison.subtitle", lang)}
-              </p>
-            </div>
-            
-            <ImageComparison
-                beforeImage={dogruOld}
-                afterImage={dogruNew}
-                altBefore="Traditional legal office"
-                altAfter="Modern authoritative law firm dashboard"
-            />
           </motion.div>
         </div>
       </div>
