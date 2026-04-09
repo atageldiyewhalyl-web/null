@@ -134,7 +134,7 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Dijital Dönüşüm",
   },
   "hero.comparison.title": {
-    en: "This is what a law firm that wins trust looks like.",
+    en: "This is what a law firm\nthat wins trust looks like.",
     de: "So sieht eine Kanzlei aus, die überzeugt.",
     tr: "Güven kazanan bir hukuk bürosu böyle görünür.",
   },
