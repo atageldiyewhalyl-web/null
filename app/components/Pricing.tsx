@@ -9,176 +9,209 @@ export function Pricing() {
 
   const oneTimePlans = [
     {
+      id: "starter",
       nameKey: "pricing.starter",
       price: "549",
       descKey: "pricing.starter.desc",
       featureKeys: [
         "pricing.starter.f1", "pricing.starter.f2", "pricing.starter.f3",
-        "pricing.starter.f4", "pricing.starter.f5", "pricing.starter.f6",
+        "pricing.starter.f4", "pricing.starter.f5"
       ],
       highlight: false,
+      ctaKey: "pricing.cta.start",
+      showRetainer: true
     },
     {
+      id: "growth",
       nameKey: "pricing.growth",
       price: "849",
+      badgeKey: "pricing.growth.badge",
       descKey: "pricing.growth.desc",
       featureKeys: [
-        "pricing.growth.f1", "pricing.growth.f2", "pricing.growth.f3", "pricing.growth.f4",
-        "pricing.growth.f5", "pricing.growth.f6", "pricing.growth.f7",
+        "pricing.growth.f1", "pricing.growth.f2", "pricing.growth.f3", 
+        "pricing.growth.f4", "pricing.growth.f5", "pricing.growth.f6", 
+        "pricing.growth.f7"
       ],
       highlight: true,
+      ctaKey: "pricing.cta.start",
+      showRetainer: true
     },
     {
+      id: "premium",
       nameKey: "pricing.premium",
       price: "1199",
       descKey: "pricing.premium.desc",
       featureKeys: [
-        "pricing.premium.f1", "pricing.premium.f2", "pricing.premium.f3", "pricing.premium.f4",
-        "pricing.premium.f5", "pricing.premium.f6", "pricing.premium.f7", "pricing.premium.f8",
+        "pricing.premium.f1", "pricing.premium.f2", "pricing.premium.f3", 
+        "pricing.premium.f4", "pricing.premium.f5", "pricing.premium.f6", 
+        "pricing.premium.f7", "pricing.premium.f8"
       ],
       highlight: false,
+      ctaKey: "pricing.cta.start",
+      showRetainer: true
     },
   ];
 
   const monthlyPlans = [
     {
-      nameKey: "pricing.monthly.wartung",
-      price: "75",
-      descKey: "pricing.monthly.wartung.desc",
+      id: "seo-maintenance",
+      nameKey: "pricing.retainer.seo",
+      price: "170",
+      badgeKey: "pricing.retainer.seo.badge",
+      descKey: "pricing.retainer.seo.desc",
       featureKeys: [
-        "pricing.monthly.f1", "pricing.monthly.f2", "pricing.monthly.f3", "pricing.monthly.f4",
-      ],
-      highlight: false,
-    },
-    {
-      nameKey: "pricing.monthly.seo",
-      price: "150",
-      descKey: "pricing.monthly.seo.desc",
-      featureKeys: [
-        "pricing.monthly.f5", "pricing.monthly.f6", "pricing.monthly.f7", "pricing.monthly.f8", "pricing.monthly.f9",
+        "pricing.retainer.seo.f1", "pricing.retainer.seo.f2", 
+        "pricing.retainer.seo.f3", "pricing.retainer.seo.f4", 
+        "pricing.retainer.seo.f5"
       ],
       highlight: true,
+      ctaKey: "pricing.cta.upgrade",
+      priceSuffixKey: "pricing.retainer.seo.priceSuffix"
     },
     {
-      nameKey: "pricing.monthly.combined",
+      id: "growth-maintenance",
+      nameKey: "pricing.retainer.growth",
       price: "220",
-      descKey: "pricing.monthly.combined.desc",
+      descKey: "pricing.retainer.growth.desc",
       featureKeys: [
-        "pricing.monthly.f10", "pricing.monthly.f11", "pricing.monthly.f12", "pricing.monthly.f13", "pricing.monthly.f14",
+        "pricing.retainer.growth.f1", "pricing.retainer.growth.f2", 
+        "pricing.retainer.growth.f3", "pricing.retainer.growth.f4", 
+        "pricing.retainer.growth.f5"
       ],
       highlight: false,
+      ctaKey: "pricing.cta.upgrade",
+      priceSuffixKey: "pricing.retainer.seo.priceSuffix"
     },
   ];
 
   const plans = billingType === "onetime" ? oneTimePlans : monthlyPlans;
 
   return (
-    <section id="pricing" className="py-20 md:py-32 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#0071e3] mb-4">
+    <section id="pricing" className="py-20 md:py-32 px-4 md:px-6 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-[0.8125rem] tracking-[0.18em] uppercase text-[#007aff] font-bold mb-6">
             {t("pricing.label", lang)}
           </p>
           <h2
-            className="text-[clamp(1.625rem,7vw,2.75rem)] tracking-[-0.03em] leading-[1.15] mb-6"
-            style={{ fontWeight: 600 }}
+            className="text-[clamp(2.25rem,6vw,3.75rem)] tracking-tight leading-[1.05] mb-6 font-bold text-[#0e0e10]"
           >
             {t("pricing.title1", lang)}
             <br className="hidden sm:block" />
             {" "}{t("pricing.title2", lang)}
           </h2>
-          <p className="text-[1.0625rem] text-muted-foreground leading-relaxed">
+          <p className="text-[1.125rem] md:text-[1.25rem] text-[#86868b] leading-relaxed font-medium">
             {t("pricing.description", lang)}
           </p>
         </div>
 
-        {/* Improved Toggle UI */}
+        {/* Tab Toggle */}
         <div className="flex justify-center mb-16">
-          <div className="bg-[#f5f5f7] p-1.5 rounded-full flex items-center gap-1 shadow-sm border border-black/5">
+          <div className="bg-[#f5f5f7] p-1.5 rounded-full flex items-center gap-1 shadow-sm border border-black/[0.03]">
             <button
               onClick={() => setBillingType("onetime")}
-              className={`px-8 py-2.5 rounded-full text-[0.875rem] font-medium transition-all duration-300 ${
+              className={`px-6 md:px-10 py-3 rounded-full text-[0.875rem] font-bold transition-all duration-300 ${
                 billingType === "onetime"
-                  ? "bg-white text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-white text-[#0e0e10] shadow-md"
+                  : "text-[#86868b] hover:text-[#0e0e10]"
               }`}
             >
-              {t("pricing.billing.onetime", lang)}
+              {t("pricing.tab.websites", lang)}
             </button>
             <button
               onClick={() => setBillingType("monthly")}
-              className={`px-8 py-2.5 rounded-full text-[0.875rem] font-medium transition-all duration-300 ${
+              className={`px-6 md:px-10 py-3 rounded-full text-[0.875rem] font-bold transition-all duration-300 ${
                 billingType === "monthly"
-                  ? "bg-white text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-white text-[#0e0e10] shadow-md"
+                  : "text-[#86868b] hover:text-[#0e0e10]"
               }`}
             >
-              {t("pricing.billing.monthly", lang)}
+              {t("pricing.tab.retainer", lang)}
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-[40rem]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={billingType}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 col-span-full"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-            >
-              {plans.map((plan, i) => (
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={billingType}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            {billingType === "monthly" && (
+              <p className="text-center text-[1rem] font-bold text-[#0e0e10] mb-12">
+                {t("pricing.retainer.intro", lang)}
+              </p>
+            )}
+
+            <div className={`grid grid-cols-1 ${billingType === "onetime" ? "md:grid-cols-3" : "md:grid-cols-2 max-w-4xl mx-auto"} gap-6`}>
+              {plans.map((plan) => (
                 <div
-                  key={plan.nameKey}
-                  className={`relative rounded-3xl p-8 border transition-all duration-300 ${
+                  key={plan.id}
+                  className={`relative rounded-[2rem] p-8 md:p-10 border transition-all duration-500 overflow-hidden flex flex-col ${
                     plan.highlight
-                      ? "border-foreground bg-foreground text-background shadow-xl"
-                      : "border-black/5 bg-white hover:border-black/10 shadow-sm"
+                      ? "border-[#0e0e10] bg-[#0e0e10] text-white shadow-2xl hover:shadow-black/20"
+                      : "border-black/[0.06] bg-[#fafafa] hover:border-black/[0.1] shadow-sm"
                   }`}
                 >
-                  {plan.highlight && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0071e3] text-white text-[0.75rem] px-4 py-1 rounded-full tracking-wide font-medium">
-                      {t("pricing.popular", lang)}
+                  {plan.badgeKey && (
+                    <div className={`absolute top-0 right-0 px-5 py-1.5 rounded-bl-2xl text-[0.6875rem] font-bold tracking-wider ${
+                        plan.highlight ? "bg-[#007aff] text-white" : "bg-[#007aff] text-white"
+                    }`}>
+                      {t(plan.badgeKey, lang)}
                     </div>
                   )}
-                  <p
-                    className={`text-[0.75rem] tracking-[0.1em] uppercase mb-4 font-semibold ${
-                      plan.highlight ? "text-background/50" : "text-muted-foreground"
-                    }`}
-                  >
-                    {t(plan.nameKey, lang)}
-                  </p>
-                  <div className="flex items-baseline gap-1 mb-2">
-                    <span className="text-[2.75rem] tracking-[-0.03em]" style={{ fontWeight: 600 }}>
-                      €{plan.price}
-                    </span>
-                    {billingType === "monthly" && (
-                      <span className={`text-[0.9375rem] ${plan.highlight ? "text-background/50" : "text-muted-foreground"}`}>
-                        / {t("pricing.billing.monthly", lang).split(' ')[0].toLowerCase()}
-                      </span>
-                    )}
+                  
+                  <div className="mb-8">
+                      <p
+                        className={`text-[0.8125rem] tracking-[0.14em] uppercase mb-4 font-bold ${
+                          plan.highlight ? "text-white/40" : "text-[#007aff]"
+                        }`}
+                      >
+                        {t(plan.nameKey, lang)}
+                      </p>
+                      <div className="flex items-baseline gap-1 mb-3">
+                        <span className="text-[3rem] md:text-[3.5rem] tracking-tight font-extrabold" style={{ letterSpacing: "-0.04em" }}>
+                          €{plan.price}
+                        </span>
+                        {plan.priceSuffixKey && (
+                          <span className={`text-[1rem] font-bold ${plan.highlight ? "text-white/40" : "text-[#86868b]"}`}>
+                            {t(plan.priceSuffixKey, lang)}
+                          </span>
+                        )}
+                      </div>
+                      <p
+                        className={`text-[1.0625rem] leading-relaxed font-medium min-h-[3.5rem] md:min-h-[auto] mb-2 ${
+                          plan.highlight ? "text-white/60" : "text-[#86868b]"
+                        }`}
+                      >
+                        {t(plan.descKey, lang)}
+                      </p>
+                      
+                      {plan.showRetainer && (
+                        <div className={`mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-full text-[0.75rem] font-bold ${
+                            plan.highlight ? "bg-white/10 text-white/80" : "bg-black/[0.04] text-[#0e0e10]/60"
+                        }`}>
+                          <div className="w-1 h-1 rounded-full bg-[#34c759]" />
+                          {t("pricing.includedRetainer", lang)}
+                        </div>
+                      )}
                   </div>
-                  <p
-                    className={`text-[0.9375rem] mb-8 leading-relaxed h-[3rem] ${
-                      plan.highlight ? "text-background/70" : "text-muted-foreground"
-                    }`}
-                  >
-                    {t(plan.descKey, lang)}
-                  </p>
 
-                  <ul className="space-y-4 mb-10 min-h-[14rem]">
+                  <div className={`h-px w-full mb-8 ${plan.highlight ? "bg-white/10" : "bg-black/[0.06]"}`} />
+
+                  <ul className="space-y-4 mb-12 flex-1">
                     {plan.featureKeys.map((fk: string) => (
-                      <li key={fk} className="flex items-start gap-3">
-                        <Check
-                          size={18}
-                          className={`mt-0.5 shrink-0 ${
-                            plan.highlight ? "text-[#30d158]" : "text-[#0071e3]"
-                          }`}
-                        />
+                      <li key={fk} className="flex items-start gap-4">
+                        <div className={`mt-1 h-5 w-5 rounded-full flex items-center justify-center shrink-0 ${
+                            plan.highlight ? "bg-white/10 text-[#34c759]" : "bg-black/[0.04] text-[#007aff]"
+                        }`}>
+                            <Check size={12} strokeWidth={3} />
+                        </div>
                         <span
-                          className={`text-[0.875rem] leading-snug font-medium ${
-                            plan.highlight ? "text-background/80" : "text-muted-foreground"
+                          className={`text-[0.9375rem] leading-snug font-bold ${
+                            plan.highlight ? "text-white/80" : "text-[#0e0e10]/80"
                           }`}
                         >
                           {t(fk, lang)}
@@ -189,19 +222,28 @@ export function Pricing() {
 
                   <a
                     href="#contact"
-                    className={`block text-center text-[0.875rem] py-3.5 rounded-full font-semibold transition-all duration-300 ${
+                    className={`block text-center text-[1rem] py-4 rounded-full font-bold transition-all duration-300 hover:scale-[1.02] active:scale-95 ${
                       plan.highlight
-                        ? "bg-white text-foreground hover:bg-white/90 shadow-md"
-                        : "bg-foreground text-background hover:bg-foreground/90 shadow-sm"
+                        ? "bg-white text-[#0e0e10] hover:bg-[#f5f5f7] shadow-xl"
+                        : "bg-[#0e0e10] text-white hover:bg-[#2c2c2e] shadow-lg shadow-black/5"
                     }`}
                   >
-                    {t("nav.getStarted", lang)}
+                    {t(plan.ctaKey, lang)}
                   </a>
                 </div>
               ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            </div>
+
+            {billingType === "monthly" && (
+              <div className="mt-20 text-center max-w-2xl mx-auto space-y-6">
+                  <div className="h-px w-24 bg-black/[0.1] mx-auto mb-8" />
+                  <p className="text-[0.875rem] text-[#86868b] font-bold leading-relaxed px-6">
+                    {t("pricing.retainer.disclaimer", lang)}
+                  </p>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
