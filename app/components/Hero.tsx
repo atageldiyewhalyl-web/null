@@ -37,7 +37,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-[1.125rem] md:text-[1.375rem] text-[#86868b] max-w-3xl mb-14 leading-relaxed font-medium"
+            className="text-[1.125rem] md:text-[1.375rem] text-[#86868b] max-w-5xl mb-14 leading-relaxed font-medium text-balance"
           >
             {t("hero.description", lang)}
           </motion.p>
