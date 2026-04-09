@@ -2,7 +2,6 @@
 
 @theme {
   --font-inter: "Inter", system-ui, sans-serif;
-  --font-serif: "EB Garamond", serif;
 
   --color-background: #ffffff;
   --color-foreground: #08071a;
@@ -43,8 +42,8 @@
     background-color: var(--color-background);
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: var(--font-serif);
+  h1, h2, h3, h4 {
+    font-family: var(--font-inter);
     @apply font-semibold tracking-tight;
   }
 

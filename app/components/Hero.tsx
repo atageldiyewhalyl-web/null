@@ -32,10 +32,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.1] tracking-[-0.03em] mb-8 font-semibold text-slate-900"
+            className="text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.1] tracking-[-0.03em] mb-8 font-semibold text-slate-900"
           >
             <span className="block">{t("hero.line1", lang)}</span>
-            <span className="block text-slate-400 font-normal italic">{t("hero.line2", lang)}</span>
+            <span className="block text-slate-400 font-medium">{t("hero.line2", lang)}</span>
             <span className="block text-[#0071e3]">{t("hero.line3", lang)}</span>
           </motion.h1>
 
