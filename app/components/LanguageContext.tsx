@@ -141,7 +141,7 @@ const labels: Record<string, Record<Language, string>> = {
   "hero.comparison.subtitle": {
     en: "Every detail designed to build trust and win clients.",
     de: "Jedes Detail darauf ausgelegt, Vertrauen zu schaffen und Mandanten zu gewinnen.",
-    tr: "Her detay, güven oluşturmak ve müvekkil kazanmak için tasarlanir.",
+    tr: "Her detay, güven oluşturmak ve müvekkil kazanmak için tasarlanmıştır.",
   },
 
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
