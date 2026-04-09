@@ -317,7 +317,7 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.includedRetainer": {
     en: "Incl. €99/month law firm care",
     de: "Inkl. €99/Monat Kanzlei-Betreuung",
-    tr: "Aylık €99 büro bakımı dahil",
+    tr: "Her pakete aylık €99 bakım dahildir",
   },
   "pricing.cta.start": { en: "Get started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
