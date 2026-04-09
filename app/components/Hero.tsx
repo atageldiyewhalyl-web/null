@@ -145,7 +145,7 @@ export function Hero() {
             transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             className="w-full max-w-7xl mt-64 mb-32 relative text-left"
           >
-            <div className="max-w-4xl mb-20">
+            <div className="max-w-full mb-20">
               <p className="text-[0.875rem] tracking-[0.1em] uppercase text-[#007aff] font-bold mb-4">
                 {t("hero.comparison.label", lang)}
               </p>
