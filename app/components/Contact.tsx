@@ -127,7 +127,7 @@ export function Contact() {
                       {t("contact.calendly.cta", lang)}
                     </p>
                     <a 
-                      href="https://calendly.com" 
+                      href="https://calendly.com/atageldiyewhalyl/kostenlose-kanzlei-beratung" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="inline-block mt-3 text-[0.875rem] text-[#0071e3] font-medium hover:underline"
