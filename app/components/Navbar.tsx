@@ -40,12 +40,6 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <a href="/" className="text-[1.25rem] font-bold tracking-[-0.03em] text-[#0e0e10] group flex items-center gap-1">
               nüll<span className="text-[#007aff]">.</span>
-              {/* Debug Indicator: Changes color based on language */}
-              <div 
-                className={`w-1.5 h-1.5 rounded-full mt-1.5 ${
-                  lang === "de" ? "bg-red-500" : lang === "en" ? "bg-blue-500" : "bg-green-500"
-                }`} 
-              />
             </a>
           </div>
 
