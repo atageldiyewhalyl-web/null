@@ -252,7 +252,8 @@ const labels: Record<string, Record<Language, string>> = {
   },
 
   // Pricing
-  "pricing.label": { en: "Pricing", de: "Preise", tr: "Fiyatlar" },
+  // Pricing
+  "pricing.label": { en: "Pricing", de: "Preise", tr: "FİYATLAR" },
   "pricing.title1": {
     en: "Full clarity",
     de: "Volle Klarheit",
@@ -266,7 +267,7 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.description": {
     en: "Choose the package that fits your law firm. Monthly care is included in every package.",
     de: "Wählen Sie das Paket, das zu Ihrer Kanzlei passt. Monatliche Betreuung ist in jedem Paket enthalten.",
-    tr: "Büronuza uygun paketi seçin. Aylık bakım her pakete dahildir.",
+    tr: "Büronuza en uygun paketi seçin. Aylık bakım her pakete dahildir.",
   },
   "pricing.tab.websites": { en: "Website Packages", de: "Website-Pakete", tr: "Web Sitesi Paketleri" },
   "pricing.tab.retainer": { en: "Monthly Retainer", de: "Monatliche Betreuung", tr: "Aylık Bakım" },
@@ -276,43 +277,43 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.starter.desc": {
     en: "A fast start with a solid foundation.",
     de: "Ein schneller Start mit solidem Fundament.",
-    tr: "Sağlam bir temel ile hızlı başlangıç.",
+    tr: "Hızlı ve sağlam bir başlangıç.",
   },
   "pricing.starter.f1": { en: "One page, perfect on all devices", de: "Eine Seite, auf allen Geräten perfekt", tr: "Tüm cihazlarda kusursuz tek sayfa" },
-  "pricing.starter.f2": { en: "Individual design", de: "Individuelles Design", tr: "Bireysel tasarım" },
+  "pricing.starter.f2": { en: "Individual design", de: "Individuelles Design", tr: "Kişiye özel tasarım" },
   "pricing.starter.f3": { en: "Basic SEO setup", de: "Grundlegende SEO-Einrichtung", tr: "Temel SEO kurulumu" },
-  "pricing.starter.f4": { en: "Contact form integration", de: "Kontaktformular-Integration", tr: "İletişim formu entegrasyonu" },
-  "pricing.starter.f5": { en: "1 revision round", de: "1 Korrekturrunde", tr: "1 revizyon turu" },
+  "pricing.starter.f4": { en: "Contact form integration", de: "Kontaktformular-Integration", tr: "İletişim formu" },
+  "pricing.starter.f5": { en: "1 revision round", de: "1 Korrekturrunde", tr: "1 revizyon hakkı" },
 
   "pricing.growth": { en: "GROWTH", de: "GROWTH", tr: "GROWTH" },
   "pricing.growth.badge": { en: "MOST POPULAR", de: "MEISTGEWÄHLT", tr: "EN POPÜLER" },
   "pricing.growth.desc": {
     en: "A website that wins clients and gets found on Google.",
     de: "Eine Website, die Mandanten gewinnt und bei Google gefunden wird.",
-    tr: "Müvekkil kazanan ve Google'da bulunan bir web sitesi.",
+    tr: "Müvekkil kazanan ve Google'da öne çıkan bir web sitesi.",
   },
   "pricing.growth.f1": { en: "Up to 5 pages", de: "Bis zu 5 Seiten", tr: "5 sayfaya kadar" },
-  "pricing.growth.f2": { en: "Individual design", de: "Individuelles Design", tr: "Bireysel tasarım" },
+  "pricing.growth.f2": { en: "Individual design", de: "Individuelles Design", tr: "Kişiye özel tasarım" },
   "pricing.growth.f3": { en: "Comprehensive on-page SEO", de: "Umfassendes On-Page SEO", tr: "Kapsamlı sayfa içi SEO" },
   "pricing.growth.f4": { en: "Blog and news section", de: "Blog- und Newsbereich", tr: "Blog ve haber bölümü" },
   "pricing.growth.f5": { en: "Social media integration", de: "Social-Media-Integration", tr: "Sosyal medya entegrasyonu" },
-  "pricing.growth.f6": { en: "Basic branding package", de: "Basis-Branding-Paket", tr: "Temel markalaşma paketi" },
-  "pricing.growth.f7": { en: "3 revision rounds", de: "3 Korrekturrunden", tr: "3 revizyon turu" },
+  "pricing.growth.f6": { en: "Basic branding package", de: "Basis-Branding-Paket", tr: "Temel marka paketi" },
+  "pricing.growth.f7": { en: "3 revision rounds", de: "3 Korrekturrunden", tr: "3 revizyon hakkı" },
 
   "pricing.premium": { en: "PREMIUM", de: "PREMIUM", tr: "PREMIUM" },
   "pricing.premium.desc": {
     en: "For law firms that want to stay one step ahead of their competition.",
     de: "Für Kanzleien, die ihrer Konkurrenz einen Schritt voraus sein wollen.",
-    tr: "Rakiplerinin bir adım önünde olmak isteyen bürolar için.",
+    tr: "Rakiplerinin önünde olmak isteyen bürolar için.",
   },
   "pricing.premium.f1": { en: "Up to 10 pages", de: "Bis zu 10 Seiten", tr: "10 sayfaya kadar" },
   "pricing.premium.f2": { en: "Premium design", de: "Premium-Design", tr: "Premium tasarım" },
-  "pricing.premium.f3": { en: "Full SEO strategy", de: "Vollständige SEO-Strategie", tr: "Tam SEO stratejisi" },
+  "pricing.premium.f3": { en: "Full SEO strategy", de: "Vollständige SEO-Strategie", tr: "Eksiksiz SEO stratejisi" },
   "pricing.premium.f4": { en: "Logo and brand identity", de: "Logo und Markenidentität", tr: "Logo ve marka kimliği" },
   "pricing.premium.f5": { en: "Copywriting support", de: "Unterstützung beim Texten", tr: "Metin yazarlığı desteği" },
   "pricing.premium.f6": { en: "Analytics setup", de: "Analytics-Einrichtung", tr: "Analitik kurulumu" },
   "pricing.premium.f7": { en: "Priority support 30 days", de: "Priorisierter Support 30 Tage", tr: "30 gün öncelikli destek" },
-  "pricing.premium.f8": { en: "Unlimited revisions", de: "Unbegrenzte Korrekturen", tr: "Sınırsız revizyon" },
+  "pricing.premium.f8": { en: "Unlimited revisions", de: "Unbegrenzte Korrekturen", tr: "Sınırsız revizyon hakkı" },
 
   "pricing.includedRetainer": {
     en: "Incl. €99/month law firm care",
