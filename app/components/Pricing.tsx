@@ -60,12 +60,10 @@ export function Pricing({ onOpenQuote }: PricingProps) {
               </button>
             </div>
 
-            {/* Right side: Static Static Premium Card */}
+            {/* Right side: Static Static Premium Card (Unboxed) */}
             <div className="order-1 lg:order-2">
               <div className="relative group/card">
-                <div className="absolute -inset-4 bg-gradient-to-tr from-[#007aff]/10 to-[#5856d6]/10 blur-2xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 -z-10" />
-                
-                <div className="bg-[#f5f5f7] rounded-[3rem] p-10 md:p-14 border border-black/[0.03] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] relative overflow-hidden aspect-square flex flex-col items-center justify-center text-center">
+                <div className="relative overflow-hidden aspect-square flex flex-col items-center justify-center text-center">
                   
                   {/* Decorative Elements */}
                   <div className="absolute top-0 right-0 p-10">
