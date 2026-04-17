@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage, t, type Language } from "./LanguageContext";
 import { motion, AnimatePresence } from "motion/react";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,35 +24,14 @@ export function Navbar() {
     { name: t("nav.blog", lang), href: "/blog" },
   ];
 
-  const LanguageSwitcher = ({ className = "" }: { className?: string }) => (
-    <div className={`flex items-center bg-[#f2f2f7] rounded-full p-1 border border-[#d2d2d7]/30 shadow-inner pointer-events-auto ${className}`}>
-      {(["en", "de", "tr"] as Language[]).map((l) => (
-        <button
-          key={l}
-          type="button"
-          onClick={() => setLang(l)}
-          suppressHydrationWarning
-          className={`px-3 md:px-4 py-1.5 rounded-full text-[0.7rem] md:text-[0.75rem] font-bold transition-all cursor-pointer select-none active:scale-95 touch-manipulation ${
-            lang === l 
-              ? "bg-white text-[#0e0e10] shadow-md" 
-              : "text-[#86868b] hover:text-[#0e0e10]"
-          }`}
-          style={{ WebkitTapHighlightColor: "transparent" }}
-        >
-          {l.toUpperCase()}
-        </button>
-      ))}
-    </div>
-  );
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 px-4 md:px-10 py-5 pointer-events-none ${
+      className={`fixed top-0 left-0 right-0 z-[9999999] transition-all duration-300 px-4 md:px-10 py-5 ${
         scrolled ? "md:py-3" : "md:py-6"
       }`}
     >
       <div 
-        className={`max-w-[1240px] mx-auto transition-all duration-500 rounded-[1.25rem] px-6 py-2.5 pointer-events-auto ${
+        className={`max-w-[1240px] mx-auto transition-all duration-500 rounded-[1.25rem] px-6 py-2.5 ${
           scrolled 
             ? "bg-white/70 backdrop-blur-xl border border-[#d2d2d7] shadow-[0_4px_20px_rgba(0,0,0,0.05)]" 
             : "bg-transparent px-2"
@@ -81,7 +61,7 @@ export function Navbar() {
             <LanguageSwitcher />
             
             <a
-              href="#contact"
+              href="/onboarding"
               className="bg-[#0e0e10] text-white px-6 py-2.5 rounded-full text-[0.875rem] font-bold hover:bg-[#1c1c1e] transition-all active:scale-95 shadow-lg shadow-black/10"
             >
               {t("nav.getStarted", lang)}
@@ -92,7 +72,10 @@ export function Navbar() {
           <div className="md:hidden flex items-center gap-3">
             <LanguageSwitcher />
             <button
-              onClick={() => setIsOpen(!isOpen)}
+               onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(!isOpen);
+              }}
               className="p-1.5 text-[#0e0e10] hover:bg-black/5 rounded-full transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -122,7 +105,7 @@ export function Navbar() {
             <hr className="border-[#f2f2f7]" />
             <div className="flex flex-col gap-4">
               <a
-                href="#contact"
+                href="/onboarding"
                 onClick={() => setIsOpen(false)}
                 className="bg-[#007aff] text-white text-center py-5 rounded-2xl font-bold"
               >

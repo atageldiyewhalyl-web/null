@@ -1,6 +1,7 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import { Hero } from "./Hero";
 import { SEO, StructuredData } from "./SEO";
+import { LeadCapture } from "./LeadCapture";
 
 const Problem = lazy(() => import("./Problem").then(m => ({ default: m.Problem })));
 const Services = lazy(() => import("./Services").then(m => ({ default: m.Services })));
@@ -14,7 +15,7 @@ const organizationData = {
   "@type": "ProfessionalService",
   name: "Nüll.",
   description:
-    "Exklusives Kanzlei-Marketing und Webdesign für deutsch-türkische Rechtsanwälte. Digitale Positionierung und Mandantengewinnung.",
+    "Exklusives Business-Marketing und Webdesign für Consultants und Berater. Digitale Positionierung und Klientengewinnung.",
   url: "https://xn--nll-hoa.com",
   email: "hello@xn--nll-hoa.com",
   logo: "https://xn--nll-hoa.com/favicon.svg",
@@ -27,21 +28,21 @@ const organizationData = {
     addressLocality: "Mannheim",
     addressCountry: "DE",
   },
-  priceRange: "€500 - €2500",
+  priceRange: "€220 - €1500",
   serviceType: [
-    "Kanzlei Marketing",
-    "Anwalts Webdesign",
-    "SEO für Anwälte",
+    "Business Marketing",
+    "Consultancy Webdesign",
+    "SEO für Berater",
     "Digitale Positionierung",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Law Firm Marketing Packages",
+    name: "Business Marketing Packages",
     itemListElement: [
       {
         "@type": "Offer",
-        name: "Lawyer Starter",
-        price: "1200",
+        name: "Consultant Starter",
+        price: "220",
         priceCurrency: "EUR",
       },
       {
@@ -67,6 +68,8 @@ const websiteData = {
 };
 
 export function Home() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+
   return (
     <>
       <SEO />
@@ -77,9 +80,10 @@ export function Home() {
         <Problem />
         <Services />
         <Work />
-        <Pricing />
+        <Pricing onOpenQuote={() => setIsQuoteOpen(true)} />
         <Contact />
       </Suspense>
+      <LeadCapture isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </>
   );
 }

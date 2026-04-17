@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
 } from "react-router";
 import type { LoaderFunctionArgs } from "react-router";
 import { LanguageProvider, type Language } from "./components/LanguageContext";
@@ -19,25 +20,18 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return { lang };
 }
 
+// Layout is a pure shell — no hooks allowed here (no router context yet)
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { lang } = useLoaderData<typeof loader>() || { lang: "de" };
-
   return (
-    <html lang={lang}>
+    <html lang="de">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        <LanguageProvider initialLang={lang}>
-          <div className="min-h-screen bg-white transition-colors duration-500">
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
-        </LanguageProvider>
+      <body className="antialiased">
+        {children}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -45,18 +39,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+// App has full router context — hooks are safe here
 export default function App() {
-  return <Outlet />;
+  const { lang } = useLoaderData<typeof loader>() || { lang: "de" };
+  const location = useLocation();
+  const isOnboarding = location.pathname.startsWith("/onboarding");
+
+  return (
+    <LanguageProvider initialLang={lang}>
+      <div className="min-h-screen bg-white transition-colors duration-500">
+        {!isOnboarding && <Navbar />}
+        <Outlet />
+        {!isOnboarding && <Footer />}
+      </div>
+    </LanguageProvider>
+  );
 }
 
 export function meta() {
   return [
-    { title: "Nüll. - Kanzlei Marketing & Webdesign" },
-    { name: "description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Rechtsanwälte in Deutschland. Wir machen Ihre Kanzlei zur digitalen Autorität." },
+    { title: "Nüll. - Consultant Marketing & Webdesign" },
+    { name: "description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität." },
     { name: "robots", content: "index, follow, max-image-preview:large" },
     { property: "og:type", content: "website" },
-    { property: "og:title", content: "Nüll. - Kanzlei Marketing & Webdesign" },
-    { property: "og:description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Rechtsanwälte in Deutschland. Wir machen Ihre Kanzlei zur digitalen Autorität." },
+    { property: "og:title", content: "Nüll. - Consultant Marketing & Webdesign" },
+    { property: "og:description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität." },
     { property: "og:url", content: "https://xn--nll-hoa.com" },
     { property: "og:site_name", content: "Nüll. - Web Design Agentur Mannheim" },
     { property: "og:locale", content: "de_DE" },
