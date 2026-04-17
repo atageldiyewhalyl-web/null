@@ -47,14 +47,7 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
     setIsHydrated(true);
 
     // Listen for changes fired by the self-contained LanguageSwitcher
-    const handler = (e: Event) => {
-      const newLang = (e as CustomEvent<Language>).detail;
-      if (newLang === "en" || newLang === "de" || newLang === "tr") {
-        setLangState(newLang);
-      }
-    };
-    window.addEventListener("nll-lang-change", handler);
-    return () => window.removeEventListener("nll-lang-change", handler);
+    // NO LONGER NEEDED as we will use useLanguage() directly
   }, []);
 
   const setLang = useCallback((newLang: Language) => {
@@ -70,7 +63,6 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
       if (typeof document !== "undefined") {
         document.documentElement.lang = newLang;
       }
-      window.dispatchEvent(new CustomEvent('nll-lang-change', { detail: newLang }));
     } catch (e) {
       console.warn("Language persistence issue:", e);
     }
