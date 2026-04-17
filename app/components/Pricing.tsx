@@ -82,20 +82,9 @@ export function Pricing({ onOpenQuote }: PricingProps) {
                        </div>
                     </div>
 
-                    <p className="text-[0.75rem] font-black uppercase tracking-[0.25em] text-[#86868b] mb-4">
-                      {lang === 'tr' ? 'DİNAMİK SKORLAMA' : (lang === 'de' ? 'DYNAMIC SCORING' : 'DYNAMIC SCORING')}
-                    </p>
-                    
                     <h4 className="text-[2.25rem] md:text-[2.75rem] font-bold text-[#0e0e10] leading-tight tracking-tight mb-8">
                       {lang === 'tr' ? 'Size Özel\nTeklif' : (lang === 'de' ? 'Ihr individueller\nPreis' : 'Your Individual\nPrice')}
                     </h4>
-
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/60 backdrop-blur-md border border-white/40 shadow-sm">
-                       <CheckCircle2 size={18} className="text-[#34c759]" />
-                       <span className="text-[0.9375rem] font-bold text-[#1d1d1f]">
-                         {lang === 'tr' ? 'Hemen hesaplayın' : (lang === 'de' ? 'Jetzt berechnen' : 'Calculate now')}
-                       </span>
-                    </div>
                   </div>
 
                   {/* Glass reflection */}
