@@ -50,7 +50,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-20 md:mb-24"
           >
             <a
-              href="/onboarding"
+              href="/#pricing"
               className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 bg-[#007aff] text-white px-8 md:px-12 py-4 md:py-6 rounded-full text-[1rem] md:text-[1.125rem] font-bold hover:bg-[#0066d6] transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-blue-500/10"
             >
               {t("hero.cta", lang)} <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />

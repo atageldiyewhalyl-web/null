@@ -38,8 +38,8 @@ export function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <a href="/" className="text-[1.5rem] font-bold tracking-[-0.03em] text-[#0e0e10] group flex items-center gap-1">
+          <div>
+            <a href="/" className="text-[1.5rem] font-bold tracking-[-0.03em] text-[#0e0e10] group">
               nüll<span className="text-[#007aff]">.</span>
             </a>
           </div>
@@ -61,7 +61,7 @@ export function Navbar() {
             <LanguageSwitcher />
             
             <a
-              href="/onboarding"
+              href="/#pricing"
               className="bg-[#0e0e10] text-white px-6 py-2.5 rounded-full text-[0.875rem] font-bold hover:bg-[#1c1c1e] transition-all active:scale-95 shadow-lg shadow-black/10"
             >
               {t("nav.getStarted", lang)}
@@ -105,7 +105,7 @@ export function Navbar() {
             <hr className="border-[#f2f2f7]" />
             <div className="flex flex-col gap-4">
               <a
-                href="/onboarding"
+                href="/#pricing"
                 onClick={() => setIsOpen(false)}
                 className="bg-[#007aff] text-white text-center py-5 rounded-2xl font-bold"
               >

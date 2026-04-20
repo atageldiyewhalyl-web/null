@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="py-10 md:py-12 px-4 md:px-6 border-t border-black/5" role="contentinfo">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 md:flex-row md:justify-between md:gap-4">
-        <Link to="/" className="text-[1.125rem] tracking-[-0.03em]" style={{ fontWeight: 600 }}>
+        <Link to="/" className="text-[1.125rem] tracking-[-0.03em] font-bold">
           nüll<span className="text-[#0071e3]">.</span>
         </Link>
         <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[0.8125rem] text-muted-foreground">

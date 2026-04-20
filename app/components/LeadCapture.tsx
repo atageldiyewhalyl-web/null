@@ -11,13 +11,16 @@ interface LeadCaptureProps {
   onClose: () => void;
 }
 
-type Step = "IDENTITY" | "OBJECTIVE" | "SCALE" | "PRESENCE" | "RESULT";
+type Step = "IDENTITY" | "OBJECTIVE" | "SITE_TYPE" | "PRESENCE" | "RESULT";
 
 export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
   const { lang } = useLanguage();
   const [step, setStep] = useState<Step>("IDENTITY");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidPhone = (phone: string) => phone.replace(/\D/g, '').length >= 7;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,7 +29,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
     firm: "",
     location: "",
     objective: [] as string[],
-    scale: "" as "single" | "small" | "large" | "",
+    siteType: "" as "single" | "multi" | "",
     websiteUrl: "",
     painPoints: "",
   });
@@ -51,15 +54,15 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
 
   const handleNext = () => {
     if (step === "IDENTITY") setStep("OBJECTIVE");
-    else if (step === "OBJECTIVE") setStep("SCALE");
-    else if (step === "SCALE") setStep("PRESENCE");
+    else if (step === "OBJECTIVE") setStep("SITE_TYPE");
+    else if (step === "SITE_TYPE") setStep("PRESENCE");
     else if (step === "PRESENCE") handleSubmit();
   };
 
   const handleBack = () => {
     if (step === "OBJECTIVE") setStep("IDENTITY");
-    else if (step === "SCALE") setStep("OBJECTIVE");
-    else if (step === "PRESENCE") setStep("SCALE");
+    else if (step === "SITE_TYPE") setStep("OBJECTIVE");
+    else if (step === "PRESENCE") setStep("SITE_TYPE");
   };
 
   const handleSubmit = async () => {
@@ -106,47 +109,39 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
   };
 
   const getPackageResult = () => {
-    const { objective, scale } = formData;
-    const serviceCount = objective.length;
-    const isSystem = objective.includes("system");
+    const { objective, siteType } = formData;
+    const isGeo = objective.includes("geo");
+    const isSeo = objective.includes("seo");
     const isAds = objective.includes("ads");
-    const isSEO = objective.includes("seo");
 
-    // Dynamic Monthly Calculation based on Priority
-    let monthlyPrice = "99";
-    if (isSystem) monthlyPrice = "220";
-    else if (isAds) monthlyPrice = "220";
-    else if (isSEO) monthlyPrice = "170";
+    // 1. Web Base
+    let monthlyTotal = siteType === "multi" ? 150 : 75;
+    let packageName = siteType === "multi" ? t("pricing.advanced", lang) : t("pricing.basic", lang);
+    let features = siteType === "multi" 
+      ? ["pricing.advanced.f1", "pricing.advanced.f2", "pricing.advanced.f3", "pricing.advanced.f7"] 
+      : ["pricing.basic.f1", "pricing.basic.f2", "pricing.basic.f3", "pricing.basic.f5"];
 
-    // Premium: Only if Full System AND (Small or Large Firm)
-    if (isSystem && (scale === "small" || scale === "large")) {
-      return {
-        name: t("pricing.premium", lang),
-        price: "1.199",
-        monthly: monthlyPrice,
-        features: ["pricing.premium.f1", "pricing.premium.f3", "pricing.premium.f4", "pricing.premium.f8"],
-        recommended: true
-      };
-    }
-    
-    // Starter: Only if 1 Service AND (Individual Expert)
-    if (serviceCount === 1 && scale === "single") {
-      return {
-        name: t("pricing.starter", lang),
-        price: "549",
-        monthly: monthlyPrice,
-        features: ["pricing.starter.f1", "pricing.starter.f2", "pricing.starter.f3", "pricing.starter.f5"],
-        recommended: false
-      };
+    // 2. Add-ons
+    if (isGeo) {
+      monthlyTotal += 199; // SEO + GEO
+      features.push("quote.step.objective.geo");
+      if (!isSeo) features.push("quote.step.objective.seo");
+    } else if (isSeo) {
+      monthlyTotal += 150; // SEO only
+      features.push("quote.step.objective.seo");
     }
 
-    // Growth: The default "middle tier" for the masses
+    if (isAds) {
+      monthlyTotal += 299;
+      features.push("quote.step.objective.ads");
+    }
+
     return {
-      name: t("pricing.growth", lang),
-      price: "849",
-      monthly: monthlyPrice,
-      features: ["pricing.growth.f1", "pricing.growth.f3", "pricing.growth.f4", "pricing.growth.f7"],
-      recommended: true
+      name: packageName,
+      price: "0", // No setup fee
+      monthly: String(monthlyTotal),
+      features: Array.from(new Set(features)),
+      recommended: siteType === "multi"
     };
   };
 
@@ -155,7 +150,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center md:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -167,16 +162,16 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 100 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            exit={{ opacity: 0, scale: 0.95, y: 100 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-full md:max-w-xl h-[92vh] md:h-auto md:max-h-[85vh] bg-white rounded-t-[2.5rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="p-6 md:p-8 flex items-center justify-between border-b border-black/5 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#f5f5f7] flex items-center justify-center text-[#0e0e10] font-bold text-xl">
+                <div className="w-10 h-10 rounded-xl bg-[#f5f5f7] flex items-center justify-center text-[#0e0e10] font-bold text-xl leading-none">
                   n<span className="text-[#007aff]">.</span>
                 </div>
                 <div>
@@ -185,7 +180,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                   </h3>
                   {step !== 'RESULT' && (
                     <div className="flex gap-1 mt-1">
-                      {(["IDENTITY", "OBJECTIVE", "SCALE", "PRESENCE"] as Step[]).map((s, idx) => (
+                      {(["IDENTITY", "OBJECTIVE", "SITE_TYPE", "PRESENCE"] as Step[]).map((s, idx) => (
                         <div 
                           key={idx}
                           className={`h-1 rounded-full transition-all duration-300 ${
@@ -206,7 +201,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 p-8 md:p-12 overflow-y-auto max-h-[70vh]">
+            <div className="flex-1 p-6 md:p-10 overflow-y-auto min-h-0">
               <AnimatePresence mode="wait">
                 {step === "IDENTITY" && (
                   <motion.div
@@ -217,10 +212,10 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                     className="space-y-8"
                   >
                     <div>
-                      <h2 className="text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight text-[#0e0e10] mb-3 leading-[1.1]">
+                      <h2 className="text-[1.5rem] md:text-[2.25rem] font-bold tracking-tight text-[#0e0e10] mb-2 leading-[1.2]">
                         {t("quote.step.identity.title", lang)}
                       </h2>
-                      <p className="text-[1.0625rem] text-[#86868b] font-medium">
+                      <p className="text-[0.9375rem] md:text-[1.0625rem] text-[#86868b] font-medium">
                         {t("quote.step.identity.sub", lang)}
                       </p>
                     </div>
@@ -259,7 +254,12 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                           required
                           value={formData.phone}
                           onChange={(e) => updateFormData({ phone: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#007aff]/20 outline-none transition-all text-[0.9375rem]"
+                          placeholder="+49..."
+                          className={`w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 outline-none transition-all text-[0.9375rem] ${
+                            formData.phone && !isValidPhone(formData.phone) 
+                              ? "ring-2 ring-red-500/20" 
+                              : "focus:ring-[#007aff]/20"
+                          }`}
                         />
                       </div>
                       <div className="space-y-2">
@@ -271,7 +271,12 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                           required
                           value={formData.email}
                           onChange={(e) => updateFormData({ email: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#007aff]/20 outline-none transition-all text-[0.9375rem]"
+                          placeholder="mail@example.com"
+                          className={`w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 outline-none transition-all text-[0.9375rem] ${
+                            formData.email && !isValidEmail(formData.email) 
+                              ? "ring-2 ring-red-500/20" 
+                              : "focus:ring-[#007aff]/20"
+                          }`}
                         />
                       </div>
                       <div className="md:col-span-2 space-y-2">
@@ -308,6 +313,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                       {[
                         { id: "web", title: t("quote.step.objective.web", lang), icon: Monitor, color: "#007aff" },
                         { id: "seo", title: t("quote.step.objective.seo", lang), icon: Search, color: "#34c759" },
+                        { id: "geo", title: t("quote.step.objective.geo", lang), icon: Sparkles, color: "#ff2d55" },
                         { id: "ads", title: t("quote.step.objective.ads", lang), icon: Megaphone, color: "#ff9500" },
                         { id: "system", title: t("quote.step.objective.system", lang), icon: Rocket, color: "#af52de" },
                       ].map((opt) => {
@@ -316,12 +322,12 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                           <button
                             key={opt.id}
                             onClick={() => {
-                              const allOthers = ["web", "seo", "ads"];
+                              const allOthers = ["web", "seo", "geo", "ads"];
                               let newObj: string[];
 
                               if (opt.id === "system") {
                                 // If selecting 'system', select everything. If deselecting, clear everything.
-                                newObj = isSelected ? [] : ["web", "seo", "ads", "system"];
+                                newObj = isSelected ? [] : ["web", "seo", "geo", "ads", "system"];
                               } else {
                                 // Standard toggle for individual items
                                 newObj = isSelected
@@ -329,6 +335,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                                   : [...formData.objective, opt.id];
 
                                 // Auto-Completion: If all others are now selected, add 'system'
+                                const allOthers = ["web", "seo", "geo", "ads"];
                                 const hasAllOthers = allOthers.every(item => newObj.includes(item));
                                 if (hasAllOthers && !newObj.includes("system")) {
                                   newObj.push("system");
@@ -341,7 +348,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                               }
                               updateFormData({ objective: newObj });
                             }}
-                            className={`w-full flex items-center justify-between p-6 rounded-[1.5rem] border-2 transition-all group ${
+                            className={`w-full flex items-center justify-between p-4 md:p-6 rounded-[1.25rem] md:rounded-[1.5rem] border-2 transition-all group ${
                               isSelected 
                                 ? "border-[#007aff] bg-[#007aff]/5" 
                                 : "border-black/[0.05] hover:border-black/10"
@@ -368,40 +375,43 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                   </motion.div>
                 )}
 
-                {step === "SCALE" && (
+                {step === "SITE_TYPE" && (
                   <motion.div
-                    key="scale"
+                    key="siteType"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     className="space-y-8"
                   >
                     <div>
-                      <h2 className="text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight text-[#0e0e10] mb-3 leading-[1.1]">
-                        {t("quote.step.scale.title", lang)}
+                      <h2 className="text-[1.5rem] md:text-[2.25rem] font-bold tracking-tight text-[#0e0e10] mb-3 leading-[1.2]">
+                        {t("quote.step.siteType.title", lang)}
                       </h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
-                        { id: "single", title: t("quote.step.scale.single", lang) },
-                        { id: "small", title: t("quote.step.scale.small", lang) },
-                        { id: "large", title: t("quote.step.scale.large", lang) },
+                        { id: "single", title: t("quote.step.siteType.single", lang), sub: t("quote.step.siteType.single.sub", lang), icon: Monitor },
+                        { id: "multi", title: t("quote.step.siteType.multi", lang), sub: t("quote.step.siteType.multi.sub", lang), icon: Building2 },
                       ].map((opt) => (
                         <button
                           key={opt.id}
-                          onClick={() => updateFormData({ scale: opt.id as any })}
-                          className={`flex flex-col items-center justify-center aspect-square p-6 rounded-[2rem] border-2 transition-all ${
-                            formData.scale === opt.id 
+                          onClick={() => updateFormData({ siteType: opt.id as any })}
+                          className={`flex flex-col items-center justify-center p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border-2 transition-all text-center h-full ${
+                            formData.siteType === opt.id 
                               ? "border-[#007aff] bg-[#007aff]/5" 
                               : "border-black/[0.05] hover:border-black/10"
-                          } ${opt.id === 'large' ? 'md:col-span-2 md:aspect-auto md:py-8' : ''}`}
+                          }`}
                         >
-                          <span className="text-[1.125rem] font-bold text-[#0e0e10] text-center">{opt.title}</span>
-                          <div className={`mt-4 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                            formData.scale === opt.id ? "border-[#007aff] bg-[#007aff]" : "border-black/10"
+                          <div className={`mb-4 md:mb-6 p-3 md:p-4 rounded-xl md:rounded-2xl ${formData.siteType === opt.id ? "bg-[#007aff] text-white" : "bg-[#f5f5f7] text-[#0e0e10]"}`}>
+                            <opt.icon size={28} className="md:w-8 md:h-8" />
+                          </div>
+                          <span className="text-[1.125rem] md:text-[1.25rem] font-bold text-[#0e0e10] mb-1 md:mb-2">{opt.title}</span>
+                          <span className="text-[0.8125rem] md:text-[0.875rem] text-[#86868b] font-medium leading-relaxed">{opt.sub}</span>
+                          <div className={`mt-4 md:mt-6 w-5 h-5 md:w-6 md:h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                            formData.siteType === opt.id ? "border-[#007aff] bg-[#007aff]" : "border-black/10"
                           }`}>
-                            {formData.scale === opt.id && <Check size={14} className="text-white" />}
+                            {formData.siteType === opt.id && <Check size={12} className="text-white md:w-3.5 md:h-3.5" />}
                           </div>
                         </button>
                       ))}
@@ -418,7 +428,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                     className="space-y-8"
                   >
                     <div>
-                      <h2 className="text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight text-[#0e0e10] mb-3 leading-[1.1]">
+                      <h2 className="text-[1.5rem] md:text-[2.25rem] font-bold tracking-tight text-[#0e0e10] mb-3 leading-[1.2]">
                         {t("quote.step.presence.title", lang)}
                       </h2>
                     </div>
@@ -466,7 +476,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                         transition={{ delay: 0.2 }}
                         className="flex items-center justify-center mb-1"
                       >
-                        <h2 className="text-[2rem] md:text-[2.5rem] font-bold tracking-tight text-[#0e0e10] uppercase">
+                        <h2 className="text-[1.75rem] md:text-[2rem] font-bold tracking-tight text-[#0e0e10] uppercase">
                           {packageResult.name}
                         </h2>
                       </motion.div>
@@ -475,25 +485,20 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
-                        className="text-[0.75rem] tracking-[0.2em] uppercase text-[#86868b] font-bold mb-6"
+                        className="text-[0.7rem] md:text-[0.75rem] tracking-[0.2em] uppercase text-[#86868b] font-bold mb-3 md:mb-4"
                       >
                         {t("quote.result.estimate", lang)}
                       </motion.p>
 
-                      <motion.div 
+                       <motion.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="inline-flex flex-col md:flex-row items-center gap-4 bg-white border border-black/[0.03] p-6 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] mb-4"
+                        className="inline-flex flex-col items-center gap-1 bg-white border border-black/[0.03] p-4 md:p-6 md:px-10 rounded-[1.25rem] md:rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.05)] mb-3 md:mb-4"
                       >
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-[2.5rem] font-extrabold text-[#0e0e10] tabular-nums">€{packageResult.price}</span>
-                          <span className="text-[0.75rem] font-bold text-[#86868b] uppercase tracking-widest">{t("quote.result.setup", lang)}</span>
-                        </div>
-                        <div className="hidden md:flex items-center justify-center text-[#d2d2d7] text-xl font-light">+</div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-[1.75rem] font-bold text-[#007aff] tabular-nums">€{packageResult.monthly}</span>
-                          <span className="text-[0.75rem] font-bold text-[#86868b] uppercase tracking-widest">/{t("quote.result.monthly", lang)}</span>
+                        <div className="flex items-baseline gap-2 md:gap-3">
+                          <span className="text-[2.25rem] md:text-[3rem] font-extrabold text-[#0e0e10] tabular-nums tracking-tighter">€{packageResult.monthly}</span>
+                          <span className="text-[0.75rem] md:text-[0.875rem] font-bold text-[#86868b] uppercase tracking-widest">/{t("quote.result.monthly", lang)}</span>
                         </div>
                       </motion.div>
                     </div>
@@ -502,7 +507,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6 }}
-                      className="bg-[#fbfbfd] border border-black/[0.04] rounded-[2.5rem] p-6 md:p-8 max-w-lg mx-auto mb-6 shadow-sm overflow-hidden relative"
+                      className="bg-[#fbfbfd] border border-black/[0.04] rounded-[1.25rem] md:rounded-[1.5rem] p-4 md:p-5 max-w-lg mx-auto mb-3 md:mb-4 shadow-sm overflow-hidden relative"
                     >
                        <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
                           <Zap size={120} strokeWidth={1} />
@@ -525,8 +530,8 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                         ))}
                       </ul>
                       
-                      <div className="mt-4 pt-4 border-t border-black/5">
-                        <p className="text-[0.8125rem] text-[#86868b] leading-relaxed italic font-medium">
+                      <div className="mt-3 pt-3 border-t border-black/5">
+                        <p className="text-[0.75rem] md:text-[0.8125rem] text-[#86868b] leading-relaxed italic font-medium">
                            {t("quote.result.finalNote", lang)}
                         </p>
                       </div>
@@ -539,38 +544,38 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                         transition={{ delay: 1.2 }}
                         className="flex flex-col items-center gap-3"
                       >
-                        <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-[0.875rem] font-bold shadow-xl">
+                        <div className="flex items-center gap-2 px-5 py-2 rounded-full bg-black text-white text-[0.8125rem] md:text-[0.875rem] font-bold shadow-xl">
                            <Calendar size={18} />
                            {t("quote.result.callback", lang)}
                         </div>
                       </motion.div>
 
                       <div className="space-y-2">
-                        <p className="text-[0.75rem] tracking-[0.2em] uppercase text-[#86868b] font-bold">
+                        <p className="text-[0.65rem] md:text-[0.7rem] tracking-[0.2em] uppercase text-[#86868b] font-bold mb-2">
                            {t("quote.result.orContact", lang)}
                         </p>
-                        <div className="flex flex-wrap justify-center gap-3">
+                        <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-2 md:gap-3 px-4">
                            <a 
                             href="https://wa.me/491627176334" 
                             target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-[#25D366] text-white text-[0.8125rem] font-bold hover:translate-y-[-2px] hover:shadow-lg transition-all"
+                            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl md:rounded-2xl bg-[#25D366] text-white text-[0.75rem] md:text-[0.8125rem] font-bold hover:translate-y-[-2px] hover:shadow-lg transition-all col-span-1"
                           >
-                            <MessageSquare size={18} />
+                            <MessageSquare size={16} />
                             WhatsApp
                           </a>
                           <a 
                             href="https://calendly.com/atageldiyewhalyl/business-beratung"
                             target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-[#007aff] text-white text-[0.8125rem] font-bold hover:translate-y-[-2px] hover:shadow-lg transition-all"
+                            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl md:rounded-2xl bg-[#007aff] text-white text-[0.75rem] md:text-[0.8125rem] font-bold hover:translate-y-[-2px] hover:shadow-lg transition-all col-span-1"
                           >
-                            <Calendar size={18} />
+                            <Calendar size={16} />
                             Calendly
                           </a>
                            <a 
                             href="mailto:Halyl@nüll.com"
-                            className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-[#f5f5f7] text-[#0e0e10] text-[0.8125rem] font-bold hover:translate-y-[-2px] transition-all"
+                            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl md:rounded-2xl bg-[#f5f5f7] text-[#0e0e10] text-[0.75rem] md:text-[0.8125rem] font-bold hover:translate-y-[-2px] transition-all col-span-2"
                           >
-                            <Mail size={18} />
+                            <Mail size={16} />
                             Email
                           </a>
                         </div>
@@ -583,7 +588,7 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
 
             {/* Footer Buttons */}
             {step !== "RESULT" && (
-              <div className="p-8 md:p-10 border-t border-black/5 bg-[#fafafa] flex items-center justify-between">
+              <div className="p-4 md:p-8 border-t border-black/5 bg-white flex items-center justify-between sticky bottom-0 z-10 safe-area-bottom">
                 <button
                   onClick={handleBack}
                   disabled={step === "IDENTITY"}
@@ -597,13 +602,13 @@ export function LeadCapture({ isOpen, onClose }: LeadCaptureProps) {
                     isSubmitting ||
                     (step === "IDENTITY" && (
                       !formData.name || 
-                      !formData.email || 
-                      !formData.phone || 
+                      !isValidEmail(formData.email) || 
+                      !isValidPhone(formData.phone) || 
                       !formData.firm || 
                       !formData.location
                     )) ||
                     (step === "OBJECTIVE" && formData.objective.length === 0) ||
-                    (step === "SCALE" && !formData.scale)
+                    (step === "SITE_TYPE" && !formData.siteType)
                   }
                   className="bg-black text-white px-8 py-3 rounded-full text-[0.9375rem] font-bold flex items-center gap-2 hover:bg-[#2c2c2e] transition-all active:scale-[0.98] disabled:opacity-30"
                 >

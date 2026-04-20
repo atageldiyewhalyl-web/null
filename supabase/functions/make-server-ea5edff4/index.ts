@@ -190,6 +190,7 @@ app.post("*/contact", async (c) => {
 
     if (resendApiKey && toEmail) {
       try {
+        console.log(`Attempting to send contact email to ${toEmail} for client ${name}`);
         const isValidEmail = (str: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
         const validReplyTo = (email && isValidEmail(email)) ? email : toEmail;
 
@@ -209,19 +210,14 @@ app.post("*/contact", async (c) => {
                 <h2 style="color: #007aff; margin-top: 0; font-size: 20px;">New Website Inquiry</h2>
                 
                 ${packageName ? `
-                <div style="margin: 24px 0; padding: 20px; background-color: #007aff; border-radius: 12px; color: #fff;">
-                  <p style="margin: 0; font-size: 12px; text-transform: uppercase; font-weight: bold; opacity: 0.8;">Selected Package</p>
-                  <h3 style="margin: 4px 0 12px 0; font-size: 24px; color: #fff;">${packageName}</h3>
-                  <div style="display: flex; gap: 20px;">
-                    <div>
-                      <p style="margin: 0; font-size: 10px; text-transform: uppercase; opacity: 0.8;">Setup Fee</p>
-                      <p style="margin: 2px 0 0 0; font-size: 18px; font-weight: bold;">€${setupPrice}</p>
-                    </div>
-                    <div>
-                      <p style="margin: 0; font-size: 10px; text-transform: uppercase; opacity: 0.8;">Monthly</p>
-                      <p style="margin: 2px 0 0 0; font-size: 18px; font-weight: bold;">€${monthlyPrice}</p>
-                    </div>
+                <div style="margin: 24px 0; padding: 24px; background-color: #007aff; border-radius: 16px; color: #fff;">
+                  <p style="margin: 0; font-size: 12px; text-transform: uppercase; font-weight: bold; opacity: 0.8; letter-spacing: 0.05em;">Selected Package</p>
+                  <h3 style="margin: 4px 0 16px 0; font-size: 28px; color: #fff; font-weight: 800;">${packageName}</h3>
+                  <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
+                    <p style="margin: 0; font-size: 11px; text-transform: uppercase; opacity: 0.8; font-weight: bold;">Monthly Retainer</p>
+                    <p style="margin: 4px 0 0 0; font-size: 32px; font-weight: 900;">€${monthlyPrice}<span style="font-size: 14px; font-weight: 400; opacity: 0.8;"> /mo</span></p>
                   </div>
+                  <p style="margin: 16px 0 0 0; font-size: 13px; font-style: italic; opacity: 0.9;">Includes Maintenance, Hosting & Ongoing Support</p>
                 </div>
                 ` : ''}
 
@@ -245,18 +241,20 @@ app.post("*/contact", async (c) => {
           }),
         });
 
+        const resendData = await resendRes.json();
+        console.log(`Resend Response Status: ${resendRes.status}`, resendData);
+        
         if (!resendRes.ok) {
-          const resendErr = await resendRes.json();
-          console.error("Resend API Contact Error:", resendErr);
-          return c.json({ success: false, error: resendErr, id });
+          console.error("Resend API Contact Error:", resendData);
+          return c.json({ success: false, error: resendData, id });
         }
       } catch (err: any) {
         console.error("Critical Email Error:", err);
         return c.json({ success: false, error: err.message, id });
       }
     } else {
-      console.warn(`Email skip: resendApiKey=${!!resendApiKey}, toEmail=${!!toEmail}`);
-      return c.json({ success: true, warning: "Email skipped - Check env vars", id });
+      console.error(`Email configuration missing: resendApiKey=${!!resendApiKey}, toEmail=${!!toEmail}`);
+      return c.json({ success: false, error: "Email configuration missing on server", id });
     }
 
     return c.json({ success: true, id });
