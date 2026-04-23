@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Clock } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { SEO, StructuredData } from "./SEO";
+import { StructuredData } from "./SEO";
 import { blogPosts } from "./blogData";
 
 export function BlogList() {
@@ -41,11 +41,6 @@ export function BlogList() {
 
   return (
     <>
-      <SEO
-        title="Blog"
-        description="Practical insights on web design, SEO, branding, and growing your business online. Expert advice from a Mannheim-based web design agency."
-        canonical="/blog"
-      />
       <StructuredData data={structuredData} />
       <StructuredData data={breadcrumbData} />
 

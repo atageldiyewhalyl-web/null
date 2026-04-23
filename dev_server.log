@@ -1,0 +1,189 @@
+
+> @figma/my-make-file@0.0.1 dev
+> react-router dev --host
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.178.91:5173/
+1:49:09 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:09 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:09 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:09 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:49:26 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:26 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:26 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:26 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:49:32 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:32 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:32 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:32 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:49:47 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:47 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:47 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:49:47 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:50:03 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:50:03 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:50:03 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:50:03 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:50:09 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:50:09 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:50:09 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:50:09 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:52:18 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:18 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:18 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:18 AM [vite] (ssr) page reload app/components/Pricing.tsx
+1:52:23 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:23 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:23 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:23 AM [vite] (ssr) page reload app/components/Pricing.tsx
+1:52:28 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:28 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:28 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:52:28 AM [vite] (ssr) page reload app/components/Pricing.tsx
+1:53:31 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:53:31 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:53:31 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:53:31 AM [vite] (ssr) page reload app/components/Pricing.tsx
+1:53:42 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:53:42 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:53:42 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:53:42 AM [vite] (ssr) page reload app/components/Pricing.tsx
+1:54:07 AM [vite] (client) ✨ new dependencies optimized: jspdf, jspdf-autotable
+1:54:07 AM [vite] (client) ✨ optimized dependencies changed. reloading
+1:55:35 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:55:35 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:55:35 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:55:35 AM [vite] (ssr) page reload app/components/Navbar.tsx
+1:55:41 AM [vite] (client) hmr update /app/components/Hero.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:55:41 AM [vite] (client) hmr update /app/components/Hero.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:55:41 AM [vite] (client) hmr update /app/components/Hero.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:55:41 AM [vite] (ssr) page reload app/components/Hero.tsx
+1:56:50 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:50 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:50 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:50 AM [vite] (ssr) page reload app/components/Navbar.tsx
+1:56:54 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:54 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:54 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:54 AM [vite] (ssr) page reload app/components/Navbar.tsx
+1:56:57 AM [vite] (client) hmr update /app/components/Hero.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:57 AM [vite] (client) hmr update /app/components/Hero.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:57 AM [vite] (client) hmr update /app/components/Hero.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:56:57 AM [vite] (ssr) page reload app/components/Hero.tsx
+1:57:59 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:57:59 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:57:59 AM [vite] (client) hmr update /app/components/Navbar.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:57:59 AM [vite] (ssr) page reload app/components/Navbar.tsx
+1:58:05 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:05 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:05 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:05 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:58:11 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:11 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:11 AM [vite] (client) hmr update /app/components/Pricing.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:11 AM [vite] (ssr) page reload app/components/Pricing.tsx
+1:58:16 AM [vite] (client) hmr update /app/components/Footer.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:16 AM [vite] (client) hmr update /app/components/Footer.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:16 AM [vite] (client) hmr update /app/components/Footer.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:58:16 AM [vite] (ssr) page reload app/components/Footer.tsx
+1:59:19 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:19 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:19 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:19 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:59:22 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:22 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:22 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:22 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+1:59:28 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:28 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:28 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+1:59:28 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+2:00:20 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:20 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:20 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:20 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+2:00:23 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:23 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:23 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:23 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+2:00:26 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:26 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:26 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:00:26 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+2:03:15 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:03:15 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:03:15 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:03:15 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+2:03:24 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:03:24 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:03:24 AM [vite] (client) hmr update /app/components/LeadCapture.tsx, /app/styles/index.css, /app/styles/index.css?direct
+2:03:24 AM [vite] (ssr) page reload app/components/LeadCapture.tsx
+Error: No route matches URL "/apple-touch-icon-precomposed.png"
+    at getInternalRouterError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:5266:5)
+    at Object.query (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:3298:19)
+    at handleDocumentRequest (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1459:38)
+    at requestHandler (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1318:24)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at nodeHandler (/Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3802:30)
+    at /Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3809:17
+No routes matched location "/apple-touch-icon-precomposed.png" 
+ErrorResponseImpl {
+  status: 404,
+  statusText: 'Not Found',
+  internal: true,
+  data: 'Error: No route matches URL "/apple-touch-icon-precomposed.png"',
+  error: Error: No route matches URL "/apple-touch-icon-precomposed.png"
+      at getInternalRouterError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:5266:5)
+      at Object.query (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:3298:19)
+      at handleDocumentRequest (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1459:38)
+      at requestHandler (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1318:24)
+      at processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at nodeHandler (/Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3802:30)
+      at /Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3809:17
+}
+Error: No route matches URL "/apple-touch-icon.png"
+    at getInternalRouterError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:5266:5)
+    at Object.query (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:3298:19)
+    at handleDocumentRequest (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1459:38)
+    at requestHandler (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1318:24)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at nodeHandler (/Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3802:30)
+    at /Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3809:17
+No routes matched location "/apple-touch-icon.png" 
+ErrorResponseImpl {
+  status: 404,
+  statusText: 'Not Found',
+  internal: true,
+  data: 'Error: No route matches URL "/apple-touch-icon.png"',
+  error: Error: No route matches URL "/apple-touch-icon.png"
+      at getInternalRouterError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:5266:5)
+      at Object.query (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:3298:19)
+      at handleDocumentRequest (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1459:38)
+      at requestHandler (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1318:24)
+      at processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at nodeHandler (/Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3802:30)
+      at /Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3809:17
+}
+Error: No route matches URL "/favicon.ico"
+    at getInternalRouterError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:5266:5)
+    at Object.query (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:3298:19)
+    at handleDocumentRequest (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1459:38)
+    at requestHandler (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1318:24)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at nodeHandler (/Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3802:30)
+    at /Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3809:17
+No routes matched location "/favicon.ico" 
+ErrorResponseImpl {
+  status: 404,
+  statusText: 'Not Found',
+  internal: true,
+  data: 'Error: No route matches URL "/favicon.ico"',
+  error: Error: No route matches URL "/favicon.ico"
+      at getInternalRouterError (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:5266:5)
+      at Object.query (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-QFMPRPBF.mjs:3298:19)
+      at handleDocumentRequest (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1459:38)
+      at requestHandler (file:///Users/halyl.atageldiyev/Desktop/Null/node_modules/react-router/dist/development/chunk-2UH5WJXA.mjs:1318:24)
+      at processTicksAndRejections (node:internal/process/task_queues:103:5)
+      at nodeHandler (/Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3802:30)
+      at /Users/halyl.atageldiyev/Desktop/Null/node_modules/@react-router/dev/dist/vite.js:3809:17
+}

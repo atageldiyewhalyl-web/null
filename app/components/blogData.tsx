@@ -137,4 +137,107 @@ export const blogPosts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1612260515303-7c3c7b372481?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwcGVyZm9ybWFuY2UlMjBzcGVlZCUyMGxvYWRpbmd8ZW58MXx8fHwxNzczNzk4NjE2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
+  {
+    slug: "webdesign-mannheim-guide-2026",
+    title: "Webdesign Mannheim: Der ultimative Guide für Berater 2026",
+    excerpt: "Suchen Sie nach exzellentem Webdesign in Mannheim? In diesem Guide erfahren Sie, wie Sie Ihre Expertise digital sichtbar machen und Klienten in der Region gewinnen.",
+    content: [
+      "Mannheim ist ein Zentrum für Expertise und Beratung. Doch in einem kompetitiven Markt wie der Rhein-Neckar-Region reicht Mundpropaganda allein nicht mehr aus. Wer online nicht stattfindet, überlässt das Feld der Konkurrenz.",
+      "## Warum lokales Webdesign in Mannheim den Unterschied macht",
+      "Klienten in Mannheim und Umgebung suchen gezielt nach Experten vor Ort. Eine Website, die nicht nur professionell aussieht, sondern auch lokal optimiert ist, schafft sofortiges Vertrauen. Sie signalisiert Präsenz und Erreichbarkeit.",
+      "## Die 3 Säulen einer erfolgreichen Berater-Website",
+      "Eine Website für Berater muss drei Dinge perfekt beherrschen: Autorität ausstrahlen, Vertrauen aufbauen und den Kontakt so einfach wie möglich machen.",
+      "### 1. Digitale Autorität durch Premium-Design",
+      "Ihr Design ist Ihr digitaler Anzug. Wer billige Templates nutzt, wirkt wie ein Amateur. Ein individuelles, hochwertiges Design zeigt, dass Sie Ihre eigene Arbeit und Ihre Klienten wertschätzen.",
+      "### 2. Vertrauen durch Positionierung",
+      "Sprechen Sie die Sprache Ihrer Klienten. Besonders in der deutsch-türkischen Community ist es wichtig, kulturelle Brücken zu schlagen und Kompetenz in beiden Welten zu zeigen. Eine zweisprachige Präsenz kann hier ein entscheidender Wettbewerbsvorteil sein.",
+      "### 3. Conversion-Optimierung",
+      "Was nützt der schönste Auftritt, wenn niemand anfragt? Klare Call-to-Actions, einfache Buchungstools wie Calendly und eine schnelle WhatsApp-Anbindung sind heute Standard für moderne Beratungskanzleien.",
+      "## Nüll.: Ihr Partner für Webdesign in Mannheim",
+      "Wir sind in Mannheim verwurzelt und verstehen den lokalen Markt. Wir bauen keine Standard-Websites, sondern digitale Lead-Maschinen für Consultants, die wachsen wollen.",
+      "Bereit für den nächsten Schritt? Lassen Sie uns Ihre digitale Präsenz in Mannheim auf das nächste Level heben."
+    ],
+    category: "Webdesign",
+    date: "2026-04-20",
+    readTime: "7 min read",
+    image: "/assets/blog/mannheim-webdesign.png"
+  },
+  {
+    slug: "lead-acquisition-for-consultants",
+    title: "Lead Acquisition for Consultants: Beyond Referrals",
+    excerpt: "Relying on word-of-mouth is risky. Learn how to build a predictable lead acquisition system that brings high-quality clients to your consultancy every month.",
+    content: [
+      "Most consultants build their businesses on referrals. While referrals are great, they are unpredictable. To build a truly scalable consultancy, you need a system that generates leads consistently, even when you're busy with client work.",
+      "## The Trap of Word-of-Mouth",
+      "Relying solely on word-of-mouth means you're not in control of your growth. When the referrals stop, the business stops. A digital lead acquisition system puts you back in the driver's seat.",
+      "## Building Your Lead Machine",
+      "A successful lead acquisition system for consultants consists of three main components: Visibility, Authority, and Capture.",
+      "### Step 1: Visibility (SEO & Content)",
+      "You need to be where your clients are searching. This means ranking for keywords like 'Criminal Defense Lawyer Mannheim' or 'Financial Consultant Germany'. Content that answers your potential clients' most pressing questions is the best way to get found.",
+      "### Step 2: Authority (Your Website)",
+      "Once a potential client finds you, they need to be convinced of your expertise. Your website must demonstrate your deep knowledge through case studies, testimonials, and high-quality insights.",
+      "### Step 3: Capture (The Conversion)",
+      "Don't make your clients work to hire you. Use friction-less capture methods: clear contact forms, direct WhatsApp links, and automated scheduling. The easier it is to reach you, the more leads you will get.",
+      "## The Power of GEO (Generative Engine Optimization)",
+      "In 2026, AI agents like Perplexity and ChatGPT are becoming the new search engines. Ensuring your firm is recommended by these AI agents is the new frontier of lead acquisition. We specialize in positioning your brand to be the top choice for AI-driven searches.",
+      "## Stop Waiting, Start Winning",
+      "Lead acquisition doesn't have to be a mystery. With the right strategy and a high-performance website, you can turn your expertise into a predictable flow of high-value clients."
+    ],
+    category: "Lead Acquisition",
+    date: "2026-04-15",
+    readTime: "6 min read",
+    image: "/assets/blog/lead-acquisition.png"
+  },
+  {
+    slug: "how-to-position-your-consultancy-online",
+    title: "How to Position Your Consultancy Online for Maximum Authority",
+    excerpt: "Positioning is everything. If you try to be everything to everyone, you end up being nobody to anyone. Learn how to narrow your focus to win more clients.",
+    content: [
+      "The biggest mistake consultants make online is being too general. 'Business Consultant' is a commodity. 'Marketing Consultant for Turkish-German Law Firms' is a premium expert.",
+      "## The Expert's Paradox",
+      "Consultants fear that narrowing their focus will limit their opportunities. In reality, it does the opposite. By specializing, you become the obvious choice for a specific group, allowing you to charge higher fees and win clients more easily.",
+      "## How to Find Your Profitable Niche",
+      "Look at your past successes. Where did you deliver the most value? Which clients did you enjoy working with the most? Where is there a gap in the market? That intersection is your sweet spot.",
+      "## Translating Positioning into Web Design",
+      "Your website should reflect your specialization in every detail. From the imagery to the copy, every element should signal to your ideal client: 'I understand your specific problems better than anyone else.'",
+      "## Authority-Building Content",
+      "Once you've defined your position, produce content that reinforces it. Don't write generic advice. Write deep dives into the specific challenges your niche faces. This is how you build a moat around your business.",
+      "## The Digital Authority System",
+      "At Nüll., we don't just build websites; we build authority systems. We help you define your positioning, craft your message, and build a digital presence that commands respect and attracts the right clients.",
+      "Your expertise deserves a premium platform. Don't settle for a generic website that hides your true value."
+    ],
+    category: "Positioning",
+    date: "2026-04-10",
+    readTime: "5 min read",
+    image: "/assets/blog/consultant-positioning.png"
+  },
+  {
+    slug: "digital-presence-strategy-germany",
+    title: "Digital Presence Strategy: Winning the German Market in 2026",
+    excerpt: "The German market has unique demands and cultural nuances. Learn how to build a digital presence that resonates with German clients and builds long-term trust.",
+    content: [
+      "Germany is one of the most stable and lucrative markets for consultants in the world. However, it is also one of the most demanding. Clients here value 'Gründlichkeit' (thoroughness), 'Zuverlässigkeit' (reliability), and 'Transparenz' (transparency). Your digital presence must reflect these values.",
+      "## The 2026 Digital Landscape in Germany",
+      "While Germany was once seen as slow to digitize, 2026 has seen a massive shift. High-end consulting is now almost entirely researched online first. If your digital strategy is stuck in 2020, you're invisible to the new generation of German business leaders.",
+      "## Key Pillars of a German Digital Strategy",
+      "To win in Germany, your digital strategy needs to be built on a foundation of trust and technical excellence.",
+      "### 1. Legal Compliance as a Trust Signal",
+      "In Germany, an 'Impressum' and 'Datenschutzerklärung' aren't just legal requirements -- they are trust signals. A missing or poorly written legal notice is an immediate red flag for German clients. We ensure every site we build is fully compliant and professionally presented.",
+      "### 2. High-Performance Engineering",
+      "German clients appreciate efficiency. A slow, bloated website signals a lack of attention to detail. A fast, crisp, well-engineered site signals competence and professionalism. This is why we prioritize performance in every project.",
+      "### 3. The Power of Bilingualism",
+      "For firms working within the Turkish-German community, bilingualism is a superpower. It shows you can navigate both cultures and serve a wider range of clients with the same level of expertise. It's about accessibility and respect.",
+      "## Positioning for 'Mittelstand' and Beyond",
+      "Whether you're targeting small boutique firms or large 'Mittelstand' companies, your message must be precise. Avoid hype and over-promising. Focus on results, case studies, and clear, logical processes.",
+      "## Your Digital Legacy starts here",
+      "A website is more than just a marketing tool; it's your digital legacy. In the German market, where relationships are built on years of trust, your online presence is the first step in a long-term partnership.",
+      "Let Nüll. help you craft a strategy that doesn't just look good, but commands respect and delivers results in the German market."
+    ],
+    category: "Strategy",
+    date: "2026-04-05",
+    readTime: "8 min read",
+    image: "/assets/blog/germany-strategy.png"
+  }
 ];
+
+

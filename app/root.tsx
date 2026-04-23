@@ -43,7 +43,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   const { lang } = useLoaderData<typeof loader>() || { lang: "de" };
   const location = useLocation();
-  const isOnboarding = location.pathname.startsWith("/onboarding");
+  const isAdmin = location.pathname.startsWith("/admin");
+  const isOnboarding = location.pathname.startsWith("/onboarding") || isAdmin;
 
   return (
     <LanguageProvider initialLang={lang}>
@@ -56,15 +57,23 @@ export default function App() {
   );
 }
 
-export function meta() {
+export function meta(args: any) {
+  const location = args?.location;
+  const pathname = location?.pathname || "/";
+  const isBlog = pathname.startsWith("/blog/");
+  const title = "Nüll. - Consultant Marketing & Webdesign";
+  const description = "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität.";
+  const baseUrl = "https://xn--nll-hoa.com";
+  const url = `${baseUrl}${pathname}`;
+
   return [
-    { title: "Nüll. - Consultant Marketing & Webdesign" },
-    { name: "description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität." },
+    { title },
+    { name: "description", content: description },
     { name: "robots", content: "index, follow, max-image-preview:large" },
-    { property: "og:type", content: "website" },
-    { property: "og:title", content: "Nüll. - Consultant Marketing & Webdesign" },
-    { property: "og:description", content: "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität." },
-    { property: "og:url", content: "https://xn--nll-hoa.com" },
+    { property: "og:type", content: isBlog ? "article" : "website" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: url },
     { property: "og:site_name", content: "Nüll. - Web Design Agentur Mannheim" },
     { property: "og:locale", content: "de_DE" },
     { name: "twitter:card", content: "summary_large_image" },
@@ -78,14 +87,20 @@ export function meta() {
 
 import stylesheet from "./styles/index.css?url";
 
-export function links() {
+export function links(args: any) {
+  const location = args?.location;
+  const pathname = location?.pathname || "/";
+  const baseUrl = "https://xn--nll-hoa.com";
+  const url = `${baseUrl}${pathname}`;
+
   return [
     { rel: "stylesheet", href: stylesheet },
-    { rel: "canonical", href: "https://xn--nll-hoa.com" },
+    { rel: "canonical", href: url },
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-    { rel: "alternate", hrefLang: "de", href: "https://xn--nll-hoa.com" },
-    { rel: "alternate", hrefLang: "en", href: "https://xn--nll-hoa.com" },
-    { rel: "alternate", hrefLang: "tr", href: "https://xn--nll-hoa.com" },
-    { rel: "alternate", hrefLang: "x-default", href: "https://xn--nll-hoa.com" },
+    { rel: "alternate", hrefLang: "de", href: url },
+    { rel: "alternate", hrefLang: "en", href: url },
+    { rel: "alternate", hrefLang: "tr", href: url },
+    { rel: "alternate", hrefLang: "x-default", href: url },
   ];
 }
+

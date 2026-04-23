@@ -1,13 +1,14 @@
 import { Suspense, lazy, useState } from 'react';
 import { Hero } from "./Hero";
-import { SEO, StructuredData } from "./SEO";
+import { StructuredData } from "./SEO";
 import { LeadCapture } from "./LeadCapture";
 
-const Problem = lazy(() => import("./Problem").then(m => ({ default: m.Problem })));
-const Services = lazy(() => import("./Services").then(m => ({ default: m.Services })));
-const Work = lazy(() => import("./Work").then(m => ({ default: m.Work })));
-const Pricing = lazy(() => import("./Pricing").then(m => ({ default: m.Pricing })));
-const Contact = lazy(() => import("./Contact").then(m => ({ default: m.Contact })));
+import { Problem } from "./Problem";
+import { Services } from "./Services";
+import { Work } from "./Work";
+import { Pricing } from "./Pricing";
+import { Contact } from "./Contact";
+
 
 
 const organizationData = {
@@ -72,18 +73,16 @@ export function Home() {
 
   return (
     <>
-      <SEO />
       <StructuredData data={organizationData} />
       <StructuredData data={websiteData} />
       <Hero />
-      <Suspense fallback={<div className="min-h-[50vh]" />}>
-        <Problem />
-        <Services />
-        <Work />
-        <Pricing onOpenQuote={() => setIsQuoteOpen(true)} />
-        <Contact />
-      </Suspense>
+      <Problem />
+      <Services />
+      <Work />
+      <Pricing onOpenQuote={() => setIsQuoteOpen(true)} />
+      <Contact />
       <LeadCapture isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
+
     </>
   );
 }

@@ -25,12 +25,29 @@ type Pages = {
       "slug": string;
     };
   };
+  "/admin/login": {
+    params: {};
+  };
+  "/admin": {
+    params: {};
+  };
+  "/admin/projects": {
+    params: {};
+  };
+  "/admin/jobs": {
+    params: {};
+  };
+  "/admin/jobs/:id": {
+    params: {
+      "id": string;
+    };
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/blog" | "/blog/:slug";
+    page: "/" | "/onboarding" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -48,6 +65,30 @@ type RouteFiles = {
     id: "routes/blog-post";
     page: "/blog/:slug";
   };
+  "routes/admin-login.tsx": {
+    id: "routes/admin-login";
+    page: "/admin/login";
+  };
+  "routes/admin.tsx": {
+    id: "routes/admin";
+    page: "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+  };
+  "routes/admin-dashboard.tsx": {
+    id: "routes/admin-dashboard";
+    page: "/admin";
+  };
+  "routes/admin-projects.tsx": {
+    id: "routes/admin-projects";
+    page: "/admin/projects";
+  };
+  "routes/admin-jobs.tsx": {
+    id: "routes/admin-jobs";
+    page: "/admin/jobs";
+  };
+  "routes/admin-job-detail.tsx": {
+    id: "routes/admin-job-detail";
+    page: "/admin/jobs/:id";
+  };
 };
 
 type RouteModules = {
@@ -56,4 +97,10 @@ type RouteModules = {
   "routes/home": typeof import("./app/routes/home.tsx");
   "routes/blog-list": typeof import("./app/routes/blog-list.tsx");
   "routes/blog-post": typeof import("./app/routes/blog-post.tsx");
+  "routes/admin-login": typeof import("./app/routes/admin-login.tsx");
+  "routes/admin": typeof import("./app/routes/admin.tsx");
+  "routes/admin-dashboard": typeof import("./app/routes/admin-dashboard.tsx");
+  "routes/admin-projects": typeof import("./app/routes/admin-projects.tsx");
+  "routes/admin-jobs": typeof import("./app/routes/admin-jobs.tsx");
+  "routes/admin-job-detail": typeof import("./app/routes/admin-job-detail.tsx");
 };
