@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow major AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://xn--nll-hoa.com/sitemap.xml
