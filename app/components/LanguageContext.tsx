@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from "react";
-
-export type Language = "en" | "de" | "tr";
+import type { Language } from "../types";
+export type { Language };
 
 const LanguageContext = createContext<{
   lang: Language;
@@ -45,10 +45,14 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
       console.warn("Language hydration from storage failed:", e);
     }
     setIsHydrated(true);
-
-    // Listen for changes fired by the self-contained LanguageSwitcher
-    // NO LONGER NEEDED as we will use useLanguage() directly
   }, []);
+
+  // 2. Sync with initialLang if it changes from the server (e.g. on navigation)
+  useEffect(() => {
+    if (initialLang && initialLang !== lang) {
+      setLangState(initialLang);
+    }
+  }, [initialLang]);
 
   const setLang = useCallback((newLang: Language) => {
     // 1. Force state update immediately

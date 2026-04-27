@@ -2,6 +2,7 @@
 
 @theme {
   --font-inter: "Inter", system-ui, sans-serif;
+  --font-outfit: "Outfit", system-ui, sans-serif;
 
   --color-background: #ffffff;
   --color-foreground: #0e0e10;
@@ -36,7 +37,7 @@
     @apply bg-background text-foreground antialiased selection:bg-primary/10 selection:text-primary font-sans;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    letter-spacing: -0.011em; /* Apple-style tight tracking */
+    letter-spacing: -0.011em; /* REVERTED: Original Apple-style tight tracking */
   }
 
   html {
@@ -45,9 +46,9 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-inter);
+    font-family: var(--font-inter); /* REVERTED: Original Inter font */
     @apply font-bold tracking-tight;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.03em; /* REVERTED: Original tracking */
   }
 
   h1 { @apply text-[clamp(2.5rem,10vw,4.5rem)] leading-[1.05]; }
@@ -56,8 +57,9 @@
 
   p {
     @apply leading-relaxed;
-    color: #424245; /* Apple gray for secondary text */
+    color: #424245; /* Original Apple gray */
   }
+
 }
 
 @layer utilities {
@@ -68,9 +70,34 @@
   .premium-shadow {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
   }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-black via-black to-[#007aff];
+  }
+
+  .blog-prose {
+    font-family: var(--font-inter);
+  }
+
+  .blog-prose p {
+    @apply text-[1.1875rem] leading-[1.8] text-neutral-700 mb-10 font-normal;
+    letter-spacing: -0.01em;
+  }
+
+  .blog-prose h2 {
+    font-family: var(--font-outfit);
+    @apply text-[2.25rem] font-bold tracking-[-0.05em] mt-24 mb-10 text-black leading-tight;
+  }
+
+  .blog-prose blockquote {
+    font-family: var(--font-outfit);
+    @apply border-l-4 border-primary pl-8 my-16 italic text-[1.5rem] font-medium text-neutral-900 leading-relaxed;
+  }
+
+
+  .drop-cap::first-letter {
+    @apply float-left text-[4.5rem] font-bold leading-[1] pr-4 pt-2 text-primary;
+    font-family: var(--font-outfit);
+  }
 }
 
-:root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 10%;
-}

@@ -95,9 +95,13 @@ export function links(args: any) {
 
   return [
     { rel: "stylesheet", href: stylesheet },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" },
     { rel: "canonical", href: url },
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     { rel: "alternate", hrefLang: "de", href: url },
+
     { rel: "alternate", hrefLang: "en", href: url },
     { rel: "alternate", hrefLang: "tr", href: url },
     { rel: "alternate", hrefLang: "x-default", href: url },

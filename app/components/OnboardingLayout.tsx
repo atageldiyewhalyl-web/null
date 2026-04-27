@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router";
-import { useLanguage, t } from "./LanguageContext";
+import { useLanguage, t, type Language } from "./LanguageContext";
 import { motion } from "motion/react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
@@ -8,14 +8,16 @@ export function OnboardingLayout({
   children, 
   isLong = false,
   isCentered = false,
-  showSecureMessage = false 
+  showSecureMessage = false,
+  languages,
 }: { 
   children: ReactNode;
   isLong?: boolean;
   isCentered?: boolean;
   showSecureMessage?: boolean;
+  languages?: Language[];
 }) {
-  const { lang, setLang } = useLanguage();
+  const { lang } = useLanguage();
 
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-[#007aff]/10 selection:text-[#007aff]">
@@ -28,7 +30,7 @@ export function OnboardingLayout({
           nüll<span className="text-[#007aff]">.</span>
         </Link>
 
-        <LanguageSwitcher />
+        <LanguageSwitcher languages={languages} />
       </header>
 
       {/* Main Content Area */}

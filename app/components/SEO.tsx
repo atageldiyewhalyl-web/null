@@ -120,7 +120,9 @@ export function StructuredData({ data }: { data: object }) {
     script.textContent = JSON.stringify(data);
     document.head.appendChild(script);
     return () => {
-      document.head.removeChild(script);
+      if (script && document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, [data, id]);
 

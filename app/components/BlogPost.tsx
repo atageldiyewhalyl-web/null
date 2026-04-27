@@ -1,19 +1,168 @@
-import { useParams, Link } from "react-router";
-import { motion } from "motion/react";
-import { ArrowLeft, Clock, Calendar } from "lucide-react";
+import { useParams, Link, useNavigate } from "react-router";
+import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
+import { ArrowLeft, Clock, Calendar, Share2, Bookmark, ChevronDown, CheckCircle2, AlertCircle, TrendingUp, X } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { SEO, StructuredData } from "./SEO";
 import { blogPosts } from "./blogData";
+import { useEffect, useState, useMemo } from "react";
+import { useLanguage } from "./LanguageContext";
 
-import { useParams, Link } from "react-router";
-import { motion, useScroll, useSpring } from "motion/react";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark, ChevronRight } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { blogPosts } from "./blogData";
-import { useState, useEffect } from "react";
+// --- Custom Interactive Components ---
+
+const FAQSection = ({ faqs, lang }: { faqs: { question: string, answer: string }[], lang: string }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (!faqs || faqs.length === 0) return null;
+
+  return (
+    <div className="mt-32 pt-32 border-t border-neutral-100">
+      <h3 className="text-[2.5rem] font-bold tracking-[-0.04em] mb-12 font-outfit">
+        {lang === "de" ? "Häufig gestellte Fragen (FAQ)" : lang === "tr" ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
+      </h3>
+      <div className="space-y-4">
+        {faqs.map((faq, idx) => (
+          <div 
+            key={idx} 
+            className="rounded-3xl border border-neutral-100 bg-neutral-50/50 overflow-hidden transition-all duration-300 hover:border-[#0071e3]/30"
+          >
+            <button 
+              onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+              className="w-full p-8 flex items-center justify-between text-left hover:bg-neutral-100/50 transition-colors"
+            >
+              <span className="text-[1.25rem] font-bold text-black pr-8">{faq.question}</span>
+              <div className={`shrink-0 w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center transition-transform duration-500 ${openIndex === idx ? 'rotate-180' : ''}`}>
+                <ChevronDown size={20} className="text-[#0071e3]" />
+              </div>
+            </button>
+            <AnimatePresence>
+              {openIndex === idx && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="px-8 pb-8 text-[1.125rem] leading-[1.8] text-neutral-600">
+                    {faq.answer}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const AuditChecklist = ({ items, lang }: { items: string[], lang: string }) => {
+  const [checked, setChecked] = useState<Record<number, boolean>>({});
+  
+  const score = useMemo(() => {
+    return Object.values(checked).filter(Boolean).length * 2;
+  }, [checked]);
+
+  const maxScore = items.length * 2;
+
+  const getScoreColor = () => {
+    if (score >= maxScore * 0.8) return "bg-green-500";
+    if (score >= maxScore * 0.5) return "bg-orange-500";
+    return "bg-red-500";
+  };
+
+  const getScoreMessage = () => {
+    if (lang === "de") {
+      if (score >= 40) return "Exzellent. Deine Website ist gut optimiert.";
+      if (score >= 25) return "Solide. Klare Verbesserungspotenziale existieren.";
+      return "Kritisch. Deine Website verliert täglich Kunden.";
+    }
+    return score >= 40 ? "Excellent. Your site is high-converting." : score >= 25 ? "Moderate performer. Improvement areas exist." : "Critical. Immediate improvements required.";
+  };
+
+  return (
+    <div className="my-16 p-1 rounded-[3rem] bg-gradient-to-br from-neutral-100 to-white border border-neutral-200 shadow-2xl shadow-black/5 overflow-hidden">
+      <div className="bg-white rounded-[2.8rem] p-8 md:p-12">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12 border-b border-neutral-100 pb-12">
+          <div>
+            <h4 className="text-[1.75rem] font-bold mb-2 font-outfit">Audit Scoring</h4>
+            <p className="text-neutral-500 font-medium">{getScoreMessage()}</p>
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="text-right">
+              <div className="text-[2.5rem] font-bold leading-none font-outfit">{score}<span className="text-neutral-300 text-[1.5rem]">/{maxScore}</span></div>
+              <div className="text-xs font-black uppercase tracking-widest text-neutral-400 mt-2">Conversion Score</div>
+            </div>
+            <div className="w-16 h-16 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center">
+              <TrendingUp size={24} className={score >= 25 ? "text-green-500" : "text-red-500"} />
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          {items.map((item, idx) => (
+            <button
+              key={idx}
+              onClick={() => setChecked(prev => ({ ...prev, [idx]: !prev[idx] }))}
+              className="w-full flex items-center gap-5 p-5 rounded-2xl border border-neutral-100 hover:border-[#0071e3]/30 hover:bg-neutral-50/50 transition-all text-left group"
+            >
+              <div className={`w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all ${checked[idx] ? 'bg-[#0071e3] border-[#0071e3] shadow-lg shadow-[#0071e3]/20' : 'border-neutral-200 group-hover:border-[#0071e3]/50 bg-white'}`}>
+                {checked[idx] && <CheckCircle2 size={16} className="text-white" />}
+              </div>
+              <span className={`text-[1.125rem] font-medium transition-colors ${checked[idx] ? 'text-black' : 'text-neutral-500'}`}>
+                {item.replace(/\[\s\]\s*/, "")}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-neutral-100">
+          <div className="w-full h-3 bg-neutral-100 rounded-full overflow-hidden">
+            <motion.div 
+              className={`h-full ${getScoreColor()}`}
+              initial={{ width: 0 }}
+              animate={{ width: `${(score / maxScore) * 100}%` }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ComparisonCard = ({ before, after, lang }: { before: string, after: string, lang: string }) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+      <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-100 relative group overflow-hidden">
+        <div className="absolute top-4 right-4 text-[0.65rem] font-black uppercase tracking-widest text-red-400 bg-red-50 px-2 py-1 rounded">
+          {lang === "de" ? "Vermeiden" : "Avoid"}
+        </div>
+        <div className="flex items-center gap-3 mb-4 text-red-500 opacity-40 group-hover:opacity-100 transition-opacity">
+          <X size={20} />
+          <span className="text-sm font-bold uppercase tracking-wider">{lang === "de" ? "Schlechte Conversion" : "Low Conversion"}</span>
+        </div>
+        <p className="text-[1.25rem] font-bold text-neutral-400 italic">"{before}"</p>
+      </div>
+      <div className="p-8 rounded-3xl bg-[#0071e3]/5 border border-[#0071e3]/20 relative group overflow-hidden shadow-xl shadow-[#0071e3]/5">
+        <div className="absolute top-4 right-4 text-[0.65rem] font-black uppercase tracking-widest text-[#0071e3] bg-white px-2 py-1 rounded shadow-sm">
+          {lang === "de" ? "Optimiert" : "Optimized"}
+        </div>
+        <div className="flex items-center gap-3 mb-4 text-[#0071e3]">
+          <TrendingUp size={20} />
+          <span className="text-sm font-bold uppercase tracking-wider">{lang === "de" ? "Hohe Conversion" : "High Conversion"}</span>
+        </div>
+        <p className="text-[1.25rem] font-bold text-black italic">"{after}"</p>
+      </div>
+    </div>
+  );
+};
+
+// --- End Interactive Components ---
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const { lang } = useLanguage();
+  
   const post = blogPosts.find((p) => p.slug === slug);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -22,45 +171,51 @@ export function BlogPost() {
     restDelta: 0.001
   });
 
+  // Handle cross-language navigation
+  useEffect(() => {
+    if (post && post.lang !== lang) {
+      const translation = blogPosts.find(
+        (p) => p.groupId === post.groupId && p.lang === lang
+      );
+      if (translation && translation.slug !== slug) {
+        navigate(`/blog/${translation.slug}`, { replace: true });
+      }
+    }
+  }, [lang, post, navigate, slug]);
+
   if (!post) {
     return (
       <div className="pt-32 pb-24 px-6 min-h-screen text-center">
-        <h1 className="text-2xl mb-4" style={{ fontWeight: 600 }}>
-          Post not found
-        </h1>
-        <Link to="/blog" className="text-[#0071e3] hover:underline">
-          Back to blog
-        </Link>
+        <h1 className="text-2xl mb-4 font-bold">Post not found</h1>
+        <Link to="/blog" className="text-[#0071e3] hover:underline">Back to blog</Link>
       </div>
     );
   }
 
-  const formattedDate = new Date(post.date).toLocaleDateString("de-DE", {
+  const formattedDate = new Date(post.date).toLocaleDateString(lang === "de" ? "de-DE" : lang === "tr" ? "tr-TR" : "en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  // Find related posts (exclude current, take 2)
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const related = blogPosts
+    .filter((p) => p.groupId !== post.groupId && p.lang === lang)
+    .slice(0, 2);
 
-  // Extract headers for TOC
   const headers = post.content
     .filter(block => block.startsWith("## "))
     .map(block => block.replace("## ", ""));
 
   return (
-    <div className="bg-white">
-      {/* Reading Progress Bar */}
+    <div className="bg-white selection:bg-primary selection:text-white">
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-[#0071e3] origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-1.5 bg-[#0071e3] origin-left z-[1000]"
         style={{ scaleX }}
       />
 
-      <main className="pt-32 pb-24 min-h-screen">
+      <main className="pt-48 pb-24 min-h-screen">
         <article>
-          {/* Breadcrumbs & Actions */}
-          <div className="max-w-4xl mx-auto px-6 mb-12 flex justify-between items-center">
+          <div className="max-w-5xl mx-auto px-6 mt-12 mb-12 flex justify-between items-center">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -68,219 +223,398 @@ export function BlogPost() {
             >
               <Link
                 to="/blog"
-                className="inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-neutral-500 hover:text-black transition-colors"
+                className="group inline-flex items-center gap-2 text-[0.875rem] font-bold text-neutral-400 hover:text-black transition-all"
               >
-                <ArrowLeft size={16} /> Back to Insights
+                <div className="p-1.5 rounded-full bg-neutral-100 group-hover:bg-neutral-200 transition-colors">
+                  <ArrowLeft size={14} />
+                </div>
+                {lang === "de" ? "Zurück zu den Insights" : lang === "tr" ? "İçeriklere Geri Dön" : "Back to Insights"}
               </Link>
             </motion.div>
             
-            <div className="flex items-center gap-4">
-              <button className="p-2 rounded-full hover:bg-neutral-100 transition-colors text-neutral-500">
-                <Share2 size={18} />
-              </button>
-              <button className="p-2 rounded-full hover:bg-neutral-100 transition-colors text-neutral-500">
-                <Bookmark size={18} />
+            <div className="flex items-center gap-3">
+              <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-100 hover:bg-neutral-50 transition-all text-neutral-500 font-semibold text-sm">
+                <Share2 size={16} /> {lang === "de" ? "Teilen" : lang === "tr" ? "Paylaş" : "Share"}
               </button>
             </div>
           </div>
 
-          {/* Header Section */}
-          <div className="max-w-4xl mx-auto px-6 mb-16 text-center">
+          <div className="max-w-5xl mx-auto px-6 mb-16">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-block px-3 py-1 rounded-full bg-[#0071e3]/5 text-[#0071e3] text-[0.75rem] font-bold uppercase tracking-widest mb-6"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0071e3]/10 text-[#0071e3] text-[0.75rem] font-extrabold uppercase tracking-[0.1em] mb-10"
             >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-pulse" />
               {post.category}
             </motion.div>
             
             <motion.h1
-              className="text-[clamp(2.25rem,6vw,4rem)] tracking-[-0.04em] leading-[1.05] mb-8 font-semibold text-black"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-[clamp(2.5rem,8vw,5.5rem)] tracking-[-0.05em] leading-[1] mb-12 font-bold text-black text-gradient font-outfit"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               {post.title}
             </motion.h1>
 
             <motion.div 
-              className="flex items-center justify-center gap-6 text-[0.875rem] text-neutral-500 font-medium"
+              className="flex items-center gap-8 text-[0.9375rem] text-neutral-500 font-semibold"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.4 }}
             >
-              <span className="flex items-center gap-2">
-                <Calendar size={16} className="text-neutral-400" />
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center">
+                  <Calendar size={14} className="text-neutral-400" />
+                </div>
                 {formattedDate}
-              </span>
-              <span className="w-1 h-1 rounded-full bg-neutral-300" />
-              <span className="flex items-center gap-2">
-                <Clock size={16} className="text-neutral-400" />
+              </div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center">
+                  <Clock size={14} className="text-neutral-400" />
+                </div>
                 {post.readTime}
-              </span>
+              </div>
             </motion.div>
           </div>
 
-          {/* Hero Image */}
           <motion.div
-            className="max-w-6xl mx-auto px-6 mb-20"
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-[1400px] mx-auto px-6 mb-24"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           >
-            <div className="aspect-[21/9] overflow-hidden rounded-[2rem] bg-neutral-100 shadow-2xl shadow-black/5 ring-1 ring-black/5">
+            <div className="aspect-[21/9] overflow-hidden rounded-[3rem] bg-neutral-100 shadow-2xl shadow-black/10 ring-1 ring-black/5 relative">
               <ImageWithFallback
                 src={post.image}
                 alt={post.title}
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
           </motion.div>
 
-          {/* Main Content Area */}
-          <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16">
-            {/* Sidebar / TOC (Desktop Only) */}
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-20">
+            <div className="blog-prose lg:max-w-3xl">
+              {post.content[0]?.startsWith("> ") && (
+                <motion.div 
+                  className="mb-16 p-10 rounded-[2.5rem] bg-[#f5f5f7] border border-black/5 relative overflow-hidden group"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="absolute top-0 right-0 p-8 opacity-5 -rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                    <Bookmark size={120} />
+                  </div>
+                  <h3 className="text-[1.5rem] font-bold mb-6 text-black flex items-center gap-3 font-outfit">
+                    <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-sm">!</div>
+                    {lang === "de" ? "Zusammenfassung" : lang === "tr" ? "Özet" : "Quick Summary"}
+                  </h3>
+                  <p className="text-[1.125rem] text-neutral-600 leading-relaxed italic mb-0">
+                    {post.content[0].replace("> ", "").replace("**Key Takeaways:**", "").replace("**Zusammenfassung:**", "").replace("**Önemli Çıkarımlar:**", "").trim()}
+                  </p>
+                </motion.div>
+              )}
+
+              {post.content.map((block, i) => {
+                if (i === 0 && block.startsWith("> ")) return null;
+
+                // Handle Checklist Detection
+                if (block.startsWith("- [ ]")) {
+                  // Collect all sequential checklist items
+                  const checklistItems: string[] = [];
+                  let j = i;
+                  while (j < post.content.length && post.content[j].startsWith("- [ ]")) {
+                    checklistItems.push(post.content[j]);
+                    j++;
+                  }
+                  // Only render if we are at the start of the sequence to avoid duplicates
+                  if (i > 0 && post.content[i-1].startsWith("- [ ]")) return null;
+                  return <AuditChecklist key={i} items={checklistItems} lang={lang} />;
+                }
+
+                // Handle Comparison Detection
+                if (block.includes("[BEFORE]") && block.includes("[AFTER]")) {
+                  const match = block.match(/\[BEFORE\]\s*"?(.*?)"?\s*\[AFTER\]\s*"?(.*?)"?$/);
+                  if (match) {
+                    return <ComparisonCard key={i} before={match[1]} after={match[2]} lang={lang} />;
+                  }
+                }
+
+                if (block.startsWith("## ")) {
+                  const text = block.replace("## ", "");
+                  return (
+                    <motion.h2
+                      key={i}
+                      id={text.toLowerCase().replace(/\s+/g, "-")}
+                      className="scroll-mt-32 group relative"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                    >
+                      <span className="absolute -left-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#0071e3] font-bold text-2xl hidden lg:block">#</span>
+                      {text}
+                    </motion.h2>
+                  );
+                }
+
+                if (block.startsWith("### ")) {
+                  const text = block.replace("### ", "");
+                  return (
+                    <motion.h3
+                      key={i}
+                      className="text-[1.75rem] font-bold mt-12 mb-6 text-black font-outfit"
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                    >
+                      {text}
+                    </motion.h3>
+                  );
+                }
+                
+                const firstActualParagraphIndex = post.content.findIndex((b, idx) => !b.startsWith("## ") && (idx > 0 || !b.startsWith("> ")));
+                const isFirstParagraph = i === firstActualParagraphIndex;
+
+                const renderText = (text: string) => {
+                  const parts = text.split(/(\*\*.*?\*\*)/g);
+                  return parts.map((part, index) => {
+                    if (part.startsWith("**") && part.endsWith("**")) {
+                      return <strong key={index} className="font-bold text-black bg-[#0071e3]/5 px-1 rounded">{part.slice(2, -2)}</strong>;
+                    }
+                    return part;
+                  });
+                };
+                
+                if (block.startsWith("> ")) {
+                  return (
+                    <blockquote key={i} className="border-l-4 border-[#0071e3] pl-6 py-2 my-8 italic text-neutral-600 text-lg">
+                      {renderText(block.replace("> ", ""))}
+                    </blockquote>
+                  );
+                }
+
+                if (block.startsWith("- ")) {
+                  return (
+                    <div key={i} className="flex items-start gap-3 mb-4 pl-4">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#0071e3] mt-2.5 shrink-0" />
+                      <p className="text-[1.125rem] leading-[1.8] text-[#424245] font-medium m-0">
+                        {renderText(block.replace("- ", ""))}
+                      </p>
+                    </div>
+                  );
+                }
+
+                if (/^\d+\./.test(block)) {
+                   return (
+                    <div key={i} className="flex items-start gap-4 mb-6">
+                      <span className="text-[#0071e3] font-bold text-lg min-w-[1.5rem]">{block.match(/^\d+/)?.[0]}.</span>
+                      <p className="text-[1.125rem] leading-[1.8] text-[#424245] font-medium m-0">
+                        {renderText(block.replace(/^\d+\.\s*/, ""))}
+                      </p>
+                    </div>
+                  );
+                }
+
+                if (block.startsWith("[BEFORE]")) {
+                  const match = block.match(/\[BEFORE\]\s*"(.*?)"\s*\[AFTER\]\s*"(.*?)"/);
+                  if (match) {
+                    return <ComparisonCard key={i} before={match[1]} after={match[2]} lang={lang} />;
+                  }
+                }
+
+                if (block.startsWith("- [ ]")) {
+                  // Group contiguous checklist items
+                  const checklistItems: string[] = [];
+                  let j = i;
+                  while (j < post.content.length && post.content[j].startsWith("- [ ]")) {
+                    checklistItems.push(post.content[j].replace("- [ ] ", ""));
+                    j++;
+                  }
+                  
+                  // Only render the checklist once for the whole group
+                  if (i > 0 && post.content[i-1].startsWith("- [ ]")) return null;
+                  
+                  return <AuditChecklist key={i} items={checklistItems} lang={lang} />;
+                }
+
+                return (
+                  <motion.p
+                    key={i}
+                    className={isFirstParagraph ? "drop-cap font-medium text-neutral-900" : "text-[1.125rem] leading-[1.8] text-[#424245] mb-8 font-medium"}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    {renderText(block)}
+                  </motion.p>
+                );
+              })}
+
+              {/* Render Structured FAQs if they exist */}
+              {post.faqs && <FAQSection faqs={post.faqs} lang={lang} />}
+
+              {/* Author Section */}
+              <div className="mt-32 pt-16 border-t border-neutral-100">
+                <div className="p-10 rounded-[2.5rem] bg-neutral-50 border border-neutral-100 flex flex-col md:flex-row items-center gap-10">
+                  <div className="w-24 h-24 rounded-full bg-black text-white flex items-center justify-center text-3xl font-bold shadow-xl shadow-black/20">N</div>
+                  <div className="text-center md:text-left flex-1">
+                    <h4 className="text-[1.5rem] font-bold mb-2">Nüll. Editorial Team</h4>
+                    <p className="text-[1rem] text-neutral-500 mb-6 leading-relaxed">
+                      {lang === "de" 
+                        ? "Experten für digitale Positionierung, Premium-Webdesign und Marketingstrategie für die nächste Generation deutsch-türkischer Führungskräfte." 
+                        : lang === "tr"
+                        ? "Dijital konumlandırma, premium web tasarımı ve yeni nesil Türk-Alman liderler için pazarlama stratejisi uzmanları."
+                        : "Experts in digital positioning, premium webdesign, and marketing strategy for the next generation of German-Turkish leaders."}
+                    </p>
+                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                      {['LinkedIn', 'Website', 'WhatsApp'].map(p => (
+                        <button key={p} className="px-5 py-2 rounded-full bg-white border border-neutral-200 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-sm">
+                          {p}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <aside className="hidden lg:block">
-              <div className="sticky top-32 space-y-10">
-                <div>
-                  <h4 className="text-[0.75rem] font-bold uppercase tracking-widest text-neutral-400 mb-6">
-                    Table of Contents
+              <div className="sticky top-32 space-y-12">
+                <div className="space-y-6">
+                  <h4 className="text-[0.75rem] font-black uppercase tracking-[0.2em] text-neutral-400">
+                    {lang === "de" ? "Auf dieser Seite" : lang === "tr" ? "Bu sayfada" : "On this page"}
                   </h4>
                   <nav className="space-y-4">
                     {headers.map((h, i) => (
                       <a
                         key={i}
                         href={`#${h.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="block text-[0.9375rem] text-neutral-500 hover:text-[#0071e3] transition-colors leading-relaxed"
+                        className="group flex items-center gap-3 text-[0.9375rem] font-bold text-neutral-400 hover:text-[#0071e3] transition-all"
                       >
+                        <div className="w-1.5 h-1.5 rounded-full bg-neutral-200 group-hover:bg-[#0071e3] transition-colors" />
                         {h}
                       </a>
                     ))}
                   </nav>
                 </div>
                 
-                <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-100">
-                  <h4 className="text-[0.9375rem] font-semibold mb-3">Newsletter</h4>
-                  <p className="text-[0.8125rem] text-neutral-500 mb-4 leading-normal">
-                    Get the latest insights on digital growth delivered to your inbox.
+                <div className="p-8 rounded-[2rem] bg-[#0e0e10] text-white relative overflow-hidden shadow-2xl shadow-black/20">
+                  <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Share2 size={80} />
+                  </div>
+                  <h4 className="text-[1.25rem] font-bold mb-4 relative z-10">Newsletter</h4>
+                  <p className="text-[0.875rem] text-white/50 mb-8 leading-relaxed relative z-10">
+                    {lang === "de" 
+                      ? "Schließen Sie sich 500+ Experten an, die wöchentlich Insights zur digitalen Autorität erhalten." 
+                      : lang === "tr"
+                      ? "Dijital otorite üzerine haftalık içerikler alan 500'den fazla uzmana katılın."
+                      : "Join 500+ experts receiving weekly insights on digital authority."}
                   </p>
-                  <input 
-                    type="email" 
-                    placeholder="Email address" 
-                    className="w-full px-4 py-2 rounded-lg border border-neutral-200 text-sm mb-2 focus:ring-2 focus:ring-[#0071e3] outline-none"
-                  />
-                  <button className="w-full py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors">
-                    Subscribe
-                  </button>
+                  <div className="space-y-3 relative z-10">
+                    <input 
+                      type="email" 
+                      placeholder={lang === "de" ? "Ihre E-Mail" : lang === "tr" ? "E-postanız" : "Your email"} 
+                      className="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm focus:ring-2 focus:ring-[#0071e3] outline-none transition-all"
+                    />
+                    <button className="w-full py-4 bg-[#0071e3] text-white rounded-2xl text-[0.875rem] font-bold hover:bg-[#0066d6] transition-all active:scale-95">
+                      {lang === "de" ? "Insights erhalten" : lang === "tr" ? "İçerikleri Al" : "Get Insights"}
+                    </button>
+                  </div>
                 </div>
               </div>
             </aside>
-
-            {/* Post Content */}
-            <div className="max-w-3xl">
-              <div className="prose prose-neutral prose-lg max-w-none">
-                {post.content.map((block, i) => {
-                  if (block.startsWith("## ")) {
-                    const text = block.replace("## ", "");
-                    return (
-                      <h2
-                        key={i}
-                        id={text.toLowerCase().replace(/\s+/g, "-")}
-                        className="text-[1.75rem] tracking-[-0.02em] font-semibold mt-16 mb-6 text-black scroll-mt-32"
-                      >
-                        {text}
-                      </h2>
-                    );
-                  }
-                  return (
-                    <p
-                      key={i}
-                      className="text-[1.125rem] leading-[1.8] text-neutral-700 mb-8 font-normal"
-                    >
-                      {block}
-                    </p>
-                  );
-                })}
-              </div>
-
-              {/* Author & Share */}
-              <div className="mt-20 pt-10 border-t border-neutral-100 flex flex-col md:flex-row md:items-center justify-between gap-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-white font-bold text-lg">
-                    N
-                  </div>
-                  <div>
-                    <p className="text-[1rem] font-semibold">Nüll. Editorial Team</p>
-                    <p className="text-[0.875rem] text-neutral-500">Design & Growth Experts</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <span className="text-[0.875rem] font-medium text-neutral-400 mr-2">Share:</span>
-                  {['Twitter', 'LinkedIn', 'Facebook'].map(platform => (
-                    <button key={platform} className="px-4 py-2 rounded-full border border-neutral-200 text-[0.8125rem] font-medium hover:bg-neutral-50 transition-colors">
-                      {platform}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Major CTA Section */}
-              <div className="mt-24 relative overflow-hidden rounded-[2.5rem] bg-neutral-900 text-white p-10 md:p-16">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#0071e3] opacity-20 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2" />
-                <div className="relative z-10 max-w-lg">
-                  <h3 className="text-[2rem] md:text-[2.5rem] font-semibold tracking-tight leading-tight mb-6">
-                    Ready to build your digital authority?
-                  </h3>
-                  <p className="text-[1.125rem] text-neutral-400 mb-10 leading-relaxed">
-                    We help consultants and experts transform their expertise into a premium digital presence that attracts high-value clients.
-                  </p>
-                  <Link
-                    to="/#contact"
-                    className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full text-[1rem] font-semibold hover:bg-[#0071e3] hover:text-white transition-all duration-300 group"
-                  >
-                    Start your project <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
         </article>
 
-        {/* Related Posts Section */}
-        {related.length > 0 && (
-          <div className="max-w-6xl mx-auto px-6 mt-32">
-            <div className="flex items-center justify-between mb-12">
-              <h3 className="text-[1.5rem] font-semibold tracking-tight">
-                Recommended Reading
+        <div className="max-w-7xl mx-auto px-6 mt-48">
+          <motion.div 
+            className="relative overflow-hidden rounded-[4rem] bg-neutral-900 text-white p-12 md:p-24"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0071e3] opacity-30 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-600 opacity-20 blur-[120px] rounded-full -translate-x-1/3 translate-y-1/3" />
+            
+            <div className="relative z-10 max-w-2xl">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-[0.75rem] font-black uppercase tracking-[0.2em] mb-10">
+                {lang === "de" ? "Nächste Schritte" : lang === "tr" ? "Sonraki Adımlar" : "Next Steps"}
+              </div>
+              <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.05em] leading-[1] mb-10 font-outfit">
+                {lang === "de" 
+                  ? "Verwandeln Sie Ihre Expertise in ein digitales Vermächtnis." 
+                  : lang === "tr"
+                  ? "Uzmanlığınızı dijital bir mirasa dönüştürün."
+                  : "Transform your expertise into a digital legacy."}
               </h3>
-              <Link to="/blog" className="text-[0.9375rem] font-semibold text-[#0071e3] hover:underline">
-                View all articles
+              <p className="text-[1.25rem] text-white/60 mb-12 leading-relaxed max-w-xl">
+                {lang === "de" 
+                  ? "Wir bauen nicht nur Websites. Wir schaffen digitale Autoritäten, die Respekt einflößen und vorhersehbares Wachstum für Berater liefern." 
+                  : lang === "tr"
+                  ? "Sadece web sitesi yapmıyoruz. Danışmanlar için saygı uyandıran ve öngörülebilir büyüme sağlayan dijital otoriteler inşa ediyoruz."
+                  : "We don't just build websites. We build digital authorities that command respect and deliver predictable growth for consultants."}
+              </p>
+              <Link
+                to="/#contact"
+                className="inline-flex items-center gap-4 bg-white text-black px-12 py-6 rounded-full text-[1.125rem] font-bold hover:bg-[#0071e3] hover:text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 group shadow-2xl shadow-black/20"
+              >
+                {lang === "de" ? "Strategiegespräch buchen" : lang === "tr" ? "Danışmanlık Randevusu Al" : "Schedule a Consultation"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+
+        {related.length > 0 && (
+          <div className="max-w-7xl mx-auto px-6 mt-48">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+              <div>
+                <h3 className="text-[2.5rem] font-bold tracking-[-0.04em] mb-4 font-outfit">
+                  {lang === "de" ? "Weiterführende Lektüre" : lang === "tr" ? "Daha Fazla İçerik" : "Further Reading"}
+                </h3>
+                <p className="text-[1.125rem] text-neutral-500 font-medium">
+                  {lang === "de" 
+                    ? "Mehr Insights für ambitionierte Berater und Experten." 
+                    : lang === "tr"
+                    ? "Hırslı danışmanlar ve uzmanlar için daha fazla içerik."
+                    : "More insights for ambitious consultants and experts."}
+                </p>
+              </div>
+              <Link to="/blog" className="inline-flex items-center gap-2 text-[1rem] font-bold text-[#0071e3] hover:translate-x-1 transition-transform">
+                {lang === "de" ? "Zum Archiv" : lang === "tr" ? "Arşivi gör" : "View the archive"} <ArrowLeft size={20} className="rotate-180" />
               </Link>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {related.map((r) => (
                 <Link
                   key={r.slug}
                   to={`/blog/${r.slug}`}
                   className="group block"
                 >
-                  <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-neutral-100 mb-6 shadow-sm group-hover:shadow-xl group-hover:shadow-black/5 transition-all duration-500">
+                  <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-neutral-100 mb-8 shadow-sm ring-1 ring-black/5 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-black/10 group-hover:-translate-y-1">
                     <ImageWithFallback
                       src={r.image}
                       alt={r.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <p className="text-[0.75rem] font-bold uppercase tracking-widest text-[#0071e3]">
-                      {r.category}
-                    </p>
-                    <h4 className="text-[1.5rem] font-semibold tracking-tight leading-snug group-hover:text-[#0071e3] transition-colors line-clamp-2">
+                  <div className="space-y-4 px-2">
+                    <div className="flex items-center gap-3">
+                      <span className="text-[0.75rem] font-black uppercase tracking-[0.2em] text-[#0071e3]">
+                        {r.category}
+                      </span>
+                      <span className="w-1 h-1 rounded-full bg-neutral-300" />
+                      <span className="text-[0.875rem] font-semibold text-neutral-400">
+                        {r.readTime}
+                      </span>
+                    </div>
+                    <h4 className="text-[1.75rem] font-bold tracking-[-0.03em] leading-tight group-hover:text-[#0071e3] transition-colors line-clamp-2">
                       {r.title}
                     </h4>
-                    <p className="text-[0.9375rem] text-neutral-500 line-clamp-2 leading-relaxed">
+                    <p className="text-[1rem] text-neutral-500 line-clamp-2 leading-relaxed">
                       {r.excerpt}
                     </p>
                   </div>
@@ -293,4 +627,3 @@ export function BlogPost() {
     </div>
   );
 }
-

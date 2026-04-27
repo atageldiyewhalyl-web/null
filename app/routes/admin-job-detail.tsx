@@ -71,6 +71,12 @@ function Section({ title, children, defaultOpen = true }: { title: string; child
   );
 }
 
+const FLAG: Record<string, string> = {
+  de: "🇩🇪",
+  tr: "🇹🇷",
+  en: "🇬🇧",
+};
+
 export default function AdminJobDetail() {
   const { id } = useParams();
   const [job, setJob] = useState<any>(null);
@@ -80,15 +86,31 @@ export default function AdminJobDetail() {
   const [error, setError] = useState<string | null>(null);
   const [articleDraft, setArticleDraft] = useState("");
   const [editingArticle, setEditingArticle] = useState(false);
+  const [selectedLang, setSelectedLang] = useState<string | null>(null);
 
   const load = async () => {
     const { data: j } = await supabase.from("seo_jobs").select("*, seo_projects(*)").eq("id", id).single();
     setJob(j);
     setProject(j?.seo_projects);
-    setArticleDraft(j?.article_markdown ?? "");
+    
+    // Set initial selected language
+    if (j?.articles?.length > 0 && !selectedLang) {
+      setSelectedLang(j.articles[0].language);
+    } else if (!j?.articles?.length && !selectedLang) {
+      setSelectedLang(j?.target_language || "de");
+    }
+
     setLoading(false);
   };
+  
   useEffect(() => { load(); }, [id]);
+
+  useEffect(() => {
+    if (job && selectedLang) {
+      const art = job.articles?.find((a: any) => a.language === selectedLang);
+      setArticleDraft(art ? art.markdown : (job.article_markdown ?? ""));
+    }
+  }, [selectedLang, job]);
 
   const invokeAgent = async (agent: string, extraBody = {}) => {
     setRunning(agent);
@@ -114,13 +136,20 @@ export default function AdminJobDetail() {
   };
 
   const saveArticle = async () => {
-    await supabase.from("seo_jobs").update({ article_markdown: articleDraft }).eq("id", id);
+    if (job.articles?.length > 0) {
+      const newArticles = job.articles.map((a: any) => 
+        a.language === selectedLang ? { ...a, markdown: articleDraft } : a
+      );
+      await supabase.from("seo_jobs").update({ articles: newArticles }).eq("id", id);
+    } else {
+      await supabase.from("seo_jobs").update({ article_markdown: articleDraft }).eq("id", id);
+    }
     setEditingArticle(false);
     await load();
   };
 
   const approveAndPublish = async () => {
-    if (!confirm("This will publish the article live to GitHub → Vercel. Proceed?")) return;
+    if (!confirm("This will publish all article versions live to GitHub. Proceed?")) return;
     await supabase.from("seo_jobs").update({ status: "awaiting_approval" }).eq("id", id);
     await invokeAgent("seo-agent-publish");
   };
@@ -136,11 +165,14 @@ export default function AdminJobDetail() {
   if (!job) return <div className="p-8 text-[#555]">Job not found.</div>;
 
   const si = stageIndex(job.status);
-  const canResearch = si <= stageIndex("pending") || si === stageIndex("research_done");
-  const canWrite = si >= stageIndex("research_done") && si < stageIndex("writing");
-  const canImages = si >= stageIndex("writing_done") && si < stageIndex("imaging");
-  const canApprove = si >= stageIndex("images_done") && !["awaiting_approval", "publishing", "published"].includes(job.status);
   const isPublished = job.status === "published";
+  const currentArticle = job.articles?.find((a: any) => a.language === selectedLang) || {
+    markdown: job.article_markdown,
+    metadata: job.article_metadata,
+    status: job.article_markdown ? "done" : "pending"
+  };
+
+  const canApprove = si >= stageIndex("images_done") && !["awaiting_approval", "publishing", "published"].includes(job.status);
 
   return (
     <div className="p-8 text-white max-w-4xl">
@@ -155,7 +187,11 @@ export default function AdminJobDetail() {
             <div className="flex items-center gap-3 mt-2">
               <span className="text-[#555] text-sm">{project?.domain}</span>
               <span className="text-[#333]">·</span>
-              <span className="text-[#555] text-sm uppercase">{job.target_language}</span>
+              <div className="flex gap-1">
+                {(job.articles?.length > 0 ? job.articles : [{ language: job.target_language }]).map((a: any) => (
+                  <span key={a.language} className="text-sm" title={a.language}>{FLAG[a.language] || a.language}</span>
+                ))}
+              </div>
               <span className="text-[#333]">·</span>
               <StatusBadge status={job.status} />
             </div>
@@ -235,32 +271,6 @@ export default function AdminJobDetail() {
                   ))}
                 </div>
               </div>
-              {job.research_output.content_gaps?.length > 0 && (
-                <div>
-                  <div className="text-[#555] text-xs uppercase tracking-wider mb-2">Content Gaps Found</div>
-                  <ul className="space-y-1.5">
-                    {job.research_output.content_gaps.map((gap: string, i: number) => (
-                      <li key={i} className="text-sm text-[#888] flex items-start gap-2">
-                        <span className="text-[#007aff] mt-0.5">→</span> {gap}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {job.research_output.sources?.length > 0 && (
-                <div>
-                  <div className="text-[#555] text-xs uppercase tracking-wider mb-2">Sources ({job.research_output.sources.length})</div>
-                  <div className="space-y-1">
-                    {job.research_output.sources.map((s: any, i: number) => (
-                      <a key={i} href={s.url} target="_blank" rel="noreferrer"
-                        className="flex items-center gap-2 text-xs text-[#666] hover:text-[#007aff] transition-colors">
-                        <ExternalLink size={11} className="shrink-0" />
-                        <span className="truncate">{s.title || s.url}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
               <button
                 onClick={() => invokeAgent("seo-agent-research")}
                 disabled={!!running}
@@ -271,12 +281,10 @@ export default function AdminJobDetail() {
             </div>
           ) : (
             <div className="flex flex-col items-center py-6">
-              <p className="text-[#555] text-sm mb-4">Run the research agent to discover keywords and analyze competitors.</p>
               <button
-                id="run-research-btn"
                 onClick={() => invokeAgent("seo-agent-research")}
                 disabled={!!running}
-                className="flex items-center gap-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all disabled:opacity-40"
+                className="flex items-center gap-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
               >
                 {running === "seo-agent-research" ? <div className="w-4 h-4 border-2 border-amber-400/30 border-t-amber-400 rounded-full animate-spin" /> : <Search size={14} />}
                 Run Research
@@ -287,134 +295,121 @@ export default function AdminJobDetail() {
 
         {/* Stage 2: Article */}
         <Section title="② Article" defaultOpen={!!job.research_output}>
-          {job.article_markdown ? (
-            <div className="space-y-3">
-              {job.article_metadata && (
-                <div className="bg-[#0d0d0d] rounded-xl p-4 space-y-2">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[#555] text-xs uppercase tracking-wider font-bold">Metadata</span>
-                    <button
-                      onClick={() => {
-                        const text = `Title: ${job.article_metadata.title}\nSlug: ${job.article_metadata.slug}\nDescription: ${job.article_metadata.description}\n\n${job.article_markdown}`;
-                        navigator.clipboard.writeText(text);
-                      }}
-                      className="flex items-center gap-1 text-[#007aff] hover:text-[#0066d6] text-xs font-medium transition-all"
-                    >
-                      <Copy size={11} /> Copy Full Article
-                    </button>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-[#1a1a1a] pt-2">
-                    <span className="text-[#555] text-xs uppercase tracking-wider">Slug</span>
-                    <div className="flex items-center gap-1">
-                      <code className="text-[#007aff] text-xs font-mono">{job.article_metadata.slug}</code>
-                      <CopyButton text={job.article_metadata.slug} />
+          <div className="space-y-4">
+            {/* Language Tabs */}
+            <div className="flex items-center gap-2 border-b border-[#1f1f1f] pb-3">
+              {(job.articles?.length > 0 ? job.articles : [{ language: job.target_language }]).map((a: any) => (
+                <button
+                  key={a.language}
+                  onClick={() => setSelectedLang(a.language)}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${
+                    selectedLang === a.language ? "bg-[#007aff] text-white" : "bg-[#1a1a1a] text-[#555] hover:text-white"
+                  }`}
+                >
+                  <span>{FLAG[a.language] || a.language}</span>
+                  <span className="uppercase">{a.language}</span>
+                  {a.status === "error" && <AlertCircle size={12} className="text-red-400" />}
+                </button>
+              ))}
+            </div>
+
+            {currentArticle?.markdown ? (
+              <div className="space-y-3">
+                {currentArticle.metadata && (
+                  <div className="bg-[#0d0d0d] rounded-xl p-4 space-y-2">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[#555] text-xs uppercase tracking-wider font-bold">Metadata ({selectedLang})</span>
+                      <button
+                        onClick={() => {
+                          const text = `Title: ${currentArticle.metadata.title}\nSlug: ${currentArticle.metadata.slug}\nDescription: ${currentArticle.metadata.description}\n\n${currentArticle.markdown}`;
+                          navigator.clipboard.writeText(text);
+                        }}
+                        className="flex items-center gap-1 text-[#007aff] hover:text-[#0066d6] text-xs font-medium transition-all"
+                      >
+                        <Copy size={11} /> Copy Full Article
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-between border-t border-[#1a1a1a] pt-2">
+                      <span className="text-[#555] text-xs uppercase tracking-wider">Slug</span>
+                      <div className="flex items-center gap-1">
+                        <code className="text-[#007aff] text-xs font-mono">{currentArticle.metadata.slug}</code>
+                        <CopyButton text={currentArticle.metadata.slug} />
+                      </div>
+                    </div>
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="text-[#555] text-xs uppercase tracking-wider shrink-0">Title</span>
+                      <span className="text-white text-xs text-right">{currentArticle.metadata.title}</span>
                     </div>
                   </div>
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="text-[#555] text-xs uppercase tracking-wider shrink-0">Title</span>
-                    <span className="text-white text-xs text-right">{job.article_metadata.title}</span>
-                  </div>
-                  {job.article_metadata.description && (
-                    <div>
-                      <span className="text-[#555] text-xs uppercase tracking-wider block mb-1">Meta Description</span>
-                      <span className="text-[#888] text-xs">{job.article_metadata.description}</span>
+                )}
+
+                {editingArticle ? (
+                  <div>
+                    <textarea
+                      value={articleDraft}
+                      onChange={e => setArticleDraft(e.target.value)}
+                      rows={15}
+                      className="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white rounded-xl px-4 py-3 text-sm font-mono outline-none focus:border-[#007aff] resize-none"
+                    />
+                    <div className="flex gap-2 mt-2">
+                      <button onClick={() => setEditingArticle(false)} className="bg-[#1a1a1a] hover:bg-[#222] text-[#888] px-4 py-2 rounded-xl text-sm transition-all">Cancel</button>
+                      <button onClick={saveArticle} className="bg-[#007aff] hover:bg-[#0066d6] text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all">Save {selectedLang?.toUpperCase()}</button>
                     </div>
-                  )}
-                </div>
-              )}
-
-              {editingArticle ? (
-                <div>
-                  <textarea
-                    id="article-editor"
-                    value={articleDraft}
-                    onChange={e => setArticleDraft(e.target.value)}
-                    rows={20}
-                    className="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white rounded-xl px-4 py-3 text-sm font-mono outline-none focus:border-[#007aff] resize-none"
-                  />
-                  <div className="flex gap-2 mt-2">
-                    <button onClick={() => setEditingArticle(false)} className="bg-[#1a1a1a] hover:bg-[#222] text-[#888] px-4 py-2 rounded-xl text-sm transition-all">Cancel</button>
-                    <button onClick={saveArticle} className="bg-[#007aff] hover:bg-[#0066d6] text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all">Save Changes</button>
                   </div>
-                </div>
-              ) : (
-                <div className="bg-[#0d0d0d] rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[#555] text-xs">{articleDraft.length} chars · ~{Math.round(articleDraft.split(" ").length)} words</span>
-                    <button onClick={() => setEditingArticle(true)} className="text-[#007aff] text-xs hover:underline">Edit Article</button>
+                ) : (
+                  <div className="bg-[#0d0d0d] rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[#555] text-xs">{currentArticle.markdown.length} chars · ~{Math.round(currentArticle.markdown.split(" ").length)} words</span>
+                      <button onClick={() => setEditingArticle(true)} className="text-[#007aff] text-xs hover:underline">Edit Article</button>
+                    </div>
+                    <pre className="text-[#666] text-xs leading-relaxed overflow-auto max-h-48 whitespace-pre-wrap">{currentArticle.markdown.slice(0, 500)}...</pre>
                   </div>
-                  <pre className="text-[#666] text-xs leading-relaxed overflow-auto max-h-48 whitespace-pre-wrap">{articleDraft.slice(0, 500)}...</pre>
-                </div>
-              )}
-
+                )}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center py-6">
+                <button
+                  onClick={() => invokeAgent("seo-agent-write")}
+                  disabled={!!running || !job.research_output}
+                  className="flex items-center gap-2 bg-blue-500/15 hover:bg-blue-500/25 text-blue-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
+                >
+                  {running === "seo-agent-write" ? <div className="w-4 h-4 border-2 border-blue-400/30 border-t-blue-400 rounded-full animate-spin" /> : <PenLine size={14} />}
+                  Generate Articles (Multilingual)
+                </button>
+              </div>
+            )}
+            
+            {currentArticle?.markdown && (
               <button
                 onClick={() => invokeAgent("seo-agent-write")}
                 disabled={!!running}
-                className="flex items-center gap-2 text-xs text-[#555] hover:text-white bg-[#1a1a1a] hover:bg-[#222] px-3 py-2 rounded-lg transition-all disabled:opacity-40"
+                className="flex items-center gap-2 text-xs text-[#555] hover:text-white bg-[#1a1a1a] hover:bg-[#222] px-3 py-2 rounded-lg transition-all"
               >
-                <RefreshCw size={12} /> Regenerate Article
+                <RefreshCw size={12} /> Regenerate All Languages
               </button>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center py-6">
-              <p className="text-[#555] text-sm mb-4">
-                {!job.research_output ? "Complete research first." : "Generate a 2500+ word article based on the research."}
-              </p>
-              <button
-                id="run-write-btn"
-                onClick={() => invokeAgent("seo-agent-write")}
-                disabled={!!running || !job.research_output}
-                className="flex items-center gap-2 bg-blue-500/15 hover:bg-blue-500/25 text-blue-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all disabled:opacity-40"
-              >
-                {running === "seo-agent-write" ? <div className="w-4 h-4 border-2 border-blue-400/30 border-t-blue-400 rounded-full animate-spin" /> : <PenLine size={14} />}
-                Generate Article
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </Section>
 
         {/* Stage 3: Images */}
         <Section title="③ Images" defaultOpen={!!job.article_markdown && !job.image_urls}>
           {job.image_urls ? (
             <div className="space-y-4">
-              {job.image_urls.hero && (
-                <div>
-                  <div className="text-[#555] text-xs uppercase tracking-wider mb-2">Hero Image</div>
-                  <img src={job.image_urls.hero.url} alt={job.image_urls.hero.alt} className="w-full max-h-48 object-cover rounded-xl border border-[#2a2a2a]" />
-                  <p className="text-[#555] text-xs mt-1">{job.image_urls.hero.alt}</p>
-                </div>
-              )}
-              {job.image_urls.inline?.length > 0 && (
-                <div>
-                  <div className="text-[#555] text-xs uppercase tracking-wider mb-2">Inline Images ({job.image_urls.inline.length})</div>
-                  <div className="grid grid-cols-2 gap-3">
-                    {job.image_urls.inline.map((img: any, i: number) => (
-                      <div key={i}>
-                        <img src={img.url} alt={img.alt} className="w-full h-32 object-cover rounded-xl border border-[#2a2a2a]" />
-                        <p className="text-[#555] text-xs mt-1 truncate">{img.alt}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <img src={job.image_urls.hero?.url} alt={job.image_urls.hero?.alt} className="w-full max-h-48 object-cover rounded-xl border border-[#2a2a2a]" />
               <button
                 onClick={() => invokeAgent("seo-agent-images")}
                 disabled={!!running}
-                className="flex items-center gap-2 text-xs text-[#555] hover:text-white bg-[#1a1a1a] hover:bg-[#222] px-3 py-2 rounded-lg transition-all disabled:opacity-40"
+                className="flex items-center gap-2 text-xs text-[#555] hover:text-white bg-[#1a1a1a] hover:bg-[#222] px-3 py-2 rounded-lg transition-all"
               >
                 <RefreshCw size={12} /> Regenerate Images
               </button>
             </div>
           ) : (
             <div className="flex flex-col items-center py-6">
-              <p className="text-[#555] text-sm mb-4">
-                {!job.article_markdown ? "Generate the article first." : "Generate hero + inline images with Gemini Imagen."}
-              </p>
               <button
-                id="run-images-btn"
                 onClick={() => invokeAgent("seo-agent-images")}
                 disabled={!!running || !job.article_markdown}
-                className="flex items-center gap-2 bg-purple-500/15 hover:bg-purple-500/25 text-purple-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all disabled:opacity-40"
+                className="flex items-center gap-2 bg-purple-500/15 hover:bg-purple-500/25 text-purple-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
               >
                 {running === "seo-agent-images" ? <div className="w-4 h-4 border-2 border-purple-400/30 border-t-purple-400 rounded-full animate-spin" /> : <Image size={14} />}
                 Generate Images
@@ -425,35 +420,16 @@ export default function AdminJobDetail() {
 
         {/* Stage 4: Publish */}
         <Section title="④ Approve & Publish" defaultOpen={canApprove}>
-          {isPublished ? (
-            <div className="text-center py-6">
-              <CheckCircle size={36} className="text-green-400 mx-auto mb-3" />
-              <div className="text-white font-semibold mb-1">Published!</div>
-              {job.published_url && (
-                <a href={job.published_url} target="_blank" rel="noreferrer" className="text-[#007aff] text-sm hover:underline flex items-center justify-center gap-1">
-                  {job.published_url} <ExternalLink size={12} />
-                </a>
-              )}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center py-6">
-              <p className="text-[#555] text-sm mb-2 text-center max-w-sm">
-                {!job.image_urls ? "Complete all steps above first." : "Review the article and images above, then approve to publish directly to GitHub → Vercel."}
-              </p>
-              {job.image_urls && (
-                <p className="text-amber-400/70 text-xs mb-4 text-center">⚠ This will commit directly to main and trigger a Vercel deploy.</p>
-              )}
-              <button
-                id="approve-publish-btn"
-                onClick={approveAndPublish}
-                disabled={!!running || !job.image_urls}
-                className="flex items-center gap-2 bg-green-500/15 hover:bg-green-500/25 text-green-400 border border-green-500/20 px-6 py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-40"
-              >
-                {running === "seo-agent-publish" ? <div className="w-4 h-4 border-2 border-green-400/30 border-t-green-400 rounded-full animate-spin" /> : <Rocket size={14} />}
-                Approve & Publish Live
-              </button>
-            </div>
-          )}
+          <div className="flex flex-col items-center py-6">
+            <button
+              onClick={approveAndPublish}
+              disabled={!!running || !job.image_urls}
+              className="flex items-center gap-2 bg-green-500/15 hover:bg-green-500/25 text-green-400 border border-green-500/20 px-6 py-3 rounded-xl text-sm font-semibold transition-all"
+            >
+              {running === "seo-agent-publish" ? <div className="w-4 h-4 border-2 border-green-400/30 border-t-green-400 rounded-full animate-spin" /> : <Rocket size={14} />}
+              Approve & Publish All Versions
+            </button>
+          </div>
         </Section>
       </div>
     </div>

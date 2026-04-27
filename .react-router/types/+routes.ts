@@ -17,6 +17,9 @@ type Pages = {
   "/onboarding": {
     params: {};
   };
+  "/onboarding/client-discovery": {
+    params: {};
+  };
   "/blog": {
     params: {};
   };
@@ -47,11 +50,15 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
     page: "/onboarding";
+  };
+  "routes/client-discovery-onboarding.tsx": {
+    id: "routes/client-discovery-onboarding";
+    page: "/onboarding/client-discovery";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -94,6 +101,7 @@ type RouteFiles = {
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "routes/onboarding": typeof import("./app/routes/onboarding.tsx");
+  "routes/client-discovery-onboarding": typeof import("./app/routes/client-discovery-onboarding.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
   "routes/blog-list": typeof import("./app/routes/blog-list.tsx");
   "routes/blog-post": typeof import("./app/routes/blog-post.tsx");

@@ -6,17 +6,19 @@ export default {
   async prerender() {
     return [
       "/",
+      "/onboarding",
+      "/onboarding/client-discovery",
       "/blog",
       "/blog/why-every-local-business-needs-a-website-in-2026",
       "/blog/seo-basics-for-small-businesses",
       "/blog/personal-branding-for-consultants",
-      "/blog/what-makes-a-high-converting-website",
+      "/blog/5-elements-every-high-converting-website-needs",
+      "/blog/5-elemente-high-converting-website-2026",
+      "/blog/yuksek-donusumlu-web-sitesi-icin-5-temel-oge",
       "/blog/website-performance-why-speed-matters",
-      // Groundwork for requested blogs
-      "/blog/webdesign-mannheim-guide-2026",
-      "/blog/lead-acquisition-for-consultants",
-      "/blog/digital-presence-strategy-germany"
+      "/blog/improve-google-rankings-germany",
+      "/blog/google-ranking-verbessern-deutschland",
+      "/blog/google-siralamalarini-yukseltmek-almanya"
     ];
   },
 } satisfies Config;
-
