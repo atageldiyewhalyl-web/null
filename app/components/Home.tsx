@@ -16,7 +16,7 @@ const organizationData = {
   "@type": "ProfessionalService",
   name: "Nüll.",
   description:
-    "Exklusives Business-Marketing und Webdesign für Consultants und Berater. Digitale Positionierung und Klientengewinnung.",
+    "Exklusives Business-Marketing und Webdesign für Unternehmen. Digitale Positionierung und Kundengewinnung.",
   url: "https://xn--nll-hoa.com",
   email: "hello@xn--nll-hoa.com",
   logo: "https://xn--nll-hoa.com/favicon.svg",
@@ -32,8 +32,8 @@ const organizationData = {
   priceRange: "€220 - €1500",
   serviceType: [
     "Business Marketing",
-    "Consultancy Webdesign",
-    "SEO für Berater",
+    "Business Webdesign",
+    "SEO für Unternehmen",
     "Digitale Positionierung",
   ],
   hasOfferCatalog: {
@@ -42,7 +42,7 @@ const organizationData = {
     itemListElement: [
       {
         "@type": "Offer",
-        name: "Consultant Starter",
+        name: "Business Starter",
         price: "220",
         priceCurrency: "EUR",
       },

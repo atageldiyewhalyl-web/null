@@ -30,7 +30,7 @@ export function BlogList() {
     "@type": "Blog",
     name: "Nüll. Insights - Premium Digital Strategy",
     description:
-      "Insights on webdesign, digital positioning, and growth for consultants and experts.",
+      "Insights on webdesign, digital positioning, and growth for businesses.",
     url: "https://xn--nll-hoa.com/blog",
     publisher: {
       "@type": "Organization",

@@ -61,8 +61,8 @@ export function meta(args: any) {
   const location = args?.location;
   const pathname = location?.pathname || "/";
   const isBlog = pathname.startsWith("/blog/");
-  const title = "Nüll. - Consultant Marketing & Webdesign";
-  const description = "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität.";
+  const title = "Nüll. - Business Marketing & Webdesign";
+  const description = "Exzellentes Webdesign und digitale Positionierung für Unternehmen. Wir machen Ihr Unternehmen zur digitalen Autorität.";
   const baseUrl = "https://xn--nll-hoa.com";
   const url = `${baseUrl}${pathname}`;
 
@@ -107,4 +107,3 @@ export function links(args: any) {
     { rel: "alternate", hrefLang: "x-default", href: url },
   ];
 }
-

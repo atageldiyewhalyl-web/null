@@ -1,12 +1,12 @@
 # Null Agency - Premium Business Marketing & Webdesign
 
-Null (Punycode: xn--nll-hoa) is a premium digital agency based in Mannheim, Germany, specializing in high-end web design and digital positioning for consultants, experts, and professional service firms.
+Null (Punycode: xn--nll-hoa) is a premium digital agency based in Mannheim, Germany, specializing in high-end web design and digital positioning for businesses and professional service firms.
 
 ## Core Services
 - Premium Webdesign: Custom-engineered websites with a focus on speed, aesthetics, and conversion.
-- Digital Positioning: Helping consultants transform their expertise into a premium digital brand.
+- Digital Positioning: Helping businesses transform their offer into a premium digital brand.
 - Lead Acquisition Systems: Building predictable marketing funnels that go beyond word-of-mouth.
-- Bilingual Excellence: Specialized expertise in the German-Turkish business landscape.
+- Conversion Strategy: Websites designed to earn trust and turn visitors into customers.
 
 ## Technical Excellence
 - Framework: Built with React Router 7 and Vite.
@@ -20,4 +20,4 @@ Null (Punycode: xn--nll-hoa) is a premium digital agency based in Mannheim, Germ
 - WhatsApp: +49 162 7176334
 
 ## Mission
-To empower experts with digital authorities that reflect their true value and command respect in a competitive market.
+To empower businesses with digital presences that reflect their true value and command respect in a competitive market.

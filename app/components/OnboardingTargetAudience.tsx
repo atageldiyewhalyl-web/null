@@ -22,10 +22,10 @@ export function OnboardingTargetAudience({
   const { lang } = useLanguage();
 
   const audienceOptions = [
-    { tr: "Türk kökenli bireyler", de: "Türkischstämmige Personen", en: "Turkish-speaking individuals" },
-    { tr: "Alman vatandaşları", de: "Deutsche Staatsbürger", en: "German citizens" },
     { tr: "Şirketler & Esnaflar", de: "Unternehmen & Gewerbe", en: "Companies & Businesses" },
-    { tr: "Uluslararası danışanlar", de: "Internationale Klienten", en: "International clients" },
+    { tr: "Yerel müşteriler", de: "Lokale Kunden", en: "Local customers" },
+    { tr: "B2B müşteriler", de: "B2B-Kunden", en: "B2B customers" },
+    { tr: "Online alıcılar", de: "Online-Käufer", en: "Online buyers" },
   ];
 
   const languageOptions = ["Türkçe", "Deutsch", "English"];

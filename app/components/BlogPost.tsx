@@ -464,10 +464,10 @@ export function BlogPost() {
                     <h4 className="text-[1.5rem] font-bold mb-2">Nüll. Editorial Team</h4>
                     <p className="text-[1rem] text-neutral-500 mb-6 leading-relaxed">
                       {lang === "de" 
-                        ? "Experten für digitale Positionierung, Premium-Webdesign und Marketingstrategie für die nächste Generation deutsch-türkischer Führungskräfte." 
+                        ? "Experten für digitale Positionierung, Premium-Webdesign und Marketingstrategie für ambitionierte Unternehmen." 
                         : lang === "tr"
-                        ? "Dijital konumlandırma, premium web tasarımı ve yeni nesil Türk-Alman liderler için pazarlama stratejisi uzmanları."
-                        : "Experts in digital positioning, premium webdesign, and marketing strategy for the next generation of German-Turkish leaders."}
+                        ? "İddialı işletmeler için dijital konumlandırma, premium web tasarımı ve pazarlama stratejisi uzmanları."
+                        : "Experts in digital positioning, premium webdesign, and marketing strategy for ambitious businesses."}
                     </p>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
                       {['LinkedIn', 'Website', 'WhatsApp'].map(p => (
@@ -545,17 +545,17 @@ export function BlogPost() {
               </div>
               <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.05em] leading-[1] mb-10 font-outfit">
                 {lang === "de" 
-                  ? "Verwandeln Sie Ihre Expertise in ein digitales Vermächtnis." 
+                  ? "Verwandeln Sie Ihr Unternehmen in eine starke digitale Marke." 
                   : lang === "tr"
-                  ? "Uzmanlığınızı dijital bir mirasa dönüştürün."
-                  : "Transform your expertise into a digital legacy."}
+                  ? "İşletmenizi güçlü bir dijital markaya dönüştürün."
+                  : "Transform your business into a strong digital brand."}
               </h3>
               <p className="text-[1.25rem] text-white/60 mb-12 leading-relaxed max-w-xl">
                 {lang === "de" 
-                  ? "Wir bauen nicht nur Websites. Wir schaffen digitale Autoritäten, die Respekt einflößen und vorhersehbares Wachstum für Berater liefern." 
+                  ? "Wir bauen nicht nur Websites. Wir schaffen digitale Auftritte, die Vertrauen aufbauen und planbares Wachstum ermöglichen." 
                   : lang === "tr"
-                  ? "Sadece web sitesi yapmıyoruz. Danışmanlar için saygı uyandıran ve öngörülebilir büyüme sağlayan dijital otoriteler inşa ediyoruz."
-                  : "We don't just build websites. We build digital authorities that command respect and deliver predictable growth for consultants."}
+                  ? "Sadece web sitesi yapmıyoruz. Güven oluşturan ve ölçülebilir büyüme sağlayan dijital varlıklar inşa ediyoruz."
+                  : "We don't just build websites. We build digital presences that earn trust and deliver predictable growth for businesses."}
               </p>
               <Link
                 to="/#contact"
@@ -576,10 +576,10 @@ export function BlogPost() {
                 </h3>
                 <p className="text-[1.125rem] text-neutral-500 font-medium">
                   {lang === "de" 
-                    ? "Mehr Insights für ambitionierte Berater und Experten." 
+                    ? "Mehr Insights für ambitionierte Unternehmen." 
                     : lang === "tr"
-                    ? "Hırslı danışmanlar ve uzmanlar için daha fazla içerik."
-                    : "More insights for ambitious consultants and experts."}
+                    ? "İddialı işletmeler için daha fazla içerik."
+                    : "More insights for ambitious businesses."}
                 </p>
               </div>
               <Link to="/blog" className="inline-flex items-center gap-2 text-[1rem] font-bold text-[#0071e3] hover:translate-x-1 transition-transform">

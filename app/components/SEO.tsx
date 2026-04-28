@@ -14,7 +14,7 @@ interface SEOProps {
 const SITE_NAME = "Nüll. - Business Marketing & Webdesign";
 const BASE_URL = "https://xn--nll-hoa.com";
 const DEFAULT_DESC =
-  "Exzellentes Webdesign und digitale Positionierung für deutsch-türkische Berater und Consultants in Deutschland. Wir machen Ihr Unternehmen zur digitalen Autorität.";
+  "Exzellentes Webdesign und digitale Positionierung für Unternehmen. Wir machen Ihr Unternehmen zur digitalen Autorität.";
 // TODO: Add OG image once available (1200x630px recommended)
 // const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 

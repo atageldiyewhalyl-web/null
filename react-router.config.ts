@@ -11,7 +11,7 @@ export default {
       "/blog",
       "/blog/why-every-local-business-needs-a-website-in-2026",
       "/blog/seo-basics-for-small-businesses",
-      "/blog/personal-branding-for-consultants",
+      "/blog/personal-branding-for-business-owners",
       "/blog/5-elements-every-high-converting-website-needs",
       "/blog/5-elemente-high-converting-website-2026",
       "/blog/yuksek-donusumlu-web-sitesi-icin-5-temel-oge",

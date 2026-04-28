@@ -102,14 +102,14 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
   "hero.eyebrow": { 
-    en: "Web design & positioning for consultants", 
-    de: "Webdesign & Positionierung für Berater", 
-    tr: "Danışmanlar için web tasarımı ve konumlandırma" 
+    en: "Web design & positioning for businesses", 
+    de: "Webdesign & Positionierung für Unternehmen", 
+    tr: "İşletmeler için web tasarımı ve konumlandırma" 
   },
   "hero.line1": { 
-    en: "Clients are searching.", 
-    de: "Klienten suchen.", 
-    tr: "Danışanlar uzman arıyor." 
+    en: "Customers are searching.", 
+    de: "Kunden suchen.", 
+    tr: "Müşteriler arıyor." 
   },
   "hero.line2": { 
     en: "Your firm is the answer.", 
@@ -117,9 +117,9 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Cevap siz olmalısınız" 
   },
   "hero.description": {
-    en: "We build digital presences for Turkish-German consultants in Germany so you get found, earn trust, and win the right clients. Whether you have no website yet or one that isn't working: we make your business the first choice.",
-    de: "Wir schaffen digitale Präsenz für deutsch-türkische Berater in Deutschland, damit Sie gefunden werden, Vertrauen aufbauen und die richtigen Klienten gewinnen. Ob Sie noch keine Website haben oder eine, die nicht funktioniert, wir machen Ihr Unternehmen zur ersten Wahl.",
-    tr: "Almanya'daki Türk-Alman danışmanlar için dijital varlık oluşturuyoruz. Bulunmanız, güven kazanmanız ve doğru danışanları çekmeniz için. Henüz bir web siteniz yoksa ya da işe yaramayanı varsa: Sizi ilk tercih haline getiriyoruz.",
+    en: "We design websites for businesses that need to get found, earn trust, and turn visitors into customers. Whether you have no website yet or one that is not working: we make your business the first choice online.",
+    de: "Wir gestalten Websites für Unternehmen, die gefunden werden, Vertrauen aufbauen und Besucher in Kunden verwandeln möchten. Ob Sie noch keine Website haben oder eine, die nicht funktioniert: Wir machen Ihr Unternehmen online zur ersten Wahl.",
+    tr: "Bulunmak, güven kazanmak ve ziyaretçileri müşteriye dönüştürmek isteyen işletmeler için web siteleri tasarlıyoruz. Henüz web siteniz yoksa ya da mevcut siteniz işe yaramıyorsa: İşletmenizi online ilk tercih haline getiriyoruz.",
   },
   "hero.descriptionMobile": {
     en: "Whether you have no website or one that isn't working: we make your business the first choice online.",
@@ -138,7 +138,7 @@ const labels: Record<string, Record<Language, string>> = {
   },
 
   // Social Proof Cards
-  "hero.card1.label": { en: "Consulting website", de: "Berater-Website", tr: "Danışmanlık sitesi" },
+  "hero.card1.label": { en: "Business website", de: "Unternehmenswebsite", tr: "İşletme sitesi" },
   "hero.card1.value": { en: "4 completed", de: "4 fertiggestellt", tr: "4 tamamlandı" },
   "hero.card1.sub": { en: "built with a real expert", de: "mit einem echten Experten entwickelt", tr: "gerçek bir uzmanla geliştirildi" },
 
@@ -149,14 +149,14 @@ const labels: Record<string, Record<Language, string>> = {
   "hero.card3.label": { en: "SEO", de: "SEO", tr: "SEO" },
   "hero.card3.value": { en: "Foundation in place", de: "Grundlage gelegt", tr: "Altyapı kuruldu" },
   "hero.card3.sub": { en: "results on the way", de: "Ergebnisse folgen", tr: "sonuçlar yolda" },
-  "hero.trustRibbon.t1": { en: "Consulting Expert", de: "Berater-Experten", tr: "Danışmanlık Uzmanı" },
+  "hero.trustRibbon.t1": { en: "Business Websites", de: "Unternehmenswebsites", tr: "İşletme Siteleri" },
   "hero.trustRibbon.t2": { en: "Conversion Focused", de: "Conversion-Fokus", tr: "Dönüşüm Odaklı" },
   "hero.trustRibbon.t3": { en: "Digital Excellence", de: "Digitale Exzellenz", tr: "Dijital Mükemmellik" },
 
   "hero.trustBar": {
-    en: "Already trusted by experts in Germany. Every website built to win clients, not just look good.",
-    de: "Bereits von Beratern in Deutschland vertraut. Jede Website gebaut, um Klienten zu gewinnen, nicht nur um zu beeindrucken.",
-    tr: "Almanya'daki danışmanlar tarafından tercih ediliyoruz. Her web sitesi, sadece iyi görünmek için değil, danışan kazanmak için tasarlandı.",
+    en: "Trusted by businesses that need websites built to win customers, not just look good.",
+    de: "Vertraut von Unternehmen, die Websites brauchen, die Kunden gewinnen und nicht nur gut aussehen.",
+    tr: "Sadece iyi görünen değil, müşteri kazandıran web sitelerine ihtiyaç duyan işletmeler tarafından tercih ediliyoruz.",
   },
   "hero.comparison.label": {
     en: "Digital Transformation",
@@ -164,39 +164,39 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Dijital Dönüşüm",
   },
   "hero.comparison.title": {
-    en: "This is what a consultant that wins trust looks like.",
+    en: "This is what a business that wins trust looks like.",
     de: "So sieht ein Auftritt aus, der überzeugt.",
-    tr: "Güven kazanan bir danışmanlık böyle görünür.",
+    tr: "Güven kazanan bir işletme böyle görünür.",
   },
   "hero.comparison.subtitle": {
-    en: "Every detail designed to build trust and win clients.",
-    de: "Jedes detail darauf ausgelegt, Vertrauen zu schaffen und Mandanten zu gewinnen.",
-    tr: "Her detay, güven oluşturmak ve danışan kazanmak için tasarlanmıştır.",
+    en: "Every detail designed to build trust and win customers.",
+    de: "Jedes Detail darauf ausgelegt, Vertrauen zu schaffen und Kunden zu gewinnen.",
+    tr: "Her detay, güven oluşturmak ve müşteri kazanmak için tasarlanmıştır.",
   },
   "problem.header": {
-    en: "Most consultants lose clients before they ever speak to them.",
-    de: "Die meisten Berater verlieren Klienten, bevor sie überhaupt sprechen.",
-    tr: "Çoğu danışmanlık firması, henüz konuşmadan danışan kaybediyor.",
+    en: "Most businesses lose customers before they ever speak to them.",
+    de: "Die meisten Unternehmen verlieren Kunden, bevor sie überhaupt sprechen.",
+    tr: "Çoğu işletme, henüz konuşmadan müşteri kaybediyor.",
   },
   "problem.subHeader": {
-    en: "Not because they are bad experts. But because they don't exist online.",
-    de: "Nicht weil sie schlechte Berater sind. Sondern weil sie online nicht existieren.",
-    tr: "Kötü uzman oldukları için değil. Çevrimiçi var olmadıkları için.",
+    en: "Not because their offer is weak. But because their online presence does not build enough trust.",
+    de: "Nicht weil ihr Angebot schwach ist. Sondern weil ihr Online-Auftritt nicht genug Vertrauen schafft.",
+    tr: "Teklifleri zayıf olduğu için değil. Online varlıkları yeterince güven oluşturmadığı için.",
   },
   "problem.p1": {
-    en: "Someone is searching for a consultant in your city right now. They type into Google. They find your competition. Not you.",
-    de: "Jemand sucht gerade nach einem Berater in Ihrer Stadt. Er tippt bei Google. Er findet Ihre Konkurrenz. Nicht Sie.",
-    tr: "Şu an birileri bulunduğunuz şehirde uzman arıyor. Google'a yazıyor. Rakiplerinizi buluyor. Sizi değil.",
+    en: "Someone is searching for a business like yours right now. They type into Google. They find your competition. Not you.",
+    de: "Jemand sucht gerade nach einem Unternehmen wie Ihrem. Er tippt bei Google. Er findet Ihre Konkurrenz. Nicht Sie.",
+    tr: "Şu an birileri sizin gibi bir işletme arıyor. Google'a yazıyor. Rakiplerinizi buluyor. Sizi değil.",
   },
   "problem.p2": {
-    en: "Your website exists, but it looks outdated. First impressions matter — and right now your first impression is costing you clients.",
-    de: "Ihre Website existiert, aber sie wirkt veraltet. Der erste Eindruck zählt — und der erste Eindruck kostet Sie Mandanten.",
+    en: "Your website exists, but it looks outdated. First impressions matter, and right now your first impression is costing you customers.",
+    de: "Ihre Website existiert, aber sie wirkt veraltet. Der erste Eindruck zählt, und genau dieser Eindruck kostet Sie Kunden.",
     tr: "Web siteniz var ama eski görünüyor. İlk izlenim önemlidir ve şu an bu izlenim size müşteri kaybettiriyor.",
   },
   "problem.p3": {
-    en: "You have no website. The expert down the street does. And they are getting the enquiries that should be yours.",
-    de: "Sie haben keine Website. Ihr Nachbar, der auch Berater ist, schon. Und er bekommt die Anfragen, die eigentlich Ihnen gehören sollten.",
-    tr: "Web siteniz yok. Yakınınızdaki uzmanın var. Ve size gelmesi gereken talepler ona gidiyor.",
+    en: "You have no website. Your competitors do. And they are getting the enquiries that should be yours.",
+    de: "Sie haben keine Website. Ihre Konkurrenz schon. Und sie bekommt die Anfragen, die eigentlich Ihnen gehören sollten.",
+    tr: "Web siteniz yok. Rakiplerinizin var. Ve size gelmesi gereken talepler onlara gidiyor.",
   },
   "problem.turn": {
     en: "It doesn't have to stay this way. And it's easier to change than you think.",
@@ -216,15 +216,15 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "ihtiyacı olan her şey.",
   },
   "services.description": {
-    en: "We take care of your entire digital presence so you can focus on what you do best: share your expertise.",
-    de: "Wir kümmern uns um Ihre gesamte digitale Präsenz, damit Sie sich auf das konzentrieren können, was Sie am besten können: Ihre Expertise teilen.",
-    tr: "Tüm dijital varlığınızla biz ilgileniyoruz, siz en iyi yaptığınıza odaklanın: Uzmanlığınızı paylaşmak.",
+    en: "We take care of your entire digital presence so you can focus on running your business.",
+    de: "Wir kümmern uns um Ihre gesamte digitale Präsenz, damit Sie sich auf Ihr Unternehmen konzentrieren können.",
+    tr: "Tüm dijital varlığınızla biz ilgileniyoruz, siz işletmenize odaklanabilirsiniz.",
   },
-  "services.webdesign": { en: "Business website", de: "Experten-Website", tr: "Kurumsal web sitesi" },
+  "services.webdesign": { en: "Business website", de: "Unternehmenswebsite", tr: "Kurumsal web sitesi" },
   "services.webdesign.desc": { 
-    en: "A website that showcases your expertise and converts visitors. No templates. No compromises. Built for consultants.", 
-    de: "Eine Website, die Ihre Expertise zeigt und Klienten überzeugt. Kein Template. Kein Kompromiss. Gebaut für Berater.", 
-    tr: "Uzmanlığınızın çevrimiçi vitrini. Şablon yok, taviz yok. Uzmanlar için tasarlandı." 
+    en: "A website that presents your business clearly and converts visitors. No templates. No compromises.", 
+    de: "Eine Website, die Ihr Unternehmen klar präsentiert und Besucher überzeugt. Kein Template. Kein Kompromiss.", 
+    tr: "İşletmenizi net şekilde sunan ve ziyaretçileri müşteriye dönüştüren bir web sitesi. Şablon yok, taviz yok." 
   },
   "services.development": { en: "Technical development", de: "Technische Umsetzung", tr: "Teknik geliştirme" },
   "services.development.desc": {
@@ -234,9 +234,9 @@ const labels: Record<string, Record<Language, string>> = {
   },
   "services.seo": { en: "Google visibility", de: "Google-Sichtbarkeit", tr: "Google görünürlüğü" },
   "services.seo.desc": {
-    en: "When someone in your city searches for a consultant, they should find you. We make sure Google recommends your business.",
-    de: "Wenn jemand in Ihrer Stadt nach einem Berater sucht, soll er Sie finden. Wir sorgen dafür, dass Google Ihr Unternehmen empfiehlt.",
-    tr: "Şehrinizde biri uzman aradığında sizi bulsun. Google'ın sizi önermesini sağlıyoruz.",
+    en: "When someone searches for your services, they should find you. We make sure Google can recommend your business.",
+    de: "Wenn jemand nach Ihren Leistungen sucht, soll er Sie finden. Wir sorgen dafür, dass Google Ihr Unternehmen empfehlen kann.",
+    tr: "Birileri hizmetlerinizi aradığında sizi bulsun. Google'ın işletmenizi önerebilmesini sağlıyoruz.",
   },
   "services.seo.upsell": {
     en: "Option from €150/mo",
@@ -270,15 +270,15 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Web tasarımı ve marka kimliği",
   },
   "work.dogru.desc": {
-    en: "A bilingual business website for a Mannheim consultant with ties to Ankara. We developed his brand identity, sharpened his message and built a website that radiates authority and convinces clients.",
-    de: "Eine zweisprachige Experten-Website für einen Mannheimer Berater mit Verbindungen nach Ankara. Wir haben seine Markenidentität entwickelt, seine Botschaft geschärft und eine Website gebaut, die Autorität ausstrahlt und Klienten überzeugt.",
-    tr: "Mannheim'da faaliyet gösteren danışman Hasan Doğru, hem Alman hem de Türk danışanlara hitap eden güçlü bir dijital kimlik istiyordu. Marka kimliğinden web sitesine kadar her detayı birlikte geliştirdik. Sonuç: İki dilde güven veren, kararlı ve özgün bir business.",
+    en: "A business website built to present the brand clearly, explain the offer with confidence, and turn visitors into qualified enquiries.",
+    de: "Eine Unternehmenswebsite, die die Marke klar präsentiert, das Angebot überzeugend erklärt und Besucher in qualifizierte Anfragen verwandelt.",
+    tr: "Markayı net şekilde sunan, teklifi güvenle anlatan ve ziyaretçileri nitelikli taleplere dönüştüren bir işletme web sitesi.",
   },
-  "work.besir.category": { en: "Consultant · Personal Brand & Web Design", de: "Berater · Personal Branding & Webdesign", tr: "Danışman · Kişisel Marka & Web Tasarım" },
+  "work.besir.category": { en: "Business Brand & Web Design", de: "Unternehmensmarke & Webdesign", tr: "İşletme Markası & Web Tasarım" },
   "work.besir.desc": {
-    en: "Positioning and branding for a finance and insurance consultant looking to build an online presence. We crafted his message, designed his brand identity, and built a site that establishes authority and trust.",
-    de: "Positionierung und Markenaufbau für einen Finanz- und Versicherungsberater, der seine Online-Präsenz stärken möchte. Wir haben seine Botschaft geschärft, seine Markenidentität entwickelt und eine Website erstellt, die Autorität und Vertrauen vermittelt.",
-    tr: "Online varlığını güçlendirmek isteyen bir finans ve sigorta danışmanı için konumlandırma ve marka çalışması. Mesajını netleştirdik, marka kimliğini oluşturduk ve otorite ile güven sağlayan bir web sitesi geliştirdik.",
+    en: "Positioning and branding for a service business looking to build a stronger online presence. We clarified the message, designed the brand identity, and built a site that establishes trust.",
+    de: "Positionierung und Markenaufbau für ein Dienstleistungsunternehmen, das seine Online-Präsenz stärken möchte. Wir haben die Botschaft geschärft, die Markenidentität entwickelt und eine Website erstellt, die Vertrauen schafft.",
+    tr: "Online varlığını güçlendirmek isteyen bir hizmet işletmesi için konumlandırma ve marka çalışması. Mesajı netleştirdik, marka kimliğini oluşturduk ve güven sağlayan bir web sitesi geliştirdik.",
   },
 
   // Pricing
@@ -360,15 +360,15 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "İşletmeniz her ay Google'da biraz daha yukarı çıksın.",
   },
   "pricing.retainer.seo.f1": { en: "Ongoing Content Optimization", de: "Laufende Content-Optimierung", tr: "Düzenli içerik optimizasyonu" },
-  "pricing.retainer.seo.f2": { en: "Keyword research for your focus areas", de: "Keyword-Arbeit für Ihre Beratungsschwerpunkte", tr: "Danışmanlık alanınıza özel anahtar kelime çalışması" },
-  "pricing.retainer.seo.f3": { en: "In German, Turkish or both", de: "Auf Deutsch, Türkisch oder beides", tr: "Almanca, Türkçe veya her ikisi" },
+  "pricing.retainer.seo.f2": { en: "Keyword research for your services", de: "Keyword-Arbeit für Ihre Leistungen", tr: "Hizmetlerinize özel anahtar kelime çalışması" },
+  "pricing.retainer.seo.f3": { en: "Content aligned with your audience", de: "Inhalte passend zu Ihrer Zielgruppe", tr: "Hedef kitlenize uygun içerik" },
   "pricing.retainer.seo.f4": { en: "Technical SEO maintenance", de: "Technische SEO-Begleitung", tr: "Teknik SEO takibi" },
   "pricing.retainer.seo.f5": { en: "Monthly progress report", de: "Monatlicher Fortschrittsbericht", tr: "Aylık gelişim raporu" },
   "pricing.retainer.seo.priceSuffix": { en: "/month", de: "/Monat", tr: "/ay" },
 
   "pricing.retainer.growth": { en: "GROWTH PACKAGE", de: "WACHSTUMS-PAKET", tr: "BÜYÜME PAKETİ" },
   "pricing.retainer.growth.desc": {
-    en: "SEO plus new landing pages that actively win clients for your practice areas.",
+    en: "SEO plus new landing pages that actively win customers for your services.",
     de: "SEO plus jeden Monat eine neue Seite, die Ihr Unternehmen online sichtbarer macht.",
     tr: "SEO çalışmasına ek olarak, her ay yeni bir sayfa ile işletmenizin online varlığını genişletin.",
   },
@@ -395,14 +395,14 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "İşletmenizden bahsedin. 24 saat içinde somut bir planla size geri döneceğiz.",
   },
   "contact.location": { en: "Mannheim, Germany", de: "Mannheim, Deutschland", tr: "Mannheim, Almanya" },
-  "contact.whatsapp.cta": { en: "Message us directly — in German or Turkish.", de: "Schreiben Sie uns direkt — auf Deutsch oder Türkisch.", tr: "Bize direkt yazın — Almanca veya Türkçe." },
+  "contact.whatsapp.cta": { en: "Message us directly.", de: "Schreiben Sie uns direkt.", tr: "Bize direkt yazın." },
   "contact.email.cta": { en: "Prefer email? No problem.", de: "Lieber per E-Mail? Kein Problem.", tr: "E-posta tercih ederseniz sorun değil." },
   "contact.calendly.cta": { en: "Or book a free 30-minute call directly.", de: "Oder buchen Sie direkt ein kostenloses 30-Minuten-Gespräch.", tr: "Ya da ücretsiz 30 dakikalık görüşme için randevu alın." },
   "contact.name": { en: "Your name", de: "Ihr Name", tr: "Adınız" },
   "contact.email": { en: "Your email address", de: "Ihre E-Mail-Adresse", tr: "E-posta adresiniz" },
   "contact.phone": { en: "Your phone number", de: "Ihre Telefonnummer", tr: "Telefon numaranız" },
   "contact.city": { en: "Which city is your business in?", de: "In welcher Stadt ist Ihr Unternehmen?", tr: "İşletmeniz hangi şehirde?" },
-  "contact.practiceArea": { en: "What is your main consulting area?", de: "Was ist Ihr Beratungsschwerpunkt?", tr: "Ana danışmanlık alanınız nedir?" },
+  "contact.practiceArea": { en: "What is your main service?", de: "Was ist Ihre wichtigste Leistung?", tr: "Ana hizmetiniz nedir?" },
   "contact.websiteUrl": { en: "Your current website link", de: "Ihre aktuelle Website-URL", tr: "Mevcut web sitesi adresiniz" },
   "contact.hasWebsite": { en: "Do you already have a website?", de: "Haben Sie bereits eine Website?", tr: "Mevcut bir web siteniz var mı?" },
   "contact.websiteOpt.yes": { en: "Yes I have one", de: "Ja, ich habe eine", tr: "Evet var" },
@@ -425,7 +425,7 @@ const labels: Record<string, Record<Language, string>> = {
 
   // Onboarding
   // Onboarding Intro
-  "onboarding.intro.title": { en: "Let's build you a constant flow of clients", de: "Gemeinsam starten wir Ihren kontinuierlichen Kundenstrom", tr: "Kesintisiz müşteri akışınız için ilk adım" },
+  "onboarding.intro.title": { en: "Let's build you a constant flow of customers", de: "Gemeinsam starten wir Ihren kontinuierlichen Kundenstrom", tr: "Kesintisiz müşteri akışınız için ilk adım" },
   "onboarding.intro.description": { en: "A few questions to help us understand your vision.", de: "Ein paar Fragen, um Ihre Vision zu verstehen.", tr: "Vizyonunuzu anlamamız für birkaç soru." },
   "onboarding.intro.duration": { en: "Duration: ~5 minutes", de: "Dauer: ca. 5 Minuten", tr: "Süre: ~5 dakika" },
   "onboarding.intro.cta": { en: "Start Onboarding", de: "Onboarding starten", tr: "Onboarding'i başlat" },
@@ -450,11 +450,11 @@ const labels: Record<string, Record<Language, string>> = {
   "onboarding.step2.web.time": { en: "One-time", de: "Einmalig", tr: "Kalıcı" },
 
   "onboarding.step2.seo.title": { en: "SEO", de: "SEO", tr: "SEO" },
-  "onboarding.step2.seo.sub": { en: "A steady stream of organic clients in 2–3 months", de: "Kontinuierlicher Kundenstrom in 2–3 Monaten", tr: "2–3 ayda organik müşteri akışı" },
+  "onboarding.step2.seo.sub": { en: "A steady stream of organic customers in 2–3 months", de: "Kontinuierlicher Kundenstrom in 2–3 Monaten", tr: "2–3 ayda organik müşteri akışı" },
   "onboarding.step2.seo.time": { en: "First results: 2–3 months", de: "Erste Ergebnisse: 2–3 Monate", tr: "İlk sonuçlar: 2–3 ay" },
 
   "onboarding.step2.ads.title": { en: "Google Ads", de: "Google Ads", tr: "Google Reklamları" },
-  "onboarding.step2.ads.sub": { en: "Clients from the very first week", de: "Kunden ab der ersten Woche", tr: "İlk haftadan itibaren müşteri" },
+  "onboarding.step2.ads.sub": { en: "Customers from the very first week", de: "Kunden ab der ersten Woche", tr: "İlk haftadan itibaren müşteri" },
   "onboarding.step2.ads.time": { en: "First results: within 1 week", de: "Erste Ergebnisse: innerhalb 1 Woche", tr: "İlk sonuçlar: 1 hafta içinde" },
 
   "onboarding.step2.both.title": { en: "Full Package", de: "Gesamtpaket", tr: "Tam Paket" },
@@ -463,10 +463,10 @@ const labels: Record<string, Record<Language, string>> = {
   "onboarding.step2.both.badge": { en: "MOST POPULAR", de: "AM BELIEBTESTEN", tr: "EN ÇOK TERCİH EDİLEN" },
 
   "onboarding.step3.title": { en: "Your specialties.", de: "Ihre Schwerpunkte.", tr: "Uzmanlık alanlarınız." },
-  "onboarding.step3.sub": { en: "Which consulting areas do you focus on?", de: "Auf welche Beratungsfelder sind Sie spezialisiert?", tr: "Hangi danışmanlık alanlarına odaklanıyorsunuz?" },
-  "onboarding.step3.other": { en: "Other consulting area...", de: "Anderes Feld / Nische...", tr: "Diğer alan / Niş..." },
+  "onboarding.step3.sub": { en: "Which services do you focus on?", de: "Auf welche Leistungen sind Sie spezialisiert?", tr: "Hangi hizmetlere odaklanıyorsunuz?" },
+  "onboarding.step3.other": { en: "Other service or niche...", de: "Andere Leistung / Nische...", tr: "Diğer hizmet / niş..." },
   "onboarding.step3.topServices.title": { en: "Your Top 3.", de: "Ihre Top 3.", tr: "En Önemli 3 Alan." },
-  "onboarding.step3.topServices.sub": { en: "Select your three most important focus areas.", de: "Wählen Sie Ihre drei wichtigsten Beratungsschwerpunkte.", tr: "En önemli üç odak alanınızı seçin." },
+  "onboarding.step3.topServices.sub": { en: "Select your three most important services.", de: "Wählen Sie Ihre drei wichtigsten Leistungen.", tr: "En önemli üç hizmetinizi seçin." },
 
   // Onboarding Step 4 — Website Details
   "onboarding.step4.title": { en: "About your website.", de: "Über Ihre Website.", tr: "Web siteniz hakkında." },
@@ -513,7 +513,7 @@ const labels: Record<string, Record<Language, string>> = {
   "onboarding.extra.whatsapp.sub": { en: "Visitors can message you directly", de: "Besucher schreiben Ihnen direkt", tr: "Ziyaretçiler size direkt yazabilsin" },
   
   "onboarding.extra.appointment.title": { en: "Calendly Integration", de: "Calendly-Integration", tr: "Calendly Entegrasyonu" },
-  "onboarding.extra.appointment.sub": { en: "Clients book, you confirm", de: "Klienten buchen, Sie bestätigen", tr: "Danışanlar randevu alsın, siz onaylayın" },
+  "onboarding.extra.appointment.sub": { en: "Customers book, you confirm", de: "Kunden buchen, Sie bestätigen", tr: "Müşteriler randevu alsın, siz onaylayın" },
   
   "onboarding.extra.analytics.title": { en: "Google Analytics", de: "Google Analytics", tr: "Google Analytics" },
   "onboarding.extra.analytics.sub": { en: "See how many visitors your site has", de: "Sehen Sie, wie viele Besucher Ihre Seite hat", tr: "Sitenizi kaç kişinin ziyaret ettiğini görün" },
@@ -537,8 +537,8 @@ const labels: Record<string, Record<Language, string>> = {
   // Step 6 - Target Audience
   "onboarding.step6.title": { en: "Your target audience.", de: "Ihre Zielgruppe.", tr: "Hedef müşteriniz." },
   "onboarding.step6.sub": { en: "Who are you targeting?", de: "Wen möchten Sie ansprechen?", tr: "Kimi hedefliyorsunuz?" },
-  "onboarding.step6.q1": { en: "Who is your primary clientele?", de: "Wer ist Ihre primäre Klientel?", tr: "Öncelikli müşteri kitleniz?" },
-  "onboarding.step6.q2": { en: "What creates trust with your clients?", de: "Was schafft Vertrauen bei Ihren Klienten?", tr: "Danışanlarınızın size güvenmesini ne sağlıyor?" },
+  "onboarding.step6.q1": { en: "Who is your primary customer group?", de: "Wer ist Ihre primäre Kundengruppe?", tr: "Öncelikli müşteri kitleniz?" },
+  "onboarding.step6.q2": { en: "What creates trust with your customers?", de: "Was schafft Vertrauen bei Ihren Kunden?", tr: "Müşterilerinizin size güvenmesini ne sağlıyor?" },
   "onboarding.step6.q3": { en: "Languages for the website?", de: "Sprachen für die Website?", tr: "Web sitesi dilleri?" },
 
   // Step 7 - Design Preferences
