@@ -14,9 +14,11 @@ import { Footer } from "./components/Footer";
 import "./styles/index.css";
 
 export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+  const urlLang = url.searchParams.get("lang");
   const cookie = request.headers.get("Cookie");
   const match = cookie?.match(/nll_lang=([^;]+)/);
-  const lang = (match ? match[1] : "de") as Language;
+  const lang = (urlLang || (match ? match[1] : "de")) as Language;
   return { lang };
 }
 
@@ -48,7 +50,7 @@ export default function App() {
 
   return (
     <LanguageProvider initialLang={lang}>
-      <div className="min-h-screen bg-white transition-colors duration-500">
+      <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white transition-colors duration-500">
         {!isOnboarding && <Navbar />}
         <Outlet />
         {!isOnboarding && <Footer />}
@@ -61,10 +63,11 @@ export function meta(args: any) {
   const location = args?.location;
   const pathname = location?.pathname || "/";
   const isBlog = pathname.startsWith("/blog/");
-  const title = "Nüll. - Business Marketing & Webdesign";
-  const description = "Exzellentes Webdesign und digitale Positionierung für Unternehmen. Wir machen Ihr Unternehmen zur digitalen Autorität.";
+  const title = "Nüll. - Websites for Businesses, Consultants & Lawyers";
+  const description = "High-converting websites for businesses, consultants, and law firms built to earn trust and turn visitors into qualified enquiries.";
   const baseUrl = "https://xn--nll-hoa.com";
   const url = `${baseUrl}${pathname}`;
+  const image = `${baseUrl}/og-image.png`;
 
   return [
     { title },
@@ -74,9 +77,15 @@ export function meta(args: any) {
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:url", content: url },
-    { property: "og:site_name", content: "Nüll. - Web Design Agentur Mannheim" },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: "nüll. logo on a minimal branded background" },
+    { property: "og:site_name", content: "Nüll. - Websites for Businesses, Consultants & Lawyers" },
     { property: "og:locale", content: "de_DE" },
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: image },
+    { name: "twitter:image:alt", content: "nüll. logo on a minimal branded background" },
     { name: "theme-color", content: "#0071e3" },
     { name: "geo.region", content: "DE-BW" },
     { name: "geo.placename", content: "Mannheim" },
@@ -100,6 +109,8 @@ export function links(args: any) {
     { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" },
     { rel: "canonical", href: url },
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+    { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+    { rel: "image_src", href: "/og-image.png" },
     { rel: "alternate", hrefLang: "de", href: url },
 
     { rel: "alternate", hrefLang: "en", href: url },

@@ -17,6 +17,13 @@
 .DS_Store
 *.pem
 
+# raw source media kept locally after optimization
+app/assets/Hero background/Hero background long .mp4
+app/assets/Hero background/Hero background short.mp4
+app/assets/Hero background/Mobile/Mobile Background video.mp4
+app/assets/Hero background/Mobile/mobile-background.optimized.mp4
+app/assets/Hero background/Mobile/mobile-background.webm
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -14,7 +14,7 @@ import besirYamanImage from "../assets/Besiryaman .png?format=webp&w=1400";
 const projects = [
   {
     id: "dogru",
-    title: "Doğru Kanzlei",
+    title: "Law Firm Website",
     categoryKey: "work.dogru.category",
     descKey: "work.dogru.desc",
     image: dogruNew,
@@ -24,7 +24,7 @@ const projects = [
   },
   {
     id: "besir",
-    title: "Besir Yaman",
+    title: "Consultant Website",
     categoryKey: "work.besir.category",
     descKey: "work.besir.desc",
     image: besirYamanImage,

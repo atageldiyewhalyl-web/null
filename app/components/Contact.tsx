@@ -11,9 +11,9 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [form, setForm] = useState({ 
-    name: "", 
-    email: "", 
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
     phone: "",
     city: "",
     practiceArea: "",
@@ -84,10 +84,10 @@ export function Contact() {
                   <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
                     {t("contact.whatsapp.cta", lang)}
                   </p>
-                  <a 
-                    href="https://wa.me/491627176334" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/491627176334"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[0.875rem] text-[#0071e3] font-medium hover:underline flex items-center gap-1"
                   >
                     {lang === 'tr' ? 'Mesaj Gönder' : (lang === 'de' ? 'Nachricht senden' : 'Send Message')} <span className="text-[1.1em]">&rarr;</span>
@@ -104,8 +104,8 @@ export function Contact() {
                   <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
                     {t("contact.email.cta", lang)}
                   </p>
-                  <a 
-                    href="mailto:Halyl@nüll.com" 
+                  <a
+                    href="mailto:Halyl@nüll.com"
                     className="text-[0.875rem] text-[#0071e3] font-medium hover:underline"
                   >
                     Halyl@nüll.com
@@ -122,10 +122,10 @@ export function Contact() {
                   <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
                     {t("contact.calendly.cta", lang)}
                   </p>
-                  <a 
-                    href="https://calendly.com/atageldiyewhalyl/kostenlose-kanzlei-beratung" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://calendly.com/atageldiyewhalyl/business-beratung"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[0.875rem] text-[#0071e3] font-medium hover:underline flex items-center gap-1"
                   >
                     {lang === 'tr' ? 'Randevu Al' : (lang === 'de' ? 'Termin buchen' : 'Book Call')} <span className="text-[1.1em]">&rarr;</span>
@@ -143,7 +143,7 @@ export function Contact() {
           >
             <AnimatePresence mode="wait">
               {submitted ? (
-                <motion.div 
+                <motion.div
                   key="sent"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -241,8 +241,8 @@ export function Contact() {
                           type="button"
                           onClick={() => setForm({ ...form, hasWebsite: "yes" })}
                           className={`flex-1 py-2.5 rounded-xl text-[0.875rem] font-medium transition-all ${
-                            form.hasWebsite === "yes" 
-                              ? "bg-white text-foreground shadow-sm" 
+                            form.hasWebsite === "yes"
+                              ? "bg-white text-foreground shadow-sm"
                               : "text-muted-foreground"
                           }`}
                         >
@@ -252,8 +252,8 @@ export function Contact() {
                           type="button"
                           onClick={() => setForm({ ...form, hasWebsite: "no" })}
                           className={`flex-1 py-2.5 rounded-xl text-[0.875rem] font-medium transition-all ${
-                            form.hasWebsite === "no" 
-                              ? "bg-white text-foreground shadow-sm" 
+                            form.hasWebsite === "no"
+                              ? "bg-white text-foreground shadow-sm"
                               : "text-muted-foreground"
                           }`}
                         >
@@ -303,7 +303,7 @@ export function Contact() {
                       </button>
                     </div>
                   </form>
-                  
+
                   <p className="text-[0.875rem] text-muted-foreground text-center leading-relaxed px-4 opacity-70">
                     {t("contact.reassurance", lang)}
                   </p>

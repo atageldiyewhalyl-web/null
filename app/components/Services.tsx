@@ -6,17 +6,17 @@ export function Services() {
   const { lang } = useLanguage();
 
   const cardBase =
-    "group rounded-[2rem] bg-[#fafafa] border border-black/[0.06] p-7 md:p-8 flex flex-col justify-between min-h-[17rem] relative overflow-hidden transition-shadow hover:shadow-md";
+    "group rounded-[2rem] bg-[#fafafa] border border-black/[0.06] p-7 md:p-8 flex flex-col justify-between min-h-[15.5rem] relative overflow-hidden transition-shadow hover:shadow-md";
 
   return (
-    <section id="services" className="py-24 md:py-36 px-4 md:px-6 bg-white">
+    <section id="services" className="scroll-mt-28 py-24 md:py-32 px-4 md:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
 
         {/* ── Header ───────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-8 lg:gap-20 items-end mb-16 md:mb-20">
           <div>
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-[0.8125rem] tracking-[0.18em] uppercase text-[#007aff] font-bold mb-6"
@@ -24,18 +24,18 @@ export function Services() {
               {t("services.label", lang)}
             </motion.p>
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="text-[clamp(2.25rem,5.5vw,3.75rem)] font-bold tracking-tight leading-[1.08] text-[#0e0e10]"
+              className="max-w-full text-[clamp(2.15rem,5.5vw,3.75rem)] font-bold tracking-tight leading-[1.08] text-[#0e0e10] break-words hyphens-auto"
             >
               {t("services.title1", lang)}{" "}
               <span className="text-[#86868b]">{t("services.title2", lang)}</span>
             </motion.h2>
           </div>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.16 }}
@@ -48,10 +48,10 @@ export function Services() {
         {/* ── Bento Grid ───────────────────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 auto-rows-auto">
 
-          {/* Card 1 — Law Firm Website (large) */}
+          {/* Card 1 — Professional Website */}
           <motion.div
-            className={`lg:col-span-7 ${cardBase}`}
-            initial={{ opacity: 0, y: 24 }}
+            className={`lg:col-span-4 ${cardBase}`}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
@@ -74,8 +74,8 @@ export function Services() {
 
           {/* Card 2 — Technical Development */}
           <motion.div
-            className={`lg:col-span-5 ${cardBase}`}
-            initial={{ opacity: 0, y: 24 }}
+            className={`lg:col-span-4 ${cardBase}`}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.08 }}
@@ -99,13 +99,13 @@ export function Services() {
           {/* Card 3 — SEO (upsell) */}
           <motion.div
             className={`lg:col-span-4 ${cardBase} border-[#007aff]/20 bg-[#f0f7ff]`}
-            initial={{ opacity: 0, y: 24 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.16 }}
           >
             {/* Upsell badge */}
-            <span className="absolute top-6 right-6 text-[0.6875rem] font-bold tracking-wide bg-[#007aff] text-white px-3 py-1 rounded-full">
+            <span className="absolute top-6 right-6 max-w-[9rem] text-center text-[0.6875rem] font-bold tracking-wide bg-[#007aff] text-white px-3 py-1 rounded-full">
               {t("services.seo.upsell", lang)}
             </span>
             <div>
@@ -124,17 +124,44 @@ export function Services() {
             </div>
           </motion.div>
 
-          {/* Card 4 — Brand Identity */}
+          {/* Card 4 — AI Chat Visibility */}
           <motion.div
-            className={`lg:col-span-4 ${cardBase}`}
-            initial={{ opacity: 0, y: 24 }}
+            className={`lg:col-span-4 ${cardBase} border-[#0e0e10]/10 bg-white`}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.24 }}
           >
+            <span className="absolute top-6 right-6 text-[0.6875rem] font-bold tracking-wide bg-[#0e0e10] text-white px-3 py-1 rounded-full">
+              {t("services.ai.badge", lang)}
+            </span>
             <div>
               <p className="text-[0.75rem] tracking-[0.14em] uppercase text-[#007aff] font-bold mb-3 opacity-70">
                 04
+              </p>
+              <h3 className="text-[1.25rem] md:text-[1.4375rem] font-bold tracking-tight mb-3 text-[#0e0e10]">
+                {t("services.ai", lang)}
+              </h3>
+              <p className="text-[0.9375rem] text-[#86868b] leading-relaxed">
+                {t("services.ai.desc", lang)}
+              </p>
+            </div>
+            <div className="flex items-center gap-1.5 mt-6 text-[0.875rem] font-semibold text-[#007aff] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {t("services.learnMore", lang)} <ArrowUpRight size={15} />
+            </div>
+          </motion.div>
+
+          {/* Card 5 — Brand Identity */}
+          <motion.div
+            className={`lg:col-span-4 ${cardBase}`}
+            initial={false}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.32 }}
+          >
+            <div>
+              <p className="text-[0.75rem] tracking-[0.14em] uppercase text-[#007aff] font-bold mb-3 opacity-70">
+                05
               </p>
               <h3 className="text-[1.25rem] md:text-[1.4375rem] font-bold tracking-tight mb-3 text-[#0e0e10]">
                 {t("services.branding", lang)}
@@ -148,17 +175,17 @@ export function Services() {
             </div>
           </motion.div>
 
-          {/* Card 5 — Monthly Care (dark retainer) */}
+          {/* Card 6 — Monthly Care (dark retainer) */}
           <motion.div
-            className="lg:col-span-4 group rounded-[2rem] bg-[#0e0e10] border border-white/5 p-7 md:p-8 flex flex-col justify-between min-h-[17rem] relative overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/20"
-            initial={{ opacity: 0, y: 24 }}
+            className="lg:col-span-4 group rounded-[2rem] bg-[#0e0e10] border border-white/5 p-7 md:p-8 flex flex-col justify-between min-h-[15.5rem] relative overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/20"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.32 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <div>
               <p className="text-[0.75rem] tracking-[0.14em] uppercase text-white/30 font-bold mb-3">
-                05
+                06
               </p>
               <h3 className="text-[1.25rem] md:text-[1.4375rem] font-bold tracking-tight mb-3 text-white">
                 {t("services.maintenance", lang)}

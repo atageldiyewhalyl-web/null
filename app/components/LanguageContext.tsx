@@ -8,6 +8,9 @@ const LanguageContext = createContext<{
   isHydrated: boolean;
 }>({ lang: "de", setLang: () => { }, isHydrated: false });
 
+const isLanguage = (value: unknown): value is Language =>
+  value === "en" || value === "de" || value === "tr";
+
 // Cookie Helpers for Bulletproof Persistence
 const setCookie = (name: string, value: string, days: number) => {
   if (typeof document === "undefined") return;
@@ -30,34 +33,15 @@ const getCookie = (name: string): string | null => {
 };
 
 export function LanguageProvider({ children, initialLang = "de" }: { children: ReactNode, initialLang?: Language }) {
-  const [lang, setLangState] = useState<Language>(initialLang);
+  const [lang, setLangState] = useState<Language>(isLanguage(initialLang) ? initialLang : "de");
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Sync with cookies/localStorage on mount
-  useEffect(() => {
-    try {
-      const saved = (getCookie("nll_lang") || localStorage.getItem("nll_lang")) as Language;
-      if (saved && (saved === "en" || saved === "de" || saved === "tr")) {
-        setLangState(saved);
-        document.documentElement.lang = saved;
-      }
-    } catch (e) {
-      console.warn("Language hydration from storage failed:", e);
-    }
-    setIsHydrated(true);
-  }, []);
-
-  // 2. Sync with initialLang if it changes from the server (e.g. on navigation)
-  useEffect(() => {
-    if (initialLang && initialLang !== lang) {
-      setLangState(initialLang);
-    }
-  }, [initialLang]);
-
   const setLang = useCallback((newLang: Language) => {
+    if (!isLanguage(newLang)) return;
+
     // 1. Force state update immediately
     setLangState(newLang);
-    
+
     // 2. Try persistence
     try {
       setCookie("nll_lang", newLang, 365);
@@ -72,10 +56,24 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
     }
   }, []);
 
-  const value = useMemo(() => ({ 
-    lang, 
-    setLang, 
-    isHydrated 
+  // Sync with localStorage or cookies on mount. Prefer localStorage because
+  // mobile browsers can preserve an older cookie during LAN testing.
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("nll_lang") || getCookie("nll_lang");
+      if (isLanguage(saved)) {
+        setLang(saved);
+      }
+    } catch (e) {
+      console.warn("Language hydration from storage failed:", e);
+    }
+    setIsHydrated(true);
+  }, [setLang]);
+
+  const value = useMemo(() => ({
+    lang,
+    setLang,
+    isHydrated
   }), [lang, setLang, isHydrated]);
 
   return (
@@ -101,62 +99,77 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.contact": { en: "Contact", de: "Kontakt", tr: "İletişim" },
   "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
-  "hero.eyebrow": { 
-    en: "Web design & positioning for businesses", 
-    de: "Webdesign & Positionierung für Unternehmen", 
-    tr: "İşletmeler için web tasarımı ve konumlandırma" 
+  "hero.eyebrow": {
+    en: "Web design for businesses, consultants & lawyers",
+    de: "Webdesign für Unternehmen, Berater & Kanzleien",
+    tr: "İşletmeler, danışmanlar ve hukuk büroları için web tasarımı"
   },
-  "hero.line1": { 
-    en: "Customers are searching.", 
-    de: "Kunden suchen.", 
-    tr: "Müşteriler arıyor." 
+  "hero.line1": {
+    en: "Your next client is already looking",
+    de: "Ihr nächster Mandant sucht bereits",
+    tr: "Bir sonraki müvekkiliniz zaten arıyor"
   },
-  "hero.line2": { 
-    en: "Your firm is the answer.", 
-    de: "Ihr Unternehmen ist die Antwort.", 
-    tr: "Cevap siz olmalısınız" 
+  "hero.line2": {
+    en: "Make sure they find you",
+    de: "Stellen Sie sicher, dass er Sie findet",
+    tr: "Sizi bulduğundan emin olun"
+  },
+  "hero.line1Mobile": {
+    en: "Your next client is searching",
+    de: "Ihr nächster Mandant sucht",
+    tr: "Müvekkiliniz arıyor"
+  },
+  "hero.line2Mobile": {
+    en: "Be the one they find",
+    de: "Sorgen Sie dafür, dass er Sie findet",
+    tr: "Sizi bulsun"
   },
   "hero.description": {
-    en: "We design websites for businesses that need to get found, earn trust, and turn visitors into customers. Whether you have no website yet or one that is not working: we make your business the first choice online.",
-    de: "Wir gestalten Websites für Unternehmen, die gefunden werden, Vertrauen aufbauen und Besucher in Kunden verwandeln möchten. Ob Sie noch keine Website haben oder eine, die nicht funktioniert: Wir machen Ihr Unternehmen online zur ersten Wahl.",
-    tr: "Bulunmak, güven kazanmak ve ziyaretçileri müşteriye dönüştürmek isteyen işletmeler için web siteleri tasarlıyoruz. Henüz web siteniz yoksa ya da mevcut siteniz işe yaramıyorsa: İşletmenizi online ilk tercih haline getiriyoruz.",
+    en: "We design high-converting websites for service businesses, consultants, and law firms that need to get found, earn trust, and turn visitors into qualified enquiries.",
+    de: "Wir gestalten konversionsstarke Websites für Dienstleister, Berater und Kanzleien, die gefunden werden, Vertrauen aufbauen und Besucher in qualifizierte Anfragen verwandeln möchten.",
+    tr: "Bulunmak, güven kazanmak ve ziyaretçileri nitelikli taleplere dönüştürmek isteyen hizmet işletmeleri, danışmanlar ve hukuk büroları için yüksek dönüşümlü web siteleri tasarlıyoruz.",
   },
   "hero.descriptionMobile": {
-    en: "Whether you have no website or one that isn't working: we make your business the first choice online.",
-    de: "Egal ob Sie noch keine Website haben oder eine, die nicht das leistet, what she soll, wir sorgen dafür, dass Ihr Unternehmen online gefunden wird.",
-    tr: "Henüz web siteniz olmasa da, olanı işe yaramasa da, sizi internette öne çıkarıyoruz.",
+    en: "Websites for service businesses, consultants, and law firms that need trust, clarity, and qualified enquiries.",
+    de: "Websites für Dienstleister, Berater und Kanzleien, die Vertrauen, Klarheit und qualifizierte Anfragen brauchen.",
+    tr: "Güven, netlik ve nitelikli talepler isteyen hizmet işletmeleri, danışmanlar ve hukuk büroları için web siteleri.",
   },
-  "hero.cta": { 
-    en: "Book a free consultation", 
-    de: "Jetzt kostenlos beraten lassen", 
-    tr: "Ücretsiz danışmanlık al" 
+  "hero.cta": {
+    en: "Book a free consultation",
+    de: "Jetzt kostenlos beraten lassen",
+    tr: "Ücretsiz danışmanlık al"
   },
-  "hero.secondary": { 
-    en: "View case studies", 
-    de: "Fallstudien ansehen", 
-    tr: "Örnek projeleri gör" 
+  "hero.secondary": {
+    en: "View case studies",
+    de: "Fallstudien ansehen",
+    tr: "Örnek projeleri gör"
   },
 
   // Social Proof Cards
-  "hero.card1.label": { en: "Business website", de: "Unternehmenswebsite", tr: "İşletme sitesi" },
-  "hero.card1.value": { en: "4 completed", de: "4 fertiggestellt", tr: "4 tamamlandı" },
-  "hero.card1.sub": { en: "built with a real expert", de: "mit einem echten Experten entwickelt", tr: "gerçek bir uzmanla geliştirildi" },
+  "hero.card1.label": { en: "Client value generated", de: "Generierter Kundenwert", tr: "Oluşturulan müşteri değeri" },
+  "hero.card1.value": { en: "€10k / week", de: "€10k / Woche", tr: "Haftalık €10k" },
+  "hero.card1.sub": { en: "average new client value across active projects", de: "durchschnittlicher Neukundenwert in aktiven Projekten", tr: "aktif projelerde ortalama yeni müşteri değeri" },
 
-  "hero.card2.label": { en: "Design", de: "Design", tr: "Tasarım" },
-  "hero.card2.value": { en: "Fully responsive", de: "Vollständig responsiv", tr: "Tam uyumlu" },
-  "hero.card2.sub": { en: "looks great on every device", de: "auf jedem Gerät perfekt", tr: "her cihazda kusursuz görünüm" },
+  "hero.card2.label": { en: "SEO rankings", de: "SEO-Rankings", tr: "SEO sıralamaları" },
+  "hero.card2.value": { en: "Top 3 avg.", de: "Top 3 im Schnitt", tr: "Ortalama ilk 3" },
+  "hero.card2.sub": { en: "for the keywords we target", de: "für die Keywords, die wir gezielt aufbauen", tr: "hedeflediğimiz anahtar kelimelerde" },
 
-  "hero.card3.label": { en: "SEO", de: "SEO", tr: "SEO" },
-  "hero.card3.value": { en: "Foundation in place", de: "Grundlage gelegt", tr: "Altyapı kuruldu" },
-  "hero.card3.sub": { en: "results on the way", de: "Ergebnisse folgen", tr: "sonuçlar yolda" },
-  "hero.trustRibbon.t1": { en: "Business Websites", de: "Unternehmenswebsites", tr: "İşletme Siteleri" },
-  "hero.trustRibbon.t2": { en: "Conversion Focused", de: "Conversion-Fokus", tr: "Dönüşüm Odaklı" },
-  "hero.trustRibbon.t3": { en: "Digital Excellence", de: "Digitale Exzellenz", tr: "Dijital Mükemmellik" },
+  "hero.card3.label": { en: "Monthly visibility", de: "Monatliche Sichtbarkeit", tr: "Aylık görünürlük" },
+  "hero.card3.value": { en: "50k views", de: "50k Impressionen", tr: "50k gösterim" },
+  "hero.card3.sub": { en: "and 7k clicks generated every month", de: "und 7k Klicks pro Monat", tr: "ve ayda 7k tıklama" },
+
+  "hero.card4.label": { en: "AI discovery", de: "KI-Sichtbarkeit", tr: "Yapay zeka görünürlüğü" },
+  "hero.card4.value": { en: "Found in chats", de: "In Chats gefunden", tr: "Sohbetlerde bulunur" },
+  "hero.card4.sub": { en: "clients appear in AI answers and recommendations", de: "Kunden erscheinen in KI-Antworten und Empfehlungen", tr: "müşteriler yapay zeka cevaplarında ve önerilerinde görünür" },
+
+  "hero.trustRibbon.t1": { en: "€10k / Week", de: "€10k / Woche", tr: "Haftalık €10k" },
+  "hero.trustRibbon.t2": { en: "Top 3 SEO", de: "Top 3 SEO", tr: "İlk 3 SEO" },
+  "hero.trustRibbon.t3": { en: "AI Discovery", de: "KI-Sichtbarkeit", tr: "Yapay Zeka Görünürlüğü" },
 
   "hero.trustBar": {
-    en: "Trusted by businesses that need websites built to win customers, not just look good.",
-    de: "Vertraut von Unternehmen, die Websites brauchen, die Kunden gewinnen und nicht nur gut aussehen.",
-    tr: "Sadece iyi görünen değil, müşteri kazandıran web sitelerine ihtiyaç duyan işletmeler tarafından tercih ediliyoruz.",
+    en: "Built for businesses, consultants, and lawyers who need websites that win trust, not just attention.",
+    de: "Für Unternehmen, Berater und Anwälte, die Websites brauchen, die Vertrauen gewinnen und nicht nur Aufmerksamkeit.",
+    tr: "Sadece dikkat değil, güven kazandıran web sitelerine ihtiyaç duyan işletmeler, danışmanlar ve avukatlar için.",
   },
   "hero.comparison.label": {
     en: "Digital Transformation",
@@ -174,9 +187,9 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Her detay, güven oluşturmak ve müşteri kazanmak için tasarlanmıştır.",
   },
   "problem.header": {
-    en: "Most businesses lose customers before they ever speak to them.",
-    de: "Die meisten Unternehmen verlieren Kunden, bevor sie überhaupt sprechen.",
-    tr: "Çoğu işletme, henüz konuşmadan müşteri kaybediyor.",
+    en: "Most firms lose clients before the first conversation.",
+    de: "Viele Anbieter verlieren Kunden vor dem ersten Gespräch.",
+    tr: "Birçok firma, ilk görüşmeden önce müşteri kaybediyor.",
   },
   "problem.subHeader": {
     en: "Not because their offer is weak. But because their online presence does not build enough trust.",
@@ -184,9 +197,9 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Teklifleri zayıf olduğu için değil. Online varlıkları yeterince güven oluşturmadığı için.",
   },
   "problem.p1": {
-    en: "Someone is searching for a business like yours right now. They type into Google. They find your competition. Not you.",
-    de: "Jemand sucht gerade nach einem Unternehmen wie Ihrem. Er tippt bei Google. Er findet Ihre Konkurrenz. Nicht Sie.",
-    tr: "Şu an birileri sizin gibi bir işletme arıyor. Google'a yazıyor. Rakiplerinizi buluyor. Sizi değil.",
+    en: "Someone is searching for your service right now. They type into Google. They find a competitor. Not you.",
+    de: "Jemand sucht gerade nach Ihrer Leistung. Er tippt bei Google. Er findet einen Wettbewerber. Nicht Sie.",
+    tr: "Birileri şu anda sizin hizmetinizi arıyor. Google'a yazıyor. Rakibinizi buluyor. Sizi değil.",
   },
   "problem.p2": {
     en: "Your website exists, but it looks outdated. First impressions matter, and right now your first impression is costing you customers.",
@@ -206,25 +219,25 @@ const labels: Record<string, Record<Language, string>> = {
 
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
   "services.title1": {
-    en: "Everything your business",
-    de: "Alles, was Ihr Unternehmen",
-    tr: "Uzmanlığınızın çevrimiçi",
+    en: "All you need to build",
+    de: "Alles, was Sie brauchen",
+    tr: "Müşteri kazanım kanalınızı",
   },
   "services.title2": {
-    en: "needs online.",
-    de: "online braucht.",
-    tr: "ihtiyacı olan her şey.",
+    en: "your client acquisition channel.",
+    de: "für Ihre Kundenakquise.",
+    tr: "kurmak için ihtiyacınız olan her şey.",
   },
   "services.description": {
-    en: "We take care of your entire digital presence so you can focus on running your business.",
-    de: "Wir kümmern uns um Ihre gesamte digitale Präsenz, damit Sie sich auf Ihr Unternehmen konzentrieren können.",
-    tr: "Tüm dijital varlığınızla biz ilgileniyoruz, siz işletmenize odaklanabilirsiniz.",
+    en: "Websites, SEO, AI visibility, positioning, and ongoing care working together to turn attention into qualified enquiries.",
+    de: "Websites, SEO, KI-Sichtbarkeit, Positionierung und laufende Betreuung, die gemeinsam Aufmerksamkeit in qualifizierte Anfragen verwandeln.",
+    tr: "Web sitesi, SEO, yapay zeka görünürlüğü, konumlandırma ve sürekli bakım birlikte çalışarak ilgiyi nitelikli taleplere dönüştürür.",
   },
-  "services.webdesign": { en: "Business website", de: "Unternehmenswebsite", tr: "Kurumsal web sitesi" },
-  "services.webdesign.desc": { 
-    en: "A website that presents your business clearly and converts visitors. No templates. No compromises.", 
-    de: "Eine Website, die Ihr Unternehmen klar präsentiert und Besucher überzeugt. Kein Template. Kein Kompromiss.", 
-    tr: "İşletmenizi net şekilde sunan ve ziyaretçileri müşteriye dönüştüren bir web sitesi. Şablon yok, taviz yok." 
+  "services.webdesign": { en: "Professional website", de: "Professionelle Website", tr: "Profesyonel web sitesi" },
+  "services.webdesign.desc": {
+    en: "A website that presents your expertise clearly and converts visitors. No templates. No compromises.",
+    de: "Eine Website, die Ihre Expertise klar präsentiert und Besucher überzeugt. Kein Template. Kein Kompromiss.",
+    tr: "Uzmanlığınızı net şekilde sunan ve ziyaretçileri müşteriye dönüştüren bir web sitesi. Şablon yok, taviz yok."
   },
   "services.development": { en: "Technical development", de: "Technische Umsetzung", tr: "Teknik geliştirme" },
   "services.development.desc": {
@@ -242,6 +255,17 @@ const labels: Record<string, Record<Language, string>> = {
     en: "Option from €150/mo",
     de: "Option ab €150/Monat",
     tr: "Ek seçenek €150/ay'dan",
+  },
+  "services.ai": { en: "AI chat visibility", de: "KI-Chat-Sichtbarkeit", tr: "Yapay zeka sohbet görünürlüğü" },
+  "services.ai.desc": {
+    en: "We structure your website and content so your firm can appear in AI answers, recommendations, and research conversations.",
+    de: "Wir strukturieren Website und Inhalte so, dass Ihr Anbieter in KI-Antworten, Empfehlungen und Recherche-Chats sichtbar werden kann.",
+    tr: "Web sitenizi ve içeriklerinizi, firmanızın yapay zeka cevaplarında, önerilerinde ve araştırma sohbetlerinde görünmesi için yapılandırıyoruz.",
+  },
+  "services.ai.badge": {
+    en: "AI search",
+    de: "KI-Suche",
+    tr: "Yapay zeka araması",
   },
   "services.branding": { en: "Brand identity", de: "Markenidentität", tr: "Marka kimliği" },
   "services.branding.desc": {
@@ -270,15 +294,15 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Web tasarımı ve marka kimliği",
   },
   "work.dogru.desc": {
-    en: "A business website built to present the brand clearly, explain the offer with confidence, and turn visitors into qualified enquiries.",
-    de: "Eine Unternehmenswebsite, die die Marke klar präsentiert, das Angebot überzeugend erklärt und Besucher in qualifizierte Anfragen verwandelt.",
-    tr: "Markayı net şekilde sunan, teklifi güvenle anlatan ve ziyaretçileri nitelikli taleplere dönüştüren bir işletme web sitesi.",
+    en: "A professional website built to present the firm clearly, explain the offer with confidence, and turn visitors into qualified enquiries.",
+    de: "Eine professionelle Website, die den Anbieter klar präsentiert, das Angebot überzeugend erklärt und Besucher in qualifizierte Anfragen verwandelt.",
+    tr: "Firmayı net şekilde sunan, teklifi güvenle anlatan ve ziyaretçileri nitelikli taleplere dönüştüren profesyonel bir web sitesi.",
   },
-  "work.besir.category": { en: "Business Brand & Web Design", de: "Unternehmensmarke & Webdesign", tr: "İşletme Markası & Web Tasarım" },
+  "work.besir.category": { en: "Consultant Brand & Web Design", de: "Beratermarke & Webdesign", tr: "Danışman Markası & Web Tasarım" },
   "work.besir.desc": {
-    en: "Positioning and branding for a service business looking to build a stronger online presence. We clarified the message, designed the brand identity, and built a site that establishes trust.",
-    de: "Positionierung und Markenaufbau für ein Dienstleistungsunternehmen, das seine Online-Präsenz stärken möchte. Wir haben die Botschaft geschärft, die Markenidentität entwickelt und eine Website erstellt, die Vertrauen schafft.",
-    tr: "Online varlığını güçlendirmek isteyen bir hizmet işletmesi için konumlandırma ve marka çalışması. Mesajı netleştirdik, marka kimliğini oluşturduk ve güven sağlayan bir web sitesi geliştirdik.",
+    en: "Positioning and branding for a consultant building a stronger online presence. We clarified the message, designed the brand identity, and built a site that establishes trust.",
+    de: "Positionierung und Markenaufbau für einen Berater, der seine Online-Präsenz stärken möchte. Wir haben die Botschaft geschärft, die Markenidentität entwickelt und eine Website erstellt, die Vertrauen schafft.",
+    tr: "Online varlığını güçlendirmek isteyen bir danışman için konumlandırma ve marka çalışması. Mesajı netleştirdik, marka kimliğini oluşturduk ve güven sağlayan bir web sitesi geliştirdik.",
   },
 
   // Pricing
@@ -286,9 +310,9 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.title1": { en: "Full clarity", de: "Volle Klarheit", tr: "Baştan tam" },
   "pricing.title2": { en: "from the start.", de: "von Anfang an.", tr: "netlik." },
   "pricing.description": {
-    en: "Choose the package that fits your business. Monthly care is included in every package.",
-    de: "Wählen Sie das Paket, das zu Ihrem Unternehmen passt. Monatliche Betreuung ist in jedem Paket dabei.",
-    tr: "Size en uygun paketi seçin. Aylık bakım her pakete dahildir.",
+    en: "Choose the package that fits your firm. Monthly care is included in every package.",
+    de: "Wählen Sie das Paket, das zu Ihrem Auftritt passt. Monatliche Betreuung ist in jedem Paket dabei.",
+    tr: "Firmanıza en uygun paketi seçin. Aylık bakım her pakete dahildir.",
   },
   "pricing.tab.websites": { en: "Website Packages", de: "Website-Pakete", tr: "Web Sitesi Paketleri" },
   "pricing.tab.retainer": { en: "Monthly Retainer", de: "Monatliche Betreuung", tr: "Aylık Bakım" },
@@ -312,7 +336,7 @@ const labels: Record<string, Record<Language, string>> = {
   "pricing.business.price": { en: "125€/mo", de: "125€/Monat", tr: "125€/ay" },
   "pricing.business.desc": {
     en: "Up to 10 pages. Ideal for growing firms.",
-    de: "Bis zu 10 Seiten. Ideal für wachsende Kanzleien.",
+    de: "Bis zu 10 Seiten. Ideal für wachsende Anbieter.",
     tr: "10 sayfaya kadar. Büyüyen firmalar için ideal.",
   },
   "pricing.business.f1": { en: "Up to 10 Pages", de: "Bis zu 10 Seiten", tr: "10 Sayfaya Kadar" },
@@ -384,17 +408,17 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Aylık €99 temel bakım tüm paketlere dahildir ve ayrıca satın alınamaz.",
   },
   "pricing.cta.upgrade": { en: "Upgrade now", de: "Jetzt wechseln", tr: "Şimdi geç" },
-  
+
   // Contact
   "contact.label": { en: "Contact", de: "Kontakt", tr: "İletişim" },
-  "contact.title1": { en: "Your expertise deserves a strong presence.", de: "Ihre Expertise verdient einen starken Auftritt.", tr: "Uzmanlığınız güçlü bir duruşu hak ediyor." },
-  "contact.title2": { en: "Let's build your authority.", de: "Lassen Sie uns Ihre Autorität stärken.", tr: "Autoritenizi inşa edelim." },
+  "contact.title1": { en: "Your expertise deserves a stronger presence.", de: "Ihre Expertise verdient einen stärkeren Auftritt.", tr: "Uzmanlığınız daha güçlü bir duruşu hak ediyor." },
+  "contact.title2": { en: "Let's turn it into enquiries.", de: "Machen wir daraus Anfragen.", tr: "Bunu taleplere dönüştürelim." },
   "contact.description": {
     en: "Tell us about your business. We will get back to you within 24 hours with a concrete plan.",
     de: "Erzählen Sie uns von Ihrem Unternehmen. Wir melden uns innerhalb von 24 Stunden mit einem konkreten Plan zurück.",
     tr: "İşletmenizden bahsedin. 24 saat içinde somut bir planla size geri döneceğiz.",
   },
-  "contact.location": { en: "Mannheim, Germany", de: "Mannheim, Deutschland", tr: "Mannheim, Almanya" },
+  "contact.location": { en: "Remote & local projects", de: "Remote & lokale Projekte", tr: "Uzaktan ve yerel projeler" },
   "contact.whatsapp.cta": { en: "Message us directly.", de: "Schreiben Sie uns direkt.", tr: "Bize direkt yazın." },
   "contact.email.cta": { en: "Prefer email? No problem.", de: "Lieber per E-Mail? Kein Problem.", tr: "E-posta tercih ederseniz sorun değil." },
   "contact.calendly.cta": { en: "Or book a free 30-minute call directly.", de: "Oder buchen Sie direkt ein kostenloses 30-Minuten-Gespräch.", tr: "Ya da ücretsiz 30 dakikalık görüşme için randevu alın." },
@@ -409,10 +433,10 @@ const labels: Record<string, Record<Language, string>> = {
   "contact.websiteOpt.no": { en: "No not yet", de: "Nein, noch nicht", tr: "Hayır henüz yok" },
   "contact.message": { en: "How can we help you?", de: "Wie können wir Ihnen helfen?", tr: "Size nasıl yardımcı olabiliriz?" },
   "contact.send": { en: "Send message", de: "Nachricht senden", tr: "Mesaj gönder" },
-  "contact.reassurance": { 
-    en: "No sales pitch. No pressure. Just an honest conversation about how we can help your business.", 
-    de: "Kein Verkaufsgespräch. Kein Druck. Nur ein ehrliches Gespräch darüber, wie wir Ihrem Unternehmen helfen können.", 
-    tr: "Satış konuşması yok. Baskı yok. Sadece işletmenize nasıl yardımcı olabileceğimiz hakkında dürüst bir sohbet." 
+  "contact.reassurance": {
+    en: "No sales pitch. No pressure. Just an honest conversation about how we can help your business.",
+    de: "Kein Verkaufsgespräch. Kein Druck. Nur ein ehrliches Gespräch darüber, wie wir Ihrem Unternehmen helfen können.",
+    tr: "Satış konuşması yok. Baskı yok. Sadece işletmenize nasıl yardımcı olabileceğimiz hakkında dürüst bir sohbet."
   },
   "contact.sending": { en: "Sending...", de: "Wird gesendet...", tr: "Gönderiliyor..." },
   "contact.sent": { en: "Message sent!", de: "Nachricht gesendet!", tr: "Mesaj gönderildi!" },
@@ -475,13 +499,13 @@ const labels: Record<string, Record<Language, string>> = {
   "onboarding.step4.q2": { en: "Which features do you need?", de: "Welche Funktionen benötigen Sie?", tr: "Hangi özellikler olsun?" },
   "onboarding.step4.q3": { en: "Revision rounds preference?", de: "Korrekturrunden?", tr: "Revizyon hakkı tercihiniz?" },
   "onboarding.step4.q4": { en: "Do you already have a website?", de: "Haben Sie bereits eine Website?", tr: "Mevcut bir web siteniz var mı?" },
-  
+
   // 4a - Site Type
   "onboarding.step4a.q": { en: "What kind of website are you planning?", de: "Was für eine Website planen Sie?", tr: "Nasıl bir site düşünüyorsunuz?" },
   "onboarding.step4a.onepage.title": { en: "One-Page", de: "Ein-Seiten-Website", tr: "Tek sayfalık site" },
   "onboarding.step4a.onepage.sub": { en: "Simple and fast. But limited for SEO.", de: "Kompakt und schnell. Aber SEO-technisch begrenzt.", tr: "Sade ve hızlı. Ancak SEO için sınırlı." },
   "onboarding.step4a.onepage.warning": { en: "⚠ Single page makes ranking by city and service harder.", de: "⚠ Eine einzelne Seite erschwert das Ranking nach Stadt und Rechtsgebiet.", tr: "⚠ Tek sayfa, Google'da şehir ve hizmet bazlı sıralamayı zorlaştırır." },
-  
+
   "onboarding.step4a.multipage.title": { en: "Multi-Page", de: "Mehrseitige Website", tr: "Çok sayfalık site" },
   "onboarding.step4a.multipage.sub": { en: "Separate page for each service and city. Ideal for SEO.", de: "Eigene Seite für jede Leistung und Stadt. Ideal für SEO.", tr: "Google arama görünürlüğü için ideal" },
   "onboarding.step4a.multipage.recommended": { en: "✓ Recommended for SEO", de: "✓ Für SEO empfohlen", tr: "✓ SEO için önerilen" },
@@ -489,7 +513,7 @@ const labels: Record<string, Record<Language, string>> = {
   // 4b - Architecture
   "onboarding.step4b.onepage.q": { en: "Which sections should this page contain?", de: "Welche Abschnitte soll diese Seite enthalten?", tr: "Bu sayfada hangi bölümler olsun?" },
   "onboarding.step4b.multipage.q": { en: "Which pages should the website have?", de: "Welche Seiten soll die Website haben?", tr: "Hangi sayfalar olsun?" },
-  
+
   // Arch Options
   "onboarding.arch.home": { en: "Home", de: "Startseite", tr: "Ana Sayfa" },
   "onboarding.arch.services": { en: "Services / Practice Areas", de: "Hizmetler / Rechtsgebiete", tr: "Hizmetler / Uzmanlık Alanları" },
@@ -505,19 +529,19 @@ const labels: Record<string, Record<Language, string>> = {
   "onboarding.step4c.q": { en: "What else do you need?", de: "Was benötigen Sie darüber hinaus?", tr: "Bunların dışında ihtiyacınız olan şeyler?" },
   "onboarding.extra.logo.title": { en: "Logo & Brand Design", de: "Logo & Markendesign", tr: "Logo & Marka Tasarımı" },
   "onboarding.extra.logo.sub": { en: "We design it from scratch", de: "Wir gestalten es von Grund auf", tr: "Sıfırdan tasarlıyoruz" },
-  
+
   "onboarding.extra.copy.title": { en: "Page Content", de: "Seitentexte", tr: "Sayfa Metinleri" },
   "onboarding.extra.copy.sub": { en: "We write it on your behalf", de: "Wir schreiben für Sie", tr: "Sizin adınıza biz yazıyoruz" },
-  
+
   "onboarding.extra.whatsapp.title": { en: "WhatsApp Integration", de: "WhatsApp-Integration", tr: "WhatsApp Entegrasyonu" },
   "onboarding.extra.whatsapp.sub": { en: "Visitors can message you directly", de: "Besucher schreiben Ihnen direkt", tr: "Ziyaretçiler size direkt yazabilsin" },
-  
+
   "onboarding.extra.appointment.title": { en: "Calendly Integration", de: "Calendly-Integration", tr: "Calendly Entegrasyonu" },
   "onboarding.extra.appointment.sub": { en: "Customers book, you confirm", de: "Kunden buchen, Sie bestätigen", tr: "Müşteriler randevu alsın, siz onaylayın" },
-  
+
   "onboarding.extra.analytics.title": { en: "Google Analytics", de: "Google Analytics", tr: "Google Analytics" },
   "onboarding.extra.analytics.sub": { en: "See how many visitors your site has", de: "Sehen Sie, wie viele Besucher Ihre Seite hat", tr: "Sitenizi kaç kişinin ziyaret ettiğini görün" },
-  
+
   "onboarding.extra.social.title": { en: "Social Media Linking", de: "Social-Media-Verlinkung", tr: "Sosyal Medya Bağlantısı" },
   "onboarding.extra.social.sub": { en: "Add Instagram & LinkedIn to your site", de: "Instagram & LinkedIn auf Ihrer Website", tr: "Instagram, LinkedIn profillerinizi sitenize ekleyelim" },
 
@@ -574,10 +598,10 @@ const labels: Record<string, Record<Language, string>> = {
 
   // Lead Capture / Get a Quote
   "quote.teaser.label": { en: "CUSTOM SOLUTION", de: "INDIVIDUELLE LÖSUNG", tr: "ÖZEL ÇÖZÜM" },
-  "quote.teaser.title": { 
-    en: "Find your perfect price\nin 60 seconds.", 
-    de: "Ihr Paket & Preis.\nIn nur 60 Sekunden.", 
-    tr: "Paketiniz ve fiyatınız.\nSadece 60 saniyede." 
+  "quote.teaser.title": {
+    en: "Find your perfect price\nin 60 seconds.",
+    de: "Ihr Paket & Preis.\nIn nur 60 Sekunden.",
+    tr: "Paketiniz ve fiyatınız.\nSadece 60 saniyede."
   },
   "quote.teaser.desc": {
     en: "Every business is unique. Take 60 seconds to tell us about yours and get a precise recommendation.",
@@ -588,14 +612,14 @@ const labels: Record<string, Record<Language, string>> = {
 
   "quote.step.identity.title": { en: "Who are we speaking with?", de: "Mit wem sprechen wir?", tr: "Kiminle görüşüyoruz?" },
   "quote.step.identity.sub": { en: "Your basic contact details.", de: "Ihre Basis-Kontaktdaten.", tr: "Temel iletişim bilgileriniz." },
-  
+
   "quote.step.objective.title": { en: "Which goals are we pursuing?", de: "Welche Ziele verfolgen wir?", tr: "Hangi hedeflere odaklanıyoruz?" },
   "quote.step.objective.web": { en: "New Professional Website", de: "Neue professionelle Website", tr: "Yeni profesyonel web sitesi" },
   "quote.step.objective.seo": { en: "Google Search Visibility (SEO)", de: "Google Sichtbarkeit (SEO)", tr: "Google Görünürlüğü (SEO)" },
   "quote.step.objective.geo": { en: "AI Search Visibility (GEO)", de: "KI-Suche Sichtbarkeit (GEO)", tr: "Yapay Zeka Görünürlüğü (GEO)" },
   "quote.step.objective.ads": { en: "Google Ads Management", de: "Google Ads Kampagnen-Management", tr: "Google Ads Kampanya Yönetimi" },
   "quote.step.objective.system": { en: "Full Digital Lead System", de: "Digitales Lead-System", tr: "Dijital Talep Sistemi" },
-  
+
   "quote.result.setup": { en: "Setup Investment", de: "Einmalige Investition", tr: "Başlangıç Yatırımı" },
   "quote.result.monthly": { en: "per month", de: "pro Monat", tr: "aylık" },
   "quote.result.including": { en: "Including:", de: "Inklusive:", tr: "Dahil olanlar:" },
@@ -613,19 +637,19 @@ const labels: Record<string, Record<Language, string>> = {
 
   "quote.result.title": { en: "Your Personalized Foundation.", de: "Ihr individuelles Fundament.", tr: "Size özel temel yapınız." },
   "quote.result.estimate": {
-    en: "Estimated total investment for your firm:",
-    de: "Voraussichtliche Investition für Ihr Unternehmen:",
+    en: "Estimated total investment for your project:",
+    de: "Voraussichtliche Investition für Ihr Projekt:",
     tr: "İşletmeniz için tahmini toplam yatırım:"
   },
-  "quote.result.finalNote": { 
-    en: "This is a base estimate based on your goals. We provide a final binding offer during our initial strategy call.", 
-    de: "Dies ist eine erste Einschätzung basierend auf Ihren Zielen. Ein verbindliches Angebot erhalten Sie nach unserem Erstgespräch.", 
-    tr: "Bu, hedeflerinize dayalı temel bir tahmindir. Kesin teklifimizi strateji görüşmemizde sunacağız." 
+  "quote.result.finalNote": {
+    en: "This is a base estimate based on your goals. We provide a final binding offer during our initial strategy call.",
+    de: "Dies ist eine erste Einschätzung basierend auf Ihren Zielen. Ein verbindliches Angebot erhalten Sie nach unserem Erstgespräch.",
+    tr: "Bu, hedeflerinize dayalı temel bir tahmindir. Kesin teklifimizi strateji görüşmemizde sunacağız."
   },
-  "quote.result.callback": { 
-    en: "Our expert will call you within 24 hours.", 
-    de: "Unser Experte wird Sie innerhalb von 24 Stunden anrufen.", 
-    tr: "Uzmanımız 24 saat içinde sizi arayacak." 
+  "quote.result.callback": {
+    en: "Our expert will call you within 24 hours.",
+    de: "Unser Experte wird Sie innerhalb von 24 Stunden anrufen.",
+    tr: "Uzmanımız 24 saat içinde sizi arayacak."
   },
   "quote.result.orContact": { en: "Or contact us directly:", de: "Oder kontaktieren Sie uns direkt:", tr: "Veya doğrudan iletişime geçin:" },
   "quote.result.whatsapp": { en: "Chat on WhatsApp", de: "WhatsApp-Chat", tr: "WhatsApp'tan Yazın" },

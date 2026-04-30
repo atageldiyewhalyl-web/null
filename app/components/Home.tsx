@@ -16,13 +16,13 @@ const organizationData = {
   "@type": "ProfessionalService",
   name: "Nüll.",
   description:
-    "Exklusives Business-Marketing und Webdesign für Unternehmen. Digitale Positionierung und Kundengewinnung.",
+    "Premium web design and digital positioning for businesses, consultants, and law firms.",
   url: "https://xn--nll-hoa.com",
   email: "hello@xn--nll-hoa.com",
   logo: "https://xn--nll-hoa.com/favicon.svg",
   areaServed: [
-    { "@type": "City", name: "Mannheim" },
     { "@type": "Country", name: "Germany" },
+    { "@type": "AdministrativeArea", name: "Europe" },
   ],
   address: {
     "@type": "PostalAddress",
@@ -31,14 +31,14 @@ const organizationData = {
   },
   priceRange: "€220 - €1500",
   serviceType: [
-    "Business Marketing",
-    "Business Webdesign",
-    "SEO für Unternehmen",
-    "Digitale Positionierung",
+    "Business web design",
+    "Consultant web design",
+    "Law firm web design",
+    "SEO and digital positioning",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Business Marketing Packages",
+    name: "Professional Website Packages",
     itemListElement: [
       {
         "@type": "Offer",

@@ -38,11 +38,17 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     letter-spacing: -0.011em; /* REVERTED: Original Apple-style tight tracking */
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 
   html {
     scroll-behavior: smooth;
     background-color: var(--color-background);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 
   h1, h2, h3, h4 {
@@ -100,4 +106,3 @@
     font-family: var(--font-outfit);
   }
 }
-

@@ -1,50 +1,108 @@
-import { ArrowRight, ChevronRight, TrendingUp, Search, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
 import { motion } from "motion/react";
+// @ts-ignore - Vite resolves video assets at build time
+import heroBackgroundVideo from "../assets/Hero background/hero-background-long.webm";
+// @ts-ignore - Vite resolves video assets at build time
+import heroBackgroundVideoMp4 from "../assets/Hero background/hero-background-long.optimized.mp4";
+// @ts-ignore - Vite resolves image assets at build time
+import heroBackgroundPoster from "../assets/Hero background/Hero Background.png";
 
 export function Hero() {
   const { lang } = useLanguage();
+  const proofCards = [
+    {
+      label: t("hero.card1.label", lang),
+      value: t("hero.card1.value", lang),
+      sub: t("hero.card1.sub", lang),
+      dark: false,
+    },
+    {
+      label: t("hero.card2.label", lang),
+      value: t("hero.card2.value", lang),
+      sub: t("hero.card2.sub", lang),
+      dark: false,
+    },
+    {
+      label: t("hero.card3.label", lang),
+      value: t("hero.card3.value", lang),
+      sub: t("hero.card3.sub", lang),
+      dark: false,
+    },
+    {
+      label: t("hero.card4.label", lang),
+      value: t("hero.card4.value", lang),
+      sub: t("hero.card4.sub", lang),
+      dark: true,
+    },
+  ];
+  const trustAvatars = [
+    "https://randomuser.me/api/portraits/women/44.jpg",
+    "https://randomuser.me/api/portraits/men/32.jpg",
+    "https://randomuser.me/api/portraits/women/68.jpg",
+  ];
 
   return (
-    <section aria-label="Hero" className="relative pt-32 pb-24 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
+    <section aria-label="Hero" className="relative w-full max-w-[100vw] pt-32 pb-24 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
       {/* Precision Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,122,255,0.03)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-white md:hidden" />
+        <video
+          aria-hidden="true"
+          className="absolute inset-0 hidden h-full w-full object-cover md:block"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={heroBackgroundPoster}
+        >
+          <source src={heroBackgroundVideo} type="video/webm" />
+          <source src={heroBackgroundVideoMp4} type="video/mp4" />
+        </video>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col items-center text-center">
+      <div className="max-w-7xl mx-auto relative z-10 min-w-0">
+        <div className="flex min-w-0 flex-col items-center text-center">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] md:text-[0.875rem] font-bold mb-10 md:mb-12 transition-transform hover:scale-[1.02]"
+            className="flex max-w-full min-w-0 items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] md:text-[0.875rem] font-bold mb-10 md:mb-12 transition-transform hover:scale-[1.02]"
           >
-            {t("hero.eyebrow", lang)}
+            <span className="max-w-full whitespace-normal text-center leading-tight break-words">
+              {t("hero.eyebrow", lang)}
+            </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-[clamp(2.125rem,10vw,4.5rem)] leading-[1.1] tracking-[-0.04em] font-bold text-[#0e0e10] mb-8 md:mb-10 text-balance"
+            className="max-w-full min-w-0 text-[clamp(2.125rem,9.4vw,4.5rem)] leading-[1.1] tracking-[-0.04em] font-bold text-[#0e0e10] mb-8 md:mb-10 text-balance"
           >
-            <span className="block">{t("hero.line1", lang)}</span>
-            <span className="block text-[#86868b]">{t("hero.line2", lang)}</span>
+            <span className="block">
+              <span className="md:hidden">{t("hero.line1Mobile", lang)}</span>
+              <span className="hidden md:inline">{t("hero.line1", lang)}</span>
+            </span>
+            <span className="block text-[#86868b]">
+              <span className="md:hidden">{t("hero.line2Mobile", lang)}</span>
+              <span className="hidden md:inline">{t("hero.line2", lang)}</span>
+            </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-[1.0625rem] md:text-[1.375rem] text-[#86868b] max-w-4xl mb-12 md:mb-16 leading-relaxed font-medium text-balance"
+            className="max-w-full min-w-0 text-[1.0625rem] md:text-[1.375rem] text-[#86868b] md:max-w-4xl mb-12 md:mb-16 leading-relaxed font-medium text-balance"
           >
             <span className="md:hidden">{t("hero.descriptionMobile", lang)}</span>
             <span className="hidden md:block">{t("hero.description", lang)}</span>
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-20 md:mb-24"
@@ -65,102 +123,100 @@ export function Hero() {
 
           {/* Mobile Trust Ribbon (Infinite Marquee) */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="md:hidden w-full overflow-hidden mb-16 relative"
+            className="md:hidden w-full max-w-full mb-16 relative overflow-hidden"
           >
-            {/* Gradient Fades for a feathered edge */}
-            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
-            
-            <motion.div
-              animate={{ x: [0, -1200] }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="flex items-center gap-16 py-6 whitespace-nowrap"
+            <div
+              className="max-w-full overflow-hidden border-y border-black/[0.06] bg-[#f5f5f7]/80 py-3 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]"
             >
-              {[1, 2, 3, 4].map((set) => (
-                <div key={set} className="flex items-center gap-16">
-                  <div className="flex items-center gap-4 grayscale opacity-60">
-                    <ShieldCheck size={24} className="text-black" />
-                    <span className="text-[0.875rem] font-bold uppercase tracking-[0.2em]">
-                      {t("hero.trustRibbon.t1", lang)}
-                    </span>
+              <motion.div
+                animate={{ x: [0, -760] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="inline-flex w-max max-w-none items-center gap-8 whitespace-nowrap px-4"
+              >
+                {[1, 2, 3, 4].map((set) => (
+                  <div key={set} className="flex items-center gap-8">
+                    {[
+                      t("hero.trustRibbon.t1", lang),
+                      t("hero.trustRibbon.t2", lang),
+                      t("hero.card3.value", lang),
+                      t("hero.trustRibbon.t3", lang),
+                    ].map((item) => (
+                      <div key={`${set}-${item}`} className="flex items-center gap-3">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#007aff]/55" />
+                        <span className="text-[0.75rem] font-black uppercase tracking-[0.22em] text-[#0e0e10]/60">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex items-center gap-4 grayscale opacity-60">
-                    <TrendingUp size={24} className="text-black" />
-                    <span className="text-[0.875rem] font-bold uppercase tracking-[0.2em]">
-                      {t("hero.trustRibbon.t2", lang)}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-4 grayscale opacity-60 px-4">
-                    <Zap size={24} className="text-[#007aff] grayscale-0 opacity-100" />
-                    <span className="text-[0.875rem] font-bold uppercase tracking-[0.2em]">
-                      {t("hero.trustRibbon.t3", lang)}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Performance Cards - Desktop Only */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="hidden md:block w-full max-w-5xl mb-24 md:mb-32"
+            className="hidden md:block w-full max-w-6xl mb-24 md:mb-32"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-              {/* Card 1: Conversion */}
-              <div className="bg-[#f5f5f7] rounded-3xl p-6 border border-[#d2d2d7]/30">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-white text-[#007aff] rounded-2xl shadow-sm">
-                    <TrendingUp size={20} />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5">
+              {proofCards.map((card) => {
+                return (
+                  <div
+                    key={card.label}
+                    className={`rounded-[1.75rem] p-7 border text-left min-h-[170px] flex flex-col justify-between ${
+                      card.dark
+                        ? "bg-[#0e0e10] text-white border-[#0e0e10] shadow-xl shadow-black/10"
+                        : "bg-[#f5f5f7] text-[#0e0e10] border-[#d2d2d7]/30"
+                    }`}
+                  >
+                    <div>
+                      <div
+                        className={`text-[0.6875rem] font-bold uppercase tracking-[0.16em] mb-3 ${
+                          card.dark ? "text-white/45" : "text-[#86868b]"
+                        }`}
+                      >
+                        {card.label}
+                      </div>
+                      <div className="text-[1.375rem] font-extrabold tracking-tight leading-tight">
+                        {card.value}
+                      </div>
+                    </div>
+                    <div
+                      className={`text-[0.8125rem] font-medium leading-normal mt-4 ${
+                        card.dark ? "text-white/45" : "text-[#86868b]"
+                      }`}
+                    >
+                      {card.sub}
+                    </div>
                   </div>
-                </div>
-                <div className="text-[0.75rem] md:text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1 text-left">{t("hero.card1.label", lang)}</div>
-                <div className="text-[1.25rem] md:text-[1.5rem] font-extrabold tracking-tight leading-tight mb-2 text-[#0e0e10] text-left">{t("hero.card1.value", lang)}</div>
-                <div className="text-[0.8125rem] md:text-[0.875rem] text-[#86868b] font-medium leading-normal text-left">{t("hero.card1.sub", lang)}</div>
-              </div>
-
-              {/* Card 2: Speed */}
-              <div className="bg-[#f5f5f7] rounded-3xl p-6 border border-[#d2d2d7]/30">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-white text-[#34c759] rounded-2xl shadow-sm">
-                    <Search size={20} />
-                  </div>
-                </div>
-                <div className="text-[0.75rem] md:text-[0.8125rem] text-[#86868b] font-bold uppercase tracking-wider mb-1 text-left">{t("hero.card2.label", lang)}</div>
-                <div className="text-[1.25rem] md:text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2 text-left">{t("hero.card2.value", lang)}</div>
-                <div className="text-[0.8125rem] md:text-[0.875rem] text-[#86868b] font-medium leading-normal text-left">{t("hero.card2.sub", lang)}</div>
-              </div>
-
-              {/* Card 3: Growth */}
-              <div className="bg-[#0e0e10] text-white rounded-3xl p-6 shadow-xl shadow-black/10">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 bg-white/10 text-white rounded-2xl">
-                    <ShieldCheck size={20} />
-                  </div>
-                </div>
-                <div className="text-[0.75rem] md:text-[0.8125rem] text-white/40 font-bold uppercase tracking-wider mb-1 text-left">{t("hero.card3.label", lang)}</div>
-                <div className="text-[1.25rem] md:text-[1.375rem] font-extrabold tracking-tight leading-tight mb-2 text-left">{t("hero.card3.value", lang)}</div>
-                <div className="text-[0.8125rem] md:text-[0.875rem] text-white/40 font-medium leading-normal text-left">{t("hero.card3.sub", lang)}</div>
-              </div>
+                );
+              })}
             </div>
           </motion.div>
 
           {/* Trust Bar Line - Desktop Only */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 1 }}
             className="hidden md:flex flex-col md:flex-row items-center justify-center gap-4 text-center"
           >
             <div className="flex -space-x-2">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center">
-                  <span className="text-[0.625rem] font-bold text-slate-400">⚖️</span>
+              {trustAvatars.map((avatar) => (
+                <div key={avatar} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 overflow-hidden shadow-sm">
+                  <img
+                    src={avatar}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
               ))}
             </div>
