@@ -100,9 +100,9 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
   "hero.eyebrow": {
-    en: "Web design for businesses, consultants & lawyers",
-    de: "Webdesign für Unternehmen, Berater & Kanzleien",
-    tr: "İşletmeler, danışmanlar ve hukuk büroları için web tasarımı"
+    en: "Your client acquisition system",
+    de: "Ihr System für planbare Kundenakquise",
+    tr: "Müşteri kazanım sisteminiz"
   },
   "hero.line1": {
     en: "Your next client is already looking",

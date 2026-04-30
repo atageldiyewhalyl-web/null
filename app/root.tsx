@@ -63,7 +63,7 @@ export function meta(args: any) {
   const location = args?.location;
   const pathname = location?.pathname || "/";
   const isBlog = pathname.startsWith("/blog/");
-  const title = "Nüll. - Websites for Businesses, Consultants & Lawyers";
+  const title = "nüll. - Your client acquisition system";
   const description = "High-converting websites for businesses, consultants, and law firms built to earn trust and turn visitors into qualified enquiries.";
   const baseUrl = "https://xn--nll-hoa.com";
   const url = `${baseUrl}${pathname}`;
@@ -81,7 +81,7 @@ export function meta(args: any) {
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
     { property: "og:image:alt", content: "nüll. logo on a minimal branded background" },
-    { property: "og:site_name", content: "Nüll. - Websites for Businesses, Consultants & Lawyers" },
+    { property: "og:site_name", content: "nüll. - Your client acquisition system" },
     { property: "og:locale", content: "de_DE" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:image", content: image },

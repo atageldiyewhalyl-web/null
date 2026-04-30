@@ -11,10 +11,10 @@ interface SEOProps {
   author?: string;
 }
 
-const SITE_NAME = "Nüll. - Business Marketing & Webdesign";
+const SITE_NAME = "nüll. - Your client acquisition system";
 const BASE_URL = "https://xn--nll-hoa.com";
 const DEFAULT_DESC =
-  "Exzellentes Webdesign und digitale Positionierung für Unternehmen. Wir machen Ihr Unternehmen zur digitalen Autorität.";
+  "High-converting websites for businesses, consultants, and law firms built to earn trust and turn visitors into qualified enquiries.";
 // TODO: Add OG image once available (1200x630px recommended)
 // const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 

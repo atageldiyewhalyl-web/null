@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { Hero } from "./Hero";
 import { StructuredData } from "./SEO";
 import { LeadCapture } from "./LeadCapture";
@@ -16,7 +16,7 @@ const organizationData = {
   "@type": "ProfessionalService",
   name: "Nüll.",
   description:
-    "Premium web design and digital positioning for businesses, consultants, and law firms.",
+    "A client acquisition system for businesses, consultants, and law firms.",
   url: "https://xn--nll-hoa.com",
   email: "hello@xn--nll-hoa.com",
   logo: "https://xn--nll-hoa.com/favicon.svg",
@@ -34,6 +34,7 @@ const organizationData = {
     "Business web design",
     "Consultant web design",
     "Law firm web design",
+    "Client acquisition systems",
     "SEO and digital positioning",
   ],
   hasOfferCatalog: {
@@ -70,6 +71,10 @@ const websiteData = {
 
 export function Home() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = "nüll. - Your client acquisition system";
+  }, []);
 
   return (
     <>

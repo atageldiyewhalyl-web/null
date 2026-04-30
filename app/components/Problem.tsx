@@ -141,9 +141,23 @@ export function Problem() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="text-[clamp(2.25rem,5.5vw,3.75rem)] font-bold tracking-tight leading-[1.08] text-[#0e0e10]"
+              className={`font-bold tracking-tight leading-[1.08] text-[#0e0e10] ${
+                lang === "de"
+                  ? "text-[clamp(2.15rem,4.5vw,3.25rem)]"
+                  : "text-[clamp(2.25rem,5.5vw,3.75rem)]"
+              }`}
             >
-              {t("problem.header", lang)}
+              {lang === "de" ? (
+                <>
+                  <span className="whitespace-nowrap">Viele Anbieter verlieren</span>
+                  <br />
+                  <span className="whitespace-nowrap">Kunden vor dem</span>
+                  <br />
+                  <span className="whitespace-nowrap">ersten Gespräch.</span>
+                </>
+              ) : (
+                t("problem.header", lang)
+              )}
             </motion.h2>
 
             <motion.p

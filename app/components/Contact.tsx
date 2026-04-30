@@ -63,12 +63,30 @@ export function Contact() {
               {t("contact.label", lang)}
             </p>
             <h2
-              className="text-[clamp(1.75rem,8vw,3.25rem)] tracking-[-0.035em] leading-[1.08] mb-8"
+              className={`tracking-[-0.035em] leading-[1.08] mb-8 ${
+                lang === "de"
+                  ? "text-[clamp(2rem,4.4vw,2.75rem)]"
+                  : "text-[clamp(1.75rem,8vw,3.25rem)]"
+              }`}
               style={{ fontWeight: 600 }}
             >
-              {t("contact.title1", lang)}
-              <br className="hidden sm:block" />
-              {" "}{t("contact.title2", lang)}
+              {lang === "de" ? (
+                <>
+                  <span className="whitespace-nowrap">Ihre Expertise verdient</span>
+                  <br />
+                  <span className="whitespace-nowrap">einen stärkeren Auftritt.</span>
+                  <br />
+                  <span className="whitespace-nowrap">Machen wir daraus</span>
+                  <br />
+                  <span className="whitespace-nowrap">Anfragen.</span>
+                </>
+              ) : (
+                <>
+                  {t("contact.title1", lang)}
+                  <br className="hidden sm:block" />
+                  {" "}{t("contact.title2", lang)}
+                </>
+              )}
             </h2>
             <p className="text-[1.125rem] text-muted-foreground leading-relaxed max-w-lg mb-12">
               {t("contact.description", lang)}

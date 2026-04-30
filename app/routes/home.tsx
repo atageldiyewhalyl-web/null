@@ -4,9 +4,9 @@ export function meta() {
   const image = "https://xn--nll-hoa.com/og-image.png";
 
   return [
-    { title: "Nüll. - Websites for Businesses, Consultants & Lawyers" },
+    { title: "nüll. - Your client acquisition system" },
     { name: "description", content: "High-converting websites for businesses, consultants, and law firms built to earn trust and turn visitors into qualified enquiries." },
-    { property: "og:title", content: "Nüll. - Websites for Businesses, Consultants & Lawyers" },
+    { property: "og:title", content: "nüll. - Your client acquisition system" },
     { property: "og:description", content: "High-converting websites built to earn trust and turn visitors into qualified enquiries." },
     { property: "og:type", content: "website" },
     { property: "og:image", content: image },
