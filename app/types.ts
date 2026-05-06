@@ -11,6 +11,7 @@ export interface BlogPost {
   excerpt: string;
   content: string[];
   faqs?: FAQItem[];
+  faqTitle?: string;
   category: string;
   date: string;
   readTime: string;

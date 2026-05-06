@@ -36,11 +36,7 @@ export function Hero() {
       dark: true,
     },
   ];
-  const trustAvatars = [
-    "https://randomuser.me/api/portraits/women/44.jpg",
-    "https://randomuser.me/api/portraits/men/32.jpg",
-    "https://randomuser.me/api/portraits/women/68.jpg",
-  ];
+  const trustAvatars = ["N", "D", "B"];
 
   return (
     <section aria-label="Hero" className="relative w-full max-w-[100vw] pt-32 pb-24 md:pt-52 md:pb-40 px-4 overflow-hidden bg-white">
@@ -208,15 +204,14 @@ export function Hero() {
             className="hidden md:flex flex-col md:flex-row items-center justify-center gap-4 text-center"
           >
             <div className="flex -space-x-2">
-              {trustAvatars.map((avatar) => (
-                <div key={avatar} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 overflow-hidden shadow-sm">
-                  <img
-                    src={avatar}
-                    alt=""
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
+              {trustAvatars.map((avatar, index) => (
+                <div
+                  key={avatar}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#f2f2f7] text-[0.6875rem] font-black text-[#007aff] shadow-sm"
+                  aria-hidden="true"
+                  style={{ transform: `translateY(${index % 2 === 0 ? 0 : 1}px)` }}
+                >
+                  {avatar}
                 </div>
               ))}
             </div>

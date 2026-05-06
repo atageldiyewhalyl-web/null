@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from "react";
+import { useLocation } from "react-router";
 import type { Language } from "../types";
+import { getLanguageForPath, isLanguage } from "../utils/i18nRouting";
 export type { Language };
 
 const LanguageContext = createContext<{
@@ -7,9 +9,6 @@ const LanguageContext = createContext<{
   setLang: (lang: Language) => void;
   isHydrated: boolean;
 }>({ lang: "de", setLang: () => { }, isHydrated: false });
-
-const isLanguage = (value: unknown): value is Language =>
-  value === "en" || value === "de" || value === "tr";
 
 // Cookie Helpers for Bulletproof Persistence
 const setCookie = (name: string, value: string, days: number) => {
@@ -33,6 +32,7 @@ const getCookie = (name: string): string | null => {
 };
 
 export function LanguageProvider({ children, initialLang = "de" }: { children: ReactNode, initialLang?: Language }) {
+  const location = useLocation();
   const [lang, setLangState] = useState<Language>(isLanguage(initialLang) ? initialLang : "de");
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -56,10 +56,34 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
     }
   }, []);
 
-  // Sync with localStorage or cookies on mount. Prefer localStorage because
-  // mobile browsers can preserve an older cookie during LAN testing.
+  // Sync visible language from localized blog URLs. Blog URL language is
+  // canonical and must not rewrite the user's saved preference by itself.
+  useEffect(() => {
+    const pathLang = getLanguageForPath(location.pathname);
+    if (!pathLang) return;
+
+    setLangState(pathLang);
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = pathLang;
+    }
+  }, [location.pathname]);
+
+  // Hydrate non-blog pages from localStorage or cookies once. Blog pages keep
+  // the language encoded in their URL.
   useEffect(() => {
     try {
+      if (getLanguageForPath(window.location.pathname)) {
+        setIsHydrated(true);
+        return;
+      }
+
+      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      if (isLanguage(urlLang)) {
+        setLang(urlLang);
+        setIsHydrated(true);
+        return;
+      }
+
       const saved = localStorage.getItem("nll_lang") || getCookie("nll_lang");
       if (isLanguage(saved)) {
         setLang(saved);

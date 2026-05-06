@@ -4,6 +4,8 @@ export default [
   route("onboarding", "routes/onboarding.tsx"),
   route("onboarding/client-discovery", "routes/client-discovery-onboarding.tsx"),
   index("routes/home.tsx"),
+  route("datenschutz", "routes/datenschutz.tsx"),
+  route("impressum", "routes/impressum.tsx"),
   route("blog", "routes/blog-list.tsx"),
   route("blog/:slug", "routes/blog-post.tsx"),
   route("admin/login", "routes/admin-login.tsx"),

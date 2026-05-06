@@ -1,4 +1,6 @@
 import { useLanguage, type Language } from "./LanguageContext";
+import { useLocation, useNavigate } from "react-router";
+import { getLanguageForPath, getLocalizedPath } from "../utils/i18nRouting";
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -9,7 +11,19 @@ const defaultLanguages: Language[] = ["en", "de", "tr"];
 
 export function LanguageSwitcher({ className = "", languages = defaultLanguages }: LanguageSwitcherProps) {
   const { lang, setLang } = useLanguage();
-  const activeLang = languages.includes(lang) ? lang : languages[0];
+  const location = useLocation();
+  const navigate = useNavigate();
+  const routeLang = getLanguageForPath(location.pathname);
+  const activeLang = languages.includes(routeLang ?? lang) ? routeLang ?? lang : languages[0];
+
+  const handleLanguageChange = (nextLang: Language) => {
+    const targetPath = getLocalizedPath(location.pathname, nextLang);
+    setLang(nextLang);
+
+    if (targetPath !== location.pathname) {
+      navigate(targetPath);
+    }
+  };
 
   return (
     <div
@@ -22,15 +36,10 @@ export function LanguageSwitcher({ className = "", languages = defaultLanguages 
         <button
           key={l}
           type="button"
-          onPointerDown={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setLang(l);
-          }}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            setLang(l);
+            handleLanguageChange(l);
           }}
           className={`px-3 md:px-4 py-2 rounded-full text-[0.7rem] md:text-[0.8rem] font-black transition-all duration-200 cursor-pointer select-none active:scale-90 flex items-center justify-center min-w-[3rem] ${
             activeLang === l

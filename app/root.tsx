@@ -8,17 +8,22 @@ import {
   useLocation,
 } from "react-router";
 import type { LoaderFunctionArgs } from "react-router";
-import { LanguageProvider, type Language } from "./components/LanguageContext";
+import { LanguageProvider } from "./components/LanguageContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { CookieConsent } from "./components/CookieConsent";
+import { getLanguageForPath, isLanguage } from "./utils/i18nRouting";
 import "./styles/index.css";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const urlLang = url.searchParams.get("lang");
+  const pathLang = getLanguageForPath(url.pathname);
   const cookie = request.headers.get("Cookie");
   const match = cookie?.match(/nll_lang=([^;]+)/);
-  const lang = (urlLang || (match ? match[1] : "de")) as Language;
+  const preferredLang = isLanguage(match?.[1]) ? match[1] : "de";
+  const queryLang = isLanguage(urlLang) ? urlLang : null;
+  const lang = pathLang ?? queryLang ?? preferredLang;
   return { lang };
 }
 
@@ -54,6 +59,7 @@ export default function App() {
         {!isOnboarding && <Navbar />}
         <Outlet />
         {!isOnboarding && <Footer />}
+        {!isAdmin && <CookieConsent />}
       </div>
     </LanguageProvider>
   );
@@ -97,24 +103,10 @@ export function meta(args: any) {
 import stylesheet from "./styles/index.css?url";
 
 export function links(args: any) {
-  const location = args?.location;
-  const pathname = location?.pathname || "/";
-  const baseUrl = "https://xn--nll-hoa.com";
-  const url = `${baseUrl}${pathname}`;
-
   return [
     { rel: "stylesheet", href: stylesheet },
-    { rel: "preconnect", href: "https://fonts.googleapis.com" },
-    { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" },
-    { rel: "canonical", href: url },
     { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
     { rel: "image_src", href: "/og-image.png" },
-    { rel: "alternate", hrefLang: "de", href: url },
-
-    { rel: "alternate", hrefLang: "en", href: url },
-    { rel: "alternate", hrefLang: "tr", href: url },
-    { rel: "alternate", hrefLang: "x-default", href: url },
   ];
 }

@@ -3,22 +3,29 @@ import type { Config } from "@react-router/dev/config";
 export default {
   // Config options...
   ssr: true,
+  routeDiscovery: {
+    mode: "initial",
+  },
   async prerender() {
     return [
       "/",
       "/onboarding",
       "/onboarding/client-discovery",
+      "/datenschutz",
+      "/impressum",
       "/blog",
-      "/blog/why-every-local-business-needs-a-website-in-2026",
-      "/blog/seo-basics-for-small-businesses",
-      "/blog/personal-branding-for-business-owners",
       "/blog/5-elements-every-high-converting-website-needs",
       "/blog/5-elemente-high-converting-website-2026",
       "/blog/yuksek-donusumlu-web-sitesi-icin-5-temel-oge",
-      "/blog/website-performance-why-speed-matters",
       "/blog/improve-google-rankings-germany",
       "/blog/google-ranking-verbessern-deutschland",
-      "/blog/google-siralamalarini-yukseltmek-almanya"
+      "/blog/google-siralamalarini-yukseltmek-almanya",
+      "/blog/webdesign-fuer-anwaelte-kanzleien",
+      "/blog/web-design-for-lawyers-law-firms",
+      "/blog/avukatlar-icin-web-tasarim",
+      "/blog/freelancer-oder-agentur-website",
+      "/blog/freelancer-vs-agency-website",
+      "/blog/freelancer-mi-ajans-mi"
     ];
   },
 } satisfies Config;

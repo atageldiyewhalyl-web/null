@@ -20,6 +20,12 @@ type Pages = {
   "/onboarding/client-discovery": {
     params: {};
   };
+  "/datenschutz": {
+    params: {};
+  };
+  "/impressum": {
+    params: {};
+  };
   "/blog": {
     params: {};
   };
@@ -50,7 +56,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -63,6 +69,14 @@ type RouteFiles = {
   "routes/home.tsx": {
     id: "routes/home";
     page: "/";
+  };
+  "routes/datenschutz.tsx": {
+    id: "routes/datenschutz";
+    page: "/datenschutz";
+  };
+  "routes/impressum.tsx": {
+    id: "routes/impressum";
+    page: "/impressum";
   };
   "routes/blog-list.tsx": {
     id: "routes/blog-list";
@@ -103,6 +117,8 @@ type RouteModules = {
   "routes/onboarding": typeof import("./app/routes/onboarding.tsx");
   "routes/client-discovery-onboarding": typeof import("./app/routes/client-discovery-onboarding.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
+  "routes/datenschutz": typeof import("./app/routes/datenschutz.tsx");
+  "routes/impressum": typeof import("./app/routes/impressum.tsx");
   "routes/blog-list": typeof import("./app/routes/blog-list.tsx");
   "routes/blog-post": typeof import("./app/routes/blog-post.tsx");
   "routes/admin-login": typeof import("./app/routes/admin-login.tsx");

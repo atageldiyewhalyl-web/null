@@ -1,4 +1,4 @@
-import { useEffect, useId } from "react";
+import { useEffect } from "react";
 import { useLanguage, type Language } from "./LanguageContext";
 
 interface SEOProps {
@@ -105,26 +105,10 @@ export function SEO({
 }
 
 export function StructuredData({ data }: { data: object }) {
-  const id = useId();
-
-  useEffect(() => {
-    const existingScript = document.querySelector(`script[data-sd-id="${id}"]`);
-    if (existingScript) {
-      existingScript.textContent = JSON.stringify(data);
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.setAttribute("data-sd-id", id);
-    script.textContent = JSON.stringify(data);
-    document.head.appendChild(script);
-    return () => {
-      if (script && document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, [data, id]);
-
-  return null;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
 }

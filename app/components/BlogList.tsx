@@ -5,25 +5,14 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { StructuredData } from "./SEO";
 import { useLanguage } from "./LanguageContext";
 import { blogPosts } from "./blogData";
+import { getPreferredPostForGroup } from "../utils/i18nRouting";
 
 export function BlogList() {
   const { lang } = useLanguage();
 
-  // Filter posts to show only one version per groupId, matching the current language
-  const displayedPosts = Object.values(
-    blogPosts.reduce((acc, post) => {
-      const existing = acc[post.groupId];
-      // If we haven't found a post for this group yet, or if this post matches the current language
-      if (!existing || post.lang === lang) {
-        acc[post.groupId] = post;
-      }
-      // If the existing one isn't the current language but this one is, override
-      if (existing && existing.lang !== lang && post.lang === lang) {
-        acc[post.groupId] = post;
-      }
-      return acc;
-    }, {} as Record<string, typeof blogPosts[0]>)
-  );
+  const displayedPosts = Array.from(new Set(blogPosts.map((post) => post.groupId)))
+    .map((groupId) => getPreferredPostForGroup(groupId, lang))
+    .filter((post): post is typeof blogPosts[0] => Boolean(post));
 
   const structuredData = {
     "@context": "https://schema.org",

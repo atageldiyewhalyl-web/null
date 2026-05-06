@@ -1,14 +1,14 @@
-import { useParams, Link, useNavigate } from "react-router";
+import { useParams, Link } from "react-router";
 import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
 import { ArrowLeft, Clock, Calendar, Share2, Bookmark, ChevronDown, CheckCircle2, AlertCircle, TrendingUp, X } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "./blogData";
-import { useEffect, useState, useMemo } from "react";
-import { useLanguage } from "./LanguageContext";
+import { useState, useMemo } from "react";
+import { StructuredData } from "./SEO";
 
 // --- Custom Interactive Components ---
 
-const FAQSection = ({ faqs, lang }: { faqs: { question: string, answer: string }[], lang: string }) => {
+const FAQSection = ({ faqs, articleLang, title }: { faqs: { question: string, answer: string }[], articleLang: string, title?: string }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   if (!faqs || faqs.length === 0) return null;
@@ -16,7 +16,7 @@ const FAQSection = ({ faqs, lang }: { faqs: { question: string, answer: string }
   return (
     <div className="mt-32 pt-32 border-t border-neutral-100">
       <h3 className="text-[2.5rem] font-bold tracking-[-0.04em] mb-12 font-outfit">
-        {lang === "de" ? "Häufig gestellte Fragen (FAQ)" : lang === "tr" ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
+        {title ?? (articleLang === "de" ? "Häufig gestellte Fragen (FAQ)" : articleLang === "tr" ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions")}
       </h3>
       <div className="space-y-4">
         {faqs.map((faq, idx) => (
@@ -54,7 +54,7 @@ const FAQSection = ({ faqs, lang }: { faqs: { question: string, answer: string }
   );
 };
 
-const AuditChecklist = ({ items, lang }: { items: string[], lang: string }) => {
+const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: string }) => {
   const [checked, setChecked] = useState<Record<number, boolean>>({});
   
   const score = useMemo(() => {
@@ -70,7 +70,7 @@ const AuditChecklist = ({ items, lang }: { items: string[], lang: string }) => {
   };
 
   const getScoreMessage = () => {
-    if (lang === "de") {
+    if (articleLang === "de") {
       if (score >= 40) return "Exzellent. Deine Website ist gut optimiert.";
       if (score >= 25) return "Solide. Klare Verbesserungspotenziale existieren.";
       return "Kritisch. Deine Website verliert täglich Kunden.";
@@ -129,26 +129,26 @@ const AuditChecklist = ({ items, lang }: { items: string[], lang: string }) => {
   );
 };
 
-const ComparisonCard = ({ before, after, lang }: { before: string, after: string, lang: string }) => {
+const ComparisonCard = ({ before, after, articleLang }: { before: string, after: string, articleLang: string }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
       <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-100 relative group overflow-hidden">
         <div className="absolute top-4 right-4 text-[0.65rem] font-black uppercase tracking-widest text-red-400 bg-red-50 px-2 py-1 rounded">
-          {lang === "de" ? "Vermeiden" : "Avoid"}
+          {articleLang === "de" ? "Vermeiden" : "Avoid"}
         </div>
         <div className="flex items-center gap-3 mb-4 text-red-500 opacity-40 group-hover:opacity-100 transition-opacity">
           <X size={20} />
-          <span className="text-sm font-bold uppercase tracking-wider">{lang === "de" ? "Schlechte Conversion" : "Low Conversion"}</span>
+          <span className="text-sm font-bold uppercase tracking-wider">{articleLang === "de" ? "Schlechte Conversion" : "Low Conversion"}</span>
         </div>
         <p className="text-[1.25rem] font-bold text-neutral-400 italic">"{before}"</p>
       </div>
       <div className="p-8 rounded-3xl bg-[#0071e3]/5 border border-[#0071e3]/20 relative group overflow-hidden shadow-xl shadow-[#0071e3]/5">
         <div className="absolute top-4 right-4 text-[0.65rem] font-black uppercase tracking-widest text-[#0071e3] bg-white px-2 py-1 rounded shadow-sm">
-          {lang === "de" ? "Optimiert" : "Optimized"}
+          {articleLang === "de" ? "Optimiert" : "Optimized"}
         </div>
         <div className="flex items-center gap-3 mb-4 text-[#0071e3]">
           <TrendingUp size={20} />
-          <span className="text-sm font-bold uppercase tracking-wider">{lang === "de" ? "Hohe Conversion" : "High Conversion"}</span>
+          <span className="text-sm font-bold uppercase tracking-wider">{articleLang === "de" ? "Hohe Conversion" : "High Conversion"}</span>
         </div>
         <p className="text-[1.25rem] font-bold text-black italic">"{after}"</p>
       </div>
@@ -160,8 +160,7 @@ const ComparisonCard = ({ before, after, lang }: { before: string, after: string
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
-  const { lang } = useLanguage();
+  const [shareStatus, setShareStatus] = useState<"idle" | "copied" | "error">("idle");
   
   const post = blogPosts.find((p) => p.slug === slug);
   const { scrollYProgress } = useScroll();
@@ -170,18 +169,6 @@ export function BlogPost() {
     damping: 30,
     restDelta: 0.001
   });
-
-  // Handle cross-language navigation
-  useEffect(() => {
-    if (post && post.lang !== lang) {
-      const translation = blogPosts.find(
-        (p) => p.groupId === post.groupId && p.lang === lang
-      );
-      if (translation && translation.slug !== slug) {
-        navigate(`/blog/${translation.slug}`, { replace: true });
-      }
-    }
-  }, [lang, post, navigate, slug]);
 
   if (!post) {
     return (
@@ -192,22 +179,174 @@ export function BlogPost() {
     );
   }
 
-  const formattedDate = new Date(post.date).toLocaleDateString(lang === "de" ? "de-DE" : lang === "tr" ? "tr-TR" : "en-US", {
+  const articleLang = post.lang;
+
+  const formattedDate = new Date(post.date).toLocaleDateString(articleLang === "de" ? "de-DE" : articleLang === "tr" ? "tr-TR" : "en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
+  const shareLabels = {
+    idle: articleLang === "de" ? "Teilen" : articleLang === "tr" ? "Paylaş" : "Share",
+    copied: articleLang === "de" ? "Link kopiert" : articleLang === "tr" ? "Link kopyalandı" : "Link copied",
+    error: articleLang === "de" ? "Kopieren fehlgeschlagen" : articleLang === "tr" ? "Kopyalanamadı" : "Could not copy",
+  };
+
+  const handleShare = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : `${baseUrl}/blog/${post.slug}`;
+    const shareData = {
+      title: post.title,
+      text: post.excerpt,
+      url,
+    };
+
+    try {
+      if (typeof navigator !== "undefined" && navigator.share) {
+        await navigator.share(shareData);
+      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        throw new Error("Clipboard API unavailable");
+      }
+
+      setShareStatus("copied");
+      window.setTimeout(() => setShareStatus("idle"), 1800);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+
+      setShareStatus("error");
+      window.setTimeout(() => setShareStatus("idle"), 2200);
+    }
+  };
+
   const related = blogPosts
-    .filter((p) => p.groupId !== post.groupId && p.lang === lang)
+    .filter((p) => p.groupId !== post.groupId && p.lang === articleLang)
     .slice(0, 2);
 
   const headers = post.content
     .filter(block => block.startsWith("## "))
     .map(block => block.replace("## ", ""));
 
+  const baseUrl = "https://xn--nll-hoa.com";
+  const articleKeywords: Record<string, string> = {
+    "freelancer-oder-agentur-website": "freelancer oder agentur, webdesign freelancer, website kosten vergleich, webdesign preise",
+    "freelancer-vs-agency-website": "freelancer vs agency, web design agency, freelance web designer, website design cost",
+    "freelancer-mi-ajans-mi": "freelancer mı ajans mı, web tasarım ajans, freelancer web tasarımı, web sitesi maliyeti",
+    "webdesign-fuer-anwaelte-kanzleien": "webdesign für anwälte, kanzlei website, SEO rechtsanwalt, mandanten gewinnen online",
+    "web-design-for-lawyers-law-firms": "web design for lawyers, law firm website design, SEO for law firms, legal website design, law firm digital marketing",
+    "avukatlar-icin-web-tasarim": "avukat web sitesi, hukuk bürosu web tasarım, almanya avukat, avukat dijital pazarlama",
+  };
+  const customArticleStructuredData: Record<string, object> = {
+    "freelancer-oder-agentur-website": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Freelancer oder Agentur für deine Website? Der ehrliche Vergleich für Selbstständige",
+      description: "Wer baut die bessere Website — Freelancer oder Agentur? Kosten, SEO und Verlässlichkeit im Direktvergleich für Berater und Kanzleien.",
+      author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
+      publisher: {
+        "@type": "Organization",
+        name: "nüll.",
+        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/logo.png" },
+      },
+      datePublished: "2026-05-04",
+      dateModified: "2026-05-04",
+      inLanguage: "de",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website",
+      },
+      keywords: "freelancer oder agentur, webdesign freelancer, website kosten vergleich, webdesign preise",
+    },
+    "freelancer-vs-agency-website": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Freelancer vs. Agency for Your Website: An Honest Comparison for Consultants and Law Firms",
+      description: "Freelancer or agency — who builds the better website for consultants and law firms? Honest comparison of costs, SEO, and long-term reliability.",
+      author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
+      publisher: {
+        "@type": "Organization",
+        name: "nüll.",
+        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/logo.png" },
+      },
+      datePublished: "2026-05-04",
+      dateModified: "2026-05-04",
+      inLanguage: "en",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://xn--nll-hoa.com/blog/freelancer-vs-agency-website",
+      },
+      keywords: "freelancer vs agency, web design agency, freelance web designer, website design cost",
+    },
+    "freelancer-mi-ajans-mi": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Freelancer mı, Ajans mı? Web Siteniz İçin Dürüst Bir Karşılaştırma",
+      description: "Maliyet, SEO ve güvenilirlik açısından avukatlar ve danışmanlar için freelancer ve ajans karşılaştırması.",
+      author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
+      publisher: {
+        "@type": "Organization",
+        name: "nüll.",
+        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/logo.png" },
+      },
+      datePublished: "2026-05-04",
+      dateModified: "2026-05-04",
+      inLanguage: "tr",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi",
+      },
+      keywords: "freelancer mı ajans mı, web tasarım ajans, freelancer web tasarımı, web sitesi maliyeti",
+    },
+  };
+  const articleStructuredData = customArticleStructuredData[post.slug] ?? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    author: {
+      "@type": "Organization",
+      name: "nüll.",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "nüll.",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/favicon.svg`,
+      },
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: post.lang,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${post.slug}`,
+    },
+    image: post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`,
+    keywords: articleKeywords[post.slug] ?? post.category,
+  };
+
+  const faqStructuredData = post.faqs ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: post.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  } : null;
+
   return (
     <div className="bg-white selection:bg-primary selection:text-white">
+      <StructuredData data={articleStructuredData} />
+      {faqStructuredData && <StructuredData data={faqStructuredData} />}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-[#0071e3] origin-left z-[1000]"
         style={{ scaleX }}
@@ -228,13 +367,24 @@ export function BlogPost() {
                 <div className="p-1.5 rounded-full bg-neutral-100 group-hover:bg-neutral-200 transition-colors">
                   <ArrowLeft size={14} />
                 </div>
-                {lang === "de" ? "Zurück zu den Insights" : lang === "tr" ? "İçeriklere Geri Dön" : "Back to Insights"}
+                {articleLang === "de" ? "Zurück zu den Insights" : articleLang === "tr" ? "İçeriklere Geri Dön" : "Back to Insights"}
               </Link>
             </motion.div>
             
             <div className="flex items-center gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-100 hover:bg-neutral-50 transition-all text-neutral-500 font-semibold text-sm">
-                <Share2 size={16} /> {lang === "de" ? "Teilen" : lang === "tr" ? "Paylaş" : "Share"}
+              <button
+                type="button"
+                onClick={handleShare}
+                aria-live="polite"
+                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all font-semibold text-sm ${
+                  shareStatus === "copied"
+                    ? "border-[#0071e3]/20 bg-[#0071e3]/10 text-[#0071e3]"
+                    : shareStatus === "error"
+                    ? "border-red-200 bg-red-50 text-red-600"
+                    : "border-neutral-100 text-neutral-500 hover:bg-neutral-50"
+                }`}
+              >
+                <Share2 size={16} /> {shareLabels[shareStatus]}
               </button>
             </div>
           </div>
@@ -257,6 +407,15 @@ export function BlogPost() {
             >
               {post.title}
             </motion.h1>
+
+            <motion.p
+              className="text-[clamp(1.125rem,2vw,1.5rem)] text-neutral-500 leading-relaxed font-medium max-w-3xl mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+            >
+              {post.excerpt}
+            </motion.p>
 
             <motion.div 
               className="flex items-center gap-8 text-[0.9375rem] text-neutral-500 font-semibold"
@@ -309,7 +468,7 @@ export function BlogPost() {
                   </div>
                   <h3 className="text-[1.5rem] font-bold mb-6 text-black flex items-center gap-3 font-outfit">
                     <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-sm">!</div>
-                    {lang === "de" ? "Zusammenfassung" : lang === "tr" ? "Özet" : "Quick Summary"}
+                    {articleLang === "de" ? "Zusammenfassung" : articleLang === "tr" ? "Özet" : "Quick Summary"}
                   </h3>
                   <p className="text-[1.125rem] text-neutral-600 leading-relaxed italic mb-0">
                     {post.content[0].replace("> ", "").replace("**Key Takeaways:**", "").replace("**Zusammenfassung:**", "").replace("**Önemli Çıkarımlar:**", "").trim()}
@@ -331,14 +490,14 @@ export function BlogPost() {
                   }
                   // Only render if we are at the start of the sequence to avoid duplicates
                   if (i > 0 && post.content[i-1].startsWith("- [ ]")) return null;
-                  return <AuditChecklist key={i} items={checklistItems} lang={lang} />;
+                  return <AuditChecklist key={i} items={checklistItems} articleLang={articleLang} />;
                 }
 
                 // Handle Comparison Detection
                 if (block.includes("[BEFORE]") && block.includes("[AFTER]")) {
                   const match = block.match(/\[BEFORE\]\s*"?(.*?)"?\s*\[AFTER\]\s*"?(.*?)"?$/);
                   if (match) {
-                    return <ComparisonCard key={i} before={match[1]} after={match[2]} lang={lang} />;
+                    return <ComparisonCard key={i} before={match[1]} after={match[2]} articleLang={articleLang} />;
                   }
                 }
 
@@ -378,10 +537,22 @@ export function BlogPost() {
                 const isFirstParagraph = i === firstActualParagraphIndex;
 
                 const renderText = (text: string) => {
-                  const parts = text.split(/(\*\*.*?\*\*)/g);
+                  const parts = text.split(/(\*\*.*?\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g);
                   return parts.map((part, index) => {
                     if (part.startsWith("**") && part.endsWith("**")) {
                       return <strong key={index} className="font-bold text-black bg-[#0071e3]/5 px-1 rounded">{part.slice(2, -2)}</strong>;
+                    }
+                    if (part.startsWith("*") && part.endsWith("*")) {
+                      return <em key={index}>{part.slice(1, -1)}</em>;
+                    }
+                    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+                    if (linkMatch) {
+                      const [, label, href] = linkMatch;
+                      return (
+                        <Link key={index} to={href} className="font-bold text-[#0071e3] hover:underline">
+                          {label}
+                        </Link>
+                      );
                     }
                     return part;
                   });
@@ -392,6 +563,70 @@ export function BlogPost() {
                     <blockquote key={i} className="border-l-4 border-[#0071e3] pl-6 py-2 my-8 italic text-neutral-600 text-lg">
                       {renderText(block.replace("> ", ""))}
                     </blockquote>
+                  );
+                }
+
+                if (block.trim().startsWith("|")) {
+                  if (i > 0 && post.content[i - 1].trim().startsWith("|")) return null;
+
+                  const tableLines: string[] = [];
+                  let j = i;
+                  while (j < post.content.length && post.content[j].trim().startsWith("|")) {
+                    tableLines.push(post.content[j].trim());
+                    j++;
+                  }
+
+                  const rows = tableLines
+                    .map((line) => line.split("|").slice(1, -1).map((cell) => cell.trim()))
+                    .filter((cells) => !cells.every((cell) => /^:?-{3,}:?$/.test(cell)));
+
+                  const [headerCells, ...bodyRows] = rows;
+
+                  return (
+                    <div key={i} className="my-12 overflow-hidden rounded-3xl border border-neutral-200 shadow-sm">
+                      <div className="overflow-x-auto">
+                        <table className="w-full min-w-[640px] border-collapse text-left">
+                          <thead className="bg-neutral-50">
+                            <tr>
+                              {headerCells.map((cell, cellIndex) => (
+                                <th key={cellIndex} className="px-6 py-4 text-sm font-black uppercase tracking-wider text-neutral-500">
+                                  {renderText(cell)}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {bodyRows.map((row, rowIndex) => {
+                              const isHighlighted = row.some((cell) => cell.includes("Nüll."));
+
+                              return (
+                                <tr
+                                  key={rowIndex}
+                                  className={`border-t ${
+                                    isHighlighted
+                                      ? "border-[#0071e3]/20 bg-[#0071e3]/5"
+                                      : "border-neutral-100"
+                                  }`}
+                                >
+                                  {row.map((cell, cellIndex) => (
+                                    <td
+                                      key={cellIndex}
+                                      className={`px-6 py-5 align-top text-[1rem] leading-relaxed ${
+                                        isHighlighted
+                                          ? "font-bold text-[#0e0e10]"
+                                          : "text-neutral-600"
+                                      }`}
+                                    >
+                                      {renderText(cell)}
+                                    </td>
+                                  ))}
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   );
                 }
 
@@ -420,7 +655,7 @@ export function BlogPost() {
                 if (block.startsWith("[BEFORE]")) {
                   const match = block.match(/\[BEFORE\]\s*"(.*?)"\s*\[AFTER\]\s*"(.*?)"/);
                   if (match) {
-                    return <ComparisonCard key={i} before={match[1]} after={match[2]} lang={lang} />;
+                    return <ComparisonCard key={i} before={match[1]} after={match[2]} articleLang={articleLang} />;
                   }
                 }
 
@@ -436,7 +671,7 @@ export function BlogPost() {
                   // Only render the checklist once for the whole group
                   if (i > 0 && post.content[i-1].startsWith("- [ ]")) return null;
                   
-                  return <AuditChecklist key={i} items={checklistItems} lang={lang} />;
+                  return <AuditChecklist key={i} items={checklistItems} articleLang={articleLang} />;
                 }
 
                 return (
@@ -454,7 +689,7 @@ export function BlogPost() {
               })}
 
               {/* Render Structured FAQs if they exist */}
-              {post.faqs && <FAQSection faqs={post.faqs} lang={lang} />}
+              {post.faqs && <FAQSection faqs={post.faqs} articleLang={articleLang} title={post.faqTitle} />}
 
               {/* Author Section */}
               <div className="mt-32 pt-16 border-t border-neutral-100">
@@ -463,9 +698,9 @@ export function BlogPost() {
                   <div className="text-center md:text-left flex-1">
                     <h4 className="text-[1.5rem] font-bold mb-2">Nüll. Editorial Team</h4>
                     <p className="text-[1rem] text-neutral-500 mb-6 leading-relaxed">
-                      {lang === "de" 
+                      {articleLang === "de" 
                         ? "Experten für digitale Positionierung, Premium-Webdesign und Marketingstrategie für ambitionierte Unternehmen." 
-                        : lang === "tr"
+                        : articleLang === "tr"
                         ? "İddialı işletmeler için dijital konumlandırma, premium web tasarımı ve pazarlama stratejisi uzmanları."
                         : "Experts in digital positioning, premium webdesign, and marketing strategy for ambitious businesses."}
                     </p>
@@ -485,7 +720,7 @@ export function BlogPost() {
               <div className="sticky top-32 space-y-12">
                 <div className="space-y-6">
                   <h4 className="text-[0.75rem] font-black uppercase tracking-[0.2em] text-neutral-400">
-                    {lang === "de" ? "Auf dieser Seite" : lang === "tr" ? "Bu sayfada" : "On this page"}
+                    {articleLang === "de" ? "Auf dieser Seite" : articleLang === "tr" ? "Bu sayfada" : "On this page"}
                   </h4>
                   <nav className="space-y-4">
                     {headers.map((h, i) => (
@@ -507,20 +742,20 @@ export function BlogPost() {
                   </div>
                   <h4 className="text-[1.25rem] font-bold mb-4 relative z-10">Newsletter</h4>
                   <p className="text-[0.875rem] text-white/50 mb-8 leading-relaxed relative z-10">
-                    {lang === "de" 
+                    {articleLang === "de" 
                       ? "Schließen Sie sich 500+ Experten an, die wöchentlich Insights zur digitalen Autorität erhalten." 
-                      : lang === "tr"
+                      : articleLang === "tr"
                       ? "Dijital otorite üzerine haftalık içerikler alan 500'den fazla uzmana katılın."
                       : "Join 500+ experts receiving weekly insights on digital authority."}
                   </p>
                   <div className="space-y-3 relative z-10">
                     <input 
                       type="email" 
-                      placeholder={lang === "de" ? "Ihre E-Mail" : lang === "tr" ? "E-postanız" : "Your email"} 
+                      placeholder={articleLang === "de" ? "Ihre E-Mail" : articleLang === "tr" ? "E-postanız" : "Your email"} 
                       className="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm focus:ring-2 focus:ring-[#0071e3] outline-none transition-all"
                     />
                     <button className="w-full py-4 bg-[#0071e3] text-white rounded-2xl text-[0.875rem] font-bold hover:bg-[#0066d6] transition-all active:scale-95">
-                      {lang === "de" ? "Insights erhalten" : lang === "tr" ? "İçerikleri Al" : "Get Insights"}
+                      {articleLang === "de" ? "Insights erhalten" : articleLang === "tr" ? "İçerikleri Al" : "Get Insights"}
                     </button>
                   </div>
                 </div>
@@ -541,19 +776,19 @@ export function BlogPost() {
             
             <div className="relative z-10 max-w-2xl">
               <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-[0.75rem] font-black uppercase tracking-[0.2em] mb-10">
-                {lang === "de" ? "Nächste Schritte" : lang === "tr" ? "Sonraki Adımlar" : "Next Steps"}
+                {articleLang === "de" ? "Nächste Schritte" : articleLang === "tr" ? "Sonraki Adımlar" : "Next Steps"}
               </div>
               <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.05em] leading-[1] mb-10 font-outfit">
-                {lang === "de" 
+                {articleLang === "de" 
                   ? "Verwandeln Sie Ihr Unternehmen in eine starke digitale Marke." 
-                  : lang === "tr"
+                  : articleLang === "tr"
                   ? "İşletmenizi güçlü bir dijital markaya dönüştürün."
                   : "Transform your business into a strong digital brand."}
               </h3>
               <p className="text-[1.25rem] text-white/60 mb-12 leading-relaxed max-w-xl">
-                {lang === "de" 
+                {articleLang === "de" 
                   ? "Wir bauen nicht nur Websites. Wir schaffen digitale Auftritte, die Vertrauen aufbauen und planbares Wachstum ermöglichen." 
-                  : lang === "tr"
+                  : articleLang === "tr"
                   ? "Sadece web sitesi yapmıyoruz. Güven oluşturan ve ölçülebilir büyüme sağlayan dijital varlıklar inşa ediyoruz."
                   : "We don't just build websites. We build digital presences that earn trust and deliver predictable growth for businesses."}
               </p>
@@ -561,7 +796,7 @@ export function BlogPost() {
                 to="/#contact"
                 className="inline-flex items-center gap-4 bg-white text-black px-12 py-6 rounded-full text-[1.125rem] font-bold hover:bg-[#0071e3] hover:text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 group shadow-2xl shadow-black/20"
               >
-                {lang === "de" ? "Strategiegespräch buchen" : lang === "tr" ? "Danışmanlık Randevusu Al" : "Schedule a Consultation"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+                {articleLang === "de" ? "Strategiegespräch buchen" : articleLang === "tr" ? "Danışmanlık Randevusu Al" : "Schedule a Consultation"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>
@@ -572,18 +807,18 @@ export function BlogPost() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
               <div>
                 <h3 className="text-[2.5rem] font-bold tracking-[-0.04em] mb-4 font-outfit">
-                  {lang === "de" ? "Weiterführende Lektüre" : lang === "tr" ? "Daha Fazla İçerik" : "Further Reading"}
+                  {articleLang === "de" ? "Weiterführende Lektüre" : articleLang === "tr" ? "Daha Fazla İçerik" : "Further Reading"}
                 </h3>
                 <p className="text-[1.125rem] text-neutral-500 font-medium">
-                  {lang === "de" 
+                  {articleLang === "de" 
                     ? "Mehr Insights für ambitionierte Unternehmen." 
-                    : lang === "tr"
+                    : articleLang === "tr"
                     ? "İddialı işletmeler için daha fazla içerik."
                     : "More insights for ambitious businesses."}
                 </p>
               </div>
               <Link to="/blog" className="inline-flex items-center gap-2 text-[1rem] font-bold text-[#0071e3] hover:translate-x-1 transition-transform">
-                {lang === "de" ? "Zum Archiv" : lang === "tr" ? "Arşivi gör" : "View the archive"} <ArrowLeft size={20} className="rotate-180" />
+                {articleLang === "de" ? "Zum Archiv" : articleLang === "tr" ? "Arşivi gör" : "View the archive"} <ArrowLeft size={20} className="rotate-180" />
               </Link>
             </div>
             
