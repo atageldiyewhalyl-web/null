@@ -20,7 +20,7 @@ function TypewriterText({
   text: string;
   wordDelay?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
   const words = text.split(" ");
   const [revealedCount, setRevealedCount] = useState(0);
@@ -38,7 +38,7 @@ function TypewriterText({
   }, [isInView, words.length, wordDelay]);
 
   return (
-    <div ref={ref} className="inline">
+    <span ref={ref} className="inline">
       {words.map((word, i) => {
         const isRevealed = i < revealedCount;
         const isPunctuation = /^[.,!?:;—–]/.test(word) || /[.,!?:;—–]$/.test(word);
@@ -67,7 +67,7 @@ function TypewriterText({
           </span>
         );
       })}
-    </div>
+    </span>
   );
 }
 

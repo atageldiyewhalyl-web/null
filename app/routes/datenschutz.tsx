@@ -89,8 +89,8 @@ export default function DatenschutzRoute() {
             </p>
             <p className="mt-4">
               E-Mail:{" "}
-              <a className="text-primary transition-colors hover:text-foreground" href="mailto:halyl@xn--nll-hoa.com">
-                halyl@xn--nll-hoa.com
+              <a className="text-primary transition-colors hover:text-foreground" href="mailto:info@nüll.com">
+                info@nüll.com
               </a>
               <br />
               Telefon:{" "}
@@ -228,41 +228,7 @@ export default function DatenschutzRoute() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">7. Calendly</h2>
-            <p>Auf unserer Website kann ein Terminbuchungstool von Calendly eingebunden sein.</p>
-            <address className="mt-4 not-italic text-neutral-700">
-              Anbieter:
-              <br />
-              Calendly LLC
-              <br />
-              271 17th St NW
-              <br />
-              10th Floor
-              <br />
-              Atlanta, GA 30363
-              <br />
-              USA
-            </address>
-            <p className="mt-4">
-              Wenn Sie einen Termin buchen, werden die von Ihnen eingegebenen Daten an Calendly
-              übermittelt.
-            </p>
-            <p className="mt-4">
-              Weitere Informationen:
-              <br />
-              <a
-                className="text-primary transition-colors hover:text-foreground"
-                href="https://calendly.com/privacy"
-                rel="noreferrer"
-                target="_blank"
-              >
-                https://calendly.com/privacy
-              </a>
-            </p>
-          </section>
-
-          <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">8. WhatsApp</h2>
+            <h2 className="mb-4 text-2xl md:text-3xl">7. WhatsApp</h2>
             <p>
               Wenn Sie uns über einen WhatsApp-Link kontaktieren, verlassen Sie unsere Website und
               nutzen den Dienst WhatsApp. Dabei verarbeitet WhatsApp eigene personenbezogene Daten,
@@ -296,7 +262,7 @@ export default function DatenschutzRoute() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">9. Cookies und lokale Speicherung</h2>
+            <h2 className="mb-4 text-2xl md:text-3xl">8. Cookies und lokale Speicherung</h2>
             <p>
               Unsere Website verwendet technisch notwendige Cookies und lokale Speicherung im
               Browser. Dazu gehören insbesondere die Speicherung Ihrer Spracheinstellung und Ihrer
@@ -309,7 +275,7 @@ export default function DatenschutzRoute() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">10. Google Fonts</h2>
+            <h2 className="mb-4 text-2xl md:text-3xl">9. Google Fonts</h2>
             <p>
               Schriftarten werden lokal eingebunden. Beim Aufruf dieser Website wird keine
               automatische Verbindung zu Servern von Google Fonts hergestellt.
@@ -317,13 +283,13 @@ export default function DatenschutzRoute() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">11. Ihre Rechte</h2>
+            <h2 className="mb-4 text-2xl md:text-3xl">10. Ihre Rechte</h2>
             <p>Sie haben nach der DSGVO folgende Rechte:</p>
             <LegalList items={rights} />
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">12. Datenübermittlung in Drittländer</h2>
+            <h2 className="mb-4 text-2xl md:text-3xl">11. Datenübermittlung in Drittländer</h2>
             <p>
               Einige der von uns eingesetzten Dienstleister haben ihren Sitz außerhalb der
               Europäischen Union oder des Europäischen Wirtschaftsraums. Soweit personenbezogene
@@ -334,7 +300,7 @@ export default function DatenschutzRoute() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-2xl md:text-3xl">13. Speicherdauer</h2>
+            <h2 className="mb-4 text-2xl md:text-3xl">12. Speicherdauer</h2>
             <p>
               Personenbezogene Daten werden nur so lange gespeichert, wie dies zur Erfüllung der
               jeweiligen Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.

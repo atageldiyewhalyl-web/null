@@ -1,7 +1,6 @@
 import type { BlogPost, Language } from "../types";
 import { blogPosts } from "../components/blogData";
 
-const BLOG_PATH_RE = /^\/blog\/([^/?#]+)\/?$/;
 const DEFAULT_LANGUAGE: Language = "de";
 
 export function isLanguage(value: unknown): value is Language {
@@ -9,7 +8,16 @@ export function isLanguage(value: unknown): value is Language {
 }
 
 export function getBlogSlugFromPath(pathname: string): string | null {
-  return pathname.match(BLOG_PATH_RE)?.[1] ?? null;
+  const cleanPath = pathname.split(/[?#]/)[0].replace(/\/+$/, "");
+  const [, section, slug] = cleanPath.split("/");
+
+  if (section !== "blog" || !slug) return null;
+
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return slug;
+  }
 }
 
 export function getBlogPostBySlug(slug: string | undefined | null): BlogPost | null {

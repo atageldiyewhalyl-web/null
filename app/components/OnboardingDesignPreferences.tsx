@@ -2,11 +2,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft, ArrowRight, Palette, ChevronLeft, ChevronRight, Check, Sparkles } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
 import { useState, useRef, useEffect } from "react";
-import Image2 from "../assets/Image 2.PNG";
-import Image3 from "../assets/Image 3.PNG";
-import Image4 from "../assets/Image 4.PNG";
-import Image5 from "../assets/Image 5.PNG";
-import Image6 from "../assets/Image 6.PNG";
+import Image2 from "../assets/Previews/Image 2.PNG";
+import Image3 from "../assets/Previews/Image 3.PNG";
+import Image4 from "../assets/Previews/Image 4.PNG";
+import Image5 from "../assets/Previews/Image 5.PNG";
+import Image6 from "../assets/Previews/Image 6.PNG";
 
 interface OnboardingDesignPreferencesProps {
   data: {

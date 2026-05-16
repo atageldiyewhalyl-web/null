@@ -30,14 +30,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
 // Layout is a pure shell — no hooks allowed here (no router context yet)
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -55,7 +55,7 @@ export default function App() {
 
   return (
     <LanguageProvider initialLang={lang}>
-      <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white transition-colors duration-500">
+      <div className="min-h-screen w-full max-w-[100vw] overflow-x-clip bg-white transition-colors duration-500">
         {!isOnboarding && <Navbar />}
         <Outlet />
         {!isOnboarding && <Footer />}

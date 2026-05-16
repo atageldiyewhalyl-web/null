@@ -73,6 +73,21 @@
 }
 
 @layer utilities {
+  @keyframes hero-background-drift {
+    0%, 100% {
+      transform: scale(1.04) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: scale(1.08) translate3d(-1.25%, 1%, 0);
+    }
+  }
+
+  .hero-background-motion {
+    animation: hero-background-drift 18s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+  }
+
   .glass {
     @apply bg-white/70 backdrop-blur-xl border border-white/20;
   }

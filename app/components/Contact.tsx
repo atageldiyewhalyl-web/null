@@ -1,335 +1,85 @@
-import { useState } from "react";
-import { Send, Loader2, Mail, MessageSquare, Calendar } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
-import { projectId, publicAnonKey } from "/utils/supabase/info";
+import { ArrowUpRight, Mail, MessageSquare } from "lucide-react";
+import { motion } from "motion/react";
 import { useLanguage, t } from "./LanguageContext";
-
-const API_URL = `https://${projectId}.supabase.co/functions/v1/make-server-ea5edff4`;
 
 export function Contact() {
   const { lang } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    city: "",
-    practiceArea: "",
-    hasWebsite: "no" as "yes" | "no",
-    websiteUrl: ""
-  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch(`${API_URL}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${publicAnonKey}`,
-        },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        console.error("Contact form error:", data);
-        setError(t("contact.error", lang));
-      } else {
-        setSubmitted(true);
-      }
-    } catch (err) {
-      console.error("Contact form network error:", err);
-      setError(t("contact.networkError", lang));
-    } finally {
-      setLoading(false);
-    }
-  };
+  const contactMethods = [
+    {
+      title: "WhatsApp",
+      description: t("contact.whatsapp.cta", lang),
+      href: "https://wa.me/491627176334",
+      action: lang === "tr" ? "Mesaj gönder" : lang === "de" ? "Nachricht senden" : "Send message",
+      Icon: MessageSquare,
+    },
+    {
+      title: "Email",
+      description: t("contact.email.cta", lang),
+      href: "mailto:info@nüll.com",
+      action: "info@nüll.com",
+      Icon: Mail,
+    },
+  ];
 
   return (
-    <section id="contact" className="py-20 md:py-32 px-4 md:px-6 bg-[#fafafa]">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start pb-20 border-b border-black/5 mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+    <section id="contact" className="bg-[#fafafa] px-4 py-16 md:px-6 md:py-24">
+      <div className="mx-auto max-w-6xl border-b border-black/5 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-6xl text-center"
+        >
+          <p className="mb-6 text-[0.8125rem] font-semibold uppercase tracking-[0.15em] text-[#0070e3]">
+            {t("contact.label", lang)}
+          </p>
+          <h2
+            className="mb-7 text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[0.98] tracking-[-0.035em]"
+            style={{ fontWeight: 600 }}
           >
-            <p className="text-[0.8125rem] tracking-[0.15em] uppercase text-[#0070e3] mb-6 font-semibold">
-              {t("contact.label", lang)}
-            </p>
-            <h2
-              className={`tracking-[-0.035em] leading-[1.08] mb-8 ${
-                lang === "de"
-                  ? "text-[clamp(2rem,4.4vw,2.75rem)]"
-                  : "text-[clamp(1.75rem,8vw,3.25rem)]"
-              }`}
-              style={{ fontWeight: 600 }}
+            <span className="block lg:whitespace-nowrap">{t("contact.title1", lang)}</span>
+            <span className="block text-[#8e8e93] lg:whitespace-nowrap">{t("contact.title2", lang)}</span>
+          </h2>
+          <p className="mx-auto max-w-2xl text-[1.125rem] leading-relaxed text-muted-foreground">
+            {t("contact.description", lang)}
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-3 md:grid-cols-2"
+        >
+          {contactMethods.map(({ title, description, href, action, Icon }) => (
+            <a
+              key={title}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="group rounded-[1.75rem] border border-black/5 bg-white/70 p-6 text-left shadow-[0_20px_60px_-35px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_-35px_rgba(0,0,0,0.24)]"
             >
-              {lang === "de" ? (
-                <>
-                  <span className="whitespace-nowrap">Ihre Expertise verdient</span>
-                  <br />
-                  <span className="whitespace-nowrap">einen stärkeren Auftritt.</span>
-                  <br />
-                  <span className="whitespace-nowrap">Machen wir daraus</span>
-                  <br />
-                  <span className="whitespace-nowrap">Anfragen.</span>
-                </>
-              ) : (
-                <>
-                  {t("contact.title1", lang)}
-                  <br className="hidden sm:block" />
-                  {" "}{t("contact.title2", lang)}
-                </>
-              )}
-            </h2>
-            <p className="text-[1.125rem] text-muted-foreground leading-relaxed max-w-lg mb-12">
-              {t("contact.description", lang)}
-            </p>
-
-            <div className="space-y-8 max-w-lg">
-              <div className="flex items-start gap-5 group">
-                <div className="w-11 h-11 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#25D366] shrink-0 transition-transform group-hover:scale-105 border border-black/5">
-                  <MessageSquare size={20} />
-                </div>
-                <div>
-                  <h4 className="text-[1rem] font-semibold mb-1">WhatsApp</h4>
-                  <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
-                    {t("contact.whatsapp.cta", lang)}
-                  </p>
-                  <a
-                    href="https://wa.me/491627176334"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[0.875rem] text-[#0071e3] font-medium hover:underline flex items-center gap-1"
-                  >
-                    {lang === 'tr' ? 'Mesaj Gönder' : (lang === 'de' ? 'Nachricht senden' : 'Send Message')} <span className="text-[1.1em]">&rarr;</span>
-                  </a>
-                </div>
+              <div className="mb-8 flex items-center justify-between">
+                <Icon size={23} className="text-[#0071e3]" strokeWidth={1.9} />
+                <ArrowUpRight
+                  size={18}
+                  className="text-[#8e8e93] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0071e3]"
+                  strokeWidth={1.8}
+                />
               </div>
-
-              <div className="flex items-start gap-5 group">
-                <div className="w-11 h-11 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#ea4335] shrink-0 transition-transform group-hover:scale-105 border border-black/5">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <h4 className="text-[1rem] font-semibold mb-1">Email</h4>
-                  <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
-                    {t("contact.email.cta", lang)}
-                  </p>
-                  <a
-                    href="mailto:Halyl@nüll.com"
-                    className="text-[0.875rem] text-[#0071e3] font-medium hover:underline"
-                  >
-                    Halyl@nüll.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 group">
-                <div className="w-11 h-11 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#0071e3] shrink-0 transition-transform group-hover:scale-105 border border-black/5">
-                  <Calendar size={20} />
-                </div>
-                <div>
-                  <h4 className="text-[1rem] font-semibold mb-1">Calendly</h4>
-                  <p className="text-[0.8125rem] text-muted-foreground mb-2 leading-relaxed">
-                    {t("contact.calendly.cta", lang)}
-                  </p>
-                  <a
-                    href="https://calendly.com/atageldiyewhalyl/business-beratung"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[0.875rem] text-[#0071e3] font-medium hover:underline flex items-center gap-1"
-                  >
-                    {lang === 'tr' ? 'Randevu Al' : (lang === 'de' ? 'Termin buchen' : 'Book Call')} <span className="text-[1.1em]">&rarr;</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <AnimatePresence mode="wait">
-              {submitted ? (
-                <motion.div
-                  key="sent"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-black/5 p-12 text-center"
-                >
-                  <div className="w-16 h-16 rounded-full bg-[#34c759]/10 flex items-center justify-center mx-auto mb-6">
-                    <Send size={24} className="text-[#34c759]" />
-                  </div>
-                  <h3 className="text-[1.5rem] mb-3" style={{ fontWeight: 600 }}>
-                    {t("contact.sent", lang)}
-                  </h3>
-                  <p className="text-[1rem] text-muted-foreground">
-                    {t("contact.sentDesc", lang)}
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.div key="form" className="space-y-8">
-                  <form
-                    className="bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-black/5 p-8 md:p-10 space-y-6"
-                    onSubmit={handleSubmit}
-                  >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                          {t("contact.name", lang)}
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={form.name}
-                          onChange={(e) => setForm({ ...form, name: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                          {t("contact.email", lang)}
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          value={form.email}
-                          onChange={(e) => setForm({ ...form, email: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                          {t("contact.phone", lang)}
-                        </label>
-                        <input
-                          type="tel"
-                          required
-                          value={form.phone}
-                          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                          {t("contact.city", lang)}
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={form.city}
-                          onChange={(e) => setForm({ ...form, city: e.target.value })}
-                          className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                        {t("contact.practiceArea", lang)}
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={form.practiceArea}
-                        onChange={(e) => setForm({ ...form, practiceArea: e.target.value })}
-                        className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                      />
-                    </div>
-
-                    <div className="space-y-4 pt-2">
-                      <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                        {t("contact.hasWebsite", lang)}
-                      </label>
-                      <div className="flex p-1.5 bg-[#f5f5f7] rounded-2xl w-full max-w-[400px]">
-                        <button
-                          type="button"
-                          onClick={() => setForm({ ...form, hasWebsite: "yes" })}
-                          className={`flex-1 py-2.5 rounded-xl text-[0.875rem] font-medium transition-all ${
-                            form.hasWebsite === "yes"
-                              ? "bg-white text-foreground shadow-sm"
-                              : "text-muted-foreground"
-                          }`}
-                        >
-                          {t("contact.websiteOpt.yes", lang)}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setForm({ ...form, hasWebsite: "no" })}
-                          className={`flex-1 py-2.5 rounded-xl text-[0.875rem] font-medium transition-all ${
-                            form.hasWebsite === "no"
-                              ? "bg-white text-foreground shadow-sm"
-                              : "text-muted-foreground"
-                          }`}
-                        >
-                          {t("contact.websiteOpt.no", lang)}
-                        </button>
-                      </div>
-
-                      <AnimatePresence>
-                        {form.hasWebsite === "yes" && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
-                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                            className="space-y-2 overflow-hidden"
-                          >
-                            <label className="text-[0.8125rem] font-medium text-muted-foreground ml-1">
-                              {t("contact.websiteUrl", lang)}
-                            </label>
-                            <input
-                              type="url"
-                              required
-                              placeholder="https://"
-                              value={form.websiteUrl}
-                              onChange={(e) => setForm({ ...form, websiteUrl: e.target.value })}
-                              className="w-full px-5 py-3.5 rounded-2xl bg-[#f5f5f7] border-none focus:ring-2 focus:ring-[#0071e3]/20 outline-none transition-all text-[0.9375rem]"
-                            />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-
-                    {error && (
-                      <p className="text-red-500 text-sm px-1">{error}</p>
-                    )}
-
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full bg-foreground text-background py-4.5 h-14 rounded-full text-[1rem] font-medium hover:bg-foreground/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-60 disabled:pointer-events-none shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
-                      >
-                        {loading ? (
-                          <>{t("contact.sending", lang)} <Loader2 size={18} className="animate-spin" /></>
-                        ) : (
-                          <>{t("contact.send", lang)} <Send size={18} /></>
-                        )}
-                      </button>
-                    </div>
-                  </form>
-
-                  <p className="text-[0.875rem] text-muted-foreground text-center leading-relaxed px-4 opacity-70">
-                    {t("contact.reassurance", lang)}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </div>
+              <h3 className="mb-2 text-[1.05rem] font-semibold tracking-[-0.01em] text-[#111111]">
+                {title}
+              </h3>
+              <p className="mb-5 min-h-[2.6rem] text-[0.9rem] leading-relaxed text-muted-foreground">
+                {description}
+              </p>
+              <span className="text-[0.9rem] font-semibold text-[#0071e3]">{action}</span>
+            </a>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

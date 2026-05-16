@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage, t, type Language } from "./LanguageContext";
 import { useLocation } from "react-router";
@@ -12,6 +12,19 @@ export function Navbar() {
   const { lang, setLang } = useLanguage();
   const location = useLocation();
   const displayLang = getLanguageForPath(location.pathname) ?? lang;
+  const shouldOpenQuotePreview =
+    location.pathname.includes("services") ||
+    location.pathname.includes("webdesign") ||
+    location.pathname.includes("website") ||
+    location.pathname.includes("leistungen");
+
+  const openQuotePreview = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!shouldOpenQuotePreview) return;
+
+    event.preventDefault();
+    setIsOpen(false);
+    window.dispatchEvent(new CustomEvent("open-quote-preview"));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,9 +35,9 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { name: t("nav.services", displayLang), href: "#services" },
-    { name: t("nav.work", displayLang), href: "#work" },
-    { name: t("nav.pricing", displayLang), href: "#pricing" },
+    { name: t("nav.services", displayLang), href: "/services" },
+    { name: t("nav.work", displayLang), href: "/#work" },
+    { name: t("nav.pricing", displayLang), href: "/#pricing" },
     { name: t("nav.blog", displayLang), href: "/blog" },
   ];
 
@@ -66,6 +79,7 @@ export function Navbar() {
             
             <a
               href="/#pricing"
+              onClick={openQuotePreview}
               className="bg-[#0e0e10] text-white px-6 py-2.5 rounded-full text-[0.875rem] font-bold hover:bg-[#1c1c1e] transition-all active:scale-95 shadow-lg shadow-black/10"
             >
               {t("nav.getStarted", displayLang)}
@@ -110,7 +124,7 @@ export function Navbar() {
             <div className="flex flex-col gap-4">
               <a
                 href="/#pricing"
-                onClick={() => setIsOpen(false)}
+                onClick={openQuotePreview}
                 className="bg-[#007aff] text-white text-center py-5 rounded-2xl font-bold"
               >
                 {t("nav.getStarted", displayLang)}

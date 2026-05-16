@@ -50,8 +50,8 @@ export default function ImpressumRoute() {
             <h2 className="mb-4 text-2xl md:text-3xl">Kontakt</h2>
             <p>
               E-Mail:{" "}
-              <a className="text-primary transition-colors hover:text-foreground" href="mailto:hello@xn--nll-hoa.com">
-                hello@xn--nll-hoa.com
+              <a className="text-primary transition-colors hover:text-foreground" href="mailto:info@nüll.com">
+                info@nüll.com
               </a>
               <br />
               Telefon:{" "}

@@ -1,6 +1,6 @@
 import { useLanguage, type Language } from "./LanguageContext";
-import { useLocation, useNavigate } from "react-router";
-import { getLanguageForPath, getLocalizedPath } from "../utils/i18nRouting";
+import { useLocation } from "react-router";
+import { getLanguageForPath, getLocalizedPath, isLanguage } from "../utils/i18nRouting";
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -12,17 +12,29 @@ const defaultLanguages: Language[] = ["en", "de", "tr"];
 export function LanguageSwitcher({ className = "", languages = defaultLanguages }: LanguageSwitcherProps) {
   const { lang, setLang } = useLanguage();
   const location = useLocation();
-  const navigate = useNavigate();
   const routeLang = getLanguageForPath(location.pathname);
-  const activeLang = languages.includes(routeLang ?? lang) ? routeLang ?? lang : languages[0];
+  const resolvedLang = routeLang ?? lang;
+  const activeLang = languages.includes(resolvedLang) ? resolvedLang : languages[0];
 
-  const handleLanguageChange = (nextLang: Language) => {
-    const targetPath = getLocalizedPath(location.pathname, nextLang);
-    setLang(nextLang);
+  const getLanguageTarget = (nextLang: Language) => {
+    const currentPath = typeof window !== "undefined" ? window.location.pathname : location.pathname;
+    const currentSearch = typeof window !== "undefined" ? window.location.search : location.search;
+    const currentHash = typeof window !== "undefined" ? window.location.hash : location.hash;
+    const targetPath = getLocalizedPath(currentPath, nextLang);
+    const targetRouteLang = getLanguageForPath(targetPath);
 
-    if (targetPath !== location.pathname) {
-      navigate(targetPath);
+    if (targetPath !== currentPath) {
+      return `${targetPath}${currentHash}`;
     }
+
+    if (!targetRouteLang) {
+      const searchParams = new URLSearchParams(currentSearch);
+      searchParams.set("lang", nextLang);
+      const nextSearch = searchParams.toString();
+      return `${currentPath}${nextSearch ? `?${nextSearch}` : ""}${currentHash}`;
+    }
+
+    return `${currentPath}${currentSearch}${currentHash}`;
   };
 
   return (
@@ -33,28 +45,35 @@ export function LanguageSwitcher({ className = "", languages = defaultLanguages 
       onClick={(e) => e.stopPropagation()}
     >
       {languages.map((l) => (
-        <button
+        <a
           key={l}
-          type="button"
+          href={getLanguageTarget(l)}
           onClick={(e) => {
-            e.preventDefault();
             e.stopPropagation();
-            handleLanguageChange(l);
+            if (l === activeLang) {
+              e.preventDefault();
+              return;
+            }
+
+            const target = getLanguageTarget(l);
+            setLang(l);
+            e.preventDefault();
+            window.location.assign(target);
           }}
-          className={`px-3 md:px-4 py-2 rounded-full text-[0.7rem] md:text-[0.8rem] font-black transition-all duration-200 cursor-pointer select-none active:scale-90 flex items-center justify-center min-w-[3rem] ${
+          className={`appearance-none border-0 px-3 md:px-4 py-2 rounded-full text-[0.7rem] md:text-[0.8rem] font-black transition-all duration-200 cursor-pointer select-none active:scale-90 flex items-center justify-center min-w-[3rem] ${
             activeLang === l
               ? "bg-white text-[#007aff] shadow-sm scale-[1.02]"
-              : "text-[#86868b] hover:text-[#0e0e10] hover:bg-black/5"
+              : "bg-transparent text-[#86868b] hover:text-[#0e0e10] hover:bg-black/5"
           }`}
           style={{
             WebkitTapHighlightColor: "transparent",
             cursor: "pointer"
           }}
           aria-label={`Switch to ${l.toUpperCase()}`}
-          aria-pressed={activeLang === l}
+          aria-current={activeLang === l ? "true" : undefined}
         >
           {l.toUpperCase()}
-        </button>
+        </a>
       ))}
     </div>
   );

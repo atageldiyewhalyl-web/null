@@ -18,7 +18,7 @@ const organizationData = {
   description:
     "A client acquisition system for businesses, consultants, and law firms.",
   url: "https://xn--nll-hoa.com",
-  email: "hello@xn--nll-hoa.com",
+  email: "info@nüll.com",
   logo: "https://xn--nll-hoa.com/favicon.svg",
   areaServed: [
     { "@type": "Country", name: "Germany" },
