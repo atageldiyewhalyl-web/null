@@ -1,9 +1,7 @@
 import {
-  ArrowRight,
   ArrowUpRight,
   Bot,
   Code2,
-  MessageSquare,
   MonitorSmartphone,
   Palette,
   RefreshCw,
@@ -11,9 +9,15 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useLanguage, t } from "./LanguageContext";
+import conversionVisualEn from "../assets/services/english conversion.png";
+import conversionVisualDe from "../assets/services/german conversion.png";
+import conversionVisualEnMobile from "../assets/services/eng conversion mobile .png";
+import conversionVisualDeMobile from "../assets/services/German conversion mobile .png";
 
 export function Services() {
   const { lang } = useLanguage();
+  const conversionVisual = lang === "de" ? conversionVisualDe : conversionVisualEn;
+  const conversionVisualMobile = lang === "de" ? conversionVisualDeMobile : conversionVisualEnMobile;
 
   const systemSteps = [
     {
@@ -152,136 +156,18 @@ export function Services() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="grid grid-cols-1 gap-7 lg:grid-cols-4 lg:gap-7">
-              {systemSteps.map(({ number, label, description }, index) => (
-                <article
-                  key={label}
-                  className="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-5 lg:block"
-                >
-                  <div className="relative z-10 mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white text-[0.875rem] font-bold tracking-[0.04em] text-[#86868b] lg:mb-8">
-                    {number}
-                  </div>
-                  <div>
-                    <div className="relative overflow-hidden rounded-[1.35rem] border border-black/[0.07] bg-[#f8f9fb] p-4 shadow-[0_18px_60px_rgba(15,23,42,0.035)]">
-                      <div className="h-[10.5rem]">
-                        {index === 0 && (
-                          <div className="relative flex h-full flex-col gap-2">
-                            <span className="absolute right-0 top-0 rounded-full bg-[#007aff] px-2 py-1 text-[0.625rem] font-bold text-white">#1</span>
-                            <div className="rounded-xl border border-[#007aff]/40 bg-white p-3 shadow-[0_0_0_4px_rgba(0,122,255,0.06)]">
-                              <p className="text-[0.625rem] font-bold text-emerald-500">{flowVisualCopy.serpUrl}</p>
-                              <p className="mt-1 text-[0.75rem] font-bold leading-tight text-[#007aff]">{flowVisualCopy.serpTitle}</p>
-                              <p className="mt-1 text-[0.625rem] leading-snug text-[#86868b]">{flowVisualCopy.serpDescription}</p>
-                            </div>
-                            {[flowVisualCopy.secondResult, "Anwaltsverzeichnis"].map((result) => (
-                              <div key={result} className="rounded-xl border border-black/[0.05] bg-white/70 p-3 opacity-55">
-                                <p className="h-2 w-20 rounded-full bg-emerald-200" />
-                                <p className="mt-2 text-[0.6875rem] font-bold text-[#007aff]">{result}</p>
-                                <p className="mt-2 h-2 w-32 rounded-full bg-black/10" />
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {index === 1 && (
-                          <div className="relative flex h-full items-center gap-2">
-                            <div className="relative h-[8.1rem] flex-1 overflow-hidden rounded-xl border border-black/[0.06] bg-white opacity-50 grayscale">
-                              <div className="flex h-6 items-center gap-1 border-b border-black/[0.04] bg-black/[0.035] px-2">
-                                <span className="h-1.5 w-1.5 rounded-full bg-black/15" />
-                                <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-                                <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-                              </div>
-                              <div className="p-3 pb-8">
-                                <span className="mb-3 block h-3 w-[4.5rem] rounded-full bg-black/10" />
-                                <span className="mb-2 block h-2 w-full rounded-full bg-black/10" />
-                                <span className="mb-2 block h-2 w-3/4 rounded-full bg-black/[0.08]" />
-                                <span className="mb-2 block h-2 w-5/6 rounded-full bg-black/[0.08]" />
-                                <div className="grid grid-cols-2 gap-2">
-                                  <span className="h-5 rounded-md bg-black/[0.06]" />
-                                  <span className="h-5 rounded-md bg-black/[0.06]" />
-                                </div>
-                              </div>
-                              <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[0.5625rem] font-black uppercase tracking-[0.08em] text-[#86868b]">
-                                {flowVisualCopy.before}
-                              </span>
-                            </div>
-
-                            <div className="z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#007aff]/20 bg-white text-[#007aff] shadow-[0_8px_24px_rgba(0,122,255,0.12)]">
-                              <ArrowRight size={15} strokeWidth={2.2} />
-                            </div>
-
-                            <div className="relative h-[8.1rem] flex-1 overflow-hidden rounded-xl border border-[#007aff]/45 bg-white shadow-[0_0_0_4px_rgba(0,122,255,0.06)]">
-                              <div className="flex h-6 items-center justify-between border-b border-[#007aff]/10 bg-[#f2f8ff] px-2">
-                                <div className="flex items-center gap-1">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-[#007aff]" />
-                                  <span className="h-1.5 w-1.5 rounded-full bg-[#007aff]/25" />
-                                  <span className="h-1.5 w-1.5 rounded-full bg-[#007aff]/25" />
-                                </div>
-                                <span className="h-2 w-9 rounded-full bg-[#007aff]/20" />
-                              </div>
-                              <div className="p-3 pb-8">
-                                <span className="mb-2 block h-3 w-[4.75rem] rounded-full bg-[#007aff]" />
-                                <span className="mb-2 block h-2 w-full rounded-full bg-[#bfdbfe]" />
-                                <span className="mb-3 block h-2 w-2/3 rounded-full bg-[#bfdbfe]" />
-                                <div className="mb-2 h-6 rounded-lg bg-gradient-to-r from-[#007aff] to-[#54a6ff]" />
-                                <div className="grid grid-cols-3 gap-1.5">
-                                  <span className="h-4 rounded-md bg-[#eaf3ff]" />
-                                  <span className="h-4 rounded-md bg-[#eaf3ff]" />
-                                  <span className="h-4 rounded-md bg-[#eaf3ff]" />
-                                </div>
-                              </div>
-                              <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[0.5625rem] font-black uppercase tracking-[0.08em] text-[#007aff]">
-                                {flowVisualCopy.after}
-                              </span>
-                            </div>
-                          </div>
-                        )}
-
-                        {index === 2 && (
-                          <div className="flex h-full flex-col gap-3">
-                            <div className="flex items-center gap-3 rounded-xl border border-black/[0.06] bg-white p-3">
-                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eaf3ff] text-[0.875rem]">M</div>
-                              <div>
-                                <p className="text-[0.75rem] font-bold text-[#0e0e10]">{flowVisualCopy.reviewName}</p>
-                                <p className="text-[0.8125rem] tracking-[0.08em] text-[#007aff]">★★★★★</p>
-                              </div>
-                            </div>
-                            <div className="rounded-xl border border-black/[0.06] bg-white p-3 text-[0.6875rem] italic leading-relaxed text-[#86868b]">
-                              "{flowVisualCopy.review}"
-                            </div>
-                            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[0.625rem] font-bold text-emerald-700">
-                              ✓ {flowVisualCopy.verified}
-                            </div>
-                          </div>
-                        )}
-
-                        {index === 3 && (
-                          <div className="relative flex h-full flex-col justify-end gap-2">
-                            <div className="absolute right-1 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-[#007aff] text-white shadow-[0_0_0_8px_rgba(0,122,255,0.09)]">
-                              <MessageSquare size={16} strokeWidth={2} />
-                            </div>
-                            <div className="max-w-[88%] rounded-2xl rounded-bl-md border border-black/[0.06] bg-white p-3 text-[0.6875rem] font-medium leading-relaxed text-[#0e0e10]">
-                              {flowVisualCopy.incoming}
-                            </div>
-                            <p className="text-[0.5625rem] font-medium text-[#86868b]">{flowVisualCopy.time}</p>
-                            <div className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-[#007aff] p-3 text-[0.6875rem] font-bold leading-relaxed text-white">
-                              {flowVisualCopy.outgoing}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <h4 className="mt-7 text-[1.35rem] font-bold tracking-[-0.03em] text-[#0e0e10]">
-                      {label}
-                    </h4>
-                    <p className="mt-3 max-w-[18rem] text-[0.95rem] font-medium leading-relaxed text-[#86868b]">
-                      {description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+          <div className="relative mx-auto w-full max-w-[1320px] overflow-hidden">
+            <picture>
+              <source media="(max-width: 767px)" srcSet={conversionVisualMobile} />
+              <img
+                src={conversionVisual}
+                alt=""
+                aria-hidden="true"
+                className="w-full object-contain"
+              />
+            </picture>
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0)_4.5%,rgba(255,255,255,0)_95.5%,#fff_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#fff_0%,rgba(255,255,255,0)_6%,rgba(255,255,255,0)_94%,#fff_100%)]" />
           </div>
         </motion.div>
 

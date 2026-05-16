@@ -18,8 +18,8 @@ import dogruOld from "../assets/Dogru kanzlei/Dogru kanzlei old.png";
 import credibility from "../assets/Dogru kanzlei/Credibility.png?format=webp&w=1600";
 import googleCredibility from "../assets/Dogru kanzlei/Google credibility.png?format=webp&w=1800";
 import websiteHeroBackground from "../assets/Website service page/website hero new.png";
-import conversionVisualEn from "../assets/services/Eng version conversion 1.png";
-import conversionVisualDe from "../assets/services/German Version conversion 1.png";
+import conversionVisualEn from "../assets/services/english conversion.png";
+import conversionVisualDe from "../assets/services/german conversion.png";
 import resultsEn from "../assets/services/Results english .png";
 import resultsDe from "../assets/services/Results german 1.png";
 
@@ -167,6 +167,63 @@ const copy = {
   },
 } satisfies Record<Language, Record<string, string>>;
 
+const seoCopy = {
+  de: {
+    ...copy.de,
+    heroLabel: "SEO-Service",
+    heroTitle1: "Ihre Kunden suchen",
+    heroTitle2a: "Sie",
+    heroTitle2b: "bei Google.",
+    heroText: "Wir bauen Ihre Google-Sichtbarkeit systematisch auf, technisch sauber, inhaltlich relevant und messbar auf echte Anfragen ausgerichtet.",
+    viewProjects: "Referenzen ansehen",
+    problem1: "Ihre besten Kunden suchen bereits.",
+    problem2: "Aber sie finden oft Ihre Konkurrenz.",
+    problemText:
+      "SEO ist kein Trick. Es ist die klare Struktur aus Suchintention, technischer Grundlage, relevanten Seiten und laufender Optimierung. Genau das bauen wir für Sie auf.",
+    proofTitle: "Von nicht auffindbar zu messbarer Google-Sichtbarkeit.",
+    proofP2: "Wir haben die Seite technisch und inhaltlich neu aufgebaut, klare Leistungsseiten, saubere Struktur und ein Fundament, das Google verstehen kann.",
+    faqLabel: "SEO-Fragen",
+    closingTitle: "Bereit, sichtbar zu werden.",
+    closingText: "Kostenlose SEO-Ersteinschätzung. Kein Vertrag. Kein Risiko.",
+  },
+  en: {
+    ...copy.en,
+    heroLabel: "SEO Service",
+    heroTitle1: "Your clients are",
+    heroTitle2a: "Google.",
+    heroTitle2b: "searching on",
+    heroText: "We build your Google visibility systematically, with clean technical foundations, relevant pages, and measurable progress toward real enquiries.",
+    viewProjects: "View proof",
+    problem1: "Your best customers are already searching.",
+    problem2: "But they often find your competitors first.",
+    problemText:
+      "SEO is not a trick. It is the structure of search intent, technical foundations, relevant pages, and ongoing optimisation. That is what we build for you.",
+    proofTitle: "From invisible to measurable Google visibility.",
+    proofP2: "We rebuilt the site technically and strategically, clear service pages, clean structure, and a foundation Google can understand.",
+    faqLabel: "SEO questions",
+    closingTitle: "Ready to become visible.",
+    closingText: "Free initial SEO assessment. No contract. No risk.",
+  },
+  tr: {
+    ...copy.tr,
+    heroLabel: "SEO Hizmeti",
+    heroTitle1: "Müşterileriniz",
+    heroTitle2a: "Google'da",
+    heroTitle2b: "arıyor.",
+    heroText: "Google görünürlüğünüzü teknik temel, doğru içerik yapısı ve gerçek taleplere odaklanan ölçülebilir SEO çalışmasıyla büyütürüz.",
+    viewProjects: "Kanıtları gör",
+    problem1: "En iyi müşterileriniz zaten arıyor.",
+    problem2: "Ama çoğu zaman önce rakiplerinizi buluyor.",
+    problemText:
+      "SEO bir hile değildir. Arama niyeti, teknik temel, ilgili sayfalar ve düzenli optimizasyon sistemidir. Biz bunu sizin için kurarız.",
+    proofTitle: "Görünmezlikten ölçülebilir Google görünürlüğüne.",
+    proofP2: "Siteyi teknik ve stratejik olarak yeniden kurduk: net hizmet sayfaları, temiz yapı ve Google'ın anlayabileceği sağlam bir temel.",
+    faqLabel: "SEO soruları",
+    closingTitle: "Görünür olmaya hazır mısınız?",
+    closingText: "Ücretsiz ilk SEO değerlendirmesi. Sözleşme yok. Risk yok.",
+  },
+} satisfies Record<Language, Record<string, string>>;
+
 const serviceCards = [
   {
     number: "01",
@@ -253,7 +310,7 @@ function CaseStudySection({ c, lang }: { c: Record<string, string>; lang: Langua
           <p className="mb-4 text-[0.75rem] font-bold uppercase tracking-[0.22em] text-[#007aff]">
             {c.proofLabel} — Hasan Doğru Kanzlei
           </p>
-          <h2 className="max-w-none text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.06] tracking-[-0.04em] text-[#0e0e10] md:whitespace-nowrap">
+          <h2 className="max-w-6xl text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.06] tracking-[-0.04em] text-[#0e0e10]">
             {c.proofTitle}
           </h2>
           <p className="mt-5 max-w-2xl text-[1rem] font-medium leading-relaxed text-[#86868b]">
@@ -295,9 +352,10 @@ function CaseStudySection({ c, lang }: { c: Record<string, string>; lang: Langua
   );
 }
 
-export function ServicesPage() {
+export function ServicesPage({ variant = "website" }: { variant?: "website" | "seo" }) {
   const { lang } = useLanguage();
-  const c = copy[lang] ?? copy.de;
+  const pageCopy = variant === "seo" ? seoCopy : copy;
+  const c = pageCopy[lang] ?? pageCopy.de;
   const [openFaq, setOpenFaq] = useState(0);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const conversionVisual = lang === "de" ? conversionVisualDe : conversionVisualEn;
@@ -345,7 +403,7 @@ export function ServicesPage() {
       </section>
 
       <section className="px-4 py-20 md:px-6 md:py-24">
-        <div className="mx-auto max-w-[1180px] text-center">
+        <div className="mx-auto max-w-[1320px] text-center">
           <h2 className="text-[clamp(2rem,3.4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-[#0e0e10]">
             <span className="block md:whitespace-nowrap">{c.problem1}</span>
             <span className="mt-4 block text-[0.76em] font-semibold leading-[1.12] tracking-[-0.035em] text-[#86868b] md:whitespace-nowrap">
@@ -355,12 +413,16 @@ export function ServicesPage() {
           <p className="mx-auto mt-8 max-w-[680px] text-center text-[1.02rem] font-medium leading-relaxed text-[#86868b] md:text-[1.12rem]">
             {c.problemText}
           </p>
-          <img
-            src={conversionVisual}
-            alt=""
-            aria-hidden="true"
-            className="mx-auto mt-10 w-full max-w-[760px] object-contain md:mt-12 md:max-w-[1040px] lg:max-w-[1180px]"
-          />
+          <div className="relative mx-auto mt-10 w-full max-w-[840px] overflow-hidden md:mt-12 md:max-w-[1160px] lg:max-w-[1320px]">
+            <img
+              src={conversionVisual}
+              alt=""
+              aria-hidden="true"
+              className="w-full object-contain"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0)_4.5%,rgba(255,255,255,0)_95.5%,#fff_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#fff_0%,rgba(255,255,255,0)_6%,rgba(255,255,255,0)_94%,#fff_100%)]" />
+          </div>
         </div>
       </section>
 

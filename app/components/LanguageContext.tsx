@@ -83,12 +83,12 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
   // language is present. Blog pages keep the language encoded in their URL.
   useEffect(() => {
     try {
-      if (getLanguageForPath(window.location.pathname)) {
+      if (getLanguageForPath(location.pathname)) {
         setIsHydrated(true);
         return;
       }
 
-      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      const urlLang = new URLSearchParams(location.search).get("lang");
       if (isLanguage(urlLang)) {
         setLang(urlLang);
         setIsHydrated(true);
@@ -103,7 +103,7 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
       console.warn("Language hydration from storage failed:", e);
     }
     setIsHydrated(true);
-  }, [setLang]);
+  }, [location.pathname, location.search, setLang]);
 
   const value = useMemo(() => ({
     lang,
@@ -150,14 +150,14 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Sizi bulduğundan emin olun"
   },
   "hero.line1Mobile": {
-    en: "Your next customer is searching",
-    de: "Ihre nächsten Kunden suchen gerade",
-    tr: "Bir sonraki müşteriniz arıyor"
+    en: "Get found.",
+    de: "Gefunden werden.",
+    tr: "Önce siz"
   },
   "hero.line2Mobile": {
-    en: "Be the one they find",
-    de: "Sorgen Sie dafür, dass sie Sie finden",
-    tr: "Sizi bulsun"
+    en: "Before they choose someone else.",
+    de: "Bevor sie andere wählen.",
+    tr: "bulunun."
   },
   "hero.description": {
     en: "We build the digital presence that turns searches into enquiries, website, SEO, and AI visibility working together so your business gets found before your competitors do.",

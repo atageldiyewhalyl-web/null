@@ -1,5 +1,5 @@
 import { useLanguage, type Language } from "./LanguageContext";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { getLanguageForPath, getLocalizedPath, isLanguage } from "../utils/i18nRouting";
 
 interface LanguageSwitcherProps {
@@ -12,8 +12,11 @@ const defaultLanguages: Language[] = ["en", "de", "tr"];
 export function LanguageSwitcher({ className = "", languages = defaultLanguages }: LanguageSwitcherProps) {
   const { lang, setLang } = useLanguage();
   const location = useLocation();
+  const navigate = useNavigate();
   const routeLang = getLanguageForPath(location.pathname);
-  const resolvedLang = routeLang ?? lang;
+  const queryLang = new URLSearchParams(location.search).get("lang");
+  const urlLang = isLanguage(queryLang) ? queryLang : null;
+  const resolvedLang = routeLang ?? urlLang ?? lang;
   const activeLang = languages.includes(resolvedLang) ? resolvedLang : languages[0];
 
   const getLanguageTarget = (nextLang: Language) => {
@@ -58,7 +61,7 @@ export function LanguageSwitcher({ className = "", languages = defaultLanguages 
             const target = getLanguageTarget(l);
             setLang(l);
             e.preventDefault();
-            window.location.assign(target);
+            navigate(target);
           }}
           className={`appearance-none border-0 px-3 md:px-4 py-2 rounded-full text-[0.7rem] md:text-[0.8rem] font-black transition-all duration-200 cursor-pointer select-none active:scale-90 flex items-center justify-center min-w-[3rem] ${
             activeLang === l

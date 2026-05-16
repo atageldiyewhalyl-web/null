@@ -88,7 +88,7 @@ export function Hero() {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-full min-w-0 text-[clamp(1.75rem,9.4vw,4.5rem)] md:text-[clamp(2.5rem,4vw,4rem)] leading-[1.1] tracking-[-0.04em] font-bold text-[#0e0e10] mb-4 md:mb-10 text-balance"
+            className="max-w-full min-w-0 text-[clamp(2.65rem,14vw,4.35rem)] md:text-[clamp(2.5rem,4vw,4rem)] leading-[0.96] md:leading-[1.1] tracking-[-0.055em] md:tracking-[-0.04em] font-bold text-[#0e0e10] mb-4 md:mb-10 text-balance"
           >
             <span className="block">
               <span className="md:hidden">{t("hero.line1Mobile", lang)}</span>
