@@ -46,6 +46,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WB0JX9VN2" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WB0JX9VN2');gtag('config','AW-18170315805');`,
+          }}
+        />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}

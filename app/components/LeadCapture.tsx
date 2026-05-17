@@ -159,6 +159,13 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
       }
 
       setStep("RESULT");
+      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
+          value: 1.0,
+          currency: "EUR",
+        });
+      }
     } catch (err: any) {
       console.error("Submission error:", err);
       setError(err.message || t("contact.error", lang));
@@ -437,7 +444,17 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
                   {t("quote.result.orContact", lang)}
                 </p>
                 <div className={`${isEmbedded ? "gap-2 px-3" : "gap-2 px-4 md:gap-3"} grid w-full grid-cols-1 sm:grid-cols-2`}>
-                  <a href="https://wa.me/491627176334" target="_blank" rel="noopener noreferrer" className={`${isEmbedded ? "py-3" : "py-3.5"} flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-[0.75rem] font-bold text-white transition-all hover:translate-y-[-2px] hover:shadow-lg md:rounded-2xl md:text-[0.8125rem]`}>
+                  <a
+                    href="https://wa.me/491627176334"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+                        (window as any).gtag("event", "whatsapp_click", { event_category: "post_form_contact" });
+                      }
+                    }}
+                    className={`${isEmbedded ? "py-3" : "py-3.5"} flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-[0.75rem] font-bold text-white transition-all hover:translate-y-[-2px] hover:shadow-lg md:rounded-2xl md:text-[0.8125rem]`}
+                  >
                     <img src={whatsappIcon} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
                     WhatsApp
                   </a>

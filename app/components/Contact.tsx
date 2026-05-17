@@ -10,6 +10,7 @@ type ContactMethod = {
   href: string;
   action: string;
   icon: string;
+  eventName: string;
 };
 
 export function Contact() {
@@ -22,6 +23,7 @@ export function Contact() {
       href: "https://wa.me/491627176334",
       action: lang === "tr" ? "Mesaj gönder" : lang === "de" ? "Nachricht senden" : "Send message",
       icon: whatsappIcon,
+      eventName: "whatsapp_click",
     },
     {
       title: "Gmail",
@@ -29,6 +31,7 @@ export function Contact() {
       href: "mailto:info@nüll.com",
       action: "info@nüll.com",
       icon: gmailIcon,
+      eventName: "email_click",
     },
   ];
 
@@ -81,12 +84,17 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-3 md:mt-12 md:grid-cols-2"
         >
-          {contactMethods.map(({ title, description, href, action, icon }) => (
+          {contactMethods.map(({ title, description, href, action, icon, eventName }) => (
             <a
               key={title}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              onClick={() => {
+                if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+                  (window as any).gtag("event", eventName, { event_category: "contact" });
+                }
+              }}
               className="group flex min-h-[6.75rem] items-center gap-4 rounded-[1.35rem] border border-black/5 bg-white/80 p-4 text-left shadow-[0_18px_45px_-34px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_-35px_rgba(0,0,0,0.24)] md:block md:min-h-0 md:rounded-[1.75rem] md:bg-white/70 md:p-6"
             >
               <div className="flex shrink-0 items-center justify-between md:mb-8">
