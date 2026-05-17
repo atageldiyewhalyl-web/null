@@ -255,12 +255,12 @@ const labels: Record<string, Record<Language, string>> = {
   "services.label": { en: "Services", de: "Leistungen", tr: "Hizmetler" },
   "services.title1": {
     en: "All you need to build",
-    de: "Alles, was Sie brauchen",
+    de: "Alles für planbare",
     tr: "Müşteri kazanım kanalınızı",
   },
   "services.title2": {
     en: "your client acquisition channel.",
-    de: "für Ihre Kundenakquise.",
+    de: "Anfragen",
     tr: "kurmak için ihtiyacınız olan her şey.",
   },
   "services.description": {

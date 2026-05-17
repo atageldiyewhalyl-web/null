@@ -8,16 +8,29 @@ import {
   Search,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { useRef, useState, type UIEvent } from "react";
 import { useLanguage, t } from "./LanguageContext";
 import conversionVisualEn from "../assets/services/english conversion.png";
 import conversionVisualDe from "../assets/services/german conversion.png";
 import conversionVisualEnMobile from "../assets/services/eng conversion mobile .png";
 import conversionVisualDeMobile from "../assets/services/German conversion mobile .png";
+import scrollableCredentialOneEn from "../assets/services/Scrollable credential eng 1.png";
+import scrollableCredentialTwoEn from "../assets/services/Scrollable credential eng 2.png";
+import scrollableCredentialThreeEn from "../assets/services/Scrollable credential eng 2.png.png";
+import scrollableCredentialOneDe from "../assets/services/Scrollable credential 1 german.png";
+import scrollableCredentialTwoDe from "../assets/services/Scrollable credential 2 german.png";
+import scrollableCredentialThreeDe from "../assets/services/Scrollable credential 3 German.png";
 
 export function Services() {
   const { lang } = useLanguage();
+  const mobileFlowScrollerRef = useRef<HTMLDivElement>(null);
+  const [activeMobileFlowSlide, setActiveMobileFlowSlide] = useState(0);
   const conversionVisual = lang === "de" ? conversionVisualDe : conversionVisualEn;
   const conversionVisualMobile = lang === "de" ? conversionVisualDeMobile : conversionVisualEnMobile;
+  const mobileFlowSlides =
+    lang === "de"
+      ? [scrollableCredentialOneDe, scrollableCredentialTwoDe, scrollableCredentialThreeDe]
+      : [scrollableCredentialOneEn, scrollableCredentialTwoEn, scrollableCredentialThreeEn];
 
   const systemSteps = [
     {
@@ -131,6 +144,38 @@ export function Services() {
   const cardBase =
     "group relative flex min-h-[11.25rem] flex-col overflow-hidden rounded-[1.25rem] border border-black/[0.06] bg-white p-4 transition-all duration-300 md:min-h-[14rem] md:justify-between md:rounded-[1.75rem] md:p-7";
 
+  const handleMobileFlowScroll = (event: UIEvent<HTMLDivElement>) => {
+    const scroller = event.currentTarget;
+    const viewportCenter = scroller.scrollLeft + scroller.clientWidth / 2;
+    const slides = Array.from(scroller.children) as HTMLElement[];
+
+    const closestSlide = slides.reduce(
+      (closest, slide, index) => {
+        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+        const distance = Math.abs(slideCenter - viewportCenter);
+
+        return distance < closest.distance ? { index, distance } : closest;
+      },
+      { index: 0, distance: Number.POSITIVE_INFINITY },
+    );
+
+    if (closestSlide.index !== activeMobileFlowSlide) {
+      setActiveMobileFlowSlide(closestSlide.index);
+    }
+  };
+
+  const scrollToMobileFlowSlide = (index: number) => {
+    const scroller = mobileFlowScrollerRef.current;
+    const slide = scroller?.children[index] as HTMLElement | undefined;
+
+    slide?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+    setActiveMobileFlowSlide(index);
+  };
+
   return (
     <section id="services" className="scroll-mt-28 py-24 md:py-32 px-4 md:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -156,7 +201,45 @@ export function Services() {
             </p>
           </div>
 
-          <div className="relative left-1/2 w-[124vw] max-w-none -translate-x-1/2 overflow-hidden md:left-auto md:mx-auto md:w-full md:max-w-[1320px] md:translate-x-0">
+          <div className="md:hidden">
+            <div
+              ref={mobileFlowScrollerRef}
+              className="relative left-1/2 flex w-screen -translate-x-1/2 snap-x snap-mandatory gap-5 overflow-x-auto px-3 pb-5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              aria-label={t("services.flow.aria", lang)}
+              onScroll={handleMobileFlowScroll}
+            >
+              {mobileFlowSlides.map((slide, index) => (
+                <div
+                  key={slide}
+                  className="w-[94vw] flex-none snap-center"
+                >
+                  <img
+                    src={slide}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-full rounded-[1.25rem] object-contain"
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 flex justify-center gap-2.5">
+              {mobileFlowSlides.map((slide, index) => (
+                <button
+                  key={slide}
+                  type="button"
+                  aria-label={`Show slide ${index + 1}`}
+                  aria-current={activeMobileFlowSlide === index ? "true" : undefined}
+                  onClick={() => scrollToMobileFlowSlide(index)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    activeMobileFlowSlide === index ? "w-8 bg-[#007aff]" : "w-2.5 bg-[#007aff]/30"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="relative left-1/2 hidden w-[124vw] max-w-none -translate-x-1/2 overflow-hidden md:left-auto md:mx-auto md:block md:w-full md:max-w-[1320px] md:translate-x-0">
             <picture>
               <source media="(max-width: 767px)" srcSet={conversionVisualMobile} />
               <img
@@ -185,7 +268,11 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.08 }}
-              className="max-w-full text-[clamp(2.15rem,5.5vw,3.75rem)] font-bold tracking-tight leading-[1.08] text-[#0e0e10] break-words hyphens-auto"
+              className={`max-w-full font-bold leading-[1.08] text-[#0e0e10] md:text-[clamp(2.15rem,5.5vw,3.75rem)] md:tracking-tight ${
+                lang === "de"
+                  ? "whitespace-nowrap text-[clamp(1.76rem,7.3vw,2.05rem)] tracking-[-0.055em]"
+                  : "text-[clamp(2.15rem,5.5vw,3.75rem)] tracking-tight break-words hyphens-auto"
+              }`}
             >
               {t("services.title1", lang)}{" "}
               <span className="text-[#86868b]">{t("services.title2", lang)}</span>

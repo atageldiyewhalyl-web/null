@@ -53,6 +53,11 @@ type Pages = {
   "/leistungen/google-ads": {
     params: {};
   };
+  "/tr/*": {
+    params: {
+      "*": string;
+    };
+  };
   "/datenschutz": {
     params: {};
   };
@@ -89,7 +94,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -146,6 +151,10 @@ type RouteFiles = {
   "routes/leistungen-google-ads.tsx": {
     id: "routes/leistungen-google-ads";
     page: "/leistungen/google-ads";
+  };
+  "routes/legacy-turkish-redirect.tsx": {
+    id: "routes/legacy-turkish-redirect";
+    page: "/tr/*";
   };
   "routes/datenschutz.tsx": {
     id: "routes/datenschutz";
@@ -205,6 +214,7 @@ type RouteModules = {
   "routes/leistungen-webdesign": typeof import("./app/routes/leistungen-webdesign.tsx");
   "routes/leistungen-seo": typeof import("./app/routes/leistungen-seo.tsx");
   "routes/leistungen-google-ads": typeof import("./app/routes/leistungen-google-ads.tsx");
+  "routes/legacy-turkish-redirect": typeof import("./app/routes/legacy-turkish-redirect.tsx");
   "routes/datenschutz": typeof import("./app/routes/datenschutz.tsx");
   "routes/impressum": typeof import("./app/routes/impressum.tsx");
   "routes/blog-list": typeof import("./app/routes/blog-list.tsx");

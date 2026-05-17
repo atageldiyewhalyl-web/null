@@ -82,7 +82,7 @@ export function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-[clamp(1.75rem,4vw,2.75rem)] tracking-[-0.02em] mb-12 md:mb-20"
+          className="mb-12 whitespace-nowrap text-[clamp(1.42rem,6vw,1.68rem)] tracking-[-0.06em] md:mb-20 md:text-[clamp(1.75rem,4vw,2.75rem)] md:tracking-[-0.02em]"
         >
           {t("work.title", lang)}
         </motion.h2>

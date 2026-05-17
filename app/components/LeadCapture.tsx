@@ -3,19 +3,19 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowRight,
   Building2,
-  Calendar,
   Check,
   Loader2,
-  Mail,
   Megaphone,
-  MessageSquare,
   Monitor,
   Rocket,
   Search,
+  Send,
   Sparkles,
   X,
   Zap,
 } from "lucide-react";
+import gmailIcon from "../assets/icons/gmail-icon.webp";
+import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
 import { useLanguage, t } from "./LanguageContext";
 import { projectId, publicAnonKey } from "../../utils/supabase/info";
 
@@ -215,7 +215,7 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
       className={
         isEmbedded
           ? "relative flex max-h-[820px] min-h-[640px] w-full flex-col overflow-hidden rounded-[2rem] border border-black/[0.08] bg-[#fbfbfd]"
-          : "relative flex h-[92vh] w-full flex-col overflow-hidden rounded-t-[2.5rem] bg-white shadow-2xl md:h-auto md:max-h-[85vh] md:max-w-xl md:rounded-[2.5rem]"
+          : "relative flex h-[100dvh] max-h-[100dvh] w-full flex-col overflow-hidden rounded-none bg-white shadow-2xl sm:h-[92dvh] sm:rounded-t-[2.5rem] md:h-auto md:max-h-[85vh] md:max-w-xl md:rounded-[2.5rem]"
       }
     >
       {isEmbedded ? (
@@ -242,16 +242,16 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
           )}
         </div>
       ) : (
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/5 bg-white/80 p-6 backdrop-blur-sm md:p-8">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-black/5 bg-white/80 p-4 backdrop-blur-sm md:p-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f5f5f7] text-xl font-bold leading-none text-[#0e0e10]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#f5f5f7] text-lg font-bold leading-none text-[#0e0e10] md:h-10 md:w-10 md:text-xl">
               n<span className="text-[#007aff]">.</span>
             </div>
             <div>
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#86868b]">
+              <p className="text-[0.62rem] font-black uppercase tracking-[0.14em] text-[#86868b] md:text-[0.68rem] md:tracking-[0.16em]">
                 {t("pricing.individual.preview.label", lang)}
               </p>
-              <h3 className="text-[1.125rem] font-bold tracking-tight text-[#0e0e10]">
+              <h3 className="text-[1rem] font-bold tracking-tight text-[#0e0e10] md:text-[1.125rem]">
                 {step === "RESULT" ? t("quote.result.title", lang) : t("quote.teaser.cta", lang)}
               </h3>
               {step !== "RESULT" && (
@@ -263,13 +263,13 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
               )}
             </div>
           </div>
-          <button onClick={onClose} className="flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-black/5">
+          <button onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-black/5 md:h-10 md:w-10">
             <X size={20} />
           </button>
         </div>
       )}
 
-      <div className={`min-h-0 flex-1 overflow-y-auto ${isEmbedded ? "p-5 md:p-6" : "p-6 md:p-10"}`}>
+      <div className={`min-h-0 flex-1 overflow-y-auto ${isEmbedded ? "p-5 md:p-6" : "p-4 md:p-10"}`}>
         <AnimatePresence mode="wait">
           {step === "IDENTITY" && (
             <motion.div key="identity" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className={isEmbedded ? "space-y-6" : "space-y-8"}>
@@ -322,12 +322,12 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
           )}
 
           {step === "OBJECTIVE" && (
-            <motion.div key="objective" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className={isEmbedded ? "space-y-6" : "space-y-8"}>
-              <h2 className={`${isEmbedded ? "text-[1.45rem] md:text-[1.65rem]" : "text-[1.75rem] md:text-[2.25rem]"} font-bold leading-[1.1] tracking-tight text-[#0e0e10]`}>
+            <motion.div key="objective" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className={isEmbedded ? "space-y-6" : "space-y-5 md:space-y-8"}>
+              <h2 className={`${isEmbedded ? "text-[1.45rem] md:text-[1.65rem]" : "text-[1.55rem] md:text-[2.25rem]"} font-bold leading-[1.08] tracking-tight text-[#0e0e10] md:leading-[1.1]`}>
                 {t("quote.step.objective.title", lang)}
               </h2>
 
-              <div className={isEmbedded ? "space-y-3" : "space-y-4"}>
+              <div className={isEmbedded ? "space-y-3" : "space-y-2.5 md:space-y-4"}>
                 {[
                   { id: "web", title: t("quote.step.objective.web", lang), Icon: Monitor, color: "#007aff" },
                   { id: "seo", title: t("quote.step.objective.seo", lang), Icon: Search, color: "#34c759" },
@@ -340,16 +340,16 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
                     <button
                       key={id}
                       onClick={() => selectObjective(id, isSelected)}
-                      className={`flex w-full items-center justify-between border-2 transition-all ${
-                        isEmbedded ? "rounded-[1.25rem] p-4" : "rounded-[1.25rem] p-4 md:rounded-[1.5rem] md:p-6"
+                      className={`flex w-full items-center justify-between gap-3 border-2 text-left transition-all ${
+                        isEmbedded ? "rounded-[1.25rem] px-3.5 py-4 sm:p-4" : "rounded-[1rem] px-3 py-3 sm:rounded-[1.25rem] sm:p-4 md:rounded-[1.5rem] md:p-6"
                       } ${isSelected ? "border-[#007aff] bg-white" : "border-black/[0.05] bg-white/70 hover:border-black/10 hover:bg-white"}`}
                     >
-                      <div className="flex items-center gap-4">
-                        <Icon size={isEmbedded ? 24 : 28} strokeWidth={2.5} style={{ color: isSelected ? "#007aff" : color }} />
-                        <span className={`${isEmbedded ? "text-[0.98rem]" : "text-[1.125rem]"} font-bold text-[#0e0e10]`}>{title}</span>
+                      <div className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-4">
+                        <Icon className="shrink-0" size={isEmbedded ? 24 : 22} strokeWidth={2.5} style={{ color: isSelected ? "#007aff" : color }} />
+                        <span className={`${isEmbedded ? "text-[0.95rem] sm:text-[0.98rem]" : "text-[0.92rem] sm:text-[1.125rem]"} min-w-0 flex-1 whitespace-normal break-words font-bold leading-tight text-[#0e0e10]`}>{title}</span>
                       </div>
-                      <div className={`flex h-6 w-6 items-center justify-center rounded-full border-2 transition-all ${isSelected ? "border-[#007aff] bg-[#007aff]" : "border-black/10"}`}>
-                        {isSelected && <Check size={14} className="text-white" />}
+                      <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all sm:h-6 sm:w-6 ${isSelected ? "border-[#007aff] bg-[#007aff]" : "border-black/10"}`}>
+                        {isSelected && <Check size={12} className="text-white sm:h-3.5 sm:w-3.5" />}
                       </div>
                     </button>
                   );
@@ -423,7 +423,7 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
           {step === "RESULT" && (
             <motion.div key="result" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
               <div className={`${isEmbedded ? "mb-4 h-12 w-12" : "mb-6 h-16 w-16"} mx-auto flex items-center justify-center rounded-2xl bg-[#007aff] text-white shadow-[0_18px_45px_rgba(0,122,255,0.22)]`}>
-                <Check size={isEmbedded ? 24 : 30} strokeWidth={2.5} />
+                <Send size={isEmbedded ? 22 : 28} strokeWidth={2.4} />
               </div>
               <h2 className={`${isEmbedded ? "text-[1.4rem]" : "text-[1.9rem] md:text-[2.35rem]"} font-bold tracking-tight text-[#0e0e10]`}>
                 {t("quote.result.receivedTitle", lang)}
@@ -432,34 +432,18 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
                 {t("quote.result.receivedSub", lang)}
               </p>
 
-              <div className={`${isEmbedded ? "my-5 p-4" : "my-7 p-5 md:p-6"} relative mx-auto max-w-lg overflow-hidden rounded-[1.5rem] border border-black/[0.05] bg-[#fbfbfd] text-left`}>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
-                    <Calendar size={18} className="text-[#007aff]" />
-                  </div>
-                  <div>
-                    <p className={`${isEmbedded ? "text-[0.88rem]" : "text-[0.98rem]"} font-bold leading-relaxed text-[#0e0e10]`}>
-                      {t("quote.result.callback", lang)}
-                    </p>
-                    <p className={`${isEmbedded ? "mt-1 text-[0.78rem]" : "mt-2 text-[0.88rem]"} font-medium leading-relaxed text-[#86868b]`}>
-                      {t("quote.result.nextStep", lang)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={`${isEmbedded ? "gap-2" : "gap-3"} flex flex-col items-center`}>
+              <div className={`${isEmbedded ? "mt-5 gap-2" : "mt-8 gap-3"} flex flex-col items-center`}>
                 <p className={`${isEmbedded ? "text-[0.58rem]" : "text-[0.65rem] md:text-[0.7rem]"} font-bold uppercase tracking-[0.2em] text-[#86868b]`}>
                   {t("quote.result.orContact", lang)}
                 </p>
                 <div className={`${isEmbedded ? "gap-2 px-3" : "gap-2 px-4 md:gap-3"} grid w-full grid-cols-1 sm:grid-cols-2`}>
                   <a href="https://wa.me/491627176334" target="_blank" rel="noopener noreferrer" className={`${isEmbedded ? "py-3" : "py-3.5"} flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-[0.75rem] font-bold text-white transition-all hover:translate-y-[-2px] hover:shadow-lg md:rounded-2xl md:text-[0.8125rem]`}>
-                    <MessageSquare size={16} />
+                    <img src={whatsappIcon} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
                     WhatsApp
                   </a>
                   <a href="mailto:info@nüll.com" className={`${isEmbedded ? "py-3" : "py-3.5"} flex items-center justify-center gap-2 rounded-xl bg-[#f5f5f7] px-4 text-[0.75rem] font-bold text-[#0e0e10] transition-all hover:translate-y-[-2px] md:rounded-2xl md:text-[0.8125rem]`}>
-                    <Mail size={16} />
-                    Email
+                    <img src={gmailIcon} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
+                    Gmail
                   </a>
                 </div>
               </div>
@@ -469,14 +453,14 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
       </div>
 
       {step !== "RESULT" && (
-        <div className={`sticky bottom-0 z-10 flex items-center justify-between border-t border-black/5 ${isEmbedded ? "bg-[#fbfbfd] p-5 md:px-6" : "safe-area-bottom bg-white p-4 md:p-8"}`}>
-          <button onClick={handleBack} disabled={step === "OBJECTIVE"} className="rounded-full px-6 py-3 text-[0.9375rem] font-bold text-[#86868b] transition-all hover:text-[#0e0e10] disabled:opacity-0">
+        <div className={`sticky bottom-0 z-10 flex items-center justify-between border-t border-black/5 ${isEmbedded ? "bg-[#fbfbfd] p-5 md:px-6" : "safe-area-bottom bg-white p-3 md:p-8"}`}>
+          <button onClick={handleBack} disabled={step === "OBJECTIVE"} className="rounded-full px-4 py-2.5 text-[0.875rem] font-bold text-[#86868b] transition-all hover:text-[#0e0e10] disabled:opacity-0 md:px-6 md:py-3 md:text-[0.9375rem]">
             {t("onboarding.common.back", lang)}
           </button>
           <button
             onClick={handleNext}
             disabled={!canContinue}
-            className="flex items-center gap-2 rounded-full bg-black px-8 py-3 text-[0.9375rem] font-bold text-white transition-all hover:bg-[#2c2c2e] active:scale-[0.98] disabled:opacity-30"
+            className="flex items-center gap-2 rounded-full bg-black px-6 py-2.5 text-[0.875rem] font-bold text-white transition-all hover:bg-[#2c2c2e] active:scale-[0.98] disabled:opacity-30 md:px-8 md:py-3 md:text-[0.9375rem]"
           >
             {isSubmitting ? (
               <>
@@ -513,7 +497,7 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-end justify-center overflow-y-auto md:items-center md:p-6">
+        <div className="fixed inset-0 z-[10000000] flex items-end justify-center overflow-y-auto md:items-center md:p-6">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="fixed inset-0 bg-black/40 backdrop-blur-md" />
           {panel}
         </div>

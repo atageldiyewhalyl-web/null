@@ -4,7 +4,6 @@ import { StructuredData } from "./SEO";
 import { LeadCapture } from "./LeadCapture";
 
 import { Problem } from "./Problem";
-import { HowItWorksMobile } from "./HowItWorksMobile";
 import { Services } from "./Services";
 import { Work } from "./Work";
 import { Pricing } from "./Pricing";
@@ -83,7 +82,6 @@ export function Home() {
       <StructuredData data={websiteData} />
       <Hero />
       <Problem />
-      <HowItWorksMobile />
       <Services />
       <Work />
       <Pricing onOpenQuote={() => setIsQuoteOpen(true)} />

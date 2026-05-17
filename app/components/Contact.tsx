@@ -1,24 +1,34 @@
-import { ArrowUpRight, Mail, MessageSquare } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import gmailIcon from "../assets/icons/gmail-icon.webp";
+import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
 import { useLanguage, t } from "./LanguageContext";
+
+type ContactMethod = {
+  title: string;
+  description: string;
+  href: string;
+  action: string;
+  icon: string;
+};
 
 export function Contact() {
   const { lang } = useLanguage();
 
-  const contactMethods = [
+  const contactMethods: ContactMethod[] = [
     {
       title: "WhatsApp",
       description: t("contact.whatsapp.cta", lang),
       href: "https://wa.me/491627176334",
       action: lang === "tr" ? "Mesaj gönder" : lang === "de" ? "Nachricht senden" : "Send message",
-      Icon: MessageSquare,
+      icon: whatsappIcon,
     },
     {
-      title: "Email",
+      title: "Gmail",
       description: t("contact.email.cta", lang),
       href: "mailto:info@nüll.com",
       action: "info@nüll.com",
-      Icon: Mail,
+      icon: gmailIcon,
     },
   ];
 
@@ -36,11 +46,28 @@ export function Contact() {
             {t("contact.label", lang)}
           </p>
           <h2
-            className="mx-auto mb-5 max-w-[21rem] text-[clamp(2rem,8.8vw,2.35rem)] leading-[0.96] tracking-[-0.045em] md:mb-7 md:max-w-none md:text-[clamp(2.25rem,4.4vw,3.5rem)] md:leading-[0.98] md:tracking-[-0.035em]"
+            className="mx-auto mb-5 max-w-[22rem] text-[clamp(2rem,8.2vw,2.35rem)] leading-[0.98] tracking-[-0.035em] md:mb-7 md:max-w-none md:text-[clamp(2.25rem,4.4vw,3.5rem)] md:leading-[0.98] md:tracking-[-0.035em]"
             style={{ fontWeight: 600 }}
           >
-            <span className="block md:mx-auto md:max-w-[58rem] lg:whitespace-nowrap">{t("contact.title1", lang)}</span>
-            <span className="block text-[#8e8e93] md:mx-auto md:max-w-[58rem] lg:whitespace-nowrap">{t("contact.title2", lang)}</span>
+            {lang === "de" ? (
+              <>
+                <span className="block whitespace-nowrap md:hidden">Mehr Anfragen.</span>
+                <span className="hidden md:mx-auto md:block md:w-fit md:max-w-none lg:whitespace-nowrap">
+                  {t("contact.title1", lang)}
+                </span>
+                <span className="mt-2 block text-[#8e8e93] md:mx-auto md:mt-0 md:w-fit md:max-w-none lg:whitespace-nowrap">
+                  <span className="block whitespace-nowrap md:hidden">Aus Ihrer Expertise.</span>
+                  <span className="hidden md:inline">{t("contact.title2", lang)}</span>
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="block md:mx-auto md:w-fit md:max-w-none lg:whitespace-nowrap">{t("contact.title1", lang)}</span>
+                <span className="mt-2 block text-[#8e8e93] md:mx-auto md:mt-0 md:w-fit md:max-w-none lg:whitespace-nowrap">
+                  {t("contact.title2", lang)}
+                </span>
+              </>
+            )}
           </h2>
           <p className="mx-auto max-w-[19.5rem] text-[0.98rem] leading-[1.55] text-muted-foreground md:max-w-2xl md:text-[1.125rem] md:leading-relaxed">
             {t("contact.description", lang)}
@@ -54,7 +81,7 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-3 md:mt-12 md:grid-cols-2"
         >
-          {contactMethods.map(({ title, description, href, action, Icon }) => (
+          {contactMethods.map(({ title, description, href, action, icon }) => (
             <a
               key={title}
               href={href}
@@ -63,7 +90,12 @@ export function Contact() {
               className="group flex min-h-[6.75rem] items-center gap-4 rounded-[1.35rem] border border-black/5 bg-white/80 p-4 text-left shadow-[0_18px_45px_-34px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_-35px_rgba(0,0,0,0.24)] md:block md:min-h-0 md:rounded-[1.75rem] md:bg-white/70 md:p-6"
             >
               <div className="flex shrink-0 items-center justify-between md:mb-8">
-                <Icon size={22} className="text-[#0071e3]" strokeWidth={1.9} />
+                <img
+                  src={icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[1.55rem] w-[1.55rem] object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.08)]"
+                />
                 <ArrowUpRight
                   size={18}
                   className="hidden text-[#8e8e93] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0071e3] md:block"
