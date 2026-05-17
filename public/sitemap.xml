@@ -13,6 +13,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://xn--nll-hoa.com/leistungen/webdesign</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://xn--nll-hoa.com/leistungen/seo</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://xn--nll-hoa.com/leistungen/google-ads</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://xn--nll-hoa.com/datenschutz</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>yearly</changefreq>
@@ -37,12 +55,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xn--nll-hoa.com/blog/yuksek-donusumlu-web-sitesi-icin-5-temel-oge</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://xn--nll-hoa.com/blog/improve-google-rankings-germany</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -50,12 +62,6 @@
   </url>
   <url>
     <loc>https://xn--nll-hoa.com/blog/google-ranking-verbessern-deutschland</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://xn--nll-hoa.com/blog/google-siralamalarini-yukseltmek-almanya</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -73,12 +79,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xn--nll-hoa.com/blog/avukatlar-icin-web-tasarim</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -86,12 +86,6 @@
   </url>
   <url>
     <loc>https://xn--nll-hoa.com/blog/freelancer-vs-agency-website</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

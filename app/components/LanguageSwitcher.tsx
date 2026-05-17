@@ -7,7 +7,7 @@ interface LanguageSwitcherProps {
   languages?: Language[];
 }
 
-const defaultLanguages: Language[] = ["en", "de", "tr"];
+const defaultLanguages: Language[] = ["en", "de"];
 
 export function LanguageSwitcher({ className = "", languages = defaultLanguages }: LanguageSwitcherProps) {
   const { lang, setLang } = useLanguage();

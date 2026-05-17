@@ -1,11 +1,26 @@
-import { type LoaderFunctionArgs } from "react-router";
+import { redirect, type LoaderFunctionArgs } from "react-router";
 import { BlogPost } from "../components/BlogPost";
 import { getBlogPostBySlug, getBlogTranslations, getXDefaultPost } from "../utils/i18nRouting";
 
 export async function loader({ params }: LoaderFunctionArgs) {
+  const legacyTurkishBlogRedirects: Record<string, string> = {
+    "yuksek-donusumlu-web-sitesi-icin-5-temel-oge": "/blog/5-elemente-high-converting-website-2026",
+    "google-siralamalarini-yukseltmek-almanya": "/blog/google-ranking-verbessern-deutschland",
+    "avukatlar-icin-web-tasarim": "/blog/webdesign-fuer-anwaelte-kanzleien",
+    "freelancer-mi-ajans-mi": "/blog/freelancer-oder-agentur-website",
+  };
+
+  if (params.slug && legacyTurkishBlogRedirects[params.slug]) {
+    throw redirect(legacyTurkishBlogRedirects[params.slug], 301);
+  }
+
   const post = getBlogPostBySlug(params.slug);
   if (!post) {
     throw new Response("Not Found", { status: 404 });
+  }
+  if (post.lang === "tr") {
+    const fallback = getXDefaultPost(post);
+    throw redirect(`/blog/${fallback.slug}`, 301);
   }
   return { post };
 }
@@ -40,7 +55,6 @@ export function meta({ data }: { data: { post: any } }) {
       alternates: [
         { lang: "de", href: "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website" },
         { lang: "en", href: "https://xn--nll-hoa.com/blog/freelancer-vs-agency-website" },
-        { lang: "tr", href: "https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi" },
       ],
       xDefault: "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website",
     },
@@ -56,23 +70,6 @@ export function meta({ data }: { data: { post: any } }) {
       alternates: [
         { lang: "en", href: "https://xn--nll-hoa.com/blog/freelancer-vs-agency-website" },
         { lang: "de", href: "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website" },
-        { lang: "tr", href: "https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi" },
-      ],
-      xDefault: "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website",
-    },
-    "freelancer-mi-ajans-mi": {
-      title: "Freelancer mı, Ajans mı? Web Siteniz İçin Dürüst Bir Karşılaştırma | nüll.",
-      description: "Freelancer mı ajans mı — hangisi daha iyi web sitesi yapar? Maliyet, SEO, güvenilirlik ve uzun vadeli destek açısından avukatlar ve danışmanlar için dürüst bir karşılaştırma.",
-      keywords: "freelancer mı ajans mı, web tasarım ajans, freelancer web tasarımı, web sitesi maliyeti, profesyonel web sitesi, freelancer veya ajans, web sitesi fiyatları almanya",
-      ogTitle: "Freelancer mı, Ajans mı? Web Siteniz İçin Dürüst Bir Karşılaştırma",
-      ogDescription: "Kimi tutmalısınız — freelancer mı ajans mı? Maliyet, SEO ve güvenilirlik açısından avukatlar ve danışmanlar için dürüst bir karşılaştırma.",
-      author: "Nüll. Editörü",
-      tags: ["Freelancer mı Ajans mı", "Web Tasarım Ajans", "Web Sitesi Maliyeti"],
-      canonical: "https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi",
-      alternates: [
-        { lang: "tr", href: "https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi" },
-        { lang: "de", href: "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website" },
-        { lang: "en", href: "https://xn--nll-hoa.com/blog/freelancer-vs-agency-website" },
       ],
       xDefault: "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website",
     },
@@ -92,14 +89,6 @@ export function meta({ data }: { data: { post: any } }) {
       author: "Nüll. Editorial",
       tags: ["Web Design for Lawyers", "Law Firm Website", "Legal SEO"],
     },
-    "avukatlar-icin-web-tasarim": {
-      title: "Avukatlar İçin Web Tasarım: İyi Bir Hukuk Bürosu Sitesi Ne İçermelidir? | nüll.",
-      description: "Almanya'daki avukatlar için web tasarım rehberi: Google'da görünür olmak, müvekkil kazanmak ve profesyonel bir site oluşturmak için bilmeniz gereken her şey.",
-      keywords: "avukat web sitesi, hukuk bürosu web tasarım, avukat website tasarımı, almanya avukat web sitesi, türk avukat almanya, avukat dijital pazarlama, hukuk bürosu SEO, web tasarım avukat, avukat müvekkil kazanma",
-      ogDescription: "Almanya'daki avukatlar için kapsamlı web tasarım ve SEO rehberi. Müvekkil kazandıran bir site nasıl olur?",
-      author: "Nüll. Editörü",
-      tags: ["Avukat Web Sitesi", "Hukuk Bürosu Web Tasarım", "Almanya Avukat"],
-    },
   };
   const customMeta = lawFirmMeta[post.slug];
   
@@ -112,7 +101,7 @@ export function meta({ data }: { data: { post: any } }) {
     { property: "og:image", content: post.image },
     { property: "og:type", content: "article" },
     { property: "og:url", content: customMeta?.canonical ?? `${baseUrl}/blog/${post.slug}` },
-    { property: "og:locale", content: post.lang === "de" ? "de_DE" : post.lang === "en" ? "en_GB" : "tr_TR" },
+    { property: "og:locale", content: post.lang === "de" ? "de_DE" : "en_GB" },
     { property: "og:site_name", content: "nüll." },
     { property: "article:published_time", content: post.date },
     { property: "article:author", content: customMeta ? customMeta.author : "Nüll. Redaktion" },
@@ -123,7 +112,7 @@ export function meta({ data }: { data: { post: any } }) {
     { name: "twitter:description", content: post.excerpt },
     { name: "twitter:image", content: post.image },
     { tagName: "link", rel: "canonical", href: customMeta?.canonical ?? `${baseUrl}/blog/${post.slug}` },
-    ...(customMeta?.alternates ?? translations.map((translation) => ({
+    ...(customMeta?.alternates ?? translations.filter((translation) => translation.lang !== "tr").map((translation) => ({
       lang: translation.lang,
       href: `${baseUrl}/blog/${translation.slug}`,
     }))).map((translation) => ({

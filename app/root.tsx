@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router";
 import type { LoaderFunctionArgs } from "react-router";
+import { redirect } from "react-router";
 import { LanguageProvider } from "./components/LanguageContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -18,6 +19,15 @@ import "./styles/index.css";
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const urlLang = url.searchParams.get("lang");
+  if (urlLang === "tr") {
+    url.searchParams.delete("lang");
+    if (url.pathname === "/tr" || url.pathname.startsWith("/tr/")) {
+      const rest = url.pathname.replace(/^\/tr\/?/, "");
+      const targetPath = rest ? `/${rest}` : "/";
+      return redirect(`${targetPath}${url.search}${url.hash}`, 301);
+    }
+    return redirect(`${url.pathname}${url.search}${url.hash}`, 301);
+  }
   const pathLang = getLanguageForPath(url.pathname);
   const cookie = request.headers.get("Cookie");
   const match = cookie?.match(/nll_lang=([^;]+)/);

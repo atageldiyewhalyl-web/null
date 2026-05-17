@@ -206,7 +206,6 @@ export default function AdminJobs() {
                   className="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#007aff] transition-all"
                 >
                   <option value="de">German (de)</option>
-                  <option value="tr">Turkish (tr)</option>
                   <option value="en">English (en)</option>
                 </select>
               </div>

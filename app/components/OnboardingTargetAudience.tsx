@@ -28,7 +28,7 @@ export function OnboardingTargetAudience({
     { tr: "Online alıcılar", de: "Online-Käufer", en: "Online buyers" },
   ];
 
-  const languageOptions = ["Türkçe", "Deutsch", "English"];
+  const languageOptions = ["Deutsch", "English"];
 
   const toggleAudience = (opt: string) => {
     if (data.audience.includes(opt)) {

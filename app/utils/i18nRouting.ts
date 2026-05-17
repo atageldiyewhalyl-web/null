@@ -4,7 +4,7 @@ import { blogPosts } from "../components/blogData";
 const DEFAULT_LANGUAGE: Language = "de";
 
 export function isLanguage(value: unknown): value is Language {
-  return value === "en" || value === "de" || value === "tr";
+  return value === "en" || value === "de";
 }
 
 export function getBlogSlugFromPath(pathname: string): string | null {

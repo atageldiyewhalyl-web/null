@@ -15,23 +15,12 @@ try {
     "/blog/web-design-for-lawyers-law-firms",
   );
   assert.equal(
-    routing.getLocalizedPath("/blog/webdesign-fuer-anwaelte-kanzleien", "tr"),
-    "/blog/avukatlar-icin-web-tasarim",
-  );
-  assert.equal(
-    routing.getLocalizedPath("/blog/avukatlar-icin-web-tasarim", "de"),
-    "/blog/webdesign-fuer-anwaelte-kanzleien",
-  );
-  assert.equal(
-    routing.getLocalizedPath("/blog/freelancer-oder-agentur-website", "tr"),
-    "/blog/freelancer-mi-ajans-mi",
-  );
-  assert.equal(
-    routing.getLocalizedPath("/blog/freelancer-mi-ajans-mi", "en"),
+    routing.getLocalizedPath("/blog/freelancer-oder-agentur-website", "en"),
     "/blog/freelancer-vs-agency-website",
   );
   assert.equal(routing.getLocalizedPath("/blog/unknown", "en"), "/blog/unknown");
-  assert.equal(routing.getLocalizedPath("/pricing", "tr"), "/pricing");
+  assert.equal(routing.isLanguage("tr"), false);
+  assert.equal(routing.getLocalizedPath("/pricing", "de"), "/pricing");
   assert.deepEqual(routing.validateBlogI18nData(), []);
 
   const duplicateSlug = [

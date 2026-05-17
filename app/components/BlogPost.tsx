@@ -16,7 +16,7 @@ const FAQSection = ({ faqs, articleLang, title }: { faqs: { question: string, an
   return (
     <div className="mt-32 pt-32 border-t border-neutral-100">
       <h3 className="text-[2.5rem] font-bold tracking-[-0.04em] mb-12 font-outfit">
-        {title ?? (articleLang === "de" ? "Häufig gestellte Fragen (FAQ)" : articleLang === "tr" ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions")}
+        {title ?? (articleLang === "de" ? "Häufig gestellte Fragen (FAQ)" : "Frequently Asked Questions")}
       </h3>
       <div className="space-y-4">
         {faqs.map((faq, idx) => (
@@ -181,16 +181,16 @@ export function BlogPost() {
 
   const articleLang = post.lang;
 
-  const formattedDate = new Date(post.date).toLocaleDateString(articleLang === "de" ? "de-DE" : articleLang === "tr" ? "tr-TR" : "en-US", {
+  const formattedDate = new Date(post.date).toLocaleDateString(articleLang === "de" ? "de-DE" : "en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
   const shareLabels = {
-    idle: articleLang === "de" ? "Teilen" : articleLang === "tr" ? "Paylaş" : "Share",
-    copied: articleLang === "de" ? "Link kopiert" : articleLang === "tr" ? "Link kopyalandı" : "Link copied",
-    error: articleLang === "de" ? "Kopieren fehlgeschlagen" : articleLang === "tr" ? "Kopyalanamadı" : "Could not copy",
+    idle: articleLang === "de" ? "Teilen" : "Share",
+    copied: articleLang === "de" ? "Link kopiert" : "Link copied",
+    error: articleLang === "de" ? "Kopieren fehlgeschlagen" : "Could not copy",
   };
 
   const handleShare = async () => {
@@ -234,10 +234,8 @@ export function BlogPost() {
   const articleKeywords: Record<string, string> = {
     "freelancer-oder-agentur-website": "freelancer oder agentur, webdesign freelancer, website kosten vergleich, webdesign preise",
     "freelancer-vs-agency-website": "freelancer vs agency, web design agency, freelance web designer, website design cost",
-    "freelancer-mi-ajans-mi": "freelancer mı ajans mı, web tasarım ajans, freelancer web tasarımı, web sitesi maliyeti",
     "webdesign-fuer-anwaelte-kanzleien": "webdesign für anwälte, kanzlei website, SEO rechtsanwalt, mandanten gewinnen online",
     "web-design-for-lawyers-law-firms": "web design for lawyers, law firm website design, SEO for law firms, legal website design, law firm digital marketing",
-    "avukatlar-icin-web-tasarim": "avukat web sitesi, hukuk bürosu web tasarım, almanya avukat, avukat dijital pazarlama",
   };
   const customArticleStructuredData: Record<string, object> = {
     "freelancer-oder-agentur-website": {
@@ -279,26 +277,6 @@ export function BlogPost() {
         "@id": "https://xn--nll-hoa.com/blog/freelancer-vs-agency-website",
       },
       keywords: "freelancer vs agency, web design agency, freelance web designer, website design cost",
-    },
-    "freelancer-mi-ajans-mi": {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: "Freelancer mı, Ajans mı? Web Siteniz İçin Dürüst Bir Karşılaştırma",
-      description: "Maliyet, SEO ve güvenilirlik açısından avukatlar ve danışmanlar için freelancer ve ajans karşılaştırması.",
-      author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
-      publisher: {
-        "@type": "Organization",
-        name: "nüll.",
-        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/logo.png" },
-      },
-      datePublished: "2026-05-04",
-      dateModified: "2026-05-04",
-      inLanguage: "tr",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://xn--nll-hoa.com/blog/freelancer-mi-ajans-mi",
-      },
-      keywords: "freelancer mı ajans mı, web tasarım ajans, freelancer web tasarımı, web sitesi maliyeti",
     },
   };
   const articleStructuredData = customArticleStructuredData[post.slug] ?? {
@@ -367,7 +345,7 @@ export function BlogPost() {
                 <div className="p-1.5 rounded-full bg-neutral-100 group-hover:bg-neutral-200 transition-colors">
                   <ArrowLeft size={14} />
                 </div>
-                {articleLang === "de" ? "Zurück zu den Insights" : articleLang === "tr" ? "İçeriklere Geri Dön" : "Back to Insights"}
+                {articleLang === "de" ? "Zurück zu den Insights" : "Back to Insights"}
               </Link>
             </motion.div>
             
@@ -468,7 +446,7 @@ export function BlogPost() {
                   </div>
                   <h3 className="text-[1.5rem] font-bold mb-6 text-black flex items-center gap-3 font-outfit">
                     <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center text-sm">!</div>
-                    {articleLang === "de" ? "Zusammenfassung" : articleLang === "tr" ? "Özet" : "Quick Summary"}
+                    {articleLang === "de" ? "Zusammenfassung" : "Quick Summary"}
                   </h3>
                   <p className="text-[1.125rem] text-neutral-600 leading-relaxed italic mb-0">
                     {post.content[0].replace("> ", "").replace("**Key Takeaways:**", "").replace("**Zusammenfassung:**", "").replace("**Önemli Çıkarımlar:**", "").trim()}
@@ -700,8 +678,6 @@ export function BlogPost() {
                     <p className="text-[1rem] text-neutral-500 mb-6 leading-relaxed">
                       {articleLang === "de" 
                         ? "Experten für digitale Positionierung, Premium-Webdesign und Marketingstrategie für ambitionierte Unternehmen." 
-                        : articleLang === "tr"
-                        ? "İddialı işletmeler için dijital konumlandırma, premium web tasarımı ve pazarlama stratejisi uzmanları."
                         : "Experts in digital positioning, premium webdesign, and marketing strategy for ambitious businesses."}
                     </p>
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
@@ -720,7 +696,7 @@ export function BlogPost() {
               <div className="sticky top-32 space-y-12">
                 <div className="space-y-6">
                   <h4 className="text-[0.75rem] font-black uppercase tracking-[0.2em] text-neutral-400">
-                    {articleLang === "de" ? "Auf dieser Seite" : articleLang === "tr" ? "Bu sayfada" : "On this page"}
+                    {articleLang === "de" ? "Auf dieser Seite" : "On this page"}
                   </h4>
                   <nav className="space-y-4">
                     {headers.map((h, i) => (
@@ -744,18 +720,16 @@ export function BlogPost() {
                   <p className="text-[0.875rem] text-white/50 mb-8 leading-relaxed relative z-10">
                     {articleLang === "de" 
                       ? "Schließen Sie sich 500+ Experten an, die wöchentlich Insights zur digitalen Autorität erhalten." 
-                      : articleLang === "tr"
-                      ? "Dijital otorite üzerine haftalık içerikler alan 500'den fazla uzmana katılın."
                       : "Join 500+ experts receiving weekly insights on digital authority."}
                   </p>
                   <div className="space-y-3 relative z-10">
                     <input 
                       type="email" 
-                      placeholder={articleLang === "de" ? "Ihre E-Mail" : articleLang === "tr" ? "E-postanız" : "Your email"} 
+                      placeholder={articleLang === "de" ? "Ihre E-Mail" : "Your email"}
                       className="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm focus:ring-2 focus:ring-[#0071e3] outline-none transition-all"
                     />
                     <button className="w-full py-4 bg-[#0071e3] text-white rounded-2xl text-[0.875rem] font-bold hover:bg-[#0066d6] transition-all active:scale-95">
-                      {articleLang === "de" ? "Insights erhalten" : articleLang === "tr" ? "İçerikleri Al" : "Get Insights"}
+                      {articleLang === "de" ? "Insights erhalten" : "Get Insights"}
                     </button>
                   </div>
                 </div>
@@ -776,27 +750,23 @@ export function BlogPost() {
             
             <div className="relative z-10 max-w-2xl">
               <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-[0.75rem] font-black uppercase tracking-[0.2em] mb-10">
-                {articleLang === "de" ? "Nächste Schritte" : articleLang === "tr" ? "Sonraki Adımlar" : "Next Steps"}
+                {articleLang === "de" ? "Nächste Schritte" : "Next Steps"}
               </div>
               <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.05em] leading-[1] mb-10 font-outfit">
                 {articleLang === "de" 
                   ? "Verwandeln Sie Ihr Unternehmen in eine starke digitale Marke." 
-                  : articleLang === "tr"
-                  ? "İşletmenizi güçlü bir dijital markaya dönüştürün."
                   : "Transform your business into a strong digital brand."}
               </h3>
               <p className="text-[1.25rem] text-white/60 mb-12 leading-relaxed max-w-xl">
                 {articleLang === "de" 
                   ? "Wir bauen nicht nur Websites. Wir schaffen digitale Auftritte, die Vertrauen aufbauen und planbares Wachstum ermöglichen." 
-                  : articleLang === "tr"
-                  ? "Sadece web sitesi yapmıyoruz. Güven oluşturan ve ölçülebilir büyüme sağlayan dijital varlıklar inşa ediyoruz."
                   : "We don't just build websites. We build digital presences that earn trust and deliver predictable growth for businesses."}
               </p>
               <Link
                 to="/#contact"
                 className="inline-flex items-center gap-4 bg-white text-black px-12 py-6 rounded-full text-[1.125rem] font-bold hover:bg-[#0071e3] hover:text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 group shadow-2xl shadow-black/20"
               >
-                {articleLang === "de" ? "Strategiegespräch buchen" : articleLang === "tr" ? "Danışmanlık Randevusu Al" : "Schedule a Consultation"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+                {articleLang === "de" ? "Strategiegespräch buchen" : "Schedule a Consultation"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>
@@ -807,18 +777,16 @@ export function BlogPost() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
               <div>
                 <h3 className="text-[2.5rem] font-bold tracking-[-0.04em] mb-4 font-outfit">
-                  {articleLang === "de" ? "Weiterführende Lektüre" : articleLang === "tr" ? "Daha Fazla İçerik" : "Further Reading"}
+                  {articleLang === "de" ? "Weiterführende Lektüre" : "Further Reading"}
                 </h3>
                 <p className="text-[1.125rem] text-neutral-500 font-medium">
                   {articleLang === "de" 
                     ? "Mehr Insights für ambitionierte Unternehmen." 
-                    : articleLang === "tr"
-                    ? "İddialı işletmeler için daha fazla içerik."
                     : "More insights for ambitious businesses."}
                 </p>
               </div>
               <Link to="/blog" className="inline-flex items-center gap-2 text-[1rem] font-bold text-[#0071e3] hover:translate-x-1 transition-transform">
-                {articleLang === "de" ? "Zum Archiv" : articleLang === "tr" ? "Arşivi gör" : "View the archive"} <ArrowLeft size={20} className="rotate-180" />
+                {articleLang === "de" ? "Zum Archiv" : "View the archive"} <ArrowLeft size={20} className="rotate-180" />
               </Link>
             </div>
             

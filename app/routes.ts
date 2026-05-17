@@ -15,6 +15,7 @@ export default [
   route("leistungen/webdesign", "routes/leistungen-webdesign.tsx"),
   route("leistungen/seo", "routes/leistungen-seo.tsx"),
   route("leistungen/google-ads", "routes/leistungen-google-ads.tsx"),
+  route("tr/*", "routes/legacy-turkish-redirect.tsx"),
   route("datenschutz", "routes/datenschutz.tsx"),
   route("impressum", "routes/impressum.tsx"),
   route("blog", "routes/blog-list.tsx"),
