@@ -7,7 +7,7 @@
     "build": "react-router build && rm -rf dist && mv build/client dist",
     "dev": "react-router dev",
     "test:i18n": "node scripts/test-i18n-routing.mjs"
-  },   
+  },
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",

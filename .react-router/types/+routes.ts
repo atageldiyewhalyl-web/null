@@ -20,6 +20,39 @@ type Pages = {
   "/onboarding/client-discovery": {
     params: {};
   };
+  "/services": {
+    params: {};
+  };
+  "/website": {
+    params: {};
+  };
+  "/webdesign": {
+    params: {};
+  };
+  "/seo": {
+    params: {};
+  };
+  "/google-ads": {
+    params: {};
+  };
+  "/services/website": {
+    params: {};
+  };
+  "/services/seo": {
+    params: {};
+  };
+  "/services/google-ads": {
+    params: {};
+  };
+  "/leistungen/webdesign": {
+    params: {};
+  };
+  "/leistungen/seo": {
+    params: {};
+  };
+  "/leistungen/google-ads": {
+    params: {};
+  };
   "/datenschutz": {
     params: {};
   };
@@ -56,7 +89,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -69,6 +102,50 @@ type RouteFiles = {
   "routes/home.tsx": {
     id: "routes/home";
     page: "/";
+  };
+  "routes/services.tsx": {
+    id: "routes/services";
+    page: "/services";
+  };
+  "routes/website.tsx": {
+    id: "routes/website";
+    page: "/website";
+  };
+  "routes/webdesign.tsx": {
+    id: "routes/webdesign";
+    page: "/webdesign";
+  };
+  "routes/seo.tsx": {
+    id: "routes/seo";
+    page: "/seo";
+  };
+  "routes/google-ads.tsx": {
+    id: "routes/google-ads";
+    page: "/google-ads";
+  };
+  "routes/services-website.tsx": {
+    id: "routes/services-website";
+    page: "/services/website";
+  };
+  "routes/services-seo.tsx": {
+    id: "routes/services-seo";
+    page: "/services/seo";
+  };
+  "routes/services-google-ads.tsx": {
+    id: "routes/services-google-ads";
+    page: "/services/google-ads";
+  };
+  "routes/leistungen-webdesign.tsx": {
+    id: "routes/leistungen-webdesign";
+    page: "/leistungen/webdesign";
+  };
+  "routes/leistungen-seo.tsx": {
+    id: "routes/leistungen-seo";
+    page: "/leistungen/seo";
+  };
+  "routes/leistungen-google-ads.tsx": {
+    id: "routes/leistungen-google-ads";
+    page: "/leistungen/google-ads";
   };
   "routes/datenschutz.tsx": {
     id: "routes/datenschutz";
@@ -117,6 +194,17 @@ type RouteModules = {
   "routes/onboarding": typeof import("./app/routes/onboarding.tsx");
   "routes/client-discovery-onboarding": typeof import("./app/routes/client-discovery-onboarding.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
+  "routes/services": typeof import("./app/routes/services.tsx");
+  "routes/website": typeof import("./app/routes/website.tsx");
+  "routes/webdesign": typeof import("./app/routes/webdesign.tsx");
+  "routes/seo": typeof import("./app/routes/seo.tsx");
+  "routes/google-ads": typeof import("./app/routes/google-ads.tsx");
+  "routes/services-website": typeof import("./app/routes/services-website.tsx");
+  "routes/services-seo": typeof import("./app/routes/services-seo.tsx");
+  "routes/services-google-ads": typeof import("./app/routes/services-google-ads.tsx");
+  "routes/leistungen-webdesign": typeof import("./app/routes/leistungen-webdesign.tsx");
+  "routes/leistungen-seo": typeof import("./app/routes/leistungen-seo.tsx");
+  "routes/leistungen-google-ads": typeof import("./app/routes/leistungen-google-ads.tsx");
   "routes/datenschutz": typeof import("./app/routes/datenschutz.tsx");
   "routes/impressum": typeof import("./app/routes/impressum.tsx");
   "routes/blog-list": typeof import("./app/routes/blog-list.tsx");

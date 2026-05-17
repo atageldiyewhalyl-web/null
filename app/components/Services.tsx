@@ -129,7 +129,7 @@ export function Services() {
   ];
 
   const cardBase =
-    "group relative flex min-h-[14rem] flex-col justify-between overflow-hidden rounded-[1.75rem] border p-6 md:p-7 transition-all duration-300";
+    "group relative flex min-h-[11.25rem] flex-col overflow-hidden rounded-[1.25rem] border border-black/[0.06] bg-white p-4 transition-all duration-300 md:min-h-[14rem] md:justify-between md:rounded-[1.75rem] md:p-7";
 
   return (
     <section id="services" className="scroll-mt-28 py-24 md:py-32 px-4 md:px-6 bg-white">
@@ -156,7 +156,7 @@ export function Services() {
             </p>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[1320px] overflow-hidden">
+          <div className="relative left-1/2 w-[124vw] max-w-none -translate-x-1/2 overflow-hidden md:left-auto md:mx-auto md:w-full md:max-w-[1320px] md:translate-x-0">
             <picture>
               <source media="(max-width: 767px)" srcSet={conversionVisualMobile} />
               <img
@@ -166,8 +166,6 @@ export function Services() {
                 className="w-full object-contain"
               />
             </picture>
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0)_4.5%,rgba(255,255,255,0)_95.5%,#fff_100%)]" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#fff_0%,rgba(255,255,255,0)_6%,rgba(255,255,255,0)_94%,#fff_100%)]" />
           </div>
         </motion.div>
 
@@ -205,7 +203,7 @@ export function Services() {
         </div>
 
         {/* ── System Cards ─────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 auto-rows-auto">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-12 auto-rows-auto">
           {cards.map((card, index) => {
             const Icon = card.Icon;
             const isDark = card.dark;
@@ -216,8 +214,8 @@ export function Services() {
             href="/services"
             className={`${card.className} ${cardBase} ${
               isDark
-                ? "border-[#0e0e10] bg-[#0e0e10] text-white shadow-[0_24px_70px_rgba(0,0,0,0.14)] hover:shadow-[0_28px_80px_rgba(0,0,0,0.2)]"
-                : "border-black/[0.06] bg-[#fafafa] text-[#0e0e10] hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_18px_50px_rgba(15,23,42,0.06)]"
+                ? "text-[#0e0e10] md:border-[#0e0e10] md:bg-[#0e0e10] md:text-white md:shadow-[0_24px_70px_rgba(0,0,0,0.14)] md:hover:shadow-[0_28px_80px_rgba(0,0,0,0.2)]"
+                : "text-[#0e0e10] md:border-black/[0.06] md:bg-[#fafafa] md:hover:-translate-y-0.5 md:hover:bg-white md:hover:shadow-[0_18px_50px_rgba(15,23,42,0.06)]"
             } no-underline`}
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
@@ -225,43 +223,43 @@ export function Services() {
             transition={{ duration: 0.5, delay: index * 0.06 }}
           >
             {card.badge && (
-              <span className="absolute right-5 top-5 rounded-full bg-white/10 px-3 py-1 text-[0.6875rem] font-bold tracking-wide text-white ring-1 ring-white/10">
+              <span className="absolute right-5 top-5 hidden rounded-full bg-white/10 px-3 py-1 text-[0.6875rem] font-bold tracking-wide text-white ring-1 ring-white/10 md:inline-flex">
                 {card.badge}
               </span>
             )}
             <div>
-              <div className="mb-5 flex items-center gap-3">
+              <div className="mb-4 flex items-center gap-2.5 md:gap-3 md:mb-5">
                 <Icon
-                  className={`h-8 w-8 shrink-0 ${isDark ? "text-white" : "text-[#007aff]"}`}
+                  className={`h-5 w-5 shrink-0 md:h-8 md:w-8 ${isDark ? "text-[#007aff] md:text-white" : "text-[#007aff]"}`}
                   strokeWidth={1.8}
                 />
                 <span
-                  className={`text-[0.75rem] font-black uppercase tracking-[0.14em] ${
-                    isDark ? "text-white/35" : "text-[#007aff]/70"
+                  className={`text-[0.6875rem] font-black uppercase tracking-[0.12em] md:text-[0.75rem] md:tracking-[0.14em] ${
+                    isDark ? "text-[#007aff]/70 md:text-white/35" : "text-[#007aff]/70"
                   }`}
                 >
                   {card.number}
                 </span>
               </div>
               <h3
-                className={`text-[1.25rem] md:text-[1.4375rem] font-bold tracking-tight mb-3 ${
-                  isDark ? "text-white" : "text-[#0e0e10]"
+                className={`mb-2 text-[1rem] font-bold leading-tight tracking-tight md:mb-3 md:text-[1.4375rem] ${
+                  isDark ? "text-[#0e0e10] md:text-white" : "text-[#0e0e10]"
                 }`}
               >
                 {card.title}
               </h3>
-              <p className={`text-[0.9375rem] leading-relaxed ${isDark ? "text-white/55" : "text-[#86868b]"}`}>
+              <p className={`text-[0.75rem] leading-relaxed md:text-[0.9375rem] ${isDark ? "text-[#86868b] md:text-white/55" : "text-[#86868b]"}`}>
                 {card.description}
               </p>
             </div>
             {card.footer ? (
-              <div className={`mt-6 inline-flex items-center gap-2 text-[0.8125rem] font-semibold ${isDark ? "text-white/70" : "text-[#0e0e10]/60"}`}>
+              <div className={`mt-4 hidden items-center gap-2 text-[0.8125rem] font-semibold md:mt-6 md:inline-flex ${isDark ? "text-[#0e0e10]/60 md:text-white/70" : "text-[#0e0e10]/60"}`}>
                 <span className="h-1.5 w-1.5 rounded-full bg-[#007aff]" />
                 {card.footer}
               </div>
             ) : (
               <div
-                className={`flex items-center gap-1.5 mt-6 text-[0.875rem] font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${
+                className={`mt-4 hidden items-center gap-1.5 text-[0.875rem] font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:mt-6 md:flex ${
                   isDark ? "text-white" : "text-[#007aff]"
                 }`}
               >

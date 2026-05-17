@@ -125,7 +125,7 @@ export function Problem() {
       <div className="max-w-7xl mx-auto">
 
         {/* ── Section Header ─────────────────────────── */}
-        <div className="pt-32 md:pt-48 pb-16 md:pb-24 border-b border-[#e5e5ea]">
+        <div className="pt-16 md:pt-48 pb-16 md:pb-24 border-b border-[#e5e5ea]">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

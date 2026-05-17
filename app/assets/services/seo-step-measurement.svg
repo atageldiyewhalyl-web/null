@@ -1,0 +1,24 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueD" x1="28" y1="22" x2="102" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9FDCFF"/>
+      <stop offset="0.48" stop-color="#087BFF"/>
+      <stop offset="1" stop-color="#0058D8"/>
+    </linearGradient>
+    <radialGradient id="shineD" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(47 36) rotate(45) scale(44 17)">
+      <stop stop-color="white" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadowD" x="10" y="10" width="112" height="112" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#007AFF" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowD)">
+    <rect x="23" y="75" width="20" height="34" rx="8" fill="url(#blueD)"/>
+    <rect x="54" y="55" width="20" height="54" rx="8" fill="url(#blueD)"/>
+    <rect x="85" y="33" width="20" height="76" rx="8" fill="url(#blueD)"/>
+    <path d="M27 54C42 52 51 42 62 42C74 42 77 27 95 22" stroke="url(#blueD)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="95" cy="22" r="9" fill="url(#blueD)"/>
+    <path d="M33 83H39M64 63H70M95 41H101" stroke="url(#shineD)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>

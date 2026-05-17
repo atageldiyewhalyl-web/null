@@ -1,6 +1,5 @@
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { useLanguage, t } from "./LanguageContext";
-import { motion } from "motion/react";
 // @ts-ignore - Vite resolves video assets at build time
 import heroBackgroundVideo from "../assets/Hero background photo.webm";
 // @ts-ignore - Vite resolves image assets at build time
@@ -53,7 +52,7 @@ export function Hero() {
   ];
 
   return (
-    <section aria-label="Hero" className="relative flex min-h-screen w-full max-w-[100vw] overflow-hidden bg-white px-4 py-12 md:py-24">
+    <section aria-label="Hero" className="relative flex w-full max-w-[100vw] overflow-hidden bg-white px-4 pb-8 pt-32 md:min-h-screen md:py-24">
       {/* Precision Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white md:hidden" />
@@ -71,50 +70,38 @@ export function Hero() {
         </video>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10 flex min-h-[calc(100vh-6rem)] min-w-0 flex-col items-center justify-center">
-        <div className="flex min-w-0 flex-col items-center text-center md:-mt-24">
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex max-w-full min-w-0 items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] md:text-[0.875rem] font-bold mb-5 md:mb-12 transition-transform hover:scale-[1.02]"
+      <div className="mx-auto max-w-7xl relative z-10 flex w-full min-w-0 flex-col items-center justify-center md:min-h-[calc(100vh-6rem)]">
+        <div className="flex w-full min-w-0 max-w-full flex-col items-center text-center md:-mt-24">
+          <div
+            className="hidden max-w-full min-w-0 items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#f2f2f7] text-[#007aff] text-[0.8125rem] md:flex md:text-[0.875rem] font-bold mb-5 md:mb-12 transition-transform hover:scale-[1.02]"
           >
             <span className="max-w-full whitespace-normal text-center leading-tight break-words">
               {t("hero.eyebrow", lang)}
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-full min-w-0 text-[clamp(2.65rem,14vw,4.35rem)] md:text-[clamp(2.5rem,4vw,4rem)] leading-[0.96] md:leading-[1.1] tracking-[-0.055em] md:tracking-[-0.04em] font-bold text-[#0e0e10] mb-4 md:mb-10 text-balance"
+          <h1
+            className="w-full max-w-[24rem] min-w-0 break-words text-[clamp(2.05rem,9vw,2.65rem)] leading-[1] tracking-[-0.045em] text-[#0e0e10] mb-4 md:mb-10 md:max-w-full md:text-[clamp(2.5rem,4vw,4rem)] md:leading-[1.1] md:tracking-[-0.04em] text-balance"
           >
             <span className="block">
-              <span className="md:hidden">{t("hero.line1Mobile", lang)}</span>
+              <span className="md:hidden whitespace-nowrap">{t("hero.line1Mobile", lang)}</span>
               <span className="hidden md:inline md:whitespace-nowrap">{t("hero.line1", lang)}</span>
             </span>
             <span className="block text-[#86868b]">
-              <span className="md:hidden">{t("hero.line2Mobile", lang)}</span>
+              <span className="md:hidden whitespace-nowrap text-[clamp(1.65rem,7.4vw,2.2rem)]">{t("hero.line2Mobile", lang)}</span>
               <span className="hidden md:inline md:whitespace-nowrap">{t("hero.line2", lang)}</span>
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-full min-w-0 text-[0.9375rem] md:text-[1.375rem] text-[#86868b] md:max-w-4xl mb-6 md:mb-16 leading-relaxed font-medium text-balance"
+          <p
+            className="w-full max-w-[21rem] min-w-0 text-[0.9375rem] md:text-[1.375rem] text-[#86868b] md:max-w-4xl mb-10 md:mb-16 leading-relaxed font-medium text-balance"
           >
             <span className="md:hidden">{t("hero.descriptionMobile", lang)}</span>
             <span className="hidden md:block">{t("hero.description", lang)}</span>
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex flex-col sm:flex-row items-center gap-3 md:gap-5 mb-8 md:mb-0"
+          <div
+            className="flex w-full max-w-[22rem] flex-col sm:flex-row items-center gap-3 md:gap-5 mb-10 md:mb-0 md:max-w-none md:justify-center"
           >
             <a
               href="/#pricing"
@@ -128,49 +115,60 @@ export function Hero() {
             >
               {t("hero.secondary", lang)} <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
             </a>
-          </motion.div>
+          </div>
 
           {/* Mobile Trust Ribbon (Infinite Marquee) */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="md:hidden w-full max-w-full mb-6 relative overflow-hidden"
+          <div
+            className="md:hidden w-full max-w-full mt-4 mb-4 relative overflow-hidden"
           >
             <div
-              className="max-w-full overflow-hidden border-y border-black/[0.06] bg-[#f5f5f7]/80 py-3 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]"
+              className="max-w-full overflow-hidden border-y border-black/[0.06] bg-[#fafafa] py-2.5 [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
             >
-              <motion.div
-                animate={{ x: [0, -760] }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="inline-flex w-max max-w-none items-center gap-8 whitespace-nowrap px-4"
+              <div
+                className="mobile-trust-marquee inline-flex w-max max-w-none items-center gap-7 px-6"
               >
-                {[1, 2, 3, 4].map((set) => (
-                  <div key={set} className="flex items-center gap-8">
-                    {[
-                      t("hero.trustRibbon.t1", lang),
-                      t("hero.trustRibbon.t2", lang),
-                      t("hero.card3.value", lang),
-                      t("hero.trustRibbon.t3", lang),
-                    ].map((item) => (
-                      <div key={`${set}-${item}`} className="flex items-center gap-3">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#007aff]/55" />
-                        <span className="text-[0.75rem] font-black uppercase tracking-[0.22em] text-[#0e0e10]/60">
-                          {item}
-                        </span>
+                {[1, 2, 3].map((set) =>
+                  proofCards.map((card) => (
+                    <article
+                      key={`${set}-${card.label}`}
+                      className="grid w-[10.5rem] shrink-0 grid-cols-[2rem_minmax(0,1fr)] items-center gap-2.5 text-left"
+                    >
+                      {card.logos ? (
+                        <div className="flex h-8 w-8 shrink-0 flex-wrap content-center items-center justify-center gap-1" aria-hidden="true">
+                          {card.logos.map((logo, index) => (
+                            <img
+                              key={logo}
+                              src={logo}
+                              alt=""
+                              className={`${index === 2 ? "h-2.5 w-2.5" : "h-3.5 w-3.5"} object-contain`}
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        <img
+                          src={card.icon}
+                          alt=""
+                          aria-hidden="true"
+                          className={`${card.iconClassName} max-h-8 max-w-8 shrink-0 object-contain mix-blend-multiply`}
+                        />
+                      )}
+                      <div className="min-w-0">
+                        <div className="truncate text-[0.9rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[#0e0e10]">
+                          {card.value}
+                        </div>
+                        <div className="mt-0.5 truncate text-[0.52rem] font-extrabold uppercase leading-tight tracking-[0.14em] text-[#86868b]">
+                          {card.label}
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                ))}
-              </motion.div>
+                    </article>
+                  )),
+                )}
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Performance Proof Bar - Desktop Only */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          <div
             className="hidden md:block w-full max-w-6xl mt-20"
           >
             <div className="grid grid-cols-4 gap-8">
@@ -216,7 +214,7 @@ export function Hero() {
                 );
               })}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -155,7 +155,7 @@ const labels: Record<string, Record<Language, string>> = {
     tr: "Önce siz"
   },
   "hero.line2Mobile": {
-    en: "Before they choose someone else.",
+    en: "Before they do.",
     de: "Bevor sie andere wählen.",
     tr: "bulunun."
   },

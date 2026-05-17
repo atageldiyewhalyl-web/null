@@ -18,6 +18,7 @@ export function Navbar() {
     location.pathname.includes("webdesign") ||
     location.pathname.includes("website") ||
     location.pathname.includes("seo") ||
+    location.pathname.includes("google-ads") ||
     location.pathname.includes("leistungen");
 
   const openQuotePreview = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -61,6 +62,16 @@ export function Navbar() {
             ? "Ölçülebilir şekilde büyüyen Google görünürlüğü."
             : "Google visibility that grows measurably.",
       href: "/leistungen/seo",
+    },
+    {
+      name: displayLang === "de" ? "Google Ads" : "Google Ads",
+      description:
+        displayLang === "de"
+          ? "Kampagnen, die Budget in Anfragen verwandeln."
+          : displayLang === "tr"
+            ? "Bütçeyi talebe çeviren kampanyalar."
+            : "Campaigns that turn budget into enquiries.",
+      href: "/leistungen/google-ads",
     },
   ];
 

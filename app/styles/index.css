@@ -88,6 +88,20 @@
     will-change: transform;
   }
 
+  @keyframes mobile-trust-marquee {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .mobile-trust-marquee {
+    animation: mobile-trust-marquee 28s linear infinite;
+    will-change: transform;
+  }
+
   .glass {
     @apply bg-white/70 backdrop-blur-xl border border-white/20;
   }

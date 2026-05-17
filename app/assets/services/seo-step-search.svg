@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueA" x1="22" y1="18" x2="102" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ED1FF"/>
+      <stop offset="0.48" stop-color="#087BFF"/>
+      <stop offset="1" stop-color="#0058D8"/>
+    </linearGradient>
+    <radialGradient id="shineA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(42 35) rotate(46) scale(48 20)">
+      <stop stop-color="white" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadowA" x="10" y="10" width="112" height="112" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#007AFF" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowA)">
+    <circle cx="55" cy="55" r="32" stroke="url(#blueA)" stroke-width="18"/>
+    <path d="M80 80L107 107" stroke="url(#blueA)" stroke-width="20" stroke-linecap="round"/>
+    <circle cx="47" cy="42" r="24" fill="url(#shineA)"/>
+  </g>
+</svg>

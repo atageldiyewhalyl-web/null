@@ -15,7 +15,7 @@ export default function handleRequest(
   loadContext: AppLoadContext
 ) {
   return new Promise((resolve, reject) => {
-    let shellRendered = false;
+    let abortTimer: ReturnType<typeof setTimeout>;
     const { pipe, abort } = renderToPipeableStream(
       <ServerRouter
         context={routerContext}
@@ -23,7 +23,7 @@ export default function handleRequest(
       />,
       {
         onAllReady() {
-          shellRendered = true;
+          clearTimeout(abortTimer);
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
 
@@ -39,6 +39,7 @@ export default function handleRequest(
           pipe(body);
         },
         onShellError(error: unknown) {
+          clearTimeout(abortTimer);
           reject(error);
         },
         onError(error: unknown) {
@@ -49,6 +50,6 @@ export default function handleRequest(
       }
     );
 
-    setTimeout(abort, ABORT_DELAY);
+    abortTimer = setTimeout(abort, ABORT_DELAY);
   });
 }

@@ -8,6 +8,18 @@ interface PricingProps {
 
 export function Pricing({ onOpenQuote }: PricingProps) {
   const { lang } = useLanguage();
+  const quoteCta =
+    lang === "de"
+      ? "60-Sekunden Angebot starten"
+      : lang === "tr"
+        ? "60 saniyelik teklifi başlat"
+        : "Start your 60-second quote";
+  const quoteHint =
+    lang === "de"
+      ? "Kostenlos, unverbindlich und direkt auf Sie zugeschnitten."
+      : lang === "tr"
+        ? "Ücretsiz, bağlayıcı değil ve size özel."
+        : "Free, no obligation, and tailored to your project.";
 
   const trustPoints = [
     t("pricing.individual.trust.generic", lang),
@@ -37,15 +49,23 @@ export function Pricing({ onOpenQuote }: PricingProps) {
               {t("pricing.individual.description", lang)}
             </p>
 
-            <button
-              onClick={onOpenQuote}
-              className="mt-10 group/btn inline-flex items-center justify-center gap-3 bg-[#0e0e10] text-white px-7 py-4 rounded-full text-[0.9375rem] md:text-[1rem] font-bold hover:bg-[#2c2c2e] transition-all active:scale-95 shadow-lg shadow-black/10 lg:hidden"
-            >
-              {t("quote.teaser.cta", lang)}
-              <ArrowRight size={18} className="transition-transform group-hover/btn:translate-x-1" />
-            </button>
+            <div className="mt-9 lg:hidden">
+              <button
+                onClick={onOpenQuote}
+                className="group/btn relative flex w-full max-w-[22rem] items-center justify-center gap-3 overflow-hidden rounded-full bg-[#007aff] px-6 py-4 text-[1rem] font-bold text-white shadow-[0_18px_35px_-16px_rgba(0,122,255,0.9)] transition-all hover:bg-[#006ee6] active:scale-[0.98]"
+              >
+                <span className="absolute inset-x-6 top-0 h-px bg-white/45" />
+                <span>{quoteCta}</span>
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/18 transition-transform group-hover/btn:translate-x-0.5">
+                  <ArrowRight size={17} />
+                </span>
+              </button>
+              <p className="mt-5 max-w-[21rem] text-[0.78rem] font-semibold leading-snug text-[#86868b]">
+                {quoteHint}
+              </p>
+            </div>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 md:mt-10">
               {trustPoints.map((point) => (
                 <div key={point} className="flex items-start gap-2.5 text-[0.875rem] font-semibold leading-snug text-[#6e6e73]">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#007aff]/10 text-[#007aff]">
