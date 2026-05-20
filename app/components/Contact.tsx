@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { motion } from "motion/react";
 import gmailIcon from "../assets/icons/gmail-icon.webp";
 import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
@@ -9,7 +9,8 @@ type ContactMethod = {
   description: string;
   href: string;
   action: string;
-  icon: string;
+  icon?: string;
+  Icon?: typeof Phone;
   eventName: string;
 };
 
@@ -20,10 +21,23 @@ export function Contact() {
     {
       title: "WhatsApp",
       description: t("contact.whatsapp.cta", lang),
-      href: "https://wa.me/491627176334",
+      href: "https://wa.me/4915256569862",
       action: lang === "tr" ? "Mesaj gönder" : lang === "de" ? "Nachricht senden" : "Send message",
       icon: whatsappIcon,
       eventName: "whatsapp_click",
+    },
+    {
+      title: lang === "de" ? "Anrufen" : lang === "tr" ? "Ara" : "Call",
+      description:
+        lang === "de"
+          ? "Sprechen Sie direkt mit uns."
+          : lang === "tr"
+            ? "Bizimle direkt konuşun."
+            : "Talk to us directly.",
+      href: "tel:+4915256569862",
+      action: "+49 1525 6569862",
+      Icon: Phone,
+      eventName: "phone_click",
     },
     {
       title: "Gmail",
@@ -82,9 +96,9 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-3 md:mt-12 md:grid-cols-2"
+          className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-3 md:mt-12 md:grid-cols-3"
         >
-          {contactMethods.map(({ title, description, href, action, icon, eventName }) => (
+          {contactMethods.map(({ title, description, href, action, icon, Icon, eventName }) => (
             <a
               key={title}
               href={href}
@@ -98,12 +112,18 @@ export function Contact() {
               className="group flex min-h-[6.75rem] items-center gap-4 rounded-[1.35rem] border border-black/5 bg-white/80 p-4 text-left shadow-[0_18px_45px_-34px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_-35px_rgba(0,0,0,0.24)] md:block md:min-h-0 md:rounded-[1.75rem] md:bg-white/70 md:p-6"
             >
               <div className="flex shrink-0 items-center justify-between md:mb-8">
-                <img
-                  src={icon}
-                  alt=""
-                  aria-hidden="true"
-                  className="h-[1.55rem] w-[1.55rem] object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.08)]"
-                />
+                {Icon ? (
+                  <span className="flex h-[1.55rem] w-[1.55rem] items-center justify-center rounded-full bg-[#0071e3] text-white shadow-[0_5px_10px_rgba(0,113,227,0.16)]">
+                    <Icon size={15} strokeWidth={2.2} aria-hidden="true" />
+                  </span>
+                ) : (
+                  <img
+                    src={icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-[1.55rem] w-[1.55rem] object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.08)]"
+                  />
+                )}
                 <ArrowUpRight
                   size={18}
                   className="hidden text-[#8e8e93] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0071e3] md:block"
