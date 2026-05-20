@@ -135,27 +135,27 @@ const labels: Record<string, Record<Language, string>> = {
   "nav.getStarted": { en: "Get Started", de: "Jetzt starten", tr: "Hemen başlayın" },
 
   "hero.eyebrow": {
-    en: "Your client acquisition system",
+    en: "Build presence, get clients",
     de: "Build presence, get clients",
     tr: "Müşteri kazanım sisteminiz"
   },
   "hero.line1": {
-    en: "Your next customer is already searching",
+    en: "Potential customers search daily for your services",
     de: "Potenzielle Kunden suchen täglich nach Ihren Leistungen",
     tr: "Bir sonraki müşteriniz arıyor"
   },
   "hero.line2": {
-    en: "Make sure they find you",
+    en: "Become visible online",
     de: "Werden Sie online sichtbar",
     tr: "Sizi bulduğundan emin olun"
   },
   "hero.line1Mobile": {
-    en: "Get found.",
+    en: "Potential customers search daily for your services",
     de: "Potenzielle Kunden suchen täglich nach Ihren Leistungen",
     tr: "Önce siz"
   },
   "hero.line2Mobile": {
-    en: "Before they do.",
+    en: "Become visible online",
     de: "Werden Sie online sichtbar",
     tr: "bulunun."
   },
@@ -397,6 +397,16 @@ const labels: Record<string, Record<Language, string>> = {
     en: "Positioning and branding for a consultant building a stronger online presence. We clarified the message, designed the brand identity, and built a site that establishes trust.",
     de: "Positionierung und Markenaufbau für einen Berater, der seine Online-Präsenz stärken möchte. Wir haben die Botschaft geschärft, die Markenidentität entwickelt und eine Website erstellt, die Vertrauen schafft.",
     tr: "Online varlığını güçlendirmek isteyen bir danışman için konumlandırma ve marka çalışması. Mesajı netleştirdik, marka kimliğini oluşturduk ve güven sağlayan bir web sitesi geliştirdik.",
+  },
+  "work.spine.category": {
+    en: "Robotics-as-a-Service Website",
+    de: "Robotics-as-a-Service Website",
+    tr: "Robotics-as-a-Service Web Sitesi",
+  },
+  "work.spine.desc": {
+    en: "A dark, premium launch site for humanoid robots in reception, tours, patrol, logistics and events, built around one managed deployment model.",
+    de: "Eine dunkle, hochwertige Launch-Website für humanoide Roboter in Empfang, Führungen, Patrouille, Logistik und Events — aufgebaut rund um ein gemanagtes Deployment-Modell.",
+    tr: "Resepsiyon, turlar, devriye, lojistik ve etkinliklerde kullanılan humanoid robotlar için tek bir yönetilen deployment modeli etrafında tasarlanmış premium bir launch sitesi.",
   },
 
   // Pricing

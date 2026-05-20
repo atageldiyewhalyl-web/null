@@ -15,6 +15,8 @@ import herkulesHeroDemo from "../assets/Herkules Hero Demo.webp";
 import herkulesLogo from "../assets/Herkules/Herkules Logo.png";
 // @ts-ignore – vite-imagetools resolves these at build time
 import dogruLogo from "../assets/Dogru kanzlei/logo.png";
+// @ts-ignore – vite-imagetools resolves these at build time
+import spineHeroDemo from "../assets/spine demo.webp";
 
 const projects = [
   {
@@ -49,6 +51,17 @@ const projects = [
     clientLogoAlt: "Doğru Kanzlei logo",
     clientLogoClassName: "h-9 md:h-10 w-auto",
     link: "https://hasandogru.de",
+  },
+  {
+    id: "spine",
+    title: "Spine Robotics",
+    categoryKey: "work.spine.category",
+    descKey: "work.spine.desc",
+    image: spineHeroDemo,
+    clientLogo: null,
+    clientLogoAlt: "",
+    clientLogoClassName: "",
+    link: "https://spine-robotics.vercel.app/",
   },
 ];
 
