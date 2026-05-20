@@ -2,23 +2,19 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage, t } from "./LanguageContext";
-import { ImageComparison } from "./ui/image-comparison-slider";
 
 // @ts-ignore – vite-imagetools resolves these at build time
-import dogruOld from "../assets/Dogru kanzlei/Dogru kanzlei old.png";
+import dogruHeroDemo from "../assets/Hasan Hero Demo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
-import dogruNew from "../assets/Dogru kanzlei/Dogru kanzlei new.png";
-// @ts-ignore – vite-imagetools resolves these at build time
-import dogruLogo from "../assets/Dogru kanzlei/logo.png";
-// @ts-ignore – vite-imagetools resolves these at build time
-import besirYamanImage from "../assets/Besir yaman /Besiryaman .png?format=webp&w=1400";
+import besirYamanHeroDemo from "../assets/BY Hero Demo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import besirYamanLogo from "../assets/Besir yaman /by-logo.png";
-import herkulesHeroVideoMp4 from "../assets/Herkules/hero-video.mp4";
-import herkulesHeroVideoPoster from "../assets/Herkules/hero-video-poster.webp";
-import herkulesHeroVideoWebm from "../assets/Herkules/hero-video.webm";
+// @ts-ignore – vite-imagetools resolves these at build time
+import herkulesHeroDemo from "../assets/Herkules Hero Demo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import herkulesLogo from "../assets/Herkules/Herkules Logo.png";
+// @ts-ignore – vite-imagetools resolves these at build time
+import dogruLogo from "../assets/Dogru kanzlei/logo.png";
 
 const projects = [
   {
@@ -26,39 +22,33 @@ const projects = [
     title: "Herkules Umzüge Mannheim",
     categoryKey: "work.herkules.category",
     descKey: "work.herkules.desc",
-    videoMp4: herkulesHeroVideoMp4,
-    videoPoster: herkulesHeroVideoPoster,
-    videoWebm: herkulesHeroVideoWebm,
+    image: herkulesHeroDemo,
     clientLogo: herkulesLogo,
     clientLogoAlt: "Herkules Umzüge logo",
     clientLogoClassName: "h-8 md:h-9 w-auto",
     link: "https://www.umzuege-herkules.de/",
-    isComparison: false
-  },
-  {
-    id: "dogru",
-    title: "Law Firm Website",
-    categoryKey: "work.dogru.category",
-    descKey: "work.dogru.desc",
-    image: dogruNew,
-    beforeImage: dogruOld,
-    clientLogo: dogruLogo,
-    clientLogoAlt: "Doğru Kanzlei logo",
-    clientLogoClassName: "h-9 md:h-10 w-auto",
-    link: "https://hasandogru.de",
-    isComparison: true
   },
   {
     id: "besir",
     title: "Consultant Website",
     categoryKey: "work.besir.category",
     descKey: "work.besir.desc",
-    image: besirYamanImage,
+    image: besirYamanHeroDemo,
     clientLogo: besirYamanLogo,
     clientLogoAlt: "Besir Yaman logo",
     clientLogoClassName: "h-8 md:h-9 w-auto",
     link: "https://www.besiryaman-mentoring.de",
-    isComparison: false
+  },
+  {
+    id: "dogru",
+    title: "Law Firm Website",
+    categoryKey: "work.dogru.category",
+    descKey: "work.dogru.desc",
+    image: dogruHeroDemo,
+    clientLogo: dogruLogo,
+    clientLogoAlt: "Doğru Kanzlei logo",
+    clientLogoClassName: "h-9 md:h-10 w-auto",
+    link: "https://hasandogru.de",
   },
 ];
 
@@ -113,48 +103,15 @@ export function Work() {
                 </div>
               ) : null}
               <div
-                className={`w-full overflow-hidden rounded-xl md:rounded-2xl bg-neutral-100 mb-5 md:mb-8 relative ${
-                  project.videoWebm ? "aspect-[1904/982]" : "aspect-video"
-                }`}
+                className="relative mb-5 aspect-video w-full overflow-visible md:mb-8"
               >
-                {project.videoWebm ? (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full h-full"
-                    aria-label={project.title}
-                  >
-                    <video
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.015]"
-                      autoPlay
-                      muted
-                      playsInline
-                      poster={project.videoPoster}
-                      preload="metadata"
-                    >
-                      <source src={project.videoWebm} type="video/webm" />
-                      <source src={project.videoMp4} type="video/mp4" />
-                    </video>
-                  </a>
-                ) : project.isComparison ? (
-                  <div className="w-full h-full pointer-events-auto">
-                    <ImageComparison
-                      beforeImage={project.beforeImage}
-                      afterImage={project.image}
-                      altBefore="Old website"
-                      altAfter="Transformed website"
-                    />
-                  </div>
-                ) : (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                    <ImageWithFallback
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </a>
-                )}
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </a>
               </div>
               
               <div className="flex justify-between items-start gap-4">
