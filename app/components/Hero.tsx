@@ -21,6 +21,9 @@ import claudeLogo from "../assets/icons/claude-logo.svg";
 
 export function Hero() {
   const { lang } = useLanguage();
+  const isGerman = lang === "de";
+  const headingLineClass = isGerman ? "whitespace-normal" : "whitespace-nowrap";
+  const desktopHeadingLineClass = isGerman ? "md:whitespace-normal" : "md:whitespace-nowrap";
   const proofCards = [
     {
       label: t("hero.card1.label", lang),
@@ -90,15 +93,26 @@ export function Hero() {
 
           <div className="-translate-y-7 md:translate-y-0">
             <h1
-              className="w-full max-w-[24rem] min-w-0 break-words text-[clamp(2.05rem,9vw,2.65rem)] leading-[1] tracking-[-0.045em] text-[#0e0e10] mb-4 md:mb-10 md:max-w-full md:text-[clamp(2.5rem,4vw,4rem)] md:leading-[1.1] md:tracking-[-0.04em] text-balance"
+              className={`w-full min-w-0 break-words leading-[1] tracking-[-0.045em] text-[#0e0e10] mb-4 md:mb-10 md:leading-[1.1] md:tracking-[-0.04em] text-balance ${
+                isGerman
+                  ? "max-w-[22rem] text-[clamp(1.75rem,7.2vw,2.2rem)] md:max-w-[66rem] md:text-[clamp(2.6rem,3.65vw,3.55rem)]"
+                  : "max-w-[24rem] text-[clamp(2.05rem,9vw,2.65rem)] md:max-w-full md:text-[clamp(2.5rem,4vw,4rem)]"
+              }`}
             >
               <span className="block">
-                <span className="md:hidden whitespace-nowrap">{t("hero.line1Mobile", lang)}</span>
-                <span className="hidden md:inline md:whitespace-nowrap">{t("hero.line1", lang)}</span>
+                <span className={`md:hidden ${headingLineClass}`}>{t("hero.line1Mobile", lang)}</span>
+                {isGerman ? (
+                  <span className={`hidden md:block ${desktopHeadingLineClass}`}>
+                    Potenzielle Kunden suchen täglich
+                    <span className="block">nach Ihren Leistungen</span>
+                  </span>
+                ) : (
+                  <span className={`hidden md:inline ${desktopHeadingLineClass}`}>{t("hero.line1", lang)}</span>
+                )}
               </span>
               <span className="block text-[#86868b]">
-                <span className="md:hidden whitespace-nowrap text-[clamp(1.65rem,7.4vw,2.2rem)]">{t("hero.line2Mobile", lang)}</span>
-                <span className="hidden md:inline md:whitespace-nowrap">{t("hero.line2", lang)}</span>
+                <span className={`md:hidden ${headingLineClass} ${isGerman ? "" : "text-[clamp(1.65rem,7.4vw,2.2rem)]"}`}>{t("hero.line2Mobile", lang)}</span>
+                <span className={`hidden md:inline ${desktopHeadingLineClass}`}>{t("hero.line2", lang)}</span>
               </span>
             </h1>
 

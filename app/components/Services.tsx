@@ -99,6 +99,7 @@ export function Services() {
       title: t("services.webdesign", lang),
       description: t("services.webdesign.desc", lang),
       Icon: MonitorSmartphone,
+      href: "/services",
       className: "lg:col-span-5",
     },
     {
@@ -106,6 +107,7 @@ export function Services() {
       title: t("services.development", lang),
       description: t("services.development.desc", lang),
       Icon: Code2,
+      href: "/services",
       className: "lg:col-span-4",
     },
     {
@@ -113,6 +115,7 @@ export function Services() {
       title: t("services.branding", lang),
       description: t("services.branding.desc", lang),
       Icon: Palette,
+      href: "/services",
       className: "lg:col-span-3",
     },
     {
@@ -120,6 +123,7 @@ export function Services() {
       title: t("services.seo", lang),
       description: t("services.seo.desc", lang),
       Icon: Search,
+      href: "/leistungen/seo",
       className: "lg:col-span-4",
     },
     {
@@ -129,6 +133,7 @@ export function Services() {
       Icon: Bot,
       badge: t("services.ai.badge", lang),
       dark: true,
+      href: "/services",
       className: "lg:col-span-4",
     },
     {
@@ -137,6 +142,7 @@ export function Services() {
       description: t("services.maintenance.desc", lang),
       Icon: RefreshCw,
       footer: t("services.maintenance.badge", lang),
+      href: "/services",
       className: "lg:col-span-4",
     },
   ];
@@ -298,7 +304,7 @@ export function Services() {
             return (
           <motion.a
             key={card.number}
-            href="/services"
+            href={card.href}
             className={`${card.className} ${cardBase} ${
               isDark
                 ? "text-[#0e0e10] md:border-[#0e0e10] md:bg-[#0e0e10] md:text-white md:shadow-[0_24px_70px_rgba(0,0,0,0.14)] md:hover:shadow-[0_28px_80px_rgba(0,0,0,0.2)]"

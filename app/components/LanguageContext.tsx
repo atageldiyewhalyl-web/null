@@ -136,37 +136,37 @@ const labels: Record<string, Record<Language, string>> = {
 
   "hero.eyebrow": {
     en: "Your client acquisition system",
-    de: "Ihr System für planbare Kundenakquise",
+    de: "Build presence, get clients",
     tr: "Müşteri kazanım sisteminiz"
   },
   "hero.line1": {
     en: "Your next customer is already searching",
-    de: "Ihre nächsten Kunden suchen gerade",
+    de: "Potenzielle Kunden suchen täglich nach Ihren Leistungen",
     tr: "Bir sonraki müşteriniz arıyor"
   },
   "hero.line2": {
     en: "Make sure they find you",
-    de: "Sorgen Sie dafür, dass sie Sie finden",
+    de: "Werden Sie online sichtbar",
     tr: "Sizi bulduğundan emin olun"
   },
   "hero.line1Mobile": {
     en: "Get found.",
-    de: "Gefunden werden.",
+    de: "Potenzielle Kunden suchen täglich nach Ihren Leistungen",
     tr: "Önce siz"
   },
   "hero.line2Mobile": {
     en: "Before they do.",
-    de: "Bevor sie andere wählen.",
+    de: "Werden Sie online sichtbar",
     tr: "bulunun."
   },
   "hero.description": {
     en: "We build the digital presence that turns searches into enquiries, website, SEO, and AI visibility working together so your business gets found before your competitors do.",
-    de: "Wir bauen die digitale Präsenz, die Ihr Unternehmen sichtbar macht, Website, SEO und KI-Sichtbarkeit, damit Kunden Sie finden, bevor sie zur Konkurrenz gehen.",
+    de: "Professionelle Webseiten, SEO und digitale Präsenz für Unternehmen, die online wachsen wollen.",
     tr: "Bulunmak, güven kazanmak ve ziyaretçileri nitelikli taleplere dönüştürmek isteyen hizmet işletmeleri, danışmanlar ve hukuk büroları için yüksek dönüşümlü web siteleri tasarlıyoruz.",
   },
   "hero.descriptionMobile": {
     en: "We build the digital presence that turns searches into enquiries before your competitors get found.",
-    de: "Wir bauen die digitale Präsenz, damit Kunden Sie finden, bevor sie zur Konkurrenz gehen.",
+    de: "Professionelle Webseiten, SEO und digitale Präsenz für Unternehmen, die online wachsen wollen.",
     tr: "Güven, netlik ve nitelikli talepler isteyen hizmet işletmeleri, danışmanlar ve hukuk büroları için web siteleri.",
   },
   "hero.cta": {
@@ -233,7 +233,7 @@ const labels: Record<string, Record<Language, string>> = {
   },
   "problem.p1": {
     en: "Someone is searching for your service right now. They type into Google. They find a competitor. Not you.",
-    de: "Jemand sucht gerade nach Ihrer Leistung. Er tippt bei Google. Er findet einen Wettbewerber. Nicht Sie.",
+    de: "Potenzielle Kunden suchen täglich nach Ihren Leistungen. Gefunden wird jedoch Ihre Konkurrenz nicht Sie.",
     tr: "Birileri şu anda sizin hizmetinizi arıyor. Google'a yazıyor. Rakibinizi buluyor. Sizi değil.",
   },
   "problem.p2": {
@@ -243,12 +243,12 @@ const labels: Record<string, Record<Language, string>> = {
   },
   "problem.p3": {
     en: "You have no website. Your competitors do. And they are getting the enquiries that should be yours.",
-    de: "Sie haben keine Website. Ihre Konkurrenz schon. Und sie bekommt die Anfragen, die eigentlich Ihnen gehören sollten.",
+    de: "Sie haben keine professionelle Online Präsenz. Währenddessen gewinnt Ihre Konkurrenz die Kunden, die eigentlich Ihnen gehören sollten.",
     tr: "Web siteniz yok. Rakiplerinizin var. Ve size gelmesi gereken talepler onlara gidiyor.",
   },
   "problem.turn": {
     en: "It doesn't have to stay this way. And it's easier to change than you think.",
-    de: "Das muss nicht so bleiben. Und es ist einfacher zu ändern, als Sie denken.",
+    de: "Das muss nicht so bleiben. Der Weg zu mehr Sichtbarkeit ist einfacher, als viele denken.",
     tr: "Böyle kalmak zorunda değil. Ve değiştirmek düşündüğünüzden çok daha kolay.",
   },
 
