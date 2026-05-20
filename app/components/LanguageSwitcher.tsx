@@ -1,6 +1,6 @@
 import { useLanguage, type Language } from "./LanguageContext";
 import { useLocation, useNavigate } from "react-router";
-import { getLanguageForPath, getLocalizedPath, isLanguage } from "../utils/i18nRouting";
+import { getLanguageForPath, getLocalizedPath } from "../utils/i18nRouting";
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -14,9 +14,7 @@ export function LanguageSwitcher({ className = "", languages = defaultLanguages 
   const location = useLocation();
   const navigate = useNavigate();
   const routeLang = getLanguageForPath(location.pathname);
-  const queryLang = new URLSearchParams(location.search).get("lang");
-  const urlLang = isLanguage(queryLang) ? queryLang : null;
-  const resolvedLang = routeLang ?? urlLang ?? lang;
+  const resolvedLang = routeLang ?? lang;
   const activeLang = languages.includes(resolvedLang) ? resolvedLang : languages[0];
 
   const getLanguageTarget = (nextLang: Language) => {
