@@ -445,7 +445,7 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
                 </p>
                 <div className={`${isEmbedded ? "gap-2 px-3" : "gap-2 px-4 md:gap-3"} grid w-full grid-cols-1 sm:grid-cols-2`}>
                   <a
-                    href="https://wa.me/4915256569862"
+                    href="https://wa.me/4915256569852"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {

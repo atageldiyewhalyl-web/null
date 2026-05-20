@@ -21,7 +21,7 @@ export function Contact() {
     {
       title: "WhatsApp",
       description: t("contact.whatsapp.cta", lang),
-      href: "https://wa.me/4915256569862",
+      href: "https://wa.me/4915256569852",
       action: lang === "tr" ? "Mesaj gönder" : lang === "de" ? "Nachricht senden" : "Send message",
       icon: whatsappIcon,
       eventName: "whatsapp_click",
@@ -34,8 +34,8 @@ export function Contact() {
           : lang === "tr"
             ? "Bizimle direkt konuşun."
             : "Talk to us directly.",
-      href: "tel:+4915256569862",
-      action: "+49 1525 6569862",
+      href: "tel:+4915256569852",
+      action: "+49 1525 6569852",
       Icon: Phone,
       eventName: "phone_click",
     },
