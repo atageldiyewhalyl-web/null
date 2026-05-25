@@ -242,6 +242,8 @@ function CarouselContent({
   const [visibleItemsCount, setVisibleItemsCount] = useState(1);
   const dragX = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
+  const didSwipeRef = useRef(false);
   const itemsLength = Children.count(children);
 
   useEffect(() => {
@@ -275,19 +277,67 @@ function CarouselContent({
     setItemsCount(itemsLength);
   }, [itemsLength, setItemsCount]);
 
+  const goToNext = () => {
+    if (index < itemsLength - 1) {
+      setIndex(index + 1);
+    }
+  };
+
+  const goToPrevious = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+    }
+  };
+
   const onDragEnd = () => {
     const x = dragX.get();
 
-    if (x <= -10 && index < itemsLength - 1) {
-      setIndex(index + 1);
-    } else if (x >= 10 && index > 0) {
-      setIndex(index - 1);
+    if (x <= -10) {
+      goToNext();
+    } else if (x >= 10) {
+      goToPrevious();
     }
+
+    dragX.set(0);
+  };
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (disableDrag) return;
+    swipeStartRef.current = { x: event.clientX, y: event.clientY };
+    didSwipeRef.current = false;
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (disableDrag || !swipeStartRef.current) return;
+
+    const deltaX = event.clientX - swipeStartRef.current.x;
+    const deltaY = event.clientY - swipeStartRef.current.y;
+    swipeStartRef.current = null;
+
+    if (Math.abs(deltaX) < 42 || Math.abs(deltaX) < Math.abs(deltaY) * 1.15) {
+      return;
+    }
+
+    didSwipeRef.current = true;
+
+    if (deltaX < 0) {
+      goToNext();
+    } else {
+      goToPrevious();
+    }
+  };
+
+  const handleClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!didSwipeRef.current) return;
+    didSwipeRef.current = false;
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   return (
     <motion.div
       drag={disableDrag ? false : 'x'}
+      dragDirectionLock
       dragConstraints={
         disableDrag
           ? undefined
@@ -299,11 +349,18 @@ function CarouselContent({
       dragMomentum={disableDrag ? undefined : false}
       style={{
         x: disableDrag ? undefined : dragX,
+        touchAction: disableDrag ? undefined : 'pan-y',
       }}
       animate={{
         translateX: `-${index * (100 / visibleItemsCount)}%`,
       }}
       onDragEnd={disableDrag ? undefined : onDragEnd}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={() => {
+        swipeStartRef.current = null;
+      }}
+      onClickCapture={handleClickCapture}
       transition={
         transition || {
           damping: 18,
