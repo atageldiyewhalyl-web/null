@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowRight,
-  Building2,
   Check,
+  Files,
   Loader2,
   Megaphone,
   Monitor,
@@ -374,7 +374,7 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
               <div className={`grid grid-cols-1 ${isEmbedded ? "gap-3" : "gap-4 md:grid-cols-2"}`}>
                 {[
                   { id: "single", title: t("quote.step.siteType.single", lang), sub: t("quote.step.siteType.single.sub", lang), Icon: Monitor },
-                  { id: "multi", title: t("quote.step.siteType.multi", lang), sub: t("quote.step.siteType.multi.sub", lang), Icon: Building2 },
+                  { id: "multi", title: t("quote.step.siteType.multi", lang), sub: t("quote.step.siteType.multi.sub", lang), Icon: Files },
                 ].map(({ id, title, sub, Icon }) => {
                   const isSelected = formData.siteType === id;
                   return (

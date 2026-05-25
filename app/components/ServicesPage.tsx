@@ -18,21 +18,21 @@ import {
   Target,
 } from "lucide-react";
 import { useLanguage, type Language } from "./LanguageContext";
-import besirNew from "../assets/Besir yaman /Besiryaman .png";
+import besirNew from "../assets/Besir yaman /Besiryaman .webp";
 import herkulesCaseStudy from "../assets/Herkules/hero-video-poster.webp";
-import websiteHeroBackground from "../assets/Website service page/website hero new.png";
+import websiteHeroBackground from "../assets/Website service page/website hero new.webp";
 import seoHeroBackground from "../assets/services/seo-background-hero.webp";
 import googleAdsHeroBackground from "../assets/services/google-ads-hero.webp";
-import conversionVisualEn from "../assets/services/english conversion.png";
-import conversionVisualDe from "../assets/services/german conversion.png";
-import resultsEn from "../assets/services/Results english .png";
-import resultsDe from "../assets/services/Results german 1.png";
-import scrollableCredentialOneEn from "../assets/services/Scrollable credential eng 1.png";
-import scrollableCredentialTwoEn from "../assets/services/Scrollable credential eng 2.png";
-import scrollableCredentialThreeEn from "../assets/services/Scrollable credential eng 2.png.png";
-import scrollableCredentialOneDe from "../assets/services/Scrollable credential 1 german.png";
-import scrollableCredentialTwoDe from "../assets/services/Scrollable credential 2 german.png";
-import scrollableCredentialThreeDe from "../assets/services/Scrollable credential 3 German.png";
+import conversionVisualEn from "../assets/services/english conversion.webp";
+import conversionVisualDe from "../assets/services/german conversion.webp";
+import resultsEn from "../assets/services/Results english .webp";
+import resultsDe from "../assets/services/Results german 1.webp";
+import scrollableCredentialOneEn from "../assets/services/Scrollable credential eng 1.webp";
+import scrollableCredentialTwoEn from "../assets/services/Scrollable credential eng 2.webp";
+import scrollableCredentialThreeEn from "../assets/services/Scrollable credential eng 2.png.webp";
+import scrollableCredentialOneDe from "../assets/services/Scrollable credential 1 german.webp";
+import scrollableCredentialTwoDe from "../assets/services/Scrollable credential 2 german.webp";
+import scrollableCredentialThreeDe from "../assets/services/Scrollable credential 3 German.webp";
 import seoStepSearch from "../assets/services/seo-step-search.svg";
 import seoStepStructure from "../assets/services/seo-step-structure.svg";
 import seoStepTrust from "../assets/services/seo-step-trust.svg";
@@ -1264,12 +1264,6 @@ export function ServicesPage({ variant = "website" }: { variant?: ServiceVariant
         <span className="block md:whitespace-nowrap">{c.heroTitle1}</span>
         {lang === "en" ? (
           <span className="block md:whitespace-nowrap">{c.heroTitle2b} <span className="text-[#007aff]">{c.heroTitle2a}</span></span>
-        ) : variant === "googleAds" && lang === "de" ? (
-          <span className="block md:whitespace-nowrap"><span className="text-[#007aff]">für Dienstleister.</span></span>
-        ) : variant === "googleAds" ? (
-          <span className="block md:whitespace-nowrap"><span className="text-[#007aff]">{c.heroTitle2a}</span></span>
-        ) : variant === "seo" && lang === "de" ? (
-          <span className="block md:whitespace-nowrap">Sie bei <span className="text-[#007aff]">Google.</span></span>
         ) : (
           <span className="block md:whitespace-nowrap"><span className="text-[#007aff]">{c.heroTitle2a}</span> {c.heroTitle2b}</span>
         )}

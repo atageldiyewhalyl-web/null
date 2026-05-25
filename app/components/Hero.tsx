@@ -3,17 +3,17 @@ import { useLanguage, t } from "./LanguageContext";
 // @ts-ignore - Vite resolves video assets at build time
 import heroBackgroundVideo from "../assets/Hero background photo.webm";
 // @ts-ignore - Vite resolves image assets at build time
-import heroBackgroundPoster from "../assets/Hero background/Hero Background.png";
+import heroBackgroundPoster from "../assets/Hero background/Hero Background.webp";
 // @ts-ignore - Vite imagetools emits an optimized mobile WebP asset at build time
-import heroIphoneBackground from "../assets/Hero iphone.png?format=webp&w=1200";
+import heroIphoneBackground from "../assets/Hero iphone.webp?format=webp&w=1200";
 // @ts-ignore - Vite resolves image assets at build time
-import moneyIcon from "../assets/icons/money icon.png";
+import moneyIcon from "../assets/icons/money icon.webp";
 // @ts-ignore - Vite resolves image assets at build time
-import searchIcon from "../assets/icons/search icon.png";
+import searchIcon from "../assets/icons/search icon.webp";
 // @ts-ignore - Vite resolves image assets at build time
-import impressionsIcon from "../assets/icons/impressions icon.png";
+import impressionsIcon from "../assets/icons/impressions icon.webp";
 // @ts-ignore - Vite resolves image assets at build time
-import chatgptLogo from "../assets/icons/ChatGPT-Logo.png";
+import chatgptLogo from "../assets/icons/ChatGPT-Logo.webp";
 // @ts-ignore - Vite resolves image assets at build time
 import geminiLogo from "../assets/icons/gemini-google-icon-symbol-logo-free-png.png.webp";
 // @ts-ignore - Vite resolves image assets at build time

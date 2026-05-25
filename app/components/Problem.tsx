@@ -1,6 +1,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { useLanguage, t } from "./LanguageContext";
+import type { Language } from "../types";
 import { ArrowRight } from "lucide-react";
 
 // Generates a dash placeholder that roughly matches the word's visual width
@@ -79,7 +80,7 @@ function PainPoint({
 }: {
   index: number;
   textKey: string;
-  lang: string;
+  lang: Language;
   wordDelay: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);

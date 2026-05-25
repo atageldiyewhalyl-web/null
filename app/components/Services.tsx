@@ -10,16 +10,16 @@ import {
 import { motion } from "motion/react";
 import { useRef, useState, type UIEvent } from "react";
 import { useLanguage, t } from "./LanguageContext";
-import conversionVisualEn from "../assets/services/english conversion.png";
-import conversionVisualDe from "../assets/services/german conversion.png";
-import conversionVisualEnMobile from "../assets/services/eng conversion mobile .png";
-import conversionVisualDeMobile from "../assets/services/German conversion mobile .png";
-import scrollableCredentialOneEn from "../assets/services/Scrollable credential eng 1.png";
-import scrollableCredentialTwoEn from "../assets/services/Scrollable credential eng 2.png";
-import scrollableCredentialThreeEn from "../assets/services/Scrollable credential eng 2.png.png";
-import scrollableCredentialOneDe from "../assets/services/Scrollable credential 1 german.png";
-import scrollableCredentialTwoDe from "../assets/services/Scrollable credential 2 german.png";
-import scrollableCredentialThreeDe from "../assets/services/Scrollable credential 3 German.png";
+import conversionVisualEn from "../assets/services/english conversion.webp";
+import conversionVisualDe from "../assets/services/german conversion.webp";
+import conversionVisualEnMobile from "../assets/services/eng conversion mobile .webp";
+import conversionVisualDeMobile from "../assets/services/German conversion mobile .webp";
+import scrollableCredentialOneEn from "../assets/services/Scrollable credential eng 1.webp";
+import scrollableCredentialTwoEn from "../assets/services/Scrollable credential eng 2.webp";
+import scrollableCredentialThreeEn from "../assets/services/Scrollable credential eng 2.png.webp";
+import scrollableCredentialOneDe from "../assets/services/Scrollable credential 1 german.webp";
+import scrollableCredentialTwoDe from "../assets/services/Scrollable credential 2 german.webp";
+import scrollableCredentialThreeDe from "../assets/services/Scrollable credential 3 German.webp";
 
 export function Services() {
   const { lang } = useLanguage();

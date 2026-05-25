@@ -212,7 +212,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design",
     date: "2026-04-23",
     readTime: "15 min read",
-    image: "/assets/blog/null-conversion-elements.jpg",
+    image: "/assets/blog/null-conversion-elements.webp",
   },
   {
     groupId: "conversion-elements",
@@ -425,7 +425,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design",
     date: "2026-04-23",
     readTime: "15 min read",
-    image: "/assets/blog/null-conversion-elements.jpg",
+    image: "/assets/blog/null-conversion-elements.webp",
   },
   {
     groupId: "google-rankings-germany",
@@ -460,7 +460,7 @@ export const blogPosts: BlogPost[] = [
     category: "SEO",
     date: "2026-04-23",
     readTime: "12 min read",
-    image: "/assets/blog/null-google-rankings-germany.jpg"
+    image: "/assets/blog/null-google-rankings-germany.webp"
   },
   {
     groupId: "google-rankings-germany",
@@ -493,7 +493,7 @@ export const blogPosts: BlogPost[] = [
     category: "SEO",
     date: "2026-04-23",
     readTime: "12 min read",
-    image: "/assets/blog/null-google-rankings-germany.jpg"
+    image: "/assets/blog/null-google-rankings-germany.webp"
   },
   {
     groupId: "law-firm-webdesign",
@@ -687,7 +687,7 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · SEO",
     date: "2026-05-04",
     readTime: "18 min read",
-    image: "/assets/blog/null-law-firm-webdesign.jpg"
+    image: "/assets/blog/null-law-firm-webdesign.webp"
   },
   {
     groupId: "law-firm-webdesign",
@@ -882,7 +882,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design · SEO",
     date: "2026-05-04",
     readTime: "18 min read",
-    image: "/assets/blog/null-law-firm-webdesign.jpg"
+    image: "/assets/blog/null-law-firm-webdesign.webp"
   },
   {
     groupId: "freelancer-vs-agency-website",
@@ -1074,7 +1074,7 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · Kosten · Strategie",
     date: "2026-05-04",
     readTime: "16 min read",
-    image: "/assets/blog/null-law-firm-webdesign.jpg"
+    image: "/assets/blog/null-law-firm-webdesign.webp"
   },
   {
     groupId: "freelancer-vs-agency-website",
@@ -1255,6 +1255,6 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design · Strategy · Costs",
     date: "2026-05-04",
     readTime: "16 min read",
-    image: "/assets/blog/null-law-firm-webdesign.jpg"
+    image: "/assets/blog/null-law-firm-webdesign.webp"
   }
 ];

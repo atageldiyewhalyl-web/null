@@ -1,23 +1,34 @@
-# Null Agency - Your client acquisition system
+# nüll.
 
-Null (Punycode: xn--nll-hoa) is a premium digital agency specializing in high-end web design and digital positioning for businesses, consultants, lawyers, and professional service firms.
+nüll. is a Mannheim-based web design and digital acquisition studio for professional service businesses, consultants, law firms, and local companies in Germany.
 
-## Core Services
-- Premium Webdesign: Custom-engineered websites with a focus on speed, aesthetics, and conversion.
-- Digital Positioning: Helping businesses transform their offer into a premium digital brand.
-- Lead Acquisition Systems: Building predictable marketing funnels that go beyond word-of-mouth.
-- Conversion Strategy: Websites designed to earn trust and turn visitors into customers.
-
-## Technical Excellence
-- Framework: Built with React Router 7 and Vite.
-- Performance: Fully static-site generated (SSG) for maximum speed and SEO.
-- Global Reach: Multi-lingual support for professional websites.
-
-## Key Contact Information
-- Location: Remote and local projects
-- Website: https://xn--nll-hoa.com
-- Email: info@nüll.com
+## Website
+- Canonical domain: https://xn--nll-hoa.com
+- Brand spelling: nüll.
+- Location: Mannheim, Germany
+- Contact email: info@nüll.com
 - WhatsApp: +49 1525 6569852
 
-## Mission
-To empower businesses with digital presences that reflect their true value and command respect in a competitive market.
+## Primary Pages
+- https://xn--nll-hoa.com/ - Main landing page for websites, SEO, Google Ads, AI search visibility, branding, and content creation.
+- https://xn--nll-hoa.com/lawyers - Dedicated landing page for modern Kanzlei-Websites focused on local visibility and Mandatsanfragen.
+- https://xn--nll-hoa.com/services - Web design service page.
+- https://xn--nll-hoa.com/services/seo - SEO service page.
+- https://xn--nll-hoa.com/services/google-ads - Google Ads service page.
+- https://xn--nll-hoa.com/blog - Articles about web design, SEO, conversion, and digital positioning.
+
+## Services
+- Conversion-focused websites with clear structure and premium visual direction.
+- Local SEO and search-intent page architecture for qualified organic visibility.
+- Google Ads campaign setup, landing pages, and conversion tracking.
+- AI search visibility and digital positioning for expert-led businesses.
+- Brand, content, and trust-building systems for lead generation.
+
+## Technical Notes
+- Framework: React Router 7 with Vite.
+- Rendering: SSR-enabled React application with static public SEO files.
+- Sitemap: https://xn--nll-hoa.com/sitemap.xml
+- Robots: https://xn--nll-hoa.com/robots.txt
+
+## Positioning
+nüll. builds digital presences that help visitors quickly understand expertise, trust the provider, and take the next step toward a qualified inquiry.

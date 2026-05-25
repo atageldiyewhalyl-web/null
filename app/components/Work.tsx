@@ -8,13 +8,13 @@ import dogruHeroDemo from "../assets/Hasan Hero Demo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import besirYamanHeroDemo from "../assets/BY Hero Demo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
-import besirYamanLogo from "../assets/Besir yaman /by-logo.png";
+import besirYamanLogo from "../assets/Besir yaman /by-logo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import herkulesHeroDemo from "../assets/Herkules Hero Demo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
-import herkulesLogo from "../assets/Herkules/Herkules Logo.png";
+import herkulesLogo from "../assets/Herkules/Herkules Logo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
-import dogruLogo from "../assets/Dogru kanzlei/logo.png";
+import dogruLogo from "../assets/Dogru kanzlei/logo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import spineHeroDemo from "../assets/spine demo.webp";
 

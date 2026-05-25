@@ -14,7 +14,10 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { CookieConsent } from "./components/CookieConsent";
 import { getLanguageForPath, isLanguage } from "./utils/i18nRouting";
+import { cn } from "./lib/utils";
 import "./styles/index.css";
+
+const shouldLoadAnalytics = import.meta.env.PROD;
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
@@ -46,12 +49,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WB0JX9VN2" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WB0JX9VN2');gtag('config','AW-18170315805');`,
-          }}
-        />
+        {shouldLoadAnalytics && (
+          <>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WB0JX9VN2" />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WB0JX9VN2');gtag('config','AW-18170315805');`,
+              }}
+            />
+          </>
+        )}
       </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}
@@ -68,13 +75,22 @@ export default function App() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith("/admin");
   const isOnboarding = location.pathname.startsWith("/onboarding") || isAdmin;
+  const isBlankCanvas =
+    location.pathname === "/" ||
+    location.pathname.startsWith("/new-landing") ||
+    location.pathname.startsWith("/lawyers");
 
   return (
     <LanguageProvider initialLang={lang}>
-      <div className="min-h-screen w-full max-w-[100vw] overflow-x-clip bg-white transition-colors duration-500">
-        {!isOnboarding && <Navbar />}
+      <div
+        className={cn(
+          "min-h-screen w-full bg-white transition-colors duration-500",
+          isBlankCanvas ? "new-landing-shell" : "max-w-[100vw] overflow-x-clip",
+        )}
+      >
+        {!isOnboarding && !isBlankCanvas && <Navbar />}
         <Outlet />
-        {!isOnboarding && <Footer />}
+        {!isOnboarding && !isBlankCanvas && <Footer />}
         {!isAdmin && <CookieConsent />}
       </div>
     </LanguageProvider>
