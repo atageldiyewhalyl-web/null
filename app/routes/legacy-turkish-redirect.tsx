@@ -1,14 +1,13 @@
-import { redirect, type LoaderFunctionArgs } from "react-router";
-
-export async function loader({ params, request }: LoaderFunctionArgs) {
-  const url = new URL(request.url);
-  const rest = params["*"]?.replace(/^\/+/, "") ?? "";
-  const targetPath = rest ? `/${rest}` : "/";
-  url.searchParams.delete("lang");
-
-  throw redirect(`${targetPath}${url.search}${url.hash}`, 301);
-}
+import { Navigate, useParams, useSearchParams } from "react-router";
 
 export default function LegacyTurkishRedirect() {
-  return null;
+  const params = useParams();
+  const [searchParams] = useSearchParams();
+  const rest = params["*"]?.replace(/^\/+/, "") ?? "";
+  const targetPath = rest ? `/${rest}` : "/";
+  const nextParams = new URLSearchParams(searchParams);
+  nextParams.delete("lang");
+  const query = nextParams.toString();
+
+  return <Navigate to={`${targetPath}${query ? `?${query}` : ""}`} replace />;
 }

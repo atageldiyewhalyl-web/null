@@ -1,9 +1,5 @@
 import MinimalistHeroDemo from "../components/MinimalistHeroDemo";
-import { redirect } from "react-router";
-
-export function loader() {
-  return redirect("/", 301);
-}
+import { Navigate } from "react-router";
 
 export function meta() {
   return [
@@ -15,5 +11,5 @@ export function meta() {
 }
 
 export default function NewLandingRoute() {
-  return <MinimalistHeroDemo />;
+  return <Navigate to="/" replace />;
 }

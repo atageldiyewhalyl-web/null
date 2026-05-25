@@ -1,33 +1,9 @@
-import { redirect, type LoaderFunctionArgs } from "react-router";
 import { BlogPost } from "../components/BlogPost";
 import { getBlogPostBySlug, getBlogTranslations, getXDefaultPost } from "../utils/i18nRouting";
 
-export async function loader({ params }: LoaderFunctionArgs) {
-  const legacyTurkishBlogRedirects: Record<string, string> = {
-    "yuksek-donusumlu-web-sitesi-icin-5-temel-oge": "/blog/5-elemente-high-converting-website-2026",
-    "google-siralamalarini-yukseltmek-almanya": "/blog/google-ranking-verbessern-deutschland",
-    "avukatlar-icin-web-tasarim": "/blog/webdesign-fuer-anwaelte-kanzleien",
-    "freelancer-mi-ajans-mi": "/blog/freelancer-oder-agentur-website",
-  };
-
-  if (params.slug && legacyTurkishBlogRedirects[params.slug]) {
-    throw redirect(legacyTurkishBlogRedirects[params.slug], 301);
-  }
-
+export function meta({ params }: { params: { slug?: string } }) {
   const post = getBlogPostBySlug(params.slug);
-  if (!post) {
-    throw new Response("Not Found", { status: 404 });
-  }
-  if (post.lang === "tr") {
-    const fallback = getXDefaultPost(post);
-    throw redirect(`/blog/${fallback.slug}`, 301);
-  }
-  return { post };
-}
-
-export function meta({ data }: { data: { post: any } }) {
-  if (!data || !data.post) return [];
-  const { post } = data;
+  if (!post) return [];
   const baseUrl = "https://xn--nll-hoa.com";
   const translations = getBlogTranslations(post);
   const xDefaultPost = getXDefaultPost(post);

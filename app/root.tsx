@@ -4,11 +4,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useLocation,
 } from "react-router";
-import type { LoaderFunctionArgs } from "react-router";
-import { redirect } from "react-router";
 import { LanguageProvider } from "./components/LanguageContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -18,27 +15,6 @@ import { cn } from "./lib/utils";
 import "./styles/index.css";
 
 const shouldLoadAnalytics = import.meta.env.PROD;
-
-export async function loader({ request }: LoaderFunctionArgs) {
-  const url = new URL(request.url);
-  const urlLang = url.searchParams.get("lang");
-  if (urlLang === "tr") {
-    url.searchParams.delete("lang");
-    if (url.pathname === "/tr" || url.pathname.startsWith("/tr/")) {
-      const rest = url.pathname.replace(/^\/tr\/?/, "");
-      const targetPath = rest ? `/${rest}` : "/";
-      return redirect(`${targetPath}${url.search}${url.hash}`, 301);
-    }
-    return redirect(`${url.pathname}${url.search}${url.hash}`, 301);
-  }
-  const pathLang = getLanguageForPath(url.pathname);
-  const cookie = request.headers.get("Cookie");
-  const match = cookie?.match(/nll_lang=([^;]+)/);
-  const preferredLang = isLanguage(match?.[1]) ? match[1] : "de";
-  const queryLang = isLanguage(urlLang) ? urlLang : null;
-  const lang = pathLang ?? queryLang ?? preferredLang;
-  return { lang };
-}
 
 // Layout is a pure shell — no hooks allowed here (no router context yet)
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -71,8 +47,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 // App has full router context — hooks are safe here
 export default function App() {
-  const { lang } = useLoaderData<typeof loader>() || { lang: "de" };
   const location = useLocation();
+  const queryLang = new URLSearchParams(location.search).get("lang");
+  const lang = getLanguageForPath(location.pathname) ?? (isLanguage(queryLang) ? queryLang : "de");
   const isAdmin = location.pathname.startsWith("/admin");
   const isOnboarding = location.pathname.startsWith("/onboarding") || isAdmin;
   const isBlankCanvas =
