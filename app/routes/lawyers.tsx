@@ -70,7 +70,6 @@ export default function LawyersRoute() {
               { label: "Blog", href: "/blog" },
               { label: "Kontakt", href: "#contact" },
               { label: "Leistungen", href: "#services" },
-              { label: "Portfolio", href: "#portfolio" },
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },

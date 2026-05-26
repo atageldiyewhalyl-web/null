@@ -13,7 +13,6 @@ export default function MinimalistHeroDemo() {
               { label: "Blog", href: "/blog" },
               { label: "Kontakt", href: "#contact" },
               { label: "LEISTUNGEN", href: "#services" },
-              { label: "Portfolio", href: "#portfolio" },
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },
