@@ -8,6 +8,11 @@
       "permanent": true
     },
     {
+      "source": "/doctors",
+      "destination": "/arztpraxis-websites",
+      "permanent": true
+    },
+    {
       "source": "/services",
       "destination": "/leistungen/webdesign",
       "permanent": true

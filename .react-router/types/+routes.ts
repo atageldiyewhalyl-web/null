@@ -29,6 +29,12 @@ type Pages = {
   "/lawyers": {
     params: {};
   };
+  "/arztpraxis-websites": {
+    params: {};
+  };
+  "/doctors": {
+    params: {};
+  };
   "/services": {
     params: {};
   };
@@ -103,7 +109,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/kanzlei-websites" | "/lawyers" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/kanzlei-websites" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -124,6 +130,14 @@ type RouteFiles = {
   "routes/lawyers.tsx": {
     id: "routes/lawyers";
     page: "/lawyers";
+  };
+  "routes/arztpraxis-websites.tsx": {
+    id: "routes/arztpraxis-websites";
+    page: "/arztpraxis-websites";
+  };
+  "routes/doctors.tsx": {
+    id: "routes/doctors";
+    page: "/doctors";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -226,6 +240,8 @@ type RouteModules = {
   "routes/new-landing": typeof import("./app/routes/new-landing.tsx");
   "routes/kanzlei-websites": typeof import("./app/routes/kanzlei-websites.tsx");
   "routes/lawyers": typeof import("./app/routes/lawyers.tsx");
+  "routes/arztpraxis-websites": typeof import("./app/routes/arztpraxis-websites.tsx");
+  "routes/doctors": typeof import("./app/routes/doctors.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
   "routes/services": typeof import("./app/routes/services.tsx");
   "routes/website": typeof import("./app/routes/website.tsx");

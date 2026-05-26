@@ -73,6 +73,7 @@ export default function LawyersRoute() {
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },
+              { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
             ]}
             mainText="Moderne Kanzlei-Websites, die sichtbar machen und Mandanten überzeugen."
             readMoreLink="#services"
