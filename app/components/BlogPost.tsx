@@ -247,8 +247,9 @@ export function BlogPost() {
       publisher: {
         "@type": "Organization",
         name: "nüll.",
-        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/logo.png" },
+        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/og-image.png" },
       },
+      image: "https://xn--nll-hoa.com/assets/blog/mannheim-webdesign.webp",
       datePublished: "2026-05-04",
       dateModified: "2026-05-04",
       inLanguage: "de",
@@ -267,8 +268,9 @@ export function BlogPost() {
       publisher: {
         "@type": "Organization",
         name: "nüll.",
-        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/logo.png" },
+        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/og-image.png" },
       },
+      image: "https://xn--nll-hoa.com/assets/blog/mannheim-webdesign.webp",
       datePublished: "2026-05-04",
       dateModified: "2026-05-04",
       inLanguage: "en",

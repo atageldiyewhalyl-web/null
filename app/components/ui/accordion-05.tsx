@@ -78,12 +78,12 @@ export function Accordion05({
       <Accordion type="single" defaultValue={defaultValue} collapsible className="w-full">
         {accordionItems.map((item) => (
           <AccordionItem value={item.id} key={item.id} className="border-[#d8dde7] last:border-b">
-            <AccordionTrigger className="group h-[4.85rem] cursor-pointer overflow-hidden pl-0 text-left text-[#0e0e10]/18 duration-200 hover:no-underline data-[state=open]:h-auto data-[state=open]:min-h-[5.6rem] data-[state=open]:text-primary [&>svg:last-child]:hidden">
-              <div className="flex flex-1 items-start gap-4 md:gap-8">
-                <p className="mt-2 min-w-8 text-xs font-bold tracking-[-0.02em] text-[#0e0e10]/75 md:mt-3">
+            <AccordionTrigger className="group min-h-[5rem] cursor-pointer overflow-hidden py-4 pl-0 text-left text-[#0e0e10]/18 duration-200 hover:no-underline data-[state=open]:min-h-[5.5rem] data-[state=open]:text-primary md:min-h-[5.85rem] md:py-4 [&>svg:last-child]:hidden">
+              <div className="flex flex-1 items-start gap-4 md:gap-7">
+                <p className="mt-2 min-w-8 text-xs font-bold tracking-[-0.02em] text-[#0e0e10]/75 md:mt-2">
                   {item.id}
                 </p>
-                <h3 className="relative -mt-1 text-left text-3xl font-bold uppercase leading-[0.9] tracking-[-0.075em] md:text-[3.65rem]">
+                <h3 className="relative -mt-1 text-left text-3xl font-bold uppercase leading-[0.96] tracking-[-0.04em] md:text-[2.55rem] lg:text-[2.9rem]">
                   {item.title}
                 </h3>
               </div>

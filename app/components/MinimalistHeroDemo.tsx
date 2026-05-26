@@ -10,13 +10,16 @@ export default function MinimalistHeroDemo() {
           <MinimalistHero
             logoText="nüll."
             navLinks={[
-              { label: "BLOG", href: "/blog" },
-              { label: "CONTACT", href: "#contact" },
+              { label: "Blog", href: "/blog" },
+              { label: "Kontakt", href: "#contact" },
               { label: "LEISTUNGEN", href: "#services" },
-              { label: "PORTFOLIO", href: "#portfolio" },
+              { label: "Portfolio", href: "#portfolio" },
+            ]}
+            categoryLinks={[
+              { label: "Anwälte & Berater", href: "/kanzlei-websites" },
             ]}
             mainText="We help businesses get found, build trust, and turn visibility into real inquiries."
-            readMoreLink="#"
+            readMoreLink="#services"
             imageSrc="/assets/new-landing/arrow.webp"
             imageAlt="Black cursor over a blue circle."
             overlayText={{
@@ -24,10 +27,10 @@ export default function MinimalistHeroDemo() {
               part2: "be chosen.",
             }}
             socialLinks={[
-              { icon: Facebook, href: "#" },
-              { icon: Instagram, href: "#" },
-              { icon: Twitter, href: "#" },
-              { icon: Linkedin, href: "#" },
+              { icon: Facebook, href: "#", label: "Facebook" },
+              { icon: Instagram, href: "#", label: "Instagram" },
+              { icon: Twitter, href: "#", label: "Twitter" },
+              { icon: Linkedin, href: "https://www.linkedin.com/company/n%C3%BCll/", label: "LinkedIn" },
             ]}
             locationText="Mannheim, DE"
           />

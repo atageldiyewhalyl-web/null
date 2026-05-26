@@ -7,7 +7,7 @@ export function meta() {
   const title = "Kanzlei-Websites für mehr Mandatsanfragen | nüll.";
   const description =
     "Moderne Kanzlei-Websites mit klarer Struktur, lokaler Sichtbarkeit und starkem Fokus auf Mandantenanfragen.";
-  const url = "https://xn--nll-hoa.com/lawyers";
+  const url = "https://xn--nll-hoa.com/kanzlei-websites";
   const image = "https://xn--nll-hoa.com/og-image.png";
 
   return [
@@ -30,20 +30,53 @@ export function meta() {
 }
 
 export default function LawyersRoute() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://xn--nll-hoa.com/kanzlei-websites#service",
+    name: "Kanzlei-Websites für Anwälte und Berater",
+    serviceType: "Webdesign und SEO für Kanzleien",
+    provider: {
+      "@type": "ProfessionalService",
+      "@id": "https://xn--nll-hoa.com/#organization",
+      name: "nüll.",
+      url: "https://xn--nll-hoa.com/",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Mannheim",
+        addressCountry: "DE",
+      },
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Deutschland",
+    },
+    url: "https://xn--nll-hoa.com/kanzlei-websites",
+    description:
+      "Moderne Kanzlei-Websites mit klarer Struktur, lokaler Sichtbarkeit und Fokus auf Mandatsanfragen.",
+  };
+
   return (
     <main className="relative isolate bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="relative z-0 h-[200vh]">
         <div className="sticky top-0 z-0 h-screen overflow-hidden bg-white">
           <MinimalistHero
             logoText="nüll."
             navLinks={[
-              { label: "BLOG", href: "/blog" },
-              { label: "CONTACT", href: "#contact" },
-              { label: "LEISTUNGEN", href: "#services" },
-              { label: "PORTFOLIO", href: "#portfolio" },
+              { label: "Blog", href: "/blog" },
+              { label: "Kontakt", href: "#contact" },
+              { label: "Leistungen", href: "#services" },
+              { label: "Portfolio", href: "#portfolio" },
+            ]}
+            categoryLinks={[
+              { label: "Anwälte & Berater", href: "/kanzlei-websites" },
             ]}
             mainText="Moderne Kanzlei-Websites, die sichtbar machen und Mandanten überzeugen."
-            readMoreLink="#"
+            readMoreLink="#services"
             imageSrc={hammerForLawyer}
             imageAlt="Lawyer hammer over a blue circle."
             imageClassName="w-[18.5rem] translate-x-16 translate-y-20 md:w-[34rem] md:translate-x-36 md:translate-y-36 lg:w-[40rem] lg:translate-x-44 lg:translate-y-40"
@@ -51,12 +84,12 @@ export default function LawyersRoute() {
               part1: "gefunden werden.",
               part2: "mandate gewinnen.",
             }}
-            overlayTextClassName="text-[clamp(2.65rem,11.5vw,3.9rem)] md:text-[clamp(3.35rem,4.75vw,5.35rem)]"
+            overlayTextClassName="text-[clamp(2.25rem,9.6vw,3rem)] md:text-[clamp(3.35rem,4.75vw,5.35rem)]"
             socialLinks={[
-              { icon: Facebook, href: "#" },
-              { icon: Instagram, href: "#" },
-              { icon: Twitter, href: "#" },
-              { icon: Linkedin, href: "#" },
+              { icon: Facebook, href: "#", label: "Facebook" },
+              { icon: Instagram, href: "#", label: "Instagram" },
+              { icon: Twitter, href: "#", label: "Twitter" },
+              { icon: Linkedin, href: "https://www.linkedin.com/company/n%C3%BCll/", label: "LinkedIn" },
             ]}
             locationText="Mannheim, DE"
           />
@@ -64,22 +97,27 @@ export default function LawyersRoute() {
       </section>
       <div className="relative z-20 -mt-[100vh] min-h-screen bg-white">
         <NewLandingSpinnerSection
+          showLawyerProblemSection
           statsHeading="Sichtbarkeit wird erst wertvoll, wenn daraus Mandatsanfragen entstehen"
           statsItems={[
             {
-              customValue: "97%",
+              value: 97,
+              suffix: "%",
               label: "Mehr Klicks",
               description:
                 "Durch klare SEO-Struktur und Seiten nach echter Suchintention.",
             },
             {
-              customValue: "95%",
+              value: 95,
+              suffix: "%",
               label: "Mehr Impressionen",
               description:
                 "Mehr Sichtbarkeit bei relevanten Suchanfragen rund um Rechtsgebiete.",
             },
             {
-              customValue: "€6.000+",
+              value: 6000,
+              prefix: "€",
+              suffix: "+",
               label: "Mandatswert durch eine Seite",
               description:
                 "Ein gezielter Entry-Point kann konkrete Anfragen auslösen.",

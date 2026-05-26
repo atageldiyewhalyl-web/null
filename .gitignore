@@ -17,6 +17,7 @@
 # misc
 .DS_Store
 *.pem
+.claude/
 
 # raw source media kept locally after optimization
 app/assets/Hero background/Hero background long .mp4
@@ -24,6 +25,14 @@ app/assets/Hero background/Hero background short.mp4
 app/assets/Hero background/Mobile/Mobile Background video.mp4
 app/assets/Hero background/Mobile/mobile-background.optimized.mp4
 app/assets/Hero background/Mobile/mobile-background.webm
+app/assets/Herkules/Hero video.mov
+app/assets/Service hero scroll/*.png
+app/assets/services assets /*.png
+app/assets/webpage scatter.png
+app/assets/question mark asset.png
+
+# accidental duplicate route exports
+app/routes/impressum 2.tsx
 
 # debug
 npm-debug.log*

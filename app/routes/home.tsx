@@ -27,5 +27,48 @@ export function meta() {
 }
 
 export default function HomeRoute() {
-  return <MinimalistHeroDemo />;
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://xn--nll-hoa.com/#organization",
+      name: "nüll.",
+      url: "https://xn--nll-hoa.com/",
+      email: "info@nüll.com",
+      telephone: "+4915256569852",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Mannheim",
+        addressCountry: "DE",
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Deutschland",
+      },
+      sameAs: ["https://www.linkedin.com/company/n%C3%BCll/"],
+      description:
+        "nüll entwickelt Websites, SEO-Strukturen und Google Ads Systeme für mehr qualifizierte Anfragen.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://xn--nll-hoa.com/#website",
+      name: "nüll.",
+      url: "https://xn--nll-hoa.com/",
+      publisher: {
+        "@id": "https://xn--nll-hoa.com/#organization",
+      },
+      inLanguage: "de-DE",
+    },
+  ];
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <MinimalistHeroDemo />
+    </>
+  );
 }

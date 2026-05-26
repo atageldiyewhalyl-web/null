@@ -99,7 +99,7 @@ export function Services() {
       title: t("services.webdesign", lang),
       description: t("services.webdesign.desc", lang),
       Icon: MonitorSmartphone,
-      href: "/services",
+      href: "/leistungen/webdesign",
       className: "lg:col-span-5",
     },
     {
@@ -107,7 +107,7 @@ export function Services() {
       title: t("services.development", lang),
       description: t("services.development.desc", lang),
       Icon: Code2,
-      href: "/services",
+      href: "/leistungen/webdesign",
       className: "lg:col-span-4",
     },
     {
@@ -115,7 +115,7 @@ export function Services() {
       title: t("services.branding", lang),
       description: t("services.branding.desc", lang),
       Icon: Palette,
-      href: "/services",
+      href: "/leistungen/webdesign",
       className: "lg:col-span-3",
     },
     {
@@ -133,7 +133,7 @@ export function Services() {
       Icon: Bot,
       badge: t("services.ai.badge", lang),
       dark: true,
-      href: "/services",
+      href: "/leistungen/webdesign",
       className: "lg:col-span-4",
     },
     {
@@ -142,7 +142,7 @@ export function Services() {
       description: t("services.maintenance.desc", lang),
       Icon: RefreshCw,
       footer: t("services.maintenance.badge", lang),
-      href: "/services",
+      href: "/leistungen/webdesign",
       className: "lg:col-span-4",
     },
   ];

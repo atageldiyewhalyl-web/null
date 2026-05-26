@@ -15,7 +15,7 @@ export function Footer() {
           nüll<span className="text-[#0071e3]">.</span>
         </Link>
         <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[0.8125rem] text-muted-foreground">
-          <Link to="/services" className="hover:text-foreground transition-colors">{t("nav.services", displayLang)}</Link>
+          <Link to="/leistungen/webdesign" className="hover:text-foreground transition-colors">{t("nav.services", displayLang)}</Link>
           <Link to="/#work" className="hover:text-foreground transition-colors">{t("nav.work", displayLang)}</Link>
           <Link to="/blog" className="hover:text-foreground transition-colors">{t("nav.blog", displayLang)}</Link>
           <Link to="/#contact" className="hover:text-foreground transition-colors">{t("nav.contact", displayLang)}</Link>

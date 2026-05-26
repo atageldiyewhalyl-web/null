@@ -5,6 +5,7 @@ export function meta({ params }: { params: { slug?: string } }) {
   const post = getBlogPostBySlug(params.slug);
   if (!post) return [];
   const baseUrl = "https://xn--nll-hoa.com";
+  const imageUrl = post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`;
   const translations = getBlogTranslations(post);
   const xDefaultPost = getXDefaultPost(post);
   const lawFirmMeta: Record<string, {
@@ -74,7 +75,7 @@ export function meta({ params }: { params: { slug?: string } }) {
     ...(customMeta ? [{ name: "keywords", content: customMeta.keywords }] : []),
     { property: "og:title", content: customMeta?.ogTitle ?? post.title },
     { property: "og:description", content: customMeta ? customMeta.ogDescription : post.excerpt },
-    { property: "og:image", content: post.image },
+    { property: "og:image", content: imageUrl },
     { property: "og:type", content: "article" },
     { property: "og:url", content: customMeta?.canonical ?? `${baseUrl}/blog/${post.slug}` },
     { property: "og:locale", content: post.lang === "de" ? "de_DE" : "en_GB" },
@@ -86,7 +87,7 @@ export function meta({ params }: { params: { slug?: string } }) {
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: post.title },
     { name: "twitter:description", content: post.excerpt },
-    { name: "twitter:image", content: post.image },
+    { name: "twitter:image", content: imageUrl },
     { tagName: "link", rel: "canonical", href: customMeta?.canonical ?? `${baseUrl}/blog/${post.slug}` },
     ...(customMeta?.alternates ?? translations.filter((translation) => translation.lang !== "tr").map((translation) => ({
       lang: translation.lang,

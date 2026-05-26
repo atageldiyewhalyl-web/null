@@ -1,20 +1,93 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/lawyers",
+      "destination": "/kanzlei-websites",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/services/website",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/website",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/webdesign",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/services/seo",
+      "destination": "/leistungen/seo",
+      "permanent": true
+    },
+    {
+      "source": "/seo",
+      "destination": "/leistungen/seo",
+      "permanent": true
+    },
+    {
+      "source": "/services/google-ads",
+      "destination": "/leistungen/google-ads",
+      "permanent": true
+    },
+    {
+      "source": "/google-ads",
+      "destination": "/leistungen/google-ads",
+      "permanent": true
     }   
   ],  
   "headers": [
     {
-      "source": "/(.*)",    
+      "source": "/admin",
       "headers": [
-        {        
+        {
           "key": "X-Robots-Tag",
-          "value": "all"       
-        },   
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/onboarding",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/onboarding/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
         {
           "key": "Link",
           "value": "<https://xn--nll-hoa.com/sitemap.xml>; rel=\"sitemap\""      

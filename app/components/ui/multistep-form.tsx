@@ -260,7 +260,7 @@ export default function MultistepForm({
   }
 
   return (
-    <div className={cn("mx-auto w-full max-w-4xl pb-16", className)}>
+    <div className={cn("mx-auto w-full max-w-4xl", isEmbedded ? "pb-0" : "pb-16", className)}>
       {showIntro && (
         <div className="mb-10 text-center md:mb-14">
           <p className="mb-4 text-[0.75rem] font-black uppercase tracking-[0.18em] text-[#007aff]">
@@ -272,7 +272,7 @@ export default function MultistepForm({
         </div>
       )}
 
-      <div className="mb-7">
+      <div className={cn(isEmbedded ? "mb-5 sm:mb-6" : "mb-7")}>
         <div className="mb-3 flex items-center justify-between">
           {steps.map((step, index) => {
             const isActive = index === currentStep;
@@ -288,7 +288,7 @@ export default function MultistepForm({
               >
                 <span
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full border text-xs font-black transition-all",
+                    "flex h-7 w-7 items-center justify-center rounded-full border text-[0.68rem] font-black transition-all sm:h-8 sm:w-8 sm:text-xs",
                     isEmbedded
                       ? [
                           isDone && "border-white bg-white text-[#007aff]",
@@ -317,7 +317,7 @@ export default function MultistepForm({
             );
           })}
         </div>
-        <div className={cn("h-2 overflow-hidden rounded-full", isEmbedded ? "bg-white/25" : "bg-[#f5f5f7]")}>
+        <div className={cn("h-1.5 overflow-hidden rounded-full sm:h-2", isEmbedded ? "bg-white/25" : "bg-[#f5f5f7]")}>
           <motion.div
             className={cn("h-full rounded-full", isEmbedded ? "bg-white" : "bg-[#007aff]")}
             animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
@@ -326,7 +326,7 @@ export default function MultistepForm({
         </div>
       </div>
 
-      <Card className="overflow-hidden rounded-[2rem] border-[#eeeeef] bg-white text-[#0e0e10] shadow-[0_24px_70px_rgba(0,0,0,0.08)] [&_input]:text-[#0e0e10] [&_input]:caret-[#007aff] [&_input::placeholder]:text-[#8e8e93] [&_textarea]:text-[#0e0e10] [&_textarea]:caret-[#007aff] [&_textarea::placeholder]:text-[#8e8e93]">
+      <Card className="overflow-hidden rounded-[1.35rem] border-[#eeeeef] bg-white text-[#0e0e10] shadow-[0_24px_70px_rgba(0,0,0,0.08)] sm:rounded-[1.65rem] md:rounded-[2rem] [&_input]:text-[#0e0e10] [&_input]:caret-[#007aff] [&_input::placeholder]:text-[#8e8e93] [&_textarea]:text-[#0e0e10] [&_textarea]:caret-[#007aff] [&_textarea::placeholder]:text-[#8e8e93]">
         <AnimatePresence mode="wait">
           <motion.div
             key={steps[currentStep].id}
@@ -338,8 +338,8 @@ export default function MultistepForm({
             {currentStep === 3 && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
-                  <CardTitle className="flex items-center gap-3 text-[1.75rem] tracking-[-0.035em] text-[#0e0e10]">
-                    <UserRound className="h-6 w-6 text-[#007aff]" />
+                  <CardTitle className="flex items-center gap-3 text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
+                    <UserRound className="h-5 w-5 text-[#007aff] sm:h-6 sm:w-6" />
                     Ihre Kontaktdaten
                   </CardTitle>
                 </CardHeader>
@@ -411,7 +411,7 @@ export default function MultistepForm({
             {currentStep === 1 && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
-                  <CardTitle className="text-[1.75rem] tracking-[-0.035em] text-[#0e0e10]">
+                  <CardTitle className="text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
                     Wo haben Sie uns gefunden?
                   </CardTitle>
                 </CardHeader>
@@ -430,13 +430,13 @@ export default function MultistepForm({
                         transition={{ delay: index * 0.04 }}
                         htmlFor={`source-${option}`}
                         className={cn(
-                          "flex cursor-pointer items-center justify-between rounded-[1.25rem] border p-4 transition-all hover:bg-[#fbfbfd]",
+                          "grid min-h-[3.7rem] cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-[1.15rem] border p-4 transition-all hover:bg-[#fbfbfd] sm:rounded-[1.25rem]",
                           formData.foundFrom === option
                             ? "border-[#007aff] bg-[#f5faff] ring-4 ring-[#007aff]/10"
                             : "border-[#eeeeef] bg-white",
                         )}
                       >
-                        <span className="font-bold text-[#1d1d1f]">{option}</span>
+                        <span className="min-w-0 font-bold leading-tight text-[#1d1d1f] [overflow-wrap:anywhere]">{option}</span>
                         <RadioGroupItem id={`source-${option}`} value={option} />
                       </motion.label>
                     ))}
@@ -460,11 +460,11 @@ export default function MultistepForm({
             {currentStep === 0 && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
-                  <CardTitle className="text-[1.75rem] tracking-[-0.035em] text-[#0e0e10]">
+                  <CardTitle className="text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
                     Welche Ziele verfolgen wir?
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3 p-6 pt-0 md:p-8 md:pt-0">
+                <CardContent className="space-y-3.5 p-6 pt-0 md:p-8 md:pt-0">
                   {serviceOptions.map((service, index) => {
                     const isSelected = formData.services.includes(service.id);
                     const Icon = service.icon;
@@ -479,14 +479,14 @@ export default function MultistepForm({
                         transition={{ delay: index * 0.04 }}
                         onClick={() => toggleService(service.id)}
                         className={cn(
-                          "flex w-full items-center gap-4 rounded-[1.25rem] border bg-white p-4 text-left transition-all",
+                          "grid min-h-[4.25rem] w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-4 rounded-[1.15rem] border bg-white p-4 text-left transition-all sm:rounded-[1.25rem]",
                           isSelected
                             ? "border-[#007aff] ring-4 ring-[#007aff]/10"
                             : "border-[#eeeeef] hover:border-[#d2d2d7] hover:bg-[#fbfbfd]",
                         )}
                       >
-                        <Icon className={cn("h-6 w-6 shrink-0", service.color)} />
-                        <span className="min-w-0 flex-1 text-[1rem] font-black text-[#1d1d1f]">
+                        <Icon className={cn("h-5 w-5 shrink-0 sm:h-6 sm:w-6", service.color)} />
+                        <span className="min-w-0 text-[0.96rem] font-black leading-tight text-[#1d1d1f] [overflow-wrap:anywhere] sm:text-[1rem]">
                           {service.label}
                         </span>
                         <Checkbox
@@ -494,7 +494,7 @@ export default function MultistepForm({
                           onClick={(event) => event.stopPropagation()}
                           onCheckedChange={() => toggleService(service.id)}
                           className={cn(
-                            "h-6 w-6 rounded-full border-[#d2d2d7]",
+                            "h-5 w-5 rounded-full border-[#d2d2d7] sm:h-6 sm:w-6",
                             isSelected && "border-[#007aff] bg-[#007aff] text-white",
                           )}
                         />
@@ -508,7 +508,7 @@ export default function MultistepForm({
             {currentStep === 2 && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
-                  <CardTitle className="text-[1.75rem] tracking-[-0.035em] text-[#0e0e10]">
+                  <CardTitle className="text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
                     Der wichtigste Kontext
                   </CardTitle>
                 </CardHeader>
@@ -528,7 +528,7 @@ export default function MultistepForm({
                       value={formData.biggestChallenge}
                       onChange={(event) => updateFormData("biggestChallenge", event.target.value)}
                       placeholder="Beschreiben Sie kurz, was aktuell bremst oder gelöst werden soll."
-                      className="min-h-[140px] rounded-2xl border-[#e5e5ea] bg-[#fbfbfd]"
+                      className="min-h-[110px] rounded-2xl border-[#e5e5ea] bg-[#fbfbfd] sm:min-h-[140px]"
                     />
                   </FormField>
 
@@ -591,7 +591,7 @@ export default function MultistepForm({
         </CardFooter>
       </Card>
 
-      <p className={cn("mt-5 text-center text-sm font-semibold", isEmbedded ? "text-white/75" : "text-[#86868b]")}>
+      <p className={cn("mt-4 text-center text-xs font-semibold sm:mt-5 sm:text-sm", isEmbedded ? "text-white/75" : "text-[#86868b]")}>
         Schritt {currentStep + 1} von {steps.length}: {steps[currentStep].title}
       </p>
     </div>

@@ -13,6 +13,7 @@ export function Navbar() {
   const { lang, setLang } = useLanguage();
   const location = useLocation();
   const displayLang = getLanguageForPath(location.pathname) ?? lang;
+  const isBlogPage = location.pathname === "/blog" || location.pathname.startsWith("/blog/");
   const shouldOpenQuotePreview =
     location.pathname.includes("services") ||
     location.pathname.includes("webdesign") ||
@@ -96,43 +97,52 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-10">
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <button
-                type="button"
-                onClick={() => setServicesOpen((value) => !value)}
-                className="flex items-center gap-1 text-[0.875rem] font-semibold text-[#86868b] transition-colors hover:text-[#0e0e10]"
-                aria-expanded={servicesOpen}
+            {isBlogPage ? (
+              <a
+                href="/"
+                className="text-[0.875rem] font-semibold text-[#86868b] transition-colors hover:text-[#0e0e10]"
               >
                 {t("nav.services", displayLang)}
-                <ChevronDown size={15} className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
-              </button>
-              <AnimatePresence>
-                {servicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.16 }}
-                    className="absolute left-1/2 top-full mt-4 w-[360px] -translate-x-1/2 rounded-[1.25rem] border border-black/[0.08] bg-white/95 p-2 shadow-[0_24px_70px_rgba(15,23,42,0.14)] backdrop-blur-xl"
-                  >
-                    {serviceItems.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className="block rounded-[1rem] px-4 py-3 transition hover:bg-[#f5f5f7]"
-                      >
-                        <span className="block text-[0.92rem] font-bold tracking-[-0.01em] text-[#0e0e10]">{item.name}</span>
-                        <span className="mt-1 block text-[0.78rem] font-medium leading-relaxed text-[#86868b]">{item.description}</span>
-                      </a>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              </a>
+            ) : (
+              <div
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setServicesOpen((value) => !value)}
+                  className="flex items-center gap-1 text-[0.875rem] font-semibold text-[#86868b] transition-colors hover:text-[#0e0e10]"
+                  aria-expanded={servicesOpen}
+                >
+                  {t("nav.services", displayLang)}
+                  <ChevronDown size={15} className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                      transition={{ duration: 0.16 }}
+                      className="absolute left-1/2 top-full mt-4 w-[360px] -translate-x-1/2 rounded-[1.25rem] border border-black/[0.08] bg-white/95 p-2 shadow-[0_24px_70px_rgba(15,23,42,0.14)] backdrop-blur-xl"
+                    >
+                      {serviceItems.map((item) => (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          className="block rounded-[1rem] px-4 py-3 transition hover:bg-[#f5f5f7]"
+                        >
+                          <span className="block text-[0.92rem] font-bold tracking-[-0.01em] text-[#0e0e10]">{item.name}</span>
+                          <span className="mt-1 block text-[0.78rem] font-medium leading-relaxed text-[#86868b]">{item.description}</span>
+                        </a>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -182,20 +192,32 @@ export function Navbar() {
             className="absolute top-20 left-4 right-4 bg-white border border-[#d2d2d7] rounded-[2rem] p-8 flex flex-col gap-6 md:hidden shadow-2xl pointer-events-auto z-[100000]"
           >
             <div className="space-y-3">
-              <p className="text-[0.75rem] font-black uppercase tracking-[0.18em] text-[#86868b]">
-                {t("nav.services", displayLang)}
-              </p>
-              {serviceItems.map((item) => (
+              {isBlogPage ? (
                 <a
-                  key={item.href}
-                  href={item.href}
+                  href="/"
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-2xl bg-[#f5f5f7] p-4"
+                  className="block rounded-2xl bg-[#f5f5f7] p-4 text-xl font-bold text-[#0e0e10]"
                 >
-                  <span className="block text-xl font-bold text-[#0e0e10]">{item.name}</span>
-                  <span className="mt-1 block text-sm font-medium leading-relaxed text-[#86868b]">{item.description}</span>
+                  {t("nav.services", displayLang)}
                 </a>
-              ))}
+              ) : (
+                <>
+                  <p className="text-[0.75rem] font-black uppercase tracking-[0.18em] text-[#86868b]">
+                    {t("nav.services", displayLang)}
+                  </p>
+                  {serviceItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block rounded-2xl bg-[#f5f5f7] p-4"
+                    >
+                      <span className="block text-xl font-bold text-[#0e0e10]">{item.name}</span>
+                      <span className="mt-1 block text-sm font-medium leading-relaxed text-[#86868b]">{item.description}</span>
+                    </a>
+                  ))}
+                </>
+              )}
             </div>
             {navItems.map((item) => (
               <a

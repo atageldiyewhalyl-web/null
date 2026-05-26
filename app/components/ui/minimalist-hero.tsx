@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface MinimalistHeroProps {
   logoText: string;
   navLinks: { label: string; href: string }[];
+  categoryLinks?: { label: string; href: string }[];
   mainText: string;
   readMoreLink: string;
   imageSrc: string;
@@ -16,7 +17,7 @@ interface MinimalistHeroProps {
     part2: string;
   };
   overlayTextClassName?: string;
-  socialLinks: { icon: LucideIcon; href: string }[];
+  socialLinks: { icon: LucideIcon; href: string; label?: string }[];
   locationText: string;
   className?: string;
 }
@@ -30,11 +31,27 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   </a>
 );
 
-const SocialIcon = ({ href, icon: Icon }: { href: string; icon: LucideIcon }) => (
+const SocialIcon = ({
+  href,
+  icon: Icon,
+  label,
+  onComingSoon,
+}: {
+  href: string;
+  icon: LucideIcon;
+  label?: string;
+  onComingSoon: () => void;
+}) => (
   <a
     href={href}
-    target="_blank"
-    rel="noopener noreferrer"
+    target={href === "#" ? undefined : "_blank"}
+    rel={href === "#" ? undefined : "noopener noreferrer"}
+    aria-label={label}
+    onClick={(event) => {
+      if (href !== "#") return;
+      event.preventDefault();
+      onComingSoon();
+    }}
     className="text-[#111111] transition-opacity hover:opacity-55"
   >
     <Icon className="h-5 w-5 stroke-[2.15]" />
@@ -60,6 +77,7 @@ const ClickRay = ({ className }: { className: string }) => (
 export const MinimalistHero = ({
   logoText,
   navLinks,
+  categoryLinks = [],
   mainText,
   readMoreLink,
   imageSrc,
@@ -72,6 +90,36 @@ export const MinimalistHero = ({
   className,
 }: MinimalistHeroProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [noticeVisible, setNoticeVisible] = useState(false);
+
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsCategoriesOpen(false);
+  };
+
+  const handleMenuLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("#")) {
+      closeMenu();
+      return;
+    }
+
+    event.preventDefault();
+    closeMenu();
+
+    window.requestAnimationFrame(() => {
+      const target = document.getElementById(href.slice(1));
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      window.history.pushState(null, "", href);
+    });
+  };
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -84,6 +132,16 @@ export const MinimalistHero = ({
     };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    if (!noticeVisible) return;
+
+    const timeout = window.setTimeout(() => {
+      setNoticeVisible(false);
+    }, 2600);
+
+    return () => window.clearTimeout(timeout);
+  }, [noticeVisible]);
+
   return (
     <div
       className={cn(
@@ -92,7 +150,8 @@ export const MinimalistHero = ({
       )}
     >
       <header className="relative z-40 flex w-full items-center justify-between">
-        <motion.div
+        <motion.a
+          href="/"
           initial={{ opacity: 0, x: -14 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.45 }}
@@ -100,8 +159,8 @@ export const MinimalistHero = ({
         >
           {logoText.replace(/\.$/, "")}
           <span className="text-[#007aff]">.</span>
-        </motion.div>
-        <nav className="hidden items-center gap-16 md:flex">
+        </motion.a>
+        <nav className="hidden items-center gap-16">
           {navLinks.map((link) => (
             <NavLink key={link.label} href={link.href}>
               {link.label}
@@ -114,7 +173,7 @@ export const MinimalistHero = ({
           transition={{ duration: 0.45 }}
           type="button"
           onClick={() => setIsMobileMenuOpen(true)}
-          className="flex min-h-11 min-w-11 flex-col items-end justify-center gap-1.5 md:hidden"
+          className="flex min-h-11 min-w-11 flex-col items-end justify-center gap-1.5"
           aria-label="Open menu"
           aria-expanded={isMobileMenuOpen}
         >
@@ -130,50 +189,102 @@ export const MinimalistHero = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -14 }}
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[100] flex flex-col bg-[#007aff] px-6 pb-8 pt-6 text-white md:hidden"
+          className="fixed inset-0 z-[100] flex h-[100dvh] flex-col overflow-y-scroll overscroll-contain bg-[#007aff] px-6 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-6 text-white [touch-action:pan-y] [-webkit-overflow-scrolling:touch] md:px-12 md:pb-12 md:pt-10"
         >
           <div className="flex items-center justify-between">
             <a
-              href="#"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-[1.85rem] font-bold tracking-[-0.04em] text-white"
+              href="/"
+              onClick={closeMenu}
+              className="text-[1.85rem] font-bold tracking-[-0.04em] text-white md:text-[2rem]"
             >
               {logoText.replace(/\.$/, "")}
               <span className="text-white/55">.</span>
             </a>
             <button
               type="button"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/30"
+              onClick={closeMenu}
+              className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/30 md:border-transparent"
               aria-label="Close menu"
             >
-              <span className="absolute h-0.5 w-8 rotate-45 bg-white" />
-              <span className="absolute h-0.5 w-8 -rotate-45 bg-white" />
+              <span className="absolute h-0.5 w-8 rotate-45 bg-white md:w-11" />
+              <span className="absolute h-0.5 w-8 -rotate-45 bg-white md:w-11" />
             </button>
           </div>
 
-          <nav aria-label="Mobile navigation" className="mt-16 flex flex-1 flex-col justify-center">
+          <nav aria-label="Menu navigation" className="mt-20 flex flex-none flex-col justify-start md:mx-auto md:min-h-max md:w-full md:max-w-[90rem] md:pt-10">
             {navLinks.map((link, index) => (
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="group flex min-h-[5.75rem] items-center justify-between border-t border-white/25 py-6 text-white last:border-b"
+                onClick={(event) => handleMenuLinkClick(event, link.href)}
+                className="group flex min-h-[5.75rem] items-center justify-between border-t border-white/25 py-6 text-white md:min-h-[6.75rem] md:py-6"
               >
-                <span className="text-[clamp(3rem,14vw,5.4rem)] font-bold uppercase leading-[0.9] tracking-[-0.075em]">
+                <span className="text-[clamp(3rem,14vw,5.4rem)] font-bold uppercase leading-[0.9] tracking-[-0.075em] md:text-[clamp(5rem,8vw,9rem)]">
                   {link.label}
                 </span>
-                <span className="ml-4 text-[2.75rem] font-light leading-none transition-transform group-hover:translate-x-1">
+                <span className="ml-4 text-[2.75rem] font-light leading-none transition-transform group-hover:translate-x-1 md:text-[5rem]">
                   {index === 0 ? "" : ">"}
                 </span>
               </a>
             ))}
+            {categoryLinks.length > 0 ? (
+              <div
+                className="border-t border-white/25 last:border-b"
+                onMouseEnter={() => setIsCategoriesOpen(true)}
+                onMouseLeave={() => setIsCategoriesOpen(false)}
+                onFocus={() => setIsCategoriesOpen(true)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setIsCategoriesOpen(false);
+                  }
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setIsCategoriesOpen((open) => !open)}
+                  aria-expanded={isCategoriesOpen}
+                  className="group flex min-h-[5.75rem] w-full items-center justify-between py-6 text-left text-white md:min-h-[6.75rem] md:py-6"
+                >
+                  <span className="text-[clamp(3rem,14vw,5.4rem)] font-bold uppercase leading-[0.9] tracking-[-0.075em] md:text-[clamp(5rem,8vw,9rem)]">
+                    Kategorien
+                  </span>
+                  <span
+                    className={cn(
+                      "ml-4 text-[2.75rem] font-light leading-none transition-transform md:text-[5rem]",
+                      isCategoriesOpen ? "rotate-90" : "group-hover:translate-x-1",
+                    )}
+                  >
+                    &gt;
+                  </span>
+                </button>
+
+                {isCategoriesOpen ? (
+                  <div className="space-y-3 pb-6 pt-3 md:space-y-4 md:pb-9 md:pt-4">
+                    {categoryLinks.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        onClick={(event) => handleMenuLinkClick(event, link.href)}
+                        className="group flex min-h-[5rem] items-center justify-between rounded-[8px] border border-white/35 bg-white/12 px-4 py-5 text-white shadow-[0_18px_48px_rgba(0,35,120,0.16)] backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white hover:text-[#007aff] md:min-h-[7.25rem] md:px-6 md:py-6"
+                      >
+                        <span className="text-[clamp(1.75rem,7vw,2.5rem)] font-black uppercase leading-[0.94] tracking-[-0.055em] md:text-[clamp(2.9rem,4.6vw,5.25rem)]">
+                          {link.label}
+                        </span>
+                        <span className="ml-4 text-[2.25rem] font-light leading-none transition-transform group-hover:translate-x-1 md:text-[4.5rem]">
+                          &gt;
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
           </nav>
 
           <a
             href="#contact"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-6 text-[1rem] font-bold tracking-[-0.02em] text-[#007aff]"
+            onClick={(event) => handleMenuLinkClick(event, "#contact")}
+            className="mt-8 inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-white px-6 text-[1rem] font-bold tracking-[-0.02em] text-[#007aff] md:absolute md:left-1/2 md:top-10 md:mt-0 md:min-h-12 md:-translate-x-1/2 md:px-9"
           >
             Let's Talk
           </a>
@@ -234,15 +345,34 @@ export const MinimalistHero = ({
         >
           <h1
             className={cn(
-              "flex flex-col text-[clamp(3.75rem,17vw,5.25rem)] font-extrabold leading-[0.82] tracking-[-0.065em] text-[#050505] md:text-[clamp(4.6rem,7.5vw,8.6rem)] md:leading-[0.86]",
+              "flex max-w-full flex-col text-[clamp(3.75rem,17vw,5.25rem)] font-extrabold leading-[0.82] tracking-[-0.065em] text-[#050505] md:text-[clamp(4.6rem,7.5vw,8.6rem)] md:leading-[0.86]",
               overlayTextClassName,
             )}
           >
-            <span className="block whitespace-nowrap">
+            <span className="hidden md:block md:whitespace-nowrap">
               {overlayText.part1.replace(/\.$/, "")}
               <span className="text-[#007aff]">.</span>
             </span>
-            <span className="block whitespace-nowrap">
+            <span className="hidden md:block md:whitespace-nowrap">
+              {overlayText.part2.replace(/\.$/, "")}
+              <span className="text-[#007aff]">.</span>
+            </span>
+            <span className="block min-[430px]:hidden md:hidden">
+              {overlayText.part1.replace(/\.$/, "")}
+              <span className="text-[#007aff]">.</span>
+            </span>
+            <span className="block min-[430px]:hidden md:hidden">
+              {overlayText.part2.replace(/\.$/, "").split(" ").slice(0, -1).join(" ")}
+            </span>
+            <span className="block min-[430px]:hidden md:hidden">
+              {overlayText.part2.replace(/\.$/, "").split(" ").slice(-1).join(" ")}
+              <span className="text-[#007aff]">.</span>
+            </span>
+            <span className="hidden min-[430px]:block min-[430px]:whitespace-nowrap md:hidden">
+              {overlayText.part1.replace(/\.$/, "")}
+              <span className="text-[#007aff]">.</span>
+            </span>
+            <span className="hidden min-[430px]:block min-[430px]:whitespace-nowrap md:hidden">
               {overlayText.part2.replace(/\.$/, "")}
               <span className="text-[#007aff]">.</span>
             </span>
@@ -258,7 +388,13 @@ export const MinimalistHero = ({
           className="flex items-center gap-7"
         >
           {socialLinks.map((link, index) => (
-            <SocialIcon key={`${link.href}-${index}`} href={link.href} icon={link.icon} />
+            <SocialIcon
+              key={`${link.href}-${index}`}
+              href={link.href}
+              icon={link.icon}
+              label={link.label}
+              onComingSoon={() => setNoticeVisible(true)}
+            />
           ))}
         </motion.div>
         <motion.div
@@ -270,6 +406,16 @@ export const MinimalistHero = ({
           {locationText}
         </motion.div>
       </footer>
+
+      <div
+        aria-live="polite"
+        className={cn(
+          "pointer-events-none fixed bottom-7 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-[#111111] px-5 py-3 text-[0.9rem] font-bold tracking-[-0.02em] text-white shadow-[0_16px_45px_rgba(0,0,0,0.2)] transition-all duration-300",
+          noticeVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+        )}
+      >
+        Diese Seite kommt bald.
+      </div>
     </div>
   );
 };

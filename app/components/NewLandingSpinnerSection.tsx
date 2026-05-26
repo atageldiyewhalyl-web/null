@@ -3,19 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
-  Bot,
-  Camera,
-  Code2,
-  Megaphone,
-  MonitorSmartphone,
-  Palette,
+  Cloud,
+  Cookie,
+  FileText,
+  Gauge,
+  Mail,
+  MessageSquare,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
   Phone,
-  Search,
 } from "lucide-react";
-import { ExpandingCards } from "@/components/ui/expanding-cards";
 import MultistepForm, { type MultistepFormData } from "@/components/ui/multistep-form";
-import type { CardItem } from "@/components/ui/expanding-cards";
 import { Accordion05 } from "@/components/ui/accordion-05";
+import { AnimatedBlobs } from "@/components/ui/blobs";
 import {
   Carousel,
   CarouselContent,
@@ -27,8 +28,19 @@ import { Footer } from "@/components/Footer";
 import { projectId, publicAnonKey } from "/utils/supabase/info";
 import gmailIcon from "../assets/icons/gmail-icon.webp";
 import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
-import webdesignPreview from "../assets/Webdesing .webp";
-import technicalPreview from "../assets/Technical carrousel.webp";
+import webpageScatterAsset from "../assets/webpage scatter.webp";
+import serviceHeroScroll1 from "../assets/Service hero scroll/1.webp";
+import serviceHeroScroll2 from "../assets/Service hero scroll/2.webp";
+import serviceHeroScroll4 from "../assets/Service hero scroll/4.webp";
+import serviceHeroScroll5 from "../assets/Service hero scroll/5.webp";
+import serviceHeroScroll6 from "../assets/Service hero scroll/6.webp";
+import serviceAssetLogo from "../assets/services assets /Logo-card.webp";
+import serviceAssetGoogleAds from "../assets/services assets /google ads-card.webp";
+import serviceAssetGoogleAiSearch from "../assets/services assets /google ai search-card.webp";
+import serviceAssetPhotoshoot from "../assets/services assets /photoshoot-card.webp";
+import serviceAssetSeo from "../assets/services assets /seo-card.webp";
+import serviceAssetSite from "../assets/services assets /site-card.webp";
+import serviceAssetText from "../assets/services assets /text-card.webp";
 
 const contactFormSections = [
   {
@@ -141,14 +153,6 @@ const workItems = [
       "Ein präziser Beratungsauftritt, der Kompetenz sichtbar macht und Leads fokussiert.",
   },
   {
-    title: "Spine Robotics",
-    image: "/assets/new-landing/spine-demo.webp",
-    alt: "Spine website hero preview",
-    link: "https://spine-robotics.vercel.app/",
-    description:
-      "Ein klarer Auftritt für ein Gesundheitsangebot: ruhig, vertrauensvoll und sofort verständlich.",
-  },
-  {
     title: "Herkules",
     image: "/assets/new-landing/herkules-hero-demo.webp",
     alt: "Herkules website hero preview",
@@ -163,6 +167,14 @@ const workItems = [
     link: "https://hasandogru.de",
     description:
       "Ein vertrauensvoller Kanzlei-Auftritt mit klarem Profil und direkter Anfrageführung.",
+  },
+  {
+    title: "Spine Robotics",
+    image: "/assets/new-landing/spine-demo.webp",
+    alt: "Spine website hero preview",
+    link: "https://spine-robotics.vercel.app/",
+    description:
+      "Ein klarer Auftritt für ein Gesundheitsangebot: ruhig, vertrauensvoll und sofort verständlich.",
   },
 ];
 
@@ -191,65 +203,6 @@ const serviceVisual = (title: string, accent: string) =>
       <text x="96" y="1088" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" letter-spacing="-2">${title}</text>
     </svg>
   `)}`;
-
-const serviceItems: CardItem[] = [
-  {
-    id: "website",
-    title: "Professionelle Website",
-    description: "Eine Website, die Expertise klar präsentiert und Besucher in echte Anfragen führt.",
-    imgSrc: webdesignPreview,
-    icon: <MonitorSmartphone size={24} />,
-    linkHref: "/services",
-  },
-  {
-    id: "development",
-    title: "Technische Umsetzung",
-    description: "Schnell, sicher und sauber gebaut, damit Ihr Auftritt auf jedem Gerät zuverlässig wirkt.",
-    imgSrc: technicalPreview,
-    icon: <Code2 size={24} />,
-    linkHref: "/services",
-  },
-  {
-    id: "seo",
-    title: "Google-Sichtbarkeit",
-    description: "Wir strukturieren Seiten so, dass Menschen mit klarer Suchabsicht Sie finden.",
-    imgSrc: "/assets/new-landing/google-search-service.webp",
-    icon: <Search size={24} />,
-    linkHref: "/leistungen/seo",
-  },
-  {
-    id: "ai",
-    title: "KI-Chat-Sichtbarkeit",
-    description: "Inhalte und Struktur, damit Ihr Anbieter auch in KI-Antworten sichtbar werden kann.",
-    imgSrc: "/assets/new-landing/ai-search-service.webp",
-    icon: <Bot size={24} />,
-    linkHref: "/services",
-  },
-  {
-    id: "branding",
-    title: "Markenidentität",
-    description: "Logo, Farben und visuelle Sprache, die sofort professionell und unterscheidbar wirken.",
-    imgSrc: "/assets/new-landing/branding-service.webp",
-    icon: <Palette size={24} />,
-    linkHref: "/services",
-  },
-  {
-    id: "content",
-    title: "Content Creation",
-    description: "Wir filmen Content mit Kameras und planen spezielle Foto-Shootings für Ihren Auftritt.",
-    imgSrc: "/assets/new-landing/content-creation-service.webp",
-    icon: <Camera size={24} />,
-    linkHref: "/services",
-  },
-  {
-    id: "google-ads",
-    title: "Google Ads Kampagnen",
-    description: "Wir planen, starten und optimieren Suchkampagnen, die aus Klicks qualifizierte Anfragen machen.",
-    imgSrc: "/assets/new-landing/google-ads-service.webp",
-    icon: <Megaphone size={24} />,
-    linkHref: "/services/google-ads",
-  },
-];
 
 const processSteps = [
   {
@@ -403,6 +356,527 @@ const faqColumns = [
   faqItems.filter((_, index) => index % 2 === 1),
 ];
 
+const lawyerProblemItems = [
+  {
+    number: "01",
+    title: "Unklare Positionierung",
+    description:
+      "Es ist nicht sofort sichtbar, für welche Fälle und Rechtsgebiete Ihre Kanzlei steht.",
+  },
+  {
+    number: "02",
+    title: "Zu wenig Suchintention",
+    description:
+      "Die Seiten orientieren sich nicht an den Fragen, die Mandanten tatsächlich bei Google eingeben.",
+  },
+  {
+    number: "03",
+    title: "Schwache Anfrageführung",
+    description:
+      "Der Weg zu Anruf, Formular oder Erstgespräch ist nicht klar genug aufgebaut.",
+  },
+];
+
+const lawyerSystemItems = [
+  {
+    number: "01",
+    title: "Positionierung",
+    description: "Wir klären, wofür Ihre Kanzlei bekannt sein soll.",
+    position: "leftTop",
+  },
+  {
+    number: "02",
+    title: "Suchstruktur",
+    description: "Seiten entstehen aus echter juristischer Suchintention.",
+    position: "rightTop",
+  },
+  {
+    number: "03",
+    title: "Vertrauensdesign",
+    description: "Die Website vermittelt Kompetenz, Seriosität und Klarheit.",
+    position: "rightBottom",
+  },
+  {
+    number: "04",
+    title: "Anfrageführung",
+    description: "Kontakt per Telefon, Formular, Termin oder WhatsApp wird klar geführt.",
+    position: "leftBottom",
+  },
+];
+
+const serviceHeroScrollItems = [
+  { src: serviceHeroScroll1, alt: "Steuerrecht Kanzlei Website Hero" },
+  { src: serviceHeroScroll2, alt: "Migrationsrecht Kanzlei Website Hero" },
+  { src: serviceHeroScroll4, alt: "Familienrecht Kanzlei Website Hero" },
+  { src: serviceHeroScroll5, alt: "Erbrecht Kanzlei Website Hero" },
+  { src: serviceHeroScroll6, alt: "Immobilienrecht Kanzlei Website Hero" },
+];
+
+type LawyerServiceCard = {
+  title: string;
+  description: string;
+  visualAlt: string;
+  visualSrc?: string;
+  visual?: "automation" | "tech";
+};
+
+const lawyerServiceCards: LawyerServiceCard[] = [
+  {
+    title: "Branding & Logo",
+    description:
+      "Wir entwickeln Kanzlei-Marken, die Vertrauen schaffen und im Kopf bleiben: mit klarem Logo, seriöser Positionierung und konsistentem Auftritt.",
+    visualSrc: serviceAssetLogo,
+    visualAlt: "Branding und Logo Vorschau",
+  },
+  {
+    title: "Texte für Google & KI",
+    description:
+      "Wir schreiben Inhalte, die Mandanten verstehen und Suchsysteme einordnen können: klar, relevant und auf Anfragen optimiert.",
+    visualSrc: serviceAssetText,
+    visualAlt: "Texte für Google und KI Vorschau",
+  },
+  {
+    title: "Hochwertiges Webdesign",
+    description:
+      "Websites, die Kompetenz zeigen: modern, schnell und benutzerfreundlich. Für mehr Vertrauen, bessere Leads und messbare Ergebnisse.",
+    visualSrc: serviceAssetSite,
+    visualAlt: "Hochwertiges Webdesign Vorschau",
+  },
+  {
+    title: "Professionelles Fotoshooting",
+    description:
+      "Authentische Bilder, die Persönlichkeit und Kompetenz sichtbar machen: für einen starken ersten Eindruck auf Ihrer Website.",
+    visualSrc: serviceAssetPhotoshoot,
+    visualAlt: "Professionelles Fotoshooting Vorschau",
+  },
+  {
+    title: "Nachhaltiges SEO",
+    description:
+      "Wir verbessern Ihre Rankings mit technischer Stärke, relevanten Inhalten und einer Struktur, die langfristig wirkt.",
+    visualSrc: serviceAssetSeo,
+    visualAlt: "Nachhaltiges SEO Vorschau",
+  },
+  {
+    title: "KI-Sichtbarkeit / GEO",
+    description:
+      "Wir sorgen dafür, dass Ihre Kanzlei in KI-Antworten sichtbar wird: mit strukturierten Inhalten und klaren Signalen.",
+    visualSrc: serviceAssetGoogleAiSearch,
+    visualAlt: "KI Sichtbarkeit und GEO Vorschau",
+  },
+  {
+    title: "Google Ads",
+    description:
+      "Mehr qualifizierte Anfragen durch zielgerichtete Kampagnen, die sichtbar machen, was Ihre Kanzlei besonders macht.",
+    visualSrc: serviceAssetGoogleAds,
+    visualAlt: "Google Ads Vorschau",
+  },
+  {
+    title: "Automatisierung mit KI",
+    description:
+      "Wir automatisieren Prozesse für schnellere Antworten, effizientere Abläufe und mehr Zeit für Ihr Kerngeschäft.",
+    visual: "automation",
+    visualSrc: undefined,
+    visualAlt: "Automatisierung mit KI Vorschau",
+  },
+  {
+    title: "Technik & Betreuung",
+    description:
+      "Wir sorgen für eine sichere, schnelle und DSGVO-konforme Website. Damit alles läuft und aktuell bleibt.",
+    visual: "tech",
+    visualAlt: "Technik und DSGVO Betreuung Vorschau",
+  },
+];
+
+function LawyerServiceVisual({
+  src,
+  alt,
+  type,
+}: {
+  src?: string;
+  alt?: string;
+  type?: string;
+}) {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={alt ?? ""}
+        className="h-full w-full object-contain object-center"
+        loading="lazy"
+      />
+    );
+  }
+
+  if (type === "automation") {
+    const automationSteps = [
+      { label: "Anfrage", Icon: MessageSquare },
+      { label: "KI sortiert", Icon: Sparkles },
+      { label: "Antwort", Icon: Mail },
+    ];
+
+    return (
+      <div className="relative flex h-full items-center justify-between gap-4 overflow-hidden rounded-[8px] bg-[#f7f9fc] p-4">
+        <div className="absolute left-10 right-10 top-1/2 h-px bg-[#dbe3ef]" />
+        {automationSteps.map(({ label, Icon }, index) => (
+          <div
+            key={label}
+            className="relative flex h-24 flex-1 flex-col items-center justify-center rounded-[8px] bg-white text-center text-[0.78rem] font-bold text-[#4b5563] shadow-[0_8px_24px_rgba(15,23,42,0.08)] ring-1 ring-[#e5ebf4]"
+          >
+            <Icon size={20} className="mb-3 text-[#006dff]" />
+            <span>{label}</span>
+            {index < automationSteps.length - 1 ? (
+              <span className="absolute -right-4 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-[#006dff] text-[0.85rem] font-bold text-white shadow-sm">
+                →
+              </span>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (type === "tech") {
+    const techItems = [
+      { label: "DSGVO", Icon: ShieldCheck },
+      { label: "Cookies", Icon: Cookie },
+      { label: "Impressum", Icon: FileText },
+      { label: "Sicherheit", Icon: Gauge },
+      { label: "Backups", Icon: Cloud },
+      { label: "Updates", Icon: RefreshCw },
+    ];
+
+    return (
+      <div className="relative h-full overflow-hidden rounded-[8px] bg-[#f7f9fc] p-4">
+        <div className="absolute inset-x-8 top-1/2 h-px bg-[#dbe3ef]" />
+        <div className="absolute left-1/2 top-6 h-[calc(100%-3rem)] w-px -translate-x-1/2 bg-[#dbe3ef]" />
+        <div className="relative grid h-full grid-cols-3 gap-3">
+          {techItems.map(({ label, Icon }) => (
+            <div
+              key={label}
+              className="flex min-w-0 items-center justify-center gap-2 rounded-[8px] bg-white px-3 text-[0.78rem] font-bold tracking-[-0.02em] text-[#172033] shadow-[0_8px_24px_rgba(15,23,42,0.08)] ring-1 ring-[#e5ebf4]"
+            >
+              <Icon size={17} className="shrink-0 text-[#006dff]" />
+              <span className="truncate">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-full rounded-[8px] border border-[#e1e7f0] bg-white p-4">
+      <div className="mb-4 flex gap-2">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+      </div>
+      <div className="h-14 rounded bg-[#e8edf5]" />
+      <div className="mt-4 grid grid-cols-4 gap-2">
+        <div className="h-10 rounded bg-[#eef2f7]" />
+        <div className="h-10 rounded bg-[#eef2f7]" />
+        <div className="h-10 rounded bg-[#eef2f7]" />
+        <div className="h-10 rounded bg-[#007aff]" />
+      </div>
+    </div>
+  );
+}
+
+function LawyerQuestionMarkPlaceholder() {
+  return (
+    <img
+      src={webpageScatterAsset}
+      alt="Verstreute Website-Seiten"
+      className="h-auto w-full max-w-[42rem] object-contain"
+      loading="lazy"
+    />
+  );
+}
+
+function LawyerHeroScrollSection() {
+  const repeatedItems = [...serviceHeroScrollItems, ...serviceHeroScrollItems];
+
+  return (
+    <section className="relative z-10 mt-10 w-full max-w-full overflow-hidden bg-white py-3 text-black [contain:layout_paint] md:left-1/2 md:mt-12 md:w-screen md:max-w-none md:-translate-x-1/2 md:py-6">
+      <div className="flex w-max max-w-none animate-[nll-hero-scroll_18s_linear_infinite] gap-3 px-6 md:gap-5 md:px-12">
+        {repeatedItems.map((item, index) => (
+          <figure
+            key={`${item.alt}-${index}`}
+            className="w-[62vw] shrink-0 md:w-[24rem] lg:w-[31rem]"
+          >
+            <img
+              src={item.src}
+              alt={item.alt}
+              className="block aspect-[1448/1086] w-full object-contain"
+              loading={index < serviceHeroScrollItems.length ? "eager" : "lazy"}
+            />
+          </figure>
+        ))}
+      </div>
+
+      <style>{`
+        @keyframes nll-hero-scroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(calc(-50% - 0.75rem));
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+function ServicesShowcaseSection() {
+  return (
+    <section id="services" className="relative left-1/2 z-10 min-h-[165vh] w-screen max-w-none -translate-x-1/2 scroll-mt-10 overflow-hidden bg-[#006dff] px-5 py-16 text-white md:px-10 md:py-20 lg:min-h-[185vh]">
+      <div className="mx-auto max-w-[90rem]">
+        <div className="text-[0.95rem] font-medium tracking-[-0.025em] text-white/90">
+          <span className="mr-3 text-white">→</span>
+          Unsere Leistungen
+        </div>
+        <h2 className="mx-auto mt-6 max-w-5xl text-center text-[clamp(2.7rem,5.5vw,6rem)] font-bold leading-[0.9] tracking-[-0.065em]">
+          Alles, was aus Sichtbarkeit planbare Anfragen macht.
+        </h2>
+        <p className="mx-auto mt-6 max-w-4xl text-center text-[clamp(1.05rem,1.7vw,1.35rem)] font-medium leading-relaxed tracking-[-0.025em] text-white/86">
+          Branding, Website, SEO, Google Ads, KI-Sichtbarkeit und Betreuung: alles greift ineinander und bringt Ihrer Kanzlei messbar mehr Anfragen.
+        </p>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {lawyerServiceCards.map((service) => (
+            <article
+              key={service.title}
+              className="flex min-h-[24rem] flex-col overflow-hidden rounded-[8px] bg-white p-6 text-[#121826] shadow-[0_24px_70px_rgba(0,23,82,0.22)] ring-1 ring-white/25 md:min-h-[26rem] lg:min-h-[28rem]"
+            >
+              <div>
+                <h3 className="text-[1.55rem] font-bold leading-tight tracking-[-0.045em] md:text-[1.75rem]">
+                  {service.title}
+                </h3>
+                <p className="mt-4 max-w-md text-[0.98rem] font-semibold leading-relaxed tracking-[-0.025em] text-[#394150] md:text-[1.02rem]">
+                  {service.description}
+                </p>
+              </div>
+
+              <div className="mt-6 h-[11rem] overflow-hidden rounded-[8px] md:h-[12rem]">
+                <LawyerServiceVisual
+                  src={service.visualSrc}
+                  alt={service.visualAlt}
+                  type={service.visual}
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LawyerSystemVisual() {
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-white px-6 py-12 text-black md:px-12 md:py-20 lg:py-14">
+      <p className="relative z-20 text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
+        <span className="mr-3 text-[#007aff]">→</span>
+        System
+      </p>
+
+      <div className="nll-lawyer-system-stage relative mx-auto mt-7 flex h-[calc(100svh-8.75rem)] min-h-0 w-full max-w-[92rem] flex-col md:mt-6 md:h-[calc(100vh-10rem)] md:min-h-[36rem] md:-translate-y-[5vh]">
+        <div className="absolute left-1/2 top-1/2 hidden h-[43rem] w-[43rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#d7deea] lg:block" />
+
+        <svg
+          className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full lg:block"
+          viewBox="0 0 1472 800"
+          fill="none"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d="M104 292H512L612 392" stroke="#d8dde7" strokeWidth="1.5" />
+          <path d="M1368 292H960L860 392" stroke="#d8dde7" strokeWidth="1.5" />
+          <path d="M104 568H512L612 468" stroke="#d8dde7" strokeWidth="1.5" />
+          <path d="M1368 568H960L860 468" stroke="#d8dde7" strokeWidth="1.5" />
+        </svg>
+
+        <div className="relative z-20 mx-auto h-[11.5rem] w-[11.5rem] md:absolute md:left-1/2 md:top-1/2 md:h-[31rem] md:w-[31rem] md:-translate-x-1/2 md:-translate-y-1/2">
+          <AnimatedBlobs />
+          <div className="absolute left-1/2 top-1/2 z-30 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 text-[1rem] leading-none tracking-[-0.045em] md:text-[1.55rem]">
+            <span className="font-bold">nüll</span>
+            <span className="font-medium text-[#0e0e10]/75">System</span>
+          </div>
+        </div>
+
+        <div className="nll-lawyer-system-list relative z-30 mt-6 flex flex-1 flex-col justify-evenly gap-0 pb-8 md:mt-0 md:grid md:flex-none md:gap-4 md:pb-0 md:pt-[32rem] lg:block lg:pt-0">
+          {lawyerSystemItems.map((item) => (
+            <article
+              key={item.number}
+              data-position={item.position}
+              className={`nll-lawyer-system-card relative z-20 md:max-w-[18rem] ${
+                item.position === "leftTop"
+                  ? "lg:absolute lg:left-[8%] lg:top-[10%]"
+                  : item.position === "rightTop"
+                    ? "lg:absolute lg:right-[7%] lg:top-[10%]"
+                    : item.position === "rightBottom"
+                      ? "lg:absolute lg:bottom-[10%] lg:right-[7%]"
+                      : "lg:absolute lg:bottom-[10%] lg:left-[8%]"
+              }`}
+            >
+              <div className="text-[1.05rem] font-bold tracking-[-0.04em] text-[#0b63ff] md:text-[1.25rem]">
+                {item.number}
+              </div>
+              <h3 className="mt-2 text-[1.15rem] font-bold leading-tight tracking-[-0.045em] text-black md:mt-6 md:text-[1.55rem] md:font-medium">
+                {item.title}
+              </h3>
+              <p className="mt-1.5 text-[0.88rem] font-medium leading-snug tracking-[-0.02em] text-[#6b7280] md:mt-5 md:text-[1.05rem] md:leading-relaxed">
+                {item.description}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <style>{`
+          @media (min-width: 1024px) {
+            .nll-lawyer-system-stage {
+              height: clamp(40rem, calc(100svh - 8.5rem), 48rem);
+              min-height: 40rem;
+              transform: translateY(0);
+            }
+
+            .nll-lawyer-system-list {
+              position: absolute;
+              inset: 0;
+              display: block;
+              margin-top: 0;
+              padding: 0;
+            }
+
+            .nll-lawyer-system-card {
+              position: absolute;
+              max-width: clamp(17rem, 21vw, 20.5rem);
+            }
+
+            .nll-lawyer-system-card[data-position="leftTop"] {
+              left: clamp(0rem, 4vw, 3.5rem);
+              top: 4.75rem;
+            }
+
+            .nll-lawyer-system-card[data-position="rightTop"] {
+              right: clamp(0rem, 4vw, 3.5rem);
+              top: 4.75rem;
+            }
+
+            .nll-lawyer-system-card[data-position="rightBottom"] {
+              right: clamp(0rem, 4vw, 3.5rem);
+              bottom: 4.25rem;
+            }
+
+            .nll-lawyer-system-card[data-position="leftBottom"] {
+              left: clamp(0rem, 4vw, 3.5rem);
+              bottom: 4.25rem;
+            }
+          }
+        `}</style>
+      </div>
+    </div>
+  );
+}
+
+function LawyerFixedSystemBackground({ visible }: { visible: boolean }) {
+  return (
+    <div
+      className={`fixed inset-0 z-0 pointer-events-none transition-opacity duration-300 ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <LawyerSystemVisual />
+    </div>
+  );
+}
+
+function LawyerSystemRevealWindow({
+  revealRef,
+}: {
+  revealRef: React.RefObject<HTMLElement | null>;
+}) {
+  return (
+    <section
+      ref={revealRef}
+      className="relative left-1/2 h-[125vh] w-screen max-w-none -translate-x-1/2 bg-transparent pointer-events-none md:h-[115vh]"
+    />
+  );
+}
+
+function LawyerProblemSection() {
+  return (
+    <section className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 overflow-hidden bg-white px-6 py-14 text-black md:mt-24 md:px-12 md:py-20">
+      <div className="grid gap-12 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16">
+        <aside className="flex flex-col justify-between gap-10">
+          <div>
+            <p className="text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
+              <span className="mr-3 text-[#007aff]">→</span>
+              Problem
+            </p>
+            <p className="mt-10 hidden max-w-[24rem] text-[1.02rem] font-bold leading-[1.35] tracking-[-0.04em] text-[#0e0e10] md:block">
+              Viele Kanzleien sind online auffindbar,
+              <br />
+              aber nicht relevant genug,
+              <br />
+              um von potenziellen Mandanten
+              <br />
+              kontaktiert zu werden.
+            </p>
+            <a
+              href="#services"
+              className="mt-6 hidden border-b-2 border-black pb-1 text-[1.05rem] font-bold leading-none tracking-[-0.04em] text-black no-underline md:inline-flex"
+            >
+              Wie wir das lösen
+            </a>
+          </div>
+
+          <div className="hidden lg:block">
+            <LawyerQuestionMarkPlaceholder />
+          </div>
+        </aside>
+
+        <div>
+          <h2 className="max-w-full text-[clamp(2.15rem,10.6vw,3.2rem)] font-bold leading-[0.9] tracking-[-0.06em] text-black min-[430px]:text-[clamp(2.45rem,9vw,3.4rem)] md:max-w-5xl md:text-[clamp(3.25rem,4.5vw,5.15rem)] md:leading-[0.88]">
+            <span className="block">Warum aus</span>
+            <span className="block min-[430px]:hidden">Sichtbarkeit oft</span>
+            <span className="block min-[430px]:hidden">noch keine</span>
+            <span className="hidden min-[430px]:block md:hidden">Sichtbarkeit oft noch keine</span>
+            <span className="hidden md:block">Sichtbarkeit oft noch keine</span>
+            <span className="block">Anfragen werden<span className="text-[#007aff]">.</span></span>
+          </h2>
+
+          <div className="mt-12 divide-y divide-[#d7deea] border-t border-[#d7deea] md:mt-14">
+            {lawyerProblemItems.map((item) => (
+              <article
+                key={item.number}
+                className="grid min-w-0 gap-5 py-8 md:grid-cols-[0.18fr_0.82fr] md:gap-14 md:py-9"
+              >
+                <div className="text-[clamp(3rem,15vw,4rem)] font-light leading-none tracking-[-0.06em] text-black md:text-[clamp(3.6rem,5.5vw,5rem)]">
+                  {item.number}
+                </div>
+                <div className="min-w-0 max-w-xl">
+                  <h3 className="text-[1.3rem] font-bold leading-tight tracking-[-0.04em] text-black md:text-[1.55rem]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-full text-[0.98rem] font-medium leading-relaxed tracking-[-0.02em] text-[#4b5563] [overflow-wrap:anywhere] md:text-[1.08rem]">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 overflow-hidden lg:hidden">
+            <LawyerQuestionMarkPlaceholder />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AnimatedCounter({
   value,
   prefix = "",
@@ -486,13 +960,38 @@ function AnimatedCounter({
 type NewLandingSpinnerSectionProps = {
   statsHeading?: string;
   statsItems?: StatItem[];
+  showLawyerProblemSection?: boolean;
 };
 
 export default function NewLandingSpinnerSection({
   statsHeading = "Sichtbarkeit wird erst wertvoll, wenn daraus Anfragen entstehen",
   statsItems = stats,
+  showLawyerProblemSection = false,
 }: NewLandingSpinnerSectionProps = {}) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [isSystemRevealVisible, setIsSystemRevealVisible] = useState(false);
+  const systemRevealRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!showLawyerProblemSection) return;
+
+    const element = systemRevealRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSystemRevealVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.01,
+        rootMargin: "-8% 0px -8% 0px",
+      },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [showLawyerProblemSection]);
 
   const submitContactForm = async (data: MultistepFormData) => {
     if (!projectId || !publicAnonKey) {
@@ -533,8 +1032,25 @@ export default function NewLandingSpinnerSection({
   };
 
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-20 text-[#0e0e10] md:px-12 md:py-24">
-      <div className="mx-auto flex w-full max-w-none flex-col">
+    <section
+      className={
+        showLawyerProblemSection
+          ? "relative overflow-x-clip bg-transparent py-20 text-[#0e0e10] md:py-24"
+          : "relative overflow-hidden bg-white px-6 py-20 text-[#0e0e10] md:px-12 md:py-24"
+      }
+    >
+      {showLawyerProblemSection ? (
+        <LawyerFixedSystemBackground visible={isSystemRevealVisible} />
+      ) : null}
+
+      <div className="relative z-10 mx-auto flex w-full max-w-none flex-col">
+        <div
+          className={
+            showLawyerProblemSection
+              ? "relative left-1/2 w-screen max-w-none -translate-x-1/2 bg-white px-6 md:px-12"
+              : undefined
+          }
+        >
         <div className="grid gap-8 md:grid-cols-[0.22fr_0.78fr] md:gap-6">
           <div className="text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
             <span className="mr-3 text-[#007aff]">→</span>
@@ -567,8 +1083,23 @@ export default function NewLandingSpinnerSection({
             </div>
           ))}
         </div>
+        </div>
 
-        <div id="portfolio" className="mt-28 flex min-h-screen w-screen max-w-none scroll-mt-10 flex-col justify-center self-center px-6 py-20 md:px-12">
+        {showLawyerProblemSection ? (
+          <>
+            <LawyerHeroScrollSection />
+            <LawyerProblemSection />
+            <LawyerSystemRevealWindow revealRef={systemRevealRef} />
+            <ServicesShowcaseSection />
+          </>
+        ) : null}
+
+        <div
+          id="portfolio"
+          className={`flex min-h-screen w-screen max-w-none scroll-mt-10 flex-col justify-center self-center bg-white px-6 md:px-12 ${
+            showLawyerProblemSection ? "mt-0 py-28" : "mt-28 py-20"
+          }`}
+        >
           <div className="mb-8 flex items-end justify-between gap-6">
             <div className="text-[1.05rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
               <span className="mr-3 text-[#007aff]">→</span>
@@ -619,46 +1150,24 @@ export default function NewLandingSpinnerSection({
           </Carousel>
         </div>
 
-        <section id="services" className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 scroll-mt-10 bg-[#007aff] px-6 pb-28 pt-20 text-white md:px-12 md:py-24">
-          <div className="grid gap-10 lg:grid-cols-[0.45fr_0.55fr] lg:items-end">
-            <div>
-              <p className="text-[0.95rem] font-semibold tracking-[-0.025em] text-white/80">
-                <span className="mr-3 text-white">→</span>
-                Leistungen
-              </p>
-              <h2 className="mt-6 max-w-3xl text-[clamp(3rem,6vw,6.75rem)] font-bold leading-[0.9] tracking-[-0.06em]">
-                Our Services<span className="text-white/55">.</span>
-              </h2>
-            </div>
-            <p className="max-w-2xl text-[1.1rem] font-medium leading-relaxed tracking-[-0.025em] text-white/75">
-              Websites, Sichtbarkeit, Positionierung und Betreuung. Alles greift zusammen, damit aus Aufmerksamkeit planbare Anfragen werden.
-            </p>
-          </div>
-          <ExpandingCards
-            items={serviceItems}
-            defaultActiveIndex={0}
-            className="mt-14 max-w-none border-0"
-          />
-        </section>
-
-        <section className="w-screen max-w-none self-center bg-white px-6 py-24 text-black md:px-12 md:py-32">
-          <div className="grid gap-16 lg:grid-cols-[0.28fr_0.72fr] lg:gap-24">
+        <section className="w-screen max-w-none self-center bg-white px-6 py-20 text-black md:px-12 md:py-24">
+          <div className="grid gap-14 lg:grid-cols-[0.28fr_0.72fr] lg:gap-20">
             <div className="lg:sticky lg:top-16 lg:self-start">
               <p className="mb-8 text-[1.05rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
                 <span className="mr-3 text-[#007aff]">→</span>
                 Prozess
               </p>
-              <h2 className="text-[clamp(4rem,8vw,8.75rem)] font-bold leading-[0.9] tracking-[-0.075em] text-black">
+              <h2 className="text-[clamp(3.5rem,6.7vw,7.3rem)] font-bold leading-[0.9] tracking-[-0.075em] text-black">
                 Our
                 <br />
                 Process<span className="text-[#007aff]">.</span>
               </h2>
-              <p className="mt-10 max-w-sm text-[1.08rem] font-medium leading-relaxed tracking-[-0.025em] text-[#6b7280]">
+              <p className="mt-8 max-w-sm text-[1.02rem] font-medium leading-relaxed tracking-[-0.025em] text-[#6b7280]">
                 Ein klarer Ablauf vom ersten Gespräch bis zum System, das langfristig für neue Anfragen arbeitet.
               </p>
               <a
                 href="#contact"
-                className="mt-10 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#007aff] px-10 text-[1.05rem] font-bold tracking-[-0.025em] text-white no-underline transition-transform hover:-translate-y-0.5"
+                className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#007aff] px-9 text-[1rem] font-bold tracking-[-0.025em] text-white no-underline transition-transform hover:-translate-y-0.5"
               >
                 <span>→</span>
                 Erstgespräch planen
@@ -679,9 +1188,9 @@ export default function NewLandingSpinnerSection({
           <div className="grid gap-5 lg:grid-cols-4">
             <article className="flex min-h-[34rem] flex-col justify-between border border-[#d8dde7] p-8 lg:min-h-[40rem]">
               <div>
-                <div className="text-[1.75rem] font-bold tracking-[-0.06em] text-black">
+                <a href="/" className="inline-flex text-[1.75rem] font-bold tracking-[-0.06em] text-black no-underline transition-opacity hover:opacity-70">
                   nüll<span className="text-[#007aff]">.</span>
-                </div>
+                </a>
                 <h2 className="mt-20 text-[clamp(3rem,4.3vw,4.4rem)] font-bold leading-[0.85] tracking-[-0.075em] text-black">
                   Success
                   <br />
@@ -853,32 +1362,32 @@ export default function NewLandingSpinnerSection({
           </div>
         </section>
 
-        <section id="contact" className="relative w-screen max-w-none self-center overflow-hidden bg-[#007aff] px-6 py-20 text-white md:px-12 md:py-28">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white to-transparent" />
-          <div className="relative grid min-h-[75vh] items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(380px,460px)] lg:grid-cols-[minmax(0,1fr)_minmax(420px,560px)] xl:grid-cols-[minmax(0,1fr)_minmax(520px,640px)]">
-            <div className="max-w-4xl">
-              <p className="text-[0.92rem] font-bold uppercase tracking-[0.34em] text-white/70">
+        <section id="contact" className="relative w-screen max-w-none self-center overflow-hidden bg-[#007aff] px-5 py-14 pb-[calc(4rem+env(safe-area-inset-bottom))] text-white sm:px-6 md:px-12 md:py-28">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white to-transparent md:h-28" />
+          <div className="relative grid min-h-0 items-start gap-9 md:min-h-[75vh] md:grid-cols-[minmax(0,1fr)_minmax(380px,460px)] md:items-center md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(420px,560px)] xl:grid-cols-[minmax(0,1fr)_minmax(520px,640px)]">
+            <div className="min-w-0 max-w-4xl">
+              <p className="text-[0.78rem] font-bold uppercase tracking-[0.28em] text-white/70 sm:text-[0.88rem] md:text-[0.92rem] md:tracking-[0.34em]">
                 Kontakt
               </p>
-              <h2 className="mt-8 max-w-4xl text-[clamp(2.75rem,5vw,5.85rem)] font-bold leading-[0.9] tracking-[-0.075em] text-white sm:text-[clamp(3.2rem,5vw,5.85rem)]">
-                <span className="block whitespace-nowrap">Lassen Sie uns</span>
-                <span className="block whitespace-nowrap">
+              <h2 className="mt-6 max-w-4xl text-[clamp(2.35rem,11vw,3.65rem)] font-bold leading-[0.92] tracking-[-0.07em] text-white sm:text-[clamp(3.15rem,8vw,4.75rem)] md:mt-8 md:text-[clamp(3.65rem,5vw,5.85rem)] md:leading-[0.9] md:tracking-[-0.075em]">
+                <span className="block">Lassen Sie uns</span>
+                <span className="block">
                   etwas Starkes bauen<span className="text-white/45">.</span>
                 </span>
               </h2>
-              <p className="mt-8 max-w-[54rem] text-[clamp(1.1rem,1.45vw,1.42rem)] font-medium leading-relaxed tracking-[-0.035em] text-white/78">
+              <p className="mt-5 max-w-[54rem] text-[clamp(1rem,4.25vw,1.22rem)] font-medium leading-relaxed tracking-[-0.035em] text-white/78 sm:max-w-[38rem] md:mt-8 md:max-w-[54rem] md:text-[clamp(1.1rem,1.45vw,1.42rem)]">
                 Erzählen Sie uns kurz, wo Ihr Unternehmen gerade steht. Wir zeigen Ihnen, welche Website, SEO-Struktur, KI-Sichtbarkeit oder Google Ads Lösung wirklich sinnvoll ist.
               </p>
 
-              <div className="mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="mt-7 grid max-w-3xl grid-cols-1 gap-3 min-[390px]:grid-cols-2 sm:grid-cols-3 md:mt-8">
                 {contactMethods.map(({ title, description, href, action, icon, Icon }) => (
                   <a
                     key={title}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className={`group flex min-h-[8.5rem] flex-col justify-between rounded-[1.35rem] border border-white/18 bg-white/12 p-4 text-left text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0e0e10] ${
-                      title === "Gmail" ? "col-span-2 mx-auto w-full max-w-[20rem] sm:col-span-1 sm:max-w-none" : ""
+                    className={`group flex min-h-[7.25rem] min-w-0 flex-col justify-between rounded-[1.15rem] border border-white/18 bg-white/12 p-4 text-left text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0e0e10] sm:min-h-[8.25rem] sm:rounded-[1.35rem] ${
+                      title === "Gmail" ? "min-[390px]:col-span-2 sm:col-span-1" : ""
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -901,11 +1410,11 @@ export default function NewLandingSpinnerSection({
                       />
                     </div>
                     <div>
-                      <h3 className="text-[1rem] font-bold tracking-[-0.02em]">{title}</h3>
-                      <p className="mt-1 text-[0.82rem] font-medium leading-snug text-white/70 transition-colors group-hover:text-[#6b7280]">
+                      <h3 className="text-[0.98rem] font-bold tracking-[-0.02em] sm:text-[1rem]">{title}</h3>
+                      <p className="mt-1 text-[0.8rem] font-medium leading-snug text-white/70 transition-colors group-hover:text-[#6b7280] sm:text-[0.82rem]">
                         {description}
                       </p>
-                      <span className="mt-4 block text-[0.84rem] font-bold text-white transition-colors group-hover:text-[#007aff]">
+                      <span className="mt-3 block break-words text-[0.82rem] font-bold text-white transition-colors group-hover:text-[#007aff] sm:mt-4 sm:text-[0.84rem]">
                         {action}
                       </span>
                     </div>
@@ -914,11 +1423,13 @@ export default function NewLandingSpinnerSection({
               </div>
             </div>
 
-            <MultistepForm
-              className="w-full max-w-none pb-0 md:-translate-x-6 xl:-translate-x-10"
-              onSubmit={submitContactForm}
-              showIntro={false}
-            />
+            <div className="mx-auto w-full max-w-[38rem] min-w-0 md:max-w-none md:-translate-x-6 xl:-translate-x-10">
+              <MultistepForm
+                className="w-full max-w-none"
+                onSubmit={submitContactForm}
+                showIntro={false}
+              />
+            </div>
           </div>
         </section>
 

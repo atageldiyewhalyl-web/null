@@ -110,9 +110,9 @@ export function Work() {
                   <span className="text-[1.05rem] font-semibold text-neutral-300" aria-hidden="true">
                     ×
                   </span>
-                  <span className="text-[1.35rem] font-bold tracking-[-0.03em] text-[#0e0e10]">
+                  <a href="/" className="text-[1.35rem] font-bold tracking-[-0.03em] text-[#0e0e10] no-underline transition-opacity hover:opacity-70">
                     nüll<span className="text-[#0071e3]">.</span>
-                  </span>
+                  </a>
                 </div>
               ) : null}
               <div

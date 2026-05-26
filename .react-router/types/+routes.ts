@@ -23,6 +23,9 @@ type Pages = {
   "/new-landing": {
     params: {};
   };
+  "/kanzlei-websites": {
+    params: {};
+  };
   "/lawyers": {
     params: {};
   };
@@ -100,7 +103,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/lawyers" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/kanzlei-websites" | "/lawyers" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -113,6 +116,10 @@ type RouteFiles = {
   "routes/new-landing.tsx": {
     id: "routes/new-landing";
     page: "/new-landing";
+  };
+  "routes/kanzlei-websites.tsx": {
+    id: "routes/kanzlei-websites";
+    page: "/kanzlei-websites";
   };
   "routes/lawyers.tsx": {
     id: "routes/lawyers";
@@ -217,6 +224,7 @@ type RouteModules = {
   "routes/onboarding": typeof import("./app/routes/onboarding.tsx");
   "routes/client-discovery-onboarding": typeof import("./app/routes/client-discovery-onboarding.tsx");
   "routes/new-landing": typeof import("./app/routes/new-landing.tsx");
+  "routes/kanzlei-websites": typeof import("./app/routes/kanzlei-websites.tsx");
   "routes/lawyers": typeof import("./app/routes/lawyers.tsx");
   "routes/home": typeof import("./app/routes/home.tsx");
   "routes/services": typeof import("./app/routes/services.tsx");
