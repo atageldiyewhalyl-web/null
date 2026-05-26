@@ -157,7 +157,7 @@ export const MinimalistHero = ({
           ))}
           {categoryLinks.length > 0 ? (
             <div
-              className="relative"
+              className="relative py-3"
               onMouseEnter={() => setIsCategoriesOpen(true)}
               onMouseLeave={() => setIsCategoriesOpen(false)}
               onFocus={() => setIsCategoriesOpen(true)}
@@ -184,17 +184,19 @@ export const MinimalistHero = ({
                 </span>
               </button>
               {isCategoriesOpen ? (
-                <div className="absolute right-0 top-full mt-4 w-[18rem] rounded-[8px] border border-black/10 bg-white p-2 shadow-[0_18px_48px_rgba(15,23,42,0.13)]">
+                <div className="absolute right-0 top-full w-[18rem] pt-3">
+                  <div className="rounded-[8px] border border-[#0064df] bg-[#007aff] p-2 shadow-[0_18px_48px_rgba(0,74,173,0.22)]">
                   {categoryLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
-                      className="flex items-center justify-between rounded-[6px] px-4 py-3 text-[0.82rem] font-black uppercase tracking-[0.12em] text-[#111111] transition-colors hover:bg-[#f5f5f7] hover:text-[#007aff]"
+                      className="flex items-center justify-between rounded-[6px] px-4 py-3 text-[0.82rem] font-black uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-[#007aff]"
                     >
                       {link.label}
                       <span aria-hidden="true">&gt;</span>
                     </a>
                   ))}
+                  </div>
                 </div>
               ) : null}
             </div>
