@@ -325,6 +325,49 @@ const faqItems = [
   },
 ];
 
+const lawyerFaqItems = [
+  {
+    question: "Was kostet eine Kanzlei-Website mit SEO bei nüll?",
+    answer:
+      "Der Preis hängt vom Umfang der Kanzlei-Website ab. Eine professionelle Website startet bei 800 Euro. Dazu kommt eine monatliche Gebühr für Wartung und Hosting. Zusätzliche Leistungen wie laufende SEO-Betreuung, Google Ads, Content-Erstellung oder separate Seiten für Rechtsgebiete werden je nach Bedarf und Leistungsumfang geplant.",
+  },
+  {
+    question: "Wie lange dauert ein Website-Projekt für Anwälte, Kanzleien oder Berater?",
+    answer:
+      "Ein typisches Kanzlei- oder Berater-Website-Projekt dauert bei uns etwa 2 bis 3 Wochen. Entscheidend sind Umfang, Feedback-Geschwindigkeit und ob Inhalte, Fotos, Vertrauenselemente oder zusätzliche Leistungsseiten neu erstellt werden müssen.",
+  },
+  {
+    question: "Ist SEO für Kanzleien direkt in der Website-Erstellung enthalten?",
+    answer:
+      "Ja. Jede Kanzlei-Website erhält technische SEO-Grundlagen, eine saubere Seitenstruktur, Meta Titles, Meta Descriptions, Performance-Basics und Google-Indexierung. Wer monatliche Pakete bucht, kann zusätzlich lokale SEO, Content-Planung, Blogartikel, Rechtsgebietsseiten und laufende SEO-Optimierung erhalten.",
+  },
+  {
+    question: "Hilft nüll dabei, bei Google und in KI-Suchen für Rechtsgebiete sichtbar zu werden?",
+    answer:
+      "Ja. Wir strukturieren Kanzlei-Websites so, dass sie für Google und KI-Systeme wie ChatGPT, Gemini, Perplexity und Claude besser verständlich sind. Dazu gehören klare Inhalte, saubere Seitenlogik, relevante Antworten zu Rechtsgebieten, lokale Signale und technische Grundlagen. Rankings können nie garantiert werden, aber die Website wird gezielt auf Sichtbarkeit und qualifizierte Mandatsanfragen vorbereitet.",
+  },
+  {
+    question: "Erstellt nüll auch Texte, Fotos und Inhalte für Kanzlei-Websites?",
+    answer:
+      "Ja. Je nach Projekt übernehmen wir Copywriting, Content-Konzept, Fotoshootings, Videodrehs und visuelle Inhalte. Besonders für Anwälte, Kanzleien, Steuerberater und Berater hilft eigener Content dabei, Vertrauen aufzubauen, Expertise verständlich zu machen und professioneller aufzutreten.",
+  },
+  {
+    question: "Übernimmt nüll Wartung, Hosting, SEO und Google Ads nach dem Launch?",
+    answer:
+      "Ja. Für jede Website gibt es eine monatliche Gebühr für Hosting und technische Wartung. Darüber hinaus können Kanzleien und Berater laufende SEO-Betreuung, Content-Updates und Google Ads Kampagnenmanagement buchen, wenn sie kontinuierlich sichtbarer werden und mehr Anfragen gewinnen möchten.",
+  },
+  {
+    question: "Für welche Kanzleien, Anwälte und Berater eignet sich nüll?",
+    answer:
+      "nüll ist besonders passend für Anwälte, Kanzleien, Steuerberater, Finanzberater, Unternehmensberater und professionelle Dienstleister in Deutschland. Der Fokus liegt auf Websites, die Kompetenz zeigen, Vertrauen schaffen und planbare Anfragen oder Mandatsanfragen auslösen.",
+  },
+  {
+    question: "Gibt es eine Zufriedenheitsgarantie für Kanzlei-Website-Projekte?",
+    answer:
+      "Ja. Wenn ein Kunde in den ersten 30 Tagen merkt, dass die Zusammenarbeit nicht passt, bieten wir eine Geld-zurück-Garantie. Uns ist wichtig, dass die Zusammenarbeit mit Kanzleien und Beratern transparent, professionell und für beide Seiten sinnvoll ist.",
+  },
+];
+
 const priceScopes = ["Website", "SEO", "KI-Sichtbarkeit", "Google Ads", "Lead System"];
 
 const contactMethods = [
@@ -334,6 +377,7 @@ const contactMethods = [
     href: "https://wa.me/4915256569852",
     action: "Nachricht senden",
     icon: whatsappIcon,
+    eventName: "lawyer_whatsapp_click",
   },
   {
     title: "Anrufen",
@@ -341,6 +385,7 @@ const contactMethods = [
     href: "tel:+4915256569852",
     action: "+49 1525 6569852",
     Icon: Phone,
+    eventName: "lawyer_phone_click",
   },
   {
     title: "Gmail",
@@ -348,12 +393,8 @@ const contactMethods = [
     href: "mailto:info@nüll.com",
     action: "info@nüll.com",
     icon: gmailIcon,
+    eventName: "lawyer_email_click",
   },
-];
-
-const faqColumns = [
-  faqItems.filter((_, index) => index % 2 === 0),
-  faqItems.filter((_, index) => index % 2 === 1),
 ];
 
 const lawyerProblemItems = [
@@ -971,6 +1012,11 @@ export default function NewLandingSpinnerSection({
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isSystemRevealVisible, setIsSystemRevealVisible] = useState(false);
   const systemRevealRef = useRef<HTMLElement | null>(null);
+  const currentFaqItems = showLawyerProblemSection ? lawyerFaqItems : faqItems;
+  const faqColumns = [
+    currentFaqItems.filter((_, index) => index % 2 === 0),
+    currentFaqItems.filter((_, index) => index % 2 === 1),
+  ];
 
   useEffect(() => {
     if (!showLawyerProblemSection) return;
@@ -1029,6 +1075,19 @@ export default function NewLandingSpinnerSection({
         send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
       });
     }
+  };
+
+  const trackContactMethodClick = (eventName: string) => {
+    if (typeof window === "undefined" || typeof (window as any).gtag !== "function") return;
+
+    (window as any).gtag("event", "conversion", {
+      send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
+      event_category: "lawyer_contact",
+      event_label: eventName,
+    });
+    (window as any).gtag("event", eventName, {
+      event_category: "lawyer_contact",
+    });
   };
 
   return (
@@ -1306,7 +1365,9 @@ export default function NewLandingSpinnerSection({
                 FAQ<span className="text-[#007aff]">.</span>
               </h2>
               <p className="mt-7 max-w-sm text-[1.02rem] font-medium leading-relaxed tracking-[-0.025em] text-[#6b7280]">
-                Kurze Antworten auf die Fragen, die vor einem Website-Projekt wirklich wichtig sind.
+                {showLawyerProblemSection
+                  ? "Kurze Antworten auf die Fragen, die vor einer Kanzlei-Website wirklich wichtig sind."
+                  : "Kurze Antworten auf die Fragen, die vor einem Website-Projekt wirklich wichtig sind."}
               </p>
               <a
                 href="#contact"
@@ -1321,7 +1382,7 @@ export default function NewLandingSpinnerSection({
               {faqColumns.map((column, columnIndex) => (
                 <div key={columnIndex} className="border-b border-[#d8dde7]">
                   {column.map((item) => {
-                    const itemIndex = faqItems.indexOf(item);
+                    const itemIndex = currentFaqItems.indexOf(item);
 
                     return (
                       <div key={item.question} className="border-t border-[#d8dde7]">
@@ -1363,7 +1424,6 @@ export default function NewLandingSpinnerSection({
         </section>
 
         <section id="contact" className="relative w-screen max-w-none self-center overflow-hidden bg-[#007aff] px-5 py-14 pb-[calc(4rem+env(safe-area-inset-bottom))] text-white sm:px-6 md:px-12 md:py-28">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white to-transparent md:h-28" />
           <div className="relative grid min-h-0 items-start gap-9 md:min-h-[75vh] md:grid-cols-[minmax(0,1fr)_minmax(380px,460px)] md:items-center md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(420px,560px)] xl:grid-cols-[minmax(0,1fr)_minmax(520px,640px)]">
             <div className="min-w-0 max-w-4xl">
               <p className="text-[0.78rem] font-bold uppercase tracking-[0.28em] text-white/70 sm:text-[0.88rem] md:text-[0.92rem] md:tracking-[0.34em]">
@@ -1380,12 +1440,13 @@ export default function NewLandingSpinnerSection({
               </p>
 
               <div className="mt-7 grid max-w-3xl grid-cols-1 gap-3 min-[390px]:grid-cols-2 sm:grid-cols-3 md:mt-8">
-                {contactMethods.map(({ title, description, href, action, icon, Icon }) => (
+                {contactMethods.map(({ title, description, href, action, icon, Icon, eventName }) => (
                   <a
                     key={title}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    onClick={() => trackContactMethodClick(eventName)}
                     className={`group flex min-h-[7.25rem] min-w-0 flex-col justify-between rounded-[1.15rem] border border-white/18 bg-white/12 p-4 text-left text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#0e0e10] sm:min-h-[8.25rem] sm:rounded-[1.35rem] ${
                       title === "Gmail" ? "min-[390px]:col-span-2 sm:col-span-1" : ""
                     }`}
