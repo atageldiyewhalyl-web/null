@@ -389,7 +389,7 @@ const faqItems = [
       "Ja. Für jede Website gibt es eine monatliche Gebühr für Hosting und technische Wartung. Darüber hinaus können Kunden laufende SEO-Betreuung, Content-Updates und Google Ads Kampagnenmanagement buchen, wenn sie kontinuierlich wachsen möchten.",
   },
   {
-    question: "Für welche Unternehmen, Ärzte und Zahnärzte eignet sich nüll?",
+    question: "Für welche Unternehmen eignet sich nüll?",
     answer:
       "nüll ist besonders passend für lokale Unternehmen in Deutschland, Handwerksbetriebe, Immobilienanbieter, Berater, Finanzdienstleister, Anwälte, Ärzte und Zahnärzte. Der Fokus liegt auf Websites, die Kompetenz zeigen, Vertrauen schaffen und planbare Anfragen auslösen.",
   },
