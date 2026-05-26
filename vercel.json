@@ -52,7 +52,13 @@
       "destination": "/leistungen/google-ads",
       "permanent": true
     }   
-  ],  
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
   "headers": [
     {
       "source": "/admin",
