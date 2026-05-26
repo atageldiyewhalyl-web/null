@@ -12,6 +12,7 @@ interface MinimalistHeroProps {
   imageSrc: string;
   imageAlt: string;
   imageClassName?: string;
+  imageStyle?: React.CSSProperties;
   overlayText: {
     part1: string;
     part2: string;
@@ -83,6 +84,7 @@ export const MinimalistHero = ({
   imageSrc,
   imageAlt,
   imageClassName,
+  imageStyle,
   overlayText,
   overlayTextClassName,
   socialLinks,
@@ -315,6 +317,7 @@ export const MinimalistHero = ({
                 "relative z-20 h-auto w-[15.25rem] translate-x-10 translate-y-14 object-contain md:w-[28rem] md:translate-x-24 md:translate-y-28 lg:w-[34rem]",
                 imageClassName,
               )}
+              style={imageStyle}
               initial={{ opacity: 0, y: 35, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}

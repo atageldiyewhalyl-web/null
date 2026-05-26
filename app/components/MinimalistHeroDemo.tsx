@@ -16,6 +16,7 @@ export default function MinimalistHeroDemo() {
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },
+              { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
             ]}
             mainText="We help businesses get found, build trust, and turn visibility into real inquiries."
             readMoreLink="#services"

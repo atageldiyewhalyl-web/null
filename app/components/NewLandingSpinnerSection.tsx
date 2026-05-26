@@ -114,6 +114,11 @@ type StatItem = {
   description?: string;
 };
 
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 const stats: StatItem[] = [
   {
     value: 100,
@@ -418,6 +423,20 @@ const lawyerProblemItems = [
   },
 ];
 
+type ProblemItem = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+type ProblemSectionCopy = {
+  eyebrow?: string;
+  sideText: React.ReactNode;
+  actionLabel?: string;
+  headline: React.ReactNode;
+  items: ProblemItem[];
+};
+
 const lawyerSystemItems = [
   {
     number: "01",
@@ -459,6 +478,17 @@ type LawyerServiceCard = {
   visualAlt: string;
   visualSrc?: string;
   visual?: "automation" | "tech";
+};
+
+type ServicesShowcaseCopy = {
+  heading: React.ReactNode;
+  subheading: string;
+  cards: LawyerServiceCard[];
+};
+
+type DoctorMockupItem = {
+  src: string;
+  alt: string;
 };
 
 const lawyerServiceCards: LawyerServiceCard[] = [
@@ -623,11 +653,17 @@ function LawyerServiceVisual({
   );
 }
 
-function LawyerQuestionMarkPlaceholder() {
+function LawyerQuestionMarkPlaceholder({
+  src = webpageScatterAsset,
+  alt = "Verstreute Website-Seiten",
+}: {
+  src?: string;
+  alt?: string;
+}) {
   return (
     <img
-      src={webpageScatterAsset}
-      alt="Verstreute Website-Seiten"
+      src={src}
+      alt={alt}
       className="h-auto w-full max-w-[42rem] object-contain"
       loading="lazy"
     />
@@ -669,7 +705,36 @@ function LawyerHeroScrollSection() {
   );
 }
 
-function ServicesShowcaseSection() {
+function DoctorMockupShowcaseSection({ items }: { items: DoctorMockupItem[] }) {
+  return (
+    <section className="relative z-10 mt-10 w-full max-w-full overflow-hidden bg-white py-4 text-black [contain:layout_paint] md:left-1/2 md:mt-12 md:w-screen md:max-w-none md:-translate-x-1/2 md:py-8">
+      <div className="mx-auto grid max-w-[96rem] gap-7 px-6 md:grid-cols-2 md:px-12 lg:grid-cols-3 lg:gap-8">
+        {items.map((item, index) => (
+          <figure
+            key={item.src}
+            className="min-w-0"
+          >
+            <img
+              src={item.src}
+              alt={item.alt}
+              className="block h-auto w-full"
+              loading={index < 3 ? "eager" : "lazy"}
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ServicesShowcaseSection({ copy }: { copy?: ServicesShowcaseCopy }) {
+  const servicesCopy = copy ?? {
+    heading: <>Alles, was aus Sichtbarkeit planbare Anfragen macht.</>,
+    subheading:
+      "Branding, Website, SEO, Google Ads, KI-Sichtbarkeit und Betreuung: alles greift ineinander und bringt Ihrer Kanzlei messbar mehr Anfragen.",
+    cards: lawyerServiceCards,
+  };
+
   return (
     <section id="services" className="relative left-1/2 z-10 min-h-[165vh] w-screen max-w-none -translate-x-1/2 scroll-mt-10 overflow-hidden bg-[#006dff] px-5 py-16 text-white md:px-10 md:py-20 lg:min-h-[185vh]">
       <div className="mx-auto max-w-[90rem]">
@@ -678,14 +743,14 @@ function ServicesShowcaseSection() {
           Unsere Leistungen
         </div>
         <h2 className="mx-auto mt-6 max-w-5xl text-center text-[clamp(2.7rem,5.5vw,6rem)] font-bold leading-[0.9] tracking-[-0.065em]">
-          Alles, was aus Sichtbarkeit planbare Anfragen macht.
+          {servicesCopy.heading}
         </h2>
         <p className="mx-auto mt-6 max-w-4xl text-center text-[clamp(1.05rem,1.7vw,1.35rem)] font-medium leading-relaxed tracking-[-0.025em] text-white/86">
-          Branding, Website, SEO, Google Ads, KI-Sichtbarkeit und Betreuung: alles greift ineinander und bringt Ihrer Kanzlei messbar mehr Anfragen.
+          {servicesCopy.subheading}
         </p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {lawyerServiceCards.map((service) => (
+          {servicesCopy.cards.map((service) => (
             <article
               key={service.title}
               className="flex min-h-[24rem] flex-col overflow-hidden rounded-[8px] bg-white p-6 text-[#121826] shadow-[0_24px_70px_rgba(0,23,82,0.22)] ring-1 ring-white/25 md:min-h-[26rem] lg:min-h-[28rem]"
@@ -846,7 +911,42 @@ function LawyerSystemRevealWindow({
   );
 }
 
-function LawyerProblemSection() {
+function LawyerProblemSection({
+  problemVisualSrc,
+  problemVisualAlt,
+  problemCopy,
+}: {
+  problemVisualSrc?: string;
+  problemVisualAlt?: string;
+  problemCopy?: ProblemSectionCopy;
+}) {
+  const copy = problemCopy ?? {
+    eyebrow: "Problem",
+    sideText: (
+      <>
+        Viele Kanzleien sind online auffindbar,
+        <br />
+        aber nicht relevant genug,
+        <br />
+        um von potenziellen Mandanten
+        <br />
+        kontaktiert zu werden.
+      </>
+    ),
+    actionLabel: "Wie wir das lösen",
+    headline: (
+      <>
+        <span className="block">Warum aus</span>
+        <span className="block min-[430px]:hidden">Sichtbarkeit oft</span>
+        <span className="block min-[430px]:hidden">noch keine</span>
+        <span className="hidden min-[430px]:block md:hidden">Sichtbarkeit oft noch keine</span>
+        <span className="hidden md:block">Sichtbarkeit oft noch keine</span>
+        <span className="block">Anfragen werden<span className="text-[#007aff]">.</span></span>
+      </>
+    ),
+    items: lawyerProblemItems,
+  };
+
   return (
     <section className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 overflow-hidden bg-white px-6 py-14 text-black md:mt-24 md:px-12 md:py-20">
       <div className="grid gap-12 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16">
@@ -854,42 +954,31 @@ function LawyerProblemSection() {
           <div>
             <p className="text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
               <span className="mr-3 text-[#007aff]">→</span>
-              Problem
+              {copy.eyebrow ?? "Problem"}
             </p>
             <p className="mt-10 hidden max-w-[24rem] text-[1.02rem] font-bold leading-[1.35] tracking-[-0.04em] text-[#0e0e10] md:block">
-              Viele Kanzleien sind online auffindbar,
-              <br />
-              aber nicht relevant genug,
-              <br />
-              um von potenziellen Mandanten
-              <br />
-              kontaktiert zu werden.
+              {copy.sideText}
             </p>
             <a
               href="#services"
               className="mt-6 hidden border-b-2 border-black pb-1 text-[1.05rem] font-bold leading-none tracking-[-0.04em] text-black no-underline md:inline-flex"
             >
-              Wie wir das lösen
+              {copy.actionLabel ?? "Wie wir das lösen"}
             </a>
           </div>
 
           <div className="hidden lg:block">
-            <LawyerQuestionMarkPlaceholder />
+            <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
           </div>
         </aside>
 
         <div>
           <h2 className="max-w-full text-[clamp(2.15rem,10.6vw,3.2rem)] font-bold leading-[0.9] tracking-[-0.06em] text-black min-[430px]:text-[clamp(2.45rem,9vw,3.4rem)] md:max-w-5xl md:text-[clamp(3.25rem,4.5vw,5.15rem)] md:leading-[0.88]">
-            <span className="block">Warum aus</span>
-            <span className="block min-[430px]:hidden">Sichtbarkeit oft</span>
-            <span className="block min-[430px]:hidden">noch keine</span>
-            <span className="hidden min-[430px]:block md:hidden">Sichtbarkeit oft noch keine</span>
-            <span className="hidden md:block">Sichtbarkeit oft noch keine</span>
-            <span className="block">Anfragen werden<span className="text-[#007aff]">.</span></span>
+            {copy.headline}
           </h2>
 
           <div className="mt-12 divide-y divide-[#d7deea] border-t border-[#d7deea] md:mt-14">
-            {lawyerProblemItems.map((item) => (
+            {copy.items.map((item) => (
               <article
                 key={item.number}
                 className="grid min-w-0 gap-5 py-8 md:grid-cols-[0.18fr_0.82fr] md:gap-14 md:py-9"
@@ -910,7 +999,7 @@ function LawyerProblemSection() {
           </div>
 
           <div className="mt-10 overflow-hidden lg:hidden">
-            <LawyerQuestionMarkPlaceholder />
+            <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
           </div>
         </div>
       </div>
@@ -1002,17 +1091,35 @@ type NewLandingSpinnerSectionProps = {
   statsHeading?: string;
   statsItems?: StatItem[];
   showLawyerProblemSection?: boolean;
+  doctorMockupItems?: DoctorMockupItem[];
+  problemVisualSrc?: string;
+  problemVisualAlt?: string;
+  problemCopy?: ProblemSectionCopy;
+  servicesCopy?: ServicesShowcaseCopy;
+  faqItemsOverride?: FaqItem[];
+  faqIntro?: string;
+  contactTrackingCategory?: string;
+  contactEventPrefix?: string;
 };
 
 export default function NewLandingSpinnerSection({
   statsHeading = "Sichtbarkeit wird erst wertvoll, wenn daraus Anfragen entstehen",
   statsItems = stats,
   showLawyerProblemSection = false,
+  doctorMockupItems,
+  problemVisualSrc,
+  problemVisualAlt,
+  problemCopy,
+  servicesCopy,
+  faqItemsOverride,
+  faqIntro,
+  contactTrackingCategory = "lawyer_contact",
+  contactEventPrefix = "lawyer",
 }: NewLandingSpinnerSectionProps = {}) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isSystemRevealVisible, setIsSystemRevealVisible] = useState(false);
   const systemRevealRef = useRef<HTMLElement | null>(null);
-  const currentFaqItems = showLawyerProblemSection ? lawyerFaqItems : faqItems;
+  const currentFaqItems = faqItemsOverride ?? (showLawyerProblemSection ? lawyerFaqItems : faqItems);
   const faqColumns = [
     currentFaqItems.filter((_, index) => index % 2 === 0),
     currentFaqItems.filter((_, index) => index % 2 === 1),
@@ -1079,14 +1186,15 @@ export default function NewLandingSpinnerSection({
 
   const trackContactMethodClick = (eventName: string) => {
     if (typeof window === "undefined" || typeof (window as any).gtag !== "function") return;
+    const normalizedEventName = eventName.replace(/^lawyer_/, `${contactEventPrefix}_`);
 
     (window as any).gtag("event", "conversion", {
       send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
-      event_category: "lawyer_contact",
-      event_label: eventName,
+      event_category: contactTrackingCategory,
+      event_label: normalizedEventName,
     });
-    (window as any).gtag("event", eventName, {
-      event_category: "lawyer_contact",
+    (window as any).gtag("event", normalizedEventName, {
+      event_category: contactTrackingCategory,
     });
   };
 
@@ -1146,10 +1254,18 @@ export default function NewLandingSpinnerSection({
 
         {showLawyerProblemSection ? (
           <>
-            <LawyerHeroScrollSection />
-            <LawyerProblemSection />
+            {doctorMockupItems?.length ? (
+              <DoctorMockupShowcaseSection items={doctorMockupItems} />
+            ) : (
+              <LawyerHeroScrollSection />
+            )}
+            <LawyerProblemSection
+              problemVisualSrc={problemVisualSrc}
+              problemVisualAlt={problemVisualAlt}
+              problemCopy={problemCopy}
+            />
             <LawyerSystemRevealWindow revealRef={systemRevealRef} />
-            <ServicesShowcaseSection />
+            <ServicesShowcaseSection copy={servicesCopy} />
           </>
         ) : null}
 
@@ -1366,7 +1482,7 @@ export default function NewLandingSpinnerSection({
               </h2>
               <p className="mt-7 max-w-sm text-[1.02rem] font-medium leading-relaxed tracking-[-0.025em] text-[#6b7280]">
                 {showLawyerProblemSection
-                  ? "Kurze Antworten auf die Fragen, die vor einer Kanzlei-Website wirklich wichtig sind."
+                  ? faqIntro ?? "Kurze Antworten auf die Fragen, die vor einer Kanzlei-Website wirklich wichtig sind."
                   : "Kurze Antworten auf die Fragen, die vor einem Website-Projekt wirklich wichtig sind."}
               </p>
               <a

@@ -1,6 +1,6 @@
 # nüll.
 
-nüll. is a Mannheim-based web design and digital acquisition studio for professional service businesses, consultants, law firms, and local companies in Germany.
+nüll. is a Mannheim-based web design and digital acquisition studio for professional service businesses, consultants, law firms, medical practices, and local companies in Germany.
 
 ## Website
 - Canonical domain: https://xn--nll-hoa.com
@@ -12,6 +12,7 @@ nüll. is a Mannheim-based web design and digital acquisition studio for profess
 ## Primary Pages
 - https://xn--nll-hoa.com/ - Main landing page for websites, SEO, Google Ads, AI search visibility, branding, and content creation.
 - https://xn--nll-hoa.com/kanzlei-websites - Dedicated landing page for modern Kanzlei-Websites focused on local visibility and Mandatsanfragen.
+- https://xn--nll-hoa.com/arztpraxis-websites - Dedicated landing page for Praxis-Websites, local SEO, appointment paths, and Patientenanfragen.
 - https://xn--nll-hoa.com/leistungen/webdesign - Webdesign service page for Dienstleister, Kanzleien, Berater, Handwerk, and local companies.
 - https://xn--nll-hoa.com/leistungen/seo - SEO service page for local visibility, search-intent structure, and qualified organic enquiries.
 - https://xn--nll-hoa.com/leistungen/google-ads - Google Ads service page for campaign setup, landing pages, and conversion tracking.
@@ -19,6 +20,7 @@ nüll. is a Mannheim-based web design and digital acquisition studio for profess
 
 ## Services
 - Kanzlei-Websites for lawyers, law firms, tax advisors, and consultants who need trust, local visibility, and Mandatsanfragen.
+- Praxis-Websites for doctors, medical practices, specialists, dentists, and healthcare providers who need trust, local visibility, and appointment requests.
 - Conversion-focused websites with clear structure and premium visual direction.
 - Local SEO and search-intent page architecture for qualified organic visibility.
 - Google Ads campaign setup, landing pages, and conversion tracking.

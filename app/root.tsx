@@ -56,7 +56,9 @@ export default function App() {
     location.pathname === "/" ||
     location.pathname.startsWith("/new-landing") ||
     location.pathname.startsWith("/kanzlei-websites") ||
-    location.pathname.startsWith("/lawyers");
+    location.pathname.startsWith("/lawyers") ||
+    location.pathname.startsWith("/arztpraxis-websites") ||
+    location.pathname.startsWith("/doctors");
 
   return (
     <LanguageProvider initialLang={lang}>
