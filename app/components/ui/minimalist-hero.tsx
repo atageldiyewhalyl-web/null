@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import type { LucideIcon } from "lucide-react";
+import { ChevronDown, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface MinimalistHeroProps {
@@ -174,14 +174,15 @@ export const MinimalistHero = ({
                 aria-expanded={isCategoriesOpen}
               >
                 Kategorien
-                <span
+                <ChevronDown
+                  aria-hidden="true"
+                  size={15}
+                  strokeWidth={3}
                   className={cn(
-                    "text-[0.9rem] leading-none transition-transform",
+                    "transition-transform",
                     isCategoriesOpen ? "rotate-180" : "",
                   )}
-                >
-                  v
-                </span>
+                />
               </button>
               {isCategoriesOpen ? (
                 <div className="absolute right-0 top-full w-[18rem] pt-3">
@@ -249,14 +250,15 @@ export const MinimalistHero = ({
                   className="flex w-full items-center justify-between px-2 py-4 text-left text-[0.86rem] font-black uppercase tracking-[0.16em] text-[#111111]"
                 >
                   Kategorien
-                  <span
+                  <ChevronDown
+                    aria-hidden="true"
+                    size={18}
+                    strokeWidth={3}
                     className={cn(
                       "text-[#007aff] transition-transform",
                       isCategoriesOpen ? "rotate-180" : "",
                     )}
-                  >
-                    v
-                  </span>
+                  />
                 </button>
 
                 {isCategoriesOpen ? (
