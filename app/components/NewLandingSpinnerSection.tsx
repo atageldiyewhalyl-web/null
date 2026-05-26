@@ -3,17 +3,26 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
+  Bot,
+  Camera,
   Cloud,
+  Code2,
   Cookie,
   FileText,
   Gauge,
   Mail,
+  Megaphone,
   MessageSquare,
+  MonitorSmartphone,
+  Palette,
   RefreshCw,
+  Search,
   ShieldCheck,
   Sparkles,
   Phone,
 } from "lucide-react";
+import { ExpandingCards } from "@/components/ui/expanding-cards";
+import type { CardItem } from "@/components/ui/expanding-cards";
 import MultistepForm, { type MultistepFormData } from "@/components/ui/multistep-form";
 import { Accordion05 } from "@/components/ui/accordion-05";
 import { AnimatedBlobs } from "@/components/ui/blobs";
@@ -28,6 +37,8 @@ import { Footer } from "@/components/Footer";
 import { projectId, publicAnonKey } from "/utils/supabase/info";
 import gmailIcon from "../assets/icons/gmail-icon.webp";
 import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
+import webdesignPreview from "../assets/Webdesing .webp";
+import technicalPreview from "../assets/Technical carrousel.webp";
 import webpageScatterAsset from "../assets/webpage scatter.webp";
 import serviceHeroScroll1 from "../assets/Service hero scroll/1.webp";
 import serviceHeroScroll2 from "../assets/Service hero scroll/2.webp";
@@ -208,6 +219,65 @@ const serviceVisual = (title: string, accent: string) =>
       <text x="96" y="1088" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" letter-spacing="-2">${title}</text>
     </svg>
   `)}`;
+
+const serviceItems: CardItem[] = [
+  {
+    id: "website",
+    title: "Professionelle Website",
+    description: "Eine Website, die Expertise klar präsentiert und Besucher in echte Anfragen führt.",
+    imgSrc: webdesignPreview,
+    icon: <MonitorSmartphone size={24} />,
+    linkHref: "/services",
+  },
+  {
+    id: "development",
+    title: "Technische Umsetzung",
+    description: "Schnell, sicher und sauber gebaut, damit Ihr Auftritt auf jedem Gerät zuverlässig wirkt.",
+    imgSrc: technicalPreview,
+    icon: <Code2 size={24} />,
+    linkHref: "/services",
+  },
+  {
+    id: "seo",
+    title: "Google-Sichtbarkeit",
+    description: "Wir strukturieren Seiten so, dass Menschen mit klarer Suchabsicht Sie finden.",
+    imgSrc: "/assets/new-landing/google-search-service.webp",
+    icon: <Search size={24} />,
+    linkHref: "/leistungen/seo",
+  },
+  {
+    id: "ai",
+    title: "KI-Chat-Sichtbarkeit",
+    description: "Inhalte und Struktur, damit Ihr Anbieter auch in KI-Antworten sichtbar werden kann.",
+    imgSrc: "/assets/new-landing/ai-search-service.webp",
+    icon: <Bot size={24} />,
+    linkHref: "/services",
+  },
+  {
+    id: "branding",
+    title: "Markenidentität",
+    description: "Logo, Farben und visuelle Sprache, die sofort professionell und unterscheidbar wirken.",
+    imgSrc: "/assets/new-landing/branding-service.webp",
+    icon: <Palette size={24} />,
+    linkHref: "/services",
+  },
+  {
+    id: "content",
+    title: "Content Creation",
+    description: "Wir filmen Content mit Kameras und planen spezielle Foto-Shootings für Ihren Auftritt.",
+    imgSrc: "/assets/new-landing/content-creation-service.webp",
+    icon: <Camera size={24} />,
+    linkHref: "/services",
+  },
+  {
+    id: "google-ads",
+    title: "Google Ads Kampagnen",
+    description: "Wir planen, starten und optimieren Suchkampagnen, die aus Klicks qualifizierte Anfragen machen.",
+    imgSrc: "/assets/new-landing/google-ads-service.webp",
+    icon: <Megaphone size={24} />,
+    linkHref: "/services/google-ads",
+  },
+];
 
 const processSteps = [
   {
@@ -779,6 +849,32 @@ function ServicesShowcaseSection({ copy }: { copy?: ServicesShowcaseCopy }) {
   );
 }
 
+function MainServicesAccordionSection() {
+  return (
+    <section id="services" className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 scroll-mt-10 bg-[#007aff] px-6 pb-28 pt-20 text-white md:px-12 md:py-24">
+      <div className="grid gap-10 lg:grid-cols-[0.45fr_0.55fr] lg:items-end">
+        <div>
+          <p className="text-[0.95rem] font-semibold tracking-[-0.025em] text-white/80">
+            <span className="mr-3 text-white">→</span>
+            Leistungen
+          </p>
+          <h2 className="mt-6 max-w-3xl text-[clamp(3rem,6vw,6.75rem)] font-bold leading-[0.9] tracking-[-0.06em]">
+            Our Services<span className="text-white/55">.</span>
+          </h2>
+        </div>
+        <p className="max-w-2xl text-[1.1rem] font-medium leading-relaxed tracking-[-0.025em] text-white/75">
+          Websites, Sichtbarkeit, Positionierung und Betreuung. Alles greift zusammen, damit aus Aufmerksamkeit planbare Anfragen werden.
+        </p>
+      </div>
+      <ExpandingCards
+        items={serviceItems}
+        defaultActiveIndex={0}
+        className="mt-14 max-w-none border-0"
+      />
+    </section>
+  );
+}
+
 function LawyerSystemVisual() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-white px-6 py-12 text-black md:px-12 md:py-20 lg:py-14">
@@ -1324,6 +1420,8 @@ export default function NewLandingSpinnerSection({
             />
           </Carousel>
         </div>
+
+        {!showLawyerProblemSection ? <MainServicesAccordionSection /> : null}
 
         <section className="w-screen max-w-none self-center bg-white px-6 py-20 text-black md:px-12 md:py-24">
           <div className="grid gap-14 lg:grid-cols-[0.28fr_0.72fr] lg:gap-20">
