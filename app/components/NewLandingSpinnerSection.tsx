@@ -1375,9 +1375,20 @@ export default function NewLandingSpinnerSection({
             <span className="mr-3 text-[#007aff]">→</span>
             Ergebnisse
           </div>
-          <h2 className="max-w-4xl text-[clamp(2.45rem,5.2vw,4.45rem)] font-bold leading-[0.94] tracking-[-0.06em] text-black">
-            {statsHeading}<span className="text-[#007aff]">.</span>
-          </h2>
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
+            <h2 className="max-w-4xl text-[clamp(2.45rem,5.2vw,4.45rem)] font-bold leading-[0.94] tracking-[-0.06em] text-black">
+              {statsHeading}<span className="text-[#007aff]">.</span>
+            </h2>
+            {doctorMockupItems?.length ? (
+              <div className="shrink-0 lg:pt-3">
+                <SectionActionButton
+                  onClick={() => trackContactAction("doctor_results_cta")}
+                >
+                  Kostenlose Praxis-Analyse sichern
+                </SectionActionButton>
+              </div>
+            ) : null}
+          </div>
         </div>
 
         <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:mt-20 md:grid-cols-4 md:gap-x-10">
@@ -1402,15 +1413,6 @@ export default function NewLandingSpinnerSection({
             </div>
           ))}
         </div>
-        {doctorMockupItems?.length ? (
-          <div className="mt-12 flex justify-center md:mt-14">
-            <SectionActionButton
-              onClick={() => trackContactAction("doctor_results_cta")}
-            >
-              Kostenlose Praxis-Analyse sichern
-            </SectionActionButton>
-          </div>
-        ) : null}
         </div>
 
         {showLawyerProblemSection ? (
