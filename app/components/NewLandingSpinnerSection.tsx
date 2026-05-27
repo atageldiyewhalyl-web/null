@@ -1382,7 +1382,8 @@ export default function NewLandingSpinnerSection({
             {doctorMockupItems?.length ? (
               <div className="shrink-0 lg:pt-3">
                 <SectionActionButton
-                  onClick={() => trackContactAction("doctor_results_cta")}
+                  href="#contact"
+                  onClick={() => trackContactMethodClick("doctor_results_cta")}
                 >
                   Kostenlose Praxis-Analyse sichern
                 </SectionActionButton>
