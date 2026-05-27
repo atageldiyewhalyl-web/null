@@ -503,6 +503,8 @@ type ProblemSectionCopy = {
   eyebrow?: string;
   sideText: React.ReactNode;
   actionLabel?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
   headline: React.ReactNode;
   items: ProblemItem[];
 };
@@ -554,6 +556,8 @@ type ServicesShowcaseCopy = {
   heading: React.ReactNode;
   subheading: string;
   cards: LawyerServiceCard[];
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 type DoctorMockupItem = {
@@ -807,6 +811,34 @@ function DoctorMockupShowcaseSection({ items }: { items: DoctorMockupItem[] }) {
   );
 }
 
+function SectionActionButton({
+  href = "#contact",
+  children,
+  variant = "blue",
+  onClick,
+}: {
+  href?: string;
+  children: React.ReactNode;
+  variant?: "blue" | "white";
+  onClick?: () => void;
+}) {
+  const variantClasses =
+    variant === "white"
+      ? "bg-white text-[#007aff] shadow-[0_18px_45px_rgba(0,31,94,0.2)] hover:bg-white/95"
+      : "bg-[#007aff] text-white shadow-[0_18px_45px_rgba(0,122,255,0.24)] hover:bg-[#006ee6]";
+
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      className={`inline-flex min-h-12 items-center justify-center gap-3 rounded-full px-8 text-[1rem] font-bold tracking-[-0.025em] no-underline transition-transform hover:-translate-y-0.5 ${variantClasses}`}
+    >
+      <span>→</span>
+      {children}
+    </a>
+  );
+}
+
 function ServicesShowcaseSection({ copy }: { copy?: ServicesShowcaseCopy }) {
   const servicesCopy = copy ?? {
     heading: <>Alles, was aus Sichtbarkeit planbare Anfragen macht.</>,
@@ -828,6 +860,13 @@ function ServicesShowcaseSection({ copy }: { copy?: ServicesShowcaseCopy }) {
         <p className="mx-auto mt-6 max-w-4xl text-center text-[clamp(1.05rem,1.7vw,1.35rem)] font-medium leading-relaxed tracking-[-0.025em] text-white/86">
           {servicesCopy.subheading}
         </p>
+        {servicesCopy.ctaLabel ? (
+          <div className="mt-8 flex justify-center">
+            <SectionActionButton href={servicesCopy.ctaHref} variant="white">
+              {servicesCopy.ctaLabel}
+            </SectionActionButton>
+          </div>
+        ) : null}
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {servicesCopy.cards.map((service) => (
@@ -1071,6 +1110,13 @@ function LawyerProblemSection({
             >
               {copy.actionLabel ?? "Wie wir das lösen"}
             </a>
+            {copy.ctaLabel ? (
+              <div className="mt-7">
+                <SectionActionButton href={copy.ctaHref}>
+                  {copy.ctaLabel}
+                </SectionActionButton>
+              </div>
+            ) : null}
           </div>
 
           <div className="hidden lg:block">
@@ -1356,6 +1402,15 @@ export default function NewLandingSpinnerSection({
             </div>
           ))}
         </div>
+        {doctorMockupItems?.length ? (
+          <div className="mt-12 flex justify-center md:mt-14">
+            <SectionActionButton
+              onClick={() => trackContactAction("doctor_results_cta")}
+            >
+              Kostenlose Praxis-Analyse sichern
+            </SectionActionButton>
+          </div>
+        ) : null}
         </div>
 
         {showLawyerProblemSection ? (

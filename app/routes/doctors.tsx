@@ -192,6 +192,7 @@ export default function DoctorsRoute() {
               </>
             ),
             actionLabel: "Wie wir das lösen",
+            ctaLabel: "Praxis-Website prüfen lassen",
             headline: (
               <>
                 <span className="block">Warum aus</span>
@@ -227,6 +228,7 @@ export default function DoctorsRoute() {
             heading: <>Alles, was aus Sichtbarkeit planbare Terminanfragen macht.</>,
             subheading:
               "Praxis-Branding, Website, SEO, Google Ads, KI-Sichtbarkeit und Betreuung: alles greift ineinander und bringt Ihrer Praxis messbar mehr Patientenanfragen.",
+            ctaLabel: "Leistungen für Ihre Praxis besprechen",
             cards: [
               {
                 title: "Branding & Praxisauftritt",
