@@ -845,6 +845,8 @@ function ServicesShowcaseSection({ copy }: { copy?: ServicesShowcaseCopy }) {
     subheading:
       "Branding, Website, SEO, Google Ads, KI-Sichtbarkeit und Betreuung: alles greift ineinander und bringt Ihrer Kanzlei messbar mehr Anfragen.",
     cards: lawyerServiceCards,
+    ctaLabel: "Leistungen für Ihre Kanzlei besprechen",
+    ctaHref: "#contact",
   };
 
   return (
@@ -1079,6 +1081,8 @@ function LawyerProblemSection({
       </>
     ),
     actionLabel: "Wie wir das lösen",
+    ctaLabel: "Kanzlei-Website prüfen lassen",
+    ctaHref: "#contact",
     headline: (
       <>
         <span className="block">Warum aus</span>
@@ -1242,6 +1246,9 @@ function AnimatedCounter({
 type NewLandingSpinnerSectionProps = {
   statsHeading?: string;
   statsItems?: StatItem[];
+  statsCtaLabel?: string;
+  statsCtaHref?: string;
+  statsCtaEventName?: string;
   showLawyerProblemSection?: boolean;
   doctorMockupItems?: DoctorMockupItem[];
   problemVisualSrc?: string;
@@ -1257,6 +1264,9 @@ type NewLandingSpinnerSectionProps = {
 export default function NewLandingSpinnerSection({
   statsHeading = "Sichtbarkeit wird erst wertvoll, wenn daraus Anfragen entstehen",
   statsItems = stats,
+  statsCtaLabel,
+  statsCtaHref = "#contact",
+  statsCtaEventName,
   showLawyerProblemSection = false,
   doctorMockupItems,
   problemVisualSrc,
@@ -1272,6 +1282,10 @@ export default function NewLandingSpinnerSection({
   const [isSystemRevealVisible, setIsSystemRevealVisible] = useState(false);
   const systemRevealRef = useRef<HTMLElement | null>(null);
   const currentFaqItems = faqItemsOverride ?? (showLawyerProblemSection ? lawyerFaqItems : faqItems);
+  const effectiveStatsCtaLabel =
+    statsCtaLabel ?? (doctorMockupItems?.length ? "Kostenlose Praxis-Analyse sichern" : undefined);
+  const effectiveStatsCtaEventName =
+    statsCtaEventName ?? (doctorMockupItems?.length ? "doctor_results_cta" : "lawyer_results_cta");
   const faqColumns = [
     currentFaqItems.filter((_, index) => index % 2 === 0),
     currentFaqItems.filter((_, index) => index % 2 === 1),
@@ -1379,13 +1393,13 @@ export default function NewLandingSpinnerSection({
             <h2 className="max-w-4xl text-[clamp(2.45rem,5.2vw,4.45rem)] font-bold leading-[0.94] tracking-[-0.06em] text-black">
               {statsHeading}<span className="text-[#007aff]">.</span>
             </h2>
-            {doctorMockupItems?.length ? (
+            {effectiveStatsCtaLabel ? (
               <div className="shrink-0 lg:pt-3">
                 <SectionActionButton
-                  href="#contact"
-                  onClick={() => trackContactMethodClick("doctor_results_cta")}
+                  href={statsCtaHref}
+                  onClick={() => trackContactMethodClick(effectiveStatsCtaEventName)}
                 >
-                  Kostenlose Praxis-Analyse sichern
+                  {effectiveStatsCtaLabel}
                 </SectionActionButton>
               </div>
             ) : null}

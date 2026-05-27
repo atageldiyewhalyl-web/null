@@ -99,6 +99,9 @@ export default function LawyersRoute() {
         <NewLandingSpinnerSection
           showLawyerProblemSection
           statsHeading="Sichtbarkeit wird erst wertvoll, wenn daraus Mandatsanfragen entstehen"
+          statsCtaLabel="Kostenlose Kanzlei-Analyse sichern"
+          statsCtaHref="#contact"
+          statsCtaEventName="lawyer_results_cta"
           statsItems={[
             {
               value: 97,
