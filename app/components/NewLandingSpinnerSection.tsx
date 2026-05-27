@@ -776,22 +776,32 @@ function LawyerHeroScrollSection() {
 }
 
 function DoctorMockupShowcaseSection({ items }: { items: DoctorMockupItem[] }) {
+  const mobileVisibleOrder: Record<number, string> = {
+    7: "order-1",
+    0: "order-2",
+    2: "order-3",
+  };
+
   return (
     <section className="relative z-10 mt-10 w-full max-w-full overflow-hidden bg-white py-4 text-black [contain:layout_paint] md:left-1/2 md:mt-12 md:w-screen md:max-w-none md:-translate-x-1/2 md:py-8">
       <div className="mx-auto grid max-w-[96rem] gap-7 px-6 md:grid-cols-2 md:px-12 lg:grid-cols-3 lg:gap-8">
-        {items.map((item, index) => (
-          <figure
-            key={item.src}
-            className="min-w-0"
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
-              className="block h-auto w-full"
-              loading={index < 3 ? "eager" : "lazy"}
-            />
-          </figure>
-        ))}
+        {items.map((item, index) => {
+          const mobileOrder = mobileVisibleOrder[index];
+
+          return (
+            <figure
+              key={item.src}
+              className={`min-w-0 md:order-none ${mobileOrder ?? "hidden md:block"} ${mobileOrder ?? ""}`}
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="block h-auto w-full"
+                loading={index < 3 || index === 7 ? "eager" : "lazy"}
+              />
+            </figure>
+          );
+        })}
       </div>
     </section>
   );
