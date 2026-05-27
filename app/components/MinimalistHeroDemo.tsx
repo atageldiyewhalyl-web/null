@@ -11,13 +11,13 @@ export default function MinimalistHeroDemo() {
             logoText="nüll."
             navLinks={[
               { label: "Blog", href: "/blog" },
-              { label: "Kontakt", href: "#contact" },
               { label: "LEISTUNGEN", href: "#services" },
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },
               { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
             ]}
+            ctaLink={{ label: "Anfrage starten", href: "#contact" }}
             mainText="We help businesses get found, build trust, and turn visibility into real inquiries."
             readMoreLink="#services"
             imageSrc="/assets/new-landing/arrow.webp"

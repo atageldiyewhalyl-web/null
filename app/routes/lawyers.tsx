@@ -68,13 +68,13 @@ export default function LawyersRoute() {
             logoText="nüll."
             navLinks={[
               { label: "Blog", href: "/blog" },
-              { label: "Kontakt", href: "#contact" },
               { label: "Leistungen", href: "#services" },
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },
               { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
             ]}
+            ctaLink={{ label: "Anfrage starten", href: "#contact" }}
             mainText="Moderne Kanzlei-Websites, die sichtbar machen und Mandanten überzeugen."
             readMoreLink="#services"
             imageSrc={hammerForLawyer}

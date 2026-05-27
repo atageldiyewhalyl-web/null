@@ -1288,6 +1288,8 @@ export default function NewLandingSpinnerSection({
 }: NewLandingSpinnerSectionProps = {}) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isSystemRevealVisible, setIsSystemRevealVisible] = useState(false);
+  const [isStickyDesktopCtaVisible, setIsStickyDesktopCtaVisible] = useState(false);
+  const [isContactSectionVisible, setIsContactSectionVisible] = useState(false);
   const systemRevealRef = useRef<HTMLElement | null>(null);
   const currentFaqItems = faqItemsOverride ?? (showLawyerProblemSection ? lawyerFaqItems : faqItems);
   const effectiveStatsCtaLabel =
@@ -1319,6 +1321,45 @@ export default function NewLandingSpinnerSection({
 
     return () => observer.disconnect();
   }, [showLawyerProblemSection]);
+
+  useEffect(() => {
+    let animationFrame = 0;
+
+    const updateStickyCta = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(() => {
+        setIsStickyDesktopCtaVisible(window.scrollY > window.innerHeight * 0.85);
+      });
+    };
+
+    updateStickyCta();
+    window.addEventListener("scroll", updateStickyCta, { passive: true });
+    window.addEventListener("resize", updateStickyCta);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", updateStickyCta);
+      window.removeEventListener("resize", updateStickyCta);
+    };
+  }, []);
+
+  useEffect(() => {
+    const contactSection = document.getElementById("contact");
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsContactSectionVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.12,
+      },
+    );
+
+    observer.observe(contactSection);
+
+    return () => observer.disconnect();
+  }, []);
 
   const submitContactForm = async (data: MultistepFormData) => {
     if (!projectId || !publicAnonKey) {
@@ -1383,6 +1424,36 @@ export default function NewLandingSpinnerSection({
       {showLawyerProblemSection ? (
         <LawyerFixedSystemBackground visible={isSystemRevealVisible} />
       ) : null}
+
+      <a
+        href="#contact"
+        onClick={() => trackContactMethodClick("sticky_desktop_cta")}
+        className={`fixed bottom-7 right-7 z-[90] hidden min-h-12 items-center justify-center gap-3 rounded-full bg-[#007aff] px-8 text-[1rem] font-bold tracking-[-0.025em] text-white no-underline shadow-[0_18px_45px_rgba(0,122,255,0.28)] transition-all duration-300 hover:-translate-y-0.5 md:inline-flex ${
+          isStickyDesktopCtaVisible && !isContactSectionVisible
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-4 opacity-0"
+        }`}
+      >
+        <span aria-hidden="true">→</span>
+        Anfrage starten
+      </a>
+
+      <div
+        className={`fixed bottom-5 right-5 z-[90] pb-[env(safe-area-inset-bottom)] transition-all duration-300 md:hidden ${
+          isStickyDesktopCtaVisible && !isContactSectionVisible
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-4 opacity-0"
+        }`}
+      >
+        <a
+          href="#contact"
+          onClick={() => trackContactMethodClick("sticky_mobile_cta")}
+          aria-label="Kontakt aufnehmen"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#007aff] text-white no-underline shadow-[0_18px_45px_rgba(0,122,255,0.34)] transition-transform active:scale-95"
+        >
+          <MessageSquare size={24} strokeWidth={2.3} aria-hidden="true" />
+        </a>
+      </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-none flex-col">
         <div

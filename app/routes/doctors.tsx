@@ -141,13 +141,13 @@ export default function DoctorsRoute() {
             logoText="nüll."
             navLinks={[
               { label: "Blog", href: "/blog" },
-              { label: "Kontakt", href: "#contact" },
               { label: "Leistungen", href: "#services" },
             ]}
             categoryLinks={[
               { label: "Anwälte & Berater", href: "/kanzlei-websites" },
               { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
             ]}
+            ctaLink={{ label: "Anfrage starten", href: "#contact" }}
             mainText="Moderne Websites für Arztpraxen, die sichtbar machen, Vertrauen schaffen und Termine bringen."
             readMoreLink="#services"
             imageSrc={doctorVisualAsset}

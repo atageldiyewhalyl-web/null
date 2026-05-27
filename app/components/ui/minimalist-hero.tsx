@@ -7,6 +7,7 @@ interface MinimalistHeroProps {
   logoText: string;
   navLinks: { label: string; href: string }[];
   categoryLinks?: { label: string; href: string }[];
+  ctaLink?: { label: string; href: string };
   mainText: string;
   readMoreLink: string;
   imageSrc: string;
@@ -79,6 +80,7 @@ export const MinimalistHero = ({
   logoText,
   navLinks,
   categoryLinks = [],
+  ctaLink,
   mainText,
   readMoreLink,
   imageSrc,
@@ -204,6 +206,14 @@ export const MinimalistHero = ({
               ) : null}
             </div>
           ) : null}
+          {ctaLink ? (
+            <a
+              href={ctaLink.href}
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#007aff] px-6 text-[0.72rem] font-black uppercase tracking-[0.16em] text-white no-underline shadow-[0_16px_36px_rgba(0,122,255,0.22)] transition-transform hover:-translate-y-0.5"
+            >
+              {ctaLink.label}
+            </a>
+          ) : null}
         </nav>
         <motion.button
           initial={{ opacity: 0, x: 16 }}
@@ -279,6 +289,16 @@ export const MinimalistHero = ({
                   </div>
                 ) : null}
               </div>
+            ) : null}
+            {ctaLink ? (
+              <a
+                href={ctaLink.href}
+                onClick={(event) => handleMenuLinkClick(event, ctaLink.href)}
+                className="mt-3 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#007aff] px-6 text-[0.92rem] font-black uppercase tracking-[0.12em] text-white no-underline shadow-[0_16px_36px_rgba(0,122,255,0.22)]"
+              >
+                <span aria-hidden="true">→</span>
+                {ctaLink.label}
+              </a>
             ) : null}
           </nav>
         </motion.div>
