@@ -1115,7 +1115,7 @@ function LawyerProblemSection({
               {copy.actionLabel ?? "Wie wir das lösen"}
             </a>
             {copy.ctaLabel ? (
-              <div className="mt-7">
+              <div className="mt-7 hidden md:block">
                 <SectionActionButton href={copy.ctaHref}>
                   {copy.ctaLabel}
                 </SectionActionButton>
@@ -1153,6 +1153,14 @@ function LawyerProblemSection({
               </article>
             ))}
           </div>
+
+          {copy.ctaLabel ? (
+            <div className="mt-10 flex md:hidden">
+              <SectionActionButton href={copy.ctaHref}>
+                {copy.ctaLabel}
+              </SectionActionButton>
+            </div>
+          ) : null}
 
           <div className="mt-10 overflow-hidden lg:hidden">
             <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
