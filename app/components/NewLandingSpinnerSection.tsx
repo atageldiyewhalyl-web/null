@@ -536,6 +536,8 @@ const lawyerSystemItems = [
   },
 ];
 
+type SystemItem = (typeof lawyerSystemItems)[number];
+
 const serviceHeroScrollItems = [
   { src: serviceHeroScroll1, alt: "Steuerrecht Kanzlei Website Hero" },
   { src: serviceHeroScroll2, alt: "Migrationsrecht Kanzlei Website Hero" },
@@ -926,7 +928,7 @@ function MainServicesAccordionSection() {
   );
 }
 
-function LawyerSystemVisual() {
+function LawyerSystemVisual({ items = lawyerSystemItems }: { items?: SystemItem[] }) {
   return (
     <div className="relative h-full w-full overflow-hidden bg-white px-6 py-12 text-black md:px-12 md:py-20 lg:py-14">
       <p className="relative z-20 text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
@@ -959,7 +961,7 @@ function LawyerSystemVisual() {
         </div>
 
         <div className="nll-lawyer-system-list relative z-30 mt-6 flex flex-1 flex-col justify-evenly gap-0 pb-8 md:mt-0 md:grid md:flex-none md:gap-4 md:pb-0 md:pt-[32rem] lg:block lg:pt-0">
-          {lawyerSystemItems.map((item) => (
+          {items.map((item) => (
             <article
               key={item.number}
               data-position={item.position}
@@ -1033,14 +1035,20 @@ function LawyerSystemVisual() {
   );
 }
 
-function LawyerFixedSystemBackground({ visible }: { visible: boolean }) {
+function LawyerFixedSystemBackground({
+  visible,
+  systemItems,
+}: {
+  visible: boolean;
+  systemItems?: SystemItem[];
+}) {
   return (
     <div
       className={`fixed inset-0 z-0 pointer-events-none transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <LawyerSystemVisual />
+      <LawyerSystemVisual items={systemItems} />
     </div>
   );
 }
@@ -1262,6 +1270,7 @@ type NewLandingSpinnerSectionProps = {
   problemVisualSrc?: string;
   problemVisualAlt?: string;
   problemCopy?: ProblemSectionCopy;
+  systemItems?: SystemItem[];
   servicesCopy?: ServicesShowcaseCopy;
   faqItemsOverride?: FaqItem[];
   faqIntro?: string;
@@ -1280,6 +1289,7 @@ export default function NewLandingSpinnerSection({
   problemVisualSrc,
   problemVisualAlt,
   problemCopy,
+  systemItems,
   servicesCopy,
   faqItemsOverride,
   faqIntro,
@@ -1422,7 +1432,7 @@ export default function NewLandingSpinnerSection({
       }
     >
       {showLawyerProblemSection ? (
-        <LawyerFixedSystemBackground visible={isSystemRevealVisible} />
+        <LawyerFixedSystemBackground visible={isSystemRevealVisible} systemItems={systemItems} />
       ) : null}
 
       <a

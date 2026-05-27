@@ -225,6 +225,33 @@ export default function DoctorsRoute() {
               },
             ],
           }}
+          systemItems={[
+            {
+              number: "01",
+              title: "Positionierung",
+              description:
+                "Wir klären, für welche Beschwerden, Behandlungen und Fachgebiete Ihre Praxis bekannt sein soll.",
+              position: "leftTop",
+            },
+            {
+              number: "02",
+              title: "Suchstruktur",
+              description: "Wir entwickeln Seiten gezielt nach dem Suchverhalten Ihrer Patienten.",
+              position: "rightTop",
+            },
+            {
+              number: "03",
+              title: "Vertrauensdesign",
+              description: "Die Website vermittelt Kompetenz, Ruhe, Seriosität und Vertrauen.",
+              position: "rightBottom",
+            },
+            {
+              number: "04",
+              title: "Terminführung",
+              description: "Telefon, Formular, Online-Buchung oder Doctolib werden klar geführt.",
+              position: "leftBottom",
+            },
+          ]}
           servicesCopy={{
             heading: <>Alles, was aus Sichtbarkeit planbare Terminanfragen macht.</>,
             subheading:
