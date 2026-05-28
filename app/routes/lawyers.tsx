@@ -6,7 +6,7 @@ import hammerForLawyer from "../assets/hammer for lawyer.webp";
 export function meta() {
   const title = "Kanzlei-Websites für mehr Mandatsanfragen | nüll.";
   const description =
-    "Moderne Kanzlei-Websites mit klarer Struktur, lokaler Sichtbarkeit und starkem Fokus auf Mandantenanfragen.";
+    "Professionelle Kanzlei-Websites für Anwälte in Deutschland. SEO-optimiert, auf Mandantenanfragen ausgerichtet. Jetzt kostenlose Kanzlei-Analyse sichern.";
   const url = "https://xn--nll-hoa.com/kanzlei-websites";
   const image = "https://xn--nll-hoa.com/og-image.png";
 

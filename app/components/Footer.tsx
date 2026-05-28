@@ -14,16 +14,22 @@ export function Footer() {
         <Link to="/" className="text-[1.125rem] tracking-[-0.03em] font-bold">
           nüll<span className="text-[#0071e3]">.</span>
         </Link>
-        <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[0.8125rem] text-muted-foreground">
-          <Link to="/leistungen/webdesign" className="hover:text-foreground transition-colors">{t("nav.services", displayLang)}</Link>
-          <Link to="/#work" className="hover:text-foreground transition-colors">{t("nav.work", displayLang)}</Link>
-          <Link to="/blog" className="hover:text-foreground transition-colors">{t("nav.blog", displayLang)}</Link>
-          <Link to="/#contact" className="hover:text-foreground transition-colors">{t("nav.contact", displayLang)}</Link>
-          <Link to="/datenschutz" className="hover:text-foreground transition-colors">Datenschutz</Link>
-          <Link to="/impressum" className="hover:text-foreground transition-colors">Impressum</Link>
-          <button type="button" className="hover:text-foreground transition-colors" onClick={openCookieSettings}>
-            Cookie-Einstellungen
-          </button>
+        <nav aria-label="Footer navigation" className="flex flex-col items-center gap-3 md:items-end">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[0.8125rem] text-muted-foreground">
+            <Link to="/leistungen/webdesign" className="hover:text-foreground transition-colors">{t("nav.services", displayLang)}</Link>
+            <Link to="/#work" className="hover:text-foreground transition-colors">{t("nav.work", displayLang)}</Link>
+            <Link to="/blog" className="hover:text-foreground transition-colors">{t("nav.blog", displayLang)}</Link>
+            <Link to="/#contact" className="hover:text-foreground transition-colors">{t("nav.contact", displayLang)}</Link>
+            <Link to="/datenschutz" className="hover:text-foreground transition-colors">Datenschutz</Link>
+            <Link to="/impressum" className="hover:text-foreground transition-colors">Impressum</Link>
+            <button type="button" className="hover:text-foreground transition-colors" onClick={openCookieSettings}>
+              Cookie-Einstellungen
+            </button>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[0.75rem] text-muted-foreground/70">
+            <Link to="/kanzlei-websites" className="hover:text-foreground transition-colors">Webdesign für Anwälte</Link>
+            <Link to="/arztpraxis-websites" className="hover:text-foreground transition-colors">Webdesign für Ärzte</Link>
+          </div>
         </nav>
         <p className="text-[0.75rem] md:text-[0.8125rem] text-muted-foreground text-center">
           &copy; 2026 nüll. {t("footer.rights", displayLang)} {t("contact.location", displayLang)}.

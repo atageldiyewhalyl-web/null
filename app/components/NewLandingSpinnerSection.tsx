@@ -1188,7 +1188,7 @@ function AnimatedCounter({
   prefix?: string;
   suffix?: string;
 }) {
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState(value);
   const ref = useRef<HTMLSpanElement | null>(null);
   const hasAnimatedRef = useRef(false);
 
@@ -1202,6 +1202,7 @@ function AnimatedCounter({
     const startCounter = () => {
       if (hasAnimatedRef.current) return;
       hasAnimatedRef.current = true;
+      setDisplayValue(0);
 
       const duration = 1600;
       const startTime = performance.now();

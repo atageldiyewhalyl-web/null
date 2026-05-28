@@ -34,6 +34,12 @@ export default function HomeRoute() {
       "@id": "https://xn--nll-hoa.com/#organization",
       name: "nüll.",
       url: "https://xn--nll-hoa.com/",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://xn--nll-hoa.com/og-image.png",
+        width: 1200,
+        height: 630,
+      },
       email: "info@nüll.com",
       telephone: "+4915256569852",
       address: {

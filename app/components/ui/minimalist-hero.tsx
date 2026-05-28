@@ -421,15 +421,14 @@ export const MinimalistHero = ({
         </motion.div>
       </footer>
 
-      <div
-        aria-live="polite"
-        className={cn(
-          "pointer-events-none fixed bottom-7 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-[#111111] px-5 py-3 text-[0.9rem] font-bold tracking-[-0.02em] text-white shadow-[0_16px_45px_rgba(0,0,0,0.2)] transition-all duration-300",
-          noticeVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-        )}
-      >
-        Diese Seite kommt bald.
-      </div>
+      {noticeVisible && (
+        <div
+          aria-live="polite"
+          className="pointer-events-none fixed bottom-7 left-1/2 z-[120] -translate-x-1/2 rounded-full bg-[#111111] px-5 py-3 text-[0.9rem] font-bold tracking-[-0.02em] text-white shadow-[0_16px_45px_rgba(0,0,0,0.2)]"
+        >
+          Diese Seite kommt bald.
+        </div>
+      )}
     </div>
   );
 };
