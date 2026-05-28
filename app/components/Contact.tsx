@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import gmailIcon from "../assets/icons/gmail-icon.webp";
 import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
 import { useLanguage, t } from "./LanguageContext";
+import { getContactGoogleAdsConversion, trackGaEvent, trackGoogleAdsConversion } from "../utils/tracking";
 
 type ContactMethod = {
   title: string;
@@ -14,6 +15,9 @@ type ContactMethod = {
   eventName: string;
 };
 
+const whatsappPrefilledMessage =
+  "Hallo%20n%C3%BCll%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website%20f%C3%BCr%20meine%20Praxis.%20K%C3%B6nnen%20Sie%20mir%20kurz%20sagen%2C%20wie%20eine%20Zusammenarbeit%20abl%C3%A4uft%3F";
+
 export function Contact() {
   const { lang } = useLanguage();
 
@@ -21,7 +25,7 @@ export function Contact() {
     {
       title: "WhatsApp",
       description: t("contact.whatsapp.cta", lang),
-      href: "https://wa.me/4915256569852",
+      href: `https://wa.me/4915256569852?text=${whatsappPrefilledMessage}`,
       action: lang === "tr" ? "Mesaj gönder" : lang === "de" ? "Nachricht senden" : "Send message",
       icon: whatsappIcon,
       eventName: "whatsapp_click",
@@ -105,9 +109,14 @@ export function Contact() {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               onClick={() => {
-                if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-                  (window as any).gtag("event", eventName, { event_category: "contact" });
+                const contactConversion = getContactGoogleAdsConversion(eventName);
+                if (contactConversion) {
+                  trackGoogleAdsConversion(contactConversion, {
+                    event_category: "contact",
+                    event_label: eventName,
+                  });
                 }
+                trackGaEvent(eventName, { event_category: "contact" });
               }}
               className="group flex min-h-[6.75rem] items-center gap-4 rounded-[1.35rem] border border-black/5 bg-white/80 p-4 text-left shadow-[0_18px_45px_-34px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_-35px_rgba(0,0,0,0.24)] md:block md:min-h-0 md:rounded-[1.75rem] md:bg-white/70 md:p-6"
             >

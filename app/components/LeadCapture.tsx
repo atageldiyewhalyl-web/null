@@ -18,8 +18,11 @@ import gmailIcon from "../assets/icons/gmail-icon.webp";
 import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
 import { useLanguage, t } from "./LanguageContext";
 import { projectId, publicAnonKey } from "../../utils/supabase/info";
+import { googleAdsConversionSendTo, trackGaEvent, trackGoogleAdsConversion } from "../utils/tracking";
 
 const API_URL = `https://${projectId}.supabase.co/functions/v1/make-server-ea5edff4`;
+const whatsappPrefilledMessage =
+  "Hallo%20n%C3%BCll%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website%20f%C3%BCr%20meine%20Praxis.%20K%C3%B6nnen%20Sie%20mir%20kurz%20sagen%2C%20wie%20eine%20Zusammenarbeit%20abl%C3%A4uft%3F";
 
 type Step = "IDENTITY" | "OBJECTIVE" | "SITE_TYPE" | "PRESENCE" | "RESULT";
 const quoteSteps: Step[] = ["OBJECTIVE", "SITE_TYPE", "PRESENCE", "IDENTITY"];
@@ -159,13 +162,7 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
       }
 
       setStep("RESULT");
-      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
-          value: 1.0,
-          currency: "EUR",
-        });
-      }
+      trackGoogleAdsConversion(googleAdsConversionSendTo.formSubmit);
     } catch (err: any) {
       console.error("Submission error:", err);
       setError(err.message || t("contact.error", lang));
@@ -445,13 +442,15 @@ export function LeadCapture({ isOpen = false, onClose = () => {}, variant = "mod
                 </p>
                 <div className={`${isEmbedded ? "gap-2 px-3" : "gap-2 px-4 md:gap-3"} grid w-full grid-cols-1 sm:grid-cols-2`}>
                   <a
-                    href="https://wa.me/4915256569852"
+                    href={`https://wa.me/4915256569852?text=${whatsappPrefilledMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
-                      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-                        (window as any).gtag("event", "whatsapp_click", { event_category: "post_form_contact" });
-                      }
+                      trackGoogleAdsConversion(googleAdsConversionSendTo.whatsappClick, {
+                        event_category: "post_form_contact",
+                        event_label: "post_form_whatsapp_click",
+                      });
+                      trackGaEvent("whatsapp_click", { event_category: "post_form_contact" });
                     }}
                     className={`${isEmbedded ? "py-3" : "py-3.5"} flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-[0.75rem] font-bold text-white transition-all hover:translate-y-[-2px] hover:shadow-lg md:rounded-2xl md:text-[0.8125rem]`}
                   >

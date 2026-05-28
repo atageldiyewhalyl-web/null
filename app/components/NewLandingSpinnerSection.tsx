@@ -34,6 +34,12 @@ import {
   CarouselNavigation,
 } from "@/components/ui/carousel";
 import { Footer } from "@/components/Footer";
+import {
+  getContactGoogleAdsConversion,
+  googleAdsConversionSendTo,
+  trackGaEvent,
+  trackGoogleAdsConversion,
+} from "@/utils/tracking";
 import { projectId, publicAnonKey } from "/utils/supabase/info";
 import gmailIcon from "../assets/icons/gmail-icon.webp";
 import whatsappIcon from "../assets/icons/whatsapp-icon.webp";
@@ -445,11 +451,14 @@ const lawyerFaqItems = [
 
 const priceScopes = ["Website", "SEO", "KI-Sichtbarkeit", "Google Ads", "Lead System"];
 
+const whatsappPrefilledMessage =
+  "Hallo%20n%C3%BCll%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website%20f%C3%BCr%20meine%20Praxis.%20K%C3%B6nnen%20Sie%20mir%20kurz%20sagen%2C%20wie%20eine%20Zusammenarbeit%20abl%C3%A4uft%3F";
+
 const contactMethods = [
   {
     title: "WhatsApp",
     description: "Schreiben Sie uns direkt.",
-    href: "https://wa.me/4915256569852",
+    href: `https://wa.me/4915256569852?text=${whatsappPrefilledMessage}`,
     action: "Nachricht senden",
     icon: whatsappIcon,
     eventName: "lawyer_whatsapp_click",
@@ -1403,23 +1412,20 @@ export default function NewLandingSpinnerSection({
       );
     }
 
-    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-      (window as any).gtag("event", "conversion", {
-        send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
-      });
-    }
+    trackGoogleAdsConversion(googleAdsConversionSendTo.formSubmit);
   };
 
   const trackContactMethodClick = (eventName: string) => {
-    if (typeof window === "undefined" || typeof (window as any).gtag !== "function") return;
     const normalizedEventName = eventName.replace(/^lawyer_/, `${contactEventPrefix}_`);
+    const contactConversion = getContactGoogleAdsConversion(normalizedEventName);
 
-    (window as any).gtag("event", "conversion", {
-      send_to: "AW-18170315805/uJ-SCL7h764cEJ2IpNhD",
-      event_category: contactTrackingCategory,
-      event_label: normalizedEventName,
-    });
-    (window as any).gtag("event", normalizedEventName, {
+    if (contactConversion) {
+      trackGoogleAdsConversion(contactConversion, {
+        event_category: contactTrackingCategory,
+        event_label: normalizedEventName,
+      });
+    }
+    trackGaEvent(normalizedEventName, {
       event_category: contactTrackingCategory,
     });
   };
