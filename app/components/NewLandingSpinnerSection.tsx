@@ -811,7 +811,7 @@ function DoctorMockupShowcaseSection({ items }: { items: DoctorMockupItem[] }) {
               <img
                 src={item.src}
                 alt={item.alt}
-                className="block h-auto w-full"
+                className="block h-auto w-full shadow-[0_26px_70px_-42px_rgba(15,23,42,0.45)]"
                 loading={index < 3 || index === 7 ? "eager" : "lazy"}
               />
             </figure>
