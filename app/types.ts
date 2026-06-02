@@ -5,6 +5,21 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface Provider {
+  rank?: number;
+  badge?: string;
+  name: string;
+  logo?: string;
+  rating?: number;
+  ratingLabel?: string;
+  pros: string[];
+  cons?: string[];
+  pricing?: string[];
+  pricingIncludes?: string[];
+  url?: string;
+  highlight?: boolean;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -12,6 +27,7 @@ export interface BlogPost {
   content: string[];
   faqs?: FAQItem[];
   faqTitle?: string;
+  providers?: Provider[];
   category: string;
   date: string;
   readTime: string;

@@ -163,6 +163,12 @@
     @apply border-l-4 border-primary pl-8 my-16 italic text-[1.5rem] font-medium text-neutral-900 leading-relaxed;
   }
 
+  .law-guide-prose [style*="opacity:0"],
+  .law-guide-prose [style*="opacity: 0"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
 
   .drop-cap::first-letter {
     @apply float-left text-[4.5rem] font-bold leading-[1] pr-4 pt-2 text-primary;
