@@ -1,9 +1,4 @@
-
-  # Plan Agency Website Style
-
-  This is a code bundle for Plan Agency Website Style. The original project is available at https://www.figma.com/design/RmeYMcDyNz88XXLqeRzxAD/Plan-Agency-Website-Style.
-
-  ## Running the code
+ ## Running the code
 
   Run `npm i` to install the dependencies.
 
