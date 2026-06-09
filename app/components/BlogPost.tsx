@@ -1,10 +1,11 @@
 import { useParams, Link } from "react-router";
-import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark, ChevronDown, CheckCircle2, AlertCircle, TrendingUp, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowLeft, Clock, Calendar, Share2, Bookmark, ChevronDown, CheckCircle2, AlertCircle, TrendingUp, X, ExternalLink, ShieldCheck } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { blogPosts } from "./blogData";
-import { useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { StructuredData } from "./SEO";
+import type { Provider } from "../types";
 
 // --- Custom Interactive Components ---
 
@@ -156,19 +157,243 @@ const ComparisonCard = ({ before, after, articleLang }: { before: string, after:
   );
 };
 
+const ProviderEditorialList = ({ providers }: { providers: Provider[] }) => {
+  if (!providers || providers.length === 0) return null;
+
+  return (
+    <div className="my-14 border-y border-neutral-100">
+      {providers.map((provider, idx) => (
+        <div key={provider.name} className="grid grid-cols-[3rem_1fr] gap-5 border-b border-neutral-100 py-7 last:border-b-0">
+          <div className="font-outfit text-[1.25rem] font-bold text-neutral-300">
+            {String(provider.rank ?? idx + 1).padStart(2, "0")}
+          </div>
+          <div>
+            <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h4 className="m-0 font-outfit text-[1.35rem] font-bold tracking-[-0.03em] text-black">
+                {provider.name}
+              </h4>
+              {provider.badge ? (
+                <span className="border-l border-neutral-300 pl-3 text-[0.68rem] font-black uppercase tracking-[0.16em] text-neutral-400">
+                  {provider.badge}
+                </span>
+              ) : null}
+            </div>
+            <div className="space-y-2">
+              {provider.pros.slice(0, 3).map((pro) => (
+                <p key={pro} className="m-0 text-[1rem] font-medium leading-relaxed text-neutral-600">
+                  {pro}
+                </p>
+              ))}
+              {provider.cons?.slice(0, 1).map((con) => (
+                <p key={con} className="m-0 text-[0.95rem] font-medium leading-relaxed text-neutral-400">
+                  Grenze: {con}
+                </p>
+              ))}
+            </div>
+            {provider.url ? (
+              <a
+                href={provider.url}
+                target={provider.url.startsWith("/") ? undefined : "_blank"}
+                rel={provider.url.startsWith("/") ? undefined : "noopener noreferrer"}
+                className="mt-4 inline-flex items-center gap-2 text-[0.875rem] font-bold text-[#0071e3] hover:underline"
+              >
+                Anbieter ansehen <ExternalLink size={14} />
+              </a>
+            ) : null}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const PositivbeispielBlock = () => (
+  <div className="my-14 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
+    <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
+      <img
+        src="/assets/blog/kanzlei-dogru-fotoshooting.jpg"
+        alt="Kanzlei Dogru Mannheim"
+        className="h-full min-h-[340px] w-full object-cover"
+      />
+      <div className="flex flex-col justify-between bg-neutral-50 p-8">
+        <div>
+          <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Positivbeispiel</p>
+              <p className="mt-1 text-xl font-bold tracking-[-0.03em] text-black">Kanzlei Doğru, Mannheim</p>
+            </div>
+            <a href="https://dogru-kanzlei.de" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-xs font-bold text-neutral-700 transition-colors hover:border-[#0071e3] hover:text-[#0071e3]">
+              Website <ExternalLink size={12} />
+            </a>
+          </div>
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200">
+            {[
+              ["719", "organische Klicks"],
+              ["35.200", "Impressionen"],
+              ["119", "Ads-Konversionen"],
+              ["8,31 €", "pro Konversion"],
+            ].map(([value, label]) => (
+              <div key={label} className="bg-white p-5">
+                <p className="text-2xl font-bold tracking-[-0.03em] text-black">{value}</p>
+                <p className="mt-1 text-xs font-semibold text-neutral-500">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-6 space-y-3">
+          {[
+            ["Ladezeit", "JS-Bundle von 915 KB auf 76 KB reduziert"],
+            ["Google Maps", "Position 1 fuer relevante lokale Suchbegriffe"],
+            ["KI-Suche", "ChatGPT nennt Hasan als klare Empfehlung"],
+          ].map(([title, sub]) => (
+            <div key={title} className="flex items-start gap-3">
+              <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#0071e3]" />
+              <div>
+                <p className="text-sm font-bold text-black">{title}</p>
+                <p className="text-sm font-medium leading-relaxed text-neutral-500">{sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const MethodenQuick = () => (
+  <div className="my-10 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
+    <div className="border-b border-neutral-100 bg-neutral-50 px-6 py-5">
+      <p className="text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Kurzübersicht</p>
+      <p className="mt-1 text-base font-bold text-black">Welche Methoden gibt es, um eine Kanzlei-Website zu erstellen?</p>
+    </div>
+    <div className="divide-y divide-neutral-100">
+      {[
+        { num: "1", method: "Selbst erstellen", desc: "Homepage-Baukasten (Wix, Squarespace, Jimdo)", cost: "Ab 15 €/Monat", tag: "DIY" },
+        { num: "2", method: "Freelancer beauftragen", desc: "Einzelner Webdesigner ohne laufende Betreuung", cost: "Ab 1.500 € einmalig", tag: "Freelancer" },
+        { num: "3", method: "Spezialagentur", desc: "Design, SEO, Google Ads und KI-Sichtbarkeit als System", cost: "Ab 450 € (nüll.)", tag: "Empfohlen" },
+      ].map((row) => (
+        <div key={row.num} className="flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-sm font-bold text-neutral-500">{row.num}</span>
+          <div className="min-w-0 flex-1">
+            <div className="mb-1 flex flex-wrap items-center gap-2">
+              <p className="text-sm font-bold text-black">{row.method}</p>
+              <span className={`rounded-full px-2.5 py-1 text-[0.68rem] font-black uppercase ${row.tag === "Empfohlen" ? "bg-[#0071e3] text-white" : "bg-neutral-100 text-neutral-500"}`}>{row.tag}</span>
+            </div>
+            <p className="text-sm font-medium text-neutral-500">{row.desc}</p>
+          </div>
+          <p className="shrink-0 text-sm font-bold text-[#0071e3] sm:text-right">{row.cost}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const BFSGVisual = () => (
+  <div className="my-12 overflow-hidden rounded-3xl bg-[#141414] text-white">
+    <div className="flex flex-col justify-between gap-4 border-b border-white/10 px-7 py-6 md:flex-row md:items-center">
+      <div>
+        <p className="mb-1 text-xs font-black uppercase tracking-[0.18em] text-white/45">Gesetz</p>
+        <p className="text-lg font-bold text-white">BFSG: Barrierefreiheitsstärkungsgesetz</p>
+      </div>
+      <span className="shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white/70">
+        Pflicht seit 28. Juni 2025
+      </span>
+    </div>
+    <div className="grid grid-cols-1 gap-px bg-white/10 md:grid-cols-2">
+      <div className="bg-[#141414] p-7">
+        <AlertCircle size={20} className="mb-5 text-red-300" />
+        <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-red-300">Betroffen</p>
+        <p className="mb-1 text-3xl font-bold text-white">10+ MA</p>
+        <p className="mb-6 text-sm font-medium text-white/55">oder Jahresumsatz über 2 Mio. €</p>
+      </div>
+      <div className="bg-[#141414] p-7">
+        <ShieldCheck size={20} className="mb-5 text-[#60a5fa]" />
+        <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-[#60a5fa]">Ausnahme</p>
+        <p className="mb-1 text-3xl font-bold text-white">unter 10 MA</p>
+        <p className="mb-6 text-sm font-medium text-white/55">und Jahresumsatz unter 2 Mio. €</p>
+      </div>
+    </div>
+  </div>
+);
+
+const DsgvoVisual = () => (
+  <div className="my-12 space-y-3">
+    {[
+      ["Google Fonts extern", "Schriften lokal hosten"],
+      ["Google Maps eingebettet", "Two-Click-Lösung"],
+      ["Kontaktformular ohne AVV", "TLS + AVV abschließen"],
+    ].map(([error, fix], idx) => (
+      <div key={error} className="overflow-hidden rounded-3xl border border-neutral-200 bg-white">
+        <div className="flex items-start gap-4 bg-neutral-50 p-6">
+          <span className="shrink-0 text-xs font-bold text-neutral-400">{String(idx + 1).padStart(2, "0")}</span>
+          <div className="flex-1">
+            <p className="mb-1 text-base font-bold text-black">{error}</p>
+            <p className="text-sm leading-relaxed text-neutral-600">Typischer DSGVO-Fehler auf Kanzlei-Websites.</p>
+          </div>
+          <X size={18} className="mt-0.5 shrink-0 text-red-500" />
+        </div>
+        <div className="flex items-center gap-3 border-t border-neutral-100 bg-white px-6 py-4">
+          <CheckCircle2 size={16} className="text-[#0071e3]" />
+          <span className="text-sm font-bold text-[#0071e3]">{fix}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
 // --- End Interactive Components ---
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const [shareStatus, setShareStatus] = useState<"idle" | "copied" | "error">("idle");
+  const [sidebarMode, setSidebarMode] = useState<"normal" | "fixed" | "released">("normal");
+  const [sidebarLeft, setSidebarLeft] = useState(0);
+  const [sidebarReleasedTop, setSidebarReleasedTop] = useState(0);
+  const sidebarColumnRef = useRef<HTMLElement | null>(null);
+  const sidebarRailRef = useRef<HTMLDivElement | null>(null);
   
   const post = blogPosts.find((p) => p.slug === slug);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+
+  useEffect(() => {
+    const updateSidebarLock = () => {
+      const sidebarColumn = sidebarColumnRef.current;
+      const releaseBoundary = document.getElementById("blog-faq-boundary");
+
+      if (!sidebarColumn || !releaseBoundary || window.innerWidth < 1024) {
+        setSidebarMode("normal");
+        return;
+      }
+
+      const topOffset = 144;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const columnTop = sidebarColumn.getBoundingClientRect().top + scrollTop;
+      const releaseTop = releaseBoundary.getBoundingClientRect().top + scrollTop;
+      const currentPosition = scrollTop + topOffset;
+      const sidebarHeight = sidebarRailRef.current?.offsetHeight ?? sidebarColumn.offsetHeight;
+      const stopGap = 56;
+      const releasePosition = releaseTop - sidebarHeight - stopGap;
+
+      setSidebarLeft(sidebarColumn.getBoundingClientRect().left);
+      setSidebarReleasedTop(Math.max(0, releasePosition - columnTop));
+
+      if (currentPosition < columnTop) {
+        setSidebarMode("normal");
+      } else if (currentPosition >= releasePosition) {
+        setSidebarMode("released");
+      } else {
+        setSidebarMode("fixed");
+      }
+    };
+
+    updateSidebarLock();
+    window.addEventListener("scroll", updateSidebarLock, { passive: true });
+    window.addEventListener("resize", updateSidebarLock);
+
+    return () => {
+      window.removeEventListener("scroll", updateSidebarLock);
+      window.removeEventListener("resize", updateSidebarLock);
+    };
+  }, [slug]);
 
   if (!post) {
     return (
@@ -180,6 +405,7 @@ export function BlogPost() {
   }
 
   const articleLang = post.lang;
+  const isLawFirmGuide = post.slug === "webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026";
 
   const formattedDate = new Date(post.date).toLocaleDateString(articleLang === "de" ? "de-DE" : "en-US", {
     year: "numeric",
@@ -229,6 +455,43 @@ export function BlogPost() {
   const headers = post.content
     .filter(block => block.startsWith("## "))
     .map(block => block.replace("## ", ""));
+
+  const articleAudience = (() => {
+    const haystack = `${post.slug} ${post.category} ${post.title}`.toLowerCase();
+    if (haystack.includes("anwalt") || haystack.includes("kanzlei") || haystack.includes("lawyer") || haystack.includes("law-firm")) {
+      return "lawyers";
+    }
+    if (haystack.includes("arzt") || haystack.includes("praxis") || haystack.includes("doctor") || haystack.includes("medical")) {
+      return "doctors";
+    }
+    return "general";
+  })();
+
+  const authorBio = (() => {
+    if (articleLang === "de") {
+      if (articleAudience === "lawyers") {
+        return "Wir bauen Client-Acquisition-Systeme für Kanzleien in Deutschland - Website, SEO und Google Ads als ein System.";
+      }
+      if (articleAudience === "doctors") {
+        return "Wir helfen Arztpraxen dabei, bei Google gefunden zu werden und mehr Patientenanfragen zu generieren.";
+      }
+      return "nüll. baut digitale Infrastruktur für Anwälte, Ärzte und Dienstleister in Deutschland - damit Expertise sichtbar wird.";
+    }
+
+    if (articleAudience === "lawyers") {
+      return "We build client-acquisition systems for law firms in Germany - website, SEO, and Google Ads working as one system.";
+    }
+    if (articleAudience === "doctors") {
+      return "We help medical practices get found on Google and generate more patient inquiries.";
+    }
+    return "nüll. builds digital infrastructure for lawyers, doctors, and service businesses in Germany - so expertise becomes visible.";
+  })();
+
+  const whatsappAuthorHref = `https://wa.me/4915256569852?text=${encodeURIComponent(
+    articleLang === "de"
+      ? `Hallo nüll., ich habe euren Artikel "${post.title}" gelesen und möchte direkt über meine Website sprechen.`
+      : `Hi nüll., I read your article "${post.title}" and would like to talk about my website.`
+  )}`;
 
   const baseUrl = "https://xn--nll-hoa.com";
   const articleKeywords: Record<string, string> = {
@@ -327,14 +590,9 @@ export function BlogPost() {
     <div className="bg-white selection:bg-primary selection:text-white">
       <StructuredData data={articleStructuredData} />
       {faqStructuredData && <StructuredData data={faqStructuredData} />}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 bg-[#0071e3] origin-left z-[1000]"
-        style={{ scaleX }}
-      />
-
-      <main className="pt-48 pb-24 min-h-screen">
+      <main className="pt-32 pb-24 min-h-screen">
         <article>
-          <div className="max-w-5xl mx-auto px-6 mt-12 mb-12 flex justify-between items-center">
+          <div className="max-w-[1400px] mx-auto px-6 mt-4 mb-10">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -350,13 +608,48 @@ export function BlogPost() {
                 {articleLang === "de" ? "Zurück zu den Insights" : "Back to Insights"}
               </Link>
             </motion.div>
-            
-            <div className="flex items-center gap-3">
+          </div>
+
+          <div className="max-w-[1400px] mx-auto grid grid-cols-1 gap-10 px-6 mb-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.55fr)] lg:items-end lg:gap-16">
+            <motion.h1
+              className="max-w-4xl text-[clamp(2.25rem,5.6vw,4.35rem)] tracking-[-0.045em] leading-[1.06] font-bold text-black text-gradient font-outfit"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {post.title}
+            </motion.h1>
+
+            <motion.div
+              className="max-w-[34rem] lg:pb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.25 }}
+            >
+              <p className="text-[clamp(1.05rem,1.45vw,1.22rem)] text-neutral-500 leading-relaxed font-medium mb-8">
+                {post.excerpt}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-[0.9375rem] text-neutral-500 font-semibold">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center">
+                    <Calendar size={14} className="text-neutral-400" />
+                  </div>
+                  {formattedDate}
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center">
+                    <Clock size={14} className="text-neutral-400" />
+                  </div>
+                  {post.readTime}
+                </div>
+              </div>
+
               <button
                 type="button"
                 onClick={handleShare}
                 aria-live="polite"
-                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all font-semibold text-sm ${
+                className={`mt-8 flex items-center gap-2 px-4 py-2 rounded-full border transition-all font-semibold text-sm ${
                   shareStatus === "copied"
                     ? "border-[#0071e3]/20 bg-[#0071e3]/10 text-[#0071e3]"
                     : shareStatus === "error"
@@ -366,55 +659,6 @@ export function BlogPost() {
               >
                 <Share2 size={16} /> {shareLabels[shareStatus]}
               </button>
-            </div>
-          </div>
-
-          <div className="max-w-5xl mx-auto px-6 mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0071e3]/10 text-[#0071e3] text-[0.75rem] font-extrabold uppercase tracking-[0.1em] mb-10"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-pulse" />
-              {post.category}
-            </motion.div>
-            
-            <motion.h1
-              className="text-[clamp(2.5rem,8vw,5.5rem)] tracking-[-0.05em] leading-[1] mb-12 font-bold text-black text-gradient font-outfit"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {post.title}
-            </motion.h1>
-
-            <motion.p
-              className="text-[clamp(1.125rem,2vw,1.5rem)] text-neutral-500 leading-relaxed font-medium max-w-3xl mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-            >
-              {post.excerpt}
-            </motion.p>
-
-            <motion.div 
-              className="flex items-center gap-8 text-[0.9375rem] text-neutral-500 font-semibold"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center">
-                  <Calendar size={14} className="text-neutral-400" />
-                </div>
-                {formattedDate}
-              </div>
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center">
-                  <Clock size={14} className="text-neutral-400" />
-                </div>
-                {post.readTime}
-              </div>
             </motion.div>
           </div>
 
@@ -434,7 +678,7 @@ export function BlogPost() {
             </div>
           </motion.div>
 
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-20">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 gap-20 lg:grid-cols-[1fr_380px]">
             <div className="blog-prose lg:max-w-3xl">
               {post.content[0]?.startsWith("> ") && (
                 <motion.div 
@@ -537,6 +781,49 @@ export function BlogPost() {
                     return part;
                   });
                 };
+
+                if (block.trim() === "[PROVIDERS_CAROUSEL]") {
+                  return post.providers && post.providers.length > 0
+                    ? <ProviderEditorialList key={i} providers={post.providers} />
+                    : null;
+                }
+
+                if (block.trim() === "[PRICING_TABLE]") return null;
+                if (isLawFirmGuide && block.trim() === "[BFSG_VISUAL]") return null;
+                if (isLawFirmGuide && block.trim() === "[DSGVO_VISUAL]") return null;
+                if (isLawFirmGuide && block.trim() === "[METHODEN_QUICK]") return null;
+
+                if (block.trim() === "[BFSG_VISUAL]") return <BFSGVisual key={i} />;
+                if (block.trim() === "[DSGVO_VISUAL]") return <DsgvoVisual key={i} />;
+                if (block.trim() === "[POSITIVBEISPIEL]") {
+                  return isLawFirmGuide ? null : <PositivbeispielBlock key={i} />;
+                }
+                if (block.trim() === "[METHODEN_QUICK]") {
+                  return isLawFirmGuide ? null : <MethodenQuick key={i} />;
+                }
+
+                if (block.trim().startsWith("[ASSET:") || block.trim().startsWith("[IMAGE")) {
+                  const pathMatch = block.match(/([^\s\]]+\.(png|jpg|jpeg|webp|gif))/i);
+                  const labelMatch = block.match(/\[(?:ASSET|IMAGE[^:]*?):\s*(.*?)\]/);
+                  const label = labelMatch ? labelMatch[1].split("—").pop()?.trim() ?? "Bild" : "Bild";
+
+                  if (!pathMatch) {
+                    return (
+                      <div key={i} className="my-10 flex flex-col items-center justify-center gap-3 rounded-3xl border-2 border-dashed border-neutral-200 bg-neutral-50 py-16">
+                        <AlertCircle size={20} className="text-neutral-400" />
+                        <span className="text-sm font-bold text-neutral-400">{label}</span>
+                      </div>
+                    );
+                  }
+
+                  const imagePath = pathMatch[1].startsWith("/") ? pathMatch[1] : `/assets/blog/${pathMatch[1]}`;
+                  return (
+                    <figure key={i} className="my-10">
+                      <img src={imagePath} alt={label} className="w-full rounded-3xl border border-neutral-200 object-cover shadow-sm" />
+                      <figcaption className="mt-3 text-center text-sm font-medium text-neutral-500">{label}</figcaption>
+                    </figure>
+                  );
+                }
                 
                 if (block.startsWith("> ")) {
                   return (
@@ -668,108 +955,194 @@ export function BlogPost() {
                 );
               })}
 
-              {/* Render Structured FAQs if they exist */}
-              {post.faqs && <FAQSection faqs={post.faqs} articleLang={articleLang} title={post.faqTitle} />}
-
-              {/* Author Section */}
-              <div className="mt-32 pt-16 border-t border-neutral-100">
-                <div className="p-10 rounded-[2.5rem] bg-neutral-50 border border-neutral-100 flex flex-col md:flex-row items-center gap-10">
-                  <div className="w-24 h-24 rounded-full bg-black text-white flex items-center justify-center text-3xl font-bold shadow-xl shadow-black/20">N</div>
-                  <div className="text-center md:text-left flex-1">
-                    <h4 className="text-[1.5rem] font-bold mb-2">Nüll. Editorial Team</h4>
-                    <p className="text-[1rem] text-neutral-500 mb-6 leading-relaxed">
-                      {articleLang === "de" 
-                        ? "Experten für digitale Positionierung, Premium-Webdesign und Marketingstrategie für ambitionierte Unternehmen." 
-                        : "Experts in digital positioning, premium webdesign, and marketing strategy for ambitious businesses."}
-                    </p>
-                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                      {['LinkedIn', 'Website', 'WhatsApp'].map(p => (
-                        <button key={p} className="px-5 py-2 rounded-full bg-white border border-neutral-200 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-sm">
-                          {p}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <aside className="hidden lg:block">
-              <div className="sticky top-32 space-y-12">
-                <div className="space-y-6">
-                  <h4 className="text-[0.75rem] font-black uppercase tracking-[0.2em] text-neutral-400">
+            <aside ref={sidebarColumnRef} className="relative hidden self-stretch lg:block">
+              <div
+                ref={sidebarRailRef}
+                className={`flex h-[calc(100vh-10.5rem)] min-h-[38rem] max-h-[54rem] w-[380px] flex-col justify-start gap-10 transition-opacity duration-200 ${
+                  sidebarMode === "fixed"
+                    ? "fixed z-[20]"
+                    : sidebarMode === "released"
+                      ? "absolute left-0"
+                      : "sticky top-[11rem]"
+                }`}
+                style={
+                  sidebarMode === "fixed"
+                    ? { left: sidebarLeft, top: "9rem" }
+                    : sidebarMode === "released"
+                      ? { top: sidebarReleasedTop }
+                      : undefined
+                }
+              >
+                <div className="min-h-0 overflow-hidden">
+                  <h4 className="mb-4 text-[0.68rem] font-black uppercase tracking-[0.22em] text-neutral-400">
                     {articleLang === "de" ? "Auf dieser Seite" : "On this page"}
                   </h4>
-                  <nav className="space-y-4">
+                  <nav className="max-h-[24rem] space-y-2 overflow-y-auto pr-2">
                     {headers.map((h, i) => (
                       <a
                         key={i}
                         href={`#${h.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="group flex items-center gap-3 text-[0.9375rem] font-bold text-neutral-400 hover:text-[#0071e3] transition-all"
+                        className="group grid grid-cols-[0.35rem_1fr] items-start gap-3 text-[0.82rem] font-bold leading-[1.22] text-neutral-400 transition-all hover:text-[#0071e3]"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-neutral-200 group-hover:bg-[#0071e3] transition-colors" />
-                        {h}
+                        <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-neutral-200 transition-colors group-hover:bg-[#0071e3]" />
+                        <span className="min-w-0 break-words">{h}</span>
                       </a>
                     ))}
                   </nav>
                 </div>
                 
-                <div className="p-8 rounded-[2rem] bg-[#0e0e10] text-white relative overflow-hidden shadow-2xl shadow-black/20">
+                <div className="relative shrink-0 overflow-hidden rounded-[2.25rem] bg-[#0e0e10] p-9 text-white shadow-2xl shadow-black/20">
                   <div className="absolute top-0 right-0 p-4 opacity-10">
                     <Share2 size={80} />
                   </div>
-                  <h4 className="text-[1.25rem] font-bold mb-4 relative z-10">Newsletter</h4>
-                  <p className="text-[0.875rem] text-white/50 mb-8 leading-relaxed relative z-10">
-                    {articleLang === "de" 
-                      ? "Schließen Sie sich 500+ Experten an, die wöchentlich Insights zur digitalen Autorität erhalten." 
-                      : "Join 500+ experts receiving weekly insights on digital authority."}
-                  </p>
-                  <div className="space-y-3 relative z-10">
-                    <input 
-                      type="email" 
-                      placeholder={articleLang === "de" ? "Ihre E-Mail" : "Your email"}
-                      className="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm focus:ring-2 focus:ring-[#0071e3] outline-none transition-all"
-                    />
-                    <button className="w-full py-4 bg-[#0071e3] text-white rounded-2xl text-[0.875rem] font-bold hover:bg-[#0066d6] transition-all active:scale-95">
-                      {articleLang === "de" ? "Insights erhalten" : "Get Insights"}
-                    </button>
+                  <div className="relative z-10">
+                    <p className="mb-4 text-[0.72rem] font-black uppercase tracking-[0.2em] text-white/35">
+                      {articleLang === "de" ? "Launch-Angebot" : "Launch Offer"}
+                    </p>
+                    <h4 className="mb-4 text-[1.45rem] font-bold leading-tight tracking-[-0.04em] text-white">
+                      {articleLang === "de"
+                        ? "Wir bauen deine Website und starten deine Kampagnen."
+                        : "We build your website and launch your campaigns."}
+                    </h4>
+                    <p className="mb-6 text-[1.2rem] font-bold leading-snug tracking-[-0.035em] text-white">
+                      {articleLang === "de"
+                        ? "Monat 1 und 2 sind auf uns. Du zahlst ab Monat 3."
+                        : "Months 1–2 are on us. You pay from month 3."}
+                    </p>
+                    <p className="mb-8 whitespace-nowrap text-[0.92rem] font-bold leading-snug tracking-[-0.02em] text-white/62">
+                      {articleLang === "de" ? (
+                        "€450 einmalig. Dann €300/Monat."
+                      ) : (
+                        "€450 once. Then €300/month."
+                      )}
+                    </p>
+                    <Link
+                      to="/#contact"
+                      className="inline-flex w-full items-center justify-center rounded-2xl bg-[#0071e3] px-5 py-4 text-[0.875rem] font-bold text-white transition-all hover:bg-[#0066d6] active:scale-95"
+                    >
+                      {articleLang === "de" ? "Jetzt starten →" : "Start now →"}
+                    </Link>
                   </div>
                 </div>
               </div>
             </aside>
           </div>
+
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="blog-prose lg:max-w-3xl">
+              {/* Render Structured FAQs after the article body while the sidebar remains locked. */}
+              {post.faqs && <FAQSection faqs={post.faqs} articleLang={articleLang} title={post.faqTitle} />}
+              <div id="blog-faq-boundary" aria-hidden="true" />
+
+              {/* Author Section */}
+              <div className="mt-32 pt-16 border-t border-neutral-100">
+                <div className="p-10 rounded-[2.5rem] bg-neutral-50 border border-neutral-100 flex flex-col md:flex-row items-center gap-10">
+                  <div className="w-24 h-24 overflow-hidden rounded-full bg-[#1d1d1f] shadow-xl shadow-black/20">
+                    <img
+                      src="/favicon.svg"
+                      alt="nüll."
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="text-center md:text-left flex-1">
+                    <h4
+                      className="mb-3 inline-flex flex-wrap items-baseline gap-x-2 font-bold tracking-[-0.03em] text-[#0e0e10]"
+                      style={{ fontSize: "1.8rem" }}
+                      aria-label="nüll. Editorial Team"
+                    >
+                      <span>
+                        nüll<span className="text-[#007aff]">.</span>
+                      </span>
+                      <span className="tracking-[-0.04em]">Editorial Team</span>
+                    </h4>
+                    <p className="text-[1rem] text-neutral-500 mb-6 leading-relaxed">
+                      {authorBio}
+                    </p>
+                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                      <a
+                        href={whatsappAuthorHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-2.5 rounded-full bg-[#0071e3] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-lg shadow-[#0071e3]/20 hover:bg-[#0066d6] hover:-translate-y-0.5"
+                      >
+                        {articleLang === "de" ? "Direkt schreiben →" : "Message directly →"}
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/company/n%C3%BCll/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-full bg-white border border-neutral-200 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-sm"
+                      >
+                        LinkedIn
+                      </a>
+                      <Link
+                        to="/"
+                        className="px-5 py-2.5 rounded-full bg-white border border-neutral-200 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-sm"
+                      >
+                        Website
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
 
-        <div className="max-w-7xl mx-auto px-6 mt-48">
+        <div className="mt-48">
           <motion.div 
-            className="relative overflow-hidden rounded-[4rem] bg-neutral-900 text-white p-12 md:p-24"
+            className="relative overflow-hidden bg-[#0071e3] text-white"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0071e3] opacity-30 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-600 opacity-20 blur-[120px] rounded-full -translate-x-1/3 translate-y-1/3" />
-            
-            <div className="relative z-10 max-w-2xl">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-[0.75rem] font-black uppercase tracking-[0.2em] mb-10">
-                {articleLang === "de" ? "Nächste Schritte" : "Next Steps"}
+            <div className="relative z-10 mx-auto max-w-[92rem] px-6 py-28 md:py-36">
+              <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,1.55fr)_minmax(24rem,0.75fr)] lg:gap-20">
+                <div>
+                <div className="inline-block px-4 py-1.5 rounded-full bg-white/15 text-white/85 text-[0.75rem] font-black uppercase tracking-[0.2em] mb-10">
+                  {articleLang === "de" ? "Nächste Schritte" : "Next Steps"}
+                </div>
+                <h3 className="max-w-[68rem] text-[clamp(2.4rem,3.75vw,3.65rem)] font-bold tracking-[-0.06em] leading-[0.98] font-outfit">
+                  {articleLang === "de" ? (
+                    <>
+                      Deine Website sollte
+                      <br />
+                      Anfragen bringen.
+                      <br />
+                      Wenn sie das nicht tut,
+                      <br />
+                      schauen wir gemeinsam, woran es liegt.
+                    </>
+                  ) : (
+                    <>
+                      Your website should
+                      <br />
+                      bring inquiries.
+                      <br />
+                      If it does not,
+                      <br />
+                      let us look at it together.
+                    </>
+                  )}
+                </h3>
+                </div>
+
+                <div className="lg:pl-8">
+                <p className="text-[1.35rem] text-white/85 mb-10 leading-relaxed max-w-xl font-medium">
+                  {articleLang === "de" 
+                    ? "Kostenlos. 20 Minuten. Direktes Feedback zu Struktur, Sichtbarkeit und den Punkten, die Anfragen verhindern." 
+                    : "Free. 20 minutes. No pitch - just concrete answers on what your site is missing."}
+                </p>
+                <Link
+                  to="/website-analyse"
+                  className="inline-flex min-h-14 items-center gap-4 rounded-full bg-white px-9 py-3.5 text-[1rem] font-bold text-black shadow-2xl shadow-black/20 transition-all duration-500 hover:scale-[1.02] hover:bg-black hover:text-white active:scale-95 group"
+                >
+                  {articleLang === "de" ? "Kostenlose Website-Analyse buchen" : "Book a Free Website Analysis"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                </div>
               </div>
-              <h3 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-[-0.05em] leading-[1] mb-10 font-outfit">
-                {articleLang === "de" 
-                  ? "Verwandeln Sie Ihr Unternehmen in eine starke digitale Marke." 
-                  : "Transform your business into a strong digital brand."}
-              </h3>
-              <p className="text-[1.25rem] text-white/60 mb-12 leading-relaxed max-w-xl">
-                {articleLang === "de" 
-                  ? "Wir bauen nicht nur Websites. Wir schaffen digitale Auftritte, die Vertrauen aufbauen und planbares Wachstum ermöglichen." 
-                  : "We don't just build websites. We build digital presences that earn trust and deliver predictable growth for businesses."}
-              </p>
-              <Link
-                to="/#contact"
-                className="inline-flex items-center gap-4 bg-white text-black px-12 py-6 rounded-full text-[1.125rem] font-bold hover:bg-[#0071e3] hover:text-white transition-all duration-500 hover:scale-[1.02] active:scale-95 group shadow-2xl shadow-black/20"
-              >
-                {articleLang === "de" ? "Strategiegespräch buchen" : "Schedule a Consultation"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
           </motion.div>
         </div>

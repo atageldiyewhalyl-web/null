@@ -17,6 +17,7 @@ export default {
     "/blog/web-design-for-lawyers-law-firms",
     "/blog/freelancer-oder-agentur-website",
     "/blog/freelancer-vs-agency-website",
+    "/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026",
     "/datenschutz",
     "/impressum",
   ],

@@ -1256,5 +1256,278 @@ export const blogPosts: BlogPost[] = [
     date: "2026-05-04",
     readTime: "16 min read",
     image: "/assets/blog/null-law-firm-webdesign.webp"
+  },
+  {
+    groupId: "kanzlei-website-leitfaden",
+    lang: "de",
+    slug: "webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026",
+    title: "Webdesign für Rechtsanwälte und Kanzleien 2026: Der vollständige Leitfaden",
+    excerpt: "Was eine Kanzlei-Website 2026 wirklich leisten muss: Kosten, Anbieter, DSGVO, BFSG und SEO erklärt. Mit Fallstudie Kanzlei Doğru und interaktivem Website-Audit.",
+    category: "Webdesign · SEO · Kanzlei",
+    date: "2026-06-02",
+    readTime: "18 Min. Lesezeit",
+    image: "/assets/blog/law-firm-3d-courtroom-hero.png",
+    providers: [
+      {
+        rank: 1,
+        badge: "Unsere Empfehlung",
+        name: "nüll.",
+        rating: undefined,
+        pros: [
+          "Kanzlei-Website, SEO und Google Ads aus einer Hand",
+          "Einstieg ab 450 €, erste 2 Monate kostenlos",
+          "719 organische Klicks in 3 Monaten nachgewiesen"
+        ],
+        cons: [
+          "Kapazität begrenzt, aktuell nur wenige neue Projekte pro Quartal"
+        ],
+        pricing: [
+          "Einstieg: 450 € einmalig",
+          "Monate 1–2: kostenlos",
+          "Ab Monat 3: 300 €/Monat",
+          "Ads-Budget: 300–600 €/Monat (eigenes Budget)"
+        ],
+        pricingIncludes: [
+          "Website-Entwicklung",
+          "Professionelles Fotoshooting",
+          "Laufendes SEO",
+          "Google Ads-Management"
+        ],
+        url: "/kanzlei-websites",
+        highlight: true
+      },
+      {
+        rank: 2,
+        badge: "Kanzlei-Branding",
+        name: "guerradesign.de",
+        pros: [
+          "Kanzlei-Branding-Spezialist seit 2008",
+          "Lange Referenzliste im Rechtsbereich",
+          "Starkes Gespür für Corporate Identity"
+        ],
+        cons: [
+          "Kein erkennbares SEO-Konzept",
+          "Kein strukturiertes Content-Cluster",
+          "Kein Ansatz für KI-Sichtbarkeit"
+        ],
+        url: "https://guerradesign.de"
+      },
+      {
+        rank: 3,
+        badge: "Legal & Medical",
+        name: "netfame.de",
+        pros: [
+          "Fokus auf rechtliche und medizinische Branchen",
+          "Branchenerfahrung in beiden Verticals"
+        ],
+        cons: [
+          "Begrenzte inhaltliche Tiefe im SEO",
+          "Kein öffentlich dokumentierter Case-Study-Nachweis",
+          "Kein Google Ads-Management"
+        ],
+        url: "https://netfame.de"
+      },
+      {
+        rank: 4,
+        badge: "SEO-Spezialist",
+        name: "corominas-consulting.de",
+        pros: [
+          "SEO explizit für Rechtsanwälte positioniert",
+          "Rankt selbst für 'SEO für Anwälte'"
+        ],
+        cons: [
+          "Kein Webdesign-Leistungsangebot",
+          "Kein Google Ads-Management",
+          "Keine öffentlichen Ergebniszahlen"
+        ],
+        url: "https://corominas-consulting.de"
+      },
+      {
+        rank: 5,
+        badge: "Webdesign + SEO",
+        name: "wolpersweb.de",
+        pros: [
+          "Kombination aus Webdesign und SEO",
+          "Auch für Kanzleien und Zahnarztpraxen",
+          "Aktiver Blog mit Fachinhalten"
+        ],
+        cons: [
+          "Inhalte bleiben oberflächlich",
+          "Kein Pillar-Spoke-Content-Modell",
+          "Keine Daten zu tatsächlichen Ergebnissen"
+        ],
+        url: "https://wolpersweb.de"
+      },
+      {
+        rank: 6,
+        badge: "DIY",
+        name: "Wix / Squarespace",
+        pros: [
+          "Günstig (ab 15 €/Monat)",
+          "Schneller Einstieg ohne technisches Wissen",
+          "Kanzlei-Vorlagen verfügbar"
+        ],
+        cons: [
+          "Kein strukturiertes SEO möglich",
+          "Keine KI-Sichtbarkeit",
+          "Keine Kontrolle über technische Performance",
+          "Konvertiert deutlich schlechter als maßgeschneiderte Lösungen"
+        ]
+      }
+    ],
+    content: [
+      "Hasan Doğru kam zu uns mit einem Problem, das fast jeder Anwalt in Deutschland kennt: eine Website, die zwar existiert, aber bei Google unsichtbar ist. Keine Anfragen über das Internet. Kein organischer Traffic. Mandanten kamen ausschließlich über persönliche Weiterempfehlungen.",
+      "Knapp drei Monate später: **719 organische Klicks, über 35.000 Impressionen, Position 1 für lokale Schlüsselwörter.** ChatGPT nennt seine Kanzlei als erste Empfehlung für türkisch-deutsches Recht in Mannheim. Hasan denkt inzwischen über neue Fachbereiche nach. Nicht weil er mehr Zeit hat, sondern weil die Nachfrage es hergibt.",
+      "Das ist kein Werbeversprechen. Es ist das Ergebnis einer Website, die als digitale Infrastruktur gebaut wurde, nicht als Visitenkarte.",
+      "Dieser Artikel zeigt, was professionelles Webdesign für Rechtsanwälte und Kanzleien 2026 leisten muss: was es kostet, woran Sie Anbieter wirklich unterscheiden, welche Rechtspflichten Ihre Website erfüllen muss und warum Google allein nicht mehr reicht.",
+      "[POSITIVBEISPIEL]",
+      "### Das Wichtigste auf einen Blick",
+      "- **\"Webdesign für Rechtsanwälte\"** wird 260-mal pro Monat gesucht, bei einem Wettbewerbsindex von nur 13 von 100. Das Fenster ist offen, aber es schließt sich.",
+      "- Eine Kanzlei-Website muss 2026 für Google optimiert sein und für KI-Modelle wie ChatGPT, Gemini und Perplexity, denn dort suchen immer mehr Mandanten direkt nach einem Anwalt.",
+      "- Wix und Squarespace lösen das Designproblem. Das SEO-Problem, das Vertrauensproblem und das Konversionsproblem lösen sie nicht.",
+      "- Eine professionell entwickelte Kanzlei-Website liegt zwischen **1.500 und 8.000+ Euro**. Wir erklären, was den Unterschied macht.",
+      "- Das Ziel sind nicht Rankings. Das Ziel sind Mandate.",
+      "## Warum Ihre Website über Mandate entscheidet",
+      "Die meisten Anwälte unterschätzen, was auf dem Spiel steht. Nicht weil sie die Bedeutung von Google nicht kennen, sondern weil sie nicht sehen, was sie täglich verlieren.",
+      "Wer in Deutschland heute einen Rechtsanwalt braucht, öffnet kein Telefonbuch. Er tippt etwas in Google ein. Oder fragt ChatGPT. Die erste Kanzlei, die sichtbar ist, bekommt den Anruf. Die zweite vielleicht noch eine Chance. Alle anderen existieren für diesen Menschen nicht.",
+      "### Wie Mandanten heute nach einem Anwalt suchen",
+      "Das Suchverhalten hat sich in den letzten drei Jahren in zwei Richtungen gleichzeitig verändert.",
+      "Auf der einen Seite: klassische Google-Suche. Begriffe wie \"Anwalt Familienrecht Mannheim\" oder \"Rechtsanwalt Erbrecht Berlin\" werden täglich tausende Male eingegeben. Allein \"Webdesign für Rechtsanwälte\" hat **260 monatliche Suchanfragen in Deutschland bei einem Wettbewerbsindex von 13 von 100**. Viel Bedarf, wenig Wettbewerb.",
+      "Auf der anderen Seite: KI-Suche. Immer mehr Menschen fragen ChatGPT, Gemini oder Perplexity direkt nach einer Empfehlung. Diese Modelle durchsuchen das Web, werten Websites aus und geben eine konkrete Antwort. Wer eine strukturierte, informationsreiche Website hat, wird genannt. Wer eine veraltete, dünn belegte Homepage hat, wird übergangen egal wie gut er als Anwalt ist.",
+      "**75% aller Suchanfragen** kommen außerdem vom Smartphone. Wer eine Website hat, die auf dem Handy schlecht lädt, verliert drei von vier potenziellen Mandanten, bevor sie die erste Zeile gelesen haben.",
+      "### Was passiert, wenn Ihre Kanzlei online nicht sichtbar ist",
+      "Jemand anderes bekommt den Mandanten.",
+      "Jede Suchanfrage nach \"Rechtsanwalt [Ihre Stadt]\", die Ihre Kanzlei nicht beantwortet, landet bei einem Wettbewerber. Anders als bei einer Weiterempfehlung unter Kollegen haben Sie dabei keine Chance, sich zu erklären. Sie kommen schlicht nicht vor.",
+      "Vor Beginn der Zusammenarbeit mit nüll. hatte Hasan Doğrus Website weniger als 3 Klicks pro Tag, kaum Sichtbarkeit, keine relevanten Rankings. Heute über 13 Klicks täglich, mehr als 35.000 Impressionen in drei Monaten, Position 1 für lokale Schlüsselwörter. Der Unterschied liegt nicht im Talent des Anwalts. Er liegt in der digitalen Infrastruktur dahinter.",
+      "**Eine Kanzlei-Website ist 2026 kein Nice-to-have. Sie ist die Eingangstür Ihrer Praxis.**",
+      "## Selbst erstellen oder Agentur: der ehrliche Vergleich",
+      "Bevor wir über Kosten und Anbieter sprechen, eine Frage, die sich fast jeder Anwalt irgendwann stellt: Kann ich das nicht einfach selbst machen?",
+      "Die ehrliche Antwort: Ja, teilweise. Kommt drauf an, was \"machen\" für Sie bedeutet.",
+      "### Was Homepage-Baukästen für Anwälte wirklich können",
+      "Wix, Squarespace, Jimdo haben sich massiv verbessert. Sie können damit in einem Wochenende eine Website erstellen, die professionell aussieht. Es gibt Vorlagen speziell für Kanzleien. Der Einstieg liegt oft unter 20 Euro im Monat.",
+      "Was diese Tools lösen: das Designproblem.",
+      "Was sie nicht lösen:",
+      "Sie ranken nicht für das, was Ihre Mandanten wirklich suchen. Ein Baukasten gibt Ihnen eine Website, keine Keyword-Strategie für \"Scheidungsanwalt Köln\" oder \"Erbrecht Anwalt München\". Er analysiert nicht, welche Suchanfragen in Ihrem Einzugsgebiet gestellt werden und welche davon realistisch zu gewinnen sind. Das Ergebnis: eine Website, die schön aussieht und bei Google auf Seite 4 sitzt.",
+      "Sie bauen kein Vertrauen auf dem Niveau, das Anwälte brauchen. Jemand, der einen Rechtsanwalt sucht, trifft eine der wichtigsten Entscheidungen seines Lebens. Generische Vorlagen, Stockfotos und ein Standard-Kontaktformular reichen dafür nicht. Was funktioniert: echte Fallbeschreibungen, konkrete Ergebnisse, ein Über-uns-Bereich, der zeigt, wer Sie sind und eine Seite, die sich anfühlt, als wäre sie für Ihre Kanzlei gebaut.",
+      "Performance auf dem Niveau, das Google erwartet. Bei Hasan Doğrus Website haben wir das JavaScript-Bundle von **915 KB auf 76 KB reduziert ein Minus von 88%**. Alle Bilder wurden von **29 MB auf 2,8 MB komprimiert minus 90%**. Das ist der Unterschied zwischen einer Website, die in unter 2 Sekunden lädt, und einer, die potenzielle Mandanten schon beim Ladebalken verliert. Kein Baukasten gibt Ihnen diese Kontrolle.",
+      "KI-Sichtbarkeit. ChatGPT, Gemini und Perplexity geben inzwischen direkte Anwaltsempfehlungen. Welche Kanzlei sie nennen, hängt von der Struktur, Tiefe und Autorität der Website ab. Ein Baukasten-Template erfüllt diese Anforderungen nicht.",
+      "### Was eine Spezialagentur macht, die kein Baukasten kann",
+      "Der Unterschied zwischen einem Baukasten und einer spezialisierten Agentur ist nicht der Preis. Es ist die Frage, was das Ziel ist.",
+      "Ein Baukasten baut eine Website. Eine Agentur baut ein System zur Mandantengewinnung.",
+      "In der Praxis: Keyword-Recherche für Ihre Praxisbereiche und Ihren Standort. Technische SEO-Architektur, die Google versteht. Content-Cluster, die topische Autorität aufbauen. Schema-Markup, das Rich Results auslöst. Ladezeiten, die Google nicht abstraft. Und eine laufende Strategie, die sich an Ihre Rankings und Ihren Wettbewerb anpasst.",
+      "[METHODEN_QUICK]",
+      "### Vergleich: DIY, Freelancer, Spezialagentur",
+      "| | DIY (Baukasten) | Freelancer | Spezialagentur |",
+      "|---|---|---|---|",
+      "| **Kosten Setup** | 0–500 € | 1.500–5.000 € | 1.500–8.000 € |",
+      "| **Monatlich** | 15–50 € | optional | 300–1.000 € |",
+      "| **Design** | Gut | Gut | Sehr gut |",
+      "| **On-Page SEO** | Basis | Möglich | Vollständig |",
+      "| **Schema Markup** | Nein | Abhängig | Kanzlei-spezifisch |",
+      "| **KI-Sichtbarkeit** | Nein | Nein | Ja |",
+      "| **DSGVO-konform** | Eigenverantwortung | Abhängig | Ja |",
+      "| **Laufende Optimierung** | Nein | Abhängig | Ja |",
+      "| **Zeitaufwand für Sie** | Hoch | Mittel | Minimal |",
+      "Für eine Kanzlei, die ausschließlich über Empfehlungen Mandate gewinnt und das so plant, reicht ein Baukasten. Für eine Kanzlei, die Google als Mandantenquelle ernst nimmt, nicht.",
+      "## Was kostet eine Website für Anwälte und Kanzleien? Echte Zahlen 2026",
+      "Die meisten Agenturen verstecken ihre Preise hinter \"auf Anfrage\". Wir nicht.",
+      "### Kostenübersicht nach Methode",
+      "[PRICING_TABLE]",
+      "| | DIY (Baukasten) | Freelancer | Agentur (Markt) | nüll. |",
+      "|---|---|---|---|---|",
+      "| **Einmalig** | 0–200 € | 1.500–5.000 € | 3.000–10.000 € | 450 € |",
+      "| **Monatlich** | 15–50 € | optional | 500–2.000 € | Monate 1–2 kostenlos, ab Monat 3: 300 €/Monat |",
+      "| **Enthalten** | Template | Design | Design + SEO | Website, Fotoshooting, SEO, Google Ads |",
+      "| **Ads-Budget** | Sie | Sie | Sie | 300–600 €/Monat (eigenes Budget) |",
+      "Der entscheidende Unterschied bei nüll.: keine hohe Einmalrechnung vorab. Der Einstieg kostet **450 Euro**. Die ersten zwei Monate sind kostenlos. Ab Monat 3 zahlen Sie **300 Euro im Monat** für Website, SEO und Google Ads-Management als ein System.",
+      "### Was im Preis enthalten ist, und was nicht",
+      "Günstige Freelancer bauen eine schöne Seite und liefern sie ab. Was danach passiert, ist Ihre Sache. Keine Keyword-Recherche, kein laufendes SEO, keine Anpassung, wenn ein Wettbewerber an Ihnen vorbeizieht.",
+      "Bei nüll. ist die Website der Startpunkt, nicht das Endprodukt. Im Paket: Strategie und Aufbau, ein professionelles Fotoshooting, laufende SEO-Optimierung und vollständiges Google Ads-Management. Sie liefern die rechtliche Expertise. Wir liefern die digitale Infrastruktur.",
+      "### Lohnt sich das? Die Rechnung für Anwälte",
+      "Ein neues Mandat im Familienrecht bringt einer Kanzlei im Schnitt zwischen **1.500 und 4.000 Euro**. Ein Erbrechtsfall oft mehr.",
+      "Wenn nüll. Ihnen über Google und Google Ads im ersten Monat zwei neue Mandate bringt, hat sich das gesamte Jahresbudget bereits gerechnet.",
+      "Die realistische Erwartung nach 3 bis 6 Monaten: **10 bis 50 qualifizierte Anfragen pro Monat** aus Ihrer Region. Menschen, die aktiv nach einem Anwalt in Ihrem Fachgebiet suchen und auf Ihre Website treffen, bevor sie zur Konkurrenz weitergehen.",
+      "## Fallstudie: Wie Kanzlei Doğru zur ersten Empfehlung für türkisch-deutsches Recht in Mannheim wurde",
+      "### Die Ausgangssituation",
+      "Hasan Doğru ist Rechtsanwalt in Mannheim. Seine Kanzlei deckt türkisch-deutsches Recht ab: Familienrecht, Erbrecht, Strafrecht, Immobilienrecht. Als Anwalt mit Zulassung bei der Rechtsanwaltskammer Karlsruhe und Verbindung zur Ankara Barosu ist er einer von sehr wenigen Spezialisten in Deutschland, die diese Nische wirklich abdecken.",
+      "Das Problem: Online war er praktisch unsichtbar. **Weniger als 3 Klicks pro Tag** auf seine Website. Keine relevanten Google-Rankings. Neue Mandanten kamen ausschließlich über persönliche Weiterempfehlungen.",
+      "[ASSET: /assets/blog/kanzlei-dogru-gsc-vorher.png — Google Search Console: Ausgangssituation weniger als 3 Klicks pro Tag]",
+      "### Was wir gebaut haben",
+      "Keine fertigen Templates. Keine Baukasten-Logik. Die gesamte digitale Infrastruktur wurde von Grund auf neu aufgebaut.",
+      "Erstens: Das Design. Keine Vorlage, kein Template. Wir haben Hasan persönlich besucht, Fotos direkt in seiner Kanzlei aufgenommen und eine Website gebaut, die genau das ausstrahlt, was ein Mandant beim ersten Blick spüren soll: Kompetenz, Seriosität, Erreichbarkeit. Eine Seite, die nicht nach \"ich habe das selbst zusammengeklickt\" aussieht, sondern nach einer Kanzlei, der man sein Problem anvertrauen kann. Weil eine gute Website nicht nur schön ist. Sie ist die Grundlage, auf der SEO überhaupt erst funktioniert. Ohne saubere Struktur, dedizierte Seiten für jeden Praxisbereich und korrekt indexierte Inhalte bringt der beste Content nichts.",
+      "[ASSET: /assets/blog/kanzlei-dogru-fotoshooting.jpg — Hasan Doğru im Büro Mannheim]",
+      "Zweitens: Der Content. Hasans Zielgruppe ist nicht \"alle, die einen Anwalt suchen\". Es sind türkischstämmige Menschen in Deutschland, die mit türkischem Recht konfrontiert werden: Erbschaft über zwei Länder, Scheidungsverfahren mit Bezug zur Türkei, Vollmachten für Behörden in Ankara. Diese Zielgruppe sucht auf Deutsch und auf Türkisch, teils mit Fachbegriffen, teils mit Fragen wie \"Was passiert mit dem Haus meiner Eltern in der Türkei, wenn sie sterben?\" Wir haben **32 deutsche und 32 türkische Artikel** geschrieben, jeden auf eine konkrete Suchanfrage ausgerichtet, hinter der ein echtes Mandat steckt.",
+      "Drittens: Google Ads. Drei Kampagnen Familienrecht, Erbrecht, Strafrecht mit Anzeigen auf Deutsch und Türkisch. Ausgerichtet auf genau die Menschen, die gerade ein Problem haben und einen Anwalt brauchen. Das Ergebnis: **119 Konversionen in 29 aktiven Kampagnentagen bei 8,31 Euro pro Konversion**.",
+      "Viertens: KI-Sichtbarkeit. Strukturierte Daten, thematisch tiefe Inhalte und eine llms.txt sorgen dafür, dass ChatGPT, Gemini und Perplexity Hasans Kanzlei als verlässliche Quelle erkennen und aktiv empfehlen.",
+      "### Die Ergebnisse",
+      "Die täglichen Klicks wuchsen von 1 auf bis zu **29 an einem einzigen Tag** am 18. Mai 2026.",
+      "**719 organische Klicks** in drei Monaten. **35.200 Impressionen**. Das sind 35.200 Momente, in denen ein potenzieller Mandant Hasans Kanzlei in den Suchergebnissen gesehen hat, ohne einen einzigen Euro für organischen Traffic.",
+      "[ASSET: /assets/blog/kanzlei-dogru-gsc-ergebnisse.png — Google Search Console: 719 Klicks, 35.200 Impressionen]",
+      "**119 Konversionen** über Google Ads in 29 aktiven Kampagnentagen. **8,31 Euro pro Konversion**. Für eine Kanzlei, bei der ein einzelnes Mandat 1.500 bis 4.000 Euro einbringt.",
+      "Für \"türk avukat mannheim\" rangiert die Kanzlei auf **Position 1**. Wenn jemand ChatGPT fragt, welcher Anwalt in Mannheim bei türkischem Recht hilft, lautet die Antwort: Avukat Hasan Doğru, als klare Nr. 1.",
+      "[ASSET: /assets/blog/kanzlei-dogru-chatgpt-empfehlung.png — ChatGPT empfiehlt Hasan Doğru als Nr. 1 für türkisches Recht Mannheim]",
+      "Neue Mandate über Google und KI-Suche. Ein Praxisbetrieb, der nicht mehr ausschließlich von Weiterempfehlungen abhängt. Und konkrete Pläne zur Erweiterung in neue Fachbereiche nicht weil er mehr Zeit hätte, sondern weil die Nachfrage es jetzt hergibt.",
+      "## Schnelltest: Was hat Ihre Kanzlei-Website, und was nicht?",
+      "Keine langen Erklärungen. Haken Sie ab, was auf Ihrer Website bereits vorhanden ist. Am Ende sehen Sie Ihren Score und genau, wo Sie Mandate verlieren.",
+      "- [ ] Lädt in unter 3 Sekunden auf dem Smartphone",
+      "- [ ] Jeder Fachbereich hat eine eigene Seite (z.B. \"Familienrecht Mannheim\")",
+      "- [ ] Echte Fotos von Ihnen, kein Stock-Material",
+      "- [ ] Google-Bewertungen sichtbar oder direkt verlinkt",
+      "- [ ] Kontaktformular mit maximal 4 Feldern auf jeder wichtigen Seite",
+      "- [ ] Klarer CTA auf jeder Seite, z.B. \"Jetzt Erstberatung anfragen\"",
+      "- [ ] Google Business Profil vollständig und mit der Website verknüpft",
+      "- [ ] Strukturierte Daten (Schema) hinterlegt, für Google und KI-Suchen",
+      "- [ ] Stadtname und Fachgebiet stehen auf jeder Seite im Text",
+      "- [ ] Impressum und Datenschutzerklärung vollständig und aktuell",
+      "- [ ] BFSG-konform (Pflicht seit Juni 2025, gilt nicht für Kanzleien unter 10 MA)",
+      "- [ ] Inhalte tief genug, dass ChatGPT und Gemini Sie als Quelle empfehlen",
+      "## Die besten Webdesign-Anbieter für Anwälte und Kanzleien",
+      "Wer eine Kanzlei-Website professionell entwickeln lassen möchte, steht schnell vor der gleichen Frage: Wer kann das wirklich und wer versteht nur Design, aber nicht das Rechtsumfeld?",
+      "[PROVIDERS_CAROUSEL]",
+      "## DSGVO und BFSG: Was Ihre Kanzlei-Website 2026 rechtlich erfüllen muss",
+      "Zwei Gesetze machen Anwälten am häufigsten Probleme auf der eigenen Website. Ironisch, denn Anwälte wissen besser als jeder andere, was es kostet, Rechtspflichten zu ignorieren.",
+      "### BFSG: Barrierefreiheit ist seit Juni 2025 Pflicht",
+      "Das Barrierefreiheitsstärkungsgesetz (BFSG) ist am **28. Juni 2025** in Kraft getreten. Für Kanzleien, die Privatmandanten über ihre Website ansprechen, gilt: Die Website muss nach **WCAG 2.1 Level AA** barrierefrei gestaltet sein.",
+      "[BFSG_VISUAL]",
+      "In der Praxis heißt das: Alle Bilder brauchen Alternativtexte, die Website muss per Tastatur bedienbar sein, Kontrastverhältnisse müssen mindestens 4,5:1 betragen, und eine öffentliche Barrierefreiheitserklärung muss auf der Website stehen. Bei Verstößen drohen **Bußgelder bis zu 100.000 Euro**.",
+      "Die Ausnahme schützt nur vor der gesetzlichen Pflicht, nicht vor dem Wettbewerbsnachteil. Wer seine Website ohnehin neu aufbaut, sollte BFSG von Anfang an mitdenken.",
+      "### DSGVO: Die drei häufigsten Fehler auf Kanzlei-Websites",
+      "Der BGH hat im März 2025 bestätigt: **DSGVO-Verstöße sind abmahnfähig.** Mitbewerber können jetzt direkt abmahnen, nicht nur Behörden einschalten. Diese drei Fehler finden wir auf fast jeder Kanzlei-Website, die wir analysieren.",
+      "[DSGVO_VISUAL]",
+      "Alle drei Fehler lassen sich in wenigen Stunden beheben. Was sie gemeinsam haben: Sie entstehen nicht aus Fahrlässigkeit, sondern weil die ursprüngliche Website nie auf DSGVO-Konformität geprüft wurde.",
+      "## SEO für Anwälte: Wie Ihre Kanzlei bei Google und KI gefunden wird",
+      "SEO für Kanzleien funktioniert nach anderen Regeln als SEO für Online-Shops. Wer einen Anwalt sucht, sucht ihn fast immer lokal, fast immer mit konkretem Problem und fast immer mit der Absicht, noch heute Kontakt aufzunehmen. **84% aller Rechtsuchenden** beginnen ihre Suche mit einer lokalen Google-Anfrage. **78% beauftragen einen Anwalt aus ihrer unmittelbaren Umgebung.** SEO für Anwälte ist kein Traffic-Spiel. Es ist ein Sichtbarkeitsspiel auf den letzten Metern vor der Mandatserteilung.",
+      "Erstens: Google Maps Sichtbarkeit. Die drei Einträge mit Karte ganz oben in den Suchergebnissen erhalten **fast die Hälfte aller Klicks** bei lokalen Suchanfragen. Kanzleien mit vollständig optimiertem Google Business Profil generieren bis zu **7-mal mehr Klicks** als solche mit unvollständigen Einträgen. Der Einstieg kostet nichts, aber die meisten Kanzleien schöpfen das Potenzial nicht ansatzweise aus.",
+      "Zweitens: Eigene Seite pro Rechtsgebiet. Google rankt keine Domains, Google rankt Seiten. Eine Kanzlei, die Familienrecht, Erbrecht und Arbeitsrecht auf einer einzigen Seite anbietet, wird für keine dieser Suchanfragen gut ranken. Kanzleien mit weniger als 15 dedizierten Fachbereichsseiten schneiden laut Benchmarkdaten 2026 dauerhaft schlechter ab, unabhängig vom Alter der Domain. Richtig aufgebaute Fachbereichsseiten konvertieren mit **8 bis 12%**, verglichen mit 2 bis 4% auf generischen Anwaltswebsites.",
+      "Drittens: KI-Sichtbarkeit. Bis Mitte 2025 deckten sich 75% der von KI-Modellen zitierten Quellen mit den Google Top-10-Ergebnissen. Heute sind es noch **17 bis 38%**, je nach Suchanfrage. ChatGPT, Gemini und Perplexity bauen eigene Empfehlungslisten auf, basierend auf Bewertungen, Profilvollständigkeit, strukturierten Daten und thematischer Tiefe. Wer 2026 nur für Google optimiert, verliert systematisch Mandanten, die über KI suchen.",
+      "Den vollständigen Leitfaden mit konkreten Schritten für jede dieser drei Ebenen gibt es hier: [SEO für Anwälte: Der vollständige Leitfaden 2026](/blog/kanzlei/seo-fuer-anwaelte-leitfaden)",
+      "## Ihre Kanzlei verdient eine Website, die arbeitet",
+      "Hasan Doğru hat keine neue Website bekommen. Er hat eine digitale Infrastruktur bekommen, die heute rund um die Uhr für ihn läuft: auf Google, auf KI-Plattformen, über bezahlte Anzeigen. Die Anfragen, die jetzt reinkommen, kommen von Menschen, die bereits wissen, wer er ist und warum sie ihn beauftragen wollen.",
+      "Das ist der Unterschied zwischen einer Website als Visitenkarte und einer Website als Mandantensystem.",
+      "Wie wir Kanzlei-Websites konzipieren, entwickeln und für Google und KI optimieren: [Kanzlei-Websites von nüll. ansehen](/kanzlei-websites)"
+    ],
+    faqs: [
+      {
+        question: "Was kostet eine professionelle Kanzlei-Website?",
+        answer: "Eine professionell entwickelte Kanzlei-Website kostet in Deutschland zwischen 1.500 und 8.000+ Euro, abhängig davon, ob SEO, Content und laufende Betreuung enthalten sind. Günstige Baukastenlösungen wie Wix oder Squarespace sind ab etwa 15 Euro/Monat verfügbar, lösen aber weder das SEO- noch das Konversionsproblem. Wer eine Website will, die aktiv Mandate generiert, sollte mit 3.000 bis 6.000 Euro für Entwicklung und Erstoptimierung rechnen. Der entscheidende Vergleichswert: Ein einzelnes Mandat bringt im Schnitt 1.500 bis 4.000 Euro ein. Eine gute Website amortisiert sich damit nach wenigen Anfragen."
+      },
+      {
+        question: "Brauche ich als Anwalt überhaupt eine eigene Website?",
+        answer: "Ja. Ein Profil auf anwalt.de oder Google reicht 2026 nicht mehr aus. 65% der Mandanten finden ihren Anwalt über Google-Suche, und KI-Modelle wie ChatGPT und Gemini empfehlen ausschließlich Kanzleien, die eine strukturierte, informationsreiche eigene Website betreiben. Wer nur auf Verzeichnisse setzt, gibt die Kontrolle über seinen ersten Eindruck komplett ab und ist dauerhaft von Drittplattformen abhängig."
+      },
+      {
+        question: "Kann ich meine Kanzlei-Website selbst erstellen?",
+        answer: "Technisch ja. Mit Baukastensystemen wie Wix, Squarespace oder Jimdo ist eine einfache Website in wenigen Stunden gebaut. Das Problem liegt nicht beim Design, sondern danach: Lokales SEO, strukturierte Daten, BFSG-Konformität, dedizierte Fachbereichsseiten und KI-Sichtbarkeit lassen sich ohne technisches Know-how kaum korrekt umsetzen. Eine selbst erstellte Website sieht nach Website aus. Eine professionell entwickelte generiert Mandate."
+      },
+      {
+        question: "Wie lange dauert es, bis meine Kanzlei-Website bei Google rankt?",
+        answer: "Erste Positionen für lokale Suchanfragen wie 'Anwalt Familienrecht [Stadt]' sind bei einer technisch sauber aufgebauten Website oft nach 6 bis 12 Wochen sichtbar. Für kompetitivere Begriffe wie 'Rechtsanwalt Erbrecht Berlin' dauert es 3 bis 6 Monate. Google Ads können diese Wartezeit überbrücken, mit sofortiger Sichtbarkeit für genau die Suchanfragen, für die die Website noch nicht organisch rankt."
+      },
+      {
+        question: "Was unterscheidet eine Kanzlei-Website von einer normalen Unternehmenswebsite?",
+        answer: "Eine Kanzlei-Website muss spezifische rechtliche Pflichten erfüllen: vollständiges Impressum nach § 5 TMG, DSGVO-konformes Kontaktformular, korrekte Datenschutzerklärung und seit Juni 2025 BFSG-Barrierefreiheit für größere Kanzleien. Inhaltlich braucht sie dedizierte Seiten pro Rechtsgebiet, strukturierte Daten nach Schema.org LegalService, und lokale SEO-Optimierung für jeden Standort. Dazu kommt das Vertrauensproblem: Mandanten geben persönliche und oft hochsensible Probleme an einen Anwalt ab. Das Design, die Sprache und die Struktur der Website müssen dieses Vertrauen aktiv aufbauen, bevor der erste Anruf kommt."
+      }
+    ],
+    faqTitle: "Häufig gestellte Fragen zur Kanzlei-Website"
   }
 ];
