@@ -643,6 +643,39 @@ const lawyerServiceCards: LawyerServiceCard[] = [
   },
 ];
 
+const mainPageServiceCards: LawyerServiceCard[] = lawyerServiceCards.map((card) => {
+  const generalCopy: Partial<Record<string, string>> = {
+    "Branding & Logo":
+      "Wir entwickeln Marken, die Vertrauen schaffen und im Kopf bleiben: mit klarem Logo, starker Positionierung und konsistentem Auftritt.",
+    "Texte für Google & KI":
+      "Wir schreiben Inhalte, die Kunden verstehen und Suchsysteme einordnen können: klar, relevant und auf Anfragen optimiert.",
+    "Professionelles Fotoshooting":
+      "Authentische Bilder, die Persönlichkeit und Kompetenz sichtbar machen: für einen starken ersten Eindruck auf deiner Website.",
+    "Nachhaltiges SEO":
+      "Wir verbessern deine Rankings mit technischer Stärke, relevanten Inhalten und einer Struktur, die langfristig wirkt.",
+    "KI-Sichtbarkeit / GEO":
+      "Wir sorgen dafür, dass dein Unternehmen in KI-Antworten sichtbar wird: mit strukturierten Inhalten und klaren Signalen.",
+    "Google Ads":
+      "Mehr qualifizierte Anfragen durch zielgerichtete Kampagnen, die sichtbar machen, was dein Unternehmen besonders macht.",
+    "Automatisierung mit KI":
+      "Wir automatisieren Prozesse für schnellere Antworten, effizientere Abläufe und mehr Zeit für dein Kerngeschäft.",
+  };
+
+  return {
+    ...card,
+    description: generalCopy[card.title] ?? card.description,
+  };
+});
+
+const mainPageServicesCopy: ServicesShowcaseCopy = {
+  heading: <>Alles, was aus Sichtbarkeit planbare Anfragen macht.</>,
+  subheading:
+    "Branding, Website, SEO, Google Ads, KI-Sichtbarkeit und Betreuung: alles greift ineinander und bringt deinem Unternehmen messbar mehr Anfragen.",
+  cards: mainPageServiceCards,
+  ctaLabel: "Leistungen besprechen",
+  ctaHref: "#contact",
+};
+
 function LawyerServiceVisual({
   src,
   alt,
@@ -1430,6 +1463,42 @@ export default function NewLandingSpinnerSection({
     });
   };
 
+  const processSection = (
+    <section className="w-screen max-w-none self-center bg-white px-6 py-20 text-black md:px-12 md:py-24">
+      <div className="grid gap-14 lg:grid-cols-[0.28fr_0.72fr] lg:gap-20">
+        <div className="lg:sticky lg:top-16 lg:self-start">
+          <p className="mb-8 text-[1.05rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
+            <span className="mr-3 text-[#007aff]">→</span>
+            Prozess
+          </p>
+          <h2 className="text-[clamp(3.5rem,6.7vw,7.3rem)] font-bold leading-[0.9] tracking-[-0.075em] text-black">
+            Our
+            <br />
+            Process<span className="text-[#007aff]">.</span>
+          </h2>
+          <p className="mt-8 max-w-sm text-[1.02rem] font-medium leading-relaxed tracking-[-0.025em] text-[#6b7280]">
+            Ein klarer Ablauf vom ersten Gespräch bis zum System, das langfristig für neue Anfragen arbeitet.
+          </p>
+          <a
+            href="#contact"
+            className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#007aff] px-9 text-[1rem] font-bold tracking-[-0.025em] text-white no-underline transition-transform hover:-translate-y-0.5"
+          >
+            <span>→</span>
+            Erstgespräch planen
+          </a>
+        </div>
+
+        <Accordion05
+          items={processSteps.map((step) => ({
+            id: step.number,
+            title: step.title,
+            content: step.description,
+          }))}
+        />
+      </div>
+    </section>
+  );
+
   return (
     <section
       className={
@@ -1526,6 +1595,12 @@ export default function NewLandingSpinnerSection({
         </div>
         </div>
 
+        {!showLawyerProblemSection ? processSection : null}
+
+        {!showLawyerProblemSection ? (
+          <ServicesShowcaseSection copy={servicesCopy ?? mainPageServicesCopy} />
+        ) : null}
+
         {showLawyerProblemSection ? (
           <>
             {doctorMockupItems?.length ? (
@@ -1552,7 +1627,7 @@ export default function NewLandingSpinnerSection({
           <div className="mb-8 flex items-end justify-between gap-6">
             <div className="text-[1.05rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
               <span className="mr-3 text-[#007aff]">→</span>
-              Arbeiten
+              Referenzen
             </div>
           </div>
 
@@ -1599,41 +1674,7 @@ export default function NewLandingSpinnerSection({
           </Carousel>
         </div>
 
-        {!showLawyerProblemSection ? <MainServicesAccordionSection /> : null}
-
-        <section className="w-screen max-w-none self-center bg-white px-6 py-20 text-black md:px-12 md:py-24">
-          <div className="grid gap-14 lg:grid-cols-[0.28fr_0.72fr] lg:gap-20">
-            <div className="lg:sticky lg:top-16 lg:self-start">
-              <p className="mb-8 text-[1.05rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
-                <span className="mr-3 text-[#007aff]">→</span>
-                Prozess
-              </p>
-              <h2 className="text-[clamp(3.5rem,6.7vw,7.3rem)] font-bold leading-[0.9] tracking-[-0.075em] text-black">
-                Our
-                <br />
-                Process<span className="text-[#007aff]">.</span>
-              </h2>
-              <p className="mt-8 max-w-sm text-[1.02rem] font-medium leading-relaxed tracking-[-0.025em] text-[#6b7280]">
-                Ein klarer Ablauf vom ersten Gespräch bis zum System, das langfristig für neue Anfragen arbeitet.
-              </p>
-              <a
-                href="#contact"
-                className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#007aff] px-9 text-[1rem] font-bold tracking-[-0.025em] text-white no-underline transition-transform hover:-translate-y-0.5"
-              >
-                <span>→</span>
-                Erstgespräch planen
-              </a>
-            </div>
-
-            <Accordion05
-              items={processSteps.map((step) => ({
-                id: step.number,
-                title: step.title,
-                content: step.description,
-              }))}
-            />
-          </div>
-        </section>
+        {showLawyerProblemSection ? processSection : null}
 
         <section className="w-screen max-w-none self-center bg-white px-6 py-24 text-black md:px-12 md:py-32">
           <div className="grid gap-5 lg:grid-cols-4">

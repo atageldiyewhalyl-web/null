@@ -87,14 +87,9 @@ const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: 
             <h4 className="text-[1.75rem] font-bold mb-2 font-outfit">Audit Scoring</h4>
             <p className="text-neutral-500 font-medium">{getScoreMessage()}</p>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="text-right">
-              <div className="text-[2.5rem] font-bold leading-none font-outfit">{score}<span className="text-neutral-300 text-[1.5rem]">/{maxScore}</span></div>
-              <div className="text-xs font-black uppercase tracking-widest text-neutral-400 mt-2">Conversion Score</div>
-            </div>
-            <div className="w-16 h-16 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center">
-              <TrendingUp size={24} className={score >= 25 ? "text-green-500" : "text-red-500"} />
-            </div>
+          <div className="text-right">
+            <div className="text-[2.5rem] font-bold leading-none font-outfit">{score}<span className="text-neutral-300 text-[1.5rem]">/{maxScore}</span></div>
+            <div className="text-xs font-black uppercase tracking-widest text-neutral-400 mt-2">Conversion Score</div>
           </div>
         </div>
 
@@ -181,12 +176,12 @@ const ProviderEditorialList = ({ providers }: { providers: Provider[] }) => {
             <div className="space-y-2">
               {provider.pros.slice(0, 3).map((pro) => (
                 <p key={pro} className="m-0 text-[1rem] font-medium leading-relaxed text-neutral-600">
-                  {pro}
+                  - {pro}
                 </p>
               ))}
               {provider.cons?.slice(0, 1).map((con) => (
                 <p key={con} className="m-0 text-[0.95rem] font-medium leading-relaxed text-neutral-400">
-                  Grenze: {con}
+                  - Grenze: {con}
                 </p>
               ))}
             </div>
@@ -208,63 +203,50 @@ const ProviderEditorialList = ({ providers }: { providers: Provider[] }) => {
 };
 
 const PositivbeispielBlock = () => (
-  <div className="my-14 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
-    <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
-      <img
-        src="/assets/blog/kanzlei-dogru-fotoshooting.jpg"
-        alt="Kanzlei Dogru Mannheim"
-        className="h-full min-h-[340px] w-full object-cover"
-      />
-      <div className="flex flex-col justify-between bg-neutral-50 p-8">
-        <div>
-          <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Positivbeispiel</p>
-              <p className="mt-1 text-xl font-bold tracking-[-0.03em] text-black">Kanzlei Doğru, Mannheim</p>
-            </div>
-            <a href="https://dogru-kanzlei.de" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-xs font-bold text-neutral-700 transition-colors hover:border-[#0071e3] hover:text-[#0071e3]">
-              Website <ExternalLink size={12} />
-            </a>
-          </div>
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200">
-            {[
-              ["719", "organische Klicks"],
-              ["35.200", "Impressionen"],
-              ["119", "Ads-Konversionen"],
-              ["8,31 €", "pro Konversion"],
-            ].map(([value, label]) => (
-              <div key={label} className="bg-white p-5">
-                <p className="text-2xl font-bold tracking-[-0.03em] text-black">{value}</p>
-                <p className="mt-1 text-xs font-semibold text-neutral-500">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mt-6 space-y-3">
-          {[
-            ["Ladezeit", "JS-Bundle von 915 KB auf 76 KB reduziert"],
-            ["Google Maps", "Position 1 fuer relevante lokale Suchbegriffe"],
-            ["KI-Suche", "ChatGPT nennt Hasan als klare Empfehlung"],
-          ].map(([title, sub]) => (
-            <div key={title} className="flex items-start gap-3">
-              <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[#0071e3]" />
-              <div>
-                <p className="text-sm font-bold text-black">{title}</p>
-                <p className="text-sm font-medium leading-relaxed text-neutral-500">{sub}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+  <div className="my-16 border-y border-neutral-200 py-10">
+    <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Positivbeispiel</p>
+        <h4 className="mt-3 font-outfit text-[clamp(1.9rem,4vw,3.35rem)] font-bold leading-[0.95] tracking-[-0.06em] text-black">
+          Kanzlei Doğru, Mannheim
+        </h4>
       </div>
+      <a href="https://dogru-kanzlei.de" target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-xs font-bold text-neutral-700 transition-colors hover:border-[#0071e3] hover:text-[#0071e3]">
+        Website <ExternalLink size={12} />
+      </a>
+    </div>
+
+    <figure className="mt-8 overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-white">
+      <img
+        src="/assets/blog/kanzlei-dogru-gsc-ergebnisse.png"
+        alt="Google Search Console Ergebnisse der Kanzlei Doğru"
+        className="w-full object-cover"
+      />
+      <figcaption className="border-t border-neutral-100 px-5 py-3 text-sm font-medium text-neutral-500">
+        Google Search Console nach dem Relaunch: 719 Klicks und 35.200 Impressionen.
+      </figcaption>
+    </figure>
+
+    <div className="mt-8 grid gap-4 md:grid-cols-2">
+      {[
+        "119 Google-Ads-Konversionen in 29 aktiven Kampagnentagen",
+        "8,31 € pro Konversion bei Mandatswerten von 1.500 bis 4.000 €",
+        "JS-Bundle von 915 KB auf 76 KB reduziert",
+        "ChatGPT nennt Hasan als klare Empfehlung",
+      ].map((proof) => (
+        <p key={proof} className="m-0 border-t border-neutral-200 pt-4 text-[0.98rem] font-medium leading-relaxed text-neutral-600">
+          - {proof}
+        </p>
+      ))}
     </div>
   </div>
 );
 
 const MethodenQuick = () => (
-  <div className="my-10 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
-    <div className="border-b border-neutral-100 bg-neutral-50 px-6 py-5">
-      <p className="text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Kurzübersicht</p>
-      <p className="mt-1 text-base font-bold text-black">Welche Methoden gibt es, um eine Kanzlei-Website zu erstellen?</p>
+  <div className="my-10 overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-white shadow-sm">
+    <div className="border-b border-neutral-100 bg-neutral-50 px-6 py-5 md:px-7">
+      <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Kurzübersicht</p>
+      <p className="m-0 mt-2 text-[1.05rem] font-bold leading-snug text-black">Welche Methoden gibt es, um eine Kanzlei-Website zu erstellen?</p>
     </div>
     <div className="divide-y divide-neutral-100">
       {[
@@ -272,16 +254,22 @@ const MethodenQuick = () => (
         { num: "2", method: "Freelancer beauftragen", desc: "Einzelner Webdesigner ohne laufende Betreuung", cost: "Ab 1.500 € einmalig", tag: "Freelancer" },
         { num: "3", method: "Spezialagentur", desc: "Design, SEO, Google Ads und KI-Sichtbarkeit als System", cost: "Ab 450 € (nüll.)", tag: "Empfohlen" },
       ].map((row) => (
-        <div key={row.num} className="flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-sm font-bold text-neutral-500">{row.num}</span>
-          <div className="min-w-0 flex-1">
-            <div className="mb-1 flex flex-wrap items-center gap-2">
-              <p className="text-sm font-bold text-black">{row.method}</p>
-              <span className={`rounded-full px-2.5 py-1 text-[0.68rem] font-black uppercase ${row.tag === "Empfohlen" ? "bg-[#0071e3] text-white" : "bg-neutral-100 text-neutral-500"}`}>{row.tag}</span>
+        <div key={row.num} className="grid gap-4 px-6 py-5 md:grid-cols-[2.25rem_minmax(0,1fr)_10.5rem] md:items-start md:px-7">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-sm font-bold text-neutral-500">{row.num}</span>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className="m-0 text-[1rem] font-bold leading-snug text-black">{row.method}</p>
+              <span className={`border-l pl-3 text-[0.65rem] font-black uppercase leading-none tracking-[0.14em] ${
+                row.tag === "Empfohlen"
+                  ? "border-[#0071e3]/35 text-[#0071e3]"
+                  : "border-neutral-300 text-neutral-400"
+              }`}>
+                {row.tag}
+              </span>
             </div>
-            <p className="text-sm font-medium text-neutral-500">{row.desc}</p>
+            <p className="m-0 mt-2 text-sm font-medium leading-relaxed text-neutral-500">{row.desc}</p>
           </div>
-          <p className="shrink-0 text-sm font-bold text-[#0071e3] sm:text-right">{row.cost}</p>
+          <p className="m-0 text-sm font-bold leading-snug text-[#0071e3] md:text-right">{row.cost}</p>
         </div>
       ))}
     </div>
@@ -289,52 +277,66 @@ const MethodenQuick = () => (
 );
 
 const BFSGVisual = () => (
-  <div className="my-12 overflow-hidden rounded-3xl bg-[#141414] text-white">
-    <div className="flex flex-col justify-between gap-4 border-b border-white/10 px-7 py-6 md:flex-row md:items-center">
+  <div className="my-12 border-y border-[#0e0e10] bg-white">
+    <div className="grid gap-4 border-b border-neutral-200 py-5 md:grid-cols-[minmax(0,1fr)_13rem] md:items-end">
       <div>
-        <p className="mb-1 text-xs font-black uppercase tracking-[0.18em] text-white/45">Gesetz</p>
-        <p className="text-lg font-bold text-white">BFSG: Barrierefreiheitsstärkungsgesetz</p>
+        <p className="m-0 text-[0.68rem] font-black uppercase tracking-[0.22em] text-neutral-400">BFSG</p>
+        <p className="m-0 mt-2 text-[1.1rem] font-black leading-snug tracking-tight text-[#0e0e10]">
+          Barrierefreiheitsstärkungsgesetz
+        </p>
       </div>
-      <span className="shrink-0 rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white/70">
-        Pflicht seit 28. Juni 2025
-      </span>
+      <div className="border-l-2 border-[#0071e3] pl-4">
+        <p className="m-0 text-[0.68rem] font-black uppercase tracking-[0.18em] text-neutral-400">Pflicht seit</p>
+        <p className="m-0 mt-1 text-base font-black leading-snug text-[#0e0e10]">28. Juni 2025</p>
+      </div>
     </div>
-    <div className="grid grid-cols-1 gap-px bg-white/10 md:grid-cols-2">
-      <div className="bg-[#141414] p-7">
-        <AlertCircle size={20} className="mb-5 text-red-300" />
-        <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-red-300">Betroffen</p>
-        <p className="mb-1 text-3xl font-bold text-white">10+ MA</p>
-        <p className="mb-6 text-sm font-medium text-white/55">oder Jahresumsatz über 2 Mio. €</p>
+    <div className="divide-y divide-neutral-200">
+      <div className="grid gap-2 py-5 md:grid-cols-[8.5rem_minmax(0,1fr)] md:gap-8">
+        <p className="m-0 text-[0.72rem] font-black uppercase tracking-[0.18em] text-neutral-400">Betroffen</p>
+        <p className="m-0 text-[1.05rem] font-semibold leading-relaxed text-[#0e0e10]">
+          10+ MA oder Jahresumsatz über 2 Mio. €
+        </p>
       </div>
-      <div className="bg-[#141414] p-7">
-        <ShieldCheck size={20} className="mb-5 text-[#60a5fa]" />
-        <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-[#60a5fa]">Ausnahme</p>
-        <p className="mb-1 text-3xl font-bold text-white">unter 10 MA</p>
-        <p className="mb-6 text-sm font-medium text-white/55">und Jahresumsatz unter 2 Mio. €</p>
+      <div className="grid gap-2 py-5 md:grid-cols-[8.5rem_minmax(0,1fr)] md:gap-8">
+        <p className="m-0 text-[0.72rem] font-black uppercase tracking-[0.18em] text-[#0071e3]">Ausnahme</p>
+        <p className="m-0 text-[1.05rem] font-semibold leading-relaxed text-[#0e0e10]">
+          unter 10 MA und Jahresumsatz unter 2 Mio. €
+        </p>
       </div>
     </div>
   </div>
 );
 
 const DsgvoVisual = () => (
-  <div className="my-12 space-y-3">
+  <div className="my-12 border-y border-[#0e0e10] bg-white">
+    <div className="grid grid-cols-[2.5rem_minmax(0,1fr)] border-b border-neutral-200 py-4 md:grid-cols-[2.5rem_minmax(0,1fr)_14rem] md:gap-8">
+      <span />
+      <p className="m-0 text-[0.68rem] font-black uppercase tracking-[0.2em] text-neutral-400">Typischer Fehler</p>
+      <p className="m-0 hidden border-l border-neutral-200 pl-6 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#0071e3] md:block">
+        Lösung
+      </p>
+    </div>
     {[
       ["Google Fonts extern", "Schriften lokal hosten"],
       ["Google Maps eingebettet", "Two-Click-Lösung"],
       ["Kontaktformular ohne AVV", "TLS + AVV abschließen"],
     ].map(([error, fix], idx) => (
-      <div key={error} className="overflow-hidden rounded-3xl border border-neutral-200 bg-white">
-        <div className="flex items-start gap-4 bg-neutral-50 p-6">
-          <span className="shrink-0 text-xs font-bold text-neutral-400">{String(idx + 1).padStart(2, "0")}</span>
-          <div className="flex-1">
-            <p className="mb-1 text-base font-bold text-black">{error}</p>
-            <p className="text-sm leading-relaxed text-neutral-600">Typischer DSGVO-Fehler auf Kanzlei-Websites.</p>
-          </div>
-          <X size={18} className="mt-0.5 shrink-0 text-red-500" />
+      <div
+        key={error}
+        className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-y-4 border-b border-neutral-200 py-5 last:border-b-0 md:grid-cols-[2.5rem_minmax(0,1fr)_14rem] md:gap-8"
+      >
+        <span className="pt-1 text-xs font-black text-neutral-300">
+          {String(idx + 1).padStart(2, "0")}
+        </span>
+        <div>
+          <p className="m-0 text-[1.05rem] font-bold leading-snug text-[#0e0e10]">{error}</p>
+          <p className="m-0 mt-1 text-sm font-medium leading-relaxed text-neutral-500">
+            Typischer DSGVO-Fehler auf Kanzlei-Websites.
+          </p>
         </div>
-        <div className="flex items-center gap-3 border-t border-neutral-100 bg-white px-6 py-4">
-          <CheckCircle2 size={16} className="text-[#0071e3]" />
-          <span className="text-sm font-bold text-[#0071e3]">{fix}</span>
+        <div className="col-start-2 border-l-2 border-[#0071e3] pl-4 md:col-start-auto md:border-l md:border-neutral-200 md:pl-6">
+          <p className="m-0 text-[1.05rem] font-bold leading-snug text-[#0071e3]">{fix}</p>
+          <p className="m-0 mt-1 text-sm font-medium leading-relaxed text-neutral-500">Sofort beheben</p>
         </div>
       </div>
     ))}
@@ -789,17 +791,13 @@ export function BlogPost() {
                 }
 
                 if (block.trim() === "[PRICING_TABLE]") return null;
-                if (isLawFirmGuide && block.trim() === "[BFSG_VISUAL]") return null;
-                if (isLawFirmGuide && block.trim() === "[DSGVO_VISUAL]") return null;
-                if (isLawFirmGuide && block.trim() === "[METHODEN_QUICK]") return null;
-
                 if (block.trim() === "[BFSG_VISUAL]") return <BFSGVisual key={i} />;
                 if (block.trim() === "[DSGVO_VISUAL]") return <DsgvoVisual key={i} />;
                 if (block.trim() === "[POSITIVBEISPIEL]") {
-                  return isLawFirmGuide ? null : <PositivbeispielBlock key={i} />;
+                  return <PositivbeispielBlock key={i} />;
                 }
                 if (block.trim() === "[METHODEN_QUICK]") {
-                  return isLawFirmGuide ? null : <MethodenQuick key={i} />;
+                  return <MethodenQuick key={i} />;
                 }
 
                 if (block.trim().startsWith("[ASSET:") || block.trim().startsWith("[IMAGE")) {
@@ -848,43 +846,50 @@ export function BlogPost() {
                     .filter((cells) => !cells.every((cell) => /^:?-{3,}:?$/.test(cell)));
 
                   const [headerCells, ...bodyRows] = rows;
+                  const recommendedColumnIndex = headerCells.findIndex((cell) =>
+                    /spezialagentur|nüll/i.test(cell)
+                  );
+                  const renderTableText = (text: string) => renderText(text.replace(/\*\*/g, ""));
 
                   return (
-                    <div key={i} className="my-12 overflow-hidden rounded-3xl border border-neutral-200 shadow-sm">
+                    <div key={i} className="my-12 overflow-hidden rounded-[1.35rem] border border-neutral-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
                       <div className="overflow-x-auto">
-                        <table className="w-full min-w-[640px] border-collapse text-left">
-                          <thead className="bg-neutral-50">
+                        <table className="w-full min-w-[720px] border-collapse text-left">
+                          <thead className="border-b border-neutral-200 bg-[#f6f8fb]">
                             <tr>
                               {headerCells.map((cell, cellIndex) => (
-                                <th key={cellIndex} className="px-6 py-4 text-sm font-black uppercase tracking-wider text-neutral-500">
-                                  {renderText(cell)}
+                                <th
+                                  key={cellIndex}
+                                  className={`px-6 py-4 text-[0.72rem] font-black uppercase tracking-[0.16em] ${
+                                    cellIndex === recommendedColumnIndex
+                                      ? "bg-[#0071e3] text-white"
+                                      : "text-[#0e0e10]/55"
+                                  }`}
+                                >
+                                  {renderTableText(cell)}
                                 </th>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
                             {bodyRows.map((row, rowIndex) => {
-                              const isHighlighted = row.some((cell) => cell.includes("Nüll."));
-
                               return (
                                 <tr
                                   key={rowIndex}
-                                  className={`border-t ${
-                                    isHighlighted
-                                      ? "border-[#0071e3]/20 bg-[#0071e3]/5"
-                                      : "border-neutral-100"
-                                  }`}
+                                  className="border-t border-neutral-200"
                                 >
                                   {row.map((cell, cellIndex) => (
                                     <td
                                       key={cellIndex}
-                                      className={`px-6 py-5 align-top text-[1rem] leading-relaxed ${
-                                        isHighlighted
+                                      className={`px-6 py-5 align-top text-[0.98rem] leading-relaxed ${
+                                        cellIndex === 0
                                           ? "font-bold text-[#0e0e10]"
-                                          : "text-neutral-600"
+                                          : cellIndex === recommendedColumnIndex
+                                            ? "border-l border-[#0071e3]/20 bg-[#f4f8ff] font-semibold text-[#0e0e10]"
+                                            : "text-neutral-600"
                                       }`}
                                     >
-                                      {renderText(cell)}
+                                      {renderTableText(cell)}
                                     </td>
                                   ))}
                                 </tr>

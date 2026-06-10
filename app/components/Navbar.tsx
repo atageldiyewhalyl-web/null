@@ -1,6 +1,6 @@
 import { useState, useEffect, type MouseEvent } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { useLanguage, t, type Language } from "./LanguageContext";
+import { useLanguage, t } from "./LanguageContext";
 import { useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -10,6 +10,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { lang, setLang } = useLanguage();
   const location = useLocation();
   const displayLang = getLanguageForPath(location.pathname) ?? lang;
@@ -32,10 +33,20 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      setScrolled(scrollTop > 20);
+      setScrollProgress(scrollableHeight > 0 ? Math.min(scrollTop / scrollableHeight, 1) : 0);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navItems = [
@@ -75,6 +86,210 @@ export function Navbar() {
       href: "/leistungen/google-ads",
     },
   ];
+  const categoryItems = [
+    {
+      name: displayLang === "de" ? "Anwälte & Berater" : "Lawyers & Consultants",
+      href: "/kanzlei-websites",
+    },
+    {
+      name: displayLang === "de" ? "Ärzte & Praxen" : "Doctors & Practices",
+      href: "/arztpraxis-websites",
+    },
+  ];
+  const blogNavLabels = {
+    services: displayLang === "de" ? "Leistungen" : "Services",
+    categories: displayLang === "de" ? "Kategorien" : "Categories",
+    cta: displayLang === "de" ? "Kostenlose Website-Analyse" : "Free Website Analysis",
+  };
+
+  if (isBlogPage) {
+    return (
+      <>
+        <div className="fixed left-0 right-0 top-0 z-[10000000] h-[3px] bg-[#007aff]/10">
+          <motion.div
+            className="h-full origin-left bg-[#007aff]"
+            style={{ scaleX: scrollProgress }}
+          />
+        </div>
+        <header
+          className={`fixed left-0 right-0 top-0 z-[9999999] px-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-14 ${
+            scrolled
+              ? "bg-white/82 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur-2xl"
+              : "bg-white"
+          }`}
+          style={{
+            paddingTop: scrolled ? "1rem" : "2.5rem",
+            paddingBottom: scrolled ? "1rem" : "2.5rem",
+          }}
+        >
+        <div
+          className={`flex w-full items-center justify-between transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            scrolled ? "md:translate-y-0" : "md:translate-y-0"
+          }`}
+        >
+          <a
+            href="/"
+            className="font-bold tracking-[-0.03em] text-[#0e0e10] transition-all duration-500 hover:opacity-70"
+            style={{ fontSize: scrolled ? "1.55rem" : "1.8rem" }}
+          >
+            nüll<span className="text-[#007aff]">.</span>
+          </a>
+
+          <nav
+            className={`hidden items-center md:flex transition-all duration-500 ${
+              scrolled ? "gap-8 lg:gap-12" : "gap-10 lg:gap-16"
+            }`}
+            aria-label="Blog navigation"
+          >
+            <a
+              href="/blog"
+              className="text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55"
+            >
+              Blog
+            </a>
+            <a
+              href="/#services"
+              className="text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55"
+            >
+              {blogNavLabels.services}
+            </a>
+            <div
+              className="relative py-3"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+              onFocus={() => setServicesOpen(true)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setServicesOpen(false);
+                }
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setServicesOpen((value) => !value)}
+                className="flex items-center gap-2 text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55"
+                aria-expanded={servicesOpen}
+              >
+                {blogNavLabels.categories}
+                <ChevronDown
+                  aria-hidden="true"
+                  size={15}
+                  strokeWidth={3}
+                  className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.16 }}
+                    className="absolute right-0 top-full w-[18rem] pt-3"
+                  >
+                    <div className="rounded-[8px] border border-[#0064df] bg-[#007aff] p-2 shadow-[0_18px_48px_rgba(0,74,173,0.22)]">
+                      {categoryItems.map((item) => (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          className="flex items-center justify-between rounded-[6px] px-4 py-3 text-[0.82rem] font-black uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-[#007aff]"
+                        >
+                          {item.name}
+                          <span aria-hidden="true">&gt;</span>
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <LanguageSwitcher className="-ml-6" />
+            <a
+              href="/#contact"
+              className={`inline-flex items-center justify-center rounded-full bg-[#007aff] text-[0.72rem] font-black uppercase tracking-[0.16em] text-white no-underline shadow-[0_16px_36px_rgba(0,122,255,0.22)] transition-all duration-500 hover:-translate-y-0.5 ${
+                scrolled ? "min-h-10 px-6" : "min-h-11 px-7"
+              }`}
+            >
+              {blogNavLabels.cta}
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-3 md:hidden">
+            <LanguageSwitcher />
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen((value) => !value);
+                setServicesOpen(false);
+              }}
+              className="flex min-h-11 min-w-11 flex-col items-end justify-center gap-1.5"
+              aria-label="Open menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? (
+                <X size={26} strokeWidth={2.4} />
+              ) : (
+                <>
+                  <span className="block h-0.5 w-7 bg-[#111111]" />
+                  <span className="block h-0.5 w-7 bg-[#111111]" />
+                  <span className="block h-0.5 w-5 bg-[#111111]" />
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18 }}
+              className="absolute left-7 right-7 top-[5.25rem] z-50 rounded-[8px] border border-black/10 bg-white p-3 shadow-[0_18px_48px_rgba(15,23,42,0.13)] md:hidden"
+            >
+              <nav aria-label="Mobile blog navigation" className="flex flex-col">
+                <a
+                  href="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between border-b border-black/10 px-2 py-4 text-[0.86rem] font-black uppercase tracking-[0.16em] text-[#111111]"
+                >
+                  Blog
+                </a>
+                <a
+                  href="/#services"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between border-b border-black/10 px-2 py-4 text-[0.86rem] font-black uppercase tracking-[0.16em] text-[#111111]"
+                >
+                  {blogNavLabels.services}
+                  <span className="text-[#007aff]">&gt;</span>
+                </a>
+                {categoryItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between border-b border-black/10 px-2 py-4 text-[0.86rem] font-black uppercase tracking-[0.16em] text-[#111111]"
+                  >
+                    {item.name}
+                    <span className="text-[#007aff]">&gt;</span>
+                  </a>
+                ))}
+                <a
+                  href="/#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-3 inline-flex min-h-12 items-center justify-center rounded-full bg-[#007aff] px-6 text-[0.78rem] font-black uppercase tracking-[0.16em] text-white"
+                >
+                  {blogNavLabels.cta}
+                </a>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        </header>
+      </>
+    );
+  }
 
   return (
     <nav
@@ -156,7 +371,7 @@ export function Navbar() {
 
           {/* Desktop Right Actions */}
           <div className="hidden md:flex items-center gap-6">
-            <LanguageSwitcher />
+            {isBlogPage && <LanguageSwitcher />}
             
             <a
               href="/#pricing"
@@ -169,7 +384,7 @@ export function Navbar() {
 
           {/* Mobile Actions */}
           <div className="md:hidden flex items-center gap-3">
-            <LanguageSwitcher />
+            {isBlogPage && <LanguageSwitcher />}
             <button
                onClick={(e) => {
                 e.stopPropagation();

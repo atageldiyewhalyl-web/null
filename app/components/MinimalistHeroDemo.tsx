@@ -18,13 +18,14 @@ export default function MinimalistHeroDemo() {
               { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
             ]}
             ctaLink={{ label: "Anfrage starten", href: "#contact" }}
-            mainText="We help businesses get found, build trust, and turn visibility into real inquiries."
+            mainText="Websites, SEO und Google Ads für Unternehmen in Deutschland. Damit aus Suchen echte Anfragen werden."
             readMoreLink="#services"
+            readMoreLabel="Mehr erfahren"
             imageSrc="/assets/new-landing/arrow.webp"
             imageAlt="Black cursor over a blue circle."
             overlayText={{
-              part1: "be found.",
-              part2: "be chosen.",
+              part1: "gefunden.",
+              part2: "gewählt.",
             }}
             socialLinks={[
               { icon: Facebook, href: "#", label: "Facebook" },

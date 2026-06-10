@@ -10,6 +10,7 @@ interface MinimalistHeroProps {
   ctaLink?: { label: string; href: string };
   mainText: string;
   readMoreLink: string;
+  readMoreLabel?: string;
   imageSrc: string;
   imageAlt: string;
   imageClassName?: string;
@@ -83,6 +84,7 @@ export const MinimalistHero = ({
   ctaLink,
   mainText,
   readMoreLink,
+  readMoreLabel = "Read More",
   imageSrc,
   imageAlt,
   imageClassName,
@@ -318,7 +320,7 @@ export const MinimalistHero = ({
             href={readMoreLink}
             className="mt-5 inline-block border-b-2 border-[#111111] pb-0.5 text-[1.1rem] font-black tracking-[-0.04em] text-[#111111] md:mt-8 md:text-[1.25rem]"
           >
-            Read More
+            {readMoreLabel}
           </a>
         </motion.div>
 
@@ -355,11 +357,11 @@ export const MinimalistHero = ({
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.6 }}
-          className="z-30 order-3 text-center md:text-left"
+          className="z-30 order-3 -mt-3 pb-6 text-center md:mt-0 md:pb-0 md:text-left"
         >
           <h1
             className={cn(
-              "flex max-w-full flex-col text-[clamp(3.75rem,17vw,5.25rem)] font-extrabold leading-[0.82] tracking-[-0.065em] text-[#050505] md:text-[clamp(4.6rem,7.5vw,8.6rem)] md:leading-[0.86]",
+              "flex max-w-full flex-col text-[clamp(3.75rem,17vw,5.25rem)] font-extrabold leading-[0.84] tracking-[-0.065em] text-[#050505] md:text-[clamp(4.6rem,7.5vw,8.6rem)] md:leading-[0.86]",
               overlayTextClassName,
             )}
           >

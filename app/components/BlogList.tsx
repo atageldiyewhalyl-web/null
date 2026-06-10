@@ -9,6 +9,26 @@ import { getPreferredPostForGroup } from "../utils/i18nRouting";
 
 export function BlogList() {
   const { lang } = useLanguage();
+  const heroCopy = {
+    title:
+      lang === "de" ? (
+        <>
+          Mehr Anfragen.
+          <br />
+          Mehr Kunden.
+        </>
+      ) : (
+        <>
+          More Visibility.
+          <br />
+          More Clients.
+        </>
+      ),
+    subtitle:
+      lang === "de"
+        ? "Praxisnahe Einblicke zu SEO, Webdesign und Google Ads - für Anwälte, Ärzte, Handwerker und Immobilienprofis in Deutschland."
+        : "Practical guides on SEO, web design, and Google Ads - for lawyers, doctors, tradespeople, and real estate professionals in Germany.",
+  };
 
   const displayedPosts = Array.from(new Set(blogPosts.map((post) => post.groupId)))
     .map((groupId) => getPreferredPostForGroup(groupId, lang))
@@ -66,11 +86,11 @@ export function BlogList() {
                 Insights
               </div>
               <h1 className="text-[clamp(2.5rem,8vw,4.5rem)] font-bold tracking-[-0.05em] leading-[1] mb-8 text-gradient font-outfit">
-                Digital Presence & Authority.
+                {heroCopy.title}
               </h1>
 
               <p className="text-[1.25rem] text-neutral-500 max-w-xl leading-relaxed font-medium">
-                Strategies and insights to help you transform your expertise into a premium digital brand that commands respect.
+                {heroCopy.subtitle}
               </p>
             </motion.div>
           </div>

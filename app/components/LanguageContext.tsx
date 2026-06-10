@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from "react";
-import { useLocation } from "react-router";
 import type { Language } from "../types";
 import { getLanguageForPath, isLanguage } from "../utils/i18nRouting";
 export type { Language };
@@ -31,8 +30,17 @@ const getCookie = (name: string): string | null => {
   }
 };
 
-export function LanguageProvider({ children, initialLang = "de" }: { children: ReactNode, initialLang?: Language }) {
-  const location = useLocation();
+export function LanguageProvider({
+  children,
+  initialLang = "de",
+  pathname = "/",
+  search = "",
+}: {
+  children: ReactNode;
+  initialLang?: Language;
+  pathname?: string;
+  search?: string;
+}) {
   const [lang, setLangState] = useState<Language>(isLanguage(initialLang) ? initialLang : "de");
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -59,36 +67,36 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
   // Sync visible language from localized blog URLs. Blog URL language is
   // canonical and must not rewrite the user's saved preference by itself.
   useEffect(() => {
-    const pathLang = getLanguageForPath(location.pathname);
+    const pathLang = getLanguageForPath(pathname);
     if (!pathLang) return;
 
     setLangState(pathLang);
     if (typeof document !== "undefined") {
       document.documentElement.lang = pathLang;
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   // Keep non-blog pages synced from ?lang= so refreshes and hot reloads use
   // the same durable source of truth as localized blog URLs.
   useEffect(() => {
-    if (getLanguageForPath(location.pathname)) return;
+    if (getLanguageForPath(pathname)) return;
 
-    const urlLang = new URLSearchParams(location.search).get("lang");
+    const urlLang = new URLSearchParams(search).get("lang");
     if (isLanguage(urlLang) && urlLang !== lang) {
       setLang(urlLang);
     }
-  }, [lang, location.pathname, location.search, setLang]);
+  }, [lang, pathname, search, setLang]);
 
   // Hydrate non-blog pages from localStorage or cookies once when no URL
   // language is present. Blog pages keep the language encoded in their URL.
   useEffect(() => {
     try {
-      if (getLanguageForPath(location.pathname)) {
+      if (getLanguageForPath(pathname)) {
         setIsHydrated(true);
         return;
       }
 
-      const urlLang = new URLSearchParams(location.search).get("lang");
+      const urlLang = new URLSearchParams(search).get("lang");
       if (isLanguage(urlLang)) {
         setLang(urlLang);
         setIsHydrated(true);
@@ -103,7 +111,7 @@ export function LanguageProvider({ children, initialLang = "de" }: { children: R
       console.warn("Language hydration from storage failed:", e);
     }
     setIsHydrated(true);
-  }, [location.pathname, location.search, setLang]);
+  }, [pathname, search, setLang]);
 
   const value = useMemo(() => ({
     lang,
