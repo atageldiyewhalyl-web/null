@@ -24,8 +24,8 @@ export default function MinimalistHeroDemo() {
             imageSrc="/assets/new-landing/arrow.webp"
             imageAlt="Black cursor over a blue circle."
             overlayText={{
-              part1: "gefunden.",
-              part2: "gewählt.",
+              part1: "be found.",
+              part2: "be chosen.",
             }}
             socialLinks={[
               { icon: Facebook, href: "#", label: "Facebook" },
