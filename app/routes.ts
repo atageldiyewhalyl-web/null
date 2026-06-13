@@ -7,6 +7,7 @@ export default [
   route("hasan", "routes/hasan.tsx"),
   route("website-analyse", "routes/website-analyse.tsx"),
   route("kanzlei-websites", "routes/kanzlei-websites.tsx"),
+  route("kanzlei-websites-v2", "routes/kanzlei-websites-v2.tsx"),
   route("lawyers", "routes/lawyers.tsx"),
   route("arztpraxis-websites", "routes/arztpraxis-websites.tsx"),
   route("doctors", "routes/doctors.tsx"),

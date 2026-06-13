@@ -32,6 +32,9 @@ type Pages = {
   "/kanzlei-websites": {
     params: {};
   };
+  "/kanzlei-websites-v2": {
+    params: {};
+  };
   "/lawyers": {
     params: {};
   };
@@ -115,7 +118,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -140,6 +143,10 @@ type RouteFiles = {
   "routes/kanzlei-websites.tsx": {
     id: "routes/kanzlei-websites";
     page: "/kanzlei-websites";
+  };
+  "routes/kanzlei-websites-v2.tsx": {
+    id: "routes/kanzlei-websites-v2";
+    page: "/kanzlei-websites-v2";
   };
   "routes/lawyers.tsx": {
     id: "routes/lawyers";
@@ -255,6 +262,7 @@ type RouteModules = {
   "routes/hasan": typeof import("./app/routes/hasan.tsx");
   "routes/website-analyse": typeof import("./app/routes/website-analyse.tsx");
   "routes/kanzlei-websites": typeof import("./app/routes/kanzlei-websites.tsx");
+  "routes/kanzlei-websites-v2": typeof import("./app/routes/kanzlei-websites-v2.tsx");
   "routes/lawyers": typeof import("./app/routes/lawyers.tsx");
   "routes/arztpraxis-websites": typeof import("./app/routes/arztpraxis-websites.tsx");
   "routes/doctors": typeof import("./app/routes/doctors.tsx");
