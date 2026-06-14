@@ -1,4 +1,5 @@
 import { ChevronDown, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import type { MouseEvent } from "react";
 import { useState } from "react";
 import NewLandingSpinnerSection from "../components/NewLandingSpinnerSection";
 
@@ -42,10 +43,20 @@ function KanzleiV2Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (window.scrollY > 40) {
+      event.preventDefault();
+      setIsMobileMenuOpen(false);
+      window.history.pushState(null, "", window.location.pathname + window.location.search);
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  };
+
   return (
       <header className="fixed left-0 right-0 top-0 z-[100] flex w-full items-center justify-between border-b border-black/[0.06] bg-white px-3 py-5 font-sans text-[#111111] shadow-[0_16px_44px_rgba(20,30,45,0.06)] sm:px-7 md:px-14 md:py-7">
         <a
           href="/"
+          onClick={handleLogoClick}
           className="text-[1.8rem] font-bold leading-none tracking-[-0.03em] text-[#0e0e10] no-underline"
         >
           nüll<span className="text-[#007aff]">.</span>
@@ -136,60 +147,60 @@ function KanzleiV2Navbar() {
 function KanzleiV2Hero() {
   return (
     <div className="relative flex h-screen min-h-[680px] w-full flex-col overflow-hidden bg-white px-3 pb-7 pt-24 font-sans text-[#111111] sm:px-7 md:px-14 md:pb-10 md:pt-28">
-      <div className="relative z-10 grid min-w-0 flex-1 items-start gap-6 pt-7 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-7 md:pt-0 lg:grid-cols-[0.88fr_1.12fr] lg:gap-8">
-        <div className="mx-auto w-full min-w-0 max-w-[42rem] text-center sm:mx-0 sm:text-left">
+      <div className="relative z-10 grid min-w-0 flex-1 items-start gap-3 pt-5 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-7 md:pt-0 lg:grid-cols-[0.88fr_1.12fr] lg:gap-8">
+        <div className="mx-auto w-full min-w-0 max-w-[calc(100vw-1.5rem)] text-center sm:mx-0 sm:max-w-[42rem] sm:text-left">
           <p className="text-[0.72rem] font-black uppercase tracking-[0.16em] text-[#2f6bff] sm:text-[0.78rem] sm:tracking-[0.22em]">
             Webdesign für Rechtsanwälte
           </p>
 
-          <h1 className="mx-auto mt-5 max-w-[23rem] text-[clamp(2.02rem,8.35vw,2.2rem)] font-black leading-[1.03] tracking-[-0.078em] text-[#050505] sm:mx-0 sm:max-w-[14.5ch] sm:text-[clamp(2.35rem,5.05vw,4.85rem)] sm:leading-[0.96] md:text-[clamp(2.25rem,4.2vw,3.45rem)] lg:text-[clamp(2.65rem,5.05vw,4.85rem)] lg:leading-[0.94]">
+          <h1 className="mx-auto mt-3 max-w-[calc(100vw-1.5rem)] text-[clamp(2.15rem,9.4vw,2.75rem)] font-black leading-[0.98] tracking-[-0.078em] text-[#050505] min-[430px]:text-[clamp(2.35rem,8.8vw,3.1rem)] sm:mx-0 sm:mt-5 sm:max-w-[14.5ch] sm:text-[clamp(2.35rem,5.05vw,4.85rem)] sm:leading-[0.96] md:text-[clamp(2.25rem,4.2vw,3.45rem)] lg:text-[clamp(2.65rem,5.05vw,4.85rem)] lg:leading-[0.94]">
             <span className="block sm:inline">Hochwertige</span>{" "}
             <span className="block sm:inline">Kanzlei Websites</span>{" "}
             <span className="block sm:inline">für mehr</span>{" "}
             <span className="block sm:inline">Mandatsanfragen</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-[23rem] text-[0.98rem] font-bold leading-[1.48] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:max-w-[34rem] sm:text-[1.02rem] md:text-[1.04rem] md:leading-[1.38] lg:text-[1.18rem]">
+          <p className="mx-auto mt-4 max-w-[calc(100vw-1.5rem)] text-[1rem] font-bold leading-[1.36] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:mt-6 sm:max-w-[34rem] sm:text-[1.02rem] md:text-[1.04rem] md:leading-[1.38] lg:text-[1.18rem]">
             <span className="block sm:inline">Moderne Präsentation, bessere</span>{" "}
             <span className="block sm:inline">Auffindbarkeit und klare</span>{" "}
             <span className="block sm:inline">Anfrageführung für Ihre Kanzlei.</span>
           </p>
 
-          <p className="mx-auto mt-4 max-w-[23rem] text-[0.98rem] font-bold leading-[1.48] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:max-w-[33rem] md:text-[1rem] md:leading-[1.38] lg:text-[1.08rem]">
+          <p className="mx-auto mt-2 max-w-[calc(100vw-1.5rem)] text-[0.96rem] font-bold leading-[1.34] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:mt-4 sm:max-w-[33rem] md:text-[1rem] md:leading-[1.38] lg:text-[1.08rem]">
             <span className="block sm:inline">Logo, Texte, Fotos, SEO, DSGVO</span>{" "}
             <span className="block sm:inline">und Betreuung sind inklusive.</span>
           </p>
 
-          <div className="mt-7 flex flex-col items-center gap-3 sm:items-start md:flex-row">
+          <div className="mt-5 grid w-full max-w-[calc(100vw-1.5rem)] grid-cols-2 gap-2 sm:flex sm:max-w-none sm:items-start sm:gap-3 md:flex-row">
             <a
               href="#contact"
-              className="inline-flex min-h-12 w-full max-w-[17.5rem] items-center justify-center rounded-full bg-[#2f6bff] px-6 text-[0.78rem] font-black uppercase tracking-[0.13em] text-white no-underline shadow-[0_14px_34px_rgba(47,107,255,0.2)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#2f6bff] px-3 text-center text-[0.62rem] font-black uppercase tracking-[0.09em] text-white no-underline shadow-[0_14px_34px_rgba(47,107,255,0.2)] transition-transform hover:-translate-y-0.5 min-[430px]:text-[0.68rem] sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
             >
               Kostenlose Analyse
             </a>
             <a
               href="#contact"
-              className="inline-flex min-h-12 w-full max-w-[17.5rem] items-center justify-center rounded-full border border-black/10 bg-white px-6 text-[0.78rem] font-black uppercase tracking-[0.13em] text-black no-underline shadow-[0_14px_34px_rgba(20,30,45,0.05)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-black/10 bg-white px-3 text-center text-[0.62rem] font-black uppercase tracking-[0.09em] text-black no-underline shadow-[0_14px_34px_rgba(20,30,45,0.05)] transition-transform hover:-translate-y-0.5 min-[430px]:text-[0.68rem] sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
             >
               Unverbindlich anfragen
             </a>
           </div>
 
-          <div className="mt-7 flex flex-col items-center gap-3 text-[1.18rem] font-black tracking-[-0.035em] text-[#101010] sm:items-start sm:text-[1.02rem] lg:flex-row lg:items-center lg:text-[1.08rem]">
+          <div className="mt-4 flex flex-col items-center gap-2 text-[0.95rem] font-black tracking-[-0.035em] text-[#101010] sm:mt-7 sm:items-start sm:gap-3 sm:text-[1.02rem] lg:flex-row lg:items-center lg:text-[1.08rem]">
             <span className="whitespace-nowrap">In Zusammenarbeit mit</span>
             <img
               src="/assets/logo-mafinex.svg"
               alt="MAFINEX"
-              className="h-8 w-36 object-contain object-center sm:object-left md:h-9 md:w-40"
+              className="h-7 w-32 object-contain object-center sm:h-8 sm:w-36 sm:object-left md:h-9 md:w-40"
             />
           </div>
         </div>
 
-        <div className="relative flex min-h-[330px] min-w-0 items-center justify-center md:min-h-[430px] lg:min-h-[540px]">
+        <div className="relative flex min-h-[180px] min-w-0 items-end justify-center md:min-h-[430px] lg:min-h-[540px]">
           <img
-            src="/assets/new-landing/hasan-hero-demo.webp"
-            alt="Hasan Doğru Kanzlei website shown on laptop and phone."
-            className="w-full max-w-full object-contain drop-shadow-[0_28px_56px_rgba(20,30,45,0.14)] sm:max-w-[46rem] md:max-w-[42rem] md:translate-x-3 lg:max-w-[58rem] lg:translate-x-4"
+            src="/assets/new-landing/lawyer-team-cutout.png"
+            alt="Three lawyers in formal suits."
+            className="w-full max-w-[21rem] object-contain drop-shadow-[0_28px_56px_rgba(20,30,45,0.12)] min-[430px]:max-w-[24rem] sm:max-w-[36rem] md:max-w-[47rem] md:translate-x-3 lg:max-w-[60rem] lg:translate-x-6"
           />
         </div>
       </div>

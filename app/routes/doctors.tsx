@@ -1,4 +1,5 @@
 import { ChevronDown, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import type { MouseEvent } from "react";
 import { useState } from "react";
 import NewLandingSpinnerSection from "../components/NewLandingSpinnerSection";
 import doctorMockup1 from "../assets/service doctor mockups/1.webp";
@@ -64,10 +65,20 @@ function DoctorNavbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (window.scrollY > 40) {
+      event.preventDefault();
+      setIsMobileMenuOpen(false);
+      window.history.pushState(null, "", window.location.pathname + window.location.search);
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  };
+
   return (
       <header className="fixed left-0 right-0 top-0 z-[100] flex w-full items-center justify-between border-b border-black/[0.06] bg-white px-3 py-5 font-sans text-[#111111] shadow-[0_16px_44px_rgba(20,30,45,0.06)] sm:px-7 md:px-14 md:py-7">
         <a
           href="/"
+          onClick={handleLogoClick}
           className="text-[1.8rem] font-bold leading-none tracking-[-0.03em] text-[#0e0e10] no-underline"
         >
           nüll<span className="text-[#007aff]">.</span>
