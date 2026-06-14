@@ -75,11 +75,80 @@ export default function App() {
         <Outlet />
         {!isOnboarding && !isBlankCanvas && <Footer />}
         {!isAdmin && <CookieConsent />}
+        <AnchorScrollProvider pathname={location.pathname} />
         <SmoothScrollProvider pathname={location.pathname} />
-        <CustomCursor />
       </div>
     </LanguageProvider>
   );
+}
+
+function AnchorScrollProvider({ pathname }: { pathname: string }) {
+  useEffect(() => {
+    const scrollToHash = (hash: string, updateHistory = false) => {
+      if (!hash || hash === "#") {
+        return false;
+      }
+
+      const targetId = decodeURIComponent(hash.slice(1));
+      const target = document.getElementById(targetId);
+
+      if (!target) {
+        return false;
+      }
+
+      if (updateHistory) {
+        window.history.pushState(null, "", hash);
+      }
+
+      window.requestAnimationFrame(() => {
+        const targetTop = target.getBoundingClientRect().top + window.scrollY;
+        const distance = Math.abs(targetTop - window.scrollY);
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: prefersReducedMotion || distance > window.innerHeight * 1.5 ? "auto" : "smooth",
+        });
+      });
+
+      return true;
+    };
+
+    const handleClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>("a[href^='#']");
+      const hash = link?.getAttribute("href");
+
+      if (!hash) {
+        return;
+      }
+
+      if (scrollToHash(hash, true)) {
+        event.preventDefault();
+      }
+    };
+
+    const handleHashChange = () => {
+      scrollToHash(window.location.hash);
+    };
+
+    document.addEventListener("click", handleClick);
+    window.addEventListener("hashchange", handleHashChange);
+
+    if (window.location.hash) {
+      window.setTimeout(() => scrollToHash(window.location.hash), 0);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [pathname]);
+
+  return null;
 }
 
 function SmoothScrollProvider({ pathname }: { pathname: string }) {
@@ -106,10 +175,10 @@ function SmoothScrollProvider({ pathname }: { pathname: string }) {
       }
 
       lenisInstance = new Lenis({
-        duration: 1.45,
+        duration: 0.7,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
-        wheelMultiplier: 0.82,
+        wheelMultiplier: 1.45,
         syncTouch: false,
       });
 
@@ -143,112 +212,6 @@ function SmoothScrollProvider({ pathname }: { pathname: string }) {
       lenisInstance = null;
     };
   }, [pathname]);
-
-  return null;
-}
-
-function CustomCursor() {
-  useEffect(() => {
-    const isTouchOnlyDevice = navigator.maxTouchPoints > 0 && window.matchMedia("(hover: none)").matches;
-    if (isTouchOnlyDevice) {
-      return;
-    }
-
-    let cursor = document.getElementById("custom-cursor");
-    if (!cursor) {
-      cursor = document.createElement("div");
-      cursor.id = "custom-cursor";
-      document.body.appendChild(cursor);
-    }
-    document.documentElement.classList.add("custom-cursor-ready");
-
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let currentX = targetX;
-    let currentY = targetY;
-    let isHoveringClickable = false;
-    let isVisible = false;
-    let animationFrame = 0;
-
-    const clickableSelector = "a, button, input, textarea, select, summary, [role='button'], [data-cursor='pointer']";
-    const brandBlue = { r: 0, g: 122, b: 255 };
-
-    const parseRgb = (value: string) => {
-      const match = value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-      if (!match) return null;
-      return {
-        r: Number(match[1]),
-        g: Number(match[2]),
-        b: Number(match[3]),
-      };
-    };
-
-    const isCloseToBrandBlue = (value: string) => {
-      const rgb = parseRgb(value);
-      if (!rgb) return false;
-
-      const distance = Math.sqrt(
-        (rgb.r - brandBlue.r) ** 2 +
-          (rgb.g - brandBlue.g) ** 2 +
-          (rgb.b - brandBlue.b) ** 2,
-      );
-
-      return distance < 70;
-    };
-
-    const getVisibleBackground = (element: Element | null) => {
-      let current = element;
-
-      while (current && current !== document.documentElement) {
-        const backgroundColor = window.getComputedStyle(current).backgroundColor;
-        if (backgroundColor && backgroundColor !== "rgba(0, 0, 0, 0)" && backgroundColor !== "transparent") {
-          return backgroundColor;
-        }
-        current = current.parentElement;
-      }
-
-      return window.getComputedStyle(document.body).backgroundColor;
-    };
-
-    const render = () => {
-      currentX += (targetX - currentX) * 0.15;
-      currentY += (targetY - currentY) * 0.15;
-
-      const size = isHoveringClickable ? 62 : 30;
-      const scale = isHoveringClickable ? 1 : 1;
-      cursor!.style.transform = `translate3d(${currentX - size / 2}px, ${currentY - size / 2}px, 0) scale(${scale})`;
-      cursor!.style.width = `${size}px`;
-      cursor!.style.height = `${size}px`;
-      cursor!.style.opacity = isVisible ? (isHoveringClickable ? "0.55" : "1") : "0";
-
-      animationFrame = requestAnimationFrame(render);
-    };
-
-    const handleMouseMove = (event: MouseEvent) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
-      isVisible = true;
-      const hoveredElement = event.target as Element | null;
-      isHoveringClickable = Boolean(hoveredElement?.closest(clickableSelector));
-      cursor!.classList.toggle("is-on-brand-blue", isCloseToBrandBlue(getVisibleBackground(hoveredElement)));
-    };
-
-    const handleMouseLeave = () => {
-      isVisible = false;
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    animationFrame = requestAnimationFrame(render);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      cancelAnimationFrame(animationFrame);
-      document.documentElement.classList.remove("custom-cursor-ready");
-      cursor?.remove();
-    };
-  }, []);
 
   return null;
 }

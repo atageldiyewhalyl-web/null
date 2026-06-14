@@ -825,8 +825,8 @@ function LawyerHeroScrollSection() {
 
 function DoctorMockupShowcaseSection({ items }: { items: DoctorMockupItem[] }) {
   const mobileVisibleOrder: Record<number, string> = {
-    7: "order-1",
-    0: "order-2",
+    0: "order-1",
+    1: "order-2",
     2: "order-3",
   };
 
@@ -1308,6 +1308,7 @@ type NewLandingSpinnerSectionProps = {
   statsCtaLabel?: string;
   statsCtaHref?: string;
   statsCtaEventName?: string;
+  compactStats?: boolean;
   showLawyerProblemSection?: boolean;
   doctorMockupItems?: DoctorMockupItem[];
   problemVisualSrc?: string;
@@ -1327,6 +1328,7 @@ export default function NewLandingSpinnerSection({
   statsCtaLabel,
   statsCtaHref = "#contact",
   statsCtaEventName,
+  compactStats = false,
   showLawyerProblemSection = false,
   doctorMockupItems,
   problemVisualSrc,
@@ -1555,7 +1557,7 @@ export default function NewLandingSpinnerSection({
             Ergebnisse
           </div>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
-            <h2 className="max-w-4xl text-[clamp(2.45rem,5.2vw,4.45rem)] font-bold leading-[0.94] tracking-[-0.06em] text-black">
+            <h2 className={`${compactStats ? "max-w-3xl text-[clamp(2.1rem,4.2vw,3.55rem)] tracking-[-0.052em]" : "max-w-4xl text-[clamp(2.45rem,5.2vw,4.45rem)] tracking-[-0.06em]"} font-bold leading-[0.94] text-black`}>
               {statsHeading}<span className="text-[#007aff]">.</span>
             </h2>
             {effectiveStatsCtaLabel ? (
@@ -1571,23 +1573,23 @@ export default function NewLandingSpinnerSection({
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:mt-20 md:grid-cols-4 md:gap-x-10">
+        <div className={`${compactStats ? "mt-10 gap-x-5 gap-y-8 md:mt-14 md:gap-x-8" : "mt-14 gap-x-6 gap-y-10 md:mt-20 md:gap-x-10"} grid grid-cols-2 md:grid-cols-4`}>
           {statsItems.map((stat) => (
             <div
               key={stat.label}
-              className="border-t border-[#d7deea] pt-5 md:pt-7"
+              className={`${compactStats ? "pt-4 md:pt-5" : "pt-5 md:pt-7"} border-t border-[#d7deea]`}
             >
-              <div className="mb-4 text-[clamp(2.1rem,10vw,3rem)] font-bold leading-none tracking-[-0.065em] text-black md:mb-6 md:text-[clamp(2.5rem,4.2vw,4.2rem)]">
+              <div className={`${compactStats ? "mb-3 text-[clamp(1.85rem,8vw,2.55rem)] md:mb-5 md:text-[clamp(2.15rem,3.45vw,3.45rem)]" : "mb-4 text-[clamp(2.1rem,10vw,3rem)] md:mb-6 md:text-[clamp(2.5rem,4.2vw,4.2rem)]"} font-bold leading-none tracking-[-0.065em] text-black`}>
                 {stat.customValue ? (
                   stat.customValue
                 ) : typeof stat.value === "number" ? (
                   <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 ) : null}
               </div>
-              <h3 className="text-[0.95rem] font-bold leading-tight tracking-[-0.045em] text-black md:mb-3 md:text-[1.05rem]">
+              <h3 className={`${compactStats ? "text-[0.9rem] md:mb-2 md:text-[0.98rem]" : "text-[0.95rem] md:mb-3 md:text-[1.05rem]"} font-bold leading-tight tracking-[-0.045em] text-black`}>
                 {stat.label}
               </h3>
-              <p className="max-w-xs text-[0.8rem] font-medium leading-relaxed tracking-[-0.02em] text-[#4f5560] md:text-[0.9rem]">
+              <p className={`${compactStats ? "text-[0.76rem] md:text-[0.84rem]" : "text-[0.8rem] md:text-[0.9rem]"} max-w-xs font-medium leading-relaxed tracking-[-0.02em] text-[#4f5560]`}>
                 {stat.description}
               </p>
             </div>

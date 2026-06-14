@@ -1,16 +1,9 @@
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ChevronDown, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { useState } from "react";
 import NewLandingSpinnerSection from "../components/NewLandingSpinnerSection";
-import { MinimalistHero } from "../components/ui/minimalist-hero";
-import doctorVisualAsset from "../assets/Doctor visual asset.webp";
 import doctorMockup1 from "../assets/service doctor mockups/1.webp";
 import doctorMockup2 from "../assets/service doctor mockups/2.webp";
 import doctorMockup3 from "../assets/service doctor mockups/3.webp";
-import doctorMockup4 from "../assets/service doctor mockups/4.webp";
-import doctorMockup5 from "../assets/service doctor mockups/5.webp";
-import doctorMockup6 from "../assets/service doctor mockups/6.webp";
-import doctorMockup7 from "../assets/service doctor mockups/7.webp";
-import doctorMockup8 from "../assets/service doctor mockups/8.webp";
-import doctorMockup9 from "../assets/service doctor mockups/9.webp";
 import doctorScatterAsset from "../assets/scatter for doctor  1.webp";
 import serviceAssetLogo from "../assets/services assets /Logo-card.webp";
 import serviceAssetGoogleAds from "../assets/services assets /google ads-card.webp";
@@ -24,12 +17,13 @@ const doctorMockups = [
   { src: doctorMockup1, alt: "Doctor website long-form mockup 1" },
   { src: doctorMockup2, alt: "Doctor website long-form mockup 2" },
   { src: doctorMockup3, alt: "Doctor website long-form mockup 3" },
-  { src: doctorMockup4, alt: "Doctor website long-form mockup 4" },
-  { src: doctorMockup5, alt: "Doctor website long-form mockup 5" },
-  { src: doctorMockup6, alt: "Doctor website long-form mockup 6" },
-  { src: doctorMockup7, alt: "Doctor website long-form mockup 7" },
-  { src: doctorMockup8, alt: "Doctor website long-form mockup 8" },
-  { src: doctorMockup9, alt: "Doctor website long-form mockup 9" },
+];
+
+const socialLinks = [
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/n%C3%BCll/", label: "LinkedIn" },
 ];
 
 export function meta() {
@@ -61,6 +55,187 @@ export function meta() {
     { name: "twitter:image:alt", content: "nüll. logo on a minimal branded background" },
     { tagName: "link", rel: "canonical", href: url },
   ];
+}
+
+function DoctorNavbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+      <header className="fixed left-0 right-0 top-0 z-[100] flex w-full items-center justify-between border-b border-black/[0.06] bg-white px-3 py-5 font-sans text-[#111111] shadow-[0_16px_44px_rgba(20,30,45,0.06)] sm:px-7 md:px-14 md:py-7">
+        <a
+          href="/"
+          className="text-[1.8rem] font-bold leading-none tracking-[-0.03em] text-[#0e0e10] no-underline"
+        >
+          nüll<span className="text-[#007aff]">.</span>
+        </a>
+
+        <nav className="hidden items-center gap-12 md:flex lg:gap-16">
+          <a href="/blog" className="text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55">
+            Blog
+          </a>
+          <a href="#services" className="text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55">
+            Leistungen
+          </a>
+          <div className="group relative py-3">
+            <button
+              type="button"
+              className="flex items-center gap-2 text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55"
+              aria-expanded="false"
+            >
+              Kategorien
+              <ChevronDown aria-hidden="true" size={15} strokeWidth={3} />
+            </button>
+            <div className="pointer-events-none absolute right-0 top-full w-[18rem] pt-3 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+              <div className="rounded-[8px] border border-[#0064df] bg-[#007aff] p-2 shadow-[0_18px_48px_rgba(0,74,173,0.22)]">
+                {[
+                  { label: "Anwälte & Berater", href: "/kanzlei-websites" },
+                  { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
+                ].map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="flex items-center justify-between rounded-[6px] px-4 py-3 text-[0.82rem] font-black uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-[#007aff]"
+                  >
+                    {link.label}
+                    <span aria-hidden="true">&gt;</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <a
+            href="#contact"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#007aff] px-6 text-[0.72rem] font-black uppercase tracking-[0.16em] text-white no-underline shadow-[0_16px_36px_rgba(0,122,255,0.22)] transition-transform hover:-translate-y-0.5"
+          >
+            Anfrage starten
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          className="flex min-h-11 min-w-11 flex-col items-end justify-center gap-1.5 md:hidden"
+          aria-label="Open menu"
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+        >
+          <span className="block h-0.5 w-7 bg-[#111111]" />
+          <span className="block h-0.5 w-7 bg-[#111111]" />
+          <span className="block h-0.5 w-5 bg-[#111111]" />
+        </button>
+
+        {isMobileMenuOpen && (
+          <nav
+            aria-label="Mobile navigation"
+            className="absolute left-0 right-0 top-[calc(100%+1rem)] z-50 rounded-[8px] border border-black/10 bg-white p-2 shadow-[0_22px_60px_rgba(20,30,45,0.14)] md:hidden"
+          >
+            {[
+              { label: "Blog", href: "/blog" },
+              { label: "Leistungen", href: "#services" },
+              { label: "Anwälte & Berater", href: "/kanzlei-websites" },
+              { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
+              { label: "Anfrage starten", href: "#contact" },
+            ].map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={closeMobileMenu}
+                className="flex min-h-12 items-center justify-between rounded-[6px] px-4 text-[0.78rem] font-black uppercase tracking-[0.16em] text-[#111111] no-underline transition-colors hover:bg-[#f2f7ff] hover:text-[#007aff]"
+              >
+                {link.label}
+                <span aria-hidden="true">&gt;</span>
+              </a>
+            ))}
+          </nav>
+        )}
+      </header>
+  );
+}
+
+function DoctorHero() {
+  return (
+    <div className="relative flex h-screen min-h-[680px] w-full flex-col overflow-hidden bg-white px-3 pb-7 pt-24 font-sans text-[#111111] sm:px-7 md:px-14 md:pb-10 md:pt-28">
+      <div className="relative z-10 grid min-w-0 flex-1 items-start gap-7 pt-7 md:grid-cols-[0.92fr_1.08fr] md:items-center md:gap-8 md:pt-0 lg:grid-cols-[0.88fr_1.12fr] lg:gap-10">
+        <div className="mx-auto w-full min-w-0 max-w-[42rem] text-center sm:mx-0 sm:text-left">
+          <p className="text-[0.72rem] font-black uppercase tracking-[0.16em] text-[#2f6bff] sm:text-[0.78rem] sm:tracking-[0.22em]">
+            Webdesign für Arztpraxen
+          </p>
+
+          <h1 className="mx-auto mt-5 max-w-[23rem] text-[clamp(2.02rem,8.35vw,2.2rem)] font-black leading-[1.03] tracking-[-0.078em] text-[#050505] sm:mx-0 sm:max-w-[14.5ch] sm:text-[clamp(2.35rem,5.05vw,4.85rem)] sm:leading-[0.96] md:text-[clamp(2.25rem,4.2vw,3.45rem)] lg:text-[clamp(2.65rem,5.05vw,4.85rem)] lg:leading-[0.94]">
+            <span className="block sm:inline">Hochwertige</span>{" "}
+            <span className="block sm:inline">Praxis Websites</span>{" "}
+            <span className="block sm:inline">für mehr</span>{" "}
+            <span className="block sm:inline">Terminanfragen</span>
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-[23rem] text-[0.98rem] font-bold leading-[1.48] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:max-w-[34rem] sm:text-[1.02rem] md:text-[1.04rem] md:leading-[1.38] lg:text-[1.18rem]">
+            <span className="block sm:inline">Moderne Präsentation, bessere</span>{" "}
+            <span className="block sm:inline">Auffindbarkeit und klare</span>{" "}
+            <span className="block sm:inline">Terminführung für Ihre Praxis.</span>
+          </p>
+
+          <p className="mx-auto mt-4 max-w-[23rem] text-[0.98rem] font-bold leading-[1.48] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:max-w-[33rem] md:text-[1rem] md:leading-[1.38] lg:text-[1.08rem]">
+            <span className="block sm:inline">Logo, Texte, Fotos, SEO, DSGVO</span>{" "}
+            <span className="block sm:inline">und Betreuung sind inklusive.</span>
+          </p>
+
+          <div className="mt-7 flex flex-col items-center gap-3 sm:items-start md:flex-row">
+            <a
+              href="#contact"
+              className="inline-flex min-h-12 w-full max-w-[17.5rem] items-center justify-center rounded-full bg-[#2f6bff] px-6 text-[0.78rem] font-black uppercase tracking-[0.13em] text-white no-underline shadow-[0_14px_34px_rgba(47,107,255,0.2)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
+            >
+              Kostenlose Analyse
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex min-h-12 w-full max-w-[17.5rem] items-center justify-center rounded-full border border-black/10 bg-white px-6 text-[0.78rem] font-black uppercase tracking-[0.13em] text-black no-underline shadow-[0_14px_34px_rgba(20,30,45,0.05)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
+            >
+              Unverbindlich anfragen
+            </a>
+          </div>
+
+          <div className="mt-7 flex flex-col items-center gap-3 text-[1.18rem] font-black tracking-[-0.035em] text-[#101010] sm:items-start sm:text-[1.02rem] lg:flex-row lg:items-center lg:text-[1.08rem]">
+            <span className="whitespace-nowrap">In Zusammenarbeit mit</span>
+            <img
+              src="/assets/logo-mafinex.svg"
+              alt="MAFINEX"
+              className="h-8 w-36 object-contain object-center sm:object-left md:h-9 md:w-40"
+            />
+          </div>
+        </div>
+
+        <div className="relative flex min-h-[320px] min-w-0 items-end justify-center md:min-h-[520px] lg:min-h-[620px]">
+          <img
+            src="/assets/new-landing/doctor-team-cutout.png"
+            alt="Two doctors standing in white coats."
+            className="w-full max-w-[25rem] object-contain drop-shadow-[0_28px_56px_rgba(20,30,45,0.1)] sm:max-w-[34rem] md:max-w-[46rem] md:translate-x-2 lg:max-w-[58rem] lg:translate-x-5"
+          />
+        </div>
+      </div>
+
+      <div className="relative z-20 flex items-center justify-between gap-4 text-black">
+        <div className="hidden items-center gap-6 md:flex">
+          {socialLinks.map(({ icon: Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              aria-label={label}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full text-black transition-colors hover:bg-black hover:text-white"
+            >
+              <Icon size={19} strokeWidth={2.35} />
+            </a>
+          ))}
+        </div>
+        <a href="#services" className="text-[0.95rem] font-black no-underline underline-offset-8 hover:underline">
+          Read More
+        </a>
+        <p className="hidden text-[0.95rem] font-black md:block">Mannheim, DE</p>
+      </div>
+    </div>
+  );
 }
 
 export default function DoctorsRoute() {
@@ -130,47 +305,15 @@ export default function DoctorsRoute() {
   };
 
   return (
-    <main className="relative isolate bg-white">
+    <main id="top" className="relative isolate bg-white">
+      <DoctorNavbar />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <section className="relative z-0 h-[200vh]">
         <div className="sticky top-0 z-0 h-screen overflow-hidden bg-white">
-          <MinimalistHero
-            logoText="nüll."
-            navLinks={[
-              { label: "Blog", href: "/blog" },
-              { label: "Leistungen", href: "#services" },
-            ]}
-            categoryLinks={[
-              { label: "Anwälte & Berater", href: "/kanzlei-websites" },
-              { label: "Ärzte & Praxen", href: "/arztpraxis-websites" },
-            ]}
-            ctaLink={{ label: "Anfrage starten", href: "#contact" }}
-            mainText="Moderne Websites für Arztpraxen, die sichtbar machen, Vertrauen schaffen und Termine bringen."
-            readMoreLink="#services"
-            imageSrc={doctorVisualAsset}
-            imageAlt="Doctor visual asset over a blue circle."
-            imageClassName="max-w-none"
-            imageStyle={{
-              width: "clamp(20.5rem, 38vw, 46rem)",
-              marginLeft: "-6.5rem",
-              marginTop: "-1rem",
-            }}
-            overlayText={{
-              part1: "gefunden werden.",
-              part2: "termine gewinnen.",
-            }}
-            overlayTextClassName="text-[clamp(2.25rem,9.6vw,3rem)] md:text-[clamp(3.35rem,4.75vw,5.35rem)]"
-            socialLinks={[
-              { icon: Facebook, href: "#", label: "Facebook" },
-              { icon: Instagram, href: "#", label: "Instagram" },
-              { icon: Twitter, href: "#", label: "Twitter" },
-              { icon: Linkedin, href: "https://www.linkedin.com/company/n%C3%BCll/", label: "LinkedIn" },
-            ]}
-            locationText="Mannheim, DE"
-          />
+          <DoctorHero />
         </div>
       </section>
       <div className="relative z-20 -mt-[100vh] min-h-screen bg-white">
