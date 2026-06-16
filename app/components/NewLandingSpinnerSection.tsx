@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   ArrowUpRight,
   Bot,
@@ -165,7 +165,7 @@ const stats: StatItem[] = [
   },
 ];
 
-const workItems = [
+export const workItems = [
   {
     title: "B.Y. Consulting",
     image: "/assets/new-landing/by-hero-demo.webp",
@@ -1146,24 +1146,31 @@ function LawyerProblemSection({
     items: lawyerProblemItems,
   };
 
+  const hasAside = Boolean(copy.sideText || copy.actionLabel || copy.ctaLabel || problemVisualSrc);
+
   return (
     <section className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 overflow-hidden bg-white px-6 py-14 text-black md:mt-24 md:px-12 md:py-20">
-      <div className="grid gap-12 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16">
+      <div className={hasAside ? "grid gap-12 lg:grid-cols-[0.34fr_0.66fr] lg:gap-16" : "max-w-6xl"}>
+        {hasAside ? (
         <aside className="flex flex-col justify-between gap-10">
           <div>
             <p className="text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
               <span className="mr-3 text-[#007aff]">→</span>
               {copy.eyebrow ?? "Problem"}
             </p>
-            <p className="mt-10 hidden max-w-[24rem] text-[1.02rem] font-bold leading-[1.35] tracking-[-0.04em] text-[#0e0e10] md:block">
-              {copy.sideText}
-            </p>
-            <a
-              href="#services"
-              className="mt-6 hidden border-b-2 border-black pb-1 text-[1.05rem] font-bold leading-none tracking-[-0.04em] text-black no-underline md:inline-flex"
-            >
-              {copy.actionLabel ?? "Wie wir das lösen"}
-            </a>
+            {copy.sideText ? (
+              <p className="mt-10 hidden max-w-[24rem] text-[1.02rem] font-bold leading-[1.35] tracking-[-0.04em] text-[#0e0e10] md:block">
+                {copy.sideText}
+              </p>
+            ) : null}
+            {copy.actionLabel ? (
+              <a
+                href="#services"
+                className="mt-6 hidden border-b-2 border-black pb-1 text-[1.05rem] font-bold leading-none tracking-[-0.04em] text-black no-underline md:inline-flex"
+              >
+                {copy.actionLabel}
+              </a>
+            ) : null}
             {copy.ctaLabel ? (
               <div className="mt-7 hidden md:block">
                 <SectionActionButton href={copy.ctaHref}>
@@ -1173,12 +1180,21 @@ function LawyerProblemSection({
             ) : null}
           </div>
 
-          <div className="hidden lg:block">
-            <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
-          </div>
+          {problemVisualSrc ? (
+            <div className="hidden lg:block">
+              <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
+            </div>
+          ) : null}
         </aside>
+        ) : null}
 
         <div>
+          {!hasAside ? (
+            <p className="mb-8 text-[0.95rem] font-medium tracking-[-0.025em] text-[#0e0e10]">
+              <span className="mr-3 text-[#007aff]">→</span>
+              {copy.eyebrow ?? "Problem"}
+            </p>
+          ) : null}
           <h2 className="max-w-full text-[clamp(2.15rem,10.6vw,3.2rem)] font-bold leading-[0.9] tracking-[-0.06em] text-black min-[430px]:text-[clamp(2.45rem,9vw,3.4rem)] md:max-w-5xl md:text-[clamp(3.25rem,4.5vw,5.15rem)] md:leading-[0.88]">
             {copy.headline}
           </h2>
@@ -1212,9 +1228,11 @@ function LawyerProblemSection({
             </div>
           ) : null}
 
-          <div className="mt-10 overflow-hidden lg:hidden">
-            <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
-          </div>
+          {problemVisualSrc ? (
+            <div className="mt-10 overflow-hidden lg:hidden">
+              <LawyerQuestionMarkPlaceholder src={problemVisualSrc} alt={problemVisualAlt} />
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
@@ -1314,7 +1332,10 @@ type NewLandingSpinnerSectionProps = {
   problemVisualSrc?: string;
   problemVisualAlt?: string;
   problemCopy?: ProblemSectionCopy;
+  problemSectionOverride?: ReactNode;
+  workItemsOverride?: typeof workItems;
   systemItems?: SystemItem[];
+  showSystemSection?: boolean;
   servicesCopy?: ServicesShowcaseCopy;
   faqItemsOverride?: FaqItem[];
   faqIntro?: string;
@@ -1334,7 +1355,10 @@ export default function NewLandingSpinnerSection({
   problemVisualSrc,
   problemVisualAlt,
   problemCopy,
+  problemSectionOverride,
+  workItemsOverride,
   systemItems,
+  showSystemSection = true,
   servicesCopy,
   faqItemsOverride,
   faqIntro,
@@ -1347,6 +1371,11 @@ export default function NewLandingSpinnerSection({
   const [isContactSectionVisible, setIsContactSectionVisible] = useState(false);
   const systemRevealRef = useRef<HTMLElement | null>(null);
   const currentFaqItems = faqItemsOverride ?? (showLawyerProblemSection ? lawyerFaqItems : faqItems);
+  const effectiveWorkSlides = workItemsOverride
+    ? Array.from({ length: Math.ceil(workItemsOverride.length / 2) }, (_, index) =>
+        workItemsOverride.slice(index * 2, index * 2 + 2),
+      )
+    : workSlides;
   const effectiveStatsCtaLabel =
     statsCtaLabel ?? (doctorMockupItems?.length ? "Kostenlose Praxis-Analyse sichern" : undefined);
   const effectiveStatsCtaEventName =
@@ -1509,7 +1538,7 @@ export default function NewLandingSpinnerSection({
           : "relative overflow-hidden bg-white px-6 py-20 text-[#0e0e10] md:px-12 md:py-24"
       }
     >
-      {showLawyerProblemSection ? (
+      {showLawyerProblemSection && showSystemSection ? (
         <LawyerFixedSystemBackground visible={isSystemRevealVisible} systemItems={systemItems} />
       ) : null}
 
@@ -1610,12 +1639,14 @@ export default function NewLandingSpinnerSection({
             ) : (
               <LawyerHeroScrollSection />
             )}
-            <LawyerProblemSection
-              problemVisualSrc={problemVisualSrc}
-              problemVisualAlt={problemVisualAlt}
-              problemCopy={problemCopy}
-            />
-            <LawyerSystemRevealWindow revealRef={systemRevealRef} />
+            {problemSectionOverride ?? (
+              <LawyerProblemSection
+                problemVisualSrc={problemVisualSrc}
+                problemVisualAlt={problemVisualAlt}
+                problemCopy={problemCopy}
+              />
+            )}
+            {showSystemSection ? <LawyerSystemRevealWindow revealRef={systemRevealRef} /> : null}
             <ServicesShowcaseSection copy={servicesCopy} />
           </>
         ) : null}
@@ -1635,7 +1666,7 @@ export default function NewLandingSpinnerSection({
 
           <Carousel className="relative pb-14">
             <CarouselContent className="-ml-6 items-stretch">
-              {workSlides.map((slide, slideIndex) => (
+              {effectiveWorkSlides.map((slide, slideIndex) => (
                 <CarouselItem key={slideIndex} className="basis-full pl-6">
                   <div className="grid gap-10 md:grid-cols-2 md:gap-8">
                     {slide.map((item) => (

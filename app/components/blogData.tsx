@@ -1266,7 +1266,7 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · SEO · Kanzlei",
     date: "2026-06-02",
     readTime: "18 Min. Lesezeit",
-    image: "/assets/blog/law-firm-3d-courtroom-hero.png",
+    image: "/assets/blog/law-firm-3d-courtroom-hero.webp",
     providers: [
       {
         rank: 1,

@@ -113,12 +113,17 @@ type Pages = {
       "id": string;
     };
   };
+  "/*": {
+    params: {
+      "*": string;
+    };
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id";
+    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
   "routes/onboarding.tsx": {
     id: "routes/onboarding";
@@ -252,6 +257,10 @@ type RouteFiles = {
     id: "routes/admin-job-detail";
     page: "/admin/jobs/:id";
   };
+  "routes/not-found.tsx": {
+    id: "routes/not-found";
+    page: "/*";
+  };
 };
 
 type RouteModules = {
@@ -289,4 +298,5 @@ type RouteModules = {
   "routes/admin-projects": typeof import("./app/routes/admin-projects.tsx");
   "routes/admin-jobs": typeof import("./app/routes/admin-jobs.tsx");
   "routes/admin-job-detail": typeof import("./app/routes/admin-job-detail.tsx");
+  "routes/not-found": typeof import("./app/routes/not-found.tsx");
 };

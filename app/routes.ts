@@ -35,4 +35,5 @@ export default [
     route("jobs", "routes/admin-jobs.tsx"),
     route("jobs/:id", "routes/admin-job-detail.tsx"),
   ]),
+  route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;

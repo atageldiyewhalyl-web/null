@@ -5,6 +5,7 @@ export default {
   prerender: [
     "/",
     "/kanzlei-websites",
+    "/arztpraxis-websites",
     "/leistungen/webdesign",
     "/leistungen/seo",
     "/leistungen/google-ads",

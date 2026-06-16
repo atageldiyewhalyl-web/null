@@ -54,10 +54,15 @@
     }   
   ],
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
+    { "source": "/admin", "destination": "/" },
+    { "source": "/admin/(.*)", "destination": "/" },
+    { "source": "/onboarding", "destination": "/" },
+    { "source": "/onboarding/(.*)", "destination": "/" },
+    { "source": "/tr/(.*)", "destination": "/" },
+    { "source": "/new-landing", "destination": "/" },
+    { "source": "/hasan", "destination": "/" },
+    { "source": "/website-analyse", "destination": "/" },
+    { "source": "/kanzlei-websites-v2", "destination": "/" }
   ],
   "headers": [
     {

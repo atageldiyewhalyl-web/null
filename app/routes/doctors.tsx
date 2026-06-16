@@ -1,11 +1,10 @@
-import { ChevronDown, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ChevronDown, Linkedin } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useState } from "react";
 import NewLandingSpinnerSection from "../components/NewLandingSpinnerSection";
 import doctorMockup1 from "../assets/service doctor mockups/1.webp";
 import doctorMockup2 from "../assets/service doctor mockups/2.webp";
 import doctorMockup3 from "../assets/service doctor mockups/3.webp";
-import doctorScatterAsset from "../assets/scatter for doctor  1.webp";
 import serviceAssetLogo from "../assets/services assets /Logo-card.webp";
 import serviceAssetGoogleAds from "../assets/services assets /google ads-card.webp";
 import serviceAssetGoogleAiSearch from "../assets/services assets /google ai search-card.webp";
@@ -21,9 +20,6 @@ const doctorMockups = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/n%C3%BCll/", label: "LinkedIn" },
 ];
 
@@ -168,29 +164,23 @@ function DoctorNavbar() {
 
 function DoctorHero() {
   return (
-    <div className="relative flex h-screen min-h-[680px] w-full flex-col overflow-hidden bg-white px-3 pb-7 pt-24 font-sans text-[#111111] sm:px-7 md:px-14 md:pb-10 md:pt-28">
+    <div className="relative flex h-auto min-h-0 w-full flex-col overflow-visible bg-white px-3 pb-12 pt-24 font-sans text-[#111111] sm:px-7 md:h-screen md:min-h-[680px] md:overflow-hidden md:px-14 md:pb-10 md:pt-28">
       <div className="relative z-10 grid min-w-0 flex-1 items-start gap-7 pt-7 md:grid-cols-[0.92fr_1.08fr] md:items-center md:gap-8 md:pt-0 lg:grid-cols-[0.88fr_1.12fr] lg:gap-10">
         <div className="mx-auto w-full min-w-0 max-w-[42rem] text-center sm:mx-0 sm:text-left">
           <p className="text-[0.72rem] font-black uppercase tracking-[0.16em] text-[#2f6bff] sm:text-[0.78rem] sm:tracking-[0.22em]">
             Webdesign für Arztpraxen
           </p>
 
-          <h1 className="mx-auto mt-5 max-w-[23rem] text-[clamp(2.02rem,8.35vw,2.2rem)] font-black leading-[1.03] tracking-[-0.078em] text-[#050505] sm:mx-0 sm:max-w-[14.5ch] sm:text-[clamp(2.35rem,5.05vw,4.85rem)] sm:leading-[0.96] md:text-[clamp(2.25rem,4.2vw,3.45rem)] lg:text-[clamp(2.65rem,5.05vw,4.85rem)] lg:leading-[0.94]">
-            <span className="block sm:inline">Hochwertige</span>{" "}
-            <span className="block sm:inline">Praxis Websites</span>{" "}
-            <span className="block sm:inline">für mehr</span>{" "}
-            <span className="block sm:inline">Terminanfragen</span>
+          <h1 className="mt-5 text-[clamp(2.3rem,9vw,2.85rem)] font-black leading-[1.05] tracking-[-0.078em] text-[#050505] sm:max-w-[14.5ch] sm:text-[clamp(2.35rem,5.05vw,4.85rem)] sm:leading-[0.96] md:text-[clamp(2.25rem,4.2vw,3.45rem)] lg:text-[clamp(2.65rem,5.05vw,4.85rem)] lg:leading-[0.94]">
+            Hochwertige Praxis Websites für mehr Terminanfragen
           </h1>
 
-          <p className="mx-auto mt-6 max-w-[23rem] text-[0.98rem] font-bold leading-[1.48] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:max-w-[34rem] sm:text-[1.02rem] md:text-[1.04rem] md:leading-[1.38] lg:text-[1.18rem]">
-            <span className="block sm:inline">Moderne Präsentation, bessere</span>{" "}
-            <span className="block sm:inline">Auffindbarkeit und klare</span>{" "}
-            <span className="block sm:inline">Terminführung für Ihre Praxis.</span>
+          <p className="mt-6 text-[1.02rem] font-bold leading-[1.5] tracking-[-0.04em] text-[#101010] sm:max-w-[34rem] sm:text-[1.02rem] md:text-[1.04rem] md:leading-[1.38] lg:text-[1.18rem]">
+            Moderne Präsentation, bessere Auffindbarkeit und klare Terminführung für Ihre Praxis.
           </p>
 
-          <p className="mx-auto mt-4 max-w-[23rem] text-[0.98rem] font-bold leading-[1.48] tracking-[-0.04em] text-[#101010] sm:mx-0 sm:max-w-[33rem] md:text-[1rem] md:leading-[1.38] lg:text-[1.08rem]">
-            <span className="block sm:inline">Logo, Texte, Fotos, SEO, DSGVO</span>{" "}
-            <span className="block sm:inline">und Betreuung sind inklusive.</span>
+          <p className="mt-4 text-[1.02rem] font-bold leading-[1.5] tracking-[-0.04em] text-[#101010] sm:max-w-[33rem] sm:text-[1.02rem] md:text-[1rem] md:leading-[1.38] lg:text-[1.08rem]">
+            Logo, Texte, Fotos, SEO, DSGVO und Betreuung sind inklusive.
           </p>
 
           <div className="mt-7 flex flex-col items-center gap-3 sm:items-start md:flex-row">
@@ -200,27 +190,26 @@ function DoctorHero() {
             >
               Kostenlose Analyse
             </a>
-            <a
-              href="#contact"
-              className="inline-flex min-h-12 w-full max-w-[17.5rem] items-center justify-center rounded-full border border-black/10 bg-white px-6 text-[0.78rem] font-black uppercase tracking-[0.13em] text-black no-underline shadow-[0_14px_34px_rgba(20,30,45,0.05)] transition-transform hover:-translate-y-0.5 sm:min-h-14 sm:w-auto sm:max-w-[22rem] sm:px-8 sm:text-[0.82rem]"
-            >
-              Unverbindlich anfragen
-            </a>
           </div>
 
-          <div className="mt-7 flex flex-col items-center gap-3 text-[1.18rem] font-black tracking-[-0.035em] text-[#101010] sm:items-start sm:text-[1.02rem] lg:flex-row lg:items-center lg:text-[1.08rem]">
+          <div className="mt-7 flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[1.02rem] font-black tracking-[-0.035em] text-[#101010] sm:justify-start sm:text-[1.02rem] lg:gap-5 lg:text-[1.08rem]">
             <span className="whitespace-nowrap">In Zusammenarbeit mit</span>
             <img
               src="/assets/logo-mafinex.svg"
               alt="MAFINEX"
-              className="h-8 w-36 object-contain object-center sm:object-left md:h-9 md:w-40"
+              className="h-8 w-36 object-contain md:h-9 md:w-40"
+            />
+            <img
+              src="/assets/integrations/doctolib.png"
+              alt="Doctolib"
+              className="h-6 w-auto object-contain md:h-8 lg:ml-2"
             />
           </div>
         </div>
 
         <div className="relative flex min-h-[320px] min-w-0 items-end justify-center md:min-h-[520px] lg:min-h-[620px]">
           <img
-            src="/assets/new-landing/doctor-team-cutout.png"
+            src="/assets/new-landing/doctor-team-cutout.webp"
             alt="Two doctors standing in white coats."
             className="w-full max-w-[25rem] object-contain drop-shadow-[0_28px_56px_rgba(20,30,45,0.1)] sm:max-w-[34rem] md:max-w-[46rem] md:translate-x-2 lg:max-w-[58rem] lg:translate-x-5"
           />
@@ -246,6 +235,76 @@ function DoctorHero() {
         <p className="hidden text-[0.95rem] font-black md:block">Mannheim, DE</p>
       </div>
     </div>
+  );
+}
+
+function DoctorRiskFactorsSection() {
+  const factors = [
+    {
+      number: "01",
+      title: "Bei Google & ChatGPT kaum sichtbar",
+      description:
+        "Wenn Patienten Ihre Praxis online nicht finden, gewinnt die Praxis nebenan die Termine, die eigentlich Ihnen gehören.",
+    },
+    {
+      number: "02",
+      title: "Die Website schafft kein Vertrauen",
+      description:
+        "Patienten erkennen nicht sofort, warum Ihre Praxis die richtige Wahl ist. Der Auftritt wirkt austauschbar und unpersönlich.",
+    },
+    {
+      number: "03",
+      title: "Keine klaren Terminanfragen",
+      description:
+        "Der Weg zu Telefon, Formular, Online-Buchung oder Doctolib ist nicht eindeutig, und Anfragen bleiben aus.",
+    },
+    {
+      number: "04",
+      title: "Technisch & rechtlich riskant",
+      description:
+        "DSGVO, Barrierefreiheit und Ladezeit: Eine ungeprüfte Praxis-Website ist im Zweifel nicht rechtssicher.",
+    },
+  ];
+
+  return (
+    <section className="relative left-1/2 mt-16 w-screen max-w-none -translate-x-1/2 bg-white px-6 py-20 text-black md:mt-24 md:px-12 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center rounded-full bg-[#0e0e10] px-4 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-white">
+            Fakt ist …
+          </span>
+          <h2 className="mx-auto mt-8 max-w-3xl text-[clamp(1.95rem,4.6vw,3.35rem)] font-black leading-[1.05] tracking-[-0.04em] text-[#050505]">
+            Die meisten Patienten suchen Ihre Praxis zuerst bei Google oder ChatGPT<span className="text-[#007aff]">.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-[1.05rem] font-medium leading-relaxed tracking-[-0.01em] text-[#4f5560] md:text-[1.15rem]">
+            Ihre Website entscheidet, ob aus dieser Suche eine Terminanfrage wird oder ob der
+            Patient zur nächsten Praxis weiterklickt.
+          </p>
+          <p className="mt-9 text-[1.05rem] font-bold tracking-[-0.02em] text-[#050505] md:text-[1.18rem]">
+            Das sind die 4 wichtigsten Risikofaktoren:
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {factors.map((factor) => (
+            <article
+              key={factor.number}
+              className="relative overflow-hidden rounded-2xl border border-[#d7deea] bg-white p-7 shadow-[0_18px_40px_rgba(20,30,45,0.05)]"
+            >
+              <span className="pointer-events-none absolute -top-3 right-3 select-none text-[5.5rem] font-black leading-none text-[#eef2f8]">
+                {factor.number}
+              </span>
+              <h3 className="relative mt-10 text-[1.08rem] font-bold leading-snug tracking-[-0.02em] text-[#007aff]">
+                {factor.title}
+              </h3>
+              <p className="relative mt-3 text-[0.95rem] font-medium leading-relaxed tracking-[-0.01em] text-[#4f5560]">
+                {factor.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -315,6 +374,59 @@ export default function DoctorsRoute() {
     },
   };
 
+  const doctorFaqItems = [
+    {
+      question: "Was kostet eine Praxis-Website mit SEO bei nüll?",
+      answer:
+        "Der Preis hängt vom Umfang der Praxis-Website ab. Eine professionelle Website startet bei 800 Euro. Dazu kommt eine monatliche Gebühr für Wartung und Hosting. Zusätzliche Leistungen wie laufende SEO-Betreuung, Google Ads, Content-Erstellung, Fotos oder separate Seiten für Fachgebiete und Behandlungen werden je nach Bedarf und Leistungsumfang geplant.",
+    },
+    {
+      question: "Wie lange dauert ein Website-Projekt für Arztpraxen?",
+      answer:
+        "Ein typisches Praxis-Website-Projekt dauert bei uns etwa 2 bis 3 Wochen. Entscheidend sind Umfang, Feedback-Geschwindigkeit und ob Inhalte, Fotos, Vertrauenselemente, Leistungsseiten oder Terminwege wie Formular, Online-Buchung oder Doctolib neu aufgebaut werden müssen.",
+    },
+    {
+      question: "Ist SEO für Praxen direkt in der Website-Erstellung enthalten?",
+      answer:
+        "Ja. Jede Praxis-Website erhält technische SEO-Grundlagen, eine saubere Seitenstruktur, Meta Titles, Meta Descriptions, Performance-Basics und Google-Indexierung. Wer monatliche Pakete bucht, kann zusätzlich lokale SEO, Content-Planung, Ratgeberinhalte, Behandlungsseiten und laufende SEO-Optimierung erhalten.",
+    },
+    {
+      question: "Hilft nüll dabei, bei Google und in KI-Suchen für Behandlungen sichtbar zu werden?",
+      answer:
+        "Ja. Wir strukturieren Praxis-Websites so, dass sie für Google und KI-Systeme wie ChatGPT, Gemini, Perplexity und Claude besser verständlich sind. Dazu gehören klare Inhalte, saubere Seitenlogik, relevante Antworten zu Beschwerden, Behandlungen und Fachgebieten, lokale Signale und technische Grundlagen. Rankings können nie garantiert werden, aber die Website wird gezielt auf Sichtbarkeit und qualifizierte Terminanfragen vorbereitet.",
+    },
+    {
+      question: "Erstellt nüll auch Texte, Fotos und Inhalte für Praxis-Websites?",
+      answer:
+        "Ja. Je nach Projekt übernehmen wir Copywriting, Content-Konzept, Fotoshootings, Videodrehs und visuelle Inhalte. Besonders für Arztpraxen, Fachärzte, Zahnärzte, Dermatologen und andere medizinische Anbieter hilft eigener Content dabei, Vertrauen aufzubauen, Leistungen verständlich zu erklären und professioneller aufzutreten.",
+    },
+    {
+      question: "Übernimmt nüll Wartung, Hosting, SEO und Google Ads nach dem Launch?",
+      answer:
+        "Ja. Für jede Website gibt es eine monatliche Gebühr für Hosting und technische Wartung. Darüber hinaus können Praxen laufende SEO-Betreuung, Content-Updates und Google Ads Kampagnenmanagement buchen, wenn sie kontinuierlich sichtbarer werden und mehr Patientenanfragen gewinnen möchten.",
+    },
+    {
+      question: "Für welche Praxen und medizinischen Anbieter eignet sich nüll?",
+      answer:
+        "nüll ist besonders passend für Arztpraxen, Facharztpraxen, Zahnarztpraxen, Privatpraxen, Therapieanbieter, Kliniken und medizinische Dienstleister in Deutschland. Der Fokus liegt auf Websites, die Kompetenz zeigen, Vertrauen schaffen und planbare Patientenanfragen oder Terminbuchungen auslösen.",
+    },
+    {
+      question: "Gibt es eine Zufriedenheitsgarantie für Praxis-Website-Projekte?",
+      answer:
+        "Ja. Wenn ein Kunde in den ersten 30 Tagen merkt, dass die Zusammenarbeit nicht passt, bieten wir eine Geld-zurück-Garantie. Uns ist wichtig, dass die Zusammenarbeit mit Praxen transparent, professionell und für beide Seiten sinnvoll ist.",
+    },
+  ];
+
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: doctorFaqItems.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
   return (
     <main id="top" className="relative isolate bg-white">
       <DoctorNavbar />
@@ -322,90 +434,23 @@ export default function DoctorsRoute() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <section className="relative z-0 h-[200vh]">
-        <div className="sticky top-0 z-0 h-screen overflow-hidden bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
+      <section className="relative z-0 h-auto md:h-[200vh]">
+        <div className="relative z-0 h-auto overflow-visible bg-white md:sticky md:top-0 md:h-screen md:overflow-hidden">
           <DoctorHero />
         </div>
       </section>
-      <div className="relative z-20 -mt-[100vh] min-h-screen bg-white">
+      <div className="relative z-20 mt-0 min-h-screen bg-white md:-mt-[100vh]">
         <NewLandingSpinnerSection
           showLawyerProblemSection
           contactTrackingCategory="doctor_contact"
           contactEventPrefix="doctor"
           doctorMockupItems={doctorMockups}
-          problemVisualSrc={doctorScatterAsset}
-          problemVisualAlt="Doctor website preview scatter"
-          problemCopy={{
-            sideText: (
-              <>
-                Viele Praxen sind online auffindbar,
-                <br />
-                aber nicht klar genug,
-                <br />
-                um Patienten zur Anfrage zu führen.
-              </>
-            ),
-            actionLabel: "Wie wir das lösen",
-            ctaLabel: "Praxis-Website prüfen lassen",
-            ctaHref: "#contact",
-            headline: (
-              <>
-                <span className="block">Warum aus</span>
-                <span className="block min-[430px]:hidden">Sichtbarkeit oft</span>
-                <span className="block min-[430px]:hidden">noch keine</span>
-                <span className="hidden min-[430px]:block md:hidden">Sichtbarkeit oft noch keine</span>
-                <span className="hidden md:block">Sichtbarkeit oft noch keine</span>
-                <span className="block">Terminanfragen werden<span className="text-[#007aff]">.</span></span>
-              </>
-            ),
-            items: [
-              {
-                number: "01",
-                title: "Unklare Spezialisierung",
-                description:
-                  "Patienten verstehen nicht sofort, für welche Beschwerden, Behandlungen oder Fachgebiete Ihre Praxis der richtige Ansprechpartner ist.",
-              },
-              {
-                number: "02",
-                title: "Zu wenig Suchintention",
-                description:
-                  "Die Seiten orientieren sich nicht an den Fragen, die Patienten tatsächlich bei Google eingeben.",
-              },
-              {
-                number: "03",
-                title: "Schwache Terminführung",
-                description:
-                  "Der Weg zu Telefon, Formular, Online-Buchung oder Doctolib ist nicht klar genug aufgebaut.",
-              },
-            ],
-          }}
-          systemItems={[
-            {
-              number: "01",
-              title: "Positionierung",
-              description:
-                "Wir klären, für welche Beschwerden, Behandlungen und Fachgebiete Ihre Praxis bekannt sein soll.",
-              position: "leftTop",
-            },
-            {
-              number: "02",
-              title: "Suchstruktur",
-              description: "Wir entwickeln Seiten gezielt nach dem Suchverhalten Ihrer Patienten.",
-              position: "rightTop",
-            },
-            {
-              number: "03",
-              title: "Vertrauensdesign",
-              description: "Die Website vermittelt Kompetenz, Ruhe, Seriosität und Vertrauen.",
-              position: "rightBottom",
-            },
-            {
-              number: "04",
-              title: "Terminführung",
-              description: "Telefon, Formular, Online-Buchung oder Doctolib werden klar geführt.",
-              position: "leftBottom",
-            },
-          ]}
+          problemSectionOverride={<DoctorRiskFactorsSection />}
+          showSystemSection={false}
           servicesCopy={{
             heading: <>Alles, was aus Sichtbarkeit planbare Terminanfragen macht.</>,
             subheading:
@@ -416,7 +461,7 @@ export default function DoctorsRoute() {
               {
                 title: "Branding & Praxisauftritt",
                 description:
-                  "Wir entwickeln einen digitalen Auftritt, der Vertrauen schafft und Ihre Praxis klar positioniert — professionell, ruhig und medizinisch seriös.",
+                  "Wir entwickeln einen digitalen Auftritt, der Vertrauen schafft und Ihre Praxis klar positioniert, professionell, ruhig und medizinisch seriös.",
                 visualSrc: serviceAssetLogo,
                 visualAlt: "Branding und Praxisauftritt Vorschau",
               },
@@ -437,7 +482,7 @@ export default function DoctorsRoute() {
               {
                 title: "Professionelles Praxis-Fotoshooting",
                 description:
-                  "Authentische Bilder von Praxis, Team und Räumen schaffen Vertrauen — noch bevor Patienten den ersten Termin buchen.",
+                  "Authentische Bilder von Praxis, Team und Räumen schaffen Vertrauen, noch bevor Patienten den ersten Termin buchen.",
                 visualSrc: serviceAssetPhotoshoot,
                 visualAlt: "Professionelles Praxis-Fotoshooting Vorschau",
               },
@@ -465,7 +510,7 @@ export default function DoctorsRoute() {
               {
                 title: "Terminführung & Automatisierung",
                 description:
-                  "Wir führen Patienten klar zu Telefon, Formular, Online-Buchung oder Doctolib — und automatisieren Abläufe, wo es sinnvoll ist.",
+                  "Wir führen Patienten klar zu Telefon, Formular, Online-Buchung oder Doctolib und automatisieren Abläufe, wo es sinnvoll ist.",
                 visual: "automation",
                 visualAlt: "Terminführung und Automatisierung Vorschau",
               },
@@ -479,48 +524,7 @@ export default function DoctorsRoute() {
             ],
           }}
           faqIntro="Kurze Antworten auf die Fragen, die vor einer Praxis-Website wirklich wichtig sind."
-          faqItemsOverride={[
-            {
-              question: "Was kostet eine Praxis-Website mit SEO bei nüll?",
-              answer:
-                "Der Preis hängt vom Umfang der Praxis-Website ab. Eine professionelle Website startet bei 800 Euro. Dazu kommt eine monatliche Gebühr für Wartung und Hosting. Zusätzliche Leistungen wie laufende SEO-Betreuung, Google Ads, Content-Erstellung, Fotos oder separate Seiten für Fachgebiete und Behandlungen werden je nach Bedarf und Leistungsumfang geplant.",
-            },
-            {
-              question: "Wie lange dauert ein Website-Projekt für Arztpraxen?",
-              answer:
-                "Ein typisches Praxis-Website-Projekt dauert bei uns etwa 2 bis 3 Wochen. Entscheidend sind Umfang, Feedback-Geschwindigkeit und ob Inhalte, Fotos, Vertrauenselemente, Leistungsseiten oder Terminwege wie Formular, Online-Buchung oder Doctolib neu aufgebaut werden müssen.",
-            },
-            {
-              question: "Ist SEO für Praxen direkt in der Website-Erstellung enthalten?",
-              answer:
-                "Ja. Jede Praxis-Website erhält technische SEO-Grundlagen, eine saubere Seitenstruktur, Meta Titles, Meta Descriptions, Performance-Basics und Google-Indexierung. Wer monatliche Pakete bucht, kann zusätzlich lokale SEO, Content-Planung, Ratgeberinhalte, Behandlungsseiten und laufende SEO-Optimierung erhalten.",
-            },
-            {
-              question: "Hilft nüll dabei, bei Google und in KI-Suchen für Behandlungen sichtbar zu werden?",
-              answer:
-                "Ja. Wir strukturieren Praxis-Websites so, dass sie für Google und KI-Systeme wie ChatGPT, Gemini, Perplexity und Claude besser verständlich sind. Dazu gehören klare Inhalte, saubere Seitenlogik, relevante Antworten zu Beschwerden, Behandlungen und Fachgebieten, lokale Signale und technische Grundlagen. Rankings können nie garantiert werden, aber die Website wird gezielt auf Sichtbarkeit und qualifizierte Terminanfragen vorbereitet.",
-            },
-            {
-              question: "Erstellt nüll auch Texte, Fotos und Inhalte für Praxis-Websites?",
-              answer:
-                "Ja. Je nach Projekt übernehmen wir Copywriting, Content-Konzept, Fotoshootings, Videodrehs und visuelle Inhalte. Besonders für Arztpraxen, Fachärzte, Zahnärzte, Dermatologen und andere medizinische Anbieter hilft eigener Content dabei, Vertrauen aufzubauen, Leistungen verständlich zu erklären und professioneller aufzutreten.",
-            },
-            {
-              question: "Übernimmt nüll Wartung, Hosting, SEO und Google Ads nach dem Launch?",
-              answer:
-                "Ja. Für jede Website gibt es eine monatliche Gebühr für Hosting und technische Wartung. Darüber hinaus können Praxen laufende SEO-Betreuung, Content-Updates und Google Ads Kampagnenmanagement buchen, wenn sie kontinuierlich sichtbarer werden und mehr Patientenanfragen gewinnen möchten.",
-            },
-            {
-              question: "Für welche Praxen und medizinischen Anbieter eignet sich nüll?",
-              answer:
-                "nüll ist besonders passend für Arztpraxen, Facharztpraxen, Zahnarztpraxen, Privatpraxen, Therapieanbieter, Kliniken und medizinische Dienstleister in Deutschland. Der Fokus liegt auf Websites, die Kompetenz zeigen, Vertrauen schaffen und planbare Patientenanfragen oder Terminbuchungen auslösen.",
-            },
-            {
-              question: "Gibt es eine Zufriedenheitsgarantie für Praxis-Website-Projekte?",
-              answer:
-                "Ja. Wenn ein Kunde in den ersten 30 Tagen merkt, dass die Zusammenarbeit nicht passt, bieten wir eine Geld-zurück-Garantie. Uns ist wichtig, dass die Zusammenarbeit mit Praxen transparent, professionell und für beide Seiten sinnvoll ist.",
-            },
-          ]}
+          faqItemsOverride={doctorFaqItems}
           statsHeading="Sichtbarkeit wird erst wertvoll, wenn daraus Terminanfragen entstehen"
           statsItems={[
             {
