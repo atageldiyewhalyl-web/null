@@ -501,11 +501,15 @@ export function BlogPost() {
     "freelancer-vs-agency-website": "freelancer vs agency, web design agency, freelance web designer, website design cost",
     "webdesign-fuer-anwaelte-kanzleien": "webdesign für anwälte, kanzlei website, SEO rechtsanwalt, mandanten gewinnen online",
     "web-design-for-lawyers-law-firms": "web design for lawyers, law firm website design, SEO for law firms, legal website design, law firm digital marketing",
+    "handwerker-website-auftraege": "handwerker website, website für handwerker, handwerker homepage, webdesign handwerker, handwerker mehr kunden",
+    "seo-handwerker-google": "SEO handwerker, lokales SEO handwerker, google business handwerker, handwerker google ranking",
+    "google-ads-handwerker": "google ads handwerker, google ads handwerksbetrieb, handwerker google anzeigen, handwerker mehr anfragen",
+    "online-marketing-handwerker": "online marketing handwerker, digitales marketing handwerk, handwerker kunden gewinnen online, handwerksbetrieb mehr kunden",
   };
   const customArticleStructuredData: Record<string, object> = {
     "freelancer-oder-agentur-website": {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
       headline: "Freelancer oder Agentur für deine Website? Der ehrliche Vergleich für Selbstständige",
       description: "Wer baut die bessere Website — Freelancer oder Agentur? Kosten, SEO und Verlässlichkeit im Direktvergleich für Berater und Kanzleien.",
       author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
@@ -526,7 +530,7 @@ export function BlogPost() {
     },
     "freelancer-vs-agency-website": {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
       headline: "Freelancer vs. Agency for Your Website: An Honest Comparison for Consultants and Law Firms",
       description: "Freelancer or agency — who builds the better website for consultants and law firms? Honest comparison of costs, SEO, and long-term reliability.",
       author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
@@ -548,7 +552,7 @@ export function BlogPost() {
   };
   const articleStructuredData = customArticleStructuredData[post.slug] ?? {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     author: {

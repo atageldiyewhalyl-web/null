@@ -2,6 +2,9 @@ import type { Config } from "@react-router/dev/config";
 
 export default {
   ssr: true,
+  future: {
+    unstable_optimizeDeps: true,
+  },
   prerender: [
     "/",
     "/kanzlei-websites",
@@ -19,6 +22,10 @@ export default {
     "/blog/freelancer-oder-agentur-website",
     "/blog/freelancer-vs-agency-website",
     "/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026",
+    "/blog/handwerker-website-auftraege",
+    "/blog/seo-handwerker-google",
+    "/blog/google-ads-handwerker",
+    "/blog/online-marketing-handwerker",
     "/datenschutz",
     "/impressum",
   ],

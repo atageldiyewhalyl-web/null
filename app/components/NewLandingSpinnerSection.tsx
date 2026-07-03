@@ -198,6 +198,14 @@ export const workItems = [
     description:
       "Ein klarer Auftritt für ein Gesundheitsangebot: ruhig, vertrauensvoll und sofort verständlich.",
   },
+  {
+    title: "Onkel Abwassertechnik",
+    image: "/assets/new-landing/onkel-portfolio.png",
+    alt: "Onkel Abwassertechnik website hero preview",
+    link: "https://www.onkel-abwassertechnik.de",
+    description:
+      "Ein moderner Service-Auftritt für Rohr- und Kanalreinigung, der akute Probleme klar anspricht und Besucher schnell zur Anfrage führt.",
+  },
 ];
 
 const workSlides = Array.from({ length: Math.ceil(workItems.length / 2) }, (_, index) =>

@@ -23,6 +23,7 @@ export function meta() {
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: image },
+    { name: "twitter:image:alt", content: "nüll. Blog – Webdesign, SEO & Google Ads" },
     { tagName: "link", rel: "canonical", href: url },
   ];
 }

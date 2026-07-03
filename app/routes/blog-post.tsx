@@ -66,6 +66,42 @@ export function meta({ params }: { params: { slug?: string } }) {
       author: "Nüll. Editorial",
       tags: ["Web Design for Lawyers", "Law Firm Website", "Legal SEO"],
     },
+    "handwerker-website-auftraege": {
+      title: "Handwerker Website die Aufträge bringt: Was wirklich zählt | nüll.",
+      description: "Was macht eine Handwerker-Website erfolgreich? Wir zeigen, welche Elemente Besucher in Anfragen verwandeln und warum Design allein nicht reicht.",
+      keywords: "handwerker website, website für handwerker, handwerker homepage, website handwerksbetrieb, webdesign handwerker, handwerker online aufträge, handwerker mehr kunden, handwerker website aufträge",
+      ogTitle: "Handwerker Website die Aufträge bringt: Was wirklich zählt",
+      ogDescription: "Was macht eine Handwerker-Website erfolgreich? Welche Elemente Besucher in Anfragen verwandeln und warum Design allein nicht reicht.",
+      author: "Nüll. Redaktion",
+      tags: ["Handwerker Website", "Webdesign Handwerk", "Online Aufträge Handwerker"],
+    },
+    "seo-handwerker-google": {
+      title: "Lokales SEO für Handwerker: Bei Google ganz oben landen | nüll.",
+      description: "Wie wirst du als Handwerker bei Google gefunden? Dieses SEO-Handbuch erklärt lokale Suchmaschinenoptimierung für Handwerksbetriebe Schritt für Schritt.",
+      keywords: "SEO handwerker, lokales SEO handwerker, handwerker google, handwerker suchmaschinenoptimierung, google business handwerker, handwerker seite 1 google, lokal SEO handwerksbetrieb, google ranking handwerker",
+      ogTitle: "Lokales SEO für Handwerker: Bei Google ganz oben landen",
+      ogDescription: "Wie wirst du als Handwerker bei Google gefunden? Lokale Suchmaschinenoptimierung für Handwerksbetriebe – Schritt für Schritt erklärt.",
+      author: "Nüll. Redaktion",
+      tags: ["SEO Handwerker", "Lokales SEO", "Google Business Handwerker"],
+    },
+    "google-ads-handwerker": {
+      title: "Google Ads für Handwerker: Lohnt es sich wirklich? | nüll.",
+      description: "Lohnen sich Google Ads für Handwerker? Erfahre, wie viel es kostet, welche Keywords funktionieren und wie du mit kleinem Budget mehr Aufträge bekommst.",
+      keywords: "google ads handwerker, google ads handwerksbetrieb, werbung handwerker google, handwerker google anzeigen, google ads kosten handwerker, handwerker mehr anfragen, google werbung handwerk",
+      ogTitle: "Google Ads für Handwerker: Lohnt es sich wirklich?",
+      ogDescription: "Lohnen sich Google Ads für Handwerker? Kosten, Keywords und wie du mit kleinem Budget gezielt mehr Aufträge bekommst.",
+      author: "Nüll. Redaktion",
+      tags: ["Google Ads Handwerker", "Online Werbung Handwerk", "Mehr Aufträge Handwerker"],
+    },
+    "online-marketing-handwerker": {
+      title: "Online Marketing für Handwerker: Das System das Aufträge bringt | nüll.",
+      description: "Online Marketing für Handwerker erklärt: Website, SEO, Google Ads als zusammenhängendes System zur Kundengewinnung. So funktioniert digitales Marketing für Handwerksbetriebe.",
+      keywords: "online marketing handwerker, digitales marketing handwerk, handwerker kunden gewinnen online, handwerker marketing system, handwerksbetrieb mehr kunden, online kundengewinnung handwerker",
+      ogTitle: "Online Marketing für Handwerker: Das System das Aufträge bringt",
+      ogDescription: "Website, SEO und Google Ads als zusammenhängendes System. So gewinnen Handwerksbetriebe konstant neue Kunden über das Internet.",
+      author: "Nüll. Redaktion",
+      tags: ["Online Marketing Handwerker", "Digitales Marketing Handwerk", "Kundengewinnung Handwerker"],
+    },
   };
   const customMeta = lawFirmMeta[post.slug];
   
