@@ -2076,7 +2076,7 @@ export const blogPosts: BlogPost[] = [
       `Deine Praxis hat eine Website. Adresse, Sprechzeiten, ein paar Sätze zum Leistungsspektrum, vielleicht ein Teamfoto.`,
       `Und trotzdem kommen die meisten neuen Patienten über Doctolib, Jameda oder Mundpropaganda, nicht über deine eigene Website.`,
       `Das ist kein Zufall. Es ist die Folge eines einfachen Missverständnisses: Eine Website zu haben ist nicht dasselbe wie online gefunden zu werden. Über 77 % der Patienten suchen Gesundheitsinformationen oder eine passende Praxis zuerst online, meist bevor sie überhaupt bei einer Praxis anrufen.`,
-      `Bei Nüll., einer [Webdesign-Agentur für Selbstständige](/leistungen/webdesign) aus Mannheim, die sich auf Kanzleien, Berater und zunehmend auch Praxen spezialisiert, zeigen wir dir, was eine Arztpraxis-Website 2026 wirklich braucht. Nicht theoretisch, sondern aus direkter Erfahrung mit Webdesign- und SEO-Projekten für Anbieter, die genauso wie Praxen auf Vertrauen und lokale Sichtbarkeit angewiesen sind.`,
+      `Bei Nüll., einer [Webdesign-Agentur für Selbstständige](/kanzlei-websites) aus Mannheim, die sich auf Kanzleien, Berater und zunehmend auch Praxen spezialisiert, zeigen wir dir, was eine Arztpraxis-Website 2026 wirklich braucht. Nicht theoretisch, sondern aus direkter Erfahrung mit Webdesign- und SEO-Projekten für Anbieter, die genauso wie Praxen auf Vertrauen und lokale Sichtbarkeit angewiesen sind.`,
       `## Warum Google Business Profile wichtiger ist als deine Website, aber beide zusammen gehören`,
       `Das überrascht die meisten Praxisinhaber: Der stärkste einzelne Kanal zur Neupatientengewinnung ist nicht die eigene Website. Es ist das Google Business Profile (GBP), das Profil, das bei "Hautarzt Mannheim" oder "Zahnarzt in der Nähe" direkt in der Kartenansicht und der Seitenleiste erscheint.`,
       `Das bedeutet aber nicht, dass die Website unwichtig ist. Es bedeutet, dass beide zusammenspielen müssen.`,
@@ -2116,7 +2116,7 @@ export const blogPosts: BlogPost[] = [
       `| Laufende Betreuung (SEO, Blog, GBP-Pflege) | 300 € bis 800 € / Monat |`,
       `| **Nüll. Praxis-System (Richtwert)** | **ab ca. 600 € upfront + ca. 300 € / Monat** |`,
       `Bei Nüll. bleibt Strategie, Design und Launch bewusst bezahlbar. Die genannten Nüll.-Preise sind ein Orientierungswert, das konkrete Angebot hängt vom Umfang deiner Praxis-Website ab. Die laufende Betreuung sorgt danach für technische SEO, GBP-Pflege, Content-Optimierung und Sichtbarkeit in KI-Antwortsystemen wie ChatGPT und Google AI Overviews, in denen Praxen zunehmend genannt werden wollen, wenn Patienten dort nach Empfehlungen fragen.`,
-      `Mehr zu unserem Ansatz findest du unter [SEO für Praxen und Selbstständige](/leistungen/seo).`,
+      `Mehr zu unserem Ansatz findest du unter [SEO für Praxen und Selbstständige](/kanzlei-websites).`,
       `## Die häufigsten Fehler bei Praxis-Websites`,
       `**Fehler 1: Das Google Business Profile wird komplett vernachlässigt.** Die Website ist gut, aber das GBP-Profil ist unvollständig oder Monate nicht aktualisiert. Ergebnis: Die Praxis taucht im Local Pack gar nicht oder weit unten auf.`,
       `**Fehler 2: Keine eigene Terminbuchung, nur eine Telefonnummer.** Patienten, die außerhalb der Sprechzeiten suchen, springen ab, wenn sie nicht sofort buchen können.`,
@@ -2128,7 +2128,7 @@ export const blogPosts: BlogPost[] = [
       `Sind die Öffnungszeiten aktuell? Gibt es mindestens 20 Bewertungen mit einem Schnitt über 4,2 Sternen? Sind aktuelle Fotos hinterlegt? Wenn eine dieser Fragen "Nein" ist, verlierst du Neupatienten an eine Praxis, die es besser macht.`,
       `**Option 2: Sprich direkt mit uns.**`,
       `Wir bieten ein kostenloses 30-minütiges Erstgespräch an, in dem wir uns deine aktuelle Website und dein GBP-Profil gemeinsam anschauen. Kein Verkaufsgespräch, kein Druck.`,
-      `[→ Kostenloses Erstgespräch buchen](/kontakt)`,
+      `[→ Kostenloses Erstgespräch buchen](/#contact)`,
       `*Rechtlicher Hinweis: Dieser Artikel informiert allgemein über Webdesign und digitales Marketing für Arztpraxen. Alle genannten Preise und Zeitangaben sind Richtwerte. Nüll. ist keine Rechtsberatung und keine Datenschutzberatung. Für rechtliche Fragen zu Gesundheitsdaten und DSGVO wende dich an einen Datenschutzbeauftragten oder Fachanwalt.*`
     ],
     faqs: [
