@@ -26,6 +26,7 @@ export default {
     "/blog/seo-handwerker-google",
     "/blog/google-ads-handwerker",
     "/blog/online-marketing-handwerker",
+    "/blog/webdesign-fuer-arztpraxen",
     "/datenschutz",
     "/impressum",
   ],

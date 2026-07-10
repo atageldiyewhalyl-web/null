@@ -102,6 +102,15 @@ export function meta({ params }: { params: { slug?: string } }) {
       author: "Nüll. Redaktion",
       tags: ["Online Marketing Handwerker", "Digitales Marketing Handwerk", "Kundengewinnung Handwerker"],
     },
+    "webdesign-fuer-arztpraxen": {
+      title: "Webdesign für Arztpraxen: Was eine gute Website wirklich braucht | nüll.",
+      description: "Die meisten Praxis-Websites bringen keine Neupatienten. Wir zeigen, was 2026 wirklich zählt: von Google Business Profile bis DSGVO-konforme Gesundheitsdaten.",
+      keywords: "webdesign für arztpraxen, arztpraxis website erstellen, was muss auf eine arztpraxis website, seo für ärzte, praxis website kosten, google business profile arztpraxis",
+      ogTitle: "Webdesign für Arztpraxen: Was eine gute Website wirklich braucht",
+      ogDescription: "Die meisten Praxis-Websites bringen keine Neupatienten. Was 2026 wirklich zählt: von Google Business Profile bis DSGVO-konforme Gesundheitsdaten.",
+      author: "Nüll. Redaktion",
+      tags: ["Webdesign für Arztpraxen", "SEO für Ärzte", "Praxis Website"],
+    },
   };
   const customMeta = lawFirmMeta[post.slug];
   
