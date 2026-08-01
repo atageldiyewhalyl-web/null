@@ -206,6 +206,14 @@ export const workItems = [
     description:
       "Ein moderner Service-Auftritt für Rohr- und Kanalreinigung, der akute Probleme klar anspricht und Besucher schnell zur Anfrage führt.",
   },
+  {
+    title: "Waschbar",
+    image: "/assets/new-landing/waschbar-hero-demo.webp",
+    alt: "Waschbar SB Waschsalon website hero preview",
+    link: "https://www.waschbar.eu",
+    description:
+      "Ein kompletter Kundengewinnungsfunnel für den SB Waschsalon in Heidelberg & Ludwigshafen: Website, Meta & Google Ads, Tracking über HubSpot, E-Mail-Marketing und CRM-Integration aus einer Hand.",
+  },
 ];
 
 const workSlides = Array.from({ length: Math.ceil(workItems.length / 2) }, (_, index) =>
@@ -1777,30 +1785,32 @@ export default function NewLandingSpinnerSection({
                 </div>
 
                 <div className="relative z-10">
-                  <div
-                    className={`grid grid-cols-2 gap-8 border-b pb-8 ${
-                      story.variant === "light" ? "border-[#d8dde7]" : "border-white/25"
-                    }`}
-                  >
-                    <div>
-                      <div className="text-[clamp(2.2rem,3vw,3rem)] font-bold tracking-[-0.06em]">
-                        {story.metricOne}
+                  {"metricOne" in story && story.metricOne && (
+                    <div
+                      className={`grid grid-cols-2 gap-8 border-b pb-8 ${
+                        story.variant === "light" ? "border-[#d8dde7]" : "border-white/25"
+                      }`}
+                    >
+                      <div>
+                        <div className="text-[clamp(2.2rem,3vw,3rem)] font-bold tracking-[-0.06em]">
+                          {story.metricOne}
+                        </div>
+                        <p className={`mt-1 text-sm ${story.variant === "light" ? "text-[#6b7280]" : "text-white/70"}`}>
+                          {story.metricOneLabel}
+                        </p>
                       </div>
-                      <p className={`mt-1 text-sm ${story.variant === "light" ? "text-[#6b7280]" : "text-white/70"}`}>
-                        {story.metricOneLabel}
-                      </p>
-                    </div>
-                    <div>
-                      <div className="text-[clamp(2.2rem,3vw,3rem)] font-bold tracking-[-0.06em]">
-                        {story.metricTwo}
+                      <div>
+                        <div className="text-[clamp(2.2rem,3vw,3rem)] font-bold tracking-[-0.06em]">
+                          {story.metricTwo}
+                        </div>
+                        <p className={`mt-1 text-sm ${story.variant === "light" ? "text-[#6b7280]" : "text-white/70"}`}>
+                          {story.metricTwoLabel}
+                        </p>
                       </div>
-                      <p className={`mt-1 text-sm ${story.variant === "light" ? "text-[#6b7280]" : "text-white/70"}`}>
-                        {story.metricTwoLabel}
-                      </p>
                     </div>
-                  </div>
+                  )}
                   <div className="mt-6 flex items-center gap-4">
-                    {story.name !== "Hasan Dogru" && (
+                    {story.name !== "Hasan Dogru" && story.name !== "Waschbar GmbH" && (
                       "avatar" in story && story.avatar ? (
                         <img
                           src={story.avatar}
