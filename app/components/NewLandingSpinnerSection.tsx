@@ -167,38 +167,6 @@ const stats: StatItem[] = [
 
 export const workItems = [
   {
-    title: "B.Y. Consulting",
-    image: "/assets/new-landing/by-hero-demo.webp",
-    alt: "B.Y. Consulting website hero preview",
-    link: "https://www.besiryaman-mentoring.de",
-    description:
-      "Ein präziser Beratungsauftritt, der Kompetenz sichtbar macht und Leads fokussiert.",
-  },
-  {
-    title: "Herkules",
-    image: "/assets/new-landing/herkules-hero-demo.webp",
-    alt: "Herkules website hero preview",
-    link: "https://www.umzuege-herkules.de/",
-    description:
-      "Ein lokaler Service-Auftritt mit klarer Botschaft, starker Bildwelt und schneller Orientierung.",
-  },
-  {
-    title: "Dogru Kanzlei",
-    image: "/assets/new-landing/hasan-hero-demo.webp",
-    alt: "Dogru Kanzlei website hero preview",
-    link: "https://hasandogru.de",
-    description:
-      "Ein vertrauensvoller Kanzlei-Auftritt mit klarem Profil und direkter Anfrageführung.",
-  },
-  {
-    title: "Spine Robotics",
-    image: "/assets/new-landing/spine-demo.webp",
-    alt: "Spine website hero preview",
-    link: "https://spine-robotics.vercel.app/",
-    description:
-      "Ein klarer Auftritt für ein Gesundheitsangebot: ruhig, vertrauensvoll und sofort verständlich.",
-  },
-  {
     title: "Onkel Abwassertechnik",
     image: "/assets/new-landing/onkel-portfolio.png",
     alt: "Onkel Abwassertechnik website hero preview",
@@ -213,6 +181,38 @@ export const workItems = [
     link: "https://www.waschbar.eu",
     description:
       "Ein kompletter Kundengewinnungsfunnel für den SB Waschsalon in Heidelberg & Ludwigshafen: Website, Meta & Google Ads, Tracking über HubSpot, E-Mail-Marketing und CRM-Integration aus einer Hand.",
+  },
+  {
+    title: "Dogru Kanzlei",
+    image: "/assets/new-landing/hasan-hero-demo.webp",
+    alt: "Dogru Kanzlei website hero preview",
+    link: "https://hasandogru.de",
+    description:
+      "Ein vertrauensvoller Kanzlei-Auftritt mit klarem Profil und direkter Anfrageführung.",
+  },
+  {
+    title: "Herkules",
+    image: "/assets/new-landing/herkules-hero-demo.webp",
+    alt: "Herkules website hero preview",
+    link: "https://www.umzuege-herkules.de/",
+    description:
+      "Ein lokaler Service-Auftritt mit klarer Botschaft, starker Bildwelt und schneller Orientierung.",
+  },
+  {
+    title: "S&O Beauty Salon",
+    image: "/assets/new-landing/so-mock-up-mac.png",
+    alt: "S&O Beauty Salon website preview",
+    link: "https://www.beautyso.de/",
+    description:
+      "Website, Meta-Ads-Kampagnen und Instagram-Setup für ein Mannheimer Kosmetikstudio mit Fokus auf Laser-Haarentfernung, Hautpflege und direkte Terminanfragen.",
+  },
+  {
+    title: "B.Y. Consulting",
+    image: "/assets/new-landing/by-hero-demo.webp",
+    alt: "B.Y. Consulting website hero preview",
+    link: "https://www.besiryaman-mentoring.de",
+    description:
+      "Ein präziser Beratungsauftritt, der Kompetenz sichtbar macht und Leads fokussiert.",
   },
 ];
 

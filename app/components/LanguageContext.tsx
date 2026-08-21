@@ -406,15 +406,15 @@ const labels: Record<string, Record<Language, string>> = {
     de: "Positionierung und Markenaufbau für einen Berater, der seine Online-Präsenz stärken möchte. Wir haben die Botschaft geschärft, die Markenidentität entwickelt und eine Website erstellt, die Vertrauen schafft.",
     tr: "Online varlığını güçlendirmek isteyen bir danışman için konumlandırma ve marka çalışması. Mesajı netleştirdik, marka kimliğini oluşturduk ve güven sağlayan bir web sitesi geliştirdik.",
   },
-  "work.spine.category": {
-    en: "Robotics-as-a-Service Website",
-    de: "Robotics-as-a-Service Website",
-    tr: "Robotics-as-a-Service Web Sitesi",
+  "work.soBeauty.category": {
+    en: "Beauty salon website, Meta Ads & Instagram setup",
+    de: "Kosmetikstudio Website, Meta Ads & Instagram Setup",
+    tr: "Guzellik salonu web sitesi, Meta Ads ve Instagram kurulumu",
   },
-  "work.spine.desc": {
-    en: "A dark, premium launch site for humanoid robots in reception, tours, patrol, logistics and events, built around one managed deployment model.",
-    de: "Eine dunkle, hochwertige Launch-Website für humanoide Roboter in Empfang, Führungen, Patrouille, Logistik und Events — aufgebaut rund um ein gemanagtes Deployment-Modell.",
-    tr: "Resepsiyon, turlar, devriye, lojistik ve etkinliklerde kullanılan humanoid robotlar için tek bir yönetilen deployment modeli etrafında tasarlanmış premium bir launch sitesi.",
+  "work.soBeauty.desc": {
+    en: "A polished online presence for a Mannheim beauty salon focused on laser hair removal, skin care and AquaFacial treatments, paired with Meta Ads campaigns and an Instagram setup for direct appointment enquiries.",
+    de: "Ein gepflegter Online-Auftritt für ein Mannheimer Kosmetikstudio rund um Laser-Haarentfernung, Hautpflege und AquaFacial, kombiniert mit Meta-Ads-Kampagnen und Instagram-Setup für direkte Terminanfragen.",
+    tr: "Mannheim'da lazer epilasyon, cilt bakimi ve AquaFacial uygulamalarina odaklanan bir guzellik salonu icin hazirlanan web sitesi; Meta Ads kampanyalari ve dogrudan randevu talepleri icin Instagram kurulumu ile birlikte.",
   },
 
   // Pricing

@@ -16,7 +16,7 @@ import herkulesLogo from "../assets/Herkules/Herkules Logo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import dogruLogo from "../assets/Dogru kanzlei/logo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
-import spineHeroDemo from "../assets/spine demo.webp";
+import soBeautyHeroDemo from "../assets/SO Mock Up Mac.png";
 
 const projects = [
   {
@@ -53,15 +53,15 @@ const projects = [
     link: "https://hasandogru.de",
   },
   {
-    id: "spine",
-    title: "Spine Robotics",
-    categoryKey: "work.spine.category",
-    descKey: "work.spine.desc",
-    image: spineHeroDemo,
+    id: "so-beauty",
+    title: "S&O Beauty Salon",
+    categoryKey: "work.soBeauty.category",
+    descKey: "work.soBeauty.desc",
+    image: soBeautyHeroDemo,
     clientLogo: null,
     clientLogoAlt: "",
     clientLogoClassName: "",
-    link: "https://spine-robotics.vercel.app/",
+    link: "https://www.beautyso.de/",
   },
 ];
 
