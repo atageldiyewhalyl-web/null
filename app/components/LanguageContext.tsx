@@ -380,6 +380,16 @@ const labels: Record<string, Record<Language, string>> = {
 
   "work.label": { en: "Selected Work", de: "Ausgewählte Projekte", tr: "Seçili Çalışmalar" },
   "work.title": { en: "Projects that speak for themselves.", de: "Arbeiten, die für sich sprechen.", tr: "Kendini anlatan projeler." },
+  "work.ftSicherheitstechnik.category": {
+    en: "Security technology website & digital acquisition",
+    de: "Sicherheitstechnik Website & digitale Anfragen",
+    tr: "Güvenlik teknolojisi web sitesi ve dijital talep akışı",
+  },
+  "work.ftSicherheitstechnik.desc": {
+    en: "A sharp website for a Mannheim security technology company with 15+ years of experience, built around on-site consulting, clean installation, alarm systems, video surveillance, access control and direct enquiries.",
+    de: "Ein präziser Website-Auftritt für einen Mannheimer Sicherheitstechnik-Anbieter mit über 15 Jahren Erfahrung: Vor-Ort-Beratung, saubere Installation, Alarmanlagen, Videoüberwachung, Zutrittskontrolle und direkte Anfragen klar gebündelt.",
+    tr: "Mannheim'da 15 yılı aşkın deneyime sahip bir güvenlik teknolojisi firması için; yerinde danışmanlık, temiz kurulum, alarm sistemleri, video gözetim, erişim kontrolü ve doğrudan talepleri net şekilde birleştiren web sitesi.",
+  },
   "work.herkules.category": {
     en: "Moving company website & local visibility",
     de: "Umzugsunternehmen Website & lokale Sichtbarkeit",

@@ -167,12 +167,12 @@ const stats: StatItem[] = [
 
 export const workItems = [
   {
-    title: "Onkel Abwassertechnik",
-    image: "/assets/new-landing/onkel-portfolio.png",
-    alt: "Onkel Abwassertechnik website hero preview",
-    link: "https://www.onkel-abwassertechnik.de",
+    title: "FT Sicherheitstechnik",
+    image: "/assets/new-landing/ft-sicherheitstechnik-mockup.png",
+    alt: "FT Sicherheitstechnik website preview",
+    link: "https://www.ftsicherheitstechnik.com/",
     description:
-      "Ein moderner Service-Auftritt für Rohr- und Kanalreinigung, der akute Probleme klar anspricht und Besucher schnell zur Anfrage führt.",
+      "Ein klarer Website-Auftritt für Sicherheitstechnik in Mannheim: Beratung, Planung, Service und Installation für Alarmanlagen, Videoüberwachung, Zutrittskontrolle und Smart Home.",
   },
   {
     title: "Waschbar",
@@ -181,6 +181,14 @@ export const workItems = [
     link: "https://www.waschbar.eu",
     description:
       "Ein kompletter Kundengewinnungsfunnel für den SB Waschsalon in Heidelberg & Ludwigshafen: Website, Meta & Google Ads, Tracking über HubSpot, E-Mail-Marketing und CRM-Integration aus einer Hand.",
+  },
+  {
+    title: "Onkel Abwassertechnik",
+    image: "/assets/new-landing/onkel-portfolio.png",
+    alt: "Onkel Abwassertechnik website hero preview",
+    link: "https://www.onkel-abwassertechnik.de",
+    description:
+      "Ein moderner Service-Auftritt für Rohr- und Kanalreinigung, der akute Probleme klar anspricht und Besucher schnell zur Anfrage führt.",
   },
   {
     title: "Dogru Kanzlei",

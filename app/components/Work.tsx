@@ -17,8 +17,21 @@ import herkulesLogo from "../assets/Herkules/Herkules Logo.webp";
 import dogruLogo from "../assets/Dogru kanzlei/logo.webp";
 // @ts-ignore – vite-imagetools resolves these at build time
 import soBeautyHeroDemo from "../assets/SO Mock Up Mac.png";
+// @ts-ignore – vite-imagetools resolves these at build time
+import ftSicherheitstechnikHeroDemo from "../assets/ft-sicherheitstechnik-mockup.png";
 
 const projects = [
+  {
+    id: "ft-sicherheitstechnik",
+    title: "FT Sicherheitstechnik",
+    categoryKey: "work.ftSicherheitstechnik.category",
+    descKey: "work.ftSicherheitstechnik.desc",
+    image: ftSicherheitstechnikHeroDemo,
+    clientLogo: null,
+    clientLogoAlt: "",
+    clientLogoClassName: "",
+    link: "https://www.ftsicherheitstechnik.com/",
+  },
   {
     id: "herkules",
     title: "Herkules Umzüge Mannheim",
