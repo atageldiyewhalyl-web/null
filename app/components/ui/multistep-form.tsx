@@ -1,12 +1,13 @@
 "use client";
 
 import { type ReactNode, useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import {
   ArrowRight,
   BadgeCheck,
   Check,
   ChevronLeft,
+  Instagram,
   Loader2,
   MapPin,
   Megaphone,
@@ -24,7 +25,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -37,6 +37,8 @@ const steps = [
   { id: "website", title: "Website" },
   { id: "contact", title: "Kontakt" },
 ] as const;
+
+type StepId = (typeof steps)[number]["id"];
 
 const sourceOptions = [
   "Google Search",
@@ -72,6 +74,12 @@ const serviceOptions = [
     color: "text-[#ff9500]",
   },
   {
+    id: "meta-ads",
+    label: "Meta Ads (Instagram & Facebook)",
+    icon: Instagram,
+    color: "text-[#0866ff]",
+  },
+  {
     id: "lead-system",
     label: "Digitales Lead-System",
     icon: Target,
@@ -94,8 +102,10 @@ export type MultistepFormData = {
 
 type MultistepFormProps = {
   className?: string;
+  hiddenSteps?: StepId[];
   onSubmit?: (data: MultistepFormData) => Promise<void> | void;
   showIntro?: boolean;
+  successContent?: ReactNode;
 };
 
 const emptyFormData: MultistepFormData = {
@@ -116,12 +126,6 @@ const fieldVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const stepVariants = {
-  hidden: { opacity: 0, x: 28 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.32 } },
-  exit: { opacity: 0, x: -28, transition: { duration: 0.2 } },
-};
-
 const isValidEmail = (email: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email.trim());
 
@@ -134,8 +138,10 @@ const isValidPhone = (phone: string) => {
 
 export default function MultistepForm({
   className,
+  hiddenSteps = [],
   onSubmit,
   showIntro = true,
+  successContent,
 }: MultistepFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState(emptyFormData);
@@ -143,6 +149,11 @@ export default function MultistepForm({
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isComplete, setIsComplete] = useState(false);
   const isEmbedded = !showIntro;
+  const activeSteps = useMemo(
+    () => steps.filter((step) => !hiddenSteps.includes(step.id)),
+    [hiddenSteps],
+  );
+  const currentStepId = activeSteps[currentStep]?.id ?? activeSteps[0].id;
 
   const selectedServiceLabels = useMemo(
     () =>
@@ -183,18 +194,18 @@ export default function MultistepForm({
   };
 
   const isStepValid = () => {
-    if (currentStep === 0) {
+    if (currentStepId === "services") {
       return formData.services.length > 0;
     }
 
-    if (currentStep === 1) {
+    if (currentStepId === "source") {
       return (
         formData.foundFrom &&
         (formData.foundFrom !== "Other" || formData.foundFromOther.trim())
       );
     }
 
-    if (currentStep === 2) {
+    if (currentStepId === "website") {
       return true;
     }
 
@@ -210,7 +221,7 @@ export default function MultistepForm({
   };
 
   const handleNext = () => {
-    if (currentStep < steps.length - 1) {
+    if (currentStep < activeSteps.length - 1) {
       setCurrentStep((step) => step + 1);
     }
   };
@@ -236,9 +247,13 @@ export default function MultistepForm({
   };
 
   if (isComplete) {
+    if (successContent) {
+      return <>{successContent}</>;
+    }
+
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
+        initial={false}
         animate={{ opacity: 1, scale: 1 }}
         className={cn(
           "mx-auto flex min-h-[420px] w-full max-w-xl flex-col items-center justify-center rounded-[2rem] bg-white p-8 text-center shadow-[0_24px_70px_rgba(0,0,0,0.08)]",
@@ -274,7 +289,7 @@ export default function MultistepForm({
 
       <div className={cn(isEmbedded ? "mb-5 sm:mb-6" : "mb-7")}>
         <div className="mb-3 flex items-center justify-between">
-          {steps.map((step, index) => {
+          {activeSteps.map((step, index) => {
             const isActive = index === currentStep;
             const isDone = index < currentStep;
 
@@ -327,15 +342,8 @@ export default function MultistepForm({
       </div>
 
       <Card className="overflow-hidden rounded-[1.35rem] border-[#eeeeef] bg-white text-[#0e0e10] shadow-[0_24px_70px_rgba(0,0,0,0.08)] sm:rounded-[1.65rem] md:rounded-[2rem] [&_input]:text-[#0e0e10] [&_input]:caret-[#007aff] [&_input::placeholder]:text-[#8e8e93] [&_textarea]:text-[#0e0e10] [&_textarea]:caret-[#007aff] [&_textarea::placeholder]:text-[#8e8e93]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={steps[currentStep].id}
-            variants={stepVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {currentStep === 3 && (
+        <div key={currentStepId}>
+            {currentStepId === "contact" && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
                   <CardTitle className="flex items-center gap-3 text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
@@ -408,7 +416,7 @@ export default function MultistepForm({
               </>
             )}
 
-            {currentStep === 1 && (
+            {currentStepId === "source" && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
                   <CardTitle className="text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
@@ -425,7 +433,7 @@ export default function MultistepForm({
                       <motion.label
                         key={option}
                         variants={fieldVariants}
-                        initial="hidden"
+                        initial={false}
                         animate="visible"
                         transition={{ delay: index * 0.04 }}
                         htmlFor={`source-${option}`}
@@ -457,7 +465,7 @@ export default function MultistepForm({
               </>
             )}
 
-            {currentStep === 0 && (
+            {currentStepId === "services" && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
                   <CardTitle className="text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
@@ -473,8 +481,10 @@ export default function MultistepForm({
                       <motion.button
                         key={service.id}
                         type="button"
+                        role="checkbox"
+                        aria-checked={isSelected}
                         variants={fieldVariants}
-                        initial="hidden"
+                        initial={false}
                         animate="visible"
                         transition={{ delay: index * 0.04 }}
                         onClick={() => toggleService(service.id)}
@@ -489,15 +499,17 @@ export default function MultistepForm({
                         <span className="min-w-0 text-[0.96rem] font-black leading-tight text-[#1d1d1f] [overflow-wrap:anywhere] sm:text-[1rem]">
                           {service.label}
                         </span>
-                        <Checkbox
-                          checked={isSelected}
-                          onClick={(event) => event.stopPropagation()}
-                          onCheckedChange={() => toggleService(service.id)}
+                        <span
+                          aria-hidden
                           className={cn(
-                            "h-5 w-5 rounded-full border-[#d2d2d7] sm:h-6 sm:w-6",
-                            isSelected && "border-[#007aff] bg-[#007aff] text-white",
+                            "flex h-5 w-5 items-center justify-center rounded-full border transition-colors sm:h-6 sm:w-6",
+                            isSelected
+                              ? "border-[#007aff] bg-[#007aff] text-white"
+                              : "border-[#d2d2d7]",
                           )}
-                        />
+                        >
+                          {isSelected && <Check className="h-3.5 w-3.5" />}
+                        </span>
                       </motion.button>
                     );
                   })}
@@ -505,7 +517,7 @@ export default function MultistepForm({
               </>
             )}
 
-            {currentStep === 2 && (
+            {currentStepId === "website" && (
               <>
                 <CardHeader className="p-6 pb-4 md:p-8 md:pb-5">
                   <CardTitle className="text-[1.5rem] leading-tight tracking-[-0.035em] text-[#0e0e10] sm:text-[1.75rem]">
@@ -545,8 +557,7 @@ export default function MultistepForm({
                 </CardContent>
               </>
             )}
-          </motion.div>
-        </AnimatePresence>
+        </div>
 
         <CardFooter className="flex flex-col gap-4 border-t border-[#f5f5f7] p-6 md:flex-row md:items-center md:justify-between md:p-8">
           <Button
@@ -566,7 +577,7 @@ export default function MultistepForm({
             )}
             <Button
               type="button"
-              onClick={currentStep === steps.length - 1 ? handleSubmit : handleNext}
+              onClick={currentStep === activeSteps.length - 1 ? handleSubmit : handleNext}
               disabled={!isStepValid() || isSubmitting}
               className="h-12 w-full rounded-full bg-[#0e0e10] px-8 font-bold text-white hover:bg-black md:w-auto"
             >
@@ -575,7 +586,7 @@ export default function MultistepForm({
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Wird gesendet
                 </>
-              ) : currentStep === steps.length - 1 ? (
+              ) : currentStep === activeSteps.length - 1 ? (
                 <>
                   Absenden
                   <Check className="ml-2 h-4 w-4" />
@@ -592,7 +603,7 @@ export default function MultistepForm({
       </Card>
 
       <p className={cn("mt-4 text-center text-xs font-semibold sm:mt-5 sm:text-sm", isEmbedded ? "text-white/75" : "text-[#86868b]")}>
-        Schritt {currentStep + 1} von {steps.length}: {steps[currentStep].title}
+        Schritt {currentStep + 1} von {activeSteps.length}: {activeSteps[currentStep].title}
       </p>
     </div>
   );
@@ -614,7 +625,7 @@ function FormField({
   return (
     <motion.div
       variants={fieldVariants}
-      initial="hidden"
+      initial={false}
       animate="visible"
       className={cn("space-y-2", className)}
     >

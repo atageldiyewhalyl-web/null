@@ -104,6 +104,7 @@ const contactFormServiceLabels: Record<string, string> = {
   seo: "Google Sichtbarkeit (SEO)",
   geo: "KI-Suche Sichtbarkeit (GEO)",
   "google-ads": "Google Ads Kampagnen-Management",
+  "meta-ads": "Meta Ads (Instagram & Facebook)",
   "lead-system": "Digitales Lead-System",
 };
 
@@ -221,6 +222,14 @@ export const workItems = [
     link: "https://www.besiryaman-mentoring.de",
     description:
       "Ein präziser Beratungsauftritt, der Kompetenz sichtbar macht und Leads fokussiert.",
+  },
+  {
+    title: "Onkel Abwassertechnik",
+    image: "/assets/new-landing/onkel-portfolio.png",
+    alt: "Onkel Abwassertechnik website preview",
+    link: "#contact",
+    description:
+      "Ein moderner Service-Auftritt für Rohr- und Kanalreinigung, der akute Probleme klar anspricht und Besucher schnell zur Anfrage führt.",
   },
 ];
 
