@@ -8,6 +8,7 @@ export default {
   prerender: [
     "/",
     "/kanzlei-websites",
+    "/mandate-kanzlei-mannheim",
     "/arztpraxis-websites",
     "/leistungen/webdesign",
     "/leistungen/seo",
