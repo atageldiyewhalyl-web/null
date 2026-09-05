@@ -24,20 +24,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Google Tag Manager */}
+        {shouldLoadAnalytics && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGRDT988');`,
+            }}
+          />
+        )}
         <Meta />
         <Links />
-        {shouldLoadAnalytics && (
-          <>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WB0JX9VN2" />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WB0JX9VN2');gtag('config','AW-18170315805');`,
-              }}
-            />
-          </>
-        )}
       </head>
       <body className="antialiased" suppressHydrationWarning>
+        {/* Google Tag Manager (noscript) */}
+        {shouldLoadAnalytics && (
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGRDT988" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          />
+        )}
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -59,6 +65,7 @@ export default function App() {
     location.pathname.startsWith("/hasan") ||
     location.pathname.startsWith("/website-analyse") ||
     location.pathname.startsWith("/kanzlei-websites") ||
+    location.pathname.startsWith("/mandate-kanzlei-mannheim") ||
     location.pathname.startsWith("/lawyers") ||
     location.pathname.startsWith("/arztpraxis-websites") ||
     location.pathname.startsWith("/doctors");
