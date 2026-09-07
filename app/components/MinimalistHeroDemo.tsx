@@ -3,6 +3,9 @@ import { MinimalistHero } from "./ui/minimalist-hero";
 import NewLandingSpinnerSection from "./NewLandingSpinnerSection";
 
 export default function MinimalistHeroDemo() {
+  const whatsappPrefilledMessage =
+    "Hallo nüll, ich habe eure Website gefunden und möchte wissen, ob ihr uns helfen könnt, unsere Online-Präsenz in mehr Anfragen zu verwandeln. Können wir kurz darüber schreiben?";
+
   return (
     <main className="relative isolate bg-white">
       <section className="relative z-0 h-[200vh]">
@@ -38,7 +41,7 @@ export default function MinimalistHeroDemo() {
         </div>
       </section>
       <div className="relative z-20 -mt-[100vh] min-h-screen bg-white">
-        <NewLandingSpinnerSection />
+        <NewLandingSpinnerSection whatsappPrefilledMessage={whatsappPrefilledMessage} />
       </div>
     </main>
   );

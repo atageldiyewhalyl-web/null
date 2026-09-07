@@ -302,6 +302,9 @@ function KanzleiRiskFactorsSection() {
 export function KanzleiWebsitesV2Page({
   serviceUrl = "https://xn--nll-hoa.com/kanzlei-websites-v2",
 }: KanzleiWebsitesV2PageProps) {
+  const whatsappPrefilledMessage =
+    "Hallo nüll, ich habe eure Kanzlei-Website-Seite gefunden und möchte wissen, ob ihr uns helfen könnt, unseren Kanzlei-Auftritt in mehr Mandatsanfragen zu verwandeln. Können wir kurz darüber schreiben?";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -351,6 +354,7 @@ export function KanzleiWebsitesV2Page({
           statsCtaLabel="Kostenlose Kanzlei-Analyse sichern"
           statsCtaHref="#contact"
           statsCtaEventName="lawyer_results_cta"
+          whatsappPrefilledMessage={whatsappPrefilledMessage}
           statsItems={[
             {
               value: 97,

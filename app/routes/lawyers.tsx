@@ -30,6 +30,9 @@ export function meta() {
 }
 
 export default function LawyersRoute() {
+  const whatsappPrefilledMessage =
+    "Hallo nüll, ich habe eure Kanzlei-Website-Seite gefunden und möchte wissen, ob ihr uns helfen könnt, unseren Kanzlei-Auftritt in mehr Mandatsanfragen zu verwandeln. Können wir kurz darüber schreiben?";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -102,6 +105,7 @@ export default function LawyersRoute() {
           statsCtaLabel="Kostenlose Kanzlei-Analyse sichern"
           statsCtaHref="#contact"
           statsCtaEventName="lawyer_results_cta"
+          whatsappPrefilledMessage={whatsappPrefilledMessage}
           statsItems={[
             {
               value: 97,

@@ -484,35 +484,8 @@ const lawyerFaqItems = [
 
 const priceScopes = ["Website", "SEO", "KI-Sichtbarkeit", "Google Ads", "Lead System"];
 
-const whatsappPrefilledMessage =
-  "Hallo%20n%C3%BCll%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website%20f%C3%BCr%20meine%20Praxis.%20K%C3%B6nnen%20Sie%20mir%20kurz%20sagen%2C%20wie%20eine%20Zusammenarbeit%20abl%C3%A4uft%3F";
-
-const contactMethods = [
-  {
-    title: "WhatsApp",
-    description: "Schreiben Sie uns direkt.",
-    href: `https://wa.me/4915256569852?text=${whatsappPrefilledMessage}`,
-    action: "Nachricht senden",
-    icon: whatsappIcon,
-    eventName: "lawyer_whatsapp_click",
-  },
-  {
-    title: "Anrufen",
-    description: "Sprechen Sie direkt mit uns.",
-    href: "tel:+4915256569852",
-    action: "+49 1525 6569852",
-    Icon: Phone,
-    eventName: "lawyer_phone_click",
-  },
-  {
-    title: "Gmail",
-    description: "Lieber per E-Mail? Kein Problem.",
-    href: "mailto:info@nüll.com",
-    action: "info@nüll.com",
-    icon: gmailIcon,
-    eventName: "lawyer_email_click",
-  },
-];
+const defaultWhatsappPrefilledMessage =
+  "Hallo nüll, ich interessiere mich für eine neue Website für meine Praxis. Können Sie mir kurz sagen, wie eine Zusammenarbeit abläuft?";
 
 const lawyerProblemItems = [
   {
@@ -1374,6 +1347,7 @@ type NewLandingSpinnerSectionProps = {
   faqIntro?: string;
   contactTrackingCategory?: string;
   contactEventPrefix?: string;
+  whatsappPrefilledMessage?: string;
 };
 
 export default function NewLandingSpinnerSection({
@@ -1397,6 +1371,7 @@ export default function NewLandingSpinnerSection({
   faqIntro,
   contactTrackingCategory = "lawyer_contact",
   contactEventPrefix = "lawyer",
+  whatsappPrefilledMessage = defaultWhatsappPrefilledMessage,
 }: NewLandingSpinnerSectionProps = {}) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isSystemRevealVisible, setIsSystemRevealVisible] = useState(false);
@@ -1413,6 +1388,32 @@ export default function NewLandingSpinnerSection({
     statsCtaLabel ?? (doctorMockupItems?.length ? "Kostenlose Praxis-Analyse sichern" : undefined);
   const effectiveStatsCtaEventName =
     statsCtaEventName ?? (doctorMockupItems?.length ? "doctor_results_cta" : "lawyer_results_cta");
+  const contactMethods = [
+    {
+      title: "WhatsApp",
+      description: "Schreiben Sie uns direkt.",
+      href: `https://wa.me/4915256569852?text=${encodeURIComponent(whatsappPrefilledMessage)}`,
+      action: "Nachricht senden",
+      icon: whatsappIcon,
+      eventName: "lawyer_whatsapp_click",
+    },
+    {
+      title: "Anrufen",
+      description: "Sprechen Sie direkt mit uns.",
+      href: "tel:+4915256569852",
+      action: "+49 1525 6569852",
+      Icon: Phone,
+      eventName: "lawyer_phone_click",
+    },
+    {
+      title: "Gmail",
+      description: "Lieber per E-Mail? Kein Problem.",
+      href: "mailto:info@nüll.com",
+      action: "info@nüll.com",
+      icon: gmailIcon,
+      eventName: "lawyer_email_click",
+    },
+  ];
   const faqColumns = [
     currentFaqItems.filter((_, index) => index % 2 === 0),
     currentFaqItems.filter((_, index) => index % 2 === 1),

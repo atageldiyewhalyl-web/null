@@ -309,6 +309,9 @@ function DoctorRiskFactorsSection() {
 }
 
 export default function DoctorsRoute() {
+  const whatsappPrefilledMessage =
+    "Hallo nüll, ich habe eure Praxis-Website-Seite gefunden und möchte wissen, ob ihr uns helfen könnt, unseren Praxis-Auftritt in mehr Terminanfragen zu verwandeln. Können wir kurz darüber schreiben?";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -448,6 +451,7 @@ export default function DoctorsRoute() {
           showLawyerProblemSection
           contactTrackingCategory="doctor_contact"
           contactEventPrefix="doctor"
+          whatsappPrefilledMessage={whatsappPrefilledMessage}
           doctorMockupItems={doctorMockups}
           problemSectionOverride={<DoctorRiskFactorsSection />}
           showSystemSection={false}
