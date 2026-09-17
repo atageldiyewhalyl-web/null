@@ -2,21 +2,13 @@ import { options } from "../options";
 import type { Questionnaire } from "../types";
 import { bergstoneKeramiksanTr } from "./bergstone-keramiksan.tr";
 
-const socialLanguages = options(
-  "Deutsch",
-  "Türkisch",
-  "Niederländisch",
-  "Englisch",
-  "Deutschsprachige Videos mit Untertiteln in weiteren Sprachen",
-  "Unterschiedliche Sprachen je nach Zielgruppe",
-  "Andere",
-);
+const socialLanguages = options("Deutsch", "Türkisch", "Englisch");
 
-const websiteLanguages = options("Deutsch", "Niederländisch", "Türkisch", "Englisch", "Andere");
+const websiteLanguages = options("Deutsch", "Türkisch", "Englisch");
 
 export const bergstoneKeramiksan: Questionnaire = {
   id: "bergstone-keramiksan-content-website",
-  version: 4,
+  version: 5,
   client: {
     slug: "bergstone-keramiksan",
     name: "Bergstone Keramiksan",
@@ -69,8 +61,8 @@ export const bergstoneKeramiksan: Questionnaire = {
           key: "reasons_customers_choose_us",
           type: "longtext",
           required: true,
-          label: "Warum kaufen Kunden bei Bergstone Keramiksan und nicht bei einem anderen Fliesenhändler?",
-          help: "Am besten so, wie Ihre Kunden es selbst sagen.",
+          label: "Was macht euch aus? Warum bevorzugen Kunden euch – oder warum sollten sie euch statt anderer Fliesenhändler bevorzugen?",
+          help: "Gern auch so, wie Ihre Kunden es selbst sagen.",
           placeholder: "z. B. „Bei euch bekomme ich Großformate sofort ab Lager.“",
         },
         {
@@ -101,13 +93,30 @@ export const bergstoneKeramiksan: Questionnaire = {
         },
         {
           id: "q4",
+          key: "preferred_contact_channels",
+          type: "multi",
+          required: true,
+          max: 3,
+          label: "Wie sollen Ihre Kunden Sie am liebsten erreichen?",
+          options: options(
+            "Den Showroom besuchen",
+            "Uns anrufen",
+            "Uns per WhatsApp kontaktieren",
+            "Uns über Instagram / Social Media schreiben",
+            "Ein Formular auf unserer Website ausfüllen",
+            "Uns eine E-Mail senden",
+            "Andere",
+          ),
+        },
+        {
+          id: "q5",
           key: "frequent_customer_questions",
           type: "longtext",
           label: "Welche Fragen stellen Ihre Kunden am häufigsten, bevor sie Fliesen kaufen?",
           help: "Zum Beispiel Preis pro Quadratmeter, Verfügbarkeit, passende Größe, Eignung fürs Badezimmer, Lieferung, Verlegung usw.",
         },
         {
-          id: "q5",
+          id: "q6",
           key: "b2b_customer_problems",
           type: "longtext",
           required: true,
@@ -117,7 +126,7 @@ export const bergstoneKeramiksan: Questionnaire = {
           placeholder: "z. B. „Die 120er-Platten bekommen wir ohne Aufzug kaum in den 4. Stock.“",
         },
         {
-          id: "q6",
+          id: "q7",
           group: "Ihre Produkte",
           key: "priority_products",
           type: "longtext",
@@ -127,7 +136,7 @@ export const bergstoneKeramiksan: Questionnaire = {
           placeholder: "z. B. Pamesa Marmoroptik 60x120, sofort ab Lager …",
         },
         {
-          id: "q7",
+          id: "q8",
           group: "Verkauf & Lieferung",
           key: "delivery_countries",
           type: "multi",
@@ -136,7 +145,7 @@ export const bergstoneKeramiksan: Questionnaire = {
           options: options("Deutschland", "Österreich", "Niederlande", "Belgien", "Schweiz", "Andere"),
         },
         {
-          id: "q8",
+          id: "q9",
           key: "international_delivery_process",
           type: "single",
           required: true,
@@ -158,24 +167,6 @@ export const bergstoneKeramiksan: Questionnaire = {
                 "Gibt es Mindestbestellmengen, Lieferkosten, bestimmte Lieferzeiten oder andere wichtige Bedingungen, die wir bei der Bewerbung von Lieferungen nach Österreich, in die Niederlande oder andere Länder berücksichtigen sollten?",
             },
           ],
-        },
-        {
-          id: "q9",
-          key: "desired_social_action",
-          type: "multi",
-          required: true,
-          max: 3,
-          label:
-            "Welche Handlung wünschen Sie sich idealerweise von jemandem, nachdem er eines unserer Reels oder Posts gesehen hat?",
-          options: options(
-            "Den Showroom besuchen",
-            "Uns anrufen",
-            "Uns per WhatsApp kontaktieren",
-            "Uns über Instagram / Social Media schreiben",
-            "Ein Formular auf unserer Website ausfüllen",
-            "Uns eine E-Mail senden",
-            "Andere",
-          ),
         },
         {
           id: "q10",
@@ -224,7 +215,7 @@ export const bergstoneKeramiksan: Questionnaire = {
               label:
                 "Falls mehrere Sprachen verwendet werden sollen: Welche Sprache soll die Hauptsprache des Social-Media-Accounts sein?",
               optionsFrom: "q12",
-              options: options("Deutsch", "Türkisch", "Niederländisch", "Englisch", "Andere"),
+              options: socialLanguages,
             },
           ],
         },
@@ -252,27 +243,6 @@ export const bergstoneKeramiksan: Questionnaire = {
         {
           id: "q14",
           group: "Produktkatalog",
-          key: "required_categories",
-          type: "multi",
-          required: true,
-          label: "Welche Produktkategorien sollen auf der neuen Website auf jeden Fall vorhanden sein?",
-          options: options(
-            "Badezimmerfliesen",
-            "Küchenfliesen",
-            "Wandfliesen",
-            "Bodenfliesen",
-            "Großformatige Fliesen",
-            "Außenbereich / Outdoor-Fliesen",
-            "Fliesen in Marmoroptik",
-            "Fliesen in Holzoptik",
-            "Fliesen in Beton- / Steinoptik",
-            "Dünne / leichte Fliesen",
-            "Mosaik- / Dekorfliesen",
-            "Andere",
-          ),
-        },
-        {
-          id: "q15",
           key: "brands_manufacturers",
           type: "longtext",
           required: true,
@@ -280,74 +250,7 @@ export const bergstoneKeramiksan: Questionnaire = {
           help: "Bitte listen Sie alle aktuell relevanten Marken bzw. Hersteller auf. Falls bestimmte Marken stärker hervorgehoben werden sollen als andere, können Sie dies ebenfalls angeben.",
         },
         {
-          id: "q16",
-          key: "browse_filters",
-          type: "multi",
-          required: true,
-          label: "Nach welchen Kriterien sollen Besucher die Produkte auf der neuen Website durchsuchen können?",
-          options: options(
-            "Produktkategorie",
-            "Marke / Hersteller",
-            "Kollektion",
-            "Einsatzbereich, z. B. Badezimmer, Küche oder Außenbereich",
-            "Design / Optik, z. B. Marmor, Holz oder Beton",
-            "Größe / Format",
-            "Farbe",
-            "Oberfläche / Finish",
-            "Andere",
-          ),
-        },
-        {
-          id: "q17",
-          group: "Verfügbarkeit & Anfragen",
-          key: "stock_availability",
-          type: "single",
-          required: true,
-          label: "Sollen Kunden auf der Website sehen können, ob ein bestimmtes Produkt aktuell auf Lager bzw. verfügbar ist?",
-          options: options(
-            "Ja – bei jedem Produkt soll angezeigt werden, ob es auf Lager ist",
-            "Ja – eine ungefähre Verfügbarkeit soll angezeigt werden",
-            "Ja – aber nur bei ausgewählten Produkten",
-            "Nein – Kunden sollen uns kontaktieren, um die Verfügbarkeit zu prüfen",
-            "Wir sind uns noch nicht sicher",
-          ),
-          followUps: [
-            {
-              key: "stock_display_format",
-              type: "multi",
-              required: true,
-              when: { type: "startsWith", prefix: "ja-" },
-              label: "Wie soll die Verfügbarkeit auf der Website angezeigt werden?",
-              options: options(
-                "Auf Lager / Nicht auf Lager",
-                "Auf Lager / Auf Anfrage verfügbar",
-                "Genaue verfügbare Menge",
-                "Voraussichtliche Lieferzeit",
-                "Andere",
-              ),
-            },
-          ],
-        },
-        {
-          id: "q18",
-          key: "product_page_actions",
-          type: "multi",
-          required: true,
-          label: "Was soll ein Kunde tun können, nachdem er auf der Website ein Produkt gefunden hat, das ihn interessiert?",
-          help: "Preise werden nicht öffentlich auf der Website angezeigt.",
-          options: options(
-            "Eine Produktanfrage senden",
-            "Ein Angebot anfragen",
-            "Über WhatsApp Kontakt aufnehmen",
-            "Uns anrufen",
-            "Den Showroom besuchen",
-            "Die Verfügbarkeit anfragen",
-            "Informationen zur Lieferung anfragen",
-            "Andere",
-          ),
-        },
-        {
-          id: "q19",
+          id: "q15",
           group: "Sprachen",
           key: "website_languages",
           type: "multi",
@@ -360,7 +263,7 @@ export const bergstoneKeramiksan: Questionnaire = {
               type: "single",
               when: { type: "minSelected", count: 2 },
               label: "Welche Sprache soll die Hauptsprache bzw. Standardsprache der Website sein?",
-              optionsFrom: "q19",
+              optionsFrom: "q15",
               options: websiteLanguages,
             },
           ],
