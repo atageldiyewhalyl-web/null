@@ -132,7 +132,7 @@ export function renderSubmissionEmail(input: EmailInput) {
         ${escapeHtml(input.title)}<br>
         Eingereicht: ${escapeHtml(date)}<br>
         Submission ID: ${escapeHtml(input.submissionId)}<br>
-        Die komplette Auswertung als JSON (für AI-Workflows) hängt an dieser E-Mail an.
+        Die Antworten hängen als .md und .json (für AI-Workflows) an dieser E-Mail an.
       </p>
     </div>
   </div>
@@ -140,6 +140,35 @@ export function renderSubmissionEmail(input: EmailInput) {
 
   const subject = `Onboarding abgeschlossen: ${input.clientName} – ${input.project}`;
   return { subject, html };
+}
+
+const LANGUAGE_LABELS: Record<string, string> = { de: "Deutsch", tr: "Türkisch", en: "Englisch" };
+
+/** Readable .md of a submission, same layout as the AI interview result so both read alike. */
+export function renderSubmissionMarkdown(input: EmailInput) {
+  const date = new Date(input.completedAt).toLocaleString("de-DE", { timeZone: "Europe/Berlin", dateStyle: "medium", timeStyle: "short" });
+  const md: string[] = [
+    `# Onboarding – ${input.clientName}`,
+    "",
+    `- **Fragebogen:** ${input.title}`,
+    `- **Ausgefüllt von:** ${[input.contact.name, input.contact.role].filter((v) => v && String(v).trim()).join(", ") || "—"}`,
+    `- **Kontakt:** ${[input.contact.email, input.contact.phone].filter((v) => v && String(v).trim()).join(" · ") || "—"}`,
+    `- **Sprache:** ${LANGUAGE_LABELS[input.language ?? "de"] ?? input.language}${input.language && input.language !== "de" ? " (Freitext-Antworten in dieser Sprache)" : ""}`,
+    `- **Abgeschlossen:** ${date}`,
+    `- **Submission:** ${input.submissionId}`,
+  ];
+  for (const section of input.sections) {
+    const rows = input.rows.filter((r) => r.section_key === section.key).sort((a, b) => a.position - b.position);
+    if (!rows.length) continue;
+    md.push("", `## ${section.title}`, "");
+    for (const r of rows) {
+      const lines = (r.value_text || "—").split("\n");
+      // Multi-select answers become bullets; rankings are already "1. …" lines; free text stays as written.
+      const value = Array.isArray(r.value) && lines.length > 1 && !/^\d+\. /.test(lines[0]) ? lines.map((l) => `- ${l}`).join("\n") : r.value_text || "—";
+      md.push(r.is_follow_up ? `**↳ ${r.question_label}**` : `### ${r.number}. ${r.question_label}`, "", value, "");
+    }
+  }
+  return md.join("\n");
 }
 
 /** Base64 for UTF-8 text without blowing the call stack on large payloads. */

@@ -4,6 +4,7 @@ import {
   MAX_BODY_BYTES,
   ONBOARDING_CLIENTS,
   renderSubmissionEmail,
+  renderSubmissionMarkdown,
   utf8ToBase64,
   validateBase,
   validateSubmit,
@@ -149,7 +150,7 @@ export function registerClientOnboarding(app: Hono) {
       if (!resendApiKey) {
         emailError = "RESEND_API_KEY missing";
       } else {
-        const { subject, html } = renderSubmissionEmail({
+        const emailInput = {
           clientName: client.name,
           title: definition.title,
           project: definition.project ?? "",
@@ -159,7 +160,9 @@ export function registerClientOnboarding(app: Hono) {
           contact: body.contact ?? {},
           sections: (definition.sections ?? []).map((s: any) => ({ key: s.key, title: s.title })),
           rows,
-        });
+        };
+        const { subject, html } = renderSubmissionEmail(emailInput);
+        const markdown = renderSubmissionMarkdown(emailInput);
         const replyTo = String(body.contact?.email ?? "").trim();
         const res = await fetch("https://api.resend.com/emails", {
           method: "POST",
@@ -171,8 +174,9 @@ export function registerClientOnboarding(app: Hono) {
             subject,
             html,
             attachments: [
+              { filename: `onboarding-${body.slug}-${completedAt.slice(0, 10)}.md`, content: utf8ToBase64(markdown) },
               {
-                filename: `${body.slug}-onboarding-${completedAt.slice(0, 10)}.json`,
+                filename: `onboarding-${body.slug}-${completedAt.slice(0, 10)}.json`,
                 content: utf8ToBase64(JSON.stringify(structured, null, 2)),
               },
             ],
