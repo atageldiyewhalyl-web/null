@@ -58,7 +58,7 @@ export default function App() {
   const queryLang = new URLSearchParams(location.search).get("lang");
   const lang = getLanguageForPath(location.pathname) ?? (isLanguage(queryLang) ? queryLang : "de");
   const isAdmin = location.pathname.startsWith("/admin");
-  const isOnboarding = location.pathname.startsWith("/onboarding") || isAdmin;
+  const isOnboarding = location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/interview") || isAdmin;
   const isBlankCanvas =
     location.pathname === "/" ||
     location.pathname.startsWith("/new-landing") ||
@@ -160,7 +160,7 @@ function AnchorScrollProvider({ pathname }: { pathname: string }) {
 
 function SmoothScrollProvider({ pathname }: { pathname: string }) {
   useEffect(() => {
-    const isAdminOrOnboarding = pathname.startsWith("/admin") || pathname.startsWith("/onboarding");
+    const isAdminOrOnboarding = pathname.startsWith("/admin") || pathname.startsWith("/onboarding") || pathname.startsWith("/interview");
     const isTouchOnlyDevice = navigator.maxTouchPoints > 0 && window.matchMedia("(hover: none)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isSmallViewport = window.innerWidth < 768;

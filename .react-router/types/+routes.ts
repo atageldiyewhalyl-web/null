@@ -14,11 +14,15 @@ type Pages = {
   "/": {
     params: {};
   };
-  "/onboarding": {
-    params: {};
+  "/onboarding/:slug": {
+    params: {
+      "slug": string;
+    };
   };
-  "/onboarding/client-discovery": {
-    params: {};
+  "/interview/:slug": {
+    params: {
+      "slug": string;
+    };
   };
   "/new-landing": {
     params: {};
@@ -126,15 +130,15 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding" | "/onboarding/client-discovery" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/mandate-kanzlei-mannheim" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
+    page: "/" | "/onboarding/:slug" | "/interview/:slug" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/mandate-kanzlei-mannheim" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
-  "routes/onboarding.tsx": {
-    id: "routes/onboarding";
-    page: "/onboarding";
+  "routes/client-onboarding.tsx": {
+    id: "routes/client-onboarding";
+    page: "/onboarding/:slug";
   };
-  "routes/client-discovery-onboarding.tsx": {
-    id: "routes/client-discovery-onboarding";
-    page: "/onboarding/client-discovery";
+  "routes/interview.tsx": {
+    id: "routes/interview";
+    page: "/interview/:slug";
   };
   "routes/new-landing.tsx": {
     id: "routes/new-landing";
@@ -272,8 +276,8 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
-  "routes/onboarding": typeof import("./app/routes/onboarding.tsx");
-  "routes/client-discovery-onboarding": typeof import("./app/routes/client-discovery-onboarding.tsx");
+  "routes/client-onboarding": typeof import("./app/routes/client-onboarding.tsx");
+  "routes/interview": typeof import("./app/routes/interview.tsx");
   "routes/new-landing": typeof import("./app/routes/new-landing.tsx");
   "routes/hasan": typeof import("./app/routes/hasan.tsx");
   "routes/website-analyse": typeof import("./app/routes/website-analyse.tsx");

@@ -17,7 +17,8 @@
 # misc
 .DS_Store
 *.pem
-.claude/
+.claude/*
+!.claude/skills/
 
 # raw source media kept locally after optimization
 app/assets/Hero background/Hero background long .mp4

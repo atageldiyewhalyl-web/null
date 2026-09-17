@@ -30,6 +30,7 @@ export default {
     "/blog/webdesign-fuer-arztpraxen",
     "/datenschutz",
     "/impressum",
+    "/onboarding/bergstone-keramiksan",
   ],
   routeDiscovery: {
     mode: "initial",

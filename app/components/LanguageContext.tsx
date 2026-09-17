@@ -592,154 +592,41 @@ const labels: Record<string, Record<Language, string>> = {
   // Footer
   "footer.rights": { en: "All rights reserved.", de: "Alle Rechte vorbehalten.", tr: "Tüm hakları saklıdır." },
 
-  // Onboarding
-  // Onboarding Intro
-  "onboarding.intro.title": { en: "Let's build you a constant flow of customers", de: "Gemeinsam starten wir Ihren kontinuierlichen Kundenstrom", tr: "Kesintisiz müşteri akışınız için ilk adım" },
-  "onboarding.intro.description": { en: "A few questions to help us understand your vision.", de: "Ein paar Fragen, um Ihre Vision zu verstehen.", tr: "Vizyonunuzu anlamamız für birkaç soru." },
-  "onboarding.intro.duration": { en: "Duration: ~5 minutes", de: "Dauer: ca. 5 Minuten", tr: "Süre: ~5 dakika" },
-  "onboarding.intro.cta": { en: "Start Onboarding", de: "Onboarding starten", tr: "Onboarding'i başlat" },
-  "onboarding.intro.secure": { en: "Your data is handled securely and only used for your project.", de: "Ihre Daten werden sicher behandelt und nur für Ihr Projekt verwendet.", tr: "Verileriniz güvenle işlenip sadece projeniz için kullanılacaktır." },
-  "onboarding.intro.secure_badge": { en: "Encrypted & Confidential", de: "Verschlüsselt & Vertraulich", tr: "Uçtan Uca Şifreli" },
 
-  // Onboarding Step 1 - Identity
-  "onboarding.step1.title": { en: "Let's get to know you.", de: "Lernen wir Sie kennen.", tr: "Sizi tanıyalım." },
-  "onboarding.step1.sub": { en: "Share your basic details with us.", de: "Teilen Sie uns Ihre Grunddaten mit.", tr: "Temel bilgilerinizi paylaşın." },
-  "onboarding.step1.name": { en: "Full Name", de: "Vollständiger Name", tr: "Ad Soyad" },
   "onboarding.step1.firm": { en: "Company Name", de: "Name des Unternehmens", tr: "Şirket/İşletme Adı" },
-  "onboarding.step1.email": { en: "E-mail", de: "E-Mail", tr: "E-posta" },
-  "onboarding.step1.phone": { en: "Phone", de: "Telefon", tr: "Telefon" },
   "onboarding.step1.city": { en: "City", de: "Stadt", tr: "Şehir" },
 
-  // Onboarding Step 2 - Service Selection
-  "onboarding.step2.title": { en: "What are you looking for?", de: "Was suchen Sie?", tr: "Ne arıyorsunuz?" },
-  "onboarding.step2.sub": { en: "Depending on your choice, specific questions will follow.", de: "Je nach Auswahl zeigen wir passende Fragen.", tr: "Seçiminize göre size özel sorular gelecek." },
-  "onboarding.step2.sub_multi": { en: "You can select one or more depending on your needs.", de: "Sie können je nach Bedarf eines oder mehrere auswählen.", tr: "İhtiyacınıza göre bir veya daha fazlasını seçebilirsiniz." },
-  "onboarding.step2.web.title": { en: "Website Design", de: "Webseite", tr: "Web Sitesi Tasarımı" },
-  "onboarding.step2.web.sub": { en: "A professional storefront that works for you", de: "Ein professioneller Auftritt, der für Sie arbeitet", tr: "Profesyonel bir vitrin" },
-  "onboarding.step2.web.time": { en: "One-time", de: "Einmalig", tr: "Kalıcı" },
 
-  "onboarding.step2.seo.title": { en: "SEO", de: "SEO", tr: "SEO" },
-  "onboarding.step2.seo.sub": { en: "A steady stream of organic customers in 2–3 months", de: "Kontinuierlicher Kundenstrom in 2–3 Monaten", tr: "2–3 ayda organik müşteri akışı" },
-  "onboarding.step2.seo.time": { en: "First results: 2–3 months", de: "Erste Ergebnisse: 2–3 Monate", tr: "İlk sonuçlar: 2–3 ay" },
 
-  "onboarding.step2.ads.title": { en: "Google Ads", de: "Google Ads", tr: "Google Reklamları" },
-  "onboarding.step2.ads.sub": { en: "Customers from the very first week", de: "Kunden ab der ersten Woche", tr: "İlk haftadan itibaren müşteri" },
-  "onboarding.step2.ads.time": { en: "First results: within 1 week", de: "Erste Ergebnisse: innerhalb 1 Woche", tr: "İlk sonuçlar: 1 hafta içinde" },
 
-  "onboarding.step2.both.title": { en: "Full Package", de: "Gesamtpaket", tr: "Tam Paket" },
-  "onboarding.step2.both.sub": { en: "Fast start, lasting growth", de: "Schneller Start, nachhaltiges Wachstum", tr: "Hızlı başlangıç + kalıcı büyüme" },
-  "onboarding.step2.both.time": { en: "Recommended for best results", de: "Für beste Ergebnisse empfohlen", tr: "En iyi sonuç için önerilen" },
-  "onboarding.step2.both.badge": { en: "MOST POPULAR", de: "AM BELIEBTESTEN", tr: "EN ÇOK TERCİH EDİLEN" },
 
-  "onboarding.step3.title": { en: "Your specialties.", de: "Ihre Schwerpunkte.", tr: "Uzmanlık alanlarınız." },
-  "onboarding.step3.sub": { en: "Which services do you focus on?", de: "Auf welche Leistungen sind Sie spezialisiert?", tr: "Hangi hizmetlere odaklanıyorsunuz?" },
-  "onboarding.step3.other": { en: "Other service or niche...", de: "Andere Leistung / Nische...", tr: "Diğer hizmet / niş..." },
-  "onboarding.step3.topServices.title": { en: "Your Top 3.", de: "Ihre Top 3.", tr: "En Önemli 3 Alan." },
-  "onboarding.step3.topServices.sub": { en: "Select your three most important services.", de: "Wählen Sie Ihre drei wichtigsten Leistungen.", tr: "En önemli üç hizmetinizi seçin." },
 
-  // Onboarding Step 4 — Website Details
-  "onboarding.step4.title": { en: "About your website.", de: "Über Ihre Website.", tr: "Web siteniz hakkında." },
-  "onboarding.step4.sub": { en: "Help us understand the scope and your needs.", de: "Helfen Sie uns, Umfang und Bedarf zu verstehen.", tr: "Kapsam ve ihtiyaçlarınızı anlayalım." },
-  "onboarding.step4.q1": { en: "Estimated page count?", de: "Gewünschte Seitenzahl?", tr: "Tahmini sayfa sayısı?" },
-  "onboarding.step4.q2": { en: "Which features do you need?", de: "Welche Funktionen benötigen Sie?", tr: "Hangi özellikler olsun?" },
-  "onboarding.step4.q3": { en: "Revision rounds preference?", de: "Korrekturrunden?", tr: "Revizyon hakkı tercihiniz?" },
-  "onboarding.step4.q4": { en: "Do you already have a website?", de: "Haben Sie bereits eine Website?", tr: "Mevcut bir web siteniz var mı?" },
 
   // 4a - Site Type
-  "onboarding.step4a.q": { en: "What kind of website are you planning?", de: "Was für eine Website planen Sie?", tr: "Nasıl bir site düşünüyorsunuz?" },
-  "onboarding.step4a.onepage.title": { en: "One-Page", de: "Ein-Seiten-Website", tr: "Tek sayfalık site" },
-  "onboarding.step4a.onepage.sub": { en: "Simple and fast. But limited for SEO.", de: "Kompakt und schnell. Aber SEO-technisch begrenzt.", tr: "Sade ve hızlı. Ancak SEO için sınırlı." },
-  "onboarding.step4a.onepage.warning": { en: "⚠ Single page makes ranking by city and service harder.", de: "⚠ Eine einzelne Seite erschwert das Ranking nach Stadt und Rechtsgebiet.", tr: "⚠ Tek sayfa, Google'da şehir ve hizmet bazlı sıralamayı zorlaştırır." },
 
-  "onboarding.step4a.multipage.title": { en: "Multi-Page", de: "Mehrseitige Website", tr: "Çok sayfalık site" },
-  "onboarding.step4a.multipage.sub": { en: "Separate page for each service and city. Ideal for SEO.", de: "Eigene Seite für jede Leistung und Stadt. Ideal für SEO.", tr: "Google arama görünürlüğü için ideal" },
-  "onboarding.step4a.multipage.recommended": { en: "✓ Recommended for SEO", de: "✓ Für SEO empfohlen", tr: "✓ SEO için önerilen" },
 
   // 4b - Architecture
-  "onboarding.step4b.onepage.q": { en: "Which sections should this page contain?", de: "Welche Abschnitte soll diese Seite enthalten?", tr: "Bu sayfada hangi bölümler olsun?" },
-  "onboarding.step4b.multipage.q": { en: "Which pages should the website have?", de: "Welche Seiten soll die Website haben?", tr: "Hangi sayfalar olsun?" },
 
   // Arch Options
-  "onboarding.arch.home": { en: "Home", de: "Startseite", tr: "Ana Sayfa" },
-  "onboarding.arch.services": { en: "Services / Practice Areas", de: "Hizmetler / Rechtsgebiete", tr: "Hizmetler / Uzmanlık Alanları" },
-  "onboarding.arch.about": { en: "About Me / Company", de: "Über mich / Unternehmen", tr: "Hakkımda / Şirket" },
-  "onboarding.arch.why": { en: "Why me?", de: "Warum ich?", tr: "Neden ben?" },
-  "onboarding.arch.references": { en: "References / Cases", de: "Referenzen / Fälle", tr: "Referanslar / Başarı Hikayeleri" },
-  "onboarding.arch.contact": { en: "Contact", de: "Kontakt", tr: "İletişim" },
-  "onboarding.arch.faq": { en: "FAQ", de: "SSS / Häufige Fragen", tr: "SSS / Sıkça Sorulan Sorular" },
-  "onboarding.arch.blog": { en: "Blog / Articles", de: "Blog / Makaleler", tr: "Blog / Makaleler" },
-  "onboarding.arch.cities": { en: "City Pages", de: "Stadtseiten", tr: "Şehir sayfaları" },
 
   // 4c - Extras
-  "onboarding.step4c.q": { en: "What else do you need?", de: "Was benötigen Sie darüber hinaus?", tr: "Bunların dışında ihtiyacınız olan şeyler?" },
-  "onboarding.extra.logo.title": { en: "Logo & Brand Design", de: "Logo & Markendesign", tr: "Logo & Marka Tasarımı" },
-  "onboarding.extra.logo.sub": { en: "We design it from scratch", de: "Wir gestalten es von Grund auf", tr: "Sıfırdan tasarlıyoruz" },
 
-  "onboarding.extra.copy.title": { en: "Page Content", de: "Seitentexte", tr: "Sayfa Metinleri" },
-  "onboarding.extra.copy.sub": { en: "We write it on your behalf", de: "Wir schreiben für Sie", tr: "Sizin adınıza biz yazıyoruz" },
 
-  "onboarding.extra.whatsapp.title": { en: "WhatsApp Integration", de: "WhatsApp-Integration", tr: "WhatsApp Entegrasyonu" },
-  "onboarding.extra.whatsapp.sub": { en: "Visitors can message you directly", de: "Besucher schreiben Ihnen direkt", tr: "Ziyaretçiler size direkt yazabilsin" },
 
-  "onboarding.extra.appointment.title": { en: "Calendly Integration", de: "Calendly-Integration", tr: "Calendly Entegrasyonu" },
-  "onboarding.extra.appointment.sub": { en: "Customers book, you confirm", de: "Kunden buchen, Sie bestätigen", tr: "Müşteriler randevu alsın, siz onaylayın" },
 
-  "onboarding.extra.analytics.title": { en: "Google Analytics", de: "Google Analytics", tr: "Google Analytics" },
-  "onboarding.extra.analytics.sub": { en: "See how many visitors your site has", de: "Sehen Sie, wie viele Besucher Ihre Seite hat", tr: "Sitenizi kaç kişinin ziyaret ettiğini görün" },
 
-  "onboarding.extra.social.title": { en: "Social Media Linking", de: "Social-Media-Verlinkung", tr: "Sosyal Medya Bağlantısı" },
-  "onboarding.extra.social.sub": { en: "Add Instagram & LinkedIn to your site", de: "Instagram & LinkedIn auf Ihrer Website", tr: "Instagram, LinkedIn profillerinizi sitenize ekleyelim" },
 
   // 4d - Existing
-  "onboarding.step4d.q": { en: "Do you already have a website?", de: "Haben Sie bereits eine Website?", tr: "Mevcut bir web siteniz var mı?" },
-  "onboarding.step4d.url": { en: "Website URL", de: "Website-URL", tr: "Web sitesi adresiniz" },
-  "onboarding.step4d.dislikes": { en: "What are your pain points?", de: "Was gefällt Ihnen nicht?", tr: "Neleri beğenmiyorsunuz?" },
-  "onboarding.step4d.dislikes.placeholder": { en: "e.g. outdated design, hard to manage...", de: "z.B. Design veraltet, schwer zu pflegen...", tr: "Örn: tasarımı eski, yönetmesi zor..." },
 
   // Step 5 - SEO Details
-  "onboarding.step5.title": { en: "Your Google presence.", de: "Ihre Google-Präsenz.", tr: "Google varlığınız." },
-  "onboarding.step5.sub": { en: "Help us understand your current status.", de: "Helfen Sie uns, Ihren aktuellen Stand zu verstehen.", tr: "Mevcut durumu anlayalım." },
-  "onboarding.step5.q1": { en: "Are you visible on Google Maps?", de: "Sind Sie bei Google Maps sichtbar?", tr: "Google Maps'te görünüyor musunuz?" },
-  "onboarding.step5.q2": { en: "Has SEO work been done before?", de: "Wurden bereits SEO-Maßnahmen durchgeführt?", tr: "Daha önce SEO çalışması yapıldı mı?" },
-  "onboarding.step5.q3": { en: "In which cities do you want to be visible?", de: "In welchen Städten möchten Sie gefunden werden?", tr: "Hangi şehirlerde görünmek istiyorsunuz?" },
 
   // Step 6 - Target Audience
-  "onboarding.step6.title": { en: "Your target audience.", de: "Ihre Zielgruppe.", tr: "Hedef müşteriniz." },
-  "onboarding.step6.sub": { en: "Who are you targeting?", de: "Wen möchten Sie ansprechen?", tr: "Kimi hedefliyorsunuz?" },
-  "onboarding.step6.q1": { en: "Who is your primary customer group?", de: "Wer ist Ihre primäre Kundengruppe?", tr: "Öncelikli müşteri kitleniz?" },
-  "onboarding.step6.q2": { en: "What creates trust with your customers?", de: "Was schafft Vertrauen bei Ihren Kunden?", tr: "Müşterilerinizin size güvenmesini ne sağlıyor?" },
-  "onboarding.step6.q3": { en: "Languages for the website?", de: "Sprachen für die Website?", tr: "Web sitesi dilleri?" },
 
   // Step 7 - Design Preferences
-  "onboarding.step7.title": { en: "Your design preferences.", de: "Ihre Designpräferenzen.", tr: "Tasarım tercihiniz." },
-  "onboarding.step7.sub": { en: "How do you want your site to feel?", de: "Welches Gefühl soll Ihre Website vermitteln?", tr: "Sitenizin nasıl hissettirmesini istiyorsunuz?" },
-  "onboarding.step7.q1": { en: "Which style do you prefer?", de: "Welchen Stil bevorzugen Sie?", tr: "Hangi tarzı tercih edersiniz?" },
-  "onboarding.step7.q2": { en: "Tone: How formal?", de: "Ton: Wie formell?", tr: "Ton: Ne kadar resmi?" },
-  "onboarding.step7.q2.left": { en: "Personal", de: "Persönlich", tr: "Samimi" },
-  "onboarding.step7.q2.right": { en: "Formal", de: "Formell", tr: "Resmi" },
-  "onboarding.step7.q3": { en: "Any color preferences?", de: "Haben Sie Farbpräferenzen?", tr: "Renk tercihi var mı?" },
-  "onboarding.step7.q3.studio_choice": { en: "I leave the decision to you.", de: "Ich überlasse die Entscheidung Ihnen.", tr: "Bu kararı size bırakıyorum." },
-  "onboarding.step7.q4": { en: "Any websites you like?", de: "Gibt es Websites, die Ihnen gefallen?", tr: "Beğendiğiniz siteler var mı?" },
 
   // Step 8 - Final Details
-  "onboarding.step8.title": { en: "A few last things.", de: "Noch ein paar Details.", tr: "Son birkaç şey." },
-  "onboarding.step8.sub": { en: "Almost done.", de: "Fast geschafft.", tr: "Neredeyse bitti." },
-  "onboarding.step8.q1": { en: "Do you already have a domain?", de: "Haben Sie bereits eine Domain?", tr: "Domain'iniz var mı?" },
-  "onboarding.step8.q1.yes": { en: "Yes, I have one", de: "Ja, ich habe eine", tr: "Evet, var" },
-  "onboarding.step8.q1.no": { en: "No, not yet", de: "Nein, noch nicht", tr: "Hayır, henüz yok" },
-  "onboarding.step8.q1.help": { en: "I need help", de: "Ich brauche Hilfe", tr: "Yardım istiyorum" },
-  "onboarding.step8.q2": { en: "Desired delivery date", de: "Gewünschtes Fertigstellungsdatum", tr: "İstenen teslim tarihi" },
-  "onboarding.step8.q4": { en: "Anything else you'd like to add?", de: "Gibt es etwas Besonderes?", tr: "Eklemek istediğiniz bir şey var mı?" },
 
-  // Onboarding Results
-  "onboarding.results.title": { en: "The perfect package for you.", de: "Das passende Paket für Sie.", tr: "Sizin için en uygun paket." },
-  "onboarding.results.sub": { en: "Based on your answers, here is our recommendation.", de: "Basierend auf Ihren Antworten empfehlen wir Folgendes.", tr: "Verdiğiniz cevaplara göre önerimiz bu." },
-  "onboarding.results.contact": { en: "The nüll team will contact you shortly.", de: "Das nüll-Team wird sich in Kürze bei Ihnen melden.", tr: "nüll ekibi yakında sizinle iletişime geçecek." },
 
-  "onboarding.success.title": { en: "Great! We're ready.", de: "Großartig! Wir sind bereit.", tr: "Harika! Hazırız." },
-  "onboarding.success.sub": { en: "Your data has reached our team. We will share a custom roadmap for your project within 24 hours.", de: "Ihre Daten sind bei unserem Team eingegangen. Wir werden innerhalb von 24 Stunden eine individuelle Roadmap für Ihr Projekt mit Ihnen teilen.", tr: "Verileriniz ekibimize ulaştı. 24 saat içinde projenize özel yol haritasını sizinle paylaşacağız." },
-  "onboarding.success.roadmap": { en: "Your roadmap is being prepared", de: "Ihre Roadmap wird vorbereitet", tr: "Yol haritanız hazırlanıyor" },
-  "onboarding.success.thanks": { en: "Thanks for choosing nüll", de: "Vielen Dank, dass Sie sich für nüll entschieden haben", tr: "nüll'ü seçtiğiniz için teşekkürler" },
 
   // Lead Capture / Get a Quote
   "quote.teaser.label": { en: "CUSTOM SOLUTION", de: "INDIVIDUELLE LÖSUNG", tr: "ÖZEL ÇÖZÜM" },
