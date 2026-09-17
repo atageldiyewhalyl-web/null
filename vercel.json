@@ -58,7 +58,7 @@
     { "source": "/admin/(.*)", "destination": "/" },
     { "source": "/onboarding", "destination": "/" },
     { "source": "/onboarding/(.*)", "destination": "/" },
-    { "source": "/interview/(.*)", "destination": "/" },
+    { "source": "/interview/(.*)", "destination": "/interview/shell" },
     { "source": "/tr/(.*)", "destination": "/" },
     { "source": "/new-landing", "destination": "/" },
     { "source": "/hasan", "destination": "/" },
