@@ -10,6 +10,8 @@ import {
   validateSubmit,
 } from "./client_onboarding_email.ts";
 
+const FROM = '"nüll. Client Onboarding" <onboarding@forms.xn--nll-hoa.com>';
+
 const db = () => createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
 async function sha256(value: string) {
@@ -62,6 +64,64 @@ function baseRow(body: any, tokenHash: string) {
   };
 }
 
+type EmailJob = {
+  slug: string;
+  // deno-lint-ignore no-explicit-any
+  definition: any;
+  structured: unknown;
+  // deno-lint-ignore no-explicit-any
+  rows: any[];
+  contact: Record<string, string | undefined>;
+  language: string;
+  submissionId: string;
+  completedAt: string;
+};
+
+/** Sends the notification with the .md + .json attachments. Used on submit and on resend. */
+async function sendSubmissionEmail(job: EmailJob): Promise<{ emailSent: boolean; emailError: string | null }> {
+  const resendApiKey = Deno.env.get("RESEND_API_KEY");
+  if (!resendApiKey) return { emailSent: false, emailError: "RESEND_API_KEY missing" };
+  const client = ONBOARDING_CLIENTS[job.slug];
+  if (!client) return { emailSent: false, emailError: "Unknown questionnaire" };
+
+  const emailInput = {
+    clientName: client.name,
+    title: job.definition.title,
+    project: job.definition.project ?? "",
+    submissionId: job.submissionId,
+    completedAt: job.completedAt,
+    language: job.language === "tr" ? "tr" : "de",
+    contact: job.contact,
+    // deno-lint-ignore no-explicit-any
+    sections: (job.definition.sections ?? []).map((s: any) => ({ key: s.key, title: s.title })),
+    rows: job.rows,
+  };
+  const { subject, html } = renderSubmissionEmail(emailInput);
+  const markdown = renderSubmissionMarkdown(emailInput);
+  // Resend rejects non-ASCII reply-to addresses (e.g. "müller@…"); drop it rather than lose the email.
+  const contactEmail = String(job.contact.email ?? "").trim();
+  const replyTo = /^[\x20-\x7e]+$/.test(contactEmail) ? contactEmail : "";
+  const day = job.completedAt.slice(0, 10);
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${resendApiKey}` },
+    body: JSON.stringify({
+      from: FROM,
+      to: client.recipients,
+      ...(replyTo ? { reply_to: replyTo } : {}),
+      subject,
+      html,
+      attachments: [
+        { filename: `onboarding-${job.slug}-${day}.md`, content: utf8ToBase64(markdown) },
+        { filename: `onboarding-${job.slug}-${day}.json`, content: utf8ToBase64(JSON.stringify(job.structured, null, 2)) },
+      ],
+    }),
+  });
+  if (res.ok) return { emailSent: true, emailError: null };
+  return { emailSent: false, emailError: JSON.stringify(await res.json().catch(() => ({ status: res.status }))) };
+}
+
 export function registerClientOnboarding(app: Hono) {
   // Autosave: called on step changes, never blocks the client.
   app.post("*/client-onboarding/progress", async (c) => {
@@ -85,7 +145,57 @@ export function registerClientOnboarding(app: Hono) {
     }
   });
 
-  app.post("*/client-onboarding/submit", async (c) => {
+  /** Resend the notification for a stored submission (service role only; used when the first send failed). */
+app.post("*/client-onboarding/resend", async (c) => {
+  try {
+    // Guarded by its own secret (ADMIN_TOKEN) so a resend can never be triggered with the public anon key.
+    const adminToken = Deno.env.get("ADMIN_TOKEN") ?? "";
+    if (!adminToken || c.req.header("X-Admin-Token") !== adminToken) return c.json({ success: false, error: "Forbidden" }, 403);
+    const { submissionId } = await c.req.json().catch(() => ({}));
+    if (typeof submissionId !== "string") return c.json({ success: false, error: "Missing submissionId" }, 400);
+
+    const supabase = db();
+    const { data: submission, error } = await supabase
+      .from("onboarding_submissions")
+      .select("id, client_slug, questionnaire_id, questionnaire_version, contact, structured, completed_at, status")
+      .eq("id", submissionId)
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!submission || submission.status !== "completed") return c.json({ success: false, error: "No completed submission" }, 404);
+
+    const [{ data: questionnaire }, { data: answerRows }] = await Promise.all([
+      supabase
+        .from("onboarding_questionnaires")
+        .select("definition")
+        .eq("id", submission.questionnaire_id)
+        .eq("version", submission.questionnaire_version)
+        .maybeSingle(),
+      supabase.from("onboarding_submission_answers").select("*").eq("submission_id", submissionId).order("position"),
+    ]);
+    if (!questionnaire) return c.json({ success: false, error: "Questionnaire snapshot missing" }, 404);
+
+    const { emailSent, emailError } = await sendSubmissionEmail({
+      slug: submission.client_slug,
+      definition: questionnaire.definition,
+      structured: submission.structured,
+      rows: answerRows ?? [],
+      contact: submission.contact ?? {},
+      language: (submission.structured as any)?.language ?? "de",
+      submissionId,
+      completedAt: submission.completed_at ?? new Date().toISOString(),
+    });
+    await supabase
+      .from("onboarding_submissions")
+      .update(emailSent ? { email_sent_at: new Date().toISOString(), email_error: null } : { email_error: emailError })
+      .eq("id", submissionId);
+    return c.json({ success: emailSent, emailSent, error: emailError });
+  } catch (err: any) {
+    console.error(`Client onboarding resend error: ${err?.message ?? err}`);
+    return c.json({ success: false, error: "Internal server error" }, 500);
+  }
+});
+
+app.post("*/client-onboarding/submit", async (c) => {
     try {
       const { body, error: readError } = await readBody(c);
       if (readError) return c.json({ success: false, error: readError }, 400);
@@ -150,40 +260,18 @@ export function registerClientOnboarding(app: Hono) {
       if (!resendApiKey) {
         emailError = "RESEND_API_KEY missing";
       } else {
-        const emailInput = {
-          clientName: client.name,
-          title: definition.title,
-          project: definition.project ?? "",
+        const result = await sendSubmissionEmail({
+          slug: body.slug,
+          definition,
+          structured,
+          rows,
+          contact: body.contact ?? {},
+          language: body.language === "tr" ? "tr" : "de",
           submissionId: body.submissionId,
           completedAt,
-          language: body.language === "tr" ? "tr" : "de",
-          contact: body.contact ?? {},
-          sections: (definition.sections ?? []).map((s: any) => ({ key: s.key, title: s.title })),
-          rows,
-        };
-        const { subject, html } = renderSubmissionEmail(emailInput);
-        const markdown = renderSubmissionMarkdown(emailInput);
-        const replyTo = String(body.contact?.email ?? "").trim();
-        const res = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${resendApiKey}` },
-          body: JSON.stringify({
-            from: '"nüll. Client Onboarding" <onboarding@forms.xn--nll-hoa.com>',
-            to: client.recipients,
-            ...(replyTo ? { reply_to: replyTo } : {}),
-            subject,
-            html,
-            attachments: [
-              { filename: `onboarding-${body.slug}-${completedAt.slice(0, 10)}.md`, content: utf8ToBase64(markdown) },
-              {
-                filename: `onboarding-${body.slug}-${completedAt.slice(0, 10)}.json`,
-                content: utf8ToBase64(JSON.stringify(structured, null, 2)),
-              },
-            ],
-          }),
         });
-        if (res.ok) emailSent = true;
-        else emailError = JSON.stringify(await res.json().catch(() => ({ status: res.status })));
+        emailSent = result.emailSent;
+        emailError = result.emailError;
       }
 
       await supabase
