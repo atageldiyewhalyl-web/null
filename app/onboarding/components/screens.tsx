@@ -312,11 +312,11 @@ export const FinalScreen = forwardRef<HTMLHeadingElement, { q: Questionnaire; su
         >
           {t.openDrive}
         </a>
-      ) : (
+      ) : q.final.driveNote ? (
         <p className="mt-8 max-w-[36rem] text-[0.98rem] font-semibold leading-snug text-[#0e0e10]">
           {t.driveLater}
         </p>
-      )}
+      ) : null}
     </div>
 
     <div className="grid content-start gap-8">
@@ -350,7 +350,7 @@ FinalScreen.displayName = "FinalScreen";
 
 /* ---------- Success ---------- */
 
-export const SuccessScreen = forwardRef<HTMLHeadingElement, { q: Questionnaire; name?: string }>(({ q, name }, ref) => {
+export const SuccessScreen = forwardRef<HTMLHeadingElement, { q: Questionnaire; name?: string; onRestart?: () => void }>(({ q, name, onRestart }, ref) => {
   const t = useUiText();
   return (
   <div className="mx-auto flex min-h-[calc(100dvh-10rem)] max-w-[44rem] flex-col justify-center py-10">
@@ -394,6 +394,15 @@ export const SuccessScreen = forwardRef<HTMLHeadingElement, { q: Questionnaire; 
         {q.client.name}
         {name ? t.submittedBy(name) : ""}
       </p>
+      {onRestart ? (
+        <button
+          type="button"
+          onClick={onRestart}
+          className="mt-4 self-start border-b-2 border-transparent text-[0.95rem] font-bold tracking-[-0.02em] text-[#0e0e10] transition-colors hover:border-[#0e0e10] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007aff]"
+        >
+          {t.startAnother}
+        </button>
+      ) : null}
     </motion.div>
   </div>
   );

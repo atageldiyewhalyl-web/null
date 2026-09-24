@@ -34,16 +34,26 @@ export type Screen =
     }
   | { kind: "final"; id: "final" };
 
-export function buildScreens(q: Questionnaire): Screen[] {
+/** A question is skipped when its `showWhen` question wasn't answered that way. */
+export function questionVisible(question: QuestionDef, answers: Answers) {
+  if (!question.showWhen) return true;
+  const parent = answers[question.showWhen.questionId];
+  return isChoice(parent) && parent.selected.includes(question.showWhen.includes);
+}
+
+/** Screens for the current answers: questions whose `showWhen` isn't met are left out. */
+export function buildScreens(q: Questionnaire, answers: Answers = {}): Screen[] {
   const screens: Screen[] = [
     { kind: "intro", id: "intro" },
     { kind: "contact", id: "contact" },
   ];
   let number = 0;
   q.sections.forEach((section, sectionIndex) => {
+    const visible = section.questions.filter((question) => questionVisible(question, answers));
+    if (!visible.length) return; // a section whose questions are all skipped gets no transition screen either
     if (section.intro) screens.push({ kind: "section", id: `section:${section.key}`, section, sectionIndex });
     let group: string | undefined;
-    section.questions.forEach((question) => {
+    visible.forEach((question) => {
       number += 1;
       group = question.group ?? group;
       screens.push({ kind: "question", id: `q:${question.id}`, section, sectionIndex, question, group, number });
@@ -53,8 +63,8 @@ export function buildScreens(q: Questionnaire): Screen[] {
   return screens;
 }
 
-export const countQuestions = (q: Questionnaire) =>
-  q.sections.reduce((total, section) => total + section.questions.length, 0);
+export const countQuestions = (q: Questionnaire, answers: Answers = {}) =>
+  q.sections.reduce((total, section) => total + section.questions.filter((i) => questionVisible(i, answers)).length, 0);
 
 /** Share of questions completed before this screen, 0–1. */
 export function progressAt(screens: Screen[], index: number, total: number): number {
@@ -280,6 +290,7 @@ export function buildSubmission(
     const entries: Record<string, StructuredEntry> = {};
 
     for (const question of section.questions) {
+      if (!questionVisible(question, answers)) continue;
       number += 1;
       const main = formatField(question, answers[question.id], answers);
       entries[question.key] = {
@@ -336,6 +347,7 @@ export function pruneAnswers(q: Questionnaire, answers: Answers): Answers {
   const pruned: Answers = {};
   for (const section of q.sections) {
     for (const question of section.questions) {
+      if (!questionVisible(question, answers)) continue;
       if (answers[question.id] !== undefined) pruned[question.id] = answers[question.id];
       for (const followUp of visibleFollowUps(question, answers)) {
         const id = followUpId(question, followUp);

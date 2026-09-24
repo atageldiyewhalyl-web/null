@@ -75,6 +75,8 @@ export type FollowUpDef = FieldDef & { when: Condition };
 export type QuestionDef = FieldDef & {
   /** Globally unique within the questionnaire, e.g. "q1". */
   id: string;
+  /** Skip this question unless an earlier question's answer contains `includes`. */
+  showWhen?: { questionId: string; includes: string };
   /** Topic shown above the question. Carries forward to following questions until the next group. */
   group?: string;
   followUps?: FollowUpDef[];
@@ -97,7 +99,7 @@ export type ContactFieldDef = {
   autoComplete: string;
 };
 
-export type Lang = "de" | "tr";
+export type Lang = "de" | "tr" | "en";
 
 /** Text overrides for one field; option labels are listed in the same order as the base options. */
 export type FieldTranslation = {
@@ -148,6 +150,8 @@ export type Questionnaire = {
     list?: string[];
     note?: string;
     driveUrl?: string;
+    /** Show "we'll send the Drive link separately" when no driveUrl is set yet. */
+    driveNote?: boolean;
     submitLabel: string;
   };
   success: {

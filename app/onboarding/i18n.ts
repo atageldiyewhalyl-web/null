@@ -4,9 +4,10 @@ import type { FieldDef, FieldTranslation, Lang, Questionnaire } from "./types";
 export const LANGS: { code: Lang; label: string; name: string }[] = [
   { code: "de", label: "DE", name: "Deutsch" },
   { code: "tr", label: "TR", name: "Türkçe" },
+  { code: "en", label: "EN", name: "English" },
 ];
 
-export const isLang = (value: unknown): value is Lang => value === "de" || value === "tr";
+export const isLang = (value: unknown): value is Lang => value === "de" || value === "tr" || value === "en";
 
 export type UiText = {
   clientOnboardingFor: (client: string) => string;
@@ -58,6 +59,7 @@ export type UiText = {
   customAdded: (label: string, position: number) => string;
   customRemoved: (label: string) => string;
   customLimit: (max: number) => string;
+  startAnother: string;
   notFoundTitle: string;
   notFoundBody: string;
   errors: ValidationMessages;
@@ -126,6 +128,7 @@ export const UI: Record<Lang, UiText> = {
     customAdded: (label, position) => `${label} hinzugefügt, Platz ${position}.`,
     customRemoved: (label) => `${label} entfernt.`,
     customLimit: (max) => `Sie können bis zu ${max} eigene Einträge hinzufügen.`,
+    startAnother: "Neuen Fragebogen ausfüllen",
     notFoundTitle: "Dieser Fragebogen existiert nicht",
     notFoundBody: "Bitte prüfen Sie den Link, den wir Ihnen geschickt haben, oder schreiben Sie uns an info@nüll.com.",
     errors: {
@@ -189,6 +192,7 @@ export const UI: Record<Lang, UiText> = {
     customAdded: (label, position) => `${label} eklendi, ${position}. sırada.`,
     customRemoved: (label) => `${label} kaldırıldı.`,
     customLimit: (max) => `En fazla ${max} kendi girişinizi ekleyebilirsiniz.`,
+    startAnother: "Yeni bir form doldur",
     notFoundTitle: "Bu form bulunamadı",
     notFoundBody: "Lütfen size gönderdiğimiz linki kontrol edin veya info@nüll.com adresine yazın.",
     errors: {
@@ -200,6 +204,70 @@ export const UI: Record<Lang, UiText> = {
       name: "Lütfen adınızı girin.",
       email: "Lütfen e-posta adresinizi girin.",
       emailInvalid: "Lütfen e-posta adresini kontrol edin.",
+    },
+  },
+  en: {
+    clientOnboardingFor: (client) => `Client onboarding for ${client}`,
+    start: "Start questionnaire",
+    resume: "Continue",
+    restart: "Start over",
+    autosaveNote: (duration) => `${duration}. Your progress is saved automatically.`,
+    welcomeBack: "Welcome back. Your previous answers are saved.",
+    questionsCount: (n) => `${n} questions`,
+    beforeStart: "Before we start",
+    optionalSuffix: "(optional)",
+    optional: "Optional",
+    company: "Company",
+    questionOf: (n, total) => `Question ${n} of ${total}`,
+    sectionDone: (title, n) => `${title}: all ${n} questions answered`,
+    upNext: "Up next",
+    lastStep: "Last step",
+    openDrive: "Open Google Drive folder",
+    driveLater: "We'll send you the link to the Google Drive folder separately.",
+    submitFailed: "The questionnaire could not be sent.",
+    submitRetry: "Your answers are saved. Please try again in a moment.",
+    submitOffline: "You appear to be offline. Your answers are saved – send the questionnaire once you're back online.",
+    submittedBy: (name) => `, submitted by ${name}`,
+    next: "Next",
+    back: "Back",
+    sending: "Sending",
+    saved: "Saved",
+    saving: "Saving…",
+    orPress: "to continue",
+    navLabel: "Questionnaire navigation",
+    progressLabel: "Progress",
+    progressText: (answered, total) => `${answered} of ${total} questions answered`,
+    languageLabel: "Language",
+    selectUpTo: (max) => `Select up to ${max}`,
+    selectedOf: (count, max) => `${count} of ${max} selected`,
+    otherPlaceholder: "Please specify (optional)",
+    otherSrLabel: (option) => `${option}: please specify (optional)`,
+    rankingHint: "Drag the entries by the dots or use the arrows.",
+    rankPlace: (n) => `Position ${n}: `,
+    moveUp: (label) => `Move ${label} up`,
+    moveDown: (label) => `Move ${label} down`,
+    rankAnnounce: (label, position, total) => `${label} is now at position ${position} of ${total}.`,
+    answerPlaceholder: "Your answer",
+    ctrlEnter: "Continue with ⌘/Ctrl + Enter",
+    startAnother: "Fill in a new questionnaire",
+    notFoundTitle: "This questionnaire doesn't exist",
+    notFoundBody: "Please check the link we sent you, or write to us at info@nüll.com.",
+    addCustomLabel: "Missing something? Add it.",
+    addCustomPlaceholder: "e.g. hotels, property managers",
+    addCustomButton: "Add",
+    removeEntry: (label) => `Remove ${label}`,
+    customAdded: (label, position) => `${label} added, position ${position}.`,
+    customRemoved: (label) => `${label} removed.`,
+    customLimit: (max) => `You can add up to ${max} own entries.`,
+    errors: {
+      selectOne: "Please choose an answer.",
+      selectAtLeastOne: "Please choose at least one answer.",
+      selectAtMost: (max) => `Please choose at most ${max} answers.`,
+      scale: (min, max) => `Please choose a value between ${min} and ${max}.`,
+      required: "Please fill in this field.",
+      name: "Please enter your name.",
+      email: "Please enter your email address.",
+      emailInvalid: "Please check the email address.",
     },
   },
 };

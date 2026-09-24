@@ -31,6 +31,7 @@ export default {
     "/datenschutz",
     "/impressum",
     "/onboarding/bergstone-keramiksan",
+    "/onboarding/fidelis",
     // Generic shell for every /interview/:slug link (vercel.json rewrites to it); the page loads its brief client-side.
     "/interview/shell",
   ],

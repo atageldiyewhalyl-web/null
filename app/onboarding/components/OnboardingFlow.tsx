@@ -11,13 +11,14 @@ import {
   isChoice,
   progressAt,
   pruneAnswers,
+  questionVisible,
   resolveOptions,
   validateContact,
   validateQuestion,
   type Screen,
 } from "../logic";
 import { clearDraft, loadDraft, newDraft, saveDraft, type Draft } from "../storage";
-import type { AnswerValue, Contact, Lang, Questionnaire } from "../types";
+import type { AnswerValue, Answers, Contact, Lang, Questionnaire } from "../types";
 import { fieldDomId } from "./fields";
 import { ContactScreen, FinalScreen, IntroScreen, QuestionScreen, SectionScreen, SuccessScreen } from "./screens";
 import { ClientMark, EASE, PrimaryButton, Wordmark } from "./ui";
@@ -33,13 +34,15 @@ const screenVariants: Variants = {
 export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
   const [lang, setLang] = useState<Lang>("de");
   const q = useMemo(() => localizeQuestionnaire(base, lang), [base, lang]);
+  const languages = useMemo(() => ["de", ...Object.keys(base.translations ?? {})] as Lang[], [base]);
   const t = UI[lang];
-  const screens = useMemo(() => buildScreens(q), [q]);
-  const total = useMemo(() => countQuestions(q), [q]);
+  const [draft, setDraft] = useState<Draft | null>(null);
+  // Questions can be skipped by an earlier answer, so the screen list depends on the answers.
+  const screens = useMemo(() => buildScreens(q, draft?.answers ?? {}), [q, draft?.answers]);
+  const total = useMemo(() => countQuestions(q, draft?.answers ?? {}), [q, draft?.answers]);
 
   const [ready, setReady] = useState(false);
-  const [draft, setDraft] = useState<Draft | null>(null);
-  const [index, setIndex] = useState(0);
+  const [screenId, setScreenId] = useState("intro");
   const [direction, setDirection] = useState(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [resumable, setResumable] = useState(false);
@@ -51,6 +54,7 @@ export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
   const draftRef = useRef<Draft | null>(null);
   draftRef.current = draft;
 
+  const index = Math.max(0, screens.findIndex((s) => s.id === screenId));
   const screen = screens[index] as Screen;
 
   /* ----- Restore ----- */
@@ -147,16 +151,17 @@ export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
     window.scrollTo({ top: 0 });
     const t = window.setTimeout(() => headingRef.current?.focus({ preventScroll: true }), 60);
     return () => window.clearTimeout(t);
-  }, [index, submitState]);
+  }, [screenId, submitState]);
 
   const goTo = useCallback(
     (next: number, dir: number) => {
+      const target = screens[Math.min(Math.max(next, 0), screens.length - 1)];
       setDirection(dir);
-      setIndex(next);
+      setScreenId(target.id);
       setErrors({});
       setDraft((d) => {
         if (!d) return d;
-        const updated = { ...d, screenId: screens[next].id, updatedAt: new Date().toISOString() };
+        const updated = { ...d, screenId: target.id, updatedAt: new Date().toISOString() };
         syncServer(updated, next);
         return updated;
       });
@@ -246,16 +251,19 @@ export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
 
   const restart = () => {
     clearDraft(base);
+    setScreenId("intro");
     setDraft({ ...newDraft(), lang });
     setResumable(false);
+    setSubmitState("idle");
+    setSubmitError(undefined);
     goTo(1, 1);
   };
 
   const resume = () => {
     if (!draft) return;
-    const target = Math.max(0, screens.findIndex((s) => s.id === draft.screenId));
+    const target = screens.findIndex((s) => s.id === draft.screenId);
     setResumable(false);
-    goTo(target, 1);
+    goTo(target < 0 ? 1 : target, 1);
   };
 
   /* ----- Keyboard ----- */
@@ -311,7 +319,7 @@ export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
     // Server/prerender output: the intro, so there's no blank page before hydration.
     body = <IntroScreen ref={headingRef} q={q} resumable={false} onStart={() => undefined} onResume={() => undefined} onRestart={() => undefined} />;
   } else if (done) {
-    body = <SuccessScreen ref={headingRef} q={q} name={draft.contact.name} />;
+    body = <SuccessScreen ref={headingRef} q={q} name={draft.contact.name} onRestart={restart} />;
   } else if (screen.kind === "intro") {
     body = <IntroScreen ref={headingRef} q={q} resumable={resumable} onStart={() => goTo(1, 1)} onResume={resume} onRestart={restart} />;
   } else if (screen.kind === "contact") {
@@ -359,10 +367,10 @@ export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
                   {saved ? t.saved : t.saving}
                 </p>
               ) : null}
-              {!done && base.translations ? <LanguageSwitch lang={lang} onChange={changeLanguage} t={t} /> : null}
+              {!done && languages.length > 1 ? <LanguageSwitch langs={languages} lang={lang} onChange={changeLanguage} t={t} /> : null}
             </div>
           </div>
-          {showChrome || done ? <ProgressRail q={q} progress={progress} t={t} /> : <div className="h-[3px]" />}
+          {showChrome || done ? <ProgressRail q={q} answers={draft?.answers ?? {}} progress={progress} t={t} /> : <div className="h-[3px]" />}
           <div className="h-2 md:h-3" aria-hidden="true" />
         </header>
 
@@ -446,10 +454,11 @@ export function OnboardingFlow({ q: base }: { q: Questionnaire }) {
   );
 }
 
-function LanguageSwitch({ lang, onChange, t }: { lang: Lang; onChange: (lang: Lang) => void; t: UiText }) {
+function LanguageSwitch({ langs, lang, onChange, t }: { langs: Lang[]; lang: Lang; onChange: (lang: Lang) => void; t: UiText }) {
+  const options = LANGS.filter((l) => langs.includes(l.code));
   return (
     <div role="group" aria-label={t.languageLabel} className="flex rounded-full border border-black/[0.12] p-0.5">
-      {LANGS.map((l) => (
+      {options.map((l) => (
         <button
           key={l.code}
           type="button"
@@ -478,16 +487,19 @@ function isAnsweredForButton(screen: Extract<Screen, { kind: "question" }>, draf
   return value !== undefined && value !== "";
 }
 
-/** Two-segment progress: one segment per section, sized by question count. */
-function ProgressRail({ q, progress, t }: { q: Questionnaire; progress: number; t: UiText }) {
-  const total = countQuestions(q);
+/** One segment per section the client actually sees, sized by its visible questions. */
+function ProgressRail({ q, answers, progress, t }: { q: Questionnaire; answers: Answers; progress: number; t: UiText }) {
+  const sections = q.sections
+    .map((section) => ({ key: section.key, count: section.questions.filter((i) => questionVisible(i, answers)).length }))
+    .filter((section) => section.count > 0);
+  const total = sections.reduce((sum, section) => sum + section.count, 0) || 1;
   let offset = 0;
-  const segments = q.sections.map((section) => {
-    const share = section.questions.length / total;
+  const segments = sections.map((section) => {
+    const share = section.count / total;
     const start = offset;
     offset += share;
     const fill = Math.min(1, Math.max(0, (progress - start) / share));
-    return { key: section.key, title: section.title, share, fill };
+    return { key: section.key, share, fill };
   });
   const answered = Math.round(progress * total);
 

@@ -7,10 +7,10 @@ const API_BASE =
   `https://${projectId}.supabase.co/functions/v1/make-server-ea5edff4`;
 
 /**
- * The Supabase function can't run locally (no Docker), so dev uses an in-browser
- * mock unless VITE_ONBOARDING_MOCK=false. Production always hits the function.
+ * Dev talks to the deployed Supabase function like production does, so a local
+ * test really is saved and e-mailed. Set VITE_ONBOARDING_MOCK=true to fake it.
  */
-const USE_MOCK = import.meta.env.DEV && import.meta.env.VITE_ONBOARDING_MOCK !== "false";
+const USE_MOCK = import.meta.env.DEV && import.meta.env.VITE_ONBOARDING_MOCK === "true";
 
 type Base = {
   slug: string;

@@ -291,6 +291,7 @@ export const bergstoneKeramiksan: Questionnaire = {
     note: "Nach unserem aktuellen Stand bietet Bergstone Keramiksan keine Türen mehr an. Türen und entsprechende Tür-Kataloge werden daher nicht auf die neue Website übernommen.",
     // TODO: insert the Google Drive folder link once it exists.
     driveUrl: undefined,
+    driveNote: true,
     submitLabel: "Fragebogen absenden",
   },
   success: {

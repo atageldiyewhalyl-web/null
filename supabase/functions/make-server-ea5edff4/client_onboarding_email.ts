@@ -8,6 +8,10 @@ export const ONBOARDING_CLIENTS: Record<string, OnboardingClientConfig> = {
     name: "Bergstone Keramiksan",
     recipients: ["halyl@xn--nll-hoa.com"],
   },
+  fidelis: {
+    name: "Fidelis Unternehmensgruppe",
+    recipients: ["halyl@xn--nll-hoa.com"],
+  },
 };
 
 export type AnswerRow = {
