@@ -231,14 +231,6 @@ export const workItems = [
     description:
       "Ein präziser Beratungsauftritt, der Kompetenz sichtbar macht und Leads fokussiert.",
   },
-  {
-    title: "Onkel Abwassertechnik",
-    image: "/assets/new-landing/onkel-portfolio.png",
-    alt: "Onkel Abwassertechnik website preview",
-    link: "#contact",
-    description:
-      "Ein moderner Service-Auftritt für Rohr- und Kanalreinigung, der akute Probleme klar anspricht und Besucher schnell zur Anfrage führt.",
-  },
 ];
 
 const workSlides = Array.from({ length: Math.ceil(workItems.length / 2) }, (_, index) =>
