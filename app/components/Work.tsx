@@ -19,8 +19,21 @@ import dogruLogo from "../assets/Dogru kanzlei/logo.webp";
 import soBeautyHeroDemo from "../assets/SO Mock Up Mac.png";
 // @ts-ignore – vite-imagetools resolves these at build time
 import ftSicherheitstechnikHeroDemo from "../assets/ft-sicherheitstechnik-mockup.png";
+// @ts-ignore – vite-imagetools resolves these at build time
+import bergstoneKeramiksanHeroDemo from "../assets/bergstone-keramiksan-mockup.png";
 
 const projects = [
+  {
+    id: "bergstone-keramiksan",
+    title: "Bergstone Keramiksan",
+    categoryKey: "work.bergstoneKeramiksan.category",
+    descKey: "work.bergstoneKeramiksan.desc",
+    image: bergstoneKeramiksanHeroDemo,
+    clientLogo: null,
+    clientLogoAlt: "",
+    clientLogoClassName: "",
+    link: "https://www.keramiksan.de/",
+  },
   {
     id: "ft-sicherheitstechnik",
     title: "FT Sicherheitstechnik",

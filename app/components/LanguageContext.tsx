@@ -380,6 +380,16 @@ const labels: Record<string, Record<Language, string>> = {
 
   "work.label": { en: "Selected Work", de: "Ausgewählte Projekte", tr: "Seçili Çalışmalar" },
   "work.title": { en: "Projects that speak for themselves.", de: "Arbeiten, die für sich sprechen.", tr: "Kendini anlatan projeler." },
+  "work.bergstoneKeramiksan.category": {
+    en: "Tile showroom website & enquiry flow",
+    de: "Fliesen-Showroom Website & Anfrageführung",
+    tr: "Fayans showroom web sitesi ve talep akışı",
+  },
+  "work.bergstoneKeramiksan.desc": {
+    en: "A polished showroom website for Bergstone Keramiksan in Ludwigshafen, built around tiles, quartz and stone worktops, multilingual consultation, 360-degree showroom discovery, WhatsApp enquiries, planning, measurement and worktop installation.",
+    de: "Ein hochwertiger Showroom-Auftritt für Bergstone Keramiksan in Ludwigshafen: Fliesen, Quarz- und Stein-Arbeitsplatten, Beratung auf Deutsch, Türkisch und Englisch, 360°-Rundgang, WhatsApp-Anfragen, Planung, Aufmaß und Arbeitsplatten-Montage klar zusammengeführt.",
+    tr: "Ludwigshafen'daki Bergstone Keramiksan için fayans, kuvars ve taş tezgahlar, Türkçe/Almanca/İngilizce danışmanlık, 360 derece showroom, WhatsApp talepleri, planlama, ölçü alma ve tezgah montajını bir araya getiren güçlü bir showroom web sitesi.",
+  },
   "work.ftSicherheitstechnik.category": {
     en: "Security technology website & digital acquisition",
     de: "Sicherheitstechnik Website & digitale Anfragen",

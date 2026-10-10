@@ -168,6 +168,14 @@ const stats: StatItem[] = [
 
 export const workItems = [
   {
+    title: "Bergstone Keramiksan",
+    image: "/assets/new-landing/bergstone-keramiksan-mockup.png",
+    alt: "Bergstone Keramiksan website preview",
+    link: "https://www.keramiksan.de/",
+    description:
+      "Showroom-Website für Fliesen und Arbeitsplatten in Ludwigshafen: persönliche Beratung auf Deutsch, Türkisch und Englisch, 360°-Rundgang, WhatsApp-Anfragen, Planung, Aufmaß und Arbeitsplatten-Montage.",
+  },
+  {
     title: "FT Sicherheitstechnik",
     image: "/assets/new-landing/ft-sicherheitstechnik-mockup.png",
     alt: "FT Sicherheitstechnik website preview",
