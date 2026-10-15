@@ -168,6 +168,14 @@ const stats: StatItem[] = [
 
 export const workItems = [
   {
+    title: "Treu Haustechnik",
+    image: "/assets/new-landing/treu-haustechnik-mockup.png",
+    alt: "Treu Haustechnik website preview on laptop and smartphone",
+    link: "https://www.treu-haustechnik.de/",
+    description:
+      "Ein moderner Website-Auftritt für den Mannheimer Meisterbetrieb rund um Sanitär, Heizung und Klimatechnik – mit Badsanierung, Wärmepumpen, Klimaanlagen und 24/7-Notdienst klar im Fokus.",
+  },
+  {
     title: "Bergstone Keramiksan",
     image: "/assets/new-landing/bergstone-keramiksan-mockup.png",
     alt: "Bergstone Keramiksan website preview",
