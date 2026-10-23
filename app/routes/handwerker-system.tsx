@@ -124,7 +124,7 @@ export default function HandwerkerSystemRoute() {
             href={bookingUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-flex min-h-14 items-center justify-center gap-3 whitespace-nowrap rounded-xl bg-[#007aff] px-7 text-base font-bold tracking-[-0.025em] text-white no-underline shadow-[0_16px_38px_-18px_rgba(0,122,255,0.78)] transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007aff]"
+            className="mt-8 inline-flex min-h-14 items-center justify-center gap-3 whitespace-nowrap rounded-xl bg-[#0071e3] px-7 text-base font-bold tracking-[-0.025em] text-white no-underline shadow-[0_16px_38px_-18px_rgba(0,113,227,0.78)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#0068d1] active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0071e3]"
           >
             Erstgespräch anfragen
             <IconArrowRight size={20} stroke={2} aria-hidden="true" />
@@ -137,7 +137,9 @@ export default function HandwerkerSystemRoute() {
 
       <footer className="border-t border-[#dedee1] px-5 py-8 text-[#73737a] dark:border-[#29292e] dark:text-[#96969d] sm:px-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm sm:flex-row">
-          <p>© {new Date().getFullYear()} nüll. Alle Rechte vorbehalten.</p>
+          <p className="!text-[#73737a] dark:!text-[#96969d]">
+            © {new Date().getFullYear()} nüll. Alle Rechte vorbehalten.
+          </p>
           <nav aria-label="Rechtliche Informationen" className="flex items-center gap-5">
             <a className="text-inherit underline-offset-4 hover:underline" href="/impressum">
               Impressum

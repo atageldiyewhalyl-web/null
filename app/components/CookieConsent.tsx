@@ -127,7 +127,7 @@ export function CookieConsent() {
                 die Nutzung zu analysieren und Inhalte zu verbessern. Einige Dienste können
                 personenbezogene Daten in Drittländer übertragen.
               </p>
-              <p className="mt-2 text-[0.875rem] leading-6 text-neutral-500">
+              <p className="mt-2 text-[0.875rem] leading-6 text-neutral-600">
                 Sie können Ihre Auswahl jederzeit ändern.
               </p>
             </div>
@@ -214,7 +214,11 @@ export function CookieConsent() {
                 Auswahl speichern
               </Button>
             )}
-            <Button type="button" className="rounded-full px-5" onClick={acceptAll}>
+            <Button
+              type="button"
+              className="rounded-full bg-[#0071e3] px-5 text-white hover:bg-[#0068d1]"
+              onClick={acceptAll}
+            >
               Alle akzeptieren
             </Button>
           </div>
