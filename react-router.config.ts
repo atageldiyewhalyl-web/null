@@ -7,6 +7,7 @@ export default {
   },
   prerender: [
     "/",
+    "/handwerker-system",
     "/kanzlei-websites",
     "/mandate-kanzlei-mannheim",
     "/arztpraxis-websites",

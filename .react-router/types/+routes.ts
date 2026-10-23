@@ -27,6 +27,9 @@ type Pages = {
   "/new-landing": {
     params: {};
   };
+  "/handwerker-system": {
+    params: {};
+  };
   "/hasan": {
     params: {};
   };
@@ -130,7 +133,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding/:slug" | "/interview/:slug" | "/new-landing" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/mandate-kanzlei-mannheim" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
+    page: "/" | "/onboarding/:slug" | "/interview/:slug" | "/new-landing" | "/handwerker-system" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/mandate-kanzlei-mannheim" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
   "routes/client-onboarding.tsx": {
     id: "routes/client-onboarding";
@@ -143,6 +146,10 @@ type RouteFiles = {
   "routes/new-landing.tsx": {
     id: "routes/new-landing";
     page: "/new-landing";
+  };
+  "routes/handwerker-system.tsx": {
+    id: "routes/handwerker-system";
+    page: "/handwerker-system";
   };
   "routes/hasan.tsx": {
     id: "routes/hasan";
@@ -279,6 +286,7 @@ type RouteModules = {
   "routes/client-onboarding": typeof import("./app/routes/client-onboarding.tsx");
   "routes/interview": typeof import("./app/routes/interview.tsx");
   "routes/new-landing": typeof import("./app/routes/new-landing.tsx");
+  "routes/handwerker-system": typeof import("./app/routes/handwerker-system.tsx");
   "routes/hasan": typeof import("./app/routes/hasan.tsx");
   "routes/website-analyse": typeof import("./app/routes/website-analyse.tsx");
   "routes/kanzlei-websites": typeof import("./app/routes/kanzlei-websites.tsx");

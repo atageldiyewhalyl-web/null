@@ -4,6 +4,7 @@ export default [
   route("onboarding/:slug", "routes/client-onboarding.tsx"),
   route("interview/:slug", "routes/interview.tsx"),
   route("new-landing", "routes/new-landing.tsx"),
+  route("handwerker-system", "routes/handwerker-system.tsx"),
   route("hasan", "routes/hasan.tsx"),
   route("website-analyse", "routes/website-analyse.tsx"),
   route("kanzlei-websites", "routes/kanzlei-websites.tsx"),

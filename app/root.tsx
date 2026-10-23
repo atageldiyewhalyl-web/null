@@ -62,6 +62,7 @@ export default function App() {
   const isBlankCanvas =
     location.pathname === "/" ||
     location.pathname.startsWith("/new-landing") ||
+    location.pathname.startsWith("/handwerker-system") ||
     location.pathname.startsWith("/hasan") ||
     location.pathname.startsWith("/website-analyse") ||
     location.pathname.startsWith("/kanzlei-websites") ||
