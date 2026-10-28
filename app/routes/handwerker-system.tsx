@@ -1,36 +1,8 @@
-import {
-  IconCalendarTime,
-  IconCoinEuro,
-  IconLockOpen,
-  IconRefresh,
-} from "@tabler/icons-react";
+import { IconCalendarTime } from "@tabler/icons-react";
 import { useEffect, useRef } from "react";
 
 const bookingUrl =
   "https://calendly.com/feyza-xn-nll-hoa/kostenloses-beratungsgesprach?month=2026-10";
-
-const guarantees = [
-  {
-    Icon: IconCalendarTime,
-    title: "In 7 Tagen startklar",
-    description: "Wir setzen das System zügig für Ihren Betrieb auf.",
-  },
-  {
-    Icon: IconCoinEuro,
-    title: "1. Monat kostenlos",
-    description: "Sie testen den Ansatz ohne Einstiegskosten.",
-  },
-  {
-    Icon: IconRefresh,
-    title: "Keine Anfrage?",
-    description: "Dann ist auch der zweite Monat kostenlos.",
-  },
-  {
-    Icon: IconLockOpen,
-    title: "Keine Bindung",
-    description: "Alles, was wir aufbauen, bleibt bei Ihnen.",
-  },
-];
 
 export function meta() {
   return [
@@ -110,37 +82,9 @@ export default function HandwerkerSystemRoute() {
           </video>
         </div>
 
-        <section
-          aria-label="Unsere Garantie"
-          className="mt-12 hidden border-y border-[#d8d8dc] py-3 md:block"
-        >
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-            {guarantees.map(({ Icon, title, description }, index) => (
-              <article
-                key={title}
-                className={`flex gap-4 px-1 py-6 sm:px-6 lg:px-7 ${
-                  index > 0 ? "lg:border-l lg:border-[#d8d8dc]" : ""
-                } ${index % 2 === 1 ? "sm:border-l sm:border-[#d8d8dc]" : ""}`}
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#007aff]/10 text-[#007aff]">
-                  <Icon size={23} stroke={1.8} aria-hidden="true" />
-                </div>
-                <div>
-                  <h2 className="text-base font-bold tracking-[-0.03em] text-[#111113]">
-                    {title}
-                  </h2>
-                  <p className="mt-1 text-sm leading-relaxed text-[#66666d]">
-                    {description}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="mx-auto mt-20 max-w-6xl text-center sm:mt-24">
           <h1 className="mx-auto max-w-5xl text-[clamp(2.35rem,5.4vw,5rem)] font-bold leading-[1] tracking-[-0.06em] text-[#111113]">
-            Was ist für Ihren Betrieb realistisch?
+            Jetzt kostenloses Erstgespräch sichern
           </h1>
           <a
             href={bookingUrl}
