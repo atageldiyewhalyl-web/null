@@ -98,6 +98,8 @@ export default function HandwerkerSystemRoute() {
             ref={videoRef}
             className="block aspect-[1710/1108] w-full bg-[#101114] object-contain"
             controls
+            controlsList="nodownload"
+            onContextMenu={(event) => event.preventDefault()}
             playsInline
             preload="metadata"
             poster="/assets/handwerker-system/system-poster.jpg"
