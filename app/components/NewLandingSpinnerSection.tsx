@@ -166,14 +166,32 @@ const stats: StatItem[] = [
   },
 ];
 
-export const workItems = [
+type WorkItem = {
+  title: string;
+  image: string;
+  alt: string;
+  link: string;
+  description: string;
+  imageFit?: "cover" | "contain";
+};
+
+export const workItems: WorkItem[] = [
+  {
+    title: "SG Laserzentrum",
+    image: "/assets/new-landing/sg-laserzentrum-mockup.webp",
+    alt: "SG Laserzentrum Website auf MacBook und Smartphone",
+    link: "https://sg-laserzentrum.de/",
+    description:
+      "Ein skalierbarer Webauftritt für dauerhafte Haarentfernung an acht Standorten: NiSV-Vertrauen, klare Technologieinhalte, transparente Preise und direkte Online-Terminbuchung.",
+    imageFit: "contain",
+  },
   {
     title: "Treu Haustechnik",
     image: "/assets/new-landing/treu-haustechnik-mockup.png",
     alt: "Treu Haustechnik website preview on laptop and smartphone",
     link: "https://www.treu-haustechnik.de/",
     description:
-      "Ein moderner Website-Auftritt für den Mannheimer Meisterbetrieb rund um Sanitär, Heizung und Klimatechnik – mit Badsanierung, Wärmepumpen, Klimaanlagen und 24/7-Notdienst klar im Fokus.",
+      "Ein moderner Website-Auftritt für den Mannheimer Meisterbetrieb rund um Sanitär, Heizung und Klimatechnik: Badsanierung, Wärmepumpen, Klimaanlagen und 24/7-Notdienst klar im Fokus.",
   },
   {
     title: "Bergstone Keramiksan",
@@ -1718,12 +1736,18 @@ export default function NewLandingSpinnerSection({
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${item.title} Website öffnen`}
-                          className="group block overflow-hidden"
+                          className={`group block aspect-[16/10] overflow-hidden ${
+                            item.imageFit === "contain" ? "bg-[#f3f5f8] p-3 sm:p-5 md:p-8" : ""
+                          }`}
                         >
                           <img
                             src={item.image}
                             alt={item.alt}
-                            className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            loading="lazy"
+                            decoding="async"
+                            className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.02] ${
+                              item.imageFit === "contain" ? "object-contain" : "object-cover"
+                            }`}
                           />
                         </a>
                         <div className="mt-6 md:mt-7">
