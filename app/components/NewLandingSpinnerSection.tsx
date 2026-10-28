@@ -1736,15 +1736,19 @@ export default function NewLandingSpinnerSection({
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${item.title} Website öffnen`}
-                          className="group block aspect-[16/10] overflow-hidden"
+                          className={`group block aspect-[16/10] ${
+                            item.imageFit === "contain" ? "overflow-visible" : "overflow-hidden"
+                          }`}
                         >
                           <img
                             src={item.image}
                             alt={item.alt}
                             loading="lazy"
                             decoding="async"
-                            className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.02] ${
-                              item.imageFit === "contain" ? "object-contain" : "object-cover"
+                            className={`h-full w-full transition-transform duration-700 ${
+                              item.imageFit === "contain"
+                                ? "scale-[1.12] object-contain group-hover:scale-[1.14]"
+                                : "object-cover group-hover:scale-[1.02]"
                             }`}
                           />
                         </a>
