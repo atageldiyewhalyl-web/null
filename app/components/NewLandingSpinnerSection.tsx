@@ -1736,9 +1736,7 @@ export default function NewLandingSpinnerSection({
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${item.title} Website öffnen`}
-                          className={`group block aspect-[16/10] overflow-hidden ${
-                            item.imageFit === "contain" ? "bg-[#f3f5f8] p-3 sm:p-5 md:p-8" : ""
-                          }`}
+                          className="group block aspect-[16/10] overflow-hidden"
                         >
                           <img
                             src={item.image}
