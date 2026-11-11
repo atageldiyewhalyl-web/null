@@ -18,4 +18,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://xn--nll-hoa.com/sitemap.xml
+Sitemap: https://nuell-agentur.com/sitemap.xml

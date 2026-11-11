@@ -26,7 +26,7 @@ _Last updated: 2026-07-10_
 - serp_evidence: multiple sources state GBP > website > Jameda for patient acquisition, but no single competitor post is GBP-focused start to finish
 - angle: Deep, standalone GBP optimization guide for practices — natural internal-link companion to the Ärzte website post
 - score: 8
-- status: pending
+- status: written:2026-07-11
 
 ## Praxis-Website: Doctolib, TerMed oder eigene Terminbuchung? Der ehrliche Vergleich
 - primary_kw: online terminbuchung arztpraxis vergleich (vol: n/a, difficulty: med)

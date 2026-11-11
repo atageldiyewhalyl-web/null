@@ -1,6 +1,7 @@
 import type { BlogPost } from "../types";
+import { handwerkPosts } from "./blog/handwerk";
 
-export const blogPosts: BlogPost[] = [
+const basePosts: BlogPost[] = [
   {
     groupId: "conversion-elements",
     lang: "en",
@@ -212,7 +213,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design",
     date: "2026-04-23",
     readTime: "15 min read",
-    image: "/assets/blog/null-conversion-elements.webp",
+    image: "/assets/blog/covers/conversion-elements.webp",
   },
   {
     groupId: "conversion-elements",
@@ -425,7 +426,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design",
     date: "2026-04-23",
     readTime: "15 min read",
-    image: "/assets/blog/null-conversion-elements.webp",
+    image: "/assets/blog/covers/conversion-elements.webp",
   },
   {
     groupId: "google-rankings-germany",
@@ -460,7 +461,7 @@ export const blogPosts: BlogPost[] = [
     category: "SEO",
     date: "2026-04-23",
     readTime: "12 min read",
-    image: "/assets/blog/null-google-rankings-germany.webp"
+    image: "/assets/blog/covers/google-rankings-germany.webp"
   },
   {
     groupId: "google-rankings-germany",
@@ -493,7 +494,7 @@ export const blogPosts: BlogPost[] = [
     category: "SEO",
     date: "2026-04-23",
     readTime: "12 min read",
-    image: "/assets/blog/null-google-rankings-germany.webp"
+    image: "/assets/blog/covers/google-rankings-germany.webp"
   },
   {
     groupId: "law-firm-webdesign",
@@ -687,7 +688,7 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · SEO",
     date: "2026-05-04",
     readTime: "18 min read",
-    image: "/assets/blog/null-law-firm-webdesign.webp"
+    image: "/assets/blog/covers/law-firm-webdesign.webp"
   },
   {
     groupId: "law-firm-webdesign",
@@ -882,7 +883,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design · SEO",
     date: "2026-05-04",
     readTime: "18 min read",
-    image: "/assets/blog/null-law-firm-webdesign.webp"
+    image: "/assets/blog/covers/law-firm-webdesign.webp"
   },
   {
     groupId: "freelancer-vs-agency-website",
@@ -1074,7 +1075,7 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · Kosten · Strategie",
     date: "2026-05-04",
     readTime: "16 min read",
-    image: "/assets/blog/null-law-firm-webdesign.webp"
+    image: "/assets/blog/covers/freelancer-vs-agency-website.webp"
   },
   {
     groupId: "freelancer-vs-agency-website",
@@ -1255,7 +1256,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design · Strategy · Costs",
     date: "2026-05-04",
     readTime: "16 min read",
-    image: "/assets/blog/null-law-firm-webdesign.webp"
+    image: "/assets/blog/covers/freelancer-vs-agency-website.webp"
   },
   {
     groupId: "kanzlei-website-leitfaden",
@@ -1266,7 +1267,7 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · SEO · Kanzlei",
     date: "2026-06-02",
     readTime: "18 Min. Lesezeit",
-    image: "/assets/blog/law-firm-3d-courtroom-hero.webp",
+    image: "/assets/blog/covers/kanzlei-website-leitfaden.webp",
     providers: [
       {
         rank: 1,
@@ -1293,7 +1294,7 @@ export const blogPosts: BlogPost[] = [
           "Laufendes SEO",
           "Google Ads-Management"
         ],
-        url: "/kanzlei-websites",
+        url: "/leistungen/webdesign",
         highlight: true
       },
       {
@@ -1377,7 +1378,7 @@ export const blogPosts: BlogPost[] = [
     ],
     content: [
       "Hasan Doğru kam zu uns mit einem Problem, das fast jeder Anwalt in Deutschland kennt: eine Website, die zwar existiert, aber bei Google unsichtbar ist. Keine Anfragen über das Internet. Kein organischer Traffic. Mandanten kamen ausschließlich über persönliche Weiterempfehlungen.",
-      "Knapp drei Monate später: **719 organische Klicks, über 35.000 Impressionen, Position 1 für lokale Schlüsselwörter.** ChatGPT nennt seine Kanzlei als erste Empfehlung für türkisch-deutsches Recht in Mannheim. Hasan denkt inzwischen über neue Fachbereiche nach. Nicht weil er mehr Zeit hat, sondern weil die Nachfrage es hergibt.",
+      "Knapp drei Monate später: **719 organische Klicks, über 35.000 Impressionen, Position 1 für lokale Schlüsselwörter.** ChatGPT nennt seine Kanzlei als erste Empfehlung für türkisches Recht in Mannheim. Hasan denkt inzwischen über neue Fachbereiche nach. Nicht weil er mehr Zeit hat, sondern weil die Nachfrage es hergibt.",
       "Das ist kein Werbeversprechen. Es ist das Ergebnis einer Website, die als digitale Infrastruktur gebaut wurde, nicht als Visitenkarte.",
       "Dieser Artikel zeigt, was professionelles Webdesign für Rechtsanwälte und Kanzleien 2026 leisten muss: was es kostet, woran Sie Anbieter wirklich unterscheiden, welche Rechtspflichten Ihre Website erfüllen muss und warum Google allein nicht mehr reicht.",
       "[POSITIVBEISPIEL]",
@@ -1447,9 +1448,9 @@ export const blogPosts: BlogPost[] = [
       "Ein neues Mandat im Familienrecht bringt einer Kanzlei im Schnitt zwischen **1.500 und 4.000 Euro**. Ein Erbrechtsfall oft mehr.",
       "Wenn nüll. Ihnen über Google und Google Ads im ersten Monat zwei neue Mandate bringt, hat sich das gesamte Jahresbudget bereits gerechnet.",
       "Die realistische Erwartung nach 3 bis 6 Monaten: **10 bis 50 qualifizierte Anfragen pro Monat** aus Ihrer Region. Menschen, die aktiv nach einem Anwalt in Ihrem Fachgebiet suchen und auf Ihre Website treffen, bevor sie zur Konkurrenz weitergehen.",
-      "## Fallstudie: Wie Kanzlei Doğru zur ersten Empfehlung für türkisch-deutsches Recht in Mannheim wurde",
+      "## Fallstudie: Wie Kanzlei Doğru zur ersten Empfehlung für türkisches Recht in Mannheim wurde",
       "### Die Ausgangssituation",
-      "Hasan Doğru ist Rechtsanwalt in Mannheim. Seine Kanzlei deckt türkisch-deutsches Recht ab: Familienrecht, Erbrecht, Strafrecht, Immobilienrecht. Als Anwalt mit Zulassung bei der Rechtsanwaltskammer Karlsruhe und Verbindung zur Ankara Barosu ist er einer von sehr wenigen Spezialisten in Deutschland, die diese Nische wirklich abdecken.",
+      "Avukat Hasan Doğru ist türkischer Anwalt in Mannheim. Er berät zu türkischem Recht: Familienrecht, Erbrecht, Strafrecht, Immobilienrecht. Zugelassen in Ankara (Ankara Barosu) und nach § 207 BRAO bei der Rechtsanwaltskammer Karlsruhe registriert, ist er einer von sehr wenigen Spezialisten in Deutschland, die diese Nische wirklich abdecken.",
       "Das Problem: Online war er praktisch unsichtbar. **Weniger als 3 Klicks pro Tag** auf seine Website. Keine relevanten Google-Rankings. Neue Mandanten kamen ausschließlich über persönliche Weiterempfehlungen.",
       "[ASSET: /assets/blog/kanzlei-dogru-gsc-vorher.png — Google Search Console: Ausgangssituation weniger als 3 Klicks pro Tag]",
       "### Was wir gebaut haben",
@@ -1504,7 +1505,7 @@ export const blogPosts: BlogPost[] = [
       "## Ihre Kanzlei verdient eine Website, die arbeitet",
       "Hasan Doğru hat keine neue Website bekommen. Er hat eine digitale Infrastruktur bekommen, die heute rund um die Uhr für ihn läuft: auf Google, auf KI-Plattformen, über bezahlte Anzeigen. Die Anfragen, die jetzt reinkommen, kommen von Menschen, die bereits wissen, wer er ist und warum sie ihn beauftragen wollen.",
       "Das ist der Unterschied zwischen einer Website als Visitenkarte und einer Website als Mandantensystem.",
-      "Wie wir Kanzlei-Websites konzipieren, entwickeln und für Google und KI optimieren: [Kanzlei-Websites von nüll. ansehen](/kanzlei-websites)"
+      "Wie wir Kanzlei-Websites konzipieren, entwickeln und für Google und KI optimieren: [Kanzlei-Websites von nüll. ansehen](/leistungen/webdesign)"
     ],
     faqs: [
       {
@@ -1673,7 +1674,7 @@ export const blogPosts: BlogPost[] = [
     category: "Web Design",
     date: "2026-07-03",
     readTime: "12 min",
-    image: "/assets/blog/null-conversion-elements.webp"
+    image: "/assets/blog/covers/handwerker-website-auftraege.webp"
   },
   {
     groupId: "seo-handwerker-google",
@@ -1819,7 +1820,7 @@ export const blogPosts: BlogPost[] = [
     category: "SEO",
     date: "2026-07-03",
     readTime: "13 min",
-    image: "/assets/blog/null-google-rankings-germany.webp"
+    image: "/assets/blog/covers/seo-handwerker-google.webp"
   },
   {
     groupId: "google-ads-handwerker",
@@ -1950,7 +1951,7 @@ export const blogPosts: BlogPost[] = [
     category: "Google Ads",
     date: "2026-07-03",
     readTime: "12 min",
-    image: "/assets/blog/null-conversion-elements.webp"
+    image: "/assets/blog/covers/google-ads-handwerker.webp"
   },
   {
     groupId: "online-marketing-handwerker",
@@ -2062,7 +2063,7 @@ export const blogPosts: BlogPost[] = [
     category: "Online Marketing",
     date: "2026-07-03",
     readTime: "14 min",
-    image: "/assets/blog/null-google-rankings-germany.webp"
+    image: "/assets/blog/covers/online-marketing-handwerker.webp"
   },
   {
     groupId: "arztpraxis-webdesign",
@@ -2076,7 +2077,7 @@ export const blogPosts: BlogPost[] = [
       `Deine Praxis hat eine Website. Adresse, Sprechzeiten, ein paar Sätze zum Leistungsspektrum, vielleicht ein Teamfoto.`,
       `Und trotzdem kommen die meisten neuen Patienten über Doctolib, Jameda oder Mundpropaganda, nicht über deine eigene Website.`,
       `Das ist kein Zufall. Es ist die Folge eines einfachen Missverständnisses: Eine Website zu haben ist nicht dasselbe wie online gefunden zu werden. Über 77 % der Patienten suchen Gesundheitsinformationen oder eine passende Praxis zuerst online, meist bevor sie überhaupt bei einer Praxis anrufen.`,
-      `Bei Nüll., einer [Webdesign-Agentur für Selbstständige](/kanzlei-websites) aus Mannheim, die sich auf Kanzleien, Berater und zunehmend auch Praxen spezialisiert, zeigen wir dir, was eine Arztpraxis-Website 2026 wirklich braucht. Nicht theoretisch, sondern aus direkter Erfahrung mit Webdesign- und SEO-Projekten für Anbieter, die genauso wie Praxen auf Vertrauen und lokale Sichtbarkeit angewiesen sind.`,
+      `Bei Nüll., einer [Webdesign-Agentur für Selbstständige](/leistungen/webdesign) aus Mannheim, die sich auf Kanzleien, Berater und zunehmend auch Praxen spezialisiert, zeigen wir dir, was eine Arztpraxis-Website 2026 wirklich braucht. Nicht theoretisch, sondern aus direkter Erfahrung mit Webdesign- und SEO-Projekten für Anbieter, die genauso wie Praxen auf Vertrauen und lokale Sichtbarkeit angewiesen sind.`,
       `## Warum Google Business Profile wichtiger ist als deine Website, aber beide zusammen gehören`,
       `Das überrascht die meisten Praxisinhaber: Der stärkste einzelne Kanal zur Neupatientengewinnung ist nicht die eigene Website. Es ist das Google Business Profile (GBP), das Profil, das bei "Hautarzt Mannheim" oder "Zahnarzt in der Nähe" direkt in der Kartenansicht und der Seitenleiste erscheint.`,
       `Das bedeutet aber nicht, dass die Website unwichtig ist. Es bedeutet, dass beide zusammenspielen müssen.`,
@@ -2116,7 +2117,7 @@ export const blogPosts: BlogPost[] = [
       `| Laufende Betreuung (SEO, Blog, GBP-Pflege) | 300 € bis 800 € / Monat |`,
       `| **Nüll. Praxis-System (Richtwert)** | **ab ca. 600 € upfront + ca. 300 € / Monat** |`,
       `Bei Nüll. bleibt Strategie, Design und Launch bewusst bezahlbar. Die genannten Nüll.-Preise sind ein Orientierungswert, das konkrete Angebot hängt vom Umfang deiner Praxis-Website ab. Die laufende Betreuung sorgt danach für technische SEO, GBP-Pflege, Content-Optimierung und Sichtbarkeit in KI-Antwortsystemen wie ChatGPT und Google AI Overviews, in denen Praxen zunehmend genannt werden wollen, wenn Patienten dort nach Empfehlungen fragen.`,
-      `Mehr zu unserem Ansatz findest du unter [SEO für Praxen und Selbstständige](/kanzlei-websites).`,
+      `Mehr zu unserem Ansatz findest du unter [SEO für Praxen und Selbstständige](/leistungen/seo).`,
       `## Die häufigsten Fehler bei Praxis-Websites`,
       `**Fehler 1: Das Google Business Profile wird komplett vernachlässigt.** Die Website ist gut, aber das GBP-Profil ist unvollständig oder Monate nicht aktualisiert. Ergebnis: Die Praxis taucht im Local Pack gar nicht oder weit unten auf.`,
       `**Fehler 2: Keine eigene Terminbuchung, nur eine Telefonnummer.** Patienten, die außerhalb der Sprechzeiten suchen, springen ab, wenn sie nicht sofort buchen können.`,
@@ -2161,6 +2162,9 @@ export const blogPosts: BlogPost[] = [
     category: "Webdesign · SEO · Praxis",
     date: "2026-07-10",
     readTime: "13 min",
-    image: "/assets/blog/mannheim-webdesign.webp"
+    image: "/assets/blog/covers/arztpraxis-webdesign.webp"
   }
 ];
+
+// Mannheim Handwerk cluster (Nov 2026): 30 articles in app/components/blog/handwerk/, one file per batch.
+export const blogPosts: BlogPost[] = [...basePosts, ...handwerkPosts];

@@ -3,24 +3,26 @@
 nüll. is a Mannheim-based web design and digital acquisition studio for professional service businesses, consultants, law firms, medical practices, and local companies in Germany.
 
 ## Website
-- Canonical domain: https://xn--nll-hoa.com
+- Canonical domain: https://nuell-agentur.com
 - Brand spelling: nüll.
 - Location: Mannheim, Germany
 - Contact email: info@nüll.com
 - WhatsApp: +49 1525 6569852
 
 ## Primary Pages
-- https://xn--nll-hoa.com/ - Main landing page for websites, SEO, Google Ads, AI search visibility, branding, and content creation.
-- https://xn--nll-hoa.com/kanzlei-websites - Dedicated landing page for modern Kanzlei-Websites focused on local visibility and Mandatsanfragen.
-- https://xn--nll-hoa.com/arztpraxis-websites - Dedicated landing page for Praxis-Websites, local SEO, appointment paths, and Patientenanfragen.
-- https://xn--nll-hoa.com/leistungen/webdesign - Webdesign service page for Dienstleister, Kanzleien, Berater, Handwerk, and local companies.
-- https://xn--nll-hoa.com/leistungen/seo - SEO service page for local visibility, search-intent structure, and qualified organic enquiries.
-- https://xn--nll-hoa.com/leistungen/google-ads - Google Ads service page for campaign setup, landing pages, and conversion tracking.
-- https://xn--nll-hoa.com/blog - Articles about web design, SEO, conversion, and digital positioning.
+- https://nuell-agentur.com/ - Main page: websites, SEO, Google Ads, AI search visibility and content for local businesses.
+- https://nuell-agentur.com/leistungen - Overview of all services.
+- https://nuell-agentur.com/leistungen/webdesign - Web design: websites built to turn visitors into enquiries (form, call, WhatsApp).
+- https://nuell-agentur.com/leistungen/seo - SEO: local visibility on Google and Google Maps.
+- https://nuell-agentur.com/leistungen/google-ads - Google Ads: campaign setup, landing pages and conversion tracking.
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit - AI visibility: being recommended by ChatGPT, Claude and Gemini.
+- https://nuell-agentur.com/leistungen/content - Content: videos and posts for the website and Instagram.
+- https://nuell-agentur.com/referenzen - Client case studies.
+- https://nuell-agentur.com/preise - Prices.
+- https://nuell-agentur.com/website-check - Free website check with an emailed report.
+- https://nuell-agentur.com/blog - Articles about websites, SEO, Google Ads and marketing for local businesses.
 
 ## Services
-- Kanzlei-Websites for lawyers, law firms, tax advisors, and consultants who need trust, local visibility, and Mandatsanfragen.
-- Praxis-Websites for doctors, medical practices, specialists, dentists, and healthcare providers who need trust, local visibility, and appointment requests.
 - Conversion-focused websites with clear structure and premium visual direction.
 - Local SEO and search-intent page architecture for qualified organic visibility.
 - Google Ads campaign setup, landing pages, and conversion tracking.
@@ -30,8 +32,8 @@ nüll. is a Mannheim-based web design and digital acquisition studio for profess
 ## Technical Notes
 - Framework: React Router 7 with Vite.
 - Rendering: SSR-enabled React application with static public SEO files.
-- Sitemap: https://xn--nll-hoa.com/sitemap.xml
-- Robots: https://xn--nll-hoa.com/robots.txt
+- Sitemap: https://nuell-agentur.com/sitemap.xml
+- Robots: https://nuell-agentur.com/robots.txt
 
 ## Positioning
 nüll. builds digital presences that help visitors quickly understand expertise, trust the provider, and take the next step toward a qualified inquiry.

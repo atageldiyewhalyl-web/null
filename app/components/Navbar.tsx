@@ -50,7 +50,7 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { name: t("nav.work", displayLang), href: "/#work" },
+    { name: t("nav.work", displayLang), href: "/referenzen" },
     { name: t("nav.pricing", displayLang), href: "/#pricing" },
     { name: t("nav.blog", displayLang), href: "/blog" },
   ];
@@ -88,12 +88,12 @@ export function Navbar() {
   ];
   const categoryItems = [
     {
-      name: displayLang === "de" ? "Anwälte & Berater" : "Lawyers & Consultants",
-      href: "/kanzlei-websites",
+      name: displayLang === "de" ? "Webdesign" : "Web design",
+      href: "/leistungen/webdesign",
     },
     {
-      name: displayLang === "de" ? "Ärzte & Praxen" : "Doctors & Practices",
-      href: "/arztpraxis-websites",
+      name: displayLang === "de" ? "Alle Leistungen" : "All services",
+      href: "/leistungen",
     },
   ];
   const blogNavLabels = {
@@ -148,7 +148,7 @@ export function Navbar() {
               Blog
             </a>
             <a
-              href="/#services"
+              href="/leistungen"
               className="text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#111111] transition-opacity hover:opacity-55"
             >
               {blogNavLabels.services}
@@ -257,7 +257,7 @@ export function Navbar() {
                   Blog
                 </a>
                 <a
-                  href="/#services"
+                  href="/leistungen"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-between border-b border-black/10 px-2 py-4 text-[0.86rem] font-black uppercase tracking-[0.16em] text-[#111111]"
                 >

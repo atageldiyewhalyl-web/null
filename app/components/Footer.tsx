@@ -22,7 +22,7 @@ export function Footer() {
           <Link to="/leistungen/webdesign" className="hover:text-foreground transition-colors">
             {t("nav.services", displayLang)}
           </Link>
-          <Link to="/#work" className="hover:text-foreground transition-colors">
+          <Link to="/referenzen" className="hover:text-foreground transition-colors">
             {t("nav.work", displayLang)}
           </Link>
           <Link to="/blog" className="hover:text-foreground transition-colors">

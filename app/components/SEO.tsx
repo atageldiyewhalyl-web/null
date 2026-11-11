@@ -12,7 +12,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "nüll. - Your client acquisition system";
-const BASE_URL = "https://xn--nll-hoa.com";
+const BASE_URL = "https://nuell-agentur.com";
 const DEFAULT_DESC =
   "High-converting websites for businesses, consultants, and law firms built to earn trust and turn visitors into qualified enquiries.";
 // TODO: Add OG image once available (1200x630px recommended)

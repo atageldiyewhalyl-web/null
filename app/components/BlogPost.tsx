@@ -55,7 +55,7 @@ const FAQSection = ({ faqs, articleLang, title }: { faqs: { question: string, an
   );
 };
 
-const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: string }) => {
+export const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: string }) => {
   const [checked, setChecked] = useState<Record<number, boolean>>({});
   
   const score = useMemo(() => {
@@ -71,12 +71,14 @@ const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: 
   };
 
   const getScoreMessage = () => {
+    // relative to the list length, so short checklists in other articles get a fitting message too
+    const share = maxScore ? score / maxScore : 0;
     if (articleLang === "de") {
-      if (score >= 40) return "Exzellent. Deine Website ist gut optimiert.";
-      if (score >= 25) return "Solide. Klare Verbesserungspotenziale existieren.";
-      return "Kritisch. Deine Website verliert täglich Kunden.";
+      if (share >= 0.8) return "Stark. Du hast fast alles abgedeckt.";
+      if (share >= 0.5) return "Gute Basis. Ein paar Punkte fehlen noch.";
+      return score === 0 ? "Hake ab, was bei dir schon erledigt ist." : "Hier steckt noch Potenzial.";
     }
-    return score >= 40 ? "Excellent. Your site is high-converting." : score >= 25 ? "Moderate performer. Improvement areas exist." : "Critical. Immediate improvements required.";
+    return share >= 0.8 ? "Strong. You have almost everything covered." : share >= 0.5 ? "Good base. A few points are missing." : score === 0 ? "Tick off what you already have." : "There is room to improve.";
   };
 
   return (
@@ -84,12 +86,12 @@ const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: 
       <div className="bg-white rounded-[2.8rem] p-8 md:p-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12 border-b border-neutral-100 pb-12">
           <div>
-            <h4 className="text-[1.75rem] font-bold mb-2 font-outfit">Audit Scoring</h4>
+            <h4 className="text-[1.75rem] font-bold mb-2 font-outfit">{articleLang === "de" ? "Dein Stand" : "Your score"}</h4>
             <p className="text-neutral-500 font-medium">{getScoreMessage()}</p>
           </div>
           <div className="text-right">
             <div className="text-[2.5rem] font-bold leading-none font-outfit">{score}<span className="text-neutral-300 text-[1.5rem]">/{maxScore}</span></div>
-            <div className="text-xs font-black uppercase tracking-widest text-neutral-400 mt-2">Conversion Score</div>
+            <div className="text-xs font-black uppercase tracking-widest text-neutral-400 mt-2">{articleLang === "de" ? "Punkte" : "Score"}</div>
           </div>
         </div>
 
@@ -125,7 +127,7 @@ const AuditChecklist = ({ items, articleLang }: { items: string[], articleLang: 
   );
 };
 
-const ComparisonCard = ({ before, after, articleLang }: { before: string, after: string, articleLang: string }) => {
+export const ComparisonCard = ({ before, after, articleLang }: { before: string, after: string, articleLang: string }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
       <div className="p-8 rounded-3xl bg-neutral-50 border border-neutral-100 relative group overflow-hidden">
@@ -152,7 +154,7 @@ const ComparisonCard = ({ before, after, articleLang }: { before: string, after:
   );
 };
 
-const ProviderEditorialList = ({ providers }: { providers: Provider[] }) => {
+export const ProviderEditorialList = ({ providers }: { providers: Provider[] }) => {
   if (!providers || providers.length === 0) return null;
 
   return (
@@ -202,7 +204,7 @@ const ProviderEditorialList = ({ providers }: { providers: Provider[] }) => {
   );
 };
 
-const PositivbeispielBlock = () => (
+export const PositivbeispielBlock = () => (
   <div className="my-16 border-y border-neutral-200 py-10">
     <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
@@ -242,7 +244,7 @@ const PositivbeispielBlock = () => (
   </div>
 );
 
-const MethodenQuick = () => (
+export const MethodenQuick = () => (
   <div className="my-10 overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-white shadow-sm">
     <div className="border-b border-neutral-100 bg-neutral-50 px-6 py-5 md:px-7">
       <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-neutral-400">Kurzübersicht</p>
@@ -276,7 +278,7 @@ const MethodenQuick = () => (
   </div>
 );
 
-const BFSGVisual = () => (
+export const BFSGVisual = () => (
   <div className="my-12 border-y border-[#0e0e10] bg-white">
     <div className="grid gap-4 border-b border-neutral-200 py-5 md:grid-cols-[minmax(0,1fr)_13rem] md:items-end">
       <div>
@@ -307,7 +309,7 @@ const BFSGVisual = () => (
   </div>
 );
 
-const DsgvoVisual = () => (
+export const DsgvoVisual = () => (
   <div className="my-12 border-y border-[#0e0e10] bg-white">
     <div className="grid grid-cols-[2.5rem_minmax(0,1fr)] border-b border-neutral-200 py-4 md:grid-cols-[2.5rem_minmax(0,1fr)_14rem] md:gap-8">
       <span />
@@ -495,7 +497,7 @@ export function BlogPost() {
       : `Hi nüll., I read your article "${post.title}" and would like to talk about my website.`
   )}`;
 
-  const baseUrl = "https://xn--nll-hoa.com";
+  const baseUrl = "https://nuell-agentur.com";
   const articleKeywords: Record<string, string> = {
     "freelancer-oder-agentur-website": "freelancer oder agentur, webdesign freelancer, website kosten vergleich, webdesign preise",
     "freelancer-vs-agency-website": "freelancer vs agency, web design agency, freelance web designer, website design cost",
@@ -512,19 +514,19 @@ export function BlogPost() {
       "@type": "BlogPosting",
       headline: "Freelancer oder Agentur für deine Website? Der ehrliche Vergleich für Selbstständige",
       description: "Wer baut die bessere Website — Freelancer oder Agentur? Kosten, SEO und Verlässlichkeit im Direktvergleich für Berater und Kanzleien.",
-      author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
+      author: { "@type": "Organization", name: "nüll.", url: "https://nuell-agentur.com" },
       publisher: {
         "@type": "Organization",
         name: "nüll.",
-        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/og-image.png" },
+        logo: { "@type": "ImageObject", url: "https://nuell-agentur.com/og-image.png" },
       },
-      image: "https://xn--nll-hoa.com/assets/blog/mannheim-webdesign.webp",
+      image: "https://nuell-agentur.com/assets/blog/covers/freelancer-vs-agency-website.webp",
       datePublished: "2026-05-04",
       dateModified: "2026-05-04",
       inLanguage: "de",
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://xn--nll-hoa.com/blog/freelancer-oder-agentur-website",
+        "@id": "https://nuell-agentur.com/blog/freelancer-oder-agentur-website",
       },
       keywords: "freelancer oder agentur, webdesign freelancer, website kosten vergleich, webdesign preise",
     },
@@ -533,19 +535,19 @@ export function BlogPost() {
       "@type": "BlogPosting",
       headline: "Freelancer vs. Agency for Your Website: An Honest Comparison for Consultants and Law Firms",
       description: "Freelancer or agency — who builds the better website for consultants and law firms? Honest comparison of costs, SEO, and long-term reliability.",
-      author: { "@type": "Organization", name: "nüll.", url: "https://xn--nll-hoa.com" },
+      author: { "@type": "Organization", name: "nüll.", url: "https://nuell-agentur.com" },
       publisher: {
         "@type": "Organization",
         name: "nüll.",
-        logo: { "@type": "ImageObject", url: "https://xn--nll-hoa.com/og-image.png" },
+        logo: { "@type": "ImageObject", url: "https://nuell-agentur.com/og-image.png" },
       },
-      image: "https://xn--nll-hoa.com/assets/blog/mannheim-webdesign.webp",
+      image: "https://nuell-agentur.com/assets/blog/covers/freelancer-vs-agency-website.webp",
       datePublished: "2026-05-04",
       dateModified: "2026-05-04",
       inLanguage: "en",
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://xn--nll-hoa.com/blog/freelancer-vs-agency-website",
+        "@id": "https://nuell-agentur.com/blog/freelancer-vs-agency-website",
       },
       keywords: "freelancer vs agency, web design agency, freelance web designer, website design cost",
     },
@@ -794,6 +796,28 @@ export function BlogPost() {
                     : null;
                 }
 
+                if (/^\[CTA(:|\])/.test(block.trim())) {
+                  const [key, headline] = block.trim().replace(/^\[CTA:?\s*/, "").replace(/\]$/, "").split("|").map((x) => x.trim());
+                  const svc: Record<string, { label: string; href: string; h: string }> = {
+                    web: { label: "Webdesign", href: "/leistungen/webdesign", h: "Soll deine Website endlich Anfragen bringen?" },
+                    seo: { label: "SEO", href: "/leistungen/seo", h: "Willst du in Mannheim bei Google gefunden werden?" },
+                    ads: { label: "Google Ads", href: "/leistungen/google-ads", h: "Sollen Anfragen schon nächste Woche kommen?" },
+                    ai: { label: "SEO", href: "/leistungen/seo", h: "Soll ChatGPT deinen Betrieb empfehlen?" },
+                    content: { label: "Content", href: "/#contact", h: "Willst du zeigen, was du kannst?" },
+                    meta: { label: "Meta Ads", href: "/#contact", h: "Sollen Leute in deiner Gegend dich auf Instagram sehen?" },
+                  };
+                  const s = svc[key] ?? svc.web;
+                  return (
+                    <div key={i} className="my-12 rounded-[1.5rem] bg-[#0071e3] p-8 text-white">
+                      <div className="mb-2 text-[0.72rem] font-black uppercase tracking-[0.2em] text-white/70">{s.label} mit nüll.</div>
+                      <div className="mb-6 text-[1.6rem] font-bold leading-tight tracking-[-0.04em] text-white">{headline || s.h}</div>
+                      <div className="flex flex-wrap gap-4">
+                        <Link to="/#contact" className="rounded-full bg-white px-5 py-3 text-[0.85rem] font-bold text-[#0071e3]">Anfrage starten →</Link>
+                        <Link to={s.href} className="px-1 py-3 text-[0.95rem] font-bold text-white underline underline-offset-4">Mehr zu {s.label}</Link>
+                      </div>
+                    </div>
+                  );
+                }
                 if (block.trim() === "[PRICING_TABLE]") return null;
                 if (block.trim() === "[BFSG_VISUAL]") return <BFSGVisual key={i} />;
                 if (block.trim() === "[DSGVO_VISUAL]") return <DsgvoVisual key={i} />;
@@ -1145,10 +1169,10 @@ export function BlogPost() {
                     : "Free. 20 minutes. No pitch - just concrete answers on what your site is missing."}
                 </p>
                 <Link
-                  to="/website-analyse"
+                  to="/website-check"
                   className="inline-flex min-h-14 items-center gap-4 rounded-full bg-white px-9 py-3.5 text-[1rem] font-bold text-black shadow-2xl shadow-black/20 transition-all duration-500 hover:scale-[1.02] hover:bg-black hover:text-white active:scale-95 group"
                 >
-                  {articleLang === "de" ? "Kostenlose Website-Analyse buchen" : "Book a Free Website Analysis"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+                  {articleLang === "de" ? "Kostenlosen Website-Check starten" : "Start the free website check"} <ArrowLeft size={22} className="rotate-180 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 </div>
               </div>

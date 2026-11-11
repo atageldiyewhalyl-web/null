@@ -14,6 +14,7 @@ import { getLanguageForPath, isLanguage } from "./utils/i18nRouting";
 import { cn } from "./lib/utils";
 import { useEffect } from "react";
 import "./styles/index.css";
+import WebsiteCheckModal from "./components/v2/WebsiteCheckModal";
 
 const shouldLoadAnalytics = import.meta.env.PROD;
 
@@ -59,17 +60,18 @@ export default function App() {
   const lang = getLanguageForPath(location.pathname) ?? (isLanguage(queryLang) ? queryLang : "de");
   const isAdmin = location.pathname.startsWith("/admin");
   const isOnboarding = location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/interview") || isAdmin;
+  // v2-design pages bring their own navbar and footer; only the legal pages (and the 404) still use the old shell
+  const p = location.pathname.replace(/\/+$/, "") || "/";
   const isBlankCanvas =
-    location.pathname === "/" ||
-    location.pathname.startsWith("/new-landing") ||
-    location.pathname.startsWith("/handwerker-system") ||
-    location.pathname.startsWith("/hasan") ||
-    location.pathname.startsWith("/website-analyse") ||
-    location.pathname.startsWith("/kanzlei-websites") ||
-    location.pathname.startsWith("/mandate-kanzlei-mannheim") ||
-    location.pathname.startsWith("/lawyers") ||
-    location.pathname.startsWith("/arztpraxis-websites") ||
-    location.pathname.startsWith("/doctors");
+    p === "/" ||
+    p === "/preise" ||
+    p === "/website-check" ||
+    p === "/leistungen" ||
+    p.startsWith("/leistungen/") ||
+    p === "/referenzen" ||
+    p.startsWith("/referenzen/") ||
+    p === "/blog" ||
+    p.startsWith("/blog/");
 
   return (
     <LanguageProvider initialLang={lang} pathname={location.pathname} search={location.search}>
@@ -82,6 +84,8 @@ export default function App() {
         {!isOnboarding && !isBlankCanvas && <Navbar />}
         <Outlet />
         {!isOnboarding && !isBlankCanvas && <Footer />}
+        {/* website check pop-up: opens from buttons and any link to #website-check */}
+        {!isOnboarding && <WebsiteCheckModal />}
         {!isAdmin && <CookieConsent />}
         <AnchorScrollProvider pathname={location.pathname} />
         <SmoothScrollProvider pathname={location.pathname} />
@@ -230,7 +234,7 @@ export function meta(args: any) {
   const isBlog = pathname.startsWith("/blog/");
   const title = "nüll. - Your client acquisition system";
   const description = "High-converting websites for businesses, consultants, and law firms built to earn trust and turn visitors into qualified enquiries.";
-  const baseUrl = "https://xn--nll-hoa.com";
+  const baseUrl = "https://nuell-agentur.com";
   const url = `${baseUrl}${pathname}`;
   const image = `${baseUrl}/og-image.png`;
 

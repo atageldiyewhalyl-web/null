@@ -3,13 +3,68 @@
   "outputDirectory": "dist",
   "redirects": [
     {
+      "source": "/v2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/v2/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/kanzlei-websites",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/kanzlei-websites-v2",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/arztpraxis-websites",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/zahnarzt-websites",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
       "source": "/lawyers",
-      "destination": "/kanzlei-websites",
+      "destination": "/leistungen/webdesign",
       "permanent": true
     },
     {
       "source": "/doctors",
-      "destination": "/arztpraxis-websites",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/handwerker-system",
+      "destination": "/leistungen/webdesign",
+      "permanent": true
+    },
+    {
+      "source": "/mandate-kanzlei-mannheim",
+      "destination": "/leistungen/google-ads",
+      "permanent": true
+    },
+    {
+      "source": "/new-landing",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/website-analyse",
+      "destination": "/website-check",
+      "permanent": true
+    },
+    {
+      "source": "/hasan",
+      "destination": "/referenzen/dogru",
       "permanent": true
     },
     {
@@ -51,19 +106,53 @@
       "source": "/google-ads",
       "destination": "/leistungen/google-ads",
       "permanent": true
-    }   
+    },
+    {
+      "source": "/blog/5-elements-every-high-converting-website-needs",
+      "destination": "/blog/5-elemente-high-converting-website-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/improve-google-rankings-germany",
+      "destination": "/blog/google-ranking-verbessern-deutschland",
+      "permanent": true
+    },
+    {
+      "source": "/blog/web-design-for-lawyers-law-firms",
+      "destination": "/blog/webdesign-fuer-anwaelte-kanzleien",
+      "permanent": true
+    },
+    {
+      "source": "/blog/freelancer-vs-agency-website",
+      "destination": "/blog/freelancer-oder-agentur-website",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/admin", "destination": "/" },
-    { "source": "/admin/(.*)", "destination": "/" },
-    { "source": "/onboarding", "destination": "/" },
-    { "source": "/onboarding/(.*)", "destination": "/" },
-    { "source": "/interview/(.*)", "destination": "/interview/shell" },
-    { "source": "/tr/(.*)", "destination": "/" },
-    { "source": "/new-landing", "destination": "/" },
-    { "source": "/hasan", "destination": "/" },
-    { "source": "/website-analyse", "destination": "/" },
-    { "source": "/kanzlei-websites-v2", "destination": "/" }
+    {
+      "source": "/admin",
+      "destination": "/"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/onboarding",
+      "destination": "/"
+    },
+    {
+      "source": "/onboarding/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/interview/(.*)",
+      "destination": "/interview/shell"
+    },
+    {
+      "source": "/tr/(.*)",
+      "destination": "/"
+    }
   ],
   "headers": [
     {
@@ -103,23 +192,13 @@
       ]
     },
     {
-      "source": "/handwerker-system",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, noarchive"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Link",
-          "value": "<https://xn--nll-hoa.com/sitemap.xml>; rel=\"sitemap\""      
-        }   
-      ]  
+          "value": "<https://nuell-agentur.com/sitemap.xml>; rel=\"sitemap\""
+        }
+      ]
     }
   ]
 }
-     

@@ -49,7 +49,7 @@ export default function AdminLayout() {
           </div>
           <div>
             <div className="text-white font-semibold text-sm leading-tight">SEO Command</div>
-            <div className="text-[#555] text-xs">nüll.com</div>
+            <div className="text-[#555] text-xs">nuell-agentur.com</div>
           </div>
         </div>
 

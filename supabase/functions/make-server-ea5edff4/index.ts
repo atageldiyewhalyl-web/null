@@ -3,6 +3,7 @@ import { cors } from "npm:hono/cors";
 import { logger } from "npm:hono/logger";
 import * as kv from "./kv_store.ts";
 import { registerClientOnboarding } from "./client_onboarding.ts";
+import { registerWebsiteCheck } from "./website_check.ts";
 const app = new Hono();
 
 // Enable logger
@@ -21,6 +22,9 @@ app.use(
 
 // Client onboarding questionnaires (/onboarding/:slug)
 registerClientOnboarding(app);
+
+// Website-Check lead magnet (/website-check)
+registerWebsiteCheck(app);
 
 // Health check endpoint
 app.get("*/health", (c) => {
@@ -89,7 +93,7 @@ app.post("*/onboarding-discovery", async (c) => {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "Nüll Studio <onboarding@resend.dev>",
+        from: '"nüll. Website-Analyse" <anfrage@forms.xn--nll-hoa.com>',
         to: toEmail,
         subject: "NEW DISCOVERY ONBOARDING: Client Website Brief",
         html: `
@@ -171,7 +175,7 @@ app.post("*/contact", async (c) => {
             Authorization: `Bearer ${resendApiKey}`,
           },
           body: JSON.stringify({
-            from: "Null Lead <onboarding@resend.dev>",
+            from: '"nüll. Anfrage" <anfrage@forms.xn--nll-hoa.com>',
             to: toEmail,
             reply_to: validReplyTo,
             subject: `New Lead: ${name} (${city}) - ${packageName || 'Inquiry'}`,

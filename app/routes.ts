@@ -1,35 +1,44 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
+// The v2 design is the live site (11 Nov 2026). The old pages are deleted; their addresses 301-redirect in vercel.json.
+// Route files keep their v2-* names; the URLs are the main ones.
 export default [
-  route("onboarding/:slug", "routes/client-onboarding.tsx"),
-  route("interview/:slug", "routes/interview.tsx"),
-  route("new-landing", "routes/new-landing.tsx"),
-  route("handwerker-system", "routes/handwerker-system.tsx"),
-  route("hasan", "routes/hasan.tsx"),
-  route("website-analyse", "routes/website-analyse.tsx"),
-  route("kanzlei-websites", "routes/kanzlei-websites.tsx"),
-  route("kanzlei-websites-v2", "routes/kanzlei-websites-v2.tsx"),
-  route("mandate-kanzlei-mannheim", "routes/mandate-kanzlei-mannheim.tsx"),
-  route("lawyers", "routes/lawyers.tsx"),
-  route("arztpraxis-websites", "routes/arztpraxis-websites.tsx"),
-  route("doctors", "routes/doctors.tsx"),
-  index("routes/home.tsx"),
-  route("services", "routes/services.tsx"),
-  route("website", "routes/website.tsx"),
-  route("webdesign", "routes/webdesign.tsx"),
-  route("seo", "routes/seo.tsx"),
-  route("google-ads", "routes/google-ads.tsx"),
-  route("services/website", "routes/services-website.tsx"),
-  route("services/seo", "routes/services-seo.tsx"),
-  route("services/google-ads", "routes/services-google-ads.tsx"),
-  route("leistungen/webdesign", "routes/leistungen-webdesign.tsx"),
-  route("leistungen/seo", "routes/leistungen-seo.tsx"),
-  route("leistungen/google-ads", "routes/leistungen-google-ads.tsx"),
-  route("tr/*", "routes/legacy-turkish-redirect.tsx"),
+  index("routes/home-v2.tsx"),
+
+  route("leistungen", "routes/v2-leistungen.tsx"),
+  route("leistungen/webdesign", "routes/v2-webdesign.tsx"),
+  route("leistungen/seo", "routes/v2-seo.tsx"),
+  route("leistungen/google-ads", "routes/v2-google-ads.tsx"),
+  route("leistungen/ki-sichtbarkeit", "routes/v2-ki-sichtbarkeit.tsx"),
+  route("leistungen/content", "routes/v2-content.tsx"),
+
+  route("referenzen", "routes/v2-referenzen.tsx"),
+  route("referenzen/waschbar", "routes/v2-referenz-waschbar.tsx"),
+  route("referenzen/orchidee", "routes/v2-referenz-orchidee.tsx"),
+  route("referenzen/bergstone", "routes/v2-referenz-bergstone.tsx"),
+  route("referenzen/treu", "routes/v2-referenz-treu.tsx"),
+  route("referenzen/herkules", "routes/v2-referenz-herkules.tsx"),
+  route("referenzen/dogru", "routes/v2-referenz-dogru.tsx"),
+  route("referenzen/sg", "routes/v2-referenz-sg.tsx"),
+  route("referenzen/so", "routes/v2-referenz-so.tsx"),
+  route("referenzen/ft", "routes/v2-referenz-ft.tsx"),
+  route("referenzen/onkel", "routes/v2-referenz-onkel.tsx"),
+  route("referenzen/by", "routes/v2-referenz-by.tsx"),
+
+  route("blog", "routes/v2-blog.tsx"),
+  route("blog/:slug", "routes/v2-blog-post.tsx"),
+
+  route("preise", "routes/preise.tsx"),
+  route("website-check", "routes/website-check.tsx"),
+
+  // legal pages (old design for now, text unchanged)
   route("datenschutz", "routes/datenschutz.tsx"),
   route("impressum", "routes/impressum.tsx"),
-  route("blog", "routes/blog-list.tsx"),
-  route("blog/:slug", "routes/blog-post.tsx"),
+
+  // internal tools and old-link handling
+  route("onboarding/:slug", "routes/client-onboarding.tsx"),
+  route("interview/:slug", "routes/interview.tsx"),
+  route("tr/*", "routes/legacy-turkish-redirect.tsx"),
   route("admin/login", "routes/admin-login.tsx"),
   route("admin", "routes/admin.tsx", [
     index("routes/admin-dashboard.tsx"),

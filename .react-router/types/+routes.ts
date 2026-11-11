@@ -14,68 +14,7 @@ type Pages = {
   "/": {
     params: {};
   };
-  "/onboarding/:slug": {
-    params: {
-      "slug": string;
-    };
-  };
-  "/interview/:slug": {
-    params: {
-      "slug": string;
-    };
-  };
-  "/new-landing": {
-    params: {};
-  };
-  "/handwerker-system": {
-    params: {};
-  };
-  "/hasan": {
-    params: {};
-  };
-  "/website-analyse": {
-    params: {};
-  };
-  "/kanzlei-websites": {
-    params: {};
-  };
-  "/kanzlei-websites-v2": {
-    params: {};
-  };
-  "/mandate-kanzlei-mannheim": {
-    params: {};
-  };
-  "/lawyers": {
-    params: {};
-  };
-  "/arztpraxis-websites": {
-    params: {};
-  };
-  "/doctors": {
-    params: {};
-  };
-  "/services": {
-    params: {};
-  };
-  "/website": {
-    params: {};
-  };
-  "/webdesign": {
-    params: {};
-  };
-  "/seo": {
-    params: {};
-  };
-  "/google-ads": {
-    params: {};
-  };
-  "/services/website": {
-    params: {};
-  };
-  "/services/seo": {
-    params: {};
-  };
-  "/services/google-ads": {
+  "/leistungen": {
     params: {};
   };
   "/leistungen/webdesign": {
@@ -87,15 +26,46 @@ type Pages = {
   "/leistungen/google-ads": {
     params: {};
   };
-  "/tr/*": {
-    params: {
-      "*": string;
-    };
-  };
-  "/datenschutz": {
+  "/leistungen/ki-sichtbarkeit": {
     params: {};
   };
-  "/impressum": {
+  "/leistungen/content": {
+    params: {};
+  };
+  "/referenzen": {
+    params: {};
+  };
+  "/referenzen/waschbar": {
+    params: {};
+  };
+  "/referenzen/orchidee": {
+    params: {};
+  };
+  "/referenzen/bergstone": {
+    params: {};
+  };
+  "/referenzen/treu": {
+    params: {};
+  };
+  "/referenzen/herkules": {
+    params: {};
+  };
+  "/referenzen/dogru": {
+    params: {};
+  };
+  "/referenzen/sg": {
+    params: {};
+  };
+  "/referenzen/so": {
+    params: {};
+  };
+  "/referenzen/ft": {
+    params: {};
+  };
+  "/referenzen/onkel": {
+    params: {};
+  };
+  "/referenzen/by": {
     params: {};
   };
   "/blog": {
@@ -104,6 +74,33 @@ type Pages = {
   "/blog/:slug": {
     params: {
       "slug": string;
+    };
+  };
+  "/preise": {
+    params: {};
+  };
+  "/website-check": {
+    params: {};
+  };
+  "/datenschutz": {
+    params: {};
+  };
+  "/impressum": {
+    params: {};
+  };
+  "/onboarding/:slug": {
+    params: {
+      "slug": string;
+    };
+  };
+  "/interview/:slug": {
+    params: {
+      "slug": string;
+    };
+  };
+  "/tr/*": {
+    params: {
+      "*": string;
     };
   };
   "/admin/login": {
@@ -133,107 +130,99 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/onboarding/:slug" | "/interview/:slug" | "/new-landing" | "/handwerker-system" | "/hasan" | "/website-analyse" | "/kanzlei-websites" | "/kanzlei-websites-v2" | "/mandate-kanzlei-mannheim" | "/lawyers" | "/arztpraxis-websites" | "/doctors" | "/services" | "/website" | "/webdesign" | "/seo" | "/google-ads" | "/services/website" | "/services/seo" | "/services/google-ads" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/tr/*" | "/datenschutz" | "/impressum" | "/blog" | "/blog/:slug" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
+    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
-  "routes/client-onboarding.tsx": {
-    id: "routes/client-onboarding";
-    page: "/onboarding/:slug";
-  };
-  "routes/interview.tsx": {
-    id: "routes/interview";
-    page: "/interview/:slug";
-  };
-  "routes/new-landing.tsx": {
-    id: "routes/new-landing";
-    page: "/new-landing";
-  };
-  "routes/handwerker-system.tsx": {
-    id: "routes/handwerker-system";
-    page: "/handwerker-system";
-  };
-  "routes/hasan.tsx": {
-    id: "routes/hasan";
-    page: "/hasan";
-  };
-  "routes/website-analyse.tsx": {
-    id: "routes/website-analyse";
-    page: "/website-analyse";
-  };
-  "routes/kanzlei-websites.tsx": {
-    id: "routes/kanzlei-websites";
-    page: "/kanzlei-websites";
-  };
-  "routes/kanzlei-websites-v2.tsx": {
-    id: "routes/kanzlei-websites-v2";
-    page: "/kanzlei-websites-v2";
-  };
-  "routes/mandate-kanzlei-mannheim.tsx": {
-    id: "routes/mandate-kanzlei-mannheim";
-    page: "/mandate-kanzlei-mannheim";
-  };
-  "routes/lawyers.tsx": {
-    id: "routes/lawyers";
-    page: "/lawyers";
-  };
-  "routes/arztpraxis-websites.tsx": {
-    id: "routes/arztpraxis-websites";
-    page: "/arztpraxis-websites";
-  };
-  "routes/doctors.tsx": {
-    id: "routes/doctors";
-    page: "/doctors";
-  };
-  "routes/home.tsx": {
-    id: "routes/home";
+  "routes/home-v2.tsx": {
+    id: "routes/home-v2";
     page: "/";
   };
-  "routes/services.tsx": {
-    id: "routes/services";
-    page: "/services";
+  "routes/v2-leistungen.tsx": {
+    id: "routes/v2-leistungen";
+    page: "/leistungen";
   };
-  "routes/website.tsx": {
-    id: "routes/website";
-    page: "/website";
-  };
-  "routes/webdesign.tsx": {
-    id: "routes/webdesign";
-    page: "/webdesign";
-  };
-  "routes/seo.tsx": {
-    id: "routes/seo";
-    page: "/seo";
-  };
-  "routes/google-ads.tsx": {
-    id: "routes/google-ads";
-    page: "/google-ads";
-  };
-  "routes/services-website.tsx": {
-    id: "routes/services-website";
-    page: "/services/website";
-  };
-  "routes/services-seo.tsx": {
-    id: "routes/services-seo";
-    page: "/services/seo";
-  };
-  "routes/services-google-ads.tsx": {
-    id: "routes/services-google-ads";
-    page: "/services/google-ads";
-  };
-  "routes/leistungen-webdesign.tsx": {
-    id: "routes/leistungen-webdesign";
+  "routes/v2-webdesign.tsx": {
+    id: "routes/v2-webdesign";
     page: "/leistungen/webdesign";
   };
-  "routes/leistungen-seo.tsx": {
-    id: "routes/leistungen-seo";
+  "routes/v2-seo.tsx": {
+    id: "routes/v2-seo";
     page: "/leistungen/seo";
   };
-  "routes/leistungen-google-ads.tsx": {
-    id: "routes/leistungen-google-ads";
+  "routes/v2-google-ads.tsx": {
+    id: "routes/v2-google-ads";
     page: "/leistungen/google-ads";
   };
-  "routes/legacy-turkish-redirect.tsx": {
-    id: "routes/legacy-turkish-redirect";
-    page: "/tr/*";
+  "routes/v2-ki-sichtbarkeit.tsx": {
+    id: "routes/v2-ki-sichtbarkeit";
+    page: "/leistungen/ki-sichtbarkeit";
+  };
+  "routes/v2-content.tsx": {
+    id: "routes/v2-content";
+    page: "/leistungen/content";
+  };
+  "routes/v2-referenzen.tsx": {
+    id: "routes/v2-referenzen";
+    page: "/referenzen";
+  };
+  "routes/v2-referenz-waschbar.tsx": {
+    id: "routes/v2-referenz-waschbar";
+    page: "/referenzen/waschbar";
+  };
+  "routes/v2-referenz-orchidee.tsx": {
+    id: "routes/v2-referenz-orchidee";
+    page: "/referenzen/orchidee";
+  };
+  "routes/v2-referenz-bergstone.tsx": {
+    id: "routes/v2-referenz-bergstone";
+    page: "/referenzen/bergstone";
+  };
+  "routes/v2-referenz-treu.tsx": {
+    id: "routes/v2-referenz-treu";
+    page: "/referenzen/treu";
+  };
+  "routes/v2-referenz-herkules.tsx": {
+    id: "routes/v2-referenz-herkules";
+    page: "/referenzen/herkules";
+  };
+  "routes/v2-referenz-dogru.tsx": {
+    id: "routes/v2-referenz-dogru";
+    page: "/referenzen/dogru";
+  };
+  "routes/v2-referenz-sg.tsx": {
+    id: "routes/v2-referenz-sg";
+    page: "/referenzen/sg";
+  };
+  "routes/v2-referenz-so.tsx": {
+    id: "routes/v2-referenz-so";
+    page: "/referenzen/so";
+  };
+  "routes/v2-referenz-ft.tsx": {
+    id: "routes/v2-referenz-ft";
+    page: "/referenzen/ft";
+  };
+  "routes/v2-referenz-onkel.tsx": {
+    id: "routes/v2-referenz-onkel";
+    page: "/referenzen/onkel";
+  };
+  "routes/v2-referenz-by.tsx": {
+    id: "routes/v2-referenz-by";
+    page: "/referenzen/by";
+  };
+  "routes/v2-blog.tsx": {
+    id: "routes/v2-blog";
+    page: "/blog";
+  };
+  "routes/v2-blog-post.tsx": {
+    id: "routes/v2-blog-post";
+    page: "/blog/:slug";
+  };
+  "routes/preise.tsx": {
+    id: "routes/preise";
+    page: "/preise";
+  };
+  "routes/website-check.tsx": {
+    id: "routes/website-check";
+    page: "/website-check";
   };
   "routes/datenschutz.tsx": {
     id: "routes/datenschutz";
@@ -243,13 +232,17 @@ type RouteFiles = {
     id: "routes/impressum";
     page: "/impressum";
   };
-  "routes/blog-list.tsx": {
-    id: "routes/blog-list";
-    page: "/blog";
+  "routes/client-onboarding.tsx": {
+    id: "routes/client-onboarding";
+    page: "/onboarding/:slug";
   };
-  "routes/blog-post.tsx": {
-    id: "routes/blog-post";
-    page: "/blog/:slug";
+  "routes/interview.tsx": {
+    id: "routes/interview";
+    page: "/interview/:slug";
+  };
+  "routes/legacy-turkish-redirect.tsx": {
+    id: "routes/legacy-turkish-redirect";
+    page: "/tr/*";
   };
   "routes/admin-login.tsx": {
     id: "routes/admin-login";
@@ -283,35 +276,34 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
-  "routes/client-onboarding": typeof import("./app/routes/client-onboarding.tsx");
-  "routes/interview": typeof import("./app/routes/interview.tsx");
-  "routes/new-landing": typeof import("./app/routes/new-landing.tsx");
-  "routes/handwerker-system": typeof import("./app/routes/handwerker-system.tsx");
-  "routes/hasan": typeof import("./app/routes/hasan.tsx");
-  "routes/website-analyse": typeof import("./app/routes/website-analyse.tsx");
-  "routes/kanzlei-websites": typeof import("./app/routes/kanzlei-websites.tsx");
-  "routes/kanzlei-websites-v2": typeof import("./app/routes/kanzlei-websites-v2.tsx");
-  "routes/mandate-kanzlei-mannheim": typeof import("./app/routes/mandate-kanzlei-mannheim.tsx");
-  "routes/lawyers": typeof import("./app/routes/lawyers.tsx");
-  "routes/arztpraxis-websites": typeof import("./app/routes/arztpraxis-websites.tsx");
-  "routes/doctors": typeof import("./app/routes/doctors.tsx");
-  "routes/home": typeof import("./app/routes/home.tsx");
-  "routes/services": typeof import("./app/routes/services.tsx");
-  "routes/website": typeof import("./app/routes/website.tsx");
-  "routes/webdesign": typeof import("./app/routes/webdesign.tsx");
-  "routes/seo": typeof import("./app/routes/seo.tsx");
-  "routes/google-ads": typeof import("./app/routes/google-ads.tsx");
-  "routes/services-website": typeof import("./app/routes/services-website.tsx");
-  "routes/services-seo": typeof import("./app/routes/services-seo.tsx");
-  "routes/services-google-ads": typeof import("./app/routes/services-google-ads.tsx");
-  "routes/leistungen-webdesign": typeof import("./app/routes/leistungen-webdesign.tsx");
-  "routes/leistungen-seo": typeof import("./app/routes/leistungen-seo.tsx");
-  "routes/leistungen-google-ads": typeof import("./app/routes/leistungen-google-ads.tsx");
-  "routes/legacy-turkish-redirect": typeof import("./app/routes/legacy-turkish-redirect.tsx");
+  "routes/home-v2": typeof import("./app/routes/home-v2.tsx");
+  "routes/v2-leistungen": typeof import("./app/routes/v2-leistungen.tsx");
+  "routes/v2-webdesign": typeof import("./app/routes/v2-webdesign.tsx");
+  "routes/v2-seo": typeof import("./app/routes/v2-seo.tsx");
+  "routes/v2-google-ads": typeof import("./app/routes/v2-google-ads.tsx");
+  "routes/v2-ki-sichtbarkeit": typeof import("./app/routes/v2-ki-sichtbarkeit.tsx");
+  "routes/v2-content": typeof import("./app/routes/v2-content.tsx");
+  "routes/v2-referenzen": typeof import("./app/routes/v2-referenzen.tsx");
+  "routes/v2-referenz-waschbar": typeof import("./app/routes/v2-referenz-waschbar.tsx");
+  "routes/v2-referenz-orchidee": typeof import("./app/routes/v2-referenz-orchidee.tsx");
+  "routes/v2-referenz-bergstone": typeof import("./app/routes/v2-referenz-bergstone.tsx");
+  "routes/v2-referenz-treu": typeof import("./app/routes/v2-referenz-treu.tsx");
+  "routes/v2-referenz-herkules": typeof import("./app/routes/v2-referenz-herkules.tsx");
+  "routes/v2-referenz-dogru": typeof import("./app/routes/v2-referenz-dogru.tsx");
+  "routes/v2-referenz-sg": typeof import("./app/routes/v2-referenz-sg.tsx");
+  "routes/v2-referenz-so": typeof import("./app/routes/v2-referenz-so.tsx");
+  "routes/v2-referenz-ft": typeof import("./app/routes/v2-referenz-ft.tsx");
+  "routes/v2-referenz-onkel": typeof import("./app/routes/v2-referenz-onkel.tsx");
+  "routes/v2-referenz-by": typeof import("./app/routes/v2-referenz-by.tsx");
+  "routes/v2-blog": typeof import("./app/routes/v2-blog.tsx");
+  "routes/v2-blog-post": typeof import("./app/routes/v2-blog-post.tsx");
+  "routes/preise": typeof import("./app/routes/preise.tsx");
+  "routes/website-check": typeof import("./app/routes/website-check.tsx");
   "routes/datenschutz": typeof import("./app/routes/datenschutz.tsx");
   "routes/impressum": typeof import("./app/routes/impressum.tsx");
-  "routes/blog-list": typeof import("./app/routes/blog-list.tsx");
-  "routes/blog-post": typeof import("./app/routes/blog-post.tsx");
+  "routes/client-onboarding": typeof import("./app/routes/client-onboarding.tsx");
+  "routes/interview": typeof import("./app/routes/interview.tsx");
+  "routes/legacy-turkish-redirect": typeof import("./app/routes/legacy-turkish-redirect.tsx");
   "routes/admin-login": typeof import("./app/routes/admin-login.tsx");
   "routes/admin": typeof import("./app/routes/admin.tsx");
   "routes/admin-dashboard": typeof import("./app/routes/admin-dashboard.tsx");

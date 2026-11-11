@@ -64,12 +64,12 @@ export default function ImpressumRoute() {
           <section>
             <h2 className="mb-4 text-2xl md:text-3xl">Website</h2>
             <p>
-              <a className="text-primary transition-colors hover:text-foreground" href="https://nüll.com">
-                https://nüll.com
+              <a className="text-primary transition-colors hover:text-foreground" href="https://nuell-agentur.com">
+                https://nuell-agentur.com
               </a>
               <br />
-              <a className="text-primary transition-colors hover:text-foreground" href="https://xn--nll-hoa.com">
-                https://xn--nll-hoa.com
+              <a className="text-primary transition-colors hover:text-foreground" href="https://nuell-agentur.com">
+                https://nuell-agentur.com
               </a>
             </p>
           </section>
