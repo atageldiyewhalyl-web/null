@@ -475,7 +475,8 @@ export default function PreiseV2({ standalone = false }: { standalone?: boolean 
   return (
     <section id="preise" className={`relative bg-[#f5f5f7] text-[#0e0e10] ${standalone ? "pb-20 pt-14 md:pb-28 md:pt-20" : "py-20 md:py-28"}`}>
       <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
-        <motion.div {...rise()} className="mx-auto max-w-[900px] text-center">
+        {/* phones: the heading stays in the page for search engines and screen readers, but takes no space */}
+        <motion.div {...rise()} className="mx-auto max-w-[900px] text-center max-md:h-0 max-md:overflow-hidden">
           <Title className="text-[clamp(2.6rem,6.5vw,5.6rem)] font-bold leading-[0.9] tracking-[-0.065em]">
             Unsere Preise<span className="text-[#007aff]">.</span>
           </Title>
@@ -485,7 +486,7 @@ export default function PreiseV2({ standalone = false }: { standalone?: boolean 
         </motion.div>
 
         {/* phones and tablets: how the price is made, at a glance; each tile jumps to its part */}
-        <motion.div {...rise(0.02)} className="mt-9 grid grid-cols-2 gap-2.5 lg:hidden">
+        <motion.div {...rise(0.02)} className="mt-9 hidden grid-cols-2 gap-2.5 md:grid lg:hidden">
           {[
             { n: "01", t: "Einmal starten", p: "ab 1.499 €", u: "einmalig", href: "#einmal" },
             { n: "02", t: "Monatspaket", p: "ab 99 €", u: "im Monat", href: "#monatlich" },
@@ -512,13 +513,23 @@ export default function PreiseV2({ standalone = false }: { standalone?: boolean 
         </motion.div>
 
         {/* the three promises. Phones: one tile, three rows (number, promise). md+: one row of big numbers. */}
-        <motion.ul {...rise(0.04)} className="mt-2.5 divide-y divide-black/[0.07] rounded-[22px] bg-white px-5 md:hidden">
-          {PROMISES.map(({ n, t, s: sub }, i) => (
-            <li key={t} className="flex items-center gap-4 py-4">
-              <span className={`w-[4.2rem] flex-none text-[2.1rem] font-bold leading-none tracking-[-0.06em] tabular-nums ${i === 0 ? "text-[#007aff]" : "text-[#0e0e10]"}`}>{n}</span>
-              <span className="min-w-0">
-                <span className="block text-[0.95rem] font-semibold leading-snug tracking-[-0.02em] text-[#0e0e10]">{t}</span>
-                <span className="mt-0.5 block text-[0.82rem] font-medium leading-snug text-[#6b7280]">{sub}</span>
+        <motion.ul {...rise(0.04)} aria-label="Unsere Versprechen" className="grid gap-3 md:hidden">
+          <li className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[28px] bg-[#007aff] p-7 text-white">
+            <span aria-hidden className="pointer-events-none absolute -bottom-24 -right-24 h-[320px] w-[320px] rounded-full bg-white/[0.08]" />
+            <span aria-hidden className="pointer-events-none absolute -bottom-10 -right-10 h-[200px] w-[200px] rounded-full bg-white/[0.08]" />
+            <span className="relative text-[0.72rem] font-black uppercase tracking-[0.2em] text-white/70">Unser Versprechen</span>
+            <span className="relative mt-10 block">
+              <span className="block text-[5.5rem] font-bold leading-[0.85] tracking-[-0.07em] tabular-nums">{PROMISES[0].n}</span>
+              <span className="mt-5 block max-w-[20ch] text-[1.4rem] font-bold leading-[1.1] tracking-[-0.04em] text-white">{PROMISES[0].t}</span>
+              <span className="mt-2 block max-w-[34ch] text-[0.95rem] font-medium leading-snug text-white/75">{PROMISES[0].s}</span>
+            </span>
+          </li>
+          {PROMISES.slice(1).map(({ n, t, s: sub }) => (
+            <li key={t} className="flex min-h-[190px] flex-col justify-between rounded-[28px] bg-white p-7">
+              <span className="block text-[3.8rem] font-bold leading-[0.85] tracking-[-0.065em] text-[#0e0e10] tabular-nums">{n}</span>
+              <span className="mt-6 block">
+                <span className="block max-w-[26ch] text-[1.1rem] font-bold leading-[1.15] tracking-[-0.03em] text-[#0e0e10]">{t}</span>
+                <span className="mt-1.5 block max-w-[38ch] text-[0.9rem] font-medium leading-snug text-[#6b7280]">{sub}</span>
               </span>
             </li>
           ))}
@@ -536,7 +547,7 @@ export default function PreiseV2({ standalone = false }: { standalone?: boolean 
         </motion.ul>
 
         {/* one-off: three ways to start */}
-        <div className="relative pt-14 md:pt-16">
+        <div className="relative pt-10 md:pt-16">
           <span id="einmal" aria-hidden className="absolute top-[-28px]" />
           <p className="text-[0.8rem] font-bold uppercase tracking-[0.14em] text-[#007aff] lg:hidden">Schritt 1</p>
           <p className="mt-1 text-[1.6rem] font-bold tracking-[-0.045em] text-[#0e0e10] lg:mt-0">
