@@ -4,7 +4,7 @@ export const HOME = "/";
 // Section anchors (#faelle, #faq …) only exist on the homepage; from any other page they need the homepage path in front.
 export const toHome = (href: string, onHome: boolean) => (!onHome && href.startsWith("#") ? `${HOME === "/" ? "/" : HOME}${href}` : href);
 
-// The Fälle page (all clients) and one case study each at /referenzen/<slug>.
+// The Referenzen page (all clients) and one case study each at /referenzen/<slug>.
 export const REFS = "/referenzen";
 
 // The blog.

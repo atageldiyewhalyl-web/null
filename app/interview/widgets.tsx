@@ -139,7 +139,7 @@ export function Alternatives({ t, whatsappHref, formHref }: { t: ChatText; whats
     <div className="grid gap-2">
       {whatsappHref ? (
         <a href={whatsappHref} target="_blank" rel="noreferrer" className={link}>
-          {t.callHalyl}
+          {t.callEthan}
           <span aria-hidden="true" className="text-[#007aff]">↗</span>
         </a>
       ) : null}

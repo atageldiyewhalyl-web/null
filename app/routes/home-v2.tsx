@@ -12,9 +12,9 @@ import FooterV2 from "../components/v2/FooterV2";
 
 const URL = "https://nuell-agentur.com/";
 const IMAGE = "https://nuell-agentur.com/og-image.png";
-const TITLE = "nüll. | Websites, SEO & Google Ads für mehr Anfragen";
+const TITLE = "nüll. | Webdesign, SEO & Google Ads aus Mannheim";
 const DESCRIPTION =
-  "nüll. baut Websites, SEO und Google Ads für Betriebe, die mehr Anfragen wollen. Aus Mannheim, für ganz Deutschland.";
+  "nüll. baut Websites, SEO und Google Ads für Handwerk, Kanzleien, Praxen und Berater, die mehr Anfragen wollen. Aus Mannheim, für ganz Deutschland.";
 
 export function meta() {
   return [
@@ -45,11 +45,14 @@ const STRUCTURED_DATA = [
     "@id": "https://nuell-agentur.com/#organization",
     name: "nüll.",
     url: URL,
-    logo: { "@type": "ImageObject", url: IMAGE, width: 1200, height: 630 },
+    alternateName: ["nuell", "nüll Agentur Mannheim", "nuell-agentur"],
+    logo: { "@type": "ImageObject", url: "https://nuell-agentur.com/apple-touch-icon.png", width: 180, height: 180 },
+    image: IMAGE,
     email: "info@xn--nll-hoa.com",
     telephone: "+4915256569852",
     address: { "@type": "PostalAddress", addressLocality: "Mannheim", addressCountry: "DE" },
-    areaServed: { "@type": "Country", name: "Deutschland" },
+    areaServed: [{ "@type": "City", name: "Mannheim" }, { "@type": "AdministrativeArea", name: "Rhein-Neckar" }, { "@type": "Country", name: "Deutschland" }],
+    knowsAbout: ["Webdesign", "Suchmaschinenoptimierung", "Google Ads", "Lokale SEO", "KI-Sichtbarkeit"],
     sameAs: ["https://www.linkedin.com/company/n%C3%BCll/"],
     description: "nüll. baut Websites, SEO und Google Ads für mehr qualifizierte Anfragen.",
   },

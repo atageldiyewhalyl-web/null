@@ -8,6 +8,11 @@ import FaqV2, { type Faq } from "./FaqV2";
 import ContactV2 from "./ContactV2";
 import FooterV2 from "./FooterV2";
 import { REFS, SERVICE } from "./links";
+import { CITIES, SERVICE_LABEL, SERVICE_SLUG, type ServiceKey } from "./cities";
+
+// "Webdesign in Mannheim", "… in Frankfurt": every city page that exists for this service
+const localPages = (kind: string) =>
+  kind in SERVICE_SLUG ? CITIES.filter((c) => c.pages[kind as ServiceKey]).map((c) => ({ label: c.name, title: `${SERVICE_LABEL[kind as ServiceKey]} in ${c.name}`, href: `/leistungen/${SERVICE_SLUG[kind as ServiceKey]}/${c.slug}` })) : [];
 import { useSoundVideo } from "./useSoundVideo";
 
 /*
@@ -1219,7 +1224,7 @@ const Shot = ({ src, alt }: { src: string; alt: string }) => (
 );
 
 // phones: the three ways to start as a switch, one package at a time (the popular one first)
-function StartSwitch() {
+export function StartSwitch() {
   const [sel, setSel] = useState(Math.max(0, STARTS.findIndex((t) => t.popular)));
   const t = STARTS[sel];
   return (
@@ -1275,7 +1280,8 @@ function StartSwitch() {
   );
 }
 
-function WebPackage({ cfg, rise }: { cfg: ServiceConfig; rise: (d?: number) => object }) {
+// also used by the city pages (CityPageV2), with their own intro line
+export function WebPackage({ cfg, rise }: { cfg: Pick<ServiceConfig, "packageNote" | "tint">; rise: (d?: number) => object }) {
   const reduce = useReducedMotion();
   const monthly = TIERS[0];
   const pop = (d: number) =>
@@ -1384,7 +1390,8 @@ function WebPackage({ cfg, rise }: { cfg: ServiceConfig; rise: (d?: number) => o
   );
 }
 
-function PackageSection({ cfg, rise }: { cfg: ServiceConfig; rise: (d?: number) => object }) {
+// also used by the city pages (CityPageV2) for SEO, Google Ads, KI-Sichtbarkeit and Content
+export function PackageSection({ cfg, rise }: { cfg: Pick<ServiceConfig, "tier" | "kind" | "packageNote" | "tint">; rise: (d?: number) => object }) {
   // monthly packages (TIERS) or the social add-ons (ADDONS), straight from the price list
   const inTiers = TIERS.find((t) => t.name === cfg.tier);
   const inAddons = ADDONS.find((a) => a.name === cfg.tier);
@@ -1551,6 +1558,18 @@ export default function ServiceV2({ cfg, current }: { cfg: ServiceConfig; curren
                 Preise ansehen
               </a>
             </motion.div>
+            {/* the city pages for this service (cities.ts): one link each */}
+            {localPages(cfg.kind).length > 0 && (
+              <motion.p {...rise(0.22)} className="mt-6 text-[0.92rem] font-semibold text-[#6b7280]">
+                In deiner Stadt:{" "}
+                {localPages(cfg.kind).map((c, i) => (
+                  <span key={c.href}>
+                    {i > 0 && <span aria-hidden> · </span>}
+                    <a href={c.href} title={c.title} className="text-[#007aff] underline-offset-4 hover:underline">{c.label}</a>
+                  </span>
+                ))}
+              </motion.p>
+            )}
             {/* the sourced result lives in "Echte Ergebnisse" further down */}
           </div>
         </section>

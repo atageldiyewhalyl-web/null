@@ -1,5 +1,5 @@
 /*
- * Every client on the Fälle page (/referenzen). One list, so a new reference page only needs `page` set here.
+ * Every client on the Referenzen page (/referenzen). One list, so a new reference page only needs `page` set here.
  * Numbers only where a report backs them (sources: CasesV2.tsx header and each reference route's header):
  *  Waschbar: Google Ads report 6 Aug–5 Nov 2026. Orchidee: Meta report Oct 2026. Bergstone: site repo (150 products).
  *  Herkules: SEO report Oct 2026. Kanzlei Doğru: review Nov 2026. Treu: blog list in the site repo.
@@ -29,7 +29,7 @@ export type CaseEntry = {
   headline: string;
   facts?: string[];
   page?: string; // its own reference page
-  tint: string; // soft card colour on the Fälle page, a light shade of the client's own colour
+  tint: string; // soft card colour on the Referenzen page, a light shade of the client's own colour
 };
 
 const B = "/assets/v2/bento";

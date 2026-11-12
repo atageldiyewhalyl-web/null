@@ -1,4 +1,5 @@
 import ServiceV2, { type ServiceConfig } from "../components/v2/ServiceV2";
+import { withSocial } from "../utils/seoMeta";
 import { EnquiryVisual } from "../components/v2/SystemVisuals";
 import { SERVICE, REFS } from "../components/v2/links";
 
@@ -10,10 +11,10 @@ import { SERVICE, REFS } from "../components/v2/links";
  */
 
 export function meta() {
-  return [
+  return withSocial("/leistungen/webdesign", [
     { title: "Webdesign für Betriebe: Websites, die Anfragen bringen | nüll." },
     { name: "description", content: "Websites für Handwerk, Kanzleien und Dienstleister: klares Angebot, Anfrage per Formular, Anruf oder WhatsApp, jede Anfrage gemessen. Live in 7 Tagen, ab 1.499 € einmalig." },
-  ];
+  ]);
 }
 
 const cfg: ServiceConfig = {

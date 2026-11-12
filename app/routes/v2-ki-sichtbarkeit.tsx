@@ -1,4 +1,5 @@
 import ServiceV2, { type ServiceConfig } from "../components/v2/ServiceV2";
+import { withSocial } from "../utils/seoMeta";
 import { AiVisual } from "../components/v2/SystemVisuals";
 import { SERVICE } from "../components/v2/links";
 
@@ -12,10 +13,10 @@ import { SERVICE } from "../components/v2/links";
  */
 
 export function meta() {
-  return [
+  return withSocial("/leistungen/ki-sichtbarkeit", [
     { title: "KI-Sichtbarkeit: von ChatGPT, Claude und Gemini empfohlen werden | nüll." },
     { name: "description", content: "Immer mehr Kunden fragen ChatGPT, Claude oder Gemini. Wir bereiten deine Inhalte so auf, dass diese Assistenten dich kennen und empfehlen. Teil des SEO-Pakets, ab 299 € im Monat." },
-  ];
+  ]);
 }
 
 const cfg: ServiceConfig = {

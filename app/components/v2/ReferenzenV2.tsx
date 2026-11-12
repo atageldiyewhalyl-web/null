@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import CaseTile from "./CaseTile";
 import { NavBar } from "./HeroV2";
 import ContactV2 from "./ContactV2";
 import FooterV2 from "./FooterV2";
@@ -7,7 +8,7 @@ import { REFS } from "./links";
 import { CASE_LIST, type CaseEntry } from "./caseList";
 
 /*
- * The Fälle page (/referenzen), built like the homepage's "… werden" rows (ExplainerV2): one wide card per client
+ * The Referenzen page (/referenzen), built like the homepage's "… werden" rows (ExplainerV2): one wide card per client
  * in a soft tint of its colour, picture and text side by side, alternating left and right.
  * Clients with their own reference page come first and get the blue button; the rest say "Referenz folgt".
  * Data: caseList.ts (set `page` there when a new reference page goes live).
@@ -93,7 +94,7 @@ export default function ReferenzenV2() {
           <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
             {/* intro, centred like the homepage section */}
             <motion.div initial={reduce ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }} className="mx-auto max-w-[900px] text-center">
-              <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#007aff]">Fälle</p>
+              <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#007aff]">Referenzen</p>
               <h1 className="mx-auto mt-4 max-w-[16ch] text-[clamp(2.4rem,6vw,5rem)] font-bold leading-[0.92] tracking-[-0.065em]">
                 Betriebe, die jetzt gefunden werden<span className="text-[#007aff]">.</span>
               </h1>
@@ -103,7 +104,13 @@ export default function ReferenzenV2() {
             </motion.div>
 
             {/* one wide row per client, picture left, right, left … */}
-            <div className="mt-12 flex flex-col gap-3 lg:mt-20 lg:gap-12">
+            {/* phones and tablets: bento, one wide tile then two half tiles, repeating */}
+            <div className="mt-10 grid grid-cols-2 gap-2.5 lg:hidden">
+              {list.map((c, i) => (
+                <CaseTile key={c.slug} c={c} wide={i % 3 === 0 || (i === list.length - 1 && i % 3 === 1)} />
+              ))}
+            </div>
+            <div className="mt-20 hidden flex-col gap-12 lg:flex">
               {list.map((c, i) => (
                 <CaseRow key={c.slug} c={c} i={i} />
               ))}

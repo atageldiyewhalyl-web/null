@@ -101,7 +101,7 @@ export const batch: BlogPost[] = [
     ],
     faqTitle: "Häufige Fragen zu Baustellenfotos auf der Website",
     category: "Webdesign · Handwerk",
-    date: "2026-11-11",
+    date: "2026-11-03",
     readTime: "8 min",
     image: "/assets/blog/handwerk/baustellenfotos-handwerker-website.webp"
   },
@@ -191,7 +191,7 @@ export const batch: BlogPost[] = [
     ],
     faqTitle: "Häufige Fragen zu ChatGPT und KI-Sichtbarkeit",
     category: "SEO · Handwerk",
-    date: "2026-11-11",
+    date: "2026-09-07",
     readTime: "7 min",
     image: "/assets/blog/handwerk/ki-sichtbarkeit-handwerker-chatgpt.webp"
   },
@@ -297,7 +297,7 @@ export const batch: BlogPost[] = [
     ],
     faqTitle: "Häufige Fragen zu MyHammer-Alternativen",
     category: "Online-Marketing · Handwerk",
-    date: "2026-11-11",
+    date: "2026-11-02",
     readTime: "7 min",
     image: "/assets/blog/handwerk/myhammer-alternativen-handwerker.webp"
   },
@@ -398,7 +398,7 @@ export const batch: BlogPost[] = [
     ],
     faqTitle: "Häufige Fragen zur Werbung für Handwerker",
     category: "Online-Marketing · Handwerk",
-    date: "2026-11-11",
+    date: "2026-09-02",
     readTime: "7 min",
     image: "/assets/blog/handwerk/werbung-fuer-handwerker-mannheim.webp"
   },
@@ -498,7 +498,7 @@ export const batch: BlogPost[] = [
     ],
     faqTitle: "Häufige Fragen zu Anfragen über Formular, Telefon und WhatsApp",
     category: "Webdesign · Handwerk",
-    date: "2026-11-11",
+    date: "2026-09-24",
     readTime: "7 min",
     image: "/assets/blog/handwerk/handwerker-anfragen-formular-anruf-whatsapp.webp"
   }

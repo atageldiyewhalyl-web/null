@@ -213,7 +213,7 @@ const tools = [
   {
     name: "offer_alternatives",
     description:
-      "Show buttons to call/WhatsApp Halyl or fill in a classic form instead. Use when the client is unsure about chatting with an AI or asks for another way.",
+      "Show buttons to call/WhatsApp Ethan or fill in a classic form instead. Use when the client is unsure about chatting with an AI or asks for another way.",
     eager_input_streaming: true,
     input_schema: { type: "object", properties: {} },
   },
@@ -285,7 +285,7 @@ async function runTool(opts: {
       };
     }
     case "offer_alternatives":
-      return { content: "Buttons for a call/WhatsApp with Halyl and the classic form are now shown.", widget: { type: "alternatives" } };
+      return { content: "Buttons for a call/WhatsApp with Ethan and the classic form are now shown.", widget: { type: "alternatives" } };
     case "finish": {
       if (input.confirmed_by_client !== true) {
         return { content: "Summarize the key points for the client and wait for their confirmation before calling finish.", isError: true };
@@ -300,7 +300,7 @@ async function runTool(opts: {
       }
       await completeSession({ supabase, brief, session, answers });
       return {
-        content: "Interview completed and sent to Halyl. Now thank the client warmly in 1–2 sentences and say Halyl will get back to them. Do not call tools or ask questions.",
+        content: "Interview completed and sent to Ethan. Now thank the client warmly in 1–2 sentences and say Ethan will get back to them. Do not call tools or ask questions.",
         completed: true,
         progressChanged: true,
       };

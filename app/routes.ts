@@ -7,11 +7,13 @@ export default [
 
   route("leistungen", "routes/v2-leistungen.tsx"),
   route("leistungen/webdesign", "routes/v2-webdesign.tsx"),
+  route("leistungen/:service/:city", "routes/city-service.tsx"),
   route("leistungen/seo", "routes/v2-seo.tsx"),
   route("leistungen/google-ads", "routes/v2-google-ads.tsx"),
   route("leistungen/ki-sichtbarkeit", "routes/v2-ki-sichtbarkeit.tsx"),
   route("leistungen/content", "routes/v2-content.tsx"),
 
+  route("standorte", "routes/standorte.tsx"),
   route("referenzen", "routes/v2-referenzen.tsx"),
   route("referenzen/waschbar", "routes/v2-referenz-waschbar.tsx"),
   route("referenzen/orchidee", "routes/v2-referenz-orchidee.tsx"),

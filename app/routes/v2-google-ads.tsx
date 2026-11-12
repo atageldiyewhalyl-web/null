@@ -1,4 +1,5 @@
 import ServiceV2, { AdsVisual, type ServiceConfig } from "../components/v2/ServiceV2";
+import { withSocial } from "../utils/seoMeta";
 import { SERVICE } from "../components/v2/links";
 
 /*
@@ -9,10 +10,10 @@ import { SERVICE } from "../components/v2/links";
  */
 
 export function meta() {
-  return [
+  return withSocial("/leistungen/google-ads", [
     { title: "Google Ads für Betriebe: Anzeigen, die Anfragen bringen | nüll." },
     { name: "description", content: "Google Ads für Handwerk, Kanzleien und Dienstleister. Kampagnen, Landingpage und Tracking aus einer Hand. 0 € Monatsgebühr, bis deine erste Anfrage kommt." },
-  ];
+  ]);
 }
 
 const cfg: ServiceConfig = {

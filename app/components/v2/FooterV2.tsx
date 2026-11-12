@@ -1,7 +1,18 @@
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowUp } from "lucide-react";
+import { ArrowRight, ArrowUp, ChevronDown } from "lucide-react";
 import { trackGaEvent, getContactGoogleAdsConversion, trackGoogleAdsConversion } from "../../utils/tracking";
 import { BLOG, CHECK, REFS, toHome } from "./links";
+import { CITIES, SERVICE_LABEL, SERVICE_SLUG, type ServiceKey } from "./cities";
+
+// every city page (cities.ts), grouped by city for the Standorte column: <details> keeps the links in the HTML
+// even while closed, so search engines find them
+const SHORT: Record<ServiceKey, string> = { web: "Webdesign", seo: "SEO", ads: "Google Ads", ai: "KI-Sichtbarkeit", content: "Content" };
+// the footer shows three cities (home base first, then the biggest); every other city is on /standorte
+const FOOTER_CITIES = ["mannheim", "berlin", "hamburg"];
+const REGIONS = FOOTER_CITIES.map((slug) => CITIES.find((c) => c.slug === slug)!).filter(Boolean).map((c) => ({
+  name: c.name,
+  links: (Object.keys(SERVICE_SLUG) as ServiceKey[]).filter((k) => c.pages[k]).map((k) => ({ label: SHORT[k], title: `${SERVICE_LABEL[k]} in ${c.name}`, href: `/leistungen/${SERVICE_SLUG[k]}/${c.slug}` })),
+}));
 
 /*
  * Site footer: statement + CTA on the left, three link columns on the right, then the giant "nüll." wordmark
@@ -29,7 +40,7 @@ const COLS: { title: string; links: L[] }[] = [
   {
     title: "nüll.",
     links: [
-      { label: "Fälle", href: REFS },
+      { label: "Referenzen", href: REFS },
       { label: "Website-Check", href: CHECK },
       { label: "Ablauf", href: "#ablauf" },
       { label: "Fragen", href: "#faq" },
@@ -93,6 +104,7 @@ export default function FooterV2({ onHome = true }: { onHome?: boolean }) {
             <nav aria-label="Fußzeile" className="flex flex-wrap gap-x-5 gap-y-2.5 sm:hidden">
               {COLS.flatMap((c) => c.links)
                 .filter((l) => !l.href.startsWith("tel:") && !l.href.startsWith("mailto:"))
+                .concat({ label: "Standorte", href: "/standorte" })
                 .map((l) => (
                   <a
                     key={l.label}
@@ -107,7 +119,7 @@ export default function FooterV2({ onHome = true }: { onHome?: boolean }) {
                 ))}
             </nav>
 
-            <nav aria-label="Fußzeile" className="hidden gap-x-6 gap-y-8 sm:grid sm:grid-cols-3">
+            <nav aria-label="Fußzeile" className="hidden gap-x-6 gap-y-8 sm:grid sm:grid-cols-4">
               {COLS.map((c) => (
                 <div key={c.title}>
                   <p className="text-[0.88rem] font-semibold tracking-[-0.01em] text-[#86868b]">{c.title}</p>
@@ -128,6 +140,33 @@ export default function FooterV2({ onHome = true }: { onHome?: boolean }) {
                   </ul>
                 </div>
               ))}
+              <div>
+                <p className="text-[0.88rem] font-semibold tracking-[-0.01em] text-[#86868b]">Standorte</p>
+                <ul className="mt-3 space-y-2">
+                  {REGIONS.map((r) => (
+                    <li key={r.name}>
+                      <details name="footer-standorte" className="group">
+                        <summary className="flex cursor-pointer list-none items-center gap-1 text-[0.98rem] font-semibold tracking-[-0.02em] text-[#0e0e10] transition-opacity hover:opacity-55 [&::-webkit-details-marker]:hidden">
+                          {r.name}
+                          <ChevronDown size={14} strokeWidth={2.6} className="text-[#86868b] transition-transform group-open:rotate-180" />
+                        </summary>
+                        <ul className="mb-1 mt-1.5 space-y-1 border-l border-black/10 pl-3">
+                          {r.links.map((l) => (
+                            <li key={l.href}>
+                              <a href={l.href} title={l.title} className="text-[0.88rem] font-medium text-[#6b7280] transition-colors hover:text-[#0e0e10]">{l.label}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    </li>
+                  ))}
+                  <li>
+                    <a href="/standorte" className="inline-flex items-center gap-1 text-[0.98rem] font-semibold tracking-[-0.02em] text-[#0e0e10] transition-opacity hover:opacity-55">
+                      Alle Standorte <ArrowRight size={15} strokeWidth={2.4} />
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </nav>
           </div>
         </div>

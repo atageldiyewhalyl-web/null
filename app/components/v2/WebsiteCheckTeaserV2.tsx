@@ -11,7 +11,8 @@ import { openWebsiteCheck } from "./WebsiteCheckModal";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-export default function WebsiteCheckTeaserV2({ source = "home" }: { source?: string }) {
+// city: local wording for city pages (one of the checks is whether the page title names your city)
+export default function WebsiteCheckTeaserV2({ source = "home", city }: { source?: string; city?: string }) {
   const reduce = useReducedMotion();
   const [url, setUrl] = useState("");
   const up = (delay: number) => (reduce ? {} : { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.4 }, transition: { duration: 0.8, delay, ease: EASE } });
@@ -28,10 +29,20 @@ export default function WebsiteCheckTeaserV2({ source = "home" }: { source?: str
           Kostenloser Website-Check
         </motion.p>
         <motion.h2 {...up(0.05)} className="mx-auto mt-4 max-w-[14ch] text-[clamp(2.3rem,5.6vw,4.6rem)] font-bold leading-[0.93] tracking-[-0.065em]">
-          <span className="text-[#0e0e10]/35">Wie gut ist</span> deine Website<span className="text-[#007aff]">?</span>
+          {city ? (
+            <>
+              <span className="text-[#0e0e10]/35">Findet man dich</span> in {city}<span className="text-[#007aff]">?</span>
+            </>
+          ) : (
+            <>
+              <span className="text-[#0e0e10]/35">Wie gut ist</span> deine Website<span className="text-[#007aff]">?</span>
+            </>
+          )}
         </motion.h2>
         <motion.p {...up(0.1)} className="mx-auto mt-5 max-w-[44ch] text-[1.08rem] font-medium leading-[1.45] tracking-[-0.02em] text-[#424245] md:text-[1.15rem]">
-          Hol dir eine Note von 0 bis 100 und sieh, was du verbessern kannst. In etwa einer Minute, per E-Mail, kostenlos.
+          {city
+            ? `Prüf deine Website: Note von 0 bis 100 und was ihr für Anfragen aus ${city} fehlt. In etwa einer Minute, per E-Mail, kostenlos.`
+            : "Hol dir eine Note von 0 bis 100 und sieh, was du verbessern kannst. In etwa einer Minute, per E-Mail, kostenlos."}
         </motion.p>
 
         <motion.form {...up(0.16)} onSubmit={submit} noValidate className="mx-auto mt-9 w-full max-w-[620px]">

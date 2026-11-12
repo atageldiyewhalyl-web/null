@@ -6,13 +6,16 @@ import ContactV2 from "./ContactV2";
 import FooterV2 from "./FooterV2";
 import { BLOG } from "./links";
 import { cover, dePosts, fmtDate, fmtRead, postHref, postTag } from "./blogShared";
+import WebsiteCheckTeaserV2 from "./WebsiteCheckTeaserV2";
+import { ContactButtons } from "./BlogConversion";
 
 /*
- * The blog overview (/blog). Centred intro like the Fälle page, the newest article as one wide card,
+ * The blog overview (/blog). Centred intro like the Referenzen page, the newest article as one wide card,
  * then every other German article in a three-column grid. Reads blogData.tsx, so new posts appear on their own.
  */
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const FEATURED_SLUG = "website-selbst-pruefen-10-punkte";
 
 // One article as a card: picture, service and audience, title, excerpt, date. Also used under each article.
 export function PostCard({ post }: { post: BlogPost }) {
@@ -55,9 +58,30 @@ function Featured({ post }: { post: BlogPost }) {
   );
 }
 
+function PostGrid({ posts, reduce }: { posts: BlogPost[]; reduce: boolean }) {
+  return (
+    <div className="mt-14 grid gap-x-5 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-y-16">
+      {posts.map((p, i) => (
+        <motion.div
+          key={p.slug}
+          initial={reduce ? false : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: reduce ? 0 : (i % 3) * 0.06, ease: EASE }}
+        >
+          <PostCard post={p} />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function BlogIndexV2() {
   const reduce = useReducedMotion();
-  const [first, ...rest] = dePosts();
+  // The featured card is curated (the free website check guide), not simply the newest article; the rest stay newest first.
+  const all = dePosts();
+  const first = all.find((p) => p.slug === FEATURED_SLUG) ?? all[0];
+  const rest = all.filter((p) => p !== first);
 
   return (
     <>
@@ -93,18 +117,30 @@ export default function BlogIndexV2() {
               </motion.div>
             )}
 
-            <div className="mt-14 grid gap-x-5 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-y-16">
-              {rest.map((p, i) => (
-                <motion.div
-                  key={p.slug}
-                  initial={reduce ? false : { opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.7, delay: reduce ? 0 : (i % 3) * 0.06, ease: EASE }}
-                >
-                  <PostCard post={p} />
-                </motion.div>
-              ))}
+            <PostGrid posts={rest.slice(0, 6)} reduce={!!reduce} />
+          </div>
+        </section>
+
+        {/* free check after the first articles, so readers meet it before they scroll the whole archive */}
+        <WebsiteCheckTeaserV2 source="blog-index" />
+
+        {rest.length > 6 && (
+          <section className="pb-24 pt-16 md:pb-32 md:pt-24">
+            <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
+              <PostGrid posts={rest.slice(6)} reduce={!!reduce} />
+            </div>
+          </section>
+        )}
+
+        <section className="border-t border-black/[0.06] bg-white py-14 md:py-20">
+          <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
+            <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#007aff]">Lieber direkt sprechen?</p>
+            <p className="mt-3 max-w-[22ch] text-[clamp(1.8rem,3.6vw,2.8rem)] font-bold leading-[1] tracking-[-0.055em] text-[#0e0e10]">
+              Schreib uns, was dein Betrieb braucht<span className="text-[#007aff]">.</span>
+            </p>
+            <p className="mt-4 max-w-[52ch] text-[1.02rem] font-medium leading-[1.5] text-[#424245]">Kostenlos und ohne Verkaufsdruck. Du bekommst eine ehrliche Antwort, ob und wie wir dir mehr Anfragen bringen können.</p>
+            <div className="mt-6">
+              <ContactButtons where="index" />
             </div>
           </div>
         </section>

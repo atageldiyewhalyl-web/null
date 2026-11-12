@@ -11,7 +11,7 @@ const TEXT_LINK =
 // every item points at something that exists on  (the old "Branchen" anchor and "/#services" led nowhere)
 const NAV: { label: string; href: string; menu?: boolean }[] = [
   { label: "Leistungen", href: SERVICES, menu: true },
-  { label: "Fälle", href: REFS },
+  { label: "Referenzen", href: REFS },
   { label: "Website-Check", href: CHECK },
   { label: "Preise", href: "/preise" },
   { label: "Blog", href: BLOG },
@@ -50,6 +50,7 @@ export function ServiceMark({ logos, size = "md" }: { logos: string[]; size?: "m
   );
 }
 const EASE = [0.22, 1, 0.36, 1] as const;
+
 const isService = (path?: string) => !!path && (path === SERVICES || SERVICE_NAV.some((s) => s.href === path));
 
 // Desktop: opens on hover or click, closes on leaving, Escape, a click outside or tabbing away.
@@ -119,9 +120,7 @@ function ServicesMenu({ overview, current }: { overview: string; current?: strin
             transition={{ duration: 0.28, ease: EASE }}
             className="absolute left-1/2 top-full z-40 origin-top -translate-x-1/2 pt-5"
           >
-            <div
-              className="grid w-[620px] grid-cols-2 gap-1 rounded-[18px] bg-white p-2.5 shadow-[0_18px_48px_rgba(15,23,42,0.13)] ring-1 ring-black/[0.06]"
-            >
+            <div className="grid w-[620px] grid-cols-2 gap-1 rounded-[18px] bg-white p-2.5 shadow-[0_18px_48px_rgba(15,23,42,0.13)] ring-1 ring-black/[0.06]">
               {SERVICE_NAV.map((s) => (
                 <a
                   key={s.href}
@@ -165,7 +164,7 @@ const CTA_LABEL = "Anfrage starten";
 const CTA_HREF = "#contact";
 const CASES_HREF = "#faelle";
 
-type Proof = {
+export type Proof = {
   client: string;
   src: string;
   alt: string;
@@ -189,11 +188,11 @@ type Proof = {
  * Update only from a fetched report. Mockups live in /assets/v2/mockups (trimmed webp).
  */
 const M = "/assets/v2/mockups";
-const PROOFS: Proof[] = [
+export const PROOFS: Proof[] = [
   { client: "Waschbar", src: `${M}/waschbar.webp`, alt: "Website von Waschbar auf Laptop und Smartphone", value: "2.491", label: "Routenanfragen über Google Ads, Aug. bis Nov. 2026", pos: { top: "1%", left: "0%" }, delay: 0.4 },
   { client: "Bergstone Keramiksan", src: `${M}/bergstone.webp`, alt: "Website von Bergstone Keramiksan auf Laptop und Smartphone", value: "36.757", label: "Menschen über Meta Ads erreicht, Okt. bis Nov. 2026", pos: { top: "1%", right: "0%" }, delay: 0.55 },
   { client: "Herkules Umzüge", src: `${M}/herkules.webp`, alt: "Website von Herkules Umzüge auf Laptop und Smartphone", value: "Seite 1", label: "bei Google für „Umzugsunternehmen Mannheim“, Okt. 2026", pos: { bottom: "4%", left: "0%" }, delay: 0.7 },
-  { client: "Kanzlei Doğru", src: `${M}/hasan.webp`, alt: "Website der Kanzlei Doğru auf Laptop und Smartphone", value: "230 Anfragen", label: "per Website-Formular und Anruf, Aug. bis Nov. 2026", pos: { bottom: "4%", right: "0%" }, delay: 0.85 },
+  { client: "Kanzlei Doğru", src: `${M}/hasan.webp`, alt: "Website der Kanzlei Doğru auf Laptop und Smartphone", value: "282 Anfragen", label: "per Website-Formular und Anruf, in drei Monaten", pos: { bottom: "4%", right: "0%" }, delay: 0.85 },
   { client: "Treu Haustechnik", src: `${M}/treu.webp`, alt: "Website von Treu Haustechnik auf Laptop und Smartphone", pos: { top: "0%", left: "23%" }, delay: 1.0 },
   { client: "SG Laserzentrum", note: "Online so hochwertig wie vor Ort.", src: `${M}/sg.webp`, alt: "Website von SG Laserzentrum auf Laptop und Smartphone", pos: { top: "0%", right: "23%" }, delay: 1.1 },
   { client: "FT Sicherheitstechnik", src: `${M}/ft.webp`, alt: "Website von FT Sicherheitstechnik auf Laptop und Smartphone", pos: { top: "41%", left: "0%" }, delay: 1.2 },
@@ -437,11 +436,11 @@ function interleave(list: Proof[]) {
  * Phone: the ellipse is wider than the screen (rx > 0.5), so the cards sweep in over the top, out past the edges
  * and back along the bottom, leaving the middle free for the text. Smaller cards, number + client only.
  */
-type Ring = { rx: number; ry: number; lap: number; compact?: boolean; numW: string; plainW: string };
-const RING_DESKTOP: Ring = { rx: 0.37, ry: 0.37, lap: 110, numW: "w-[clamp(220px,19vw,280px)]", plainW: "w-[clamp(170px,15vw,220px)]" };
-const RING_PHONE: Ring = { rx: 0.74, ry: 0.41, lap: 70, compact: true, numW: "w-[clamp(132px,37vw,180px)]", plainW: "w-[clamp(132px,37vw,180px)]" };
+export type Ring = { rx: number; ry: number; lap: number; compact?: boolean; numW: string; plainW: string };
+export const RING_DESKTOP: Ring = { rx: 0.37, ry: 0.37, lap: 110, numW: "w-[clamp(220px,19vw,280px)]", plainW: "w-[clamp(170px,15vw,220px)]" };
+export const RING_PHONE: Ring = { rx: 0.74, ry: 0.41, lap: 70, compact: true, numW: "w-[clamp(132px,37vw,180px)]", plainW: "w-[clamp(132px,37vw,180px)]" };
 
-function Orbit({ items: raw, reduce, ring = RING_DESKTOP }: { items: Proof[]; reduce: boolean | null; ring?: Ring }) {
+export function Orbit({ items: raw, reduce, ring = RING_DESKTOP }: { items: Proof[]; reduce: boolean | null; ring?: Ring }) {
   const items = interleave(raw);
   const stageRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -588,7 +587,7 @@ export default function HeroV2() {
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </a>
             <a href={CASES_HREF} className={TEXT_LINK}>
-              Fälle ansehen
+              Referenzen ansehen
             </a>
           </motion.div>
         </div>
@@ -619,7 +618,7 @@ export default function HeroV2() {
               <ArrowRight size={18} />
             </a>
             <a href={CASES_HREF} className={TEXT_LINK}>
-              Fälle ansehen
+              Referenzen ansehen
             </a>
           </motion.div>
         </div>

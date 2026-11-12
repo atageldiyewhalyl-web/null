@@ -43,7 +43,7 @@ export default function ImpressumRoute() {
 
           <section>
             <h2 className="mb-4 text-2xl md:text-3xl">Vertreten durch</h2>
-            <p>Halyberdi Atageldiyev</p>
+            <p>Ethan Mitchell</p>
           </section>
 
           <section>
@@ -79,7 +79,7 @@ export default function ImpressumRoute() {
               Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
             </h2>
             <address className="not-italic text-neutral-700">
-              Halyberdi Atageldiyev
+              Ethan Mitchell
               <br />
               HB Smart Software Solutions Inc.
               <br />

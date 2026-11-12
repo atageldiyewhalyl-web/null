@@ -1,4 +1,5 @@
 import ServiceV2, { type ServiceConfig } from "../components/v2/ServiceV2";
+import { withSocial } from "../utils/seoMeta";
 import { InstagramVisual } from "../components/v2/SystemVisuals";
 import { SERVICE } from "../components/v2/links";
 
@@ -12,10 +13,10 @@ import { SERVICE } from "../components/v2/links";
  */
 
 export function meta() {
-  return [
+  return withSocial("/leistungen/content", [
     { title: "Content für Betriebe: Videos und Posts, die zeigen, was du kannst | nüll." },
     { name: "description", content: "Videos, Posts und Stories für Instagram und deine Website. Dreh vor Ort, Schnitt und Meta Ads inklusive. Bis zu 20 Videos im Monat, ab 62,45 € pro Video." },
-  ];
+  ]);
 }
 
 const cfg: ServiceConfig = {

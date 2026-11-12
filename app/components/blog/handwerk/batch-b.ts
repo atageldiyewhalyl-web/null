@@ -103,7 +103,7 @@ export const batch: BlogPost[] = [
       }
     ],
     category: "Webdesign · Handwerk",
-    date: "2026-11-11",
+    date: "2026-09-29",
     readTime: "7 min",
     image: "/assets/blog/handwerk/website-schreiner-tischler-mannheim.webp"
   },
@@ -207,7 +207,7 @@ export const batch: BlogPost[] = [
       }
     ],
     category: "Webdesign · Handwerk",
-    date: "2026-11-11",
+    date: "2026-11-05",
     readTime: "7 min",
     image: "/assets/blog/handwerk/website-garten-landschaftsbau-mannheim.webp"
   },
@@ -307,7 +307,7 @@ export const batch: BlogPost[] = [
       }
     ],
     category: "Webdesign · Handwerk",
-    date: "2026-11-11",
+    date: "2026-09-11",
     readTime: "7 min",
     image: "/assets/blog/handwerk/website-rohrreinigung-notdienst-mannheim.webp"
   },
@@ -410,7 +410,7 @@ export const batch: BlogPost[] = [
       }
     ],
     category: "Google Ads · Handwerk",
-    date: "2026-11-11",
+    date: "2026-07-28",
     readTime: "7 min",
     image: "/assets/blog/handwerk/notdienst-werbung-handwerker.webp"
   },
@@ -526,7 +526,7 @@ export const batch: BlogPost[] = [
       }
     ],
     category: "Google Ads · Handwerk",
-    date: "2026-11-11",
+    date: "2026-08-27",
     readTime: "7 min",
     image: "/assets/blog/handwerk/google-ads-kosten-handwerker-mannheim.webp"
   }

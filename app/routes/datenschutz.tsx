@@ -85,7 +85,7 @@ export default function DatenschutzRoute() {
             <p className="mt-4">
               Vertreten durch:
               <br />
-              Halyberdi Atageldiyev
+              Ethan Mitchell
             </p>
             <p className="mt-4">
               E-Mail:{" "}

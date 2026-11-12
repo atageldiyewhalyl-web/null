@@ -20,6 +20,12 @@ type Pages = {
   "/leistungen/webdesign": {
     params: {};
   };
+  "/leistungen/:service/:city": {
+    params: {
+      "service": string;
+      "city": string;
+    };
+  };
   "/leistungen/seo": {
     params: {};
   };
@@ -30,6 +36,9 @@ type Pages = {
     params: {};
   };
   "/leistungen/content": {
+    params: {};
+  };
+  "/standorte": {
     params: {};
   };
   "/referenzen": {
@@ -130,7 +139,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
+    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/:service/:city" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/standorte" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
   "routes/home-v2.tsx": {
     id: "routes/home-v2";
@@ -143,6 +152,10 @@ type RouteFiles = {
   "routes/v2-webdesign.tsx": {
     id: "routes/v2-webdesign";
     page: "/leistungen/webdesign";
+  };
+  "routes/city-service.tsx": {
+    id: "routes/city-service";
+    page: "/leistungen/:service/:city";
   };
   "routes/v2-seo.tsx": {
     id: "routes/v2-seo";
@@ -159,6 +172,10 @@ type RouteFiles = {
   "routes/v2-content.tsx": {
     id: "routes/v2-content";
     page: "/leistungen/content";
+  };
+  "routes/standorte.tsx": {
+    id: "routes/standorte";
+    page: "/standorte";
   };
   "routes/v2-referenzen.tsx": {
     id: "routes/v2-referenzen";
@@ -279,10 +296,12 @@ type RouteModules = {
   "routes/home-v2": typeof import("./app/routes/home-v2.tsx");
   "routes/v2-leistungen": typeof import("./app/routes/v2-leistungen.tsx");
   "routes/v2-webdesign": typeof import("./app/routes/v2-webdesign.tsx");
+  "routes/city-service": typeof import("./app/routes/city-service.tsx");
   "routes/v2-seo": typeof import("./app/routes/v2-seo.tsx");
   "routes/v2-google-ads": typeof import("./app/routes/v2-google-ads.tsx");
   "routes/v2-ki-sichtbarkeit": typeof import("./app/routes/v2-ki-sichtbarkeit.tsx");
   "routes/v2-content": typeof import("./app/routes/v2-content.tsx");
+  "routes/standorte": typeof import("./app/routes/standorte.tsx");
   "routes/v2-referenzen": typeof import("./app/routes/v2-referenzen.tsx");
   "routes/v2-referenz-waschbar": typeof import("./app/routes/v2-referenz-waschbar.tsx");
   "routes/v2-referenz-orchidee": typeof import("./app/routes/v2-referenz-orchidee.tsx");

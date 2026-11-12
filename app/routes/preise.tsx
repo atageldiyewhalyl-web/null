@@ -1,4 +1,5 @@
 import { NavBar } from "../components/v2/HeroV2";
+import { withSocial } from "../utils/seoMeta";
 import PreiseV2 from "../components/v2/PreiseV2";
 import FaqV2 from "../components/v2/FaqV2";
 import ContactV2 from "../components/v2/ContactV2";
@@ -10,10 +11,10 @@ import FooterV2 from "../components/v2/FooterV2";
  */
 
 export function meta() {
-  return [
-    { title: "Preise | nüll." },
+  return withSocial("/preise", [
+    { title: "Preise: Website ab 1.499 €, SEO ab 299 € im Monat | nüll." },
     { name: "description", content: "Was eine Website, SEO, Google Ads und Social bei nüll. kosten. Alle Preise netto." },
-  ];
+  ]);
 }
 
 export default function PreiseRoute() {

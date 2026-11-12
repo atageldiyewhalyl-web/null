@@ -1,39 +1,175 @@
 # nüll.
 
-nüll. is a Mannheim-based web design and digital acquisition studio for professional service businesses, consultants, law firms, medical practices, and local companies in Germany.
+> nüll. ist eine Agentur aus Mannheim für Websites, SEO und Google Ads. Wir bauen Anfragesysteme für Handwerksbetriebe, Kanzleien, Arztpraxen, Berater und lokale Dienstleister: Besucher sollen per Anruf, WhatsApp oder Formular anfragen, und jede Anfrage wird gemessen. Websites stehen in 7 Tagen. Webdesign ab 1.499 € (Onepager) bzw. ab 1.999 € (ab 10 Seiten) einmalig, SEO ab 299 € im Monat, Google Ads mit 0 € Monatsgebühr, bis die erste Anfrage kommt (jeweils netto, Werbebudget zahlt der Kunde direkt an Google).
 
-## Website
-- Canonical domain: https://nuell-agentur.com
-- Brand spelling: nüll.
-- Location: Mannheim, Germany
-- Contact email: info@nüll.com
-- WhatsApp: +49 1525 6569852
+Marke: nüll. (auch: nuell, nüll Agentur Mannheim). Domain: https://nuell-agentur.com
+Kontakt: info@nüll.com (ASCII: info@xn--nll-hoa.com), Telefon und WhatsApp +49 1525 6569852
+Sprache: Deutsch
 
-## Primary Pages
-- https://nuell-agentur.com/ - Main page: websites, SEO, Google Ads, AI search visibility and content for local businesses.
-- https://nuell-agentur.com/leistungen - Overview of all services.
-- https://nuell-agentur.com/leistungen/webdesign - Web design: websites built to turn visitors into enquiries (form, call, WhatsApp).
-- https://nuell-agentur.com/leistungen/seo - SEO: local visibility on Google and Google Maps.
-- https://nuell-agentur.com/leistungen/google-ads - Google Ads: campaign setup, landing pages and conversion tracking.
-- https://nuell-agentur.com/leistungen/ki-sichtbarkeit - AI visibility: being recommended by ChatGPT, Claude and Gemini.
-- https://nuell-agentur.com/leistungen/content - Content: videos and posts for the website and Instagram.
-- https://nuell-agentur.com/referenzen - Client case studies.
-- https://nuell-agentur.com/preise - Prices.
-- https://nuell-agentur.com/website-check - Free website check with an emailed report.
-- https://nuell-agentur.com/blog - Articles about websites, SEO, Google Ads and marketing for local businesses.
+## Leistungen
+- [Leistungen im Überblick](https://nuell-agentur.com/leistungen)
+- [Webdesign](https://nuell-agentur.com/leistungen/webdesign): Websites, die Besucher zu Anfragen machen
+- [SEO](https://nuell-agentur.com/leistungen/seo): bei Google und Google Maps gefunden werden
+- [Google Ads](https://nuell-agentur.com/leistungen/google-ads)
+- [KI-Sichtbarkeit](https://nuell-agentur.com/leistungen/ki-sichtbarkeit): von ChatGPT, Claude, Gemini und Perplexity empfohlen werden
+- [Content](https://nuell-agentur.com/leistungen/content): Videos und Social Media
+- [Preise](https://nuell-agentur.com/preise)
+- [Standorte und Städte](https://nuell-agentur.com/standorte)
+- [Kostenloser Website-Check](https://nuell-agentur.com/website-check): Note von 0 bis 100 und die drei wichtigsten Baustellen, Report per E-Mail
 
-## Services
-- Conversion-focused websites with clear structure and premium visual direction.
-- Local SEO and search-intent page architecture for qualified organic visibility.
-- Google Ads campaign setup, landing pages, and conversion tracking.
-- AI search visibility and digital positioning for expert-led businesses.
-- Brand, content, and trust-building systems for lead generation.
+## Städte
+- https://nuell-agentur.com/leistungen/webdesign/mannheim
+- https://nuell-agentur.com/leistungen/seo/mannheim
+- https://nuell-agentur.com/leistungen/google-ads/mannheim
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/mannheim
+- https://nuell-agentur.com/leistungen/content/mannheim
+- https://nuell-agentur.com/leistungen/webdesign/frankfurt
+- https://nuell-agentur.com/leistungen/seo/frankfurt
+- https://nuell-agentur.com/leistungen/google-ads/frankfurt
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/frankfurt
+- https://nuell-agentur.com/leistungen/content/frankfurt
+- https://nuell-agentur.com/leistungen/webdesign/heidelberg
+- https://nuell-agentur.com/leistungen/seo/heidelberg
+- https://nuell-agentur.com/leistungen/google-ads/heidelberg
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/heidelberg
+- https://nuell-agentur.com/leistungen/content/heidelberg
+- https://nuell-agentur.com/leistungen/webdesign/berlin
+- https://nuell-agentur.com/leistungen/seo/berlin
+- https://nuell-agentur.com/leistungen/google-ads/berlin
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/berlin
+- https://nuell-agentur.com/leistungen/content/berlin
+- https://nuell-agentur.com/leistungen/webdesign/hamburg
+- https://nuell-agentur.com/leistungen/seo/hamburg
+- https://nuell-agentur.com/leistungen/google-ads/hamburg
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/hamburg
+- https://nuell-agentur.com/leistungen/content/hamburg
+- https://nuell-agentur.com/leistungen/webdesign/muenchen
+- https://nuell-agentur.com/leistungen/seo/muenchen
+- https://nuell-agentur.com/leistungen/google-ads/muenchen
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/muenchen
+- https://nuell-agentur.com/leistungen/content/muenchen
+- https://nuell-agentur.com/leistungen/webdesign/koeln
+- https://nuell-agentur.com/leistungen/seo/koeln
+- https://nuell-agentur.com/leistungen/google-ads/koeln
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/koeln
+- https://nuell-agentur.com/leistungen/content/koeln
+- https://nuell-agentur.com/leistungen/webdesign/stuttgart
+- https://nuell-agentur.com/leistungen/seo/stuttgart
+- https://nuell-agentur.com/leistungen/google-ads/stuttgart
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/stuttgart
+- https://nuell-agentur.com/leistungen/content/stuttgart
+- https://nuell-agentur.com/leistungen/webdesign/duesseldorf
+- https://nuell-agentur.com/leistungen/seo/duesseldorf
+- https://nuell-agentur.com/leistungen/google-ads/duesseldorf
+- https://nuell-agentur.com/leistungen/ki-sichtbarkeit/duesseldorf
+- https://nuell-agentur.com/leistungen/content/duesseldorf
 
-## Technical Notes
-- Framework: React Router 7 with Vite.
-- Rendering: SSR-enabled React application with static public SEO files.
-- Sitemap: https://nuell-agentur.com/sitemap.xml
-- Robots: https://nuell-agentur.com/robots.txt
+## Referenzen
+- [Alle Referenzen](https://nuell-agentur.com/referenzen)
+- Treu Haustechnik, Onkel Abwassertechnik, FT Sicherheitstechnik, SG Laserzentrum, Waschbar, Bergstone Keramiksan, Kanzlei Doğru, S&O Beauty, B.Y. Consulting, Pflegedienst Orchidee
 
-## Positioning
-nüll. builds digital presences that help visitors quickly understand expertise, trust the provider, and take the next step toward a qualified inquiry.
+## Ratgeber (90 Artikel)
+- [Alle Artikel](https://nuell-agentur.com/blog)
+### Kanzleien
+- [Online-Terminbuchung für die Kanzlei: Erstberatung einfach buchen](https://nuell-agentur.com/blog/online-terminbuchung-kanzlei-erstberatung)
+- [Werbung für Anwälte: Was auf die Kanzlei-Website darf (§ 43b BRAO)](https://nuell-agentur.com/blog/werbung-anwaelte-43b-brao-kanzlei-website)
+- [Google-Unternehmensprofil für Kanzleien: Anleitung Schritt für Schritt](https://nuell-agentur.com/blog/google-unternehmensprofil-kanzlei-anwaelte)
+- [Google-Bewertungen für Kanzleien: Was Anwälte beachten müssen](https://nuell-agentur.com/blog/google-bewertungen-kanzlei-anwaelte)
+- [Eine Seite pro Rechtsgebiet: So baust du die Kanzlei-Website auf](https://nuell-agentur.com/blog/rechtsgebiete-seiten-kanzlei-website-aufbau)
+- [Ratgeber-Artikel für Kanzleien: So gewinnst du Mandanten mit Wissen](https://nuell-agentur.com/blog/ratgeber-artikel-kanzlei-mandanten-gewinnen)
+- [Steuerberater-Website: So gewinnst du neue Mandanten bei Google](https://nuell-agentur.com/blog/steuerberater-website-mandanten-gewinnen)
+- [Was kostet eine Kanzlei-Website? Preise, Posten und Fallen](https://nuell-agentur.com/blog/kanzlei-website-kosten-anwaelte)
+- [Mehrsprachige Kanzlei-Website: Deutsch und Türkisch richtig umsetzen](https://nuell-agentur.com/blog/mehrsprachige-kanzlei-website-tuerkisch-deutsch)
+- [Impressum für Kanzleien: Pflichtangaben für Anwälte (§ 5 DDG)](https://nuell-agentur.com/blog/impressum-kanzlei-anwaelte-pflichtangaben)
+- [Baukasten oder Agentur für Praxis und Kanzlei? Was bei sensiblen Daten zählt](https://nuell-agentur.com/blog/baukasten-oder-agentur-praxis-kanzlei)
+- [Google Ads für Anwälte: Was ein Mandat wirklich kosten darf](https://nuell-agentur.com/blog/google-ads-anwaelte-kosten-pro-mandat)
+- [Kontaktformular für Kanzleien: Mandatsanfragen datenschutzkonform](https://nuell-agentur.com/blog/kontaktformular-kanzlei-mandatsanfrage-datenschutz)
+- [Über-uns-Seite für Kanzleien: Anwaltsprofil, das Vertrauen schafft](https://nuell-agentur.com/blog/anwaltsprofil-ueber-uns-seite-kanzlei-vertrauen)
+- [Webdesign für Rechtsanwälte und Kanzleien 2026: Der vollständige Leitfaden](https://nuell-agentur.com/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026)
+- [Webdesign für Anwälte und Kanzleien: Was eine gute Website wirklich braucht](https://nuell-agentur.com/blog/webdesign-fuer-anwaelte-kanzleien)
+
+### Arztpraxen
+- [Google-Unternehmensprofil für Arztpraxen: Der wichtigste Kanal](https://nuell-agentur.com/blog/google-unternehmensprofil-arztpraxis)
+- [Was kostet eine Praxis-Website? Preise, Posten und Pflege](https://nuell-agentur.com/blog/praxis-website-kosten-arztpraxis)
+- [Doctolib oder eigene Terminbuchung? Der ehrliche Vergleich für Praxen](https://nuell-agentur.com/blog/doctolib-oder-eigene-terminbuchung-arztpraxis)
+- [Patientenbewertungen für Arztpraxen: Richtig fragen, sachlich antworten](https://nuell-agentur.com/blog/patientenbewertungen-arztpraxis-google)
+- [Impressum für Arztpraxen: Pflichtangaben für Ärzte und Zahnärzte](https://nuell-agentur.com/blog/impressum-arztpraxis-pflichtangaben)
+- [DSGVO und Gesundheitsdaten: Was Arztpraxen auf der Website beachten](https://nuell-agentur.com/blog/dsgvo-gesundheitsdaten-arztpraxis-website)
+- [Neue Patienten gewinnen: Der Plan für Arztpraxen in Mannheim](https://nuell-agentur.com/blog/neue-patienten-gewinnen-arztpraxis-mannheim)
+- [Heilmittelwerbegesetz: Was darf die Praxis-Website sagen und zeigen?](https://nuell-agentur.com/blog/heilmittelwerbegesetz-arztpraxis-website)
+- [SEO für Zahnärzte: Neue Patienten ohne Portal-Abhängigkeit](https://nuell-agentur.com/blog/zahnarzt-seo-ohne-jameda-praxis)
+- [Webdesign für Ärzte und Arztpraxen: Was eine gute Praxis-Website wirklich braucht](https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen)
+
+### Handwerk
+- [Mehr Google-Bewertungen bekommen: richtig fragen, legal bleiben](https://nuell-agentur.com/blog/google-bewertungen-handwerker)
+- [Gartenbau Website: Anfragen planen statt auf den Frühling warten](https://nuell-agentur.com/blog/website-garten-landschaftsbau-mannheim)
+- [Photovoltaik-Installateur: Mehr Anfragen über die Website, ohne Preiskampf](https://nuell-agentur.com/blog/photovoltaik-installateur-website-anfragen-handwerker)
+- [Handwerker-Fotos für die Website: Baustellenfotos statt Stock](https://nuell-agentur.com/blog/baustellenfotos-handwerker-website)
+- [MyHammer-Alternativen 2026: Portale oder eigene Anfragen?](https://nuell-agentur.com/blog/myhammer-alternativen-handwerker)
+- [Handwerker bei Google Maps nicht gefunden? 9 Gründe und Lösungen](https://nuell-agentur.com/blog/handwerker-google-maps-nicht-gefunden)
+- [BFSG für Handwerker: Muss deine Website barrierefrei sein?](https://nuell-agentur.com/blog/barrierefreiheit-bfsg-handwerker-website)
+- [Dachdecker-Website: So findet man dich nach dem nächsten Sturm](https://nuell-agentur.com/blog/website-dachdecker-mannheim)
+- [Werbung für Fliesenleger: eine Website, die Bäder verkauft](https://nuell-agentur.com/blog/website-fliesenleger-badsanierung-mannheim)
+- [Homepage-Baukasten oder Agentur? Was für Handwerker passt](https://nuell-agentur.com/blog/homepage-baukasten-oder-agentur-handwerker)
+- [Facebook-Werbung für Handwerker: Anzeigen im Rhein-Neckar-Raum](https://nuell-agentur.com/blog/facebook-instagram-anzeigen-handwerker)
+- [Instagram für Handwerker: 30 Post-Ideen aus dem Betriebsalltag](https://nuell-agentur.com/blog/instagram-fuer-handwerker-post-ideen)
+- [Ortsseiten ohne Spam: Einzugsgebiet richtig auf der Website zeigen](https://nuell-agentur.com/blog/ortsseiten-einzugsgebiet-handwerker)
+- [Schreiner Website: Das Portfolio, das in Mannheim Aufträge bringt](https://nuell-agentur.com/blog/website-schreiner-tischler-mannheim)
+- [Handwerker-Anfragen: Formular, Anruf oder WhatsApp im Vergleich](https://nuell-agentur.com/blog/handwerker-anfragen-formular-anruf-whatsapp)
+- [Wärmepumpen-Anfragen über Google: Der Plan für Heizungsbauer](https://nuell-agentur.com/blog/waermepumpe-anfragen-google-heizungsbauer-handwerker)
+- [Impressum für Handwerker: Pflichtangaben, Kammer, Datenschutz](https://nuell-agentur.com/blog/impressum-pflichtangaben-handwerker-website)
+- [Rohrreinigung Website: Was sie nachts um drei leisten muss](https://nuell-agentur.com/blog/website-rohrreinigung-notdienst-mannheim)
+- [Handwerker-Website-Beispiele: 7 Dinge, die gute Seiten teilen](https://nuell-agentur.com/blog/handwerker-website-beispiele)
+- [Mitarbeiter finden im Handwerk: Karriereseite und Anzeigen](https://nuell-agentur.com/blog/mitarbeiter-finden-handwerk-mannheim)
+- [KI-Sichtbarkeit für Handwerker: So nennt ChatGPT deinen Betrieb](https://nuell-agentur.com/blog/ki-sichtbarkeit-handwerker-chatgpt)
+- [Sanitär-Website für Mannheim: mehr Wärmepumpen-Anfragen](https://nuell-agentur.com/blog/website-sanitaer-heizung-mannheim)
+- [Werbung für Handwerker in Mannheim: 12 Wege ehrlich verglichen](https://nuell-agentur.com/blog/werbung-fuer-handwerker-mannheim)
+- [Google Ads für Handwerker: Kosten pro Klick in Mannheim je Gewerk](https://nuell-agentur.com/blog/google-ads-kosten-handwerker-mannheim)
+- [Website für Elektriker in Mannheim: Was Kunden sehen wollen](https://nuell-agentur.com/blog/website-elektriker-mannheim)
+- [Maler-Website in Mannheim: Vorher-Nachher verkauft](https://nuell-agentur.com/blog/website-maler-lackierer-mannheim)
+- [Kunden in Ludwigshafen und Heidelberg: so erweiterst du dein Gebiet](https://nuell-agentur.com/blog/handwerker-kunden-ludwigshafen-heidelberg)
+- [Marketing für Handwerker: Der Kalender fürs ganze Jahr](https://nuell-agentur.com/blog/marketing-kalender-handwerk)
+- [Azubi finden im Handwerk: Wege zu Schülern im Rhein-Neckar-Raum](https://nuell-agentur.com/blog/azubis-finden-handwerk-rhein-neckar)
+- [Google-Unternehmensprofil für Handwerker in Mannheim: Anleitung](https://nuell-agentur.com/blog/google-unternehmensprofil-handwerker-mannheim)
+- [Langsame Handwerker-Website? So misst du Ladezeit und machst sie schneller](https://nuell-agentur.com/blog/handwerker-website-ladezeit-pagespeed)
+- [Notdienst Werbung ohne Abzocke-Image: Rohr, Heizung, Schlüssel](https://nuell-agentur.com/blog/notdienst-werbung-handwerker)
+- [Lokale SEO-Checkliste für Mannheim: 25 Punkte für mehr Sichtbarkeit](https://nuell-agentur.com/blog/lokale-seo-checkliste-mannheim)
+- [Was kostet eine Handwerker-Website 2026? Preise erklärt](https://nuell-agentur.com/blog/handwerker-website-kosten)
+- [Handwerker-Angebot: Warum Kunden nach der Anfrage abspringen](https://nuell-agentur.com/blog/handwerker-angebot-anfrage-abspringen)
+- [Website für Fensterbauer in Mannheim: Mit Beratung und Aufmaß Aufträge gewinnen](https://nuell-agentur.com/blog/fensterbauer-website-mannheim-handwerker)
+- [Online Marketing für Handwerker: Das komplette System, das wirklich Aufträge bringt](https://nuell-agentur.com/blog/online-marketing-handwerker)
+- [Google Ads für Handwerker: Lohnt sich das wirklich? (Ehrliche Antwort)](https://nuell-agentur.com/blog/google-ads-handwerker)
+- [Lokales SEO für Handwerker: Wie du bei Google ganz oben landest (und dort bleibst)](https://nuell-agentur.com/blog/seo-handwerker-google)
+- [Handwerker Website die Aufträge bringt: Was wirklich zählt (2026)](https://nuell-agentur.com/blog/handwerker-website-auftraege)
+
+### Berater, Coaches und Dienstleister
+- [Referenzen und Case Studies für Berater: So überzeugst du ohne Übertreibung](https://nuell-agentur.com/blog/referenzen-case-studies-berater-website)
+- [Dienstleister-Website: So baust du die Startseite Abschnitt für Abschnitt auf](https://nuell-agentur.com/blog/dienstleister-website-startseite-aufbau)
+- [Die Beratungsseite, die Erstgespräche bringt: Aufbau und Vorlage](https://nuell-agentur.com/blog/beratungsseite-erstgespraech-buchen)
+- [LinkedIn oder eigene Website? Wo Berater ihre Aufträge wirklich finden](https://nuell-agentur.com/blog/linkedin-oder-website-berater-auftraege)
+- [Was kostet eine Berater-Website? Preise, Umfang und Rechenbeispiel](https://nuell-agentur.com/blog/berater-website-kosten)
+- [Positionierung für Berater: In einem Satz sagen, was du löst](https://nuell-agentur.com/blog/positionierung-berater-website-ein-satz)
+- [Website für Coaches und Mentoren: Vertrauen aufbauen vor dem ersten Gespräch](https://nuell-agentur.com/blog/coaching-mentoring-website-vertrauen)
+- [SEO für Berater: Für welche Suchen sich Sichtbarkeit wirklich lohnt](https://nuell-agentur.com/blog/seo-fuer-berater-welche-suchen-lohnen)
+
+### Websites, SEO, Google Ads und Marketing allgemein
+- [Leistungsseite texten: Aufbau und Vorlage, die bei Google und Kunden wirkt](https://nuell-agentur.com/blog/leistungsseite-texten-aufbau-vorlage)
+- [Agenturvertrag prüfen: 9 Klauseln, die du vor der Unterschrift lesen solltest](https://nuell-agentur.com/blog/agenturvertrag-klauseln-pruefen)
+- [Negative Keywords: So sparst du Geld bei Google Ads (mit Beispiel)](https://nuell-agentur.com/blog/google-ads-negative-keywords-kleine-betriebe)
+- [Google Search Console einrichten: Anleitung für kleine Unternehmen](https://nuell-agentur.com/blog/google-search-console-einrichten-kleine-unternehmen)
+- [Website in 7 Tagen: Was dafür passieren muss und was du liefern solltest](https://nuell-agentur.com/blog/website-in-7-tagen-ablauf)
+- [Cookie-Banner und Tracking einfach erklärt: Was deine Website braucht](https://nuell-agentur.com/blog/cookie-banner-tracking-einwilligung-website)
+- [Website selbst prüfen: 10 Punkte, die über Anfragen entscheiden](https://nuell-agentur.com/blog/website-selbst-pruefen-10-punkte)
+- [WhatsApp-Button auf der Website: Mehr Anfragen, sauber umgesetzt](https://nuell-agentur.com/blog/whatsapp-button-website-datenschutz)
+- [Website-Relaunch ohne Rankingverlust: Der Plan Schritt für Schritt](https://nuell-agentur.com/blog/website-relaunch-ohne-rankingverlust)
+- [Anfragen zählen: So siehst du, was deine Website wirklich bringt](https://nuell-agentur.com/blog/anfragen-zaehlen-tracking-website)
+- [SEO-Agentur und Berichte: Was du jeden Monat sehen solltest](https://nuell-agentur.com/blog/seo-agentur-reporting-was-du-sehen-solltest)
+- [Viele Besucher, aber keine Anfragen? Die 7 häufigsten Gründe](https://nuell-agentur.com/blog/viele-besucher-keine-anfragen-website)
+- [Was kostet eine Anfrage wirklich? Website, Google Ads und SEO im Vergleich](https://nuell-agentur.com/blog/was-kostet-eine-anfrage-website-ads-seo)
+- [Freelancer oder Agentur für deine Website? Der ehrliche Vergleich für Berater und Kanzleien](https://nuell-agentur.com/blog/freelancer-oder-agentur-website)
+- [Google Ranking verbessern: So wirst du in deiner Stadt gefunden](https://nuell-agentur.com/blog/google-ranking-verbessern-deutschland)
+- [5 Elemente, die jede conversion-starke Website braucht (2026) – Mit Daten belegt](https://nuell-agentur.com/blog/5-elemente-high-converting-website-2026)
+
+## Rechtliches
+- [Impressum](https://nuell-agentur.com/impressum)
+- [Datenschutz](https://nuell-agentur.com/datenschutz)

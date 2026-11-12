@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { REFS } from "./links";
@@ -24,7 +24,11 @@ const SITES = [
 
 const src = (img: string) => `/assets/v2/mockups/${img}.webp`;
 
-export default function ClientShowcase() {
+// only: limit to some clients (city pages show the clients from that city)
+export default function ClientShowcase({ only }: { only?: string[] } = {}) {
+  const key = only?.join(",") ?? "";
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const list = useMemo(() => (only ? SITES.filter((x) => only.includes(x.slug)) : SITES), [key]);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.3 });
@@ -34,19 +38,19 @@ export default function ClientShowcase() {
 
   // load all mockups up front so every change is a clean fade
   useEffect(() => {
-    SITES.forEach((s) => {
+    list.forEach((s) => {
       const im = new Image();
       im.src = src(s.img);
     });
-  }, []);
+  }, [list]);
 
   useEffect(() => {
     if (!running) return;
-    const t = setTimeout(() => setI((n) => (n + 1) % SITES.length), EVERY);
+    const t = setTimeout(() => setI((n) => (n + 1) % list.length), EVERY);
     return () => clearTimeout(t);
   }, [i, running]);
 
-  const s = SITES[i];
+  const s = list[i % list.length];
 
   return (
     <div ref={ref} className="relative mx-auto mt-10 w-full max-w-[980px] md:mt-12" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
@@ -93,7 +97,7 @@ export default function ClientShowcase() {
 
         {/* one segment per site; the active one fills while it is shown */}
         <div className="flex items-center gap-1.5" role="tablist" aria-label="Kundenwebsites">
-          {SITES.map((x, n) => (
+          {list.map((x, n) => (
             <button
               key={x.slug}
               type="button"

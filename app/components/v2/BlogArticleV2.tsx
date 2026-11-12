@@ -8,9 +8,10 @@ import { NavBar } from "./HeroV2";
 import ContactV2 from "./ContactV2";
 import FooterV2 from "./FooterV2";
 import { BLOG } from "./links";
-import { CTA_SERVICES, cover, dePosts, fmtDate, fmtRead, postService, postTag, slugify } from "./blogShared";
+import { CTA_SERVICES, cover, dePosts, fmtDate, fmtRead, postAudience, postService, postTag, slugify } from "./blogShared";
 import { SERVICE } from "./links";
 import { PostCard } from "./BlogIndexV2";
+import { CheckStrip, ContactBand, ContactButtons, InquiryCalc, PHONE, ProofRow, SelfTest, SidebarLead, StickyBar, trackBlog, waLink } from "./BlogConversion";
 
 /*
  * One article in the v2 design. The text comes from blogData.tsx as an array of blocks (a small markdown dialect):
@@ -56,7 +57,10 @@ type Node =
   | { k: "compare"; before: string; after: string }
   | { k: "img"; src: string; label: string }
   | { k: "visual"; name: string }
-  | { k: "cta"; key: string; headline?: string };
+  | { k: "cta"; key: string; headline?: string }
+  | { k: "mod"; name: Mod };
+
+type Mod = "CHECK" | "PROOF" | "SELFTEST" | "CALC" | "CONTACT";
 
 // Turns the flat block list into nodes, grouping consecutive list items and table lines.
 function parse(blocks: string[]): Node[] {
@@ -70,6 +74,8 @@ function parse(blocks: string[]): Node[] {
     } else if (/^\[CTA(:|\])/.test(b)) {
       const [key, headline] = b.replace(/^\[CTA:?\s*/, "").replace(/\]$/, "").split("|").map((x) => x.trim());
       out.push({ k: "cta", key: key || "web", headline: headline || undefined });
+    } else if (/^\[(CHECK|PROOF|SELFTEST|CALC|CONTACT)\]$/.test(b)) {
+      out.push({ k: "mod", name: b.slice(1, -1) as Mod });
     } else if (b === "[PRICING_TABLE]") {
       continue;
     } else if (b.startsWith("[ASSET:") || b.startsWith("[IMAGE")) {
@@ -114,6 +120,37 @@ function parse(blocks: string[]): Node[] {
       out.push({ k: "p", text: b });
     }
   }
+  return out;
+}
+
+/*
+ * Puts the conversion modules into an article that doesn't place them itself, so every post (also future ones) gets them:
+ *   check strip after the intro, client proof at about 40 %, a free tool at about 70 % (Selbsttest for website topics,
+ *   Rechner for Google, SEO and marketing topics). Each goes in front of a "##" heading and never right next to
+ *   another call to action. The contact band is added after the body (before the FAQ) in BlogArticleV2.
+ * A module the post already contains as a block ([CHECK], [PROOF], [SELFTEST], [CALC], [CONTACT]) is not added twice.
+ */
+function planModules(nodes: Node[], service: string): Node[] {
+  const has = (m: Mod) => nodes.some((n) => n.k === "mod" && n.name === m);
+  const tool: Mod = service === "Webdesign" ? "SELFTEST" : "CALC";
+  const hasTool = has("SELFTEST") || has("CALC");
+  const out = [...nodes];
+  const heads = () => out.map((n, i) => (n.k === "h2" ? i : -1)).filter((i) => i > 0);
+  const nearCta = (at: number) => out.slice(Math.max(0, at - 2), at + 1).some((n) => n.k === "cta" || n.k === "mod");
+  const put = (mod: Mod, share: number) => {
+    const hs = heads();
+    if (!hs.length) return;
+    const want = Math.round((out.length - 1) * share);
+    const order = [...hs].sort((a, b) => Math.abs(a - want) - Math.abs(b - want));
+    const at = order.find((h) => !nearCta(h)) ?? order[0];
+    out.splice(at, 0, { k: "mod", name: mod });
+  };
+  if (!has("CHECK")) {
+    const firstP = out.findIndex((n) => n.k === "p");
+    out.splice(firstP >= 0 ? firstP + 1 : 0, 0, { k: "mod", name: "CHECK" });
+  }
+  if (!has("PROOF")) put("PROOF", 0.4);
+  if (!hasTool) put(tool, 0.7);
   return out;
 }
 
@@ -272,19 +309,31 @@ function Body({ nodes, post }: { nodes: Node[]; post: BlogPost }) {
             return (
               <aside key={i} className="my-12 overflow-hidden rounded-[20px] bg-[#007aff] p-6 text-white shadow-[0_18px_44px_rgba(0,122,255,0.25)] sm:p-8">
                 <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-white/70">{s.label} mit nüll.</p>
-                <p className="mt-3 max-w-[26ch] text-[clamp(1.4rem,2.4vw,1.85rem)] font-bold leading-[1.08] tracking-[-0.045em]">{n.headline ?? s.headline}</p>
+                <p className="mt-3 max-w-[26ch] text-[clamp(1.4rem,2.4vw,1.85rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">{n.headline ?? s.headline}</p>
                 <p className="mt-3 max-w-[48ch] text-[0.98rem] font-medium leading-[1.5] text-white/85">{s.cta}</p>
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-                  <a href="#contact" className="group inline-flex min-h-11 items-center gap-2.5 rounded-full bg-white px-5 text-[0.76rem] font-black uppercase tracking-[0.12em] text-[#007aff] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+                  <a href="#contact" onClick={() => trackBlog("form_cta", `mid-${n.key}`, post.slug)} className="group inline-flex min-h-11 items-center gap-2.5 rounded-full bg-white px-5 text-[0.76rem] font-black uppercase tracking-[0.12em] text-[#007aff] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
                     Anfrage starten <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
                   </a>
                   <a href={s.href} className="border-b-2 border-white/80 pb-0.5 text-[0.95rem] font-black tracking-[-0.03em] text-white transition-opacity hover:opacity-70">
                     Mehr zu {s.label}
                   </a>
                 </div>
+                <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-white/20 pt-4 text-[0.9rem] font-semibold text-white/85">
+                  Oder direkt:
+                  <a href={waLink(post)} target="_blank" rel="noopener noreferrer" onClick={() => trackBlog("whatsapp_click", `mid-${n.key}`, post.slug)} className="underline decoration-white/40 underline-offset-[3px] hover:decoration-white">WhatsApp</a>
+                  <a href={`tel:${PHONE}`} onClick={() => trackBlog("phone_click", `mid-${n.key}`, post.slug)} className="underline decoration-white/40 underline-offset-[3px] hover:decoration-white">Anrufen</a>
+                  <a href="#website-check" data-source={`blog:${post.slug}:mid-${n.key}`} onClick={() => trackBlog("check_cta", `mid-${n.key}`, post.slug)} className="underline decoration-white/40 underline-offset-[3px] hover:decoration-white">Gratis Website-Check</a>
+                </p>
               </aside>
             );
           }
+          case "mod":
+            if (n.name === "CHECK") return <CheckStrip key={i} post={post} />;
+            if (n.name === "PROOF") return <ProofRow key={i} post={post} />;
+            if (n.name === "SELFTEST") return <SelfTest key={i} post={post} />;
+            if (n.name === "CALC") return <InquiryCalc key={i} post={post} />;
+            return <ContactBand key={i} post={post} where="inline" />;
           case "visual":
             if (n.name === "PROVIDERS_CAROUSEL") return post.providers?.length ? <ProviderEditorialList key={i} providers={post.providers} /> : null;
             if (n.name === "BFSG_VISUAL") return <BFSGVisual key={i} />;
@@ -357,6 +406,12 @@ function Faqs({ faqs, title }: { faqs: { question: string; answer: string }[]; t
   );
 }
 
+// Related articles: same audience first (Kanzlei with Kanzlei), then same service, then the rest.
+const relScore = (p: BlogPost, cur: BlogPost) => (postAudience(p) && postAudience(p) === postAudience(cur) ? 2 : 0) + (postService(p).label === postService(cur).label ? 1 : 0);
+
+// Legal and health topics get a visible note: general information, not advice
+const NEEDS_NOTE = /kanzlei|anwael|rechtsanw|steuerberater|praxis|arztpraxen|zahnarzt|impressum|dsgvo|datenschutz|heilmittel|cookie|whatsapp|agenturvertrag|barrierefreiheit|43b/i;
+
 function ShareButton({ title }: { title: string }) {
   const [state, setState] = useState<"idle" | "done">("idle");
   const share = async () => {
@@ -383,30 +438,46 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
   const all = useMemo(() => post.content, [post]);
   // a quote as the very first block is the summary box
   const summary = all[0]?.startsWith("> ") ? all[0].slice(2).replace(/\*\*(Zusammenfassung|Key Takeaways):\*\*/i, "").trim() : null;
-  const nodes = useMemo(() => parse(summary ? all.slice(1) : all), [all, summary]);
+  const service = postService(post);
+  const nodes = useMemo(() => planModules(parse(summary ? all.slice(1) : all), service.label), [all, summary, service.label]);
   const toc = nodes.filter((n): n is Extract<Node, { k: "h2" }> => n.k === "h2");
   const ids = useMemo(() => toc.map((t) => t.id), [toc]);
   const active = useActiveSection(ids);
   const [tocOpen, setTocOpen] = useState(false);
-  const service = postService(post);
   const related = dePosts()
     .filter((p) => p.slug !== post.slug)
-    .sort((a, b) => Number(postService(b).label === service.label) - Number(postService(a).label === service.label))
+    .sort((a, b) => relScore(b, post) - relScore(a, post))
     .slice(0, 3);
   const rise = reduce ? {} : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: EASE } };
 
+  const url = `${LIVE}/blog/${post.slug}`;
   const ld = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    author: { "@type": "Organization", name: "nüll.", url: LIVE },
-    publisher: { "@type": "Organization", name: "nüll.", logo: { "@type": "ImageObject", url: `${LIVE}/og-image.png` } },
-    datePublished: post.date,
-    dateModified: post.date,
-    inLanguage: "de",
-    image: `${LIVE}${cover(post)}`,
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${LIVE}/blog/${post.slug}` },
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        author: { "@type": "Organization", "@id": `${LIVE}/#organization`, name: "nüll.", url: LIVE },
+        publisher: { "@type": "Organization", "@id": `${LIVE}/#organization`, name: "nüll.", url: LIVE, logo: { "@type": "ImageObject", url: `${LIVE}/apple-touch-icon.png`, width: 180, height: 180 } },
+        datePublished: post.date,
+        dateModified: post.date,
+        inLanguage: "de-DE",
+        articleSection: post.category,
+        image: { "@type": "ImageObject", url: `${LIVE}${cover(post)}`, width: 1536, height: 1024 },
+        isPartOf: { "@id": `${LIVE}/#website` },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Start", item: `${LIVE}/` },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${LIVE}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: url },
+        ],
+      },
+    ],
   };
   const faqLd = post.faqs?.length
     ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: post.faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) }
@@ -440,7 +511,7 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
 
           <motion.div {...rise} transition={{ duration: 0.9, delay: reduce ? 0 : 0.1, ease: EASE }} className="mx-auto mt-10 w-full max-w-[1100px] px-4 md:mt-14 md:px-8">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-[#f5f5f7] md:aspect-[2/1] md:rounded-[24px]">
-              <img src={cover(post)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+              <img src={cover(post)} alt={post.title} width={1536} height={1024} fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
             </div>
           </motion.div>
 
@@ -479,6 +550,12 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
                 </div>
               )}
 
+              {NEEDS_NOTE.test(post.slug) && (
+                <p className="mb-6 rounded-[14px] bg-[#f5f5f7] px-4 py-3 text-[0.92rem] font-medium leading-[1.5] text-[#424245]">
+                  <strong className="font-bold text-[#0e0e10]">Allgemeine Information, keine Rechts- oder Fachberatung.</strong> Stand: {new Date(post.date).toLocaleDateString("de-DE", { month: "long", year: "numeric" })}. Gesetze und Rechtsprechung ändern sich, prüf den aktuellen Stand und lass Einzelfälle von einer fachkundigen Person beurteilen.
+                </p>
+              )}
+
               {summary && (
                 <div className="mb-12 rounded-[20px] bg-[#007aff]/[0.06] p-5 ring-1 ring-[#007aff]/15 sm:p-6">
                   <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#007aff]">Kurz gesagt</p>
@@ -488,20 +565,26 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
 
               <Body nodes={nodes} post={post} />
 
+              {/* direct contact before the FAQ, unless the post placed its own */}
+              {!nodes.some((n) => n.k === "mod" && n.name === "CONTACT") && <ContactBand post={post} where="after-article" />}
+
               {post.faqs && post.faqs.length > 0 && <Faqs faqs={post.faqs} title={post.faqTitle} />}
 
-              {/* end of article: the matching service */}
+              {/* end of article: the matching service, three ways to get in touch, and the free check */}
               <div className="mt-20 overflow-hidden rounded-[24px] bg-[#0e0e10] p-7 text-white sm:p-10">
                 <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#5aa9ff]">{service.label} mit nüll.</p>
-                <p className="mt-4 max-w-[22ch] text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold leading-[1.02] tracking-[-0.05em]">
+                <p className="mt-4 max-w-[22ch] text-[clamp(1.7rem,3.2vw,2.5rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
                   Willst du das für deinen Betrieb<span className="text-[#007aff]">?</span>
                 </p>
                 <p className="mt-4 max-w-[46ch] text-[1.02rem] font-medium leading-[1.5] text-white/70">{service.cta}</p>
-                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
-                  <a href="#contact" className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-[#007aff] px-6 text-[0.8rem] font-black uppercase tracking-[0.12em] text-white shadow-[0_16px_36px_rgba(0,122,255,0.3)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
-                    Anfrage starten <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+                <div className="mt-7">
+                  <ContactButtons post={post} where="end" dark />
+                </div>
+                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/15 pt-6">
+                  <a href="#website-check" data-source={`blog:${post.slug}:end`} onClick={() => trackBlog("check_cta", "end", post.slug)} className="border-b-2 border-white pb-0.5 text-[1rem] font-black tracking-[-0.04em] text-white transition-opacity hover:opacity-60">
+                    Erst mal gratis prüfen lassen
                   </a>
-                  <a href={service.href} className="border-b-2 border-white pb-0.5 text-[1rem] font-black tracking-[-0.04em] text-white transition-opacity hover:opacity-60">
+                  <a href={service.href} className="text-[0.95rem] font-semibold text-white/70 underline decoration-white/30 underline-offset-[3px] transition-colors hover:text-white">
                     Mehr zu {service.label}
                   </a>
                 </div>
@@ -529,13 +612,7 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
                     </ol>
                   </nav>
                 )}
-                <div className="mt-8 rounded-[20px] bg-[#f5f5f7] p-5">
-                  <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#007aff]">{service.label}</p>
-                  <p className="mt-2.5 text-[1rem] font-semibold leading-[1.4] tracking-[-0.02em] text-[#0e0e10]">{service.cta}</p>
-                  <a href={service.href} className="group mt-4 inline-flex items-center gap-1.5 text-[0.92rem] font-bold text-[#007aff]">
-                    Mehr erfahren <ArrowUpRight size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </a>
-                </div>
+                <SidebarLead post={post} />
               </div>
             </aside>
           </div>
@@ -564,6 +641,7 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
 
         <ContactV2 />
       </main>
+      <StickyBar post={post} />
       <FooterV2 onHome={false} />
     </>
   );

@@ -18,7 +18,12 @@ const PARTS = [
   { n: "04", tag: "Website & Tracking", title: "Angefragt werden", text: "Deine Website führt Besucher direkt zur Anfrage. Per Formular, Anruf oder WhatsApp. Und jeden Monat siehst du, was es gebracht hat.", link: { label: "Zum Webdesign", href: "/leistungen/webdesign" }, Visual: EnquiryVisual, tint: "#e9f2ff", phone: true },
 ];
 
-function ExplainerVideo() {
+// sources for the growing video (homepage: the Lisa explainer; city pages pass their own)
+export type ScrollVideoSrc = { wide: string; wideSmall?: string; tall: string; poster: string; posterTall: string; captions?: string }; // captions: WebVTT, offered as a German track (off by default)
+const HOME_VIDEO: ScrollVideoSrc = { wide: `${BASE}/explainer-1080.mp4`, wideSmall: `${BASE}/explainer-720.mp4`, tall: `${BASE}/explainer-9x16.mp4`, poster: `${BASE}/poster.jpg`, posterTall: `${BASE}/poster-9x16.jpg` };
+
+// the video grows from a card to full width as the visitor scrolls (sticky), sound per useSoundVideo
+export function ScrollVideo({ src = HOME_VIDEO }: { src?: ScrollVideoSrc }) {
   const wrap = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const reduce = useReducedMotion();
@@ -46,13 +51,15 @@ function ExplainerVideo() {
           className={`relative max-w-[100vw] overflow-hidden bg-[#f5f5f7] ${tall ? "aspect-[9/16] w-[min(100vw,56.25dvh)]" : "aspect-video w-full lg:w-[min(100vw,177.78dvh)]"}`}
         >
           {tall ? (
-            <video key="tall" ref={video} className="h-full w-full object-cover" muted loop playsInline preload="metadata" poster={`${BASE}/poster-9x16.jpg`}>
-              <source src={`${BASE}/explainer-9x16.mp4`} type="video/mp4" />
+            <video key="tall" ref={video} className="h-full w-full object-cover" muted loop playsInline preload="metadata" poster={src.posterTall}>
+              <source src={src.tall} type="video/mp4" />
+              {src.captions && <track kind="captions" src={src.captions} srcLang="de" label="Deutsch" />}
             </video>
           ) : (
-            <video key="wide" ref={video} className="h-full w-full object-cover" muted loop playsInline preload="metadata" poster={`${BASE}/poster.jpg`}>
-              <source src={`${BASE}/explainer-1080.mp4`} type="video/mp4" media="(min-width: 1024px)" />
-              <source src={`${BASE}/explainer-720.mp4`} type="video/mp4" />
+            <video key="wide" ref={video} className="h-full w-full object-cover" muted loop playsInline preload="metadata" poster={src.poster}>
+              <source src={src.wide} type="video/mp4" media={src.wideSmall ? "(min-width: 1024px)" : undefined} />
+              {src.wideSmall && <source src={src.wideSmall} type="video/mp4" />}
+              {src.captions && <track kind="captions" src={src.captions} srcLang="de" label="Deutsch" />}
             </video>
           )}
           <button
@@ -118,7 +125,7 @@ function PartRow({ p, i }: { p: (typeof PARTS)[number]; i: number }) {
 export default function ExplainerV2() {
   return (
     <section id="so-funktionierts" className="relative bg-white text-[#0e0e10]">
-      <ExplainerVideo />
+      <ScrollVideo />
       <div className="mx-auto w-full max-w-[1360px] px-4 pb-24 pt-10 md:px-8 md:pb-32">
         <h2 className="mx-auto max-w-[16ch] text-center text-[clamp(2.4rem,6vw,5rem)] font-bold leading-[0.92] tracking-[-0.065em]">
           So funktioniert dein Anfragesystem<span className="text-[#007aff]">.</span>

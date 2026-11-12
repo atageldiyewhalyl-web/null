@@ -68,6 +68,7 @@ export default function App() {
     p === "/website-check" ||
     p === "/leistungen" ||
     p.startsWith("/leistungen/") ||
+    p === "/standorte" ||
     p === "/referenzen" ||
     p.startsWith("/referenzen/") ||
     p === "/blog" ||
