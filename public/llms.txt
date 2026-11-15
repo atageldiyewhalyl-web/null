@@ -68,7 +68,7 @@ Sprache: Deutsch
 - [Alle Referenzen](https://nuell-agentur.com/referenzen)
 - Treu Haustechnik, Onkel Abwassertechnik, FT Sicherheitstechnik, SG Laserzentrum, Waschbar, Bergstone Keramiksan, Kanzlei Doğru, S&O Beauty, B.Y. Consulting, Pflegedienst Orchidee
 
-## Ratgeber (90 Artikel)
+## Ratgeber (91 Artikel)
 - [Alle Artikel](https://nuell-agentur.com/blog)
 ### Kanzleien
 - [Online-Terminbuchung für die Kanzlei: Erstberatung einfach buchen](https://nuell-agentur.com/blog/online-terminbuchung-kanzlei-erstberatung)
@@ -89,6 +89,7 @@ Sprache: Deutsch
 - [Webdesign für Anwälte und Kanzleien: Was eine gute Website wirklich braucht](https://nuell-agentur.com/blog/webdesign-fuer-anwaelte-kanzleien)
 
 ### Arztpraxen
+- [Google Ads für Arztpraxen: Was erlaubt ist, was sich lohnt und was es kostet](https://nuell-agentur.com/blog/google-ads-arztpraxis)
 - [Google-Unternehmensprofil für Arztpraxen: Der wichtigste Kanal](https://nuell-agentur.com/blog/google-unternehmensprofil-arztpraxis)
 - [Was kostet eine Praxis-Website? Preise, Posten und Pflege](https://nuell-agentur.com/blog/praxis-website-kosten-arztpraxis)
 - [Doctolib oder eigene Terminbuchung? Der ehrliche Vergleich für Praxen](https://nuell-agentur.com/blog/doctolib-oder-eigene-terminbuchung-arztpraxis)
