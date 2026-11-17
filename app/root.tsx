@@ -15,6 +15,7 @@ import { cn } from "./lib/utils";
 import { useEffect } from "react";
 import "./styles/index.css";
 import WebsiteCheckModal from "./components/v2/WebsiteCheckModal";
+import { startGa4 } from "./utils/ga4";
 
 const shouldLoadAnalytics = import.meta.env.PROD;
 
@@ -59,6 +60,8 @@ export default function App() {
   const queryLang = new URLSearchParams(location.search).get("lang");
   const lang = getLanguageForPath(location.pathname) ?? (isLanguage(queryLang) ? queryLang : "de");
   const isAdmin = location.pathname.startsWith("/admin");
+  // GA4 (nuell-agentur.com), only after analytics consent; see utils/ga4.ts
+  useEffect(() => startGa4(), []);
   const isOnboarding = location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/interview") || isAdmin;
   // v2-design pages bring their own navbar and footer; only the legal pages (and the 404) still use the old shell
   const p = location.pathname.replace(/\/+$/, "") || "/";

@@ -1,3 +1,5 @@
+import { sendGa4Event } from "./ga4";
+
 // All analytics now runs through Google Tag Manager (GTM-PGRDT988).
 // These helpers push structured events onto window.dataLayer; the actual
 // GA4 / Google Ads tags are configured inside the GTM container and fire
@@ -21,6 +23,7 @@ const pushToDataLayer = (payload: Record<string, unknown>) => {
 
 export function trackGaEvent(eventName: string, params: DataLayerParams = {}) {
   pushToDataLayer({ event: eventName, ...params });
+  sendGa4Event(eventName, params); // GA4 for nuell-agentur.com runs outside GTM (utils/ga4.ts)
 }
 
 export function trackGoogleAdsConversion(sendTo: string, params: DataLayerParams = {}) {
