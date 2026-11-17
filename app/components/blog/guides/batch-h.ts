@@ -258,6 +258,7 @@ export const batch: BlogPost[] = [
       "- **Anzeigen schalten, ohne die Seite zu verbessern.**",
       "- **SEO nach drei Monaten abbrechen,** bevor es wirkt.",
       "- **Auftragswert vergessen.**",
+      "Den Überblick findest du im Ratgeber [Google Ads für Handwerker](/blog/google-ads-handwerker).",
     ],
     faqs: [
       { question: "Wie berechne ich die Kosten pro Anfrage?", answer: "Gesamtkosten im Zeitraum geteilt durch die Zahl der Anfragen. Einmalige Kosten verteilst du auf den Zeitraum." },

@@ -9,6 +9,8 @@ import ContactV2 from "./ContactV2";
 import FooterV2 from "./FooterV2";
 import { REFS, SERVICE } from "./links";
 import { CITIES, SERVICE_LABEL, SERVICE_SLUG, type ServiceKey } from "./cities";
+import { blogPosts } from "../blogData";
+import { postHref } from "./blogShared";
 
 // "Webdesign in Mannheim", "… in Frankfurt": every city page that exists for this service
 const localPages = (kind: string) =>
@@ -1761,11 +1763,48 @@ export default function ServiceV2({ cfg, current }: { cfg: ServiceConfig; curren
           </div>
         </section>
 
+        <GuideLinks kind={cfg.kind} />
         <FaqV2 items={cfg.faqs} />
         <ContactV2 />
       </main>
       <FooterV2 onHome={false} />
     </>
+  );
+}
+
+/* ---------- Ratgeber zum Thema: hand-picked guides under each service page (internal links to the articles that back it up) ---------- */
+const GUIDES: Record<ServiceKind, string[]> = {
+  web: ["5-elemente-high-converting-website-2026", "handwerker-website-beispiele", "website-in-7-tagen-ablauf", "website-selbst-pruefen-10-punkte", "kanzlei-website-kosten-anwaelte", "berater-website-kosten"],
+  seo: ["google-ranking-verbessern-deutschland", "lokale-seo-checkliste-mannheim", "seo-fuer-berater-welche-suchen-lohnen", "steuerberater-website-mandanten-gewinnen", "zahnarzt-seo-ohne-jameda-praxis", "fensterbauer-website-mannheim-handwerker"],
+  ads: ["google-ads-handwerker", "google-ads-anwaelte-kosten-pro-mandat", "google-ads-negative-keywords-kleine-betriebe", "photovoltaik-installateur-website-anfragen-handwerker", "waermepumpe-anfragen-google-heizungsbauer-handwerker", "was-kostet-eine-anfrage-website-ads-seo"],
+  ai: ["ki-sichtbarkeit-handwerker-chatgpt", "google-unternehmensprofil-handwerker-mannheim", "leistungsseite-texten-aufbau-vorlage", "lokale-seo-checkliste-mannheim"],
+  content: ["instagram-fuer-handwerker-post-ideen", "marketing-kalender-handwerk", "coaching-mentoring-website-vertrauen", "linkedin-oder-website-berater-auftraege"],
+};
+
+function GuideLinks({ kind }: { kind: ServiceKind }) {
+  const items = GUIDES[kind].map((slug) => blogPosts.find((p) => p.slug === slug && p.lang === "de")).filter((p): p is NonNullable<typeof p> => !!p);
+  if (!items.length) return null;
+  return (
+    <section aria-labelledby="guides-title" className="bg-white py-16 text-[#0e0e10] md:py-20">
+      <div className="mx-auto w-full max-w-[1100px] px-4 md:px-8">
+        <h2 id="guides-title" className="text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.05em]">
+          Ratgeber dazu<span className="text-[#007aff]">.</span>
+        </h2>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          {items.map((p) => (
+            <li key={p.slug}>
+              <a href={postHref(p.slug)} className="group flex h-full items-start justify-between gap-4 rounded-[18px] bg-[#f5f5f7] p-5 transition-transform hover:-translate-y-0.5">
+                <span>
+                  <span className="block text-[1.05rem] font-bold leading-[1.25] tracking-[-0.03em]">{p.title}</span>
+                  <span className="mt-1.5 block text-[0.9rem] font-medium leading-snug text-[#6b7280]">{p.readTime ? `${(p.readTime.match(/\d+/) ?? [""])[0]} Min. Lesezeit` : ""}</span>
+                </span>
+                <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden className="mt-1 flex-none text-[#0e0e10] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
 

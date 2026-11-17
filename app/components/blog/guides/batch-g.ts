@@ -217,6 +217,7 @@ export const batch: BlogPost[] = [
       "- **Keine Aussage zum Service** nach der Montage.",
       "- **Zu breite Anzeigen** bei hohen Klickpreisen.",
       "- **Kein klarer Ablauf.**",
+      "Den Überblick findest du im Ratgeber [Google Ads für Handwerker](/blog/google-ads-handwerker).",
     ],
     faqs: [
       { question: "Was kostet ein Klick bei Photovoltaik-Anzeigen in Mannheim?", answer: "Laut Google Keyword Planner (Stadt Mannheim, Stand November 2026) etwa 3,28 bis 16,37 € für „Photovoltaik Mannheim“ und 11,45 bis 32,65 € für „Solaranlage Mannheim“." },
@@ -293,6 +294,7 @@ export const batch: BlogPost[] = [
       "- **Kein Vor-Ort-Termin** als klarer nächster Schritt.",
       "- **Keine regelmäßigen Inhalte.**",
       "- **Kein Service-Hinweis** nach dem Einbau.",
+      "Den Überblick findest du im Ratgeber [Google Ads für Handwerker](/blog/google-ads-handwerker).",
     ],
     faqs: [
       { question: "Wie gewinne ich Wärmepumpen-Anfragen bei Google?", answer: "Mit Seiten und Ratgeber zu den Fragen der Kunden, einem klaren Vor-Ort-Termin und einem gepflegten Google-Profil." },

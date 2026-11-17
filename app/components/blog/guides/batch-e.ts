@@ -76,6 +76,7 @@ export const batch: BlogPost[] = [
       "## Quellen und weiterführende Links",
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 5 DDG (Allgemeine Informationspflichten)](https://www.gesetze-im-internet.de/ddg/__5.html)",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Braucht jede Arztpraxis ein Impressum?", answer: "Ja, geschäftsmäßige Websites brauchen ein Impressum nach § 5 DDG. Für Ärzte kommen zusätzliche Angaben zu Kammer und Berufsrecht hinzu." },
@@ -159,6 +160,8 @@ export const batch: BlogPost[] = [
       "**Woche 2:** Satz nach dem Muster entwerfen und kürzen.",
       "**Woche 3:** Mit fünf Menschen aus der Zielgruppe testen.",
       "**Woche 4:** Auf Startseite, LinkedIn-Profil und Signatur übertragen.",
+      "## Weiter für Berater und Coaches",
+      "Wenn die Positionierung steht, helfen diese Beiträge bei den nächsten Schritten: [LinkedIn oder eigene Website?](/blog/linkedin-oder-website-berater-auftraege), [Was kostet eine Berater-Website?](/blog/berater-website-kosten), [Website für Steuerberater](/blog/steuerberater-website-mandanten-gewinnen) und [Website für Coaches und Mentoren](/blog/coaching-mentoring-website-vertrauen).",
     ],
     faqs: [
       { question: "Was ist Positionierung?", answer: "Die klare Aussage, für wen du welches Problem löst und mit welchem Ergebnis. Sie unterscheidet dich von anderen." },

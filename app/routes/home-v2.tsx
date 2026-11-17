@@ -14,7 +14,7 @@ const URL = "https://nuell-agentur.com/";
 const IMAGE = "https://nuell-agentur.com/og-image.png";
 const TITLE = "nüll. | Webdesign, SEO & Google Ads aus Mannheim";
 const DESCRIPTION =
-  "nüll. baut Websites, SEO und Google Ads für Handwerk, Kanzleien, Praxen und Berater, die mehr Anfragen wollen. Aus Mannheim, für ganz Deutschland.";
+  "Dein Anfragesystem: nüll. baut Websites, SEO und Google Ads für Handwerk, Kanzleien, Praxen und Berater. Aus Mannheim, für ganz Deutschland.";
 
 export function meta() {
   return [

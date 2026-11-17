@@ -74,6 +74,7 @@ export const batch: BlogPost[] = [
       "- [ ] Klarer, ruhiger Kontakt am Ende",
       "## Wo steht deine Seite heute?",
       "Bevor du anfängst zu schreiben, lohnt ein Blick auf die Basis: Hat deine Seite Titel, Beschreibung, Struktur und Ladezeit, die Artikel tragen können? Der [kostenlose Website-Check](#website-check) prüft das in etwa einer Minute und zeigt die wichtigsten Baustellen.",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
     ],
     faqs: [
       { question: "Wie oft sollte eine Kanzlei Ratgeber-Artikel veröffentlichen?", answer: "Ein Artikel pro Monat ist realistisch und wirkt besser als viele auf einmal. Wichtig ist Kontinuität." },
@@ -162,6 +163,7 @@ export const batch: BlogPost[] = [
       "## Quellen und weiterführende Links",
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 5 DDG (Allgemeine Informationspflichten)](https://www.gesetze-im-internet.de/ddg/__5.html)",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
     ],
     faqs: [
       { question: "Braucht jede Kanzlei-Website ein Impressum?", answer: "Ja, geschäftsmäßige Websites brauchen ein Impressum nach § 5 DDG. Für Anwälte kommen zusätzliche Angaben zu Kammer und Berufsrecht hinzu." },
@@ -248,6 +250,7 @@ export const batch: BlogPost[] = [
       "## Quellen und weiterführende Links",
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [Datenschutz-Grundverordnung (DSGVO), amtlicher Text](https://eur-lex.europa.eu/eli/reg/2016/679/oj)",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Ist eine eigene Terminbuchung besser als eine Plattform?", answer: "Nicht pauschal. Sie gibt dir Kontrolle und stärkt deine Marke. Plattformen bringen Reichweite. Viele Praxen kombinieren beides." },
@@ -337,6 +340,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [Datenschutz-Grundverordnung (DSGVO), amtlicher Text](https://eur-lex.europa.eu/eli/reg/2016/679/oj)",
       "- [§ 25 TDDDG (Endeinrichtungen, Einwilligung)](https://www.gesetze-im-internet.de/ttdsg/__25.html)",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Sind Angaben im Kontaktformular Gesundheitsdaten?", answer: "Sobald jemand Beschwerden oder Diagnosen nennt, ja. Deshalb solltest du solche Angaben nicht aktiv abfragen oder nur mit ausdrücklicher Einwilligung zulassen." },
@@ -416,6 +420,7 @@ export const batch: BlogPost[] = [
       "- **Behandlungsdetails in Antworten auf Bewertungen.**",
       "- **Keine Verlinkung zur Terminbuchung.**",
       "- **Stockfotos** statt echter Bilder.",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Brauche ich als Arztpraxis ein Google-Profil?", answer: "Ja, wenn du neue Patienten aus deiner Umgebung gewinnen willst. Das Profil erscheint bei lokalen Suchen oben in der Karte und ist kostenlos." },

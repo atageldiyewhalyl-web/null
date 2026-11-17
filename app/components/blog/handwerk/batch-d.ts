@@ -109,8 +109,8 @@ export const batch: BlogPost[] = [
     groupId: "ki-sichtbarkeit-handwerker-chatgpt",
     lang: "de",
     slug: "ki-sichtbarkeit-handwerker-chatgpt",
-    title: "KI-Sichtbarkeit für Handwerker: So nennt ChatGPT deinen Betrieb",
-    excerpt: "KI-Sichtbarkeit für Handwerker: wie ChatGPT und andere KI-Assistenten Betriebe in Mannheim auswählen, was du beeinflussen kannst und ein Test-Prompt dazu.",
+    title: "Bei ChatGPT gefunden werden: KI-Sichtbarkeit für Handwerker",
+    excerpt: "Bei ChatGPT gefunden werden als Handwerker: Wie KI-Assistenten Betriebe in Mannheim auswählen, was du beeinflussen kannst und ein Test-Prompt zum Prüfen.",
     content: [
       "> **Zusammenfassung:** ChatGPT und andere KI-Assistenten nennen Handwerker, über die sie im Netz klare und übereinstimmende Informationen finden: dieselben Firmendaten überall, echte Bewertungen, eine eigene Seite pro Leistung und Erwähnungen auf anderen Websites. Einen Trick oder einen gekauften Platz in der Antwort gibt es nicht. Mit dem Test-Prompt in diesem Artikel siehst du in fünf Minuten, wo dein Betrieb heute steht.",
       "Nach „Elektriker Mannheim“ wird bei Google rund 320-mal im Monat gesucht (Google Keyword Planner, Stadt Mannheim, Stand November 2026). Ein Teil dieser Menschen tippt die Frage inzwischen anders ein, nämlich in ChatGPT: „Welcher Elektriker in Käfertal installiert mir eine Wallbox?“ Die KI antwortet mit zwei oder drei Namen. Wer nicht genannt wird, ist in diesem Gespräch nicht dabei.",
@@ -165,7 +165,12 @@ export const batch: BlogPost[] = [
       "Mannheim liegt an einer Ländergrenze. Ludwigshafen auf der anderen Rheinseite gehört zu Rheinland-Pfalz, Viernheim und Lampertheim liegen in Hessen. Wer dort arbeitet, sollte das ausdrücklich sagen. Fragt jemand nach einem Fliesenleger in Ludwigshafen-Oggersheim, nennt die KI nur Betriebe, die sie mit Ludwigshafen in Verbindung bringen kann.",
       "Dasselbe gilt für Stadtteile. Nach „Elektriker Mannheim Neckarau“ suchen laut Google Keyword Planner rund 20 Menschen im Monat (Stadt Mannheim, Stand November 2026). Das klingt wenig, ist aber eine sehr konkrete Absicht. Wenn deine Website, dein Profil und deine Bewertungen Neckarau erwähnen, weil du dort wirklich arbeitest, hat die KI etwas, worauf sie sich stützen kann.",
       "Wenn dein Betrieb weder bei Google Maps noch bei ChatGPT auftaucht, liegt die Ursache oft an derselben Stelle. Die häufigsten Gründe stehen in [Warum dein Betrieb bei Google Maps nicht auftaucht](/blog/handwerker-google-maps-nicht-gefunden), und die Grundlagen im großen Leitfaden zu [lokalem SEO für Handwerker](/blog/seo-handwerker-google).",
-      "KI-Sichtbarkeit ist kein eigenes Projekt neben deinem Marketing. Sie ist das Ergebnis von sauberen Daten, ehrlichen Bewertungen und Seiten, die echte Fragen beantworten. Mach den Test heute, notiere das Ergebnis und wiederhole ihn in vier Wochen."
+      "KI-Sichtbarkeit ist kein eigenes Projekt neben deinem Marketing. Sie ist das Ergebnis von sauberen Daten, ehrlichen Bewertungen und Seiten, die echte Fragen beantworten. Mach den Test heute, notiere das Ergebnis und wiederhole ihn in vier Wochen.",
+      "## Wie Handwerker bei ChatGPT gefunden werden: drei Schritte",
+      "1. **Eindeutige Firmendaten:** Name, Adresse, Telefon und Leistungsgebiet stehen auf Website, Google-Profil und Verzeichnissen gleich. Anleitung: [Google-Unternehmensprofil für Handwerker](/blog/google-unternehmensprofil-handwerker-mannheim).",
+      "2. **Seiten, die Fragen beantworten:** Eine Seite pro Leistung mit direkter Antwort in den ersten Sätzen und echten Fragen darunter. Vorlage: [Leistungsseite texten](/blog/leistungsseite-texten-aufbau-vorlage).",
+      "3. **Belege von außen:** Bewertungen, Referenzen und Erwähnungen auf anderen Seiten. Mehr dazu in [Mehr Google-Bewertungen bekommen](/blog/google-bewertungen-handwerker).",
+      "Ob ein Assistent deinen Betrieb nennt, prüfst du mit dem Test-Prompt weiter oben und wiederholst ihn alle paar Wochen, denn die Antworten ändern sich.",
     ],
     faqs: [
       {
@@ -199,8 +204,8 @@ export const batch: BlogPost[] = [
     groupId: "myhammer-alternativen-handwerker",
     lang: "de",
     slug: "myhammer-alternativen-handwerker",
-    title: "MyHammer-Alternativen 2026: Portale oder eigene Anfragen?",
-    excerpt: "MyHammer-Alternativen 2026 im fairen Vergleich: wie Check24 Profis, Blauarbeit und Aroundhome abrechnen und wann sich eigene Anfragen mehr lohnen.",
+    title: "MyHammer Alternative 2026: Portale oder eigene Anfragen?",
+    excerpt: "MyHammer Alternative 2026 im Vergleich: Check24 Profis, Blauarbeit und Aroundhome, wie sie abrechnen und wann sich eigene Anfragen mehr lohnen.",
     content: [
       "> **Zusammenfassung:** Die bekanntesten Alternativen zu MyHammer sind Check24 Profis, Blauarbeit und Aroundhome; Jobruf vermittelt vor allem Helfer statt Fachbetriebe. Portale bringen schnell Kontakte, aber du teilst sie meist mit Mitbewerbern und zahlst pro Kontakt oder per Abo. Eigene Anfragen über Website, Google-Profil und Anzeigen brauchen mehr Anlauf, gehören dafür aber nur dir.",
       "Nach „My Hammer Alternative“ wird in Deutschland rund 480-mal im Monat gesucht, nach „MyHammer Alternativen“ ähnlich oft (Google Keyword Planner, Deutschland, Stand November 2026). Dahinter stecken meist Betriebe, die mit ihrem Portal unzufrieden sind: zu viele Mitbieter, zu viel Preisdruck, zu viele Kontakte, aus denen nie ein Auftrag wird.",
@@ -372,7 +377,8 @@ export const batch: BlogPost[] = [
       "## So findest du heraus, welcher Weg wirklich wirkt",
       "Die meisten Betriebe wissen nicht, woher ihre Aufträge kommen. Das lässt sich mit wenig Aufwand ändern. Frag jeden Anrufer: „Wie sind Sie auf uns gekommen?“ Schreib die Antwort in eine einfache Liste, mit Datum und Auftragswert, wenn es einer wird.",
       "Gib Flyern und Bannern eine eigene Nummer oder einen QR-Code auf eine eigene Seite. Schau einmal im Monat ins Google-Profil und, wenn du Anzeigen schaltest, in die Auswertung der Anzeigen.",
-      "Nach drei Monaten siehst du, welche zwei, drei Wege bei dir tragen. In die steckst du mehr. Den Rest machst du nur noch, wenn er dir Freude macht."
+      "Nach drei Monaten siehst du, welche zwei, drei Wege bei dir tragen. In die steckst du mehr. Den Rest machst du nur noch, wenn er dir Freude macht.",
+      "Den Überblick findest du im Ratgeber [Google Ads für Handwerker](/blog/google-ads-handwerker).",
     ],
     faqs: [
       {

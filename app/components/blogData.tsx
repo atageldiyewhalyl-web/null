@@ -533,10 +533,11 @@ const basePosts: BlogPost[] = [
     groupId: "law-firm-webdesign",
     lang: "de",
     slug: "webdesign-fuer-anwaelte-kanzleien",
-    title: "Webdesign für Anwälte und Kanzleien: Was eine gute Website wirklich braucht",
+    title: "Kanzlei-Website erstellen: Was eine gute Anwalts-Website braucht",
     excerpt: "Die meisten Kanzlei-Websites sehen professionell aus, aber bringen keine Mandanten. Wir erklären, was der Unterschied ist, was du konkret ändern kannst, und worauf es 2026 wirklich ankommt.",
     content: [
       `*Dieser Artikel dient der allgemeinen Information zu Webdesign und digitaler Präsenz für Anwaltskanzleien. Er stellt keine Rechtsberatung dar. Alle Angaben zu Preisen und Zeiträumen sind Richtwerte und können je nach Einzelfall abweichen.*`,
+      "Dieser Beitrag zeigt, was du bei der Erstellung einer Kanzlei-Website konkret klären solltest. Alles zu Kosten, Recht und SEO im Zusammenhang steht im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien 2026](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
       `### Die unbequeme Wahrheit über Kanzlei-Websites`,
       `Du hast eine Website. Sie sieht ordentlich aus. Der Name der Kanzlei steht drauf, die Rechtsgebiete, vielleicht ein Foto, eine Telefonnummer.`,
       `Und trotzdem klingelt das Telefon nur dann, wenn jemand dich persönlich kennt.`,
@@ -681,7 +682,9 @@ const basePosts: BlogPost[] = [
       `**Option 3: Sprich direkt mit uns.**`,
       `Wenn du wissen möchtest, wie deine Website konkret verbessert werden kann, bieten wir ein kostenloses 30-minütiges Erstgespräch an. Kein Verkaufsgespräch, kein Druck, nur ein ehrlicher Blick auf deine aktuelle Situation.`,
       `[→ Kostenloses Erstgespräch buchen](/kontakt)`,
-      `*Rechtlicher Hinweis: Dieser Artikel informiert allgemein über Webdesign und digitales Marketing für Kanzleien. Alle genannten Preise und Zeitangaben sind Richtwerte. Nüll. ist keine Rechtsanwaltskanzlei und gibt keine rechtliche Beratung. Für rechtliche Fragen wende dich an einen zugelassenen Rechtsanwalt.*`
+      `*Rechtlicher Hinweis: Dieser Artikel informiert allgemein über Webdesign und digitales Marketing für Kanzleien. Alle genannten Preise und Zeitangaben sind Richtwerte. Nüll. ist keine Rechtsanwaltskanzlei und gibt keine rechtliche Beratung. Für rechtliche Fragen wende dich an einen zugelassenen Rechtsanwalt.*`,
+      "## Weiter im Detail",
+      "Wenn du dich für den Ratgeber zur Website-Erstellung entschieden hast, helfen dir diese Beiträge bei den nächsten Schritten: [Eine Seite pro Rechtsgebiet](/blog/rechtsgebiete-seiten-kanzlei-website-aufbau), [Was kostet eine Kanzlei-Website?](/blog/kanzlei-website-kosten-anwaelte) und [Werbung für Anwälte nach § 43b BRAO](/blog/werbung-anwaelte-43b-brao-kanzlei-website).",
     ],
     faqs: [
       {
@@ -1296,7 +1299,7 @@ const basePosts: BlogPost[] = [
     lang: "de",
     slug: "webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026",
     title: "Webdesign für Rechtsanwälte und Kanzleien 2026: Der vollständige Leitfaden",
-    excerpt: "Was eine Kanzlei-Website 2026 wirklich leisten muss: Kosten, Anbieter, DSGVO, BFSG und SEO erklärt. Mit Fallstudie Kanzlei Doğru und interaktivem Website-Audit.",
+    excerpt: "Webdesign für Rechtsanwälte 2026: Was eine Kanzlei-Website leisten muss. Kosten, Anbieter, DSGVO, BFSG und SEO erklärt, mit Fallstudie Kanzlei Doğru.",
     category: "Webdesign · SEO · Kanzlei",
     date: "2026-06-02",
     readTime: "18 Min. Lesezeit",
@@ -1534,11 +1537,20 @@ const basePosts: BlogPost[] = [
       "Erstens: Google Maps Sichtbarkeit. Die drei Einträge mit Karte ganz oben in den Suchergebnissen erhalten **fast die Hälfte aller Klicks** bei lokalen Suchanfragen. Kanzleien mit vollständig optimiertem Google Business Profil generieren bis zu **7-mal mehr Klicks** als solche mit unvollständigen Einträgen. Der Einstieg kostet nichts, aber die meisten Kanzleien schöpfen das Potenzial nicht ansatzweise aus.",
       "Zweitens: Eigene Seite pro Rechtsgebiet. Google rankt keine Domains, Google rankt Seiten. Eine Kanzlei, die Familienrecht, Erbrecht und Arbeitsrecht auf einer einzigen Seite anbietet, wird für keine dieser Suchanfragen gut ranken. Kanzleien mit weniger als 15 dedizierten Fachbereichsseiten schneiden laut Benchmarkdaten 2026 dauerhaft schlechter ab, unabhängig vom Alter der Domain. Richtig aufgebaute Fachbereichsseiten konvertieren mit **8 bis 12%**, verglichen mit 2 bis 4% auf generischen Anwaltswebsites.",
       "Drittens: KI-Sichtbarkeit. Bis Mitte 2025 deckten sich 75% der von KI-Modellen zitierten Quellen mit den Google Top-10-Ergebnissen. Heute sind es noch **17 bis 38%**, je nach Suchanfrage. ChatGPT, Gemini und Perplexity bauen eigene Empfehlungslisten auf, basierend auf Bewertungen, Profilvollständigkeit, strukturierten Daten und thematischer Tiefe. Wer 2026 nur für Google optimiert, verliert systematisch Mandanten, die über KI suchen.",
-      "Den vollständigen Leitfaden mit konkreten Schritten für jede dieser drei Ebenen gibt es hier: [SEO für Anwälte: Der vollständige Leitfaden 2026](/blog/kanzlei/seo-fuer-anwaelte-leitfaden)",
+      "Konkrete Schritte für jede dieser drei Ebenen findest du hier: [Eine Seite pro Rechtsgebiet](/blog/rechtsgebiete-seiten-kanzlei-website-aufbau), [Google-Unternehmensprofil für Kanzleien](/blog/google-unternehmensprofil-kanzlei-anwaelte) und [Ratgeber-Artikel für Kanzleien](/blog/ratgeber-artikel-kanzlei-mandanten-gewinnen)",
       "## Ihre Kanzlei verdient eine Website, die arbeitet",
       "Hasan Doğru hat keine neue Website bekommen. Er hat eine digitale Infrastruktur bekommen, die heute rund um die Uhr für ihn läuft: auf Google, auf KI-Plattformen, über bezahlte Anzeigen. Die Anfragen, die jetzt reinkommen, kommen von Menschen, die bereits wissen, wer er ist und warum sie ihn beauftragen wollen.",
       "Das ist der Unterschied zwischen einer Website als Visitenkarte und einer Website als Mandantensystem.",
-      "Wie wir Kanzlei-Websites konzipieren, entwickeln und für Google und KI optimieren: [Kanzlei-Websites von nüll. ansehen](/leistungen/webdesign)"
+      "Wie wir Kanzlei-Websites konzipieren, entwickeln und für Google und KI optimieren: [Kanzlei-Websites von nüll. ansehen](/leistungen/webdesign)",
+      "## Vertiefende Ratgeber zur Kanzlei-Website",
+      "Zu jedem Baustein dieses Leitfadens gibt es einen eigenen Ratgeber:",
+      "- Was auf der Website erlaubt ist: [Werbung für Anwälte nach § 43b BRAO](/blog/werbung-anwaelte-43b-brao-kanzlei-website)",
+      "- Was sie kostet: [Kosten einer Kanzlei-Website](/blog/kanzlei-website-kosten-anwaelte)",
+      "- Wie sie aufgebaut wird: [Eine Seite pro Rechtsgebiet](/blog/rechtsgebiete-seiten-kanzlei-website-aufbau) und [Über-uns-Seite und Anwaltsprofil](/blog/anwaltsprofil-ueber-uns-seite-kanzlei-vertrauen)",
+      "- Wie Mandanten dich erreichen: [Kontaktformular](/blog/kontaktformular-kanzlei-mandatsanfrage-datenschutz) und [Online-Terminbuchung](/blog/online-terminbuchung-kanzlei-erstberatung)",
+      "- Wie du gefunden wirst: [Google-Unternehmensprofil](/blog/google-unternehmensprofil-kanzlei-anwaelte), [Google-Bewertungen](/blog/google-bewertungen-kanzlei-anwaelte), [Ratgeber-Artikel](/blog/ratgeber-artikel-kanzlei-mandanten-gewinnen) und [Google Ads für Anwälte](/blog/google-ads-anwaelte-kosten-pro-mandat)",
+      "- Pflichtangaben: [Impressum für Kanzleien](/blog/impressum-kanzlei-anwaelte-pflichtangaben)",
+      "- Zweisprachig auftreten: [Mehrsprachige Kanzlei-Website](/blog/mehrsprachige-kanzlei-website-tuerkisch-deutsch)",
     ],
     faqs: [
       {
@@ -1667,7 +1679,9 @@ const basePosts: BlogPost[] = [
       "Einer, der nie schläft. Nie krank wird. Nie schlechte Laune hat. Und trotzdem jeden Tag neue Kunden anspricht.",
       "Wenn deine Website das gerade nicht tut, ist das kein Versagen deines Handwerks. Es ist ein Zeichen, dass jemand anderes deinen digitalen Auftritt aufbauen sollte, der wirklich weiß, wie man Kunden gewinnt.",
       "Wir tun genau das. Für Handwerker in ganz Deutschland.",
-      "[Jetzt Erstgespräch buchen](/#contact)"
+      "[Jetzt Erstgespräch buchen](/#contact)",
+      "## Website nach Gewerk",
+      "Wie die Website für dein Gewerk aussehen sollte, zeigen diese Beiträge: [Elektriker](/blog/website-elektriker-mannheim), [Sanitär und Heizung](/blog/website-sanitaer-heizung-mannheim), [Dachdecker](/blog/website-dachdecker-mannheim), [Maler und Lackierer](/blog/website-maler-lackierer-mannheim), [Fliesenleger und Badsanierung](/blog/website-fliesenleger-badsanierung-mannheim), [Schreiner und Tischler](/blog/website-schreiner-tischler-mannheim), [Garten- und Landschaftsbau](/blog/website-garten-landschaftsbau-mannheim), [Rohrreinigung und Notdienst](/blog/website-rohrreinigung-notdienst-mannheim), [Fensterbauer](/blog/fensterbauer-website-mannheim-handwerker), [Photovoltaik](/blog/photovoltaik-installateur-website-anfragen-handwerker) und [Wärmepumpe und Heizung](/blog/waermepumpe-anfragen-google-heizungsbauer-handwerker). Gute Beispiele aus der Praxis findest du in [7 Dinge, die gute Handwerker-Websites richtig machen](/blog/handwerker-website-beispiele).",
     ],
     faqs: [
       {
@@ -1860,7 +1874,7 @@ const basePosts: BlogPost[] = [
     lang: "de",
     slug: "google-ads-handwerker",
     title: "Google Ads für Handwerker: Lohnt sich das wirklich? (Ehrliche Antwort)",
-    excerpt: "Lohnen sich Google Ads für Handwerker? Erfahre, wie viel es kostet, welche Keywords funktionieren und wie du mit kleinem Budget mehr Aufträge bekommst.",
+    excerpt: "Google Ads für Handwerker: Lohnt sich das? Was es kostet, welche Keywords funktionieren und wie du mit kleinem Budget mehr Aufträge bekommst.",
     content: [
       "Du hast von Google Ads gehört. Vielleicht hat dich Google sogar angeschrieben und dir 100 Euro Guthaben angeboten.",
       "Du hast es einmal versucht. Das Budget war schnell weg. Anfragen? Kaum.",
@@ -1944,7 +1958,13 @@ const basePosts: BlogPost[] = [
       "Richtig bedeutet: Die richtigen Keywords mit der richtigen Absicht. Sauber eingegrenzte Region. Negative Keywords, die Streuverlust verhindern. Eine [Handwerker-Website die konvertiert](/blog/handwerker-website-auftraege). Und ein Tracking, das dir zeigt, was wirklich funktioniert.",
       "Falsch bedeutet: Breite Keywords, kein Standortbezug, kein Tracking, Budget verbrennen, aufhören.",
       "Der Unterschied zwischen beidem ist nicht mehr Budget. Er ist Wissen und Erfahrung.",
-      "[Jetzt Erstgespräch buchen](/#contact)"
+      "[Jetzt Erstgespräch buchen](/#contact)",
+      "## Weiterführend: Google Ads für Handwerker im Detail",
+      "- Klickpreise nach Gewerk: [Google Ads Kosten für Handwerker in Mannheim](/blog/google-ads-kosten-handwerker-mannheim)",
+      "- Eilige Aufträge: [Notdienst-Werbung ohne Abzocke-Image](/blog/notdienst-werbung-handwerker)",
+      "- Weniger Streuverlust: [Negative Keywords bei Google Ads](/blog/google-ads-negative-keywords-kleine-betriebe)",
+      "- Die Rechnung: [Was kostet eine Anfrage?](/blog/was-kostet-eine-anfrage-website-ads-seo)",
+      "- Alle Werbewege im Vergleich: [Werbung für Handwerker in Mannheim](/blog/werbung-fuer-handwerker-mannheim)",
     ],
     faqs: [
       {
@@ -2056,7 +2076,9 @@ const basePosts: BlogPost[] = [
       "Der entscheidende Gedankenshift: Nicht \"Ich brauche eine neue Website.\" Oder \"Ich schalte mal Google Ads.\" Sondern: \"Ich baue ein System, das konstant neue Kunden für mich gewinnt.\"",
       "Handwerker, die dieses System aufgebaut haben, berichten: Nicht mehr auf Empfehlungen warten. Nicht mehr hoffen, dass das Telefon klingelt. Stattdessen: Wissen, dass die Anfragen kommen, weil das System läuft.",
       "Das ist der Unterschied, den professionelles Online Marketing macht.",
-      "[Jetzt Erstgespräch vereinbaren](/#contact)"
+      "[Jetzt Erstgespräch vereinbaren](/#contact)",
+      "## Mehr zu Websites, die Aufträge bringen",
+      "Die fünf Bausteine einer Website, die Anfragen bringt, erklärt [5 Elemente einer conversion-starken Website](/blog/5-elemente-high-converting-website-2026). Wie du bei Google insgesamt besser sichtbar wirst, steht in [Google Ranking verbessern](/blog/google-ranking-verbessern-deutschland).",
     ],
     faqs: [
       {
@@ -2102,8 +2124,8 @@ const basePosts: BlogPost[] = [
     groupId: "arztpraxis-webdesign",
     lang: "de",
     slug: "webdesign-fuer-arztpraxen",
-    title: "Webdesign für Ärzte und Arztpraxen: Was eine gute Praxis-Website wirklich braucht",
-    excerpt: "Die meisten Praxis-Websites bringen keine Neupatienten. Wir zeigen, was 2026 wirklich zählt: von Google Business Profile bis DSGVO-konforme Gesundheitsdaten.",
+    title: "Webdesign für Arztpraxen: Was eine gute Praxis-Website braucht",
+    excerpt: "Webdesign für Arztpraxen: Warum viele Praxis-Websites keine Neupatienten bringen und was 2026 zählt, vom Google-Profil bis zur DSGVO-konformen Terminbuchung.",
     content: [
       `*Dieser Artikel dient der allgemeinen Information zu Webdesign und digitaler Präsenz für Arztpraxen. Er stellt keine medizinische oder rechtliche Beratung dar. Alle Angaben zu Preisen und Zeiträumen sind Richtwerte und können je nach Einzelfall abweichen.*`,
       `### Die unbequeme Wahrheit über Praxis-Websites`,
@@ -2163,7 +2185,22 @@ const basePosts: BlogPost[] = [
       `**Option 2: Sprich direkt mit uns.**`,
       `Wir bieten ein kostenloses 30-minütiges Erstgespräch an, in dem wir uns deine aktuelle Website und dein GBP-Profil gemeinsam anschauen. Kein Verkaufsgespräch, kein Druck.`,
       `[→ Kostenloses Erstgespräch buchen](/#contact)`,
-      `*Rechtlicher Hinweis: Dieser Artikel informiert allgemein über Webdesign und digitales Marketing für Arztpraxen. Alle genannten Preise und Zeitangaben sind Richtwerte. Nüll. ist keine Rechtsberatung und keine Datenschutzberatung. Für rechtliche Fragen zu Gesundheitsdaten und DSGVO wende dich an einen Datenschutzbeauftragten oder Fachanwalt.*`
+      `*Rechtlicher Hinweis: Dieser Artikel informiert allgemein über Webdesign und digitales Marketing für Arztpraxen. Alle genannten Preise und Zeitangaben sind Richtwerte. Nüll. ist keine Rechtsberatung und keine Datenschutzberatung. Für rechtliche Fragen zu Gesundheitsdaten und DSGVO wende dich an einen Datenschutzbeauftragten oder Fachanwalt.*`,
+      "## Richtlinien für Arzt-Homepages: Was Praxis-Websites beachten müssen",
+      "Für Praxis-Websites gelten mehrere Regelwerke gleichzeitig: die ärztliche Berufsordnung, das Heilmittelwerbegesetz, das Impressum nach § 5 DDG und der Datenschutz bei Gesundheitsdaten. Die Details stehen in diesen Ratgebern:",
+      "- [Heilmittelwerbegesetz: Was darf die Praxis-Website sagen und zeigen?](/blog/heilmittelwerbegesetz-arztpraxis-website)",
+      "- [Impressum für Arztpraxen](/blog/impressum-arztpraxis-pflichtangaben)",
+      "- [DSGVO und Gesundheitsdaten auf der Praxis-Website](/blog/dsgvo-gesundheitsdaten-arztpraxis-website)",
+      "## Webdesign für MVZ und Gemeinschaftspraxen",
+      "Medizinische Versorgungszentren und Gemeinschaftspraxen brauchen zusätzlich eine klare Struktur für mehrere Fachrichtungen, Standorte und Ärztinnen und Ärzte. Jede Person und jeder Standort bekommt eine eigene Seite mit Sprechzeiten und Terminweg. Beim Impressum sind Träger, Rechtsform und Vertretung anzugeben, mehr dazu im Beitrag [Impressum für Arztpraxen](/blog/impressum-arztpraxis-pflichtangaben).",
+      "## Praxis-Website im Detail: Kosten, Termin, Sichtbarkeit",
+      "- Kosten und Posten: [Was kostet eine Praxis-Website?](/blog/praxis-website-kosten-arztpraxis)",
+      "- Termine: [Doctolib oder eigene Terminbuchung?](/blog/doctolib-oder-eigene-terminbuchung-arztpraxis)",
+      "- Google-Karte: [Google-Unternehmensprofil für Arztpraxen](/blog/google-unternehmensprofil-arztpraxis) und [Patientenbewertungen](/blog/patientenbewertungen-arztpraxis-google)",
+      "- Neue Patienten: [Der Plan für Arztpraxen in Mannheim](/blog/neue-patienten-gewinnen-arztpraxis-mannheim) und [SEO für Zahnärzte](/blog/zahnarzt-seo-ohne-jameda-praxis)",
+      "- Baukasten oder Agentur: [Vergleich für Praxis und Kanzlei](/blog/baukasten-oder-agentur-praxis-kanzlei)",
+      "## Webdesign in sieben Tagen",
+      "Wie eine neue Website in einer Woche live geht und was du dafür liefern solltest, steht im Beitrag [Website in 7 Tagen](/blog/website-in-7-tagen-ablauf). Wie du deine bestehende Seite selbst prüfst, zeigt [Website selbst prüfen: 10 Punkte](/blog/website-selbst-pruefen-10-punkte).",
     ],
     faqs: [
       {

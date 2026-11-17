@@ -67,6 +67,7 @@ export const batch: BlogPost[] = [
       "- **Heilversprechen und Vorher-Nachher-Bilder** ohne Prüfung.",
       "- **Kein Notdienst-Hinweis,** obwohl danach viel gesucht wird.",
       "- **Langsame Seite am Handy.**",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Kann ich als Zahnarzt ohne Portale neue Patienten gewinnen?", answer: "Ja, über Google-Profil, eigene Website und Ratgeber. Portale können ergänzen, müssen aber nicht deine einzige Quelle sein." },
@@ -167,6 +168,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [Heilmittelwerbegesetz (HWG)](https://www.gesetze-im-internet.de/heilmwerbg/)",
       "- [Gesetz gegen den unlauteren Wettbewerb (UWG)](https://www.gesetze-im-internet.de/uwg_2004/)",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Darf eine Arztpraxis überhaupt werben?", answer: "Ja, sachlich. Berufswidrige Werbung ist verboten, sachliche Information über Leistungen und Praxis ist erlaubt." },
@@ -260,6 +262,7 @@ export const batch: BlogPost[] = [
       "- **Terminbuchung, die nicht zum Datenschutz passt.**",
       "- **Kein Plan für Pflege.**",
       "- **Stockfotos statt Praxisbilder.**",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Was kostet eine Website für eine Arztpraxis?", answer: "Das hängt vom Umfang ab. Bei nüll. beginnt eine Website mit zehn und mehr Seiten ab 1.999 € einmalig, plus Hosting und Pflege ab 99 € im Monat, netto." },
@@ -351,6 +354,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [Gesetz gegen den unlauteren Wettbewerb (UWG)](https://www.gesetze-im-internet.de/uwg_2004/)",
       "- [Heilmittelwerbegesetz (HWG)](https://www.gesetze-im-internet.de/heilmwerbg/)",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Darf ich Patienten um eine Bewertung bitten?", answer: "Ja, wenn du alle gleich behandelst, keine Gegenleistung anbietest und die Schweigepflicht wahrst." },
@@ -435,6 +439,7 @@ export const batch: BlogPost[] = [
       "- **Termin nur per Telefon,** obwohl viele lieber online buchen.",
       "- **Heilversprechen in Texten und Anzeigen.**",
       "- **Keine Messung,** sodass niemand weiß, was wirkt.",
+      "Den Überblick zu diesem Thema findest du im Ratgeber [Webdesign für Arztpraxen](/blog/webdesign-fuer-arztpraxen).",
     ],
     faqs: [
       { question: "Wie gewinnt eine Praxis in Mannheim neue Patienten?", answer: "Über ein gepflegtes Google-Profil, eine Website mit Seiten pro Behandlung, einen einfachen Termin-Weg und stetige Bewertungen. Anzeigen können später ergänzen." },

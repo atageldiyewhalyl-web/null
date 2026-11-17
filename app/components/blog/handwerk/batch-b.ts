@@ -385,7 +385,8 @@ export const batch: BlogPost[] = [
       "- [ ] Anzeigen laufen nur zu Zeiten, in denen jemand abnimmt.",
       "- [ ] Es gibt echte Fotos von Team, Fahrzeug und Arbeit.",
       "- [ ] Bewertungen sind echt und werden beantwortet.",
-      "Geh die Liste mit den Augen eines Kunden durch, der um Mitternacht vor der verschlossenen Tür steht oder im Keller das Wasser steigen sieht. Jeder fehlende Haken ist für ihn ein Grund, die nächste Nummer zu wählen."
+      "Geh die Liste mit den Augen eines Kunden durch, der um Mitternacht vor der verschlossenen Tür steht oder im Keller das Wasser steigen sieht. Jeder fehlende Haken ist für ihn ein Grund, die nächste Nummer zu wählen.",
+      "Den Überblick findest du im Ratgeber [Google Ads für Handwerker](/blog/google-ads-handwerker).",
     ],
     faqs: [
       {
@@ -501,7 +502,8 @@ export const batch: BlogPost[] = [
       "4. Miss Anrufe und Formulare, bevor der erste Euro ausgegeben ist.",
       "5. Schau nach zwei Wochen in den Bericht mit den tatsächlichen Suchbegriffen und schließ aus, was nicht passt.",
       "6. Rechne erst nach vier bis acht Wochen nach, was eine Anfrage gekostet hat, und entscheide dann über mehr oder weniger Budget.",
-      "Wie du Keywords, Anzeigentexte und Gebotsstrategie im Detail aufsetzt, steht im Leitfaden [Google Ads für Handwerker: lohnt sich das?](/blog/google-ads-handwerker)."
+      "Wie du Keywords, Anzeigentexte und Gebotsstrategie im Detail aufsetzt, steht im Leitfaden [Google Ads für Handwerker: lohnt sich das?](/blog/google-ads-handwerker).",
+      "Den Überblick findest du im Ratgeber [Google Ads für Handwerker](/blog/google-ads-handwerker).",
     ],
     faqs: [
       {

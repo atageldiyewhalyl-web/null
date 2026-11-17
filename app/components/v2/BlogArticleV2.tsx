@@ -11,6 +11,7 @@ import { BLOG } from "./links";
 import { CTA_SERVICES, cover, dePosts, fmtDate, fmtRead, postAudience, postService, postTag, slugify } from "./blogShared";
 import { SERVICE } from "./links";
 import { PostCard } from "./BlogIndexV2";
+import { authorFor } from "./authors";
 import { CheckStrip, ContactBand, ContactButtons, InquiryCalc, PHONE, ProofRow, SelfTest, SidebarLead, StickyBar, trackBlog, waLink } from "./BlogConversion";
 
 /*
@@ -450,6 +451,7 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
     .slice(0, 3);
   const rise = reduce ? {} : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: EASE } };
 
+  const author = authorFor(post);
   const url = `${LIVE}/blog/${post.slug}`;
   const ld = {
     "@context": "https://schema.org",
@@ -459,7 +461,7 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
         "@id": `${url}#article`,
         headline: post.title,
         description: post.excerpt,
-        author: { "@type": "Organization", "@id": `${LIVE}/#organization`, name: "nüll.", url: LIVE },
+        author: { "@type": "Person", name: author.name, worksFor: { "@id": `${LIVE}/#organization` } },
         publisher: { "@type": "Organization", "@id": `${LIVE}/#organization`, name: "nüll.", url: LIVE, logo: { "@type": "ImageObject", url: `${LIVE}/apple-touch-icon.png`, width: 180, height: 180 } },
         datePublished: post.date,
         dateModified: post.date,
@@ -501,6 +503,10 @@ export default function BlogArticleV2({ post }: { post: BlogPost }) {
             <h1 className="mt-4 max-w-[22ch] text-[clamp(2.1rem,5.2vw,4.3rem)] font-bold leading-[0.98] tracking-[-0.055em]">{post.title}</h1>
             <p className="mt-6 max-w-[60ch] text-[1.12rem] font-medium leading-[1.5] tracking-[-0.02em] text-[#424245] md:text-[1.2rem]">{post.excerpt}</p>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.9rem] font-semibold text-[#6b7280]">
+              <span>
+                Von <span className="font-bold text-[#0e0e10]">{author.name}</span>
+              </span>
+              <span aria-hidden className="h-1 w-1 rounded-full bg-[#c7c9cf]" />
               <span>{fmtDate(post.date)}</span>
               <span aria-hidden className="h-1 w-1 rounded-full bg-[#c7c9cf]" />
               <span>{fmtRead(post.readTime)}</span>

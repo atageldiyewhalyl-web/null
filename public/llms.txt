@@ -84,9 +84,9 @@ Sprache: Deutsch
 - [Baukasten oder Agentur für Praxis und Kanzlei? Was bei sensiblen Daten zählt](https://nuell-agentur.com/blog/baukasten-oder-agentur-praxis-kanzlei)
 - [Google Ads für Anwälte: Was ein Mandat wirklich kosten darf](https://nuell-agentur.com/blog/google-ads-anwaelte-kosten-pro-mandat)
 - [Kontaktformular für Kanzleien: Mandatsanfragen datenschutzkonform](https://nuell-agentur.com/blog/kontaktformular-kanzlei-mandatsanfrage-datenschutz)
-- [Über-uns-Seite für Kanzleien: Anwaltsprofil, das Vertrauen schafft](https://nuell-agentur.com/blog/anwaltsprofil-ueber-uns-seite-kanzlei-vertrauen)
+- [Über-uns-Text für Kanzleien: Muster und Aufbau des Anwaltsprofils](https://nuell-agentur.com/blog/anwaltsprofil-ueber-uns-seite-kanzlei-vertrauen)
 - [Webdesign für Rechtsanwälte und Kanzleien 2026: Der vollständige Leitfaden](https://nuell-agentur.com/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026)
-- [Webdesign für Anwälte und Kanzleien: Was eine gute Website wirklich braucht](https://nuell-agentur.com/blog/webdesign-fuer-anwaelte-kanzleien)
+- [Kanzlei-Website erstellen: Was eine gute Anwalts-Website braucht](https://nuell-agentur.com/blog/webdesign-fuer-anwaelte-kanzleien)
 
 ### Arztpraxen
 - [Google Ads für Arztpraxen: Was erlaubt ist, was sich lohnt und was es kostet](https://nuell-agentur.com/blog/google-ads-arztpraxis)
@@ -99,14 +99,14 @@ Sprache: Deutsch
 - [Neue Patienten gewinnen: Der Plan für Arztpraxen in Mannheim](https://nuell-agentur.com/blog/neue-patienten-gewinnen-arztpraxis-mannheim)
 - [Heilmittelwerbegesetz: Was darf die Praxis-Website sagen und zeigen?](https://nuell-agentur.com/blog/heilmittelwerbegesetz-arztpraxis-website)
 - [SEO für Zahnärzte: Neue Patienten ohne Portal-Abhängigkeit](https://nuell-agentur.com/blog/zahnarzt-seo-ohne-jameda-praxis)
-- [Webdesign für Ärzte und Arztpraxen: Was eine gute Praxis-Website wirklich braucht](https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen)
+- [Webdesign für Arztpraxen: Was eine gute Praxis-Website braucht](https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen)
 
 ### Handwerk
 - [Mehr Google-Bewertungen bekommen: richtig fragen, legal bleiben](https://nuell-agentur.com/blog/google-bewertungen-handwerker)
 - [Gartenbau Website: Anfragen planen statt auf den Frühling warten](https://nuell-agentur.com/blog/website-garten-landschaftsbau-mannheim)
 - [Photovoltaik-Installateur: Mehr Anfragen über die Website, ohne Preiskampf](https://nuell-agentur.com/blog/photovoltaik-installateur-website-anfragen-handwerker)
 - [Handwerker-Fotos für die Website: Baustellenfotos statt Stock](https://nuell-agentur.com/blog/baustellenfotos-handwerker-website)
-- [MyHammer-Alternativen 2026: Portale oder eigene Anfragen?](https://nuell-agentur.com/blog/myhammer-alternativen-handwerker)
+- [MyHammer Alternative 2026: Portale oder eigene Anfragen?](https://nuell-agentur.com/blog/myhammer-alternativen-handwerker)
 - [Handwerker bei Google Maps nicht gefunden? 9 Gründe und Lösungen](https://nuell-agentur.com/blog/handwerker-google-maps-nicht-gefunden)
 - [BFSG für Handwerker: Muss deine Website barrierefrei sein?](https://nuell-agentur.com/blog/barrierefreiheit-bfsg-handwerker-website)
 - [Dachdecker-Website: So findet man dich nach dem nächsten Sturm](https://nuell-agentur.com/blog/website-dachdecker-mannheim)
@@ -122,7 +122,7 @@ Sprache: Deutsch
 - [Rohrreinigung Website: Was sie nachts um drei leisten muss](https://nuell-agentur.com/blog/website-rohrreinigung-notdienst-mannheim)
 - [Handwerker-Website-Beispiele: 7 Dinge, die gute Seiten teilen](https://nuell-agentur.com/blog/handwerker-website-beispiele)
 - [Mitarbeiter finden im Handwerk: Karriereseite und Anzeigen](https://nuell-agentur.com/blog/mitarbeiter-finden-handwerk-mannheim)
-- [KI-Sichtbarkeit für Handwerker: So nennt ChatGPT deinen Betrieb](https://nuell-agentur.com/blog/ki-sichtbarkeit-handwerker-chatgpt)
+- [Bei ChatGPT gefunden werden: KI-Sichtbarkeit für Handwerker](https://nuell-agentur.com/blog/ki-sichtbarkeit-handwerker-chatgpt)
 - [Sanitär-Website für Mannheim: mehr Wärmepumpen-Anfragen](https://nuell-agentur.com/blog/website-sanitaer-heizung-mannheim)
 - [Werbung für Handwerker in Mannheim: 12 Wege ehrlich verglichen](https://nuell-agentur.com/blog/werbung-fuer-handwerker-mannheim)
 - [Google Ads für Handwerker: Kosten pro Klick in Mannheim je Gewerk](https://nuell-agentur.com/blog/google-ads-kosten-handwerker-mannheim)
@@ -156,7 +156,7 @@ Sprache: Deutsch
 ### Websites, SEO, Google Ads und Marketing allgemein
 - [Leistungsseite texten: Aufbau und Vorlage, die bei Google und Kunden wirkt](https://nuell-agentur.com/blog/leistungsseite-texten-aufbau-vorlage)
 - [Agenturvertrag prüfen: 9 Klauseln, die du vor der Unterschrift lesen solltest](https://nuell-agentur.com/blog/agenturvertrag-klauseln-pruefen)
-- [Negative Keywords: So sparst du Geld bei Google Ads (mit Beispiel)](https://nuell-agentur.com/blog/google-ads-negative-keywords-kleine-betriebe)
+- [Google Ads: Negative Keywords und Keywords ausschließen (mit Beispiel)](https://nuell-agentur.com/blog/google-ads-negative-keywords-kleine-betriebe)
 - [Google Search Console einrichten: Anleitung für kleine Unternehmen](https://nuell-agentur.com/blog/google-search-console-einrichten-kleine-unternehmen)
 - [Website in 7 Tagen: Was dafür passieren muss und was du liefern solltest](https://nuell-agentur.com/blog/website-in-7-tagen-ablauf)
 - [Cookie-Banner und Tracking einfach erklärt: Was deine Website braucht](https://nuell-agentur.com/blog/cookie-banner-tracking-einwilligung-website)
