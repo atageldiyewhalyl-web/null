@@ -53,7 +53,8 @@ const STRUCTURED_DATA = [
     address: { "@type": "PostalAddress", addressLocality: "Mannheim", addressCountry: "DE" },
     areaServed: [{ "@type": "City", name: "Mannheim" }, { "@type": "AdministrativeArea", name: "Rhein-Neckar" }, { "@type": "Country", name: "Deutschland" }],
     knowsAbout: ["Webdesign", "Suchmaschinenoptimierung", "Google Ads", "Lokale SEO", "KI-Sichtbarkeit"],
-    sameAs: ["https://www.linkedin.com/company/n%C3%BCll/"],
+    // LinkedIn + the Google Business Profile (knowledge-graph id /g/11_0c5vlll, from the profile's share link share.google/hukPV7Gr5bdLzjC8B)
+    sameAs: ["https://www.linkedin.com/company/n%C3%BCll/", "https://www.google.com/search?kgmid=/g/11_0c5vlll"],
     description: "nüll. baut Websites, SEO und Google Ads für mehr qualifizierte Anfragen.",
   },
   {
