@@ -99,7 +99,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 43b BRAO (Werbung)](https://www.gesetze-im-internet.de/brao/__43b.html)",
       "- [Gesetz gegen den unlauteren Wettbewerb (UWG)](https://www.gesetze-im-internet.de/uwg_2004/)",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Darf ich als Anwalt Werbung auf meiner Website machen?", answer: "Ja. § 43b BRAO erlaubt Werbung, soweit sie über die berufliche Tätigkeit sachlich informiert und nicht auf ein Mandat im Einzelfall zielt. Du darfst dich und deine Schwerpunkte vorstellen, aber nicht reißerisch anpreisen." },
@@ -196,7 +196,7 @@ export const batch: BlogPost[] = [
       "## Quellen und weiterführende Links",
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [Datenschutz-Grundverordnung (DSGVO), amtlicher Text](https://eur-lex.europa.eu/eli/reg/2016/679/oj)",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Welche Daten darf ein Kanzlei-Formular abfragen?", answer: "Frag nur, was du für die erste Antwort brauchst: Name, Kontaktweg, Rechtsgebiet und eine kurze Schilderung. Sensible Details klärst du besser im Gespräch." },
@@ -286,7 +286,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 43b BRAO (Werbung)](https://www.gesetze-im-internet.de/brao/__43b.html)",
       "- [Gesetz gegen den unlauteren Wettbewerb (UWG)](https://www.gesetze-im-internet.de/uwg_2004/)",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Was kostet ein Klick bei Google Ads für Anwälte?", answer: "Das schwankt stark nach Rechtsgebiet, Ort und Wettbewerb und lässt sich nicht pauschal sagen. Wichtiger als der Klickpreis ist, was ein Mandat insgesamt kosten darf. Die Rechnung von hinten im Beitrag zeigt, wie du das für dich ausrechnest." },
@@ -372,7 +372,7 @@ export const batch: BlogPost[] = [
       "Öffne deine Website und frag dich bei jedem Rechtsgebiet: Gibt es eine eigene Seite? Steht Ort und Gebiet im Titel? Beantwortet die Seite die wichtigsten Fragen? Führt sie zum Kontakt? Der [kostenlose Website-Check](#website-check) zeigt dir außerdem, wie viele Seiten deine Sitemap enthält, ob Titel und Beschreibung stimmen und ob dein Ort im Seitentitel steht.",
       "## Der Weg zur fertigen Struktur",
       "Eine bewährte Reihenfolge: Zuerst die zwei bis drei wichtigsten Rechtsgebiete ausbauen, dann Ratgeber-Artikel ergänzen, danach Google-Profil und Bewertungen pflegen. Mehr zum Google-Profil steht im Beitrag [Google-Unternehmensprofil für Kanzleien](/blog/google-unternehmensprofil-kanzlei-anwaelte).",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Wie viele Rechtsgebiet-Seiten brauche ich?", answer: "Eine für jedes Gebiet, mit dem du aktiv Mandate gewinnen willst, meist vier bis acht. Qualität geht vor Menge." },
@@ -459,7 +459,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 43b BRAO (Werbung)](https://www.gesetze-im-internet.de/brao/__43b.html)",
       "- [Gesetz gegen den unlauteren Wettbewerb (UWG)](https://www.gesetze-im-internet.de/uwg_2004/)",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Darf ich als Anwalt nach Google-Bewertungen fragen?", answer: "Grundsätzlich ja, sofern du alle Mandanten gleich behandelst, keine Gegenleistung anbietest und die Verschwiegenheit wahrst. Bei Zweifeln hilft deine Rechtsanwaltskammer." },

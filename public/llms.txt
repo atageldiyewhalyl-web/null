@@ -68,9 +68,10 @@ Sprache: Deutsch
 - [Alle Referenzen](https://nuell-agentur.com/referenzen)
 - Treu Haustechnik, Onkel Abwassertechnik, FT Sicherheitstechnik, SG Laserzentrum, Waschbar, Bergstone Keramiksan, Kanzlei Doğru, S&O Beauty, B.Y. Consulting, Pflegedienst Orchidee
 
-## Ratgeber (91 Artikel)
+## Ratgeber (92 Artikel)
 - [Alle Artikel](https://nuell-agentur.com/blog)
 ### Kanzleien
+- [SEO für Anwälte: So findet dich ein Mandant bei Google](https://nuell-agentur.com/blog/seo-fuer-anwaelte-kanzleien)
 - [Online-Terminbuchung für die Kanzlei: Erstberatung einfach buchen](https://nuell-agentur.com/blog/online-terminbuchung-kanzlei-erstberatung)
 - [Werbung für Anwälte: Was auf die Kanzlei-Website darf (§ 43b BRAO)](https://nuell-agentur.com/blog/werbung-anwaelte-43b-brao-kanzlei-website)
 - [Google-Unternehmensprofil für Kanzleien: Anleitung Schritt für Schritt](https://nuell-agentur.com/blog/google-unternehmensprofil-kanzlei-anwaelte)
@@ -168,7 +169,7 @@ Sprache: Deutsch
 - [Viele Besucher, aber keine Anfragen? Die 7 häufigsten Gründe](https://nuell-agentur.com/blog/viele-besucher-keine-anfragen-website)
 - [Was kostet eine Anfrage wirklich? Website, Google Ads und SEO im Vergleich](https://nuell-agentur.com/blog/was-kostet-eine-anfrage-website-ads-seo)
 - [Freelancer oder Agentur für deine Website? Der ehrliche Vergleich für Berater und Kanzleien](https://nuell-agentur.com/blog/freelancer-oder-agentur-website)
-- [Google Ranking verbessern: So wirst du in deiner Stadt gefunden](https://nuell-agentur.com/blog/google-ranking-verbessern-deutschland)
+- [Google Ranking verbessern, auch bei Google Maps: So wirst du in deiner Stadt gefunden](https://nuell-agentur.com/blog/google-ranking-verbessern-deutschland)
 - [5 Elemente, die jede conversion-starke Website braucht (2026) – Mit Daten belegt](https://nuell-agentur.com/blog/5-elemente-high-converting-website-2026)
 
 ## Rechtliches

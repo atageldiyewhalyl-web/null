@@ -1775,7 +1775,7 @@ export default function ServiceV2({ cfg, current }: { cfg: ServiceConfig; curren
 /* ---------- Ratgeber zum Thema: hand-picked guides under each service page (internal links to the articles that back it up) ---------- */
 const GUIDES: Record<ServiceKind, string[]> = {
   web: ["5-elemente-high-converting-website-2026", "handwerker-website-beispiele", "website-in-7-tagen-ablauf", "website-selbst-pruefen-10-punkte", "kanzlei-website-kosten-anwaelte", "berater-website-kosten"],
-  seo: ["google-ranking-verbessern-deutschland", "lokale-seo-checkliste-mannheim", "seo-fuer-berater-welche-suchen-lohnen", "steuerberater-website-mandanten-gewinnen", "zahnarzt-seo-ohne-jameda-praxis", "fensterbauer-website-mannheim-handwerker"],
+  seo: ["google-ranking-verbessern-deutschland", "seo-fuer-anwaelte-kanzleien", "lokale-seo-checkliste-mannheim", "steuerberater-website-mandanten-gewinnen", "zahnarzt-seo-ohne-jameda-praxis", "fensterbauer-website-mannheim-handwerker"],
   ads: ["google-ads-handwerker", "google-ads-anwaelte-kosten-pro-mandat", "google-ads-negative-keywords-kleine-betriebe", "photovoltaik-installateur-website-anfragen-handwerker", "waermepumpe-anfragen-google-heizungsbauer-handwerker", "was-kostet-eine-anfrage-website-ads-seo"],
   ai: ["ki-sichtbarkeit-handwerker-chatgpt", "google-unternehmensprofil-handwerker-mannheim", "leistungsseite-texten-aufbau-vorlage", "lokale-seo-checkliste-mannheim"],
   content: ["instagram-fuer-handwerker-post-ideen", "marketing-kalender-handwerk", "coaching-mentoring-website-vertrauen", "linkedin-oder-website-berater-auftraege"],

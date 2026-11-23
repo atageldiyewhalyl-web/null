@@ -74,7 +74,7 @@ export const batch: BlogPost[] = [
       "- [ ] Klarer, ruhiger Kontakt am Ende",
       "## Wo steht deine Seite heute?",
       "Bevor du anfängst zu schreiben, lohnt ein Blick auf die Basis: Hat deine Seite Titel, Beschreibung, Struktur und Ladezeit, die Artikel tragen können? Der [kostenlose Website-Check](#website-check) prüft das in etwa einer Minute und zeigt die wichtigsten Baustellen.",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Wie oft sollte eine Kanzlei Ratgeber-Artikel veröffentlichen?", answer: "Ein Artikel pro Monat ist realistisch und wirkt besser als viele auf einmal. Wichtig ist Kontinuität." },
@@ -163,7 +163,7 @@ export const batch: BlogPost[] = [
       "## Quellen und weiterführende Links",
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 5 DDG (Allgemeine Informationspflichten)](https://www.gesetze-im-internet.de/ddg/__5.html)",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Braucht jede Kanzlei-Website ein Impressum?", answer: "Ja, geschäftsmäßige Websites brauchen ein Impressum nach § 5 DDG. Für Anwälte kommen zusätzliche Angaben zu Kammer und Berufsrecht hinzu." },

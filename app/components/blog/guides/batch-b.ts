@@ -77,7 +77,7 @@ export const batch: BlogPost[] = [
       "- **Kein Plan für Pflege.** Nach einem Jahr ist die Seite veraltet.",
       "## Erst prüfen, dann entscheiden",
       "Bevor du Geld ausgibst, schau dir an, was deine bestehende Seite schon richtig macht und was fehlt. Der [kostenlose Website-Check](#website-check) liefert dir in etwa einer Minute eine Note und die wichtigsten Baustellen, zum Beispiel fehlendes Formular, nicht antippbare Telefonnummer oder zu langsame Ladezeit. Damit gehst du informiert in jedes Angebotsgespräch.",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Was kostet eine Website für eine Kanzlei?", answer: "Das hängt vom Umfang ab. Bei nüll. beginnt eine Website mit zehn und mehr Seiten ab 1.999 € einmalig, plus Hosting und Pflege ab 99 € im Monat, jeweils netto. Eigene Texte, Fotos und Terminbuchung können den Umfang erhöhen." },
@@ -158,7 +158,7 @@ export const batch: BlogPost[] = [
       "- **Stockfotos oder keine Fotos.**",
       "- **Keine Verknüpfung zur Website,** sodass das Profil allein steht.",
       "- **Antworten mit Mandatsbezug** auf Bewertungen.",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Brauche ich als Kanzlei ein Google-Profil?", answer: "Ja, wenn du lokal Mandanten gewinnen willst. Das Profil ist kostenlos und erscheint bei Suchen mit Ortsbezug ganz oben in der Karte." },
@@ -246,7 +246,7 @@ export const batch: BlogPost[] = [
       "Die Gesetzestexte findest du bei den amtlichen Stellen. Prüf den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "- [§ 34 RVG (Beratung, Gutachten, Mediation)](https://www.gesetze-im-internet.de/rvg/__34.html)",
       "- [Datenschutz-Grundverordnung (DSGVO), amtlicher Text](https://eur-lex.europa.eu/eli/reg/2016/679/oj)",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Lohnt sich Online-Terminbuchung für Kanzleien?", answer: "Oft ja, besonders wenn Anfragen abends oder am Wochenende kommen und niemand erreichbar ist. Sie ergänzt das Telefon." },
@@ -327,7 +327,7 @@ export const batch: BlogPost[] = [
       "- [ ] Formular und Antworten in der Sprache der Seite",
       "## Wo du heute stehst",
       "Der [kostenlose Website-Check](#website-check) prüft unter anderem, ob die Sprache der Seite angegeben ist und wie viele Seiten deine Sitemap enthält. Das sind gute erste Hinweise, bevor du eine zweite Sprache aufbaust.",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Lohnt sich eine zweisprachige Kanzlei-Website?", answer: "Wenn deine Mandanten überwiegend in einer anderen Sprache suchen und du in dieser Sprache wirklich berätst, ja. Sie schafft Vertrauen und erschließt eigene Suchen." },
@@ -415,7 +415,7 @@ export const batch: BlogPost[] = [
       "Zwei Muster zum Anpassen, jeweils sachlich und ohne Superlative. Die kurze Fassung für Profile und Verzeichnisse: Ich bin Rechtsanwältin in Mannheim und berate zu Familien- und Erbrecht. Ich erkläre jeden Schritt, bevor er ansteht, und bespreche mit dir, was in deiner Situation möglich ist.",
       "Die Standardfassung für die Über-uns-Seite: Ich bin seit 2012 als Rechtsanwältin zugelassen und berate Mandanten in Mannheim und Umgebung. Meine Schwerpunkte sind Trennung, Scheidung und Erbrecht. Zu mir kommen Menschen in belastenden Situationen, und mir ist wichtig, dass sie verstehen, was passiert. Im Erstgespräch klären wir, worum es geht und welche Schritte in Frage kommen. Termine vereinbarst du telefonisch oder online. Die Angaben sind Beispiele: Ersetze sie durch deine eigenen Daten.",
       "Ein Über-uns-Text für Praxis, Handwerk oder Beratung folgt demselben Aufbau, siehe [Leistungsseite texten](/blog/leistungsseite-texten-aufbau-vorlage).",
-      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Den Überblick zu diesem Thema findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026). Wie deine Kanzlei bei Google gefunden wird, zeigt der Ratgeber [SEO für Anwälte](/blog/seo-fuer-anwaelte-kanzleien).",
     ],
     faqs: [
       { question: "Wie lang sollte ein Anwaltsprofil sein?", answer: "Etwa 300 bis 500 Wörter plus Foto und Kontakt. Wichtig ist, dass jede Aussage für Mandanten relevant ist." },
