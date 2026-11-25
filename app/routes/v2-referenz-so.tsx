@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/so: case study.
@@ -15,10 +16,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz S&O Beauty Salon: ein neuer Salon, von Anfang an sichtbar | nüll." },
-    { name: "description", content: "Wie der S&O Beauty Salon in Mannheim alles aus einer Hand bekam: Logo, Website, Google-Profil, Flyer und Anzeigen auf Facebook und Instagram mit 4,1 % Klickrate." },
-  ];
+  return withSocial("/referenzen/so", [
+    { title: "Referenz S&O Beauty Salon: von Anfang an sichtbar | nüll." },
+    { name: "description", content: "S&O Beauty Salon, Mannheim: Logo, Website, Google-Profil, Flyer und Anzeigen auf Facebook und Instagram mit 4,1 % Klickrate, alles aus einer Hand." },
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/so.webp" });
 }
 
 const O = "/assets/v2/referenzen/so";

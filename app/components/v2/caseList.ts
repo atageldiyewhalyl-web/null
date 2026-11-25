@@ -3,6 +3,7 @@
  * Numbers only where a report backs them (sources: CasesV2.tsx header and each reference route's header):
  *  Waschbar: Google Ads report 6 Aug–5 Nov 2026. Orchidee: Meta report Oct 2026. Bergstone: site repo (150 products).
  *  Herkules: SEO report Oct 2026. Kanzlei Doğru: review Nov 2026. Treu: blog list in the site repo.
+ *  Kanzlei Meral Gören: enquiry log meral_anfragen, 23–24 Nov 2026 (see the route header).
  *  SG, S&O, FT, Onkel, B.Y.: no measured data shown, only what we built.
  */
 
@@ -120,6 +121,21 @@ export const CASE_LIST: CaseEntry[] = [
     headline: "Mandanten finden die Kanzlei, statt umgekehrt.",
     facts: ["Rund 25 Klicks pro Tag aus der Google-Suche", "Ø Position 6,6 bei Google"],
     page: "/referenzen/dogru",
+  },
+  {
+    slug: "goeren",
+    tint: "#f6efe4",
+    client: "Kanzlei Meral Gören",
+    place: "Mannheim",
+    services: ["Website", "Deutsch & Türkisch", "SEO"],
+    tags: ["web", "seo"],
+    img: `${B}/goeren.webp`,
+    alt: "Website der Kanzlei Meral Gören auf Laptop und Smartphone",
+    stat: "3",
+    statRest: "Anfragen in den ersten 48 Stunden",
+    headline: "Eine Kanzlei, zwei Sprachen, die ersten Anfragen am zweiten Tag.",
+    facts: ["2 von 3 Anfragen auf Türkisch", "30 Seiten auf Deutsch und Türkisch"],
+    page: "/referenzen/goeren",
   },
   {
     slug: "sg",

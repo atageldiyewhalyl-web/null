@@ -97,7 +97,8 @@ export function CheckStrip({ post, where = "strip" }: { post: BlogPost; where?: 
 const PROOF_RULES: [RegExp, string[]][] = [
   [/google-ranking-verbessern/, ["herkules", "dogru"]], // the article itself discusses these two
   [/mitarbeiter|azubi|recruit|bewerb/, ["orchidee", "treu"]],
-  [/kanzlei|anwael|rechtsanw|arztpraxen|praxis/, ["dogru", "sg"]],
+  [/kanzlei|anwael|rechtsanw/, ["dogru", "goeren"]],
+  [/arztpraxen|praxis/, ["dogru", "sg"]],
   [/rohrreinigung|notdienst/, ["onkel", "waschbar"]],
   [/sanitaer|heizung|haustechnik|waermepumpe|baustellenfotos|marketing-kalender/, ["treu", "herkules"]],
   [/fliesen|badsanierung|schreiner|tischler/, ["bergstone", "herkules"]],
@@ -130,9 +131,13 @@ export function ProofRow({ post, where = "proof" }: { post: BlogPost; where?: st
             key={c.slug}
             href={c.page ?? "/referenzen"}
             onClick={() => trackGaEvent("blog_proof_click", { where, slug: post.slug, client: c.slug })}
-            className="group flex flex-col rounded-[18px] p-5 transition-transform hover:-translate-y-0.5"
+            className="group flex flex-col overflow-hidden rounded-[18px] p-5 transition-transform hover:-translate-y-0.5"
             style={{ background: c.tint }}
           >
+            {/* the client's own project image, as on the Referenzen page */}
+            <span className="relative -mx-5 -mt-5 mb-4 block aspect-[16/10] overflow-hidden bg-white">
+              <img src={c.img} alt={c.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+            </span>
             {c.stat ? (
               <>
                 <span className="text-[clamp(1.9rem,3.4vw,2.4rem)] font-bold leading-none tracking-[-0.055em] text-[#0e0e10]">{c.stat}</span>

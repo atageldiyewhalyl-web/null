@@ -96,7 +96,7 @@ export const batch: BlogPost[] = [
       "- **Keine gekauften oder getauschten Bewertungen.** Das verstößt gegen die Regeln von Google und gegen das Wettbewerbsrecht.",
       "Die Einzelheiten mit Beispielen für erlaubte und problematische Formulierungen stehen im Beitrag [Werbung für Anwälte nach § 43b BRAO](/blog/werbung-anwaelte-43b-brao-kanzlei-website). Dieser Ratgeber ist allgemeine Information und keine Rechtsberatung.",
       "## Beispiel aus der Praxis: Kanzlei Doğru in Mannheim",
-      "Wie das zusammenspielt, zeigt die Kanzlei Doğru in Mannheim, deren Website wir gebaut haben und betreuen. Rechtsanwalt Hasan Doğru berät unter anderem zu Erbrecht, Notarthemen und Vollmachten mit Türkei-Bezug. Die Website hat für diese Schwerpunkte eigene Seiten, jeweils auf Deutsch und Türkisch, dazu Ratgeber zu den Fragen, die Mandanten mit Türkei-Bezug wirklich stellen.",
+      "Wie das zusammenspielt, zeigt die Kanzlei Doğru in Mannheim, deren Website wir gebaut haben und betreuen. Avukat Hasan Doğru berät unter anderem zu Erbrecht, Notarthemen und Vollmachten mit Türkei-Bezug. Die Website hat für diese Schwerpunkte eigene Seiten, jeweils auf Deutsch und Türkisch, dazu Ratgeber zu den Fragen, die Mandanten mit Türkei-Bezug wirklich stellen.",
       "[ASSET: /assets/v2/referenzen/dogru/site-erbschaft.webp — Eigene Seite zum Erbrecht mit Türkei-Bezug auf der Website der Kanzlei Doğru, gebaut von nüll.]",
       "Das Ergebnis laut Google Search Console: eine durchschnittliche Position von 6,6 und rund 25 Klicks pro Tag aus der Google-Suche. Über Formular und Telefon wurden in drei Monaten 282 Anfragen gezählt. Der Grund ist keine Geheimtechnik, sondern die Kombination aus einer klaren Nische, einer Seite pro Schwerpunkt, zwei Sprachen und sauberer Technik. Die ganze Geschichte steht in der [Referenz Kanzlei Doğru](/referenzen/dogru), wie eine zweisprachige Website aufgebaut wird, im Beitrag [Mehrsprachige Kanzlei-Website](/blog/mehrsprachige-kanzlei-website-tuerkisch-deutsch).",
       "## KI-Suche: ChatGPT, Gemini und die KI-Übersicht bei Google",
@@ -147,6 +147,7 @@ export const batch: BlogPost[] = [
       "- [Schema.org: LegalService](https://schema.org/LegalService)",
       "Suchzahlen und Klickpreise: Google Keyword-Planer, Standort Mannheim, abgerufen im November 2026. Prüf bei Rechtsfragen den aktuellen Wortlaut, denn Rechtsstand und Rechtsprechung ändern sich. Dieser Beitrag ist allgemeine Information und keine Rechtsberatung.",
       "Den Überblick über die ganze Kanzlei-Website, von Kosten über Datenschutz bis Barrierefreiheit, findest du im Leitfaden [Webdesign für Rechtsanwälte und Kanzleien](/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026).",
+      "Wie SEO mit Google-Profil, Anzeigen und Empfehlungen zusammenspielt, zeigt der Ratgeber [Kanzleimarketing: So gewinnen Anwälte online Mandanten](/blog/kanzleimarketing-anwaelte-mandanten-gewinnen).",
     ],
     faqs: [
       { question: "Was ist SEO für Anwälte?", answer: "SEO für Anwälte ist die Optimierung der Kanzlei-Website und des Google-Unternehmensprofils, damit die Kanzlei bei den Suchen erscheint, die einem Mandat vorausgehen, etwa „Anwalt Arbeitsrecht“ plus Ort. Dazu gehören eine Seite pro Rechtsgebiet, Ratgeber zu echten Mandantenfragen, saubere Technik und Bewertungen." },

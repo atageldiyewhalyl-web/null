@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/ft: case study.
@@ -13,10 +14,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz FT Sicherheitstechnik: Sicherheitstechnik für Firmen, klar gegliedert | nüll." },
+  return withSocial("/referenzen/ft", [
+    { title: "Referenz FT Sicherheitstechnik: Website für Firmen | nüll." },
     { name: "description", content: "Wie FT Sicherheitstechnik in Mannheim eine neue Website mit 18 Produktseiten und Konfigurator bekam, dazu Google-Anzeigen nur für Firmenkunden." },
-  ];
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/ft.webp" });
 }
 
 const F = "/assets/v2/referenzen/ft";

@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/waschbar: case study.
@@ -12,10 +13,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
+  return withSocial("/referenzen/waschbar", [
     { title: "Referenz Waschbar: 2.491 Routen zum Waschsalon | nüll." },
     { name: "description", content: "Wie Waschbar in Heidelberg und Ludwigshafen mit Google Ads, Google Maps und einer neuen Website 2.491 Routenanfragen in drei Monaten bekommen hat." },
-  ];
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/waschbar.webp" });
 }
 
 const W = "/assets/v2/referenzen/waschbar";

@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/herkules: case study.
@@ -18,10 +19,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz Herkules Umzüge: 259 Anfragen über die neue Website | nüll." },
-    { name: "description", content: "Wie Herkules Umzüge in Mannheim mit einer neuen Website und SEO bei Google nach vorne kam: 58 Seiten, Seite 1 für „Umzugsunternehmen Mannheim“ und an drei von vier Tagen eine Anfrage." },
-  ];
+  return withSocial("/referenzen/herkules", [
+    { title: "Referenz Herkules Umzüge: 259 Anfragen | nüll." },
+    { name: "description", content: "Herkules Umzüge, Mannheim: neue Website und SEO, 58 Seiten, Seite 1 für „Umzugsunternehmen Mannheim“ und an drei von vier Tagen eine Anfrage." },
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/herkules.webp" });
 }
 
 const H = "/assets/v2/referenzen/herkules";

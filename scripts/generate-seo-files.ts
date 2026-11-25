@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import { blogPosts } from "../app/components/blogData";
 import { CITY_PATHS } from "../app/components/v2/cities";
+import { CASE_LIST } from "../app/components/v2/caseList";
 
 const SITE = "https://nuell-agentur.com";
 const posts = blogPosts.filter((p) => p.lang === "de").sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -62,7 +63,7 @@ ${CITY_PATHS.map((p) => `- ${SITE}${p}`).join("\n")}
 
 ## Referenzen
 - [Alle Referenzen](${SITE}/referenzen)
-- Treu Haustechnik, Onkel Abwassertechnik, FT Sicherheitstechnik, SG Laserzentrum, Waschbar, Bergstone Keramiksan, Kanzlei Doğru, S&O Beauty, B.Y. Consulting, Pflegedienst Orchidee
+${CASE_LIST.filter((c) => c.page).map((c) => `- [${c.client}, ${c.place}](${SITE}${c.page}): ${c.headline}${c.stat ? ` ${c.stat} ${c.statRest}.` : ""}`).join("\n")}
 
 ## Ratgeber (${posts.length} Artikel)
 - [Alle Artikel](${SITE}/blog)

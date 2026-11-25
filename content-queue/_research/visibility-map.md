@@ -1,5 +1,5 @@
 # Visibility Map — Nüll. (nüll.com)
-_Last updated: 2026-07-10_
+_Last updated: 2026-11-25 (Kanzlei cluster: GSC both properties + Keyword-Planer DE; see 2026-11-25-kanzlei-keywords.json)_
 
 ## 1. What Nüll. offers
 Web design & SEO agency (Mannheim) serving three distinct DE audience tracks:

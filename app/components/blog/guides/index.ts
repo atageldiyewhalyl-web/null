@@ -11,10 +11,11 @@ import { batch as i } from "./batch-i";
 import { batch as j } from "./batch-j";
 import { batch as k } from "./batch-k";
 import { batch as l } from "./batch-l";
+import { batch as m } from "./batch-m";
 
 /*
  * The 50 long-form guides (Nov 2026): Kanzleien, Arztpraxen, Berater und Dienstleister, Handwerk (Lücken) and
  * Website-Themen für alle. Each batch file holds five German articles in the BlogPost format.
  * Images are existing site assets where one fits; generated photos are in public/assets/blog/guides.
  */
-export const guidePosts: BlogPost[] = [...a, ...b, ...c, ...d, ...e, ...f, ...g, ...h, ...i, ...j, ...k, ...l];
+export const guidePosts: BlogPost[] = [...a, ...b, ...c, ...d, ...e, ...f, ...g, ...h, ...i, ...j, ...k, ...l, ...m];

@@ -21,6 +21,7 @@ export default [
   route("referenzen/treu", "routes/v2-referenz-treu.tsx"),
   route("referenzen/herkules", "routes/v2-referenz-herkules.tsx"),
   route("referenzen/dogru", "routes/v2-referenz-dogru.tsx"),
+  route("referenzen/goeren", "routes/v2-referenz-goeren.tsx"),
   route("referenzen/sg", "routes/v2-referenz-sg.tsx"),
   route("referenzen/so", "routes/v2-referenz-so.tsx"),
   route("referenzen/ft", "routes/v2-referenz-ft.tsx"),

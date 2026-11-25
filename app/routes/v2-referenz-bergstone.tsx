@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/bergstone: case study.
@@ -16,10 +17,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz Bergstone Keramiksan: 150 Produktseiten, 360°-Rundgang und Reels | nüll." },
-    { name: "description", content: "Wie Bergstone Keramiksan in Ludwigshafen eine neue Website mit 150 Produktseiten und 360°-Rundgang bekam, dazu Reels aus dem Showroom und Anzeigen auf Facebook und Instagram." },
-  ];
+  return withSocial("/referenzen/bergstone", [
+    { title: "Referenz Bergstone Keramiksan: 150 Produktseiten | nüll." },
+    { name: "description", content: "Bergstone Keramiksan, Ludwigshafen: neue Website mit 150 Produktseiten und 360°-Rundgang, dazu Reels und Anzeigen auf Facebook und Instagram." },
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/bergstone.webp" });
 }
 
 const B = "/assets/v2/referenzen/bergstone";

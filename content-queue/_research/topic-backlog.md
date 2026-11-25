@@ -61,3 +61,23 @@ _Last updated: 2026-07-10_
 - angle: Anwälte track is reasonably covered; this fills a specific compliance-adjacent gap (Werberecht für Anwälte, § 43b BRAO)
 - score: 5
 - status: pending
+
+## Kanzleimarketing: So gewinnen Anwälte online Mandanten
+- primary_kw: kanzleimarketing (vol: 110/mo DE, difficulty: comp HIGH in Ads, organic SERP weak)
+- secondary_kws: kanzlei marketing 70, mandantenakquise 70, marketing für anwälte 50, rechtsanwalt marketing 50
+- intent: commercial
+- serp_evidence: generic listicles and consultant pages, no data (inspected 25 Nov 2026)
+- angle: Keyword-Planer data per practice area + real Kanzlei numbers + § 43b BRAO
+- score: 9
+- status: written:2026-11-25
+
+## Kanzlei-Website neu: 3 Anfragen in 48 Stunden (Fallstudie Meral Gören)
+- primary_kw: kanzlei website relaunch (vol: <10)
+- intent: commercial (proof)
+- score: 6 (sales proof, internal-link target)
+- status: written:2026-11-25
+
+## Next Kanzlei candidates (from Keyword-Planer 25 Nov 2026, not yet inspected)
+- homepage für rechtsanwälte / rechtsanwalt homepage (30 each, comp HIGH) — check overlap with webdesign posts first
+- online marketing für rechtsanwälte (30) — covered by the Kanzleimarketing pillar, do not write separately
+- seo für kanzleien / seo rechtsanwalt (20–70) — covered by seo-fuer-anwaelte-kanzleien

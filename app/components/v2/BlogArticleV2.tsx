@@ -12,6 +12,8 @@ import { CTA_SERVICES, cover, dePosts, fmtDate, fmtRead, postAudience, postServi
 import { SERVICE } from "./links";
 import { PostCard } from "./BlogIndexV2";
 import { authorFor } from "./authors";
+import { CASE_LIST } from "./caseList";
+import { trackGaEvent } from "../../utils/tracking";
 import { CheckStrip, ContactBand, ContactButtons, InquiryCalc, PHONE, ProofRow, SelfTest, SidebarLead, StickyBar, trackBlog, waLink } from "./BlogConversion";
 
 /*
@@ -59,7 +61,38 @@ type Node =
   | { k: "img"; src: string; label: string }
   | { k: "visual"; name: string }
   | { k: "cta"; key: string; headline?: string }
-  | { k: "mod"; name: Mod };
+  | { k: "mod"; name: Mod }
+  | { k: "scene"; img: string; bg: string; kicker: string; title: string; text: string; dark: boolean }
+  | { k: "case"; slug: string };
+
+/*
+ * Proof cards for [CASE: slug]: a client's real website on devices plus the figures published on its reference page.
+ * Only figures that are already public on /referenzen/<slug> go here (each reference route's header names the source).
+ */
+const CASE_ART: Record<string, { img: string; text: string; stat: string; statRest: string; facts: { v: string; l: string }[] }> = {
+  goeren: {
+    img: "/assets/blog/kanzleimarketing/goeren-devices.webp",
+    stat: "3",
+    statRest: "Anfragen in den ersten 48 Stunden nach dem Start",
+    text: "Rechtsanwältin Meral Gören, Mannheim: neue Website, jede Seite auf Deutsch und Türkisch, Anfrage per Formular und WhatsApp. Online seit 23. November 2026, am Tag danach kamen die ersten drei Anfragen.",
+    facts: [
+      { v: "2 von 3", l: "Anfragen auf Türkisch" },
+      { v: "30", l: "Seiten auf Deutsch und Türkisch" },
+      { v: "6", l: "Klicks auf WhatsApp in 48 Stunden" },
+    ],
+  },
+  dogru: {
+    img: "/assets/blog/kanzleimarketing/dogru-devices.webp",
+    stat: "282",
+    statRest: "Anfragen in drei Monaten, per Formular und Anruf",
+    text: "Kanzlei Doğru, Mannheim: türkisches Recht für Mandanten in Deutschland. Website in drei Sprachen, Ratgeber zu den Fragen, die Familien wirklich stellen, und Google-Anzeigen für Familien-, Straf- und Erbrecht.",
+    facts: [
+      { v: "5×", l: "so viele Klicks aus Google wie im Winter" },
+      { v: "6,6", l: "Ø Position bei Google" },
+      { v: "25", l: "Klicks pro Tag aus der Google-Suche" },
+    ],
+  },
+};
 
 type Mod = "CHECK" | "PROOF" | "SELFTEST" | "CALC" | "CONTACT";
 
@@ -70,6 +103,16 @@ function parse(blocks: string[]): Node[] {
   for (let i = 0; i < blocks.length; i++) {
     const b = blocks[i].trim();
     if (!b) continue;
+    if (b.startsWith("[SCENE:")) {
+      // [SCENE: cutout.png | background.webp | kicker | title | text | dark?]
+      const [img, bg, kicker, title, text, tone] = b.replace(/^\[SCENE:\s*/, "").replace(/\]$/, "").split("|").map((x) => x.trim());
+      out.push({ k: "scene", img, bg, kicker, title, text: text ?? "", dark: tone === "dark" });
+      continue;
+    }
+    if (b.startsWith("[CASE:")) {
+      out.push({ k: "case", slug: b.replace(/^\[CASE:\s*/, "").replace(/\]$/, "").trim() });
+      continue;
+    }
     if (/^\[(PROVIDERS_CAROUSEL|BFSG_VISUAL|DSGVO_VISUAL|POSITIVBEISPIEL|METHODEN_QUICK)\]$/.test(b)) {
       out.push({ k: "visual", name: b.slice(1, -1) });
     } else if (/^\[CTA(:|\])/.test(b)) {
@@ -150,7 +193,8 @@ function planModules(nodes: Node[], service: string): Node[] {
     const firstP = out.findIndex((n) => n.k === "p");
     out.splice(firstP >= 0 ? firstP + 1 : 0, 0, { k: "mod", name: "CHECK" });
   }
-  if (!has("PROOF")) put("PROOF", 0.4);
+  // a post that places its own case cards already carries the proof
+  if (!has("PROOF") && !nodes.some((n) => n.k === "case")) put("PROOF", 0.4);
   if (!hasTool) put(tool, 0.7);
   return out;
 }
@@ -335,6 +379,53 @@ function Body({ nodes, post }: { nodes: Node[]; post: BlogPost }) {
             if (n.name === "SELFTEST") return <SelfTest key={i} post={post} />;
             if (n.name === "CALC") return <InquiryCalc key={i} post={post} />;
             return <ContactBand key={i} post={post} where="inline" />;
+          case "scene":
+            /* editorial panel: textured background, a cut-out object breaking out of the frame, a short thought */
+            return (
+              <figure key={i} className="relative my-16 rounded-[24px] bg-cover bg-center shadow-[0_24px_60px_-34px_rgba(20,12,4,0.55)]" style={{ backgroundImage: `url(${n.bg})` }}>
+                <div className="grid items-center gap-2 p-6 sm:grid-cols-[1.2fr_0.8fr] sm:gap-6 sm:p-9">
+                  <figcaption className="relative z-10 order-2 sm:order-1">
+                    <p className="text-[0.72rem] font-black uppercase tracking-[0.2em]" style={{ color: n.dark ? "#c9a063" : "#9a6f34" }}>{n.kicker}</p>
+                    <p className={`mt-3 max-w-[22ch] text-[clamp(1.45rem,2.6vw,2rem)] font-bold leading-[1.08] tracking-[-0.045em] ${n.dark ? "text-white" : "text-[#0e0e10]"}`}>{n.title}</p>
+                    {n.text && <p className={`mt-3 max-w-[44ch] text-[1rem] font-medium leading-[1.55] ${n.dark ? "text-white/80" : "text-[#424245]"}`}>{inline(n.text)}</p>}
+                  </figcaption>
+                  <div className="relative order-1 -mt-14 sm:order-2 sm:-my-16">
+                    <img src={n.img} alt="" loading="lazy" className="mx-auto block w-[58%] max-w-[320px] drop-shadow-[0_30px_28px_rgba(20,12,4,0.38)] transition-transform duration-700 hover:-translate-y-1 hover:rotate-[-2deg] sm:w-full" />
+                  </div>
+                </div>
+              </figure>
+            );
+          case "case": {
+            /* a client's real website and its published figures, linking to the reference */
+            const c = CASE_LIST.find((x) => x.slug === n.slug);
+            const art = CASE_ART[n.slug];
+            if (!c || !art) return null;
+            return (
+              <aside key={i} className="my-14 overflow-hidden rounded-[24px] ring-1 ring-black/[0.06]" style={{ background: c.tint }} aria-label={`Referenz ${c.client}`}>
+                <div className="px-6 pt-6 sm:px-9 sm:pt-9">
+                  <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-[#007aff]">Aus unserer Arbeit · {c.client}</p>
+                  <div className="mt-4 flex flex-wrap items-end gap-x-5 gap-y-2">
+                    <p className="text-[clamp(3.2rem,7vw,4.8rem)] font-bold leading-[0.85] tracking-[-0.07em] text-[#0e0e10] tabular-nums">{art.stat}</p>
+                    <p className="max-w-[24ch] pb-1 text-[1.02rem] font-semibold leading-[1.3] text-[#424245]">{art.statRest}</p>
+                  </div>
+                  <p className="mt-4 max-w-[56ch] text-[1.02rem] font-medium leading-[1.55] text-[#424245]">{art.text}</p>
+                </div>
+                <img src={art.img} alt={c.alt} loading="lazy" className="mx-auto mt-2 block w-[96%] mix-blend-multiply" />
+                <div className="grid gap-px border-t border-black/[0.07] bg-black/[0.07] sm:grid-cols-3">
+                  {art.facts.map((f) => (
+                    <div key={f.l} className="px-6 py-5 sm:px-7" style={{ background: c.tint }}>
+                      <p className="text-[1.6rem] font-bold leading-none tracking-[-0.05em] text-[#0e0e10] tabular-nums">{f.v}</p>
+                      <p className="mt-1.5 text-[0.88rem] font-semibold leading-snug text-[#6b7280]">{f.l}</p>
+                    </div>
+                  ))}
+                </div>
+                <a href={c.page ?? "/referenzen"} onClick={() => trackGaEvent("blog_proof_click", { where: "case", slug: post.slug, client: n.slug })} className="group flex items-center justify-between gap-3 border-t border-black/[0.07] px-6 py-4 text-[0.95rem] font-bold text-[#0e0e10] sm:px-9">
+                  Ganze Referenz ansehen
+                  <ArrowUpRight size={18} strokeWidth={2.4} aria-hidden className="text-[#007aff] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+              </aside>
+            );
+          }
           case "visual":
             if (n.name === "PROVIDERS_CAROUSEL") return post.providers?.length ? <ProviderEditorialList key={i} providers={post.providers} /> : null;
             if (n.name === "BFSG_VISUAL") return <BFSGVisual key={i} />;

@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/by: case study.
@@ -10,10 +11,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
+  return withSocial("/referenzen/by", [
     { title: "Referenz B.Y. Consulting: ein Mentor, eine klare Marke | nüll." },
     { name: "description", content: "Wie Besir Yaman, Mentor für Versicherungsvermittler in Heidelberg, eine Marke und Website von Grund auf bekam." },
-  ];
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/by.webp" });
 }
 
 const Y = "/assets/v2/referenzen/by";

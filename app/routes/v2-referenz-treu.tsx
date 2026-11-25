@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/treu: case study.
@@ -15,10 +16,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz Treu Haustechnik: wöchentlicher Ratgeber und zwei Reels am Tag | nüll." },
+  return withSocial("/referenzen/treu", [
+    { title: "Referenz Treu Haustechnik: Ratgeber und Reels | nüll." },
     { name: "description", content: "Wie der SHK-Meisterbetrieb Treu Haustechnik in Mannheim sichtbar wird: neue Website, jede Woche ein Ratgeber-Artikel und zwei Reels am Tag auf Instagram." },
-  ];
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/treu.webp" });
 }
 
 const T = "/assets/v2/referenzen/treu";

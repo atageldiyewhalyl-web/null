@@ -28,6 +28,7 @@ export default {
     "/referenzen/treu",
     "/referenzen/herkules",
     "/referenzen/dogru",
+    "/referenzen/goeren",
     "/referenzen/sg",
     "/referenzen/so",
     "/referenzen/ft",

@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/dogru: case study.
@@ -17,10 +18,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
+  return withSocial("/referenzen/dogru", [
     { title: "Referenz Kanzlei Doğru: 282 Anfragen in drei Monaten | nüll." },
     { name: "description", content: "Wie die Kanzlei Doğru in Mannheim mit einer Website in drei Sprachen, Ratgebern und Google-Anzeigen gefunden wird: 282 Anfragen in drei Monaten." },
-  ];
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/hasan.webp" });
 }
 
 const D = "/assets/v2/referenzen/dogru";
@@ -131,6 +132,18 @@ const cfg: CaseConfig = {
       { title: "Google-Anzeigen", logos: ["/assets/v2/brands/google-ads.svg"], points: ["Kampagnen für Familien-, Straf- und Erbrecht", "Anruf-Knopf in allen Anzeigen", "104 ausschließende Keywords gegen unpassende Suchen", "Nur in Deutschland ausgespielt"] },
       { title: "SEO & Bericht", icon: "report", points: ["Sprachversionen für Google sauber verknüpft", "Strukturierte Daten für Kanzlei, FAQ und Artikel", "Monatlicher Bericht auf Türkisch und Englisch"] },
     ],
+  },
+  // Both sites name each other as cooperation partners (checked on hasandogru.de/de, /tr, /en and kanzlei-goeren.de, 25 Nov 2026).
+  partner: {
+    kicker: "Kooperation",
+    title: "Zwei Kanzleien, beide mit Website von uns.",
+    text: "Die Doğru Kanzlei arbeitet mit Rechtsanwältin Meral Gören in Mannheim zusammen. Beide Websites nennen sich gegenseitig als Partner, auf Deutsch und auf Türkisch.",
+    img: "/assets/v2/mockups/goeren.webp",
+    alt: "Website der Kanzlei Meral Gören auf Laptop und Smartphone",
+    logo: "/assets/v2/referenzen/goeren/logo.png",
+    logoAlt: "Rechtsanwaltskanzlei Meral Gören",
+    href: "/referenzen/goeren",
+    cta: "Referenz Kanzlei Meral Gören",
   },
   quote: { text: "Seit dem neuen Auftritt verstehen Besucher sofort, was wir anbieten. Die Website bringt klarere Anfragen.", who: "Kanzlei Doğru, Mannheim" },
 };

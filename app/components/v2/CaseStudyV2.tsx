@@ -78,7 +78,17 @@ export type CaseConfig = {
   work?: { title: string; intro?: string; groups: { title: string; logos?: string[]; icon?: "web" | "blog" | "report" | "form" | "image" | "video"; points: string[] }[] }; // what we did, grouped, without dates
   site?: { img: string; alt: string; url: string; text: string };
   quote?: { text: string; who: string };
+  // the old site next to the new one, same frame and crop
+  beforeAfter?: { title: string; statement: string; text?: string; before: BeforeAfterSide; after: BeforeAfterSide };
+  // a young site's first days: how the enquiries split (bars of real counts) plus a few single figures
+  firstDays?: { title: string; intro: string; splits: { title: string; parts: { label: string; value: number }[] }[]; tiles: { value: string; label: string; sub: string }[]; source: string };
+  // the launch, step by step with real dates (shown next to `work`, which hides the older dated `timeline`)
+  launch?: { title: string; intro?: string; items: { date: string; title: string; text: string }[] };
+  // another nüll. client the business works with, linking to that reference
+  partner?: { kicker: string; title: string; text: string; img: string; alt: string; logo: string; logoAlt: string; href: string; cta: string };
 };
+
+type BeforeAfterSide = { img: string; alt: string; label: string; note: string; url: string };
 
 type NumbersCfg = CaseConfig["numbers"];
 
@@ -1367,6 +1377,45 @@ export default function CaseStudyV2({ cfg }: { cfg: CaseConfig }) {
 
         )}
 
+        {/* before and after: the old site next to the new one */}
+        {cfg.beforeAfter && (
+          <section className="py-20 md:py-28">
+            <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
+              <motion.div {...r()} className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
+                <div>
+                  <p className={LABEL} style={{ color: accent }}>{cfg.beforeAfter.title}</p>
+                  <h2 className="mt-4 max-w-[18ch] text-[clamp(2.2rem,5.6vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.06em] text-[#0e0e10]">
+                    {cfg.beforeAfter.statement}
+                    <span style={{ color: accent }}>.</span>
+                  </h2>
+                </div>
+                {cfg.beforeAfter.text && <p className="max-w-[46ch] text-[1.02rem] font-medium leading-[1.5] text-[#6b7280]">{cfg.beforeAfter.text}</p>}
+              </motion.div>
+              <div className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-6">
+                {[cfg.beforeAfter.before, cfg.beforeAfter.after].map((s, i) => (
+                  <motion.figure key={s.label} {...r(0.04 + i * 0.08)}>
+                    <div className={`overflow-hidden rounded-[18px] bg-white ring-1 ring-black/10 ${SHADOW}`}>
+                      <div className="flex items-center gap-2 border-b border-black/5 bg-[#f5f5f7] px-3.5 py-2.5">
+                        <span className="flex gap-1.5" aria-hidden>
+                          <i className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                          <i className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                          <i className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                        </span>
+                        <span className="mx-auto truncate rounded-full bg-white px-3 py-0.5 text-[0.72rem] font-semibold text-[#6b7280]">{s.url}</span>
+                      </div>
+                      <img src={s.img} alt={s.alt} loading="lazy" className={`block aspect-[16/10] w-full object-cover object-top ${i === 0 ? "grayscale-[35%]" : ""}`} />
+                    </div>
+                    <figcaption className="mt-4 flex items-baseline gap-3">
+                      <span className="rounded-full px-3 py-1 text-[0.75rem] font-black uppercase tracking-[0.12em] text-white" style={{ background: i === 0 ? "#86868b" : ink }}>{s.label}</span>
+                      <span className="text-[0.95rem] font-medium leading-snug text-[#424245]">{s.note}</span>
+                    </figcaption>
+                  </motion.figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {cfg.blog && (
           /* the publishing rhythm: week by week, then every article as it looks live */
           <section className="py-20 md:py-28">
@@ -1584,8 +1633,91 @@ export default function CaseStudyV2({ cfg }: { cfg: CaseConfig }) {
         </section>
         )}
 
+        {/* a young site's first days: real counts as split bars, plus single figures */}
+        {cfg.firstDays && (
+          <section className="py-20 md:py-28" style={{ background: soft }}>
+            <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
+              <motion.div {...r()} className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
+                <H2 accent={accent}>{cfg.firstDays.title}</H2>
+                <p className="max-w-[46ch] text-[1.02rem] font-medium leading-[1.5] text-[#6b7280]">{cfg.firstDays.intro}</p>
+              </motion.div>
+              <div className="mt-10 grid gap-2.5 md:mt-14 md:grid-cols-12 md:gap-4">
+                <motion.div {...r(0.04)} className={`rounded-[24px] bg-white p-6 md:col-span-7 md:p-8 ${SHADOW}`}>
+                  <div className="space-y-8">
+                    {cfg.firstDays.splits.map((s) => {
+                      const total = s.parts.reduce((a, p) => a + p.value, 0) || 1;
+                      return (
+                        <div key={s.title}>
+                          <p className={LABEL} style={{ color: ink }}>{s.title}</p>
+                          <div className="mt-4 flex h-12 gap-1.5 overflow-hidden rounded-[14px]">
+                            {s.parts.map((p, i) => (
+                              <motion.div
+                                key={p.label}
+                                initial={reduce ? false : { scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                viewport={{ once: true, amount: 0.6 }}
+                                transition={{ duration: 0.8, delay: 0.1 + i * 0.12, ease: EASE }}
+                                className="flex origin-left items-center px-4 text-[1.25rem] font-bold tabular-nums text-white"
+                                style={{ width: `${(p.value / total) * 100}%`, background: i === 0 ? accent : ink }}
+                              >
+                                {p.value}
+                              </motion.div>
+                            ))}
+                          </div>
+                          <div className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1">
+                            {s.parts.map((p, i) => (
+                              <span key={p.label} className="flex items-center gap-2 text-[0.9rem] font-semibold text-[#424245]">
+                                <i aria-hidden className="h-2.5 w-2.5 rounded-full" style={{ background: i === 0 ? accent : ink }} />
+                                {p.label}: {p.value}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+                <div className="grid gap-2.5 md:col-span-5 md:gap-4">
+                  {cfg.firstDays.tiles.map((t, i) => (
+                    <motion.div key={t.label} {...r(0.08 + i * 0.06)} className={`flex flex-col justify-between rounded-[24px] p-6 text-white md:p-8 ${SHADOW}`} style={{ background: ink }}>
+                      <p className="text-[clamp(2.4rem,4vw,3.4rem)] font-bold leading-none tracking-[-0.06em] tabular-nums" style={{ color: bright }}>{t.value}</p>
+                      <div className="mt-4">
+                        <p className="text-[1rem] font-bold tracking-[-0.02em] text-white">{t.label}</p>
+                        <p className="mt-1 text-[0.88rem] font-medium leading-snug text-white/65">{t.sub}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <p className="mt-4 text-[0.8rem] font-medium leading-snug text-[#86868b]">{cfg.firstDays.source}</p>
+            </div>
+          </section>
+        )}
+
         {/* the client's pictures and videos (before the numbers when galleryFirst) */}
         {!cfg.galleryFirst && galleryEl}
+
+        {/* the launch, step by step */}
+        {cfg.launch && (
+          <section className="py-20 md:py-28">
+            <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
+              <motion.div {...r()} className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
+                <H2 accent={accent}>{cfg.launch.title}</H2>
+                {cfg.launch.intro && <p className="max-w-[46ch] text-[1.02rem] font-medium leading-[1.5] text-[#6b7280]">{cfg.launch.intro}</p>}
+              </motion.div>
+              <ol className="relative mt-10 grid gap-8 md:mt-14 md:gap-6" style={{ gridTemplateColumns: `repeat(auto-fit, minmax(220px, 1fr))` }}>
+                {cfg.launch.items.map((t, i) => (
+                  <motion.li key={t.date + t.title} {...r(0.04 + i * 0.08)} className="relative border-t-2 pt-6" style={{ borderColor: i === cfg.launch!.items.length - 1 ? `${accent}55` : accent }}>
+                    <span aria-hidden className="absolute -top-[7px] left-0 h-3 w-3 rounded-full" style={{ background: accent }} />
+                    <p className="text-[0.95rem] font-black tabular-nums" style={{ color: accent }}>{t.date}</p>
+                    <p className="mt-2 text-[1.35rem] font-bold leading-tight tracking-[-0.04em] text-[#0e0e10]">{t.title}</p>
+                    <p className="mt-2 text-[0.97rem] font-medium leading-[1.5] text-[#424245]">{t.text}</p>
+                  </motion.li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        )}
 
         {/* what we did: grouped by area, with the real platforms */}
         {cfg.work ? (
@@ -1644,6 +1776,30 @@ export default function CaseStudyV2({ cfg }: { cfg: CaseConfig }) {
             </ol>
           </div>
         </section>
+        )}
+
+        {/* a partner business that is also our client, linking to its reference */}
+        {cfg.partner && (
+          <section className="pb-20 md:pb-28">
+            <div className="mx-auto w-full max-w-[1360px] px-4 md:px-8">
+              <motion.a {...r()} href={cfg.partner.href} className="group grid overflow-hidden rounded-[28px] md:grid-cols-12" style={{ background: soft }}>
+                <div className="flex flex-col justify-between gap-8 p-7 md:col-span-5 md:p-10">
+                  <div>
+                    <p className={LABEL} style={{ color: accent }}>{cfg.partner.kicker}</p>
+                    <img src={cfg.partner.logo} alt={cfg.partner.logoAlt} loading="lazy" className="mt-6 h-14 w-auto" />
+                    <p className="mt-6 text-[clamp(1.6rem,2.8vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.05em] text-[#0e0e10]">{cfg.partner.title}</p>
+                    <p className="mt-4 max-w-[46ch] text-[1rem] font-medium leading-[1.55] text-[#424245]">{cfg.partner.text}</p>
+                  </div>
+                  <span className="flex w-max items-center gap-2 rounded-full px-5 py-3 text-[0.95rem] font-bold text-white transition-transform group-hover:translate-x-1" style={{ background: ink }}>
+                    {cfg.partner.cta} <ArrowRight size={17} aria-hidden />
+                  </span>
+                </div>
+                <div className="relative flex items-center justify-center bg-white p-6 md:col-span-7 md:p-10">
+                  <img src={cfg.partner.img} alt={cfg.partner.alt} loading="lazy" className="w-full max-w-[640px] mix-blend-multiply transition-transform duration-700 group-hover:scale-[1.02]" />
+                </div>
+              </motion.a>
+            </div>
+          </section>
         )}
 
         {/* the website, then the owner's words */}

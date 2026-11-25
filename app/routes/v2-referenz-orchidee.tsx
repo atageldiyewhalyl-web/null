@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/orchidee: case study.
@@ -13,10 +14,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz Pflegedienst Orchidee: 41 Bewerbungen in 3 Wochen | nüll." },
-    { name: "description", content: "Wie der Pflegedienst Orchidee in Koblenz mit Anzeigen auf Facebook und Instagram 41 Bewerbungen von Pflegekräften in drei Wochen bekommen hat, direkt über ein kurzes Formular in der App." },
-  ];
+  return withSocial("/referenzen/orchidee", [
+    { title: "Referenz Pflegedienst Orchidee: 41 Bewerbungen | nüll." },
+    { name: "description", content: "Pflegedienst Orchidee, Koblenz: 41 Bewerbungen von Pflegekräften in drei Wochen, über Anzeigen auf Facebook und Instagram und ein kurzes Formular." },
+  ]);
 }
 
 const O = "/assets/v2/referenzen/orchidee";

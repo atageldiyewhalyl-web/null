@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/sg: case study.
@@ -14,10 +15,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
+  return withSocial("/referenzen/sg", [
     { title: "Referenz SG Laserzentrum: acht Studios, ein Auftritt | nüll." },
-    { name: "description", content: "Wie SG Laserzentrum eine neue Website für acht Studios bekam: jedes Studio mit eigener Seite, Team und Online-Buchung, dazu Ratgeber und eine Seite für Franchise und Karriere." },
-  ];
+    { name: "description", content: "SG Laserzentrum: neue Website für acht Studios, jedes mit eigener Seite, Team und Online-Buchung, dazu Ratgeber und eine Seite für Franchise." },
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/sg.webp" });
 }
 
 const S = "/assets/v2/referenzen/sg";

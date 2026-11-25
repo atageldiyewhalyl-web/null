@@ -1,4 +1,5 @@
 import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
+import { withSocial } from "../utils/seoMeta";
 
 /*
  * /referenzen/onkel: case study.
@@ -11,10 +12,10 @@ import CaseStudyV2, { type CaseConfig } from "../components/v2/CaseStudyV2";
  */
 
 export function meta() {
-  return [
-    { title: "Referenz Onkel Abwassertechnik: Rohr- und Kanalreinigung, klar erklärt | nüll." },
+  return withSocial("/referenzen/onkel", [
+    { title: "Referenz Onkel Abwassertechnik: Rohrreinigung | nüll." },
     { name: "description", content: "Wie Onkel Abwassertechnik in Mannheim eine Website bekam, die im Notfall sofort zum Anruf führt: 9 Leistungsseiten und 10 Ratgeber-Artikel." },
-  ];
+  ], { image: "https://nuell-agentur.com/assets/v2/mockups/onkel.webp" });
 }
 
 const K = "/assets/v2/referenzen/onkel";
