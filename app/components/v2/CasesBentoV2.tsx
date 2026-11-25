@@ -5,7 +5,8 @@ import { REFS } from "./links";
  * "Ausgewählte Arbeiten." Four best cases as a bento (wide/narrow, narrow/wide),
  * after the systrastudios.de "Projekte" layout. All cases live on the Referenzen page.
  * Scene images: Higgsfield Nano Banana scenes built from real screenshots / real ads of each client.
- * Numbers come from our monthly reports (see CasesV2.tsx header for sources).
+ * Numbers come from our monthly reports (see CasesV2.tsx header for sources); Gören from the site's enquiry log, 23–24 Nov 2026.
+ * Gören scene: Codex image gen from a real screenshot of kanzlei-goeren.de (replaced Bergstone on 25 Nov 2026).
  */
 
 const REFS_HREF = REFS;
@@ -54,17 +55,17 @@ const TILES: Tile[] = [
     page: "/referenzen/orchidee",
   },
   {
-    slug: "bergstone",
-    client: "Bergstone Keramiksan",
-    place: "Ludwigshafen",
-    services: "Reels & Meta Ads",
-    stat: "36.757",
-    statRest: "Menschen erreicht",
-    headline: "Reels, die zeigen, wie die Platten wirklich aussehen.",
-    img: `${B}/bergstone.webp`,
-    alt: "Drei Smartphones mit Instagram-Reels von Bergstone Keramiksan",
+    slug: "goeren",
+    client: "Kanzlei Meral Gören",
+    place: "Mannheim",
+    services: "Website & SEO",
+    stat: "3",
+    statRest: "Anfragen in 48 Stunden",
+    headline: "Eine Kanzlei, zwei Sprachen, die ersten Anfragen am zweiten Tag.",
+    img: `${B}/goeren-kanzlei.webp`,
+    alt: "Laptop mit der Website der Kanzlei Meral Gören auf einem Schreibtisch in einer Kanzlei",
     wide: false,
-    page: "/referenzen/bergstone",
+    page: "/referenzen/goeren",
   },
   {
     slug: "treu",
@@ -91,7 +92,7 @@ export default function CasesBentoV2() {
               Ausgewählte Arbeiten<span className="text-[#007aff]">.</span>
             </h2>
             <p className="mt-5 max-w-[46ch] text-[1.08rem] font-medium leading-[1.42] tracking-[-0.02em] text-[#424245]">
-              Vier Betriebe, echte Zahlen aus unseren Monatsberichten.
+              Vier Betriebe, echte Zahlen aus unseren Berichten.
             </p>
           </div>
           <a href={REFS_HREF} className="w-max border-b-2 border-[#111111] pb-0.5 text-[1.05rem] font-black tracking-[-0.04em] text-[#111111] transition-opacity hover:opacity-55">
