@@ -37,6 +37,7 @@ export const BUILT_BY_NULL: Record<string, { client: string; slug: string | null
   "treu-haustechnik.de": { client: "Treu Haustechnik", slug: "treu" },
   "umzuege-herkules.de": { client: "Herkules Umzüge", slug: "herkules" },
   "hasandogru.de": { client: "Avukat Hasan Doğru", slug: "dogru" },
+  "kanzlei-goeren.de": { client: "Kanzlei Meral Gören", slug: "goeren" },
   "sg-laserzentrum.de": { client: "SG Laserzentrum", slug: "sg" },
   "beautyso.de": { client: "S&O Beauty", slug: "so" },
   "ftsicherheitstechnik.com": { client: "FT Sicherheitstechnik", slug: "ft" },
