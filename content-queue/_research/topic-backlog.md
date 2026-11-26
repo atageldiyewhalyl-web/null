@@ -81,3 +81,17 @@ _Last updated: 2026-07-10_
 - homepage für rechtsanwälte / rechtsanwalt homepage (30 each, comp HIGH) — check overlap with webdesign posts first
 - online marketing für rechtsanwälte (30) — covered by the Kanzleimarketing pillar, do not write separately
 - seo für kanzleien / seo rechtsanwalt (20–70) — covered by seo-fuer-anwaelte-kanzleien
+
+## Entrümpelung Aufträge finden
+- primary_kw: entrümpelung aufträge finden (vol: 260/mo DE)
+- intent: commercial (business owners)
+- score: 8
+- status: written:2026-11-26
+
+## Website für eine Entrümpelungsfirma (Fallstudie Entrümplerhelden)
+- primary_kw: website entrümpelungsfirma (vol: <10)
+- score: 6 (proof)
+- status: written:2026-11-26
+
+## Next candidates (Keyword-Planer 26 Nov 2026, not inspected)
+- entrümpelungsfirma gründen (50) - business owners, links to the Aufträge guide

@@ -367,6 +367,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://nuell-agentur.com/referenzen/entruemplerhelden</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nuell-agentur.com/referenzen/sg</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -425,6 +431,14 @@
     <lastmod>2026-05-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://nuell-agentur.com/blog/entruempelung-auftraege-finden</loc>
+    <lastmod>2026-11-26</lastmod>
+  </url>
+  <url>
+    <loc>https://nuell-agentur.com/blog/website-entruempelungsfirma-fallstudie</loc>
+    <lastmod>2026-11-26</lastmod>
   </url>
   <url>
     <loc>https://nuell-agentur.com/blog/kanzleimarketing-anwaelte-mandanten-gewinnen</loc>

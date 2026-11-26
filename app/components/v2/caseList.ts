@@ -4,6 +4,7 @@
  *  Waschbar: Google Ads report 6 Aug–5 Nov 2026. Orchidee: Meta report Oct 2026. Bergstone: site repo (150 products).
  *  Herkules: SEO report Oct 2026. Kanzlei Doğru: review Nov 2026. Treu: blog list in the site repo.
  *  Kanzlei Meral Gören: enquiry log meral_anfragen, 23–24 Nov 2026 (see the route header).
+ *  Die Entrümplerhelden: live site and repo at launch, 26 Nov 2026 (page counts only, no results yet).
  *  SG, S&O, FT, Onkel, B.Y.: no measured data shown, only what we built.
  */
 
@@ -136,6 +137,21 @@ export const CASE_LIST: CaseEntry[] = [
     headline: "Eine Kanzlei, zwei Sprachen, die ersten Anfragen am zweiten Tag.",
     facts: ["2 von 3 Anfragen auf Türkisch", "30 Seiten auf Deutsch und Türkisch"],
     page: "/referenzen/goeren",
+  },
+  {
+    slug: "entruemplerhelden",
+    tint: "#fbf1ef",
+    client: "Die Entrümplerhelden",
+    place: "Ludwigshafen",
+    services: ["Website", "SEO", "Ratgeber"],
+    tags: ["web", "seo"],
+    img: `${B}/entruemplerhelden.webp`,
+    alt: "Website der Entrümplerhelden auf Laptop und Smartphone",
+    stat: "82",
+    statRest: "Seiten zum Start, davon 55 Ratgeber-Artikel",
+    headline: "Fotos schicken, Festpreis bekommen, Schlüssel abgeben.",
+    facts: ["Online seit 25. November 2026", "12 Städte von Ludwigshafen bis Frankfurt"],
+    page: "/referenzen/entruemplerhelden",
   },
   {
     slug: "sg",

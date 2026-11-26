@@ -1,0 +1,1242 @@
+{
+ "business_side": [
+  {
+   "kw": "aufträge entrümpelung",
+   "vol": 260,
+   "comp": "MEDIUM",
+   "lo": 1.632352,
+   "hi": 4.954357
+  },
+  {
+   "kw": "entrümpelung aufträge finden",
+   "vol": 260,
+   "comp": "HIGH",
+   "lo": 1.3203,
+   "hi": 5.050747
+  },
+  {
+   "kw": "entrümpelung aufträge",
+   "vol": 260,
+   "comp": "MEDIUM",
+   "lo": 1.632352,
+   "hi": 4.954357
+  },
+  {
+   "kw": "aufträge für entrümpelung",
+   "vol": 260,
+   "comp": "MEDIUM",
+   "lo": 1.632352,
+   "hi": 4.954357
+  },
+  {
+   "kw": "entrümpelungs aufträge",
+   "vol": 140,
+   "comp": "HIGH",
+   "lo": 1.655604,
+   "hi": 4.761247
+  },
+  {
+   "kw": "entrümpelungsfirma gründen",
+   "vol": 50,
+   "comp": "MEDIUM",
+   "lo": 1.110237,
+   "hi": 3.775275
+  },
+  {
+   "kw": "haushaltsauflösung aufträge finden",
+   "vol": 30,
+   "comp": "MEDIUM",
+   "lo": 1.80751,
+   "hi": 4.992512
+  },
+  {
+   "kw": "haushaltsauflösung aufträge",
+   "vol": 20,
+   "comp": "HIGH",
+   "lo": 2.005116,
+   "hi": 5.860991
+  },
+  {
+   "kw": "suche aufträge entrümpelung",
+   "vol": 20,
+   "comp": "HIGH",
+   "lo": 1.489111,
+   "hi": 6.078763
+  },
+  {
+   "kw": "entrümpelung aufträge suchen",
+   "vol": 20,
+   "comp": "HIGH",
+   "lo": 1.489111,
+   "hi": 6.078763
+  },
+  {
+   "kw": "entrümpelung aufträge bekommen",
+   "vol": 10,
+   "comp": "MEDIUM",
+   "lo": 1.782508,
+   "hi": 5.443243
+  },
+  {
+   "kw": "wohnungsauflösung aufträge",
+   "vol": 10,
+   "comp": "MEDIUM",
+   "lo": 1.823858,
+   "hi": 10.765402
+  },
+  {
+   "kw": "selbstständig entrümpelung",
+   "vol": 10,
+   "comp": "LOW",
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "kleingewerbe anmelden entrümpelung",
+   "vol": 10,
+   "comp": "LOW",
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "entrümpelung kunden gewinnen",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "entrümpelungsfirma marketing",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "website entrümpelung",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "werbung entrümpelung",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "google ads entrümpelung",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "entrümpelung selbstständig",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  }
+ ],
+ "customer_side": [
+  {
+   "kw": "entrümpelung",
+   "vol": 12100,
+   "comp": "MEDIUM",
+   "lo": 2.772174,
+   "hi": 8.176509
+  },
+  {
+   "kw": "haushaltsauflösung",
+   "vol": 8100,
+   "comp": "MEDIUM",
+   "lo": 1.798226,
+   "hi": 5.782945
+  },
+  {
+   "kw": "entrümpelung in der nähe",
+   "vol": 4400,
+   "comp": "HIGH",
+   "lo": 2.677954,
+   "hi": 9.939757
+  },
+  {
+   "kw": "entrümpelung berlin",
+   "vol": 3600,
+   "comp": "LOW",
+   "lo": 4.204057,
+   "hi": 13.255572
+  },
+  {
+   "kw": "entrümpelung kosten",
+   "vol": 2900,
+   "comp": "HIGH",
+   "lo": 1.297171,
+   "hi": 4.965741
+  },
+  {
+   "kw": "wohnungsauflösung",
+   "vol": 2900,
+   "comp": "MEDIUM",
+   "lo": 2.103798,
+   "hi": 7.01685
+  },
+  {
+   "kw": "entrümpelung hamburg",
+   "vol": 2400,
+   "comp": "MEDIUM",
+   "lo": 6.123787,
+   "hi": 32.630762
+  },
+  {
+   "kw": "entrümpelungsfirma",
+   "vol": 1900,
+   "comp": "HIGH",
+   "lo": 2.822455,
+   "hi": 9.92542
+  },
+  {
+   "kw": "entrümpelung münchen",
+   "vol": 1900,
+   "comp": "HIGH",
+   "lo": 6.158053,
+   "hi": 15.298318
+  },
+  {
+   "kw": "entrümpelung köln",
+   "vol": 1900,
+   "comp": "MEDIUM",
+   "lo": 6.304053,
+   "hi": 15.330095
+  },
+  {
+   "kw": "entrümpelung frankfurt",
+   "vol": 1300,
+   "comp": "MEDIUM",
+   "lo": 4.322871,
+   "hi": 14.759049
+  },
+  {
+   "kw": "sperrmüll abholen lassen",
+   "vol": 1300,
+   "comp": "MEDIUM",
+   "lo": 0.826324,
+   "hi": 2.504855
+  },
+  {
+   "kw": "haushaltsauflösung kosten",
+   "vol": 1000,
+   "comp": "HIGH",
+   "lo": 0.929347,
+   "hi": 3.44225
+  },
+  {
+   "kw": "wohnung entrümpeln kosten",
+   "vol": 880,
+   "comp": "HIGH",
+   "lo": 1.399292,
+   "hi": 5.071878
+  },
+  {
+   "kw": "keller entrümpeln",
+   "vol": 480,
+   "comp": "MEDIUM",
+   "lo": 1.612591,
+   "hi": 5.743712
+  },
+  {
+   "kw": "entrümpelung mannheim",
+   "vol": 480,
+   "comp": "HIGH",
+   "lo": 3.62536,
+   "hi": 13.014369
+  },
+  {
+   "kw": "messie wohnung entrümpeln",
+   "vol": 320,
+   "comp": "HIGH",
+   "lo": 4.103397,
+   "hi": 9.231855
+  },
+  {
+   "kw": "entrümpelung heidelberg",
+   "vol": 210,
+   "comp": "HIGH",
+   "lo": 5.413907,
+   "hi": 12.997902
+  },
+  {
+   "kw": "entrümpelung ludwigshafen",
+   "vol": 170,
+   "comp": "HIGH",
+   "lo": 4.080923,
+   "hi": 11.989135
+  },
+  {
+   "kw": "entrümpelung festpreis",
+   "vol": 20,
+   "comp": "MEDIUM",
+   "lo": 2.386544,
+   "hi": 5.355369
+  }
+ ],
+ "gsc": {
+  "sc-domain:nuell-agentur.com": [
+   {
+    "keys": [
+     "anfrageformular handwerk",
+     "https://nuell-agentur.com/blog/handwerker-anfragen-formular-anruf-whatsapp"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 15.666666666666666
+   },
+   {
+    "keys": [
+     "auftrag ablehnen handwerk",
+     "https://nuell-agentur.com/blog/handwerker-angebot-anfrage-abspringen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 27
+   },
+   {
+    "keys": [
+     "azubi gewinnen handwerksbetrieb",
+     "https://nuell-agentur.com/blog/azubis-finden-handwerk-rhein-neckar"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 54
+   },
+   {
+    "keys": [
+     "azubis finden handwerk",
+     "https://nuell-agentur.com/blog/azubis-finden-handwerk-rhein-neckar"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 43.5
+   },
+   {
+    "keys": [
+     "barrierefreie website handwerker",
+     "https://nuell-agentur.com/blog/barrierefreiheit-bfsg-handwerker-website"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 16.5
+   },
+   {
+    "keys": [
+     "chatgpt sichtbarkeit handwerker",
+     "https://nuell-agentur.com/blog/ki-sichtbarkeit-handwerker-chatgpt"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 26.333333333333332
+   },
+   {
+    "keys": [
+     "geo für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 52
+   },
+   {
+    "keys": [
+     "google ads für handwerker",
+     "https://nuell-agentur.com/blog/google-ads-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 11,
+    "ctr": 0,
+    "position": 90.18181818181819
+   },
+   {
+    "keys": [
+     "google ads für handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 23,
+    "ctr": 0,
+    "position": 79
+   },
+   {
+    "keys": [
+     "google ads für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 12,
+    "ctr": 0,
+    "position": 60.166666666666664
+   },
+   {
+    "keys": [
+     "google ads handwerker",
+     "https://nuell-agentur.com/blog/google-ads-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 9,
+    "ctr": 0,
+    "position": 80.77777777777777
+   },
+   {
+    "keys": [
+     "google ads handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 9,
+    "ctr": 0,
+    "position": 79.66666666666667
+   },
+   {
+    "keys": [
+     "google ads oder facebook werbung handwerker",
+     "https://nuell-agentur.com/blog/facebook-instagram-anzeigen-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "keys": [
+     "google ads oder facebook werbung handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 85
+   },
+   {
+    "keys": [
+     "google ads oder seo handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 20
+   },
+   {
+    "keys": [
+     "google unternehmensprofil handwerker",
+     "https://nuell-agentur.com/blog/google-unternehmensprofil-handwerker-mannheim"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 48
+   },
+   {
+    "keys": [
+     "günstige homepage für handwerker zum festpreis",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 65.5
+   },
+   {
+    "keys": [
+     "handwerk azubi",
+     "https://nuell-agentur.com/blog/azubis-finden-handwerk-rhein-neckar"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "keys": [
+     "handwerk seo",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 50.666666666666664
+   },
+   {
+    "keys": [
+     "handwerk seo",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 9,
+    "ctr": 0,
+    "position": 29.11111111111111
+   },
+   {
+    "keys": [
+     "handwerker bei chatgpt gefunden werden",
+     "https://nuell-agentur.com/blog/ki-sichtbarkeit-handwerker-chatgpt"
+    ],
+    "clicks": 0,
+    "impressions": 8,
+    "ctr": 0,
+    "position": 30
+   },
+   {
+    "keys": [
+     "handwerker bei google gefunden werden",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 42
+   },
+   {
+    "keys": [
+     "handwerker homepage agentur",
+     "https://nuell-agentur.com/blog/homepage-baukasten-oder-agentur-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 21
+   },
+   {
+    "keys": [
+     "handwerker homepage preise",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 34
+   },
+   {
+    "keys": [
+     "handwerker marketing",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 12,
+    "ctr": 0,
+    "position": 72.91666666666667
+   },
+   {
+    "keys": [
+     "handwerker seo",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 23,
+    "ctr": 0,
+    "position": 69.91304347826087
+   },
+   {
+    "keys": [
+     "handwerker website aufträge",
+     "https://nuell-agentur.com/blog/handwerker-website-auftraege"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 77
+   },
+   {
+    "keys": [
+     "handwerker website kosten",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 6,
+    "ctr": 0,
+    "position": 54.5
+   },
+   {
+    "keys": [
+     "handwerker-marketing",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "keys": [
+     "herkules umzug",
+     "https://nuell-agentur.com/referenzen/herkules"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 3
+   },
+   {
+    "keys": [
+     "instagram für handwerker",
+     "https://nuell-agentur.com/blog/instagram-fuer-handwerker-post-ideen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 47.5
+   },
+   {
+    "keys": [
+     "internet marketing im handwerk",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "keys": [
+     "ki sichtbarkeit für handwerker",
+     "https://nuell-agentur.com/blog/ki-sichtbarkeit-handwerker-chatgpt"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "keys": [
+     "kontaktformular handwerk",
+     "https://nuell-agentur.com/blog/handwerker-anfragen-formular-anruf-whatsapp"
+    ],
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 12
+   },
+   {
+    "keys": [
+     "kosten handwerker homepage",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 86
+   },
+   {
+    "keys": [
+     "kosten handwerker homepage",
+     "https://nuell-agentur.com/blog/homepage-baukasten-oder-agentur-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "keys": [
+     "kunden gewinnen handwerk website",
+     "https://nuell-agentur.com/blog/handwerker-website-auftraege"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 20
+   },
+   {
+    "keys": [
+     "local seo für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 74
+   },
+   {
+    "keys": [
+     "lokale seo für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 7,
+    "ctr": 0,
+    "position": 82.42857142857143
+   },
+   {
+    "keys": [
+     "lokale seo hamburg handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 6,
+    "ctr": 0,
+    "position": 76.33333333333333
+   },
+   {
+    "keys": [
+     "lokale seo handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 17.333333333333332
+   },
+   {
+    "keys": [
+     "lokale seo handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 49
+   },
+   {
+    "keys": [
+     "lokale sichtbarkeit handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 76
+   },
+   {
+    "keys": [
+     "lokale suchmaschinenoptimierung handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 90.33333333333333
+   },
+   {
+    "keys": [
+     "marketing agentur handwerk preise",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 93
+   },
+   {
+    "keys": [
+     "marketing für handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 40,
+    "ctr": 0,
+    "position": 62.25
+   },
+   {
+    "keys": [
+     "marketing handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "keys": [
+     "online marketing agentur für handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 11,
+    "ctr": 0,
+    "position": 72.45454545454545
+   },
+   {
+    "keys": [
+     "online marketing agentur handwerk",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 8,
+    "ctr": 0,
+    "position": 61.75
+   },
+   {
+    "keys": [
+     "online marketing für handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 9,
+    "ctr": 0,
+    "position": 67.77777777777777
+   },
+   {
+    "keys": [
+     "online marketing handwerk",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 16,
+    "ctr": 0,
+    "position": 49.625
+   },
+   {
+    "keys": [
+     "online marketing handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 95.5
+   },
+   {
+    "keys": [
+     "online marketing im handwerk",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 90
+   },
+   {
+    "keys": [
+     "professionelle fotos für handwerker website",
+     "https://nuell-agentur.com/blog/baustellenfotos-handwerker-website"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 45
+   },
+   {
+    "keys": [
+     "professionelle seo agentur für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 8,
+    "ctr": 0,
+    "position": 67.625
+   },
+   {
+    "keys": [
+     "referenzfotos handwerker",
+     "https://nuell-agentur.com/blog/baustellenfotos-handwerker-website"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 4.5
+   },
+   {
+    "keys": [
+     "seo agentur für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 17,
+    "ctr": 0,
+    "position": 64.1764705882353
+   },
+   {
+    "keys": [
+     "seo agentur für handwerksbetriebe",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 48
+   },
+   {
+    "keys": [
+     "seo agentur handwerk",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 12,
+    "ctr": 0,
+    "position": 79.41666666666667
+   },
+   {
+    "keys": [
+     "seo agentur handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 14,
+    "ctr": 0,
+    "position": 66.07142857142857
+   },
+   {
+    "keys": [
+     "seo agentur handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 16,
+    "ctr": 0,
+    "position": 64.0625
+   },
+   {
+    "keys": [
+     "seo analyse handwerksbetrieb",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 56.5
+   },
+   {
+    "keys": [
+     "seo beratung für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 57.333333333333336
+   },
+   {
+    "keys": [
+     "seo für handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 11,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "keys": [
+     "seo für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 119,
+    "ctr": 0,
+    "position": 70.47899159663865
+   },
+   {
+    "keys": [
+     "seo für handwerksbetriebe",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 11,
+    "ctr": 0,
+    "position": 60.81818181818182
+   },
+   {
+    "keys": [
+     "seo handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 27,
+    "ctr": 0,
+    "position": 39.333333333333336
+   },
+   {
+    "keys": [
+     "seo handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 12,
+    "ctr": 0,
+    "position": 45.25
+   },
+   {
+    "keys": [
+     "seo handwerksbetriebe",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 49
+   },
+   {
+    "keys": [
+     "social media marketing für handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "keys": [
+     "suchmaschinenoptimierung für handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "keys": [
+     "suchmaschinenoptimierung für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 20,
+    "ctr": 0,
+    "position": 42.05
+   },
+   {
+    "keys": [
+     "suchmaschinenoptimierung handwerk",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 58.5
+   },
+   {
+    "keys": [
+     "suchmaschinenoptimierung handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 35.5
+   },
+   {
+    "keys": [
+     "warum brauchen handwerksbetriebe seo",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "keys": [
+     "warum seo für handwerk",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "keys": [
+     "was kostet eine webseite für handwerker",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 64.66666666666666
+   },
+   {
+    "keys": [
+     "was kostet eine website für handwerker",
+     "https://nuell-agentur.com/blog/handwerker-website-kosten"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 52
+   },
+   {
+    "keys": [
+     "webdesign für handwerker berlin",
+     "https://nuell-agentur.com/leistungen/webdesign/berlin"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 94
+   },
+   {
+    "keys": [
+     "website bringt keine kunden handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 50.5
+   },
+   {
+    "keys": [
+     "wieviele websitebesucher hat ein handwerker",
+     "https://nuell-agentur.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 85.25
+   },
+   {
+    "keys": [
+     "wordpress seo für handwerker",
+     "https://nuell-agentur.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 73.6
+   }
+  ],
+  "sc-domain:xn--nll-hoa.com": [
+   {
+    "keys": [
+     "google ads oder facebook werbung handwerker",
+     "https://xn--nll-hoa.com/blog/google-ads-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 23.2
+   },
+   {
+    "keys": [
+     "handwerk onlinemarketing",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 40
+   },
+   {
+    "keys": [
+     "handwerker auftragslage verbessern",
+     "https://xn--nll-hoa.com/blog/handwerker-website-auftraege"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 7
+   },
+   {
+    "keys": [
+     "ist seobuddha nur für kanzleien gedacht oder auch für rechtsnahe dienstleister?",
+     "https://xn--nll-hoa.com/blog/webdesign-fuer-rechtsanwaelte-kanzleien-leitfaden-2026"
+    ],
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 9.2
+   },
+   {
+    "keys": [
+     "online marketing handwerker",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 35,
+    "ctr": 0,
+    "position": 49.542857142857144
+   },
+   {
+    "keys": [
+     "online marketing im handwerk",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 44.5
+   },
+   {
+    "keys": [
+     "online werbung für handwerker",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 9,
+    "ctr": 0,
+    "position": 50
+   },
+   {
+    "keys": [
+     "online werbung handwerker",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 41.333333333333336
+   },
+   {
+    "keys": [
+     "online-marketing für handwerksbetriebe",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 55.25
+   },
+   {
+    "keys": [
+     "onlinemarketing für handwerker",
+     "https://xn--nll-hoa.com/blog/online-marketing-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 44.5
+   },
+   {
+    "keys": [
+     "was sind die besten seo dienstleister für handwerker und welche kannst du empfehlen",
+     "https://xn--nll-hoa.com/blog/google-ads-handwerker"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 10
+   },
+   {
+    "keys": [
+     "wie kann mein handwerksbetrieb mit lokaler seo besser bei google gefunden werden?",
+     "https://xn--nll-hoa.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 7,
+    "ctr": 0,
+    "position": 9.428571428571429
+   },
+   {
+    "keys": [
+     "wie verbessere ich mein lokales google-ranking als handwerksbetrieb?",
+     "https://xn--nll-hoa.com/blog/seo-handwerker-google"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 11
+   }
+  ]
+ }
+}

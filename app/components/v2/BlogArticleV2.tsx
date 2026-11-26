@@ -92,6 +92,28 @@ const CASE_ART: Record<string, { img: string; text: string; stat: string; statRe
       { v: "25", l: "Klicks pro Tag aus der Google-Suche" },
     ],
   },
+  entruemplerhelden: {
+    img: "/assets/blog/entruemplerhelden/devices.webp",
+    stat: "82",
+    statRest: "Seiten zum Start, davon 55 Ratgeber-Artikel",
+    text: "Die Entrümplerhelden, Ludwigshafen: Entrümpelung zum Festpreis nach Fotos. Online seit 25. November 2026, mit einer Seite je Leistung und Stadt und offen genannten Preisen. Erste Zahlen folgen.",
+    facts: [
+      { v: "7", l: "Leistungen mit eigener Seite" },
+      { v: "12", l: "Städte von Ludwigshafen bis Frankfurt" },
+      { v: "18", l: "alte Adressen sauber umgeleitet" },
+    ],
+  },
+  herkules: {
+    img: "/assets/blog/entruemplerhelden/herkules-devices.webp",
+    stat: "259",
+    statRest: "Anfragen über die Website seit Juni",
+    text: "Herkules Umzüge, Mannheim: neue Website und SEO für ein Umzugsunternehmen, ein Betrieb mit ganz ähnlicher Kundschaft: Menschen, die kurzfristig und mit Ort suchen. Online seit Mai 2026, heute bei Google auf Seite 1 für „Umzugsunternehmen Mannheim“.",
+    facts: [
+      { v: "Seite 1", l: "für „Umzugsunternehmen Mannheim“" },
+      { v: "22,7 → 12,5", l: "Ø Position bei Google, Juni bis November" },
+      { v: "58", l: "Seiten auf der Website" },
+    ],
+  },
 };
 
 type Mod = "CHECK" | "PROOF" | "SELFTEST" | "CALC" | "CONTACT";

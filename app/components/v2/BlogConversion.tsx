@@ -98,6 +98,7 @@ const PROOF_RULES: [RegExp, string[]][] = [
   [/google-ranking-verbessern/, ["herkules", "dogru"]], // the article itself discusses these two
   [/mitarbeiter|azubi|recruit|bewerb/, ["orchidee", "treu"]],
   [/kanzlei|anwael|rechtsanw/, ["dogru", "goeren"]],
+  [/entruempel|haushaltsaufl|raeumung|umzug/, ["entruemplerhelden", "herkules"]],
   [/arztpraxen|praxis/, ["dogru", "sg"]],
   [/rohrreinigung|notdienst/, ["onkel", "waschbar"]],
   [/sanitaer|heizung|haustechnik|waermepumpe|baustellenfotos|marketing-kalender/, ["treu", "herkules"]],

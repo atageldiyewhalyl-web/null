@@ -65,6 +65,9 @@ type Pages = {
   "/referenzen/goeren": {
     params: {};
   };
+  "/referenzen/entruemplerhelden": {
+    params: {};
+  };
   "/referenzen/sg": {
     params: {};
   };
@@ -142,7 +145,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/:service/:city" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/standorte" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/goeren" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
+    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/:service/:city" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/standorte" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/goeren" | "/referenzen/entruemplerhelden" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
   "routes/home-v2.tsx": {
     id: "routes/home-v2";
@@ -211,6 +214,10 @@ type RouteFiles = {
   "routes/v2-referenz-goeren.tsx": {
     id: "routes/v2-referenz-goeren";
     page: "/referenzen/goeren";
+  };
+  "routes/v2-referenz-entruemplerhelden.tsx": {
+    id: "routes/v2-referenz-entruemplerhelden";
+    page: "/referenzen/entruemplerhelden";
   };
   "routes/v2-referenz-sg.tsx": {
     id: "routes/v2-referenz-sg";
@@ -317,6 +324,7 @@ type RouteModules = {
   "routes/v2-referenz-herkules": typeof import("./app/routes/v2-referenz-herkules.tsx");
   "routes/v2-referenz-dogru": typeof import("./app/routes/v2-referenz-dogru.tsx");
   "routes/v2-referenz-goeren": typeof import("./app/routes/v2-referenz-goeren.tsx");
+  "routes/v2-referenz-entruemplerhelden": typeof import("./app/routes/v2-referenz-entruemplerhelden.tsx");
   "routes/v2-referenz-sg": typeof import("./app/routes/v2-referenz-sg.tsx");
   "routes/v2-referenz-so": typeof import("./app/routes/v2-referenz-so.tsx");
   "routes/v2-referenz-ft": typeof import("./app/routes/v2-referenz-ft.tsx");

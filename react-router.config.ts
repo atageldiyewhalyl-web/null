@@ -29,6 +29,7 @@ export default {
     "/referenzen/herkules",
     "/referenzen/dogru",
     "/referenzen/goeren",
+    "/referenzen/entruemplerhelden",
     "/referenzen/sg",
     "/referenzen/so",
     "/referenzen/ft",
