@@ -38,6 +38,7 @@ export const BUILT_BY_NULL: Record<string, { client: string; slug: string | null
   "umzuege-herkules.de": { client: "Herkules Umzüge", slug: "herkules" },
   "hasandogru.de": { client: "Avukat Hasan Doğru", slug: "dogru" },
   "kanzlei-goeren.de": { client: "Kanzlei Meral Gören", slug: "goeren" },
+  "die-entruemplerhelden.de": { client: "Die Entrümplerhelden", slug: "entruemplerhelden" },
   "sg-laserzentrum.de": { client: "SG Laserzentrum", slug: "sg" },
   "beautyso.de": { client: "S&O Beauty", slug: "so" },
   "ftsicherheitstechnik.com": { client: "FT Sicherheitstechnik", slug: "ft" },
