@@ -27,8 +27,7 @@ export type Check = {
 export type Area = { key: AreaKey; label: string; score: number | null; note?: string };
 
 /* Websites nüll. built (from the case studies, app/components/v2/caseList.ts + app/routes/v2-referenz-*.tsx).
-   The report shows a "Gebaut von nüll." badge with the real score. Scores are never changed for these sites.
-   Orchidee is missing: its case study lists no website. */
+   The report shows a "Gebaut von nüll." badge with the real score. Scores are never changed for these sites. */
 export const BUILT_BY_NULL: Record<string, { client: string; slug: string | null }> = {
   "nuell-agentur.com": { client: "nüll.", slug: null },
   "xn--nll-hoa.com": { client: "nüll.", slug: null },
@@ -39,6 +38,7 @@ export const BUILT_BY_NULL: Record<string, { client: string; slug: string | null
   "hasandogru.de": { client: "Avukat Hasan Doğru", slug: "dogru" },
   "kanzlei-goeren.de": { client: "Kanzlei Meral Gören", slug: "goeren" },
   "die-entruemplerhelden.de": { client: "Die Entrümplerhelden", slug: "entruemplerhelden" },
+  "orchidee-pflegedienst.de": { client: "Pflegedienst Orchidee", slug: "orchidee" },
   "sg-laserzentrum.de": { client: "SG Laserzentrum", slug: "sg" },
   "beautyso.de": { client: "S&O Beauty", slug: "so" },
   "ftsicherheitstechnik.com": { client: "FT Sicherheitstechnik", slug: "ft" },
