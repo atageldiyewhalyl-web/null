@@ -1,7 +1,7 @@
 /*
  * Every client on the Referenzen page (/referenzen). One list, so a new reference page only needs `page` set here.
  * Numbers only where a report backs them (sources: CasesV2.tsx header and each reference route's header):
- *  Waschbar: Google Ads report 6 Aug–5 Nov 2026. Orchidee: Meta report Oct 2026. Bergstone: site repo (150 products).
+ *  Waschbar: Google Ads report 6 Aug–5 Nov 2026. Orchidee: Meta report Oct 2026; website live 27 Nov 2026. Bergstone: site repo (150 products).
  *  Herkules: SEO report Oct 2026. Kanzlei Doğru: review Nov 2026. Treu: blog list in the site repo.
  *  Kanzlei Meral Gören: enquiry log meral_anfragen, 23–24 Nov 2026 (see the route header).
  *  Die Entrümplerhelden: live site and repo at launch, 26 Nov 2026 (page counts only, no results yet).
@@ -53,16 +53,16 @@ export const CASE_LIST: CaseEntry[] = [
   },
   {
     slug: "orchidee",
-    tint: "#fdf1ee",
+    tint: "#fbf0f6",
     client: "Pflegedienst Orchidee",
     place: "Koblenz",
-    services: ["Meta Ads", "Recruiting"],
-    tags: ["meta"],
-    img: `${B}/orchidee.webp`,
-    alt: "Smartphone mit einer Instagram-Anzeige von Pflegedienst Orchidee",
+    services: ["Website", "Meta Ads", "Recruiting"],
+    tags: ["web", "meta"],
+    img: `${B}/orchidee-scene.webp`,
+    alt: "Laptop mit der neuen Website des Pflegedienst Orchidee auf einem Küchentisch",
     stat: "41",
     statRest: "Bewerbungen in 3 Wochen",
-    headline: "Pflegekräfte bewerben sich, statt gesucht zu werden.",
+    headline: "Erst die Bewerbungen, jetzt die neue Website.",
     page: "/referenzen/orchidee",
   },
   {
@@ -130,8 +130,8 @@ export const CASE_LIST: CaseEntry[] = [
     place: "Mannheim",
     services: ["Website", "Deutsch & Türkisch", "SEO"],
     tags: ["web", "seo"],
-    img: `${B}/goeren.webp`,
-    alt: "Website der Kanzlei Meral Gören auf Laptop und Smartphone",
+    img: `${B}/goeren-scene.webp`,
+    alt: "Laptop mit der Website der Kanzlei Meral Gören in einem hellen Büro",
     stat: "3",
     statRest: "Anfragen in den ersten 48 Stunden",
     headline: "Eine Kanzlei, zwei Sprachen, die ersten Anfragen am zweiten Tag.",
@@ -145,8 +145,8 @@ export const CASE_LIST: CaseEntry[] = [
     place: "Ludwigshafen",
     services: ["Website", "SEO", "Ratgeber"],
     tags: ["web", "seo"],
-    img: `${B}/entruemplerhelden.webp`,
-    alt: "Website der Entrümplerhelden auf Laptop und Smartphone",
+    img: `${B}/entruemplerhelden-scene.webp`,
+    alt: "Laptop mit der Website der Entrümplerhelden auf einem Umzugskarton in einer geräumten Wohnung",
     stat: "82",
     statRest: "Seiten zum Start, davon 55 Ratgeber-Artikel",
     headline: "Fotos schicken, Festpreis bekommen, Schlüssel abgeben.",

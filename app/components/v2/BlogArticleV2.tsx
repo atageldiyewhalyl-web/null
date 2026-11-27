@@ -103,6 +103,17 @@ const CASE_ART: Record<string, { img: string; text: string; stat: string; statRe
       { v: "18", l: "alte Adressen sauber umgeleitet" },
     ],
   },
+  orchidee: {
+    img: "/assets/blog/orchidee/devices.webp",
+    stat: "52",
+    statRest: "Seiten zum Start, davon 44 Ratgeber-Artikel",
+    text: "Pflegedienst Orchidee, Koblenz: neue Website mit getrennten Wegen für Familien und Pflegekräfte, online seit 27. November 2026. Erste Zahlen zur Website folgen.",
+    facts: [
+      { v: "2", l: "Wege: Rückruf für Familien, Bewerbung für Pflegekräfte" },
+      { v: "41", l: "Bewerbungen in 3 Wochen, über Anzeigen vor dem Website-Start" },
+      { v: "76 %", l: "davon in der ersten Woche" },
+    ],
+  },
   herkules: {
     img: "/assets/blog/entruemplerhelden/herkules-devices.webp",
     stat: "259",

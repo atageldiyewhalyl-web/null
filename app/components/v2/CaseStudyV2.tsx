@@ -28,8 +28,9 @@ export type CaseConfig = {
   machine?: { display: string[] }; // hero variant: a washing machine whose door shows the number; the display cycles these lines
   phone?: { img: string; alt: string; screenBg?: string; toasts: { title: string; sub: string }[] }; // hero variant: the client's real ad on a phone, results arriving
   browser?: { scroll: string; url: string; phone?: string; phoneAlt?: string; phoneVideo?: string; alt: string }; // hero variant: the client's live site in a browser, its listing scrolling by
-  // the site itself: a moving wall of every product, the special pages as browser frames
-  catalog?: { title: string; statement: string; products: string[]; wallWide?: boolean; count: number; countLabel: string; features?: string[]; pages: { img: string; title: string; text: string; url?: string }[] };
+  // the site itself: a moving wall of every product, the special pages as browser frames.
+  // thenTask: keep the task section (and the video) after it, e.g. a new website for a client whose ads we already showed
+  catalog?: { title: string; statement: string; products: string[]; wallWide?: boolean; count: number; countLabel: string; features?: string[]; columns?: { title: string; text: string }[]; thenTask?: boolean; pages: { img: string; title: string; text: string; url?: string }[] };
   // an interactive 360° panorama from the client's own tour
   tour?: { title: string; statement: string; text: string; facts: { value: string; label: string }[]; rooms: { name: string; pano: string; pan?: number }[]; url: string; cta: string };
   galleryFirst?: boolean; // show the gallery (reels) before the numbers
@@ -1155,10 +1156,10 @@ export default function CaseStudyV2({ cfg }: { cfg: CaseConfig }) {
           </>
         )}
 
-        {cfg.video && <ServiceVideo base="" prefix={cfg.video.prefix} title={cfg.video.title} accent={ink} />}
+        {cfg.video && !cfg.catalog?.thenTask && <ServiceVideo base="" prefix={cfg.video.prefix} title={cfg.video.title} accent={ink} />}
 
         {/* the task: the moments people need the client, each with a search people really typed */}
-        {cfg.catalog ? (
+        {cfg.catalog && (
           <>
           {/* the website: every product on its own page, the special pages around it */}
           <section className="relative overflow-hidden py-20 md:py-28" style={{ background: soft }}>
@@ -1173,7 +1174,7 @@ export default function CaseStudyV2({ cfg }: { cfg: CaseConfig }) {
                   </h2>
                 </motion.div>
                 <div className="mt-8 space-y-6">
-                  {(cfg.task.columns ?? []).map((c, i) => (
+                  {(cfg.catalog.columns ?? cfg.task.columns ?? []).map((c, i) => (
                     <motion.div key={c.title} {...r(0.06 + i * 0.06)} className="border-l-2 pl-5" style={{ borderColor: i ? accent : "#0e0e1022" }}>
                       <p className="text-[1rem] font-bold tracking-[-0.02em] text-[#0e0e10]">{c.title}</p>
                       <p className="mt-1.5 max-w-[46ch] text-[0.98rem] font-medium leading-[1.55] text-[#424245]">{c.text}</p>
@@ -1238,7 +1239,9 @@ export default function CaseStudyV2({ cfg }: { cfg: CaseConfig }) {
             </section>
           )}
           </>
-        ) : cfg.task.moments ? (
+        )}
+        {cfg.video && cfg.catalog?.thenTask && <ServiceVideo base="" prefix={cfg.video.prefix} title={cfg.video.title} accent={ink} />}
+        {cfg.catalog && !cfg.catalog.thenTask ? null : cfg.task.moments ? (
           <section className="relative overflow-hidden bg-[#f5f5f7] py-20 md:py-28">
             <div className="mx-auto grid w-full max-w-[1360px] gap-10 px-4 md:px-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
               <div className="lg:sticky lg:top-24 lg:self-start">

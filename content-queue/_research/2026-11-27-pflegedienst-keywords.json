@@ -1,0 +1,519 @@
+{
+ "pulled": "2026-11-27",
+ "geo": "2276",
+ "ideas": [
+  {
+   "kw": "recruiting pflege",
+   "vol": 40,
+   "comp": "MEDIUM",
+   "lo": 3.944773,
+   "hi": 26.145197
+  },
+  {
+   "kw": "pflege recruiting",
+   "vol": 40,
+   "comp": "HIGH",
+   "lo": 3.853437,
+   "hi": 22.719255
+  },
+  {
+   "kw": "marketing pflegedienst",
+   "vol": 20,
+   "comp": "MEDIUM",
+   "lo": 1.861245,
+   "hi": 7.886564
+  },
+  {
+   "kw": "marketing für pflegedienste",
+   "vol": 20,
+   "comp": "MEDIUM",
+   "lo": 1.861245,
+   "hi": 7.886564
+  },
+  {
+   "kw": "pflegekräfte gewinnen",
+   "vol": 10,
+   "comp": "LOW",
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "recruiting pflegekräfte",
+   "vol": 10,
+   "comp": "HIGH",
+   "lo": 4.017041,
+   "hi": 38.355759
+  },
+  {
+   "kw": "pflegekräfte recruiting",
+   "vol": 10,
+   "comp": "HIGH",
+   "lo": 2.457974,
+   "hi": 5.171987
+  },
+  {
+   "kw": "recruiting in der pflege",
+   "vol": 10,
+   "comp": "HIGH",
+   "lo": 3.915942,
+   "hi": 12.508159
+  },
+  {
+   "kw": "personalrecruiting pflege",
+   "vol": 10,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "pflegedienst website",
+   "vol": 10,
+   "comp": "MEDIUM",
+   "lo": 0.623614,
+   "hi": 1.820024
+  },
+  {
+   "kw": "pflegerecruiting",
+   "vol": 10,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "marketing ambulanter pflegedienst",
+   "vol": 10,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "marketingkonzept für ambulanten pflegedienst",
+   "vol": 10,
+   "comp": "LOW",
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "pflegedienst patienten gewinnen",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "website pflegedienst",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  {
+   "kw": "neukundengewinnung pflegedienst",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  }
+ ],
+ "hist": [
+  {
+   "kw": "pflegedienst",
+   "vol": 27100,
+   "comp": "LOW",
+   "lo": 1.079041,
+   "hi": 3.751509
+  },
+  {
+   "kw": "ambulanter pflegedienst",
+   "vol": 14800,
+   "comp": "LOW",
+   "lo": 0.861819,
+   "hi": 2.994946
+  },
+  {
+   "kw": "pflegedienst in der nähe",
+   "vol": 14800,
+   "comp": "MEDIUM",
+   "lo": 0.750749,
+   "hi": 2.469748
+  },
+  {
+   "kw": "ambulante pflege",
+   "vol": 6600,
+   "comp": "LOW",
+   "lo": 0.769372,
+   "hi": 2.732197
+  },
+  {
+   "kw": "häusliche krankenpflege",
+   "vol": 2900,
+   "comp": "LOW",
+   "lo": 0.779497,
+   "hi": 2.753353
+  },
+  {
+   "kw": "behandlungspflege",
+   "vol": 2400,
+   "comp": "LOW",
+   "lo": 0.307092,
+   "hi": 1.606537
+  },
+  {
+   "kw": "pflegedienst berlin",
+   "vol": 1300,
+   "comp": "MEDIUM",
+   "lo": 1.086233,
+   "hi": 3.115642
+  },
+  {
+   "kw": "pflegedienst hamburg",
+   "vol": 1000,
+   "comp": "MEDIUM",
+   "lo": 1.001369,
+   "hi": 3.40932
+  },
+  {
+   "kw": "pflegedienst frankfurt",
+   "vol": 1000,
+   "comp": "MEDIUM",
+   "lo": 0.785524,
+   "hi": 2.733383
+  },
+  {
+   "kw": "pflegedienst mannheim",
+   "vol": 880,
+   "comp": "MEDIUM",
+   "lo": 0.993784,
+   "hi": 3.187061
+  },
+  {
+   "kw": "pflegedienst köln",
+   "vol": 880,
+   "comp": "MEDIUM",
+   "lo": 0.869953,
+   "hi": 3.030454
+  },
+  {
+   "kw": "pflegedienst stuttgart",
+   "vol": 590,
+   "comp": "MEDIUM",
+   "lo": 1.126602,
+   "hi": 3.187913
+  },
+  {
+   "kw": "pflegedienst gründen",
+   "vol": 480,
+   "comp": "HIGH",
+   "lo": 1.211911,
+   "hi": 4.113953
+  },
+  {
+   "kw": "pflegedienst koblenz",
+   "vol": 320,
+   "comp": "LOW",
+   "lo": 0.638703,
+   "hi": 2.110898
+  },
+  {
+   "kw": "pflegekraft job",
+   "vol": 260,
+   "comp": "HIGH",
+   "lo": 0.888061,
+   "hi": 3.01316
+  },
+  {
+   "kw": "ambulante pflege koblenz",
+   "vol": 30,
+   "comp": "MEDIUM",
+   "lo": 0.689846,
+   "hi": 2.021765
+  },
+  {
+   "kw": "pflegekräfte finden",
+   "vol": 30,
+   "comp": "HIGH",
+   "lo": 8.103275,
+   "hi": 60.793711
+  },
+  {
+   "kw": "mitarbeitergewinnung pflege",
+   "vol": 20,
+   "comp": "MEDIUM",
+   "lo": 2.995607,
+   "hi": 15.670153
+  },
+  {
+   "kw": "pflegejobs koblenz",
+   "vol": 0,
+   "comp": null,
+   "lo": 0.0,
+   "hi": 0.0
+  }
+ ],
+ "gsc": {
+  "sc-domain:nuell-agentur.com": [
+   {
+    "keys": [
+     "webdesign arztpraxis",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 51,
+    "ctr": 0,
+    "position": 75.47058823529412
+   },
+   {
+    "keys": [
+     "webdesign für arztpraxen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 46,
+    "ctr": 0,
+    "position": 80.19565217391305
+   },
+   {
+    "keys": [
+     "webdesign für arztpraxis",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 19,
+    "ctr": 0,
+    "position": 76.52631578947368
+   },
+   {
+    "keys": [
+     "webdesign arzt",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 16,
+    "ctr": 0,
+    "position": 75.8125
+   },
+   {
+    "keys": [
+     "webdesign arztpraxen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 15,
+    "ctr": 0,
+    "position": 79.73333333333333
+   },
+   {
+    "keys": [
+     "webdesign praxis",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 14,
+    "ctr": 0,
+    "position": 66.78571428571429
+   },
+   {
+    "keys": [
+     "arzt homepage richtlinien",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 12,
+    "ctr": 0,
+    "position": 14.25
+   },
+   {
+    "keys": [
+     "webdesign für arzt münchen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 8,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "keys": [
+     "arztpraxis webdesign",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 6,
+    "ctr": 0,
+    "position": 79.83333333333333
+   },
+   {
+    "keys": [
+     "praxis homepage erstellen lassen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 69.25
+   },
+   {
+    "keys": [
+     "arzt homepage erstellen lassen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 72
+   },
+   {
+    "keys": [
+     "agentur für praxis",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 98.5
+   },
+   {
+    "keys": [
+     "arzt website design",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 53
+   },
+   {
+    "keys": [
+     "arztpraxis homepage erstellen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 69.5
+   },
+   {
+    "keys": [
+     "praxis webdesign",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "keys": [
+     "webdesign für arztpraxis berlin",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 68.5
+   },
+   {
+    "keys": [
+     "arzt homepage erstellen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 19
+   },
+   {
+    "keys": [
+     "arzt webdesign",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "keys": [
+     "arzt website erstellen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 14
+   },
+   {
+    "keys": [
+     "arztpraxis online sichtbar machen",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "keys": [
+     "ich suche eine agentur in nrw, die für eine arztpraxis ein seriöses corporate design (logo, briefpapier, website) entwickelt",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 10
+   },
+   {
+    "keys": [
+     "ist healthy.pixels eine gute agentur für praxis-websites?",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 14
+   },
+   {
+    "keys": [
+     "online marketing agentur für praxis",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 24
+   },
+   {
+    "keys": [
+     "praxis website erstellen lassen ansbach",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "keys": [
+     "praxis website seo",
+     "https://nuell-agentur.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 59
+   }
+  ],
+  "sc-domain:xn--nll-hoa.com": [
+   {
+    "keys": [
+     "nutzerführung praxis website",
+     "https://xn--nll-hoa.com/blog/webdesign-fuer-arztpraxen"
+    ],
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 69.5
+   }
+  ]
+ }
+}

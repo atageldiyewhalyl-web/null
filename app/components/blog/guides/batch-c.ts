@@ -290,6 +290,7 @@ export const batch: BlogPost[] = [
       "[ASSET: /assets/blog/guides/praxis-behandlung.webp — Ein ruhiger Behandlungsraum: Gesundheitsdaten gehören in die Praxis, nicht in unsichere Kanäle]",
       "## Tracking und Cookies",
       "Statistik- und Marketing-Tools wie Google Analytics greifen in das Endgerät ein und brauchen nach § 25 TDDDG grundsätzlich eine Einwilligung. Auf einer Praxis-Website ist besondere Vorsicht angebracht, denn schon die besuchte Seite („Behandlung von …“) kann Rückschlüsse auf Gesundheit zulassen. Setz Tracking nur nach Einwilligung ein oder verzichte darauf, und halte das Cookie-Banner ehrlich, mit gleichwertigem „Ablehnen“. Mehr dazu im Beitrag [Cookie-Banner und Tracking einfach erklärt](/blog/cookie-banner-tracking-einwilligung-website).",
+      "Wie Anfrageformulare bei einem ambulanten Pflegedienst aussehen können, zeigt die [Fallstudie zur Website des Pflegedienst Orchidee](/blog/website-pflegedienst-fallstudie).",
       "[CTA: web | Soll deine Praxis-Website datensparsam und sauber aufgebaut sein?]",
       "## Die Datenschutzerklärung der Praxis-Website",
       "Sie muss genau beschreiben, welche Daten du auf der Website verarbeitest, zu welchem Zweck, auf welcher Rechtsgrundlage, wie lange und an wen sie gehen. Eine Mustererklärung aus dem Netz genügt nur, wenn sie zu deiner Technik passt. Wechselst du das Buchungstool oder bindest ein Video ein, muss die Erklärung mitziehen. Kontrolliere sie bei jeder technischen Änderung.",

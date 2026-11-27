@@ -95,3 +95,17 @@ _Last updated: 2026-07-10_
 
 ## Next candidates (Keyword-Planer 26 Nov 2026, not inspected)
 - entrümpelungsfirma gründen (50) - business owners, links to the Aufträge guide
+
+## Marketing für Pflegedienste
+- primary_kw: marketing für pflegedienste (vol: 20/mo DE; recruiting-pflege cluster ~150/mo, click bids up to 38 €)
+- intent: commercial (nursing service owners)
+- score: 8 (weak SERP, high bids, direct proof)
+- status: written:2026-11-27
+
+## Website für einen Pflegedienst (Fallstudie Orchidee)
+- primary_kw: website pflegedienst (vol: <10)
+- score: 6 (proof)
+- status: written:2026-11-27
+
+## Next candidates (Keyword-Planer 27 Nov 2026, not inspected)
+- pflegedienst gründen (480, competition HIGH) - founders; needs sourced legal content (§ 72 SGB XI Versorgungsvertrag)

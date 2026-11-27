@@ -67,7 +67,7 @@ Sprache: Deutsch
 ## Referenzen
 - [Alle Referenzen](https://nuell-agentur.com/referenzen)
 - [Waschbar, Heidelberg & Ludwigshafen](https://nuell-agentur.com/referenzen/waschbar): Aus Google-Suchen werden Besuche im Salon. 2.491 Routenanfragen in 3 Monaten.
-- [Pflegedienst Orchidee, Koblenz](https://nuell-agentur.com/referenzen/orchidee): Pflegekräfte bewerben sich, statt gesucht zu werden. 41 Bewerbungen in 3 Wochen.
+- [Pflegedienst Orchidee, Koblenz](https://nuell-agentur.com/referenzen/orchidee): Erst die Bewerbungen, jetzt die neue Website. 41 Bewerbungen in 3 Wochen.
 - [Bergstone Keramiksan, Ludwigshafen](https://nuell-agentur.com/referenzen/bergstone): Der ganze Showroom, jetzt auch online. 150 Produkte mit eigener Seite.
 - [Treu Haustechnik, Mannheim](https://nuell-agentur.com/referenzen/treu): Der Meisterbetrieb aus Mannheim, jetzt jeden Tag zu sehen. Jede Woche ein neuer Ratgeber-Artikel.
 - [Herkules Umzüge, Mannheim](https://nuell-agentur.com/referenzen/herkules): Wer in Mannheim umzieht, findet Herkules. Seite 1 bei Google für „Umzugsunternehmen Mannheim“.
@@ -80,7 +80,7 @@ Sprache: Deutsch
 - [Onkel Abwassertechnik, Mannheim](https://nuell-agentur.com/referenzen/onkel): Rohr- und Kanalreinigung, klar erklärt.
 - [B.Y. Consulting, Heidelberg](https://nuell-agentur.com/referenzen/by): Ein Mentor, eine klare Marke.
 
-## Ratgeber (96 Artikel)
+## Ratgeber (98 Artikel)
 - [Alle Artikel](https://nuell-agentur.com/blog)
 ### Kanzleien
 - [Kanzleimarketing: So gewinnen Anwälte online Mandanten](https://nuell-agentur.com/blog/kanzleimarketing-anwaelte-mandanten-gewinnen)
@@ -171,6 +171,8 @@ Sprache: Deutsch
 - [SEO für Berater: Für welche Suchen sich Sichtbarkeit wirklich lohnt](https://nuell-agentur.com/blog/seo-fuer-berater-welche-suchen-lohnen)
 
 ### Websites, SEO, Google Ads und Marketing allgemein
+- [Marketing für Pflegedienste: Patienten und Pflegekräfte gewinnen](https://nuell-agentur.com/blog/marketing-fuer-pflegedienste)
+- [Website für einen Pflegedienst: 52 Seiten zum Start](https://nuell-agentur.com/blog/website-pflegedienst-fallstudie)
 - [Leistungsseite texten: Aufbau und Vorlage, die bei Google und Kunden wirkt](https://nuell-agentur.com/blog/leistungsseite-texten-aufbau-vorlage)
 - [Agenturvertrag prüfen: 9 Klauseln, die du vor der Unterschrift lesen solltest](https://nuell-agentur.com/blog/agenturvertrag-klauseln-pruefen)
 - [Google Ads: Negative Keywords und Keywords ausschließen (mit Beispiel)](https://nuell-agentur.com/blog/google-ads-negative-keywords-kleine-betriebe)

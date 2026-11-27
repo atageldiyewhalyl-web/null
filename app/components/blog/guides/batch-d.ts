@@ -117,6 +117,7 @@ export const batch: BlogPost[] = [
       "2. **Könnte es einen Heilerfolg versprechen?** Dann ist es ein Fall für das HWG.",
       "3. **Könnte es Patienten irreführen?** Fehlende Einordnung, unklare Preise oder unrealistische Erwartungen sind kritisch.",
       "[ASSET: /assets/blog/guides/praxis-wartezimmer.webp — Ein heller Wartebereich: Ruhige Praxisbilder zeigen Atmosphäre, ohne Heilversprechen zu machen]",
+      "Für ambulante Pflegedienste gelten ähnliche Grenzen. Wie man Patienten und Personal gewinnt und was die Werbung beachten muss, steht in [Marketing für Pflegedienste](/blog/marketing-fuer-pflegedienste).",
       "[CTA: web | Soll deine Praxis-Website sachlich überzeugen und trotzdem Termine bringen?]",
       "## Wie du als Praxis trotzdem überzeugst",
       "Sachlich zu sein heißt nicht, langweilig zu sein. Eine gute Praxis-Website überzeugt mit Klarheit: ein ruhiger Auftritt, ein echtes Teamfoto, ein verständlicher Ablauf, Antworten auf häufige Fragen und ein einfacher Weg zum Termin. Das beruhigt Patienten mehr als jede Anpreisung. Wie das für Google aufgebaut wird, zeigt der Beitrag [Neue Patienten gewinnen: Arztpraxis in Mannheim](/blog/neue-patienten-gewinnen-arztpraxis-mannheim).",

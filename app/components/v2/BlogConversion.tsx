@@ -96,6 +96,7 @@ export function CheckStrip({ post, where = "strip" }: { post: BlogPost; where?: 
 // Slugs are the ones in caseList.ts. Clients without a measured number show their short fact instead.
 const PROOF_RULES: [RegExp, string[]][] = [
   [/google-ranking-verbessern/, ["herkules", "dogru"]], // the article itself discusses these two
+  [/pflegedienst/, ["orchidee", "herkules"]],
   [/mitarbeiter|azubi|recruit|bewerb/, ["orchidee", "treu"]],
   [/kanzlei|anwael|rechtsanw/, ["dogru", "goeren"]],
   [/entruempel|haushaltsaufl|raeumung|umzug/, ["entruemplerhelden", "herkules"]],
