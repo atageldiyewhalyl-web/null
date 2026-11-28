@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowRight, Check, Loader2, Phone } from "lucide-react";
+import { ArrowRight, Check, CheckCheck, Loader2, Phone } from "lucide-react";
 import { projectId, publicAnonKey } from "../../../utils/supabase/info";
 import { trackGaEvent } from "../../utils/tracking";
 
@@ -138,27 +138,53 @@ function Running({ host }: { host: string }) {
   );
 }
 
-function WhatsAppCta({ text, source, label = "Auf WhatsApp schreiben" }: { text: string; source: string; label?: string }) {
+function WhatsAppCta({ text, source }: { text: string; source: string }) {
+  const time = new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
   return (
-    <div className="rounded-[22px] bg-[#0e0e10] p-6 text-white sm:p-8">
-      <p className="text-[1.6rem] font-extrabold leading-[1.1] tracking-[-0.04em] !text-white">
-        Schreib uns jetzt auf WhatsApp
-        <span className="!text-[#3d9bff]"> und bekomm dein Angebot.</span>
-      </p>
-      <p className="mt-2.5 text-[0.98rem] leading-relaxed !text-[#c8c8ce]">Die Nachricht ist schon vorbereitet. Du musst nur noch auf Senden tippen.</p>
-      <a
-        href={waLink(text)}
-        target="_blank"
-        rel="noopener"
-        onClick={() => trackGaEvent("flyer_whatsapp_click", { flyer: source || "unbekannt" })}
-        className="mt-5 flex min-h-[60px] w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-[#25d366] px-5 text-[1.02rem] font-extrabold tracking-[-0.01em] text-white shadow-[0_16px_36px_rgba(37,211,102,0.3)] transition-transform hover:-translate-y-0.5"
-      >
-        <WhatsAppIcon className="h-6 w-6" />
-        {label}
-      </a>
-      <a href={`tel:+${WA_NUMBER}`} className="mt-4 flex items-center justify-center gap-2 text-[0.95rem] font-semibold text-[#c8c8ce]">
-        <Phone size={16} aria-hidden /> Lieber anrufen? {PHONE_DISPLAY}
-      </a>
+    <div className="overflow-hidden rounded-[22px] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.06),0_18px_48px_-24px_rgba(15,23,42,0.25)]">
+      <div className="relative h-[200px] bg-[radial-gradient(120%_90%_at_50%_0%,#dff7e8_0%,#f1fbf5_45%,#ffffff_100%)]">
+        <img src="/assets/v2/flyer-check/angebot.webp" alt="" className="absolute left-1/2 top-[30px] h-[148px] w-auto -translate-x-[8%] rotate-[8deg] object-contain drop-shadow-[0_14px_20px_rgba(15,23,42,0.14)]" />
+        <img src="/assets/v2/flyer-check/whatsapp-phone.webp" alt="" className="absolute left-1/2 top-[12px] h-[184px] w-auto -translate-x-[84%] object-contain drop-shadow-[0_18px_24px_rgba(15,23,42,0.2)]" />
+      </div>
+      <div className="px-5 pb-6 pt-2 sm:px-8 sm:pb-8">
+        <p className="text-center text-[0.76rem] font-extrabold uppercase tracking-[0.16em] text-[#1a9f4b]">Letzter Schritt</p>
+        <h2 className="mt-1.5 text-center text-[1.7rem] font-extrabold leading-[1.06] tracking-[-0.045em] text-[#0e0e10]">
+          Hol dir jetzt dein Angebot. Per WhatsApp.
+        </h2>
+        <p className="mx-auto mt-2.5 max-w-[30ch] text-center text-[0.98rem] leading-relaxed text-[#4a4a52]">
+          Deine Nachricht ist schon geschrieben. Einfach senden, wir melden uns persönlich.
+        </p>
+
+        <div className="mt-5 rounded-[18px] bg-[#efeae2] p-3" aria-label="Vorschau deiner Nachricht">
+          <div className="ml-auto max-w-[92%] rounded-[14px] rounded-tr-[4px] bg-[#d9fdd3] px-3.5 pb-1.5 pt-2.5 text-[0.93rem] leading-snug text-[#111b21] shadow-[0_1px_1px_rgba(0,0,0,0.08)]">
+            {text}
+            <span className="mt-1 flex items-center justify-end gap-1 text-[0.7rem] text-[#667781]">
+              {time} <CheckCheck size={15} className="text-[#53bdeb]" aria-hidden />
+            </span>
+          </div>
+        </div>
+
+        <a
+          href={waLink(text)}
+          target="_blank"
+          rel="noopener"
+          onClick={() => trackGaEvent("flyer_whatsapp_click", { flyer: source || "unbekannt" })}
+          className="mt-5 flex min-h-[62px] w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-[#25d366] px-5 text-[1.05rem] font-extrabold tracking-[-0.01em] text-white shadow-[0_16px_36px_rgba(37,211,102,0.35)] transition-transform hover:-translate-y-0.5"
+        >
+          <WhatsAppIcon className="h-6 w-6" />
+          Nachricht jetzt senden
+        </a>
+
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[0.8rem] font-semibold text-[#4a4a52]">
+          <span className="flex items-center gap-1.5"><Check size={15} strokeWidth={3} className="text-[#1a9f4b]" aria-hidden /> Kostenlos</span>
+          <span className="flex items-center gap-1.5"><Check size={15} strokeWidth={3} className="text-[#1a9f4b]" aria-hidden /> Unverbindlich</span>
+          <span className="flex items-center gap-1.5"><Check size={15} strokeWidth={3} className="text-[#1a9f4b]" aria-hidden /> Persönlich</span>
+        </div>
+
+        <a href={`tel:+${WA_NUMBER}`} className="mt-5 flex items-center justify-center gap-2 border-t border-[#ececf0] pt-4 text-[0.95rem] font-semibold text-[#6e6e76]">
+          <Phone size={16} aria-hidden /> Lieber anrufen? <span className="text-[#0e0e10]">{PHONE_DISPLAY}</span>
+        </a>
+      </div>
     </div>
   );
 }
