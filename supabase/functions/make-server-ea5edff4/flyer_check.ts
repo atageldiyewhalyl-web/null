@@ -1,12 +1,15 @@
 import type { Hono } from "npm:hono";
 import { createClient } from "jsr:@supabase/supabase-js@2.49.8";
 import { normalizeUrl, runWebsiteCheck, type CheckResult } from "./website_check_core.ts";
+import { renderReportEmail } from "./website_check_email.ts";
+import { DISPOSABLE, EMAIL_RE, domainAcceptsMail } from "./website_check.ts";
 
 /*
  * Flyer funnel (/check-flyer). The QR code on the printed flyers promises "Kostenloser Website-Check & Angebot".
  *
- * POST …/make-server-ea5edff4/flyer-check  { name, company, phone, url?, noWebsite?, challenge?, consent, source?, website (honeypot) }
- *   Saves the lead, answers at once with { id }, runs the same check as /website-check in the background.
+ * POST …/make-server-ea5edff4/flyer-check  { name, company, email, phone, url?, noWebsite?, challenge?, consent, source?, website (honeypot) }
+ *   Saves the lead, answers at once with { id }, runs the same check as /website-check in the background and
+ *   e-mails the visitor the same report /website-check sends (28 Nov 2026: no waiting on screen any more).
  * GET  …/make-server-ea5edff4/flyer-check/result?id=…
  *   Returns only the visitor's own score and top 3 issues (by the random UUID). Never names, phone numbers or addresses.
  *
@@ -16,13 +19,14 @@ import { normalizeUrl, runWebsiteCheck, type CheckResult } from "./website_check
  * Table: public.flyer_leads (migration 20261128120000).
  */
 
-const FROM = '"nüll. Flyer-Check" <check@forms.xn--nll-hoa.com>';
+const FROM = '"nüll. Website-Check" <check@forms.xn--nll-hoa.com>';
 const NOTIFY_FALLBACK = "halyl@xn--nll-hoa.com";
+const REPLY_TO = "halyl@xn--nll-hoa.com";
 const LIMIT_PER_IP = 10; // per 24 h
 
 // Shown next to the required checkbox on /check-flyer. Stored with every lead, so keep both in sync.
 export const FLYER_CONSENT_TEXT =
-  "Ich bin einverstanden, dass nüll. meine Angaben speichert und mich zu meinem Website-Check und einem Angebot per Telefon oder WhatsApp kontaktiert. Widerruf jederzeit möglich.";
+  "Ich bin einverstanden, dass nüll. meine Angaben speichert und mich zu meinem Website-Check und einem Angebot per E-Mail, Telefon oder WhatsApp kontaktiert. Widerruf jederzeit möglich.";
 
 const SOURCES = new Set(["allgemein", "handwerk"]);
 
@@ -57,7 +61,7 @@ async function sendEmail(payload: Record<string, unknown>) {
   if (!res.ok) throw new Error(`Resend ${res.status}: ${(await res.text()).slice(0, 300)}`);
 }
 
-type Lead = { id: string; name: string; company: string; phone: string; url: string | null; noWebsite: boolean; challenge: string; source: string };
+type Lead = { id: string; name: string; company: string; email: string; phone: string; url: string | null; noWebsite: boolean; challenge: string; source: string };
 
 function leadEmail(lead: Lead, result: CheckResult | null, error: string) {
   const wa = phoneToWa(lead.phone);
@@ -69,6 +73,7 @@ function leadEmail(lead: Lead, result: CheckResult | null, error: string) {
   <table cellpadding="4" style="border-collapse:collapse">
     <tr><td style="color:#666">Name</td><td><b>${esc(lead.name)}</b></td></tr>
     <tr><td style="color:#666">Betrieb</td><td><b>${esc(lead.company)}</b></td></tr>
+    <tr><td style="color:#666">E-Mail</td><td><a href="mailto:${esc(lead.email)}">${esc(lead.email)}</a></td></tr>
     <tr><td style="color:#666">Telefon</td><td><b>${esc(lead.phone)}</b>${wa ? ` · <a href="https://wa.me/${wa}">WhatsApp öffnen</a> · <a href="tel:+${wa}">Anrufen</a>` : ""}</td></tr>
     <tr><td style="color:#666">Website</td><td>${lead.noWebsite ? "<b>Hat noch keine Website</b>" : lead.url ? `<a href="${esc(lead.url)}">${esc(lead.url)}</a>` : "–"}</td></tr>
     <tr><td style="color:#666">Größte Herausforderung</td><td><b>${esc(lead.challenge || "–")}</b></td></tr>
@@ -107,6 +112,21 @@ async function processLead(lead: Lead) {
         error: error || null,
       })
       .eq("id", lead.id);
+
+    // The visitor's report, same as /website-check (also when the site was unreachable: the e-mail says so).
+    if (result) {
+      let emailSent = false;
+      let emailError = "";
+      try {
+        const report = renderReportEmail(result, {});
+        await sendEmail({ from: FROM, to: lead.email, reply_to: REPLY_TO, subject: report.subject, html: report.html, text: report.text });
+        emailSent = true;
+      } catch (e) {
+        emailError = e instanceof Error ? e.message : String(e);
+        console.error("flyer-check report email failed", lead.id, emailError);
+      }
+      await supabase.from("flyer_leads").update({ email_sent: emailSent, email_error: emailError || null }).eq("id", lead.id);
+    }
   }
 
   let notified = false;
@@ -159,6 +179,7 @@ export function registerFlyerCheck(app: Hono) {
       const name = clean(body.name, 120);
       const company = clean(body.company, 160);
       const phone = clean(body.phone, 40);
+      const email = clean(body.email, 200).toLowerCase();
       const noWebsite = body.noWebsite === true;
       const challenge = clean(body.challenge, 300);
       const source = SOURCES.has(clean(body.source, 20)) ? clean(body.source, 20) : "";
@@ -166,6 +187,10 @@ export function registerFlyerCheck(app: Hono) {
       if (name.length < 2) return c.json({ success: false, error: "invalid_name" }, 400);
       if (company.length < 2) return c.json({ success: false, error: "invalid_company" }, 400);
       if (!phoneToWa(phone)) return c.json({ success: false, error: "invalid_phone" }, 400);
+      if (!EMAIL_RE.test(email)) return c.json({ success: false, error: "invalid_email" }, 400);
+      const emailDomain = email.split("@")[1];
+      if (DISPOSABLE.has(emailDomain)) return c.json({ success: false, error: "email_disposable" }, 400);
+      if (!(await domainAcceptsMail(emailDomain))) return c.json({ success: false, error: "email_domain" }, 400);
       let url: string | null = null;
       if (!noWebsite) {
         const parsed = normalizeUrl(clean(body.url, 300));
@@ -188,6 +213,7 @@ export function registerFlyerCheck(app: Hono) {
           source: source || null,
           name,
           company,
+          email,
           phone,
           url,
           no_website: noWebsite,
@@ -202,7 +228,7 @@ export function registerFlyerCheck(app: Hono) {
         .single();
       if (error || !data) throw new Error(error?.message ?? "insert failed");
 
-      const lead: Lead = { id: data.id, name, company, phone, url, noWebsite, challenge, source };
+      const lead: Lead = { id: data.id, name, company, email, phone, url, noWebsite, challenge, source };
       const work = processLead(lead).catch((e) => console.error("flyer-check background error", data.id, e));
       // deno-lint-ignore no-explicit-any
       const runtime = (globalThis as any).EdgeRuntime;

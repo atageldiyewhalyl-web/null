@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowRight, Check, CheckCheck, Loader2, Phone } from "lucide-react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { ArrowRight, Check, CheckCheck, Loader2, Mail, Phone } from "lucide-react";
 import { projectId, publicAnonKey } from "../../../utils/supabase/info";
 import { trackGaEvent } from "../../utils/tracking";
 
 /*
  * /check-flyer: landing page for the QR code on the printed flyers ("Kostenloser Website-Check & Angebot").
- * One short form (website, name, company, mobile number, consent) -> the same check as /website-check runs in the
- * make-server-ea5edff4 edge function (/flyer-check) -> the score and the three most important issues are shown on
- * screen -> the next step is WhatsApp with a pre-filled message that already contains the result.
+ * One short form (website, e-mail, name, company, optional biggest challenge, mobile number, consent) is sent to the
+ * make-server-ea5edff4 edge function (/flyer-check). It answers at once; the same check as /website-check runs in the
+ * background and the report is e-mailed to the visitor. Nobody waits on screen (Halyl's decision, 28 Nov 2026): right
+ * after sending, the page confirms the e-mail and shows the WhatsApp step ("Angebot") without scrolling.
  * ?f=allgemein | ?f=handwerk tells which flyer the scan came from (stored with the lead).
  * CONSENT_TEXT must stay identical to FLYER_CONSENT_TEXT in supabase/functions/make-server-ea5edff4/flyer_check.ts.
  */
@@ -16,18 +17,8 @@ const API = `https://${projectId}.supabase.co/functions/v1/make-server-ea5edff4/
 const WA_NUMBER = "4915256569852";
 const PHONE_DISPLAY = "01525 6569852";
 const CONSENT_TEXT =
-  "Ich bin einverstanden, dass nüll. meine Angaben speichert und mich zu meinem Website-Check und einem Angebot per Telefon oder WhatsApp kontaktiert. Widerruf jederzeit möglich.";
-
-const GOOD = "#1a9f4b";
-const MID = "#e08600";
-const BAD = "#d70015";
-const tone = (v: number) => (v >= 70 ? GOOD : v >= 40 ? MID : BAD);
-const BAND: Record<string, string> = { gut: "Gut aufgestellt", ausbaufaehig: "Da geht noch einiges", kritisch: "Hier gehen Kunden verloren" };
-
-type Issue = { title: string; detail: string; status: string };
-type Result =
-  | { state: "done" | "unreachable"; score: number | null; band: string | null; host: string | null; builtBy: string | null; top: Issue[] }
-  | { state: "no_site" | "failed" };
+  "Ich bin einverstanden, dass nüll. meine Angaben speichert und mich zu meinem Website-Check und einem Angebot per E-Mail, Telefon oder WhatsApp kontaktiert. Widerruf jederzeit möglich.";
+const EMAIL_RE = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']{2,}$/;
 
 // Every business nüll. has built for (logos from the reference pages, public/assets/v2/referenzen/<slug>/logo.png)
 const CLIENTS = [
@@ -49,7 +40,7 @@ const CLIENTS = [
 const inputCls = (bad = false) =>
   `h-14 w-full rounded-[14px] border bg-white px-4 text-[1.05rem] text-[#0e0e10] outline-none transition placeholder:text-[#a3a3ab] focus:border-[#007aff] focus:ring-4 focus:ring-[#007aff]/15 disabled:bg-[#f4f4f6] disabled:text-[#a3a3ab] ${bad ? "border-[#d70015]" : "border-[#dcdce2]"}`;
 
-function Field({ label, error, children }: { label: string; error?: string; children: ReactNode }) {
+function Field({ label, error, children }: { label: ReactNode; error?: string; children: ReactNode }) {
   return (
     <label className="block">
       <span className="mb-1.5 block text-[0.92rem] font-semibold text-[#0e0e10]">{label}</span>
@@ -67,91 +58,17 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
   return <img src="/assets/v2/logos/whatsapp.svg" alt="" className={className} style={{ filter: "brightness(0) invert(1)" }} />;
 }
 
-function ScoreRing({ value }: { value: number }) {
-  const size = 148;
-  const stroke = 12;
-  const r = (size - stroke) / 2;
-  const c = 2 * Math.PI * r;
-  const [shown, setShown] = useState(0);
-  useEffect(() => {
-    const t = setTimeout(() => setShown(value), 80);
-    return () => clearTimeout(t);
-  }, [value]);
-  return (
-    <div className="relative flex-none" style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="-rotate-90" aria-hidden>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#e9edf3" strokeWidth={stroke} />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          fill="none"
-          stroke={tone(value)}
-          strokeWidth={stroke}
-          strokeLinecap="round"
-          strokeDasharray={c}
-          strokeDashoffset={c * (1 - shown / 100)}
-          style={{ transition: "stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1)" }}
-        />
-      </svg>
-      <div className="absolute inset-0 grid place-items-center text-center">
-        <div>
-          <div className="text-[2.9rem] font-extrabold leading-none tracking-[-0.05em]" style={{ color: tone(value) }}>{value}</div>
-          <div className="mt-1 text-[0.85rem] font-semibold text-[#6e6e76]">von 100</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const STEPS = ["Website wird aufgerufen", "Ladezeit am Handy wird gemessen", "Google-Grundlagen werden geprüft", "Kontaktwege werden gesucht"];
-
-function Running({ host }: { host: string }) {
-  const [t, setT] = useState(0);
-  useEffect(() => {
-    const i = setInterval(() => setT((v) => v + 1), 1000);
-    return () => clearInterval(i);
-  }, []);
-  const pct = Math.min(94, Math.round((1 - Math.exp(-t / 28)) * 100));
-  const active = Math.min(STEPS.length - 1, Math.floor(t / 12));
-  return (
-    <div className="pt-2" aria-live="polite">
-      <div className="flex items-center gap-3">
-        <Loader2 className="h-6 w-6 animate-spin text-[#007aff]" aria-hidden />
-        <p className="text-[1.15rem] font-bold tracking-[-0.02em]">Wir prüfen {host} …</p>
-      </div>
-      <div className="mt-5 h-[6px] overflow-hidden rounded-full bg-[#e9edf3]">
-        <div className="h-full rounded-full bg-[#007aff] transition-[width] duration-1000" style={{ width: `${pct}%` }} />
-      </div>
-      <ul className="mt-5 space-y-2.5">
-        {STEPS.map((s, i) => (
-          <li key={s} className={`flex items-center gap-2.5 text-[0.98rem] ${i <= active ? "text-[#0e0e10]" : "text-[#a3a3ab]"}`}>
-            <span className={`grid h-5 w-5 flex-none place-items-center rounded-full ${i < active ? "bg-[#1a9f4b] text-white" : i === active ? "bg-[#eaf3ff] text-[#007aff]" : "bg-[#f0f0f3]"}`}>
-              {i < active ? <Check size={12} strokeWidth={3.5} aria-hidden /> : i === active ? <Loader2 size={12} className="animate-spin" aria-hidden /> : null}
-            </span>
-            {s}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-5 text-[0.9rem] text-[#6e6e76]">Dauert meist etwa eine Minute. Lass die Seite offen.</p>
-    </div>
-  );
-}
-
 function WhatsAppCta({ text, source }: { text: string; source: string }) {
   const time = new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
   return (
-    <section className="mt-12 border-t-2 border-[#0e0e10] pt-7">
-      <p className="text-[0.76rem] font-extrabold uppercase tracking-[0.16em] text-[#1a9f4b]">Letzter Schritt</p>
-      <h2 className="mt-2 text-[2rem] font-extrabold leading-[1.02] tracking-[-0.05em] text-[#0e0e10]">
-        Hol dir jetzt dein Angebot<span className="text-[#25d366]">.</span>
+    <section className="mt-7 border-t-2 border-[#0e0e10] pt-6">
+      <p className="text-[0.76rem] font-extrabold uppercase tracking-[0.16em] text-[#1a9f4b]">Dein Angebot</p>
+      <h2 className="mt-1.5 text-[1.85rem] font-extrabold leading-[1.04] tracking-[-0.05em] text-[#0e0e10]">
+        Schreib uns jetzt auf WhatsApp<span className="text-[#25d366]">.</span>
       </h2>
-      <p className="mt-3 text-[1.02rem] leading-relaxed text-[#4a4a52]">
-        Deine Nachricht an uns ist schon geschrieben. Tipp auf Senden, wir melden uns persönlich per WhatsApp.
-      </p>
+      <p className="mt-2 text-[0.98rem] leading-relaxed text-[#4a4a52]">Die Nachricht ist schon geschrieben. Tipp auf Senden, wir melden uns persönlich.</p>
 
-      <p className="mt-6 text-[0.8rem] font-semibold text-[#6e6e76]">Deine Nachricht</p>
-      <div className="relative mt-2 ml-auto max-w-[94%] rounded-[16px] rounded-tr-[4px] bg-[#d9fdd3] px-4 pb-2 pt-3 text-[0.95rem] leading-snug text-[#111b21] shadow-[0_1px_1.5px_rgba(0,0,0,0.12)]">
+      <div className="mt-4 ml-auto max-w-[94%] rounded-[16px] rounded-tr-[4px] bg-[#d9fdd3] px-4 pb-2 pt-3 text-[0.93rem] leading-snug text-[#111b21] shadow-[0_1px_1.5px_rgba(0,0,0,0.12)]" aria-label="Vorschau deiner Nachricht">
         {text}
         <span className="mt-1 flex items-center justify-end gap-1 text-[0.7rem] text-[#667781]">
           {time} <CheckCheck size={15} className="text-[#53bdeb]" aria-hidden />
@@ -163,14 +80,14 @@ function WhatsAppCta({ text, source }: { text: string; source: string }) {
         target="_blank"
         rel="noopener"
         onClick={() => trackGaEvent("flyer_whatsapp_click", { flyer: source || "unbekannt" })}
-        className="mt-6 flex min-h-[62px] w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-[#25d366] px-5 text-[1.05rem] font-extrabold tracking-[-0.01em] text-white transition-transform hover:-translate-y-0.5"
+        className="mt-5 flex min-h-[62px] w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-[#25d366] px-5 text-[1.05rem] font-extrabold tracking-[-0.01em] text-white transition-transform hover:-translate-y-0.5"
       >
         <WhatsAppIcon className="h-6 w-6" />
-        Nachricht jetzt senden
+        Angebot per WhatsApp holen
       </a>
 
-      <p className="mt-4 text-center text-[0.86rem] font-semibold text-[#6e6e76]">Kostenlos · Unverbindlich · Persönlich</p>
-      <p className="mt-6 text-center text-[0.95rem] text-[#6e6e76]">
+      <p className="mt-3.5 text-center text-[0.86rem] font-semibold text-[#6e6e76]">Kostenlos · Unverbindlich · Persönlich</p>
+      <p className="mt-5 text-center text-[0.95rem] text-[#6e6e76]">
         Lieber anrufen?{" "}
         <a href={`tel:+${WA_NUMBER}`} className="inline-flex items-center gap-1.5 font-bold text-[#0e0e10] underline underline-offset-4">
           <Phone size={15} aria-hidden /> {PHONE_DISPLAY}
@@ -184,6 +101,7 @@ export default function FlyerCheck() {
   const [source, setSource] = useState("");
   const [url, setUrl] = useState("");
   const [noWebsite, setNoWebsite] = useState(false);
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
@@ -192,15 +110,16 @@ export default function FlyerCheck() {
   const [honey, setHoney] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [failMsg, setFailMsg] = useState("");
-  const [step, setStep] = useState<"form" | "sending" | "running" | "result">("form");
-  const [result, setResult] = useState<Result | null>(null);
-  const idRef = useRef<string | null>(null);
-  const topRef = useRef<HTMLDivElement>(null);
+  const [step, setStep] = useState<"form" | "sending" | "sent">("form");
 
   useEffect(() => {
     const f = new URLSearchParams(window.location.search).get("f") ?? "";
     setSource(["allgemein", "handwerk"].includes(f) ? f : "");
   }, []);
+
+  useEffect(() => {
+    if (step === "sent") window.scrollTo({ top: 0, behavior: "auto" });
+  }, [step]);
 
   const host = (() => {
     try {
@@ -210,48 +129,13 @@ export default function FlyerCheck() {
     }
   })();
 
-  // Poll the result while the check runs (about a minute; give up after 3 minutes).
-  useEffect(() => {
-    if (step !== "running" || !idRef.current) return;
-    let stop = false;
-    const started = Date.now();
-    const poll = async () => {
-      if (stop) return;
-      try {
-        const r = await fetch(`${API}/result?id=${encodeURIComponent(idRef.current!)}`, { headers: { Authorization: `Bearer ${publicAnonKey}` } });
-        const data = (await r.json()) as Result | { state: "running" | "unknown" };
-        if (data.state !== "running" && data.state !== "unknown") {
-          setResult(data as Result);
-          setStep("result");
-          return;
-        }
-      } catch {
-        /* keep polling */
-      }
-      if (Date.now() - started > 180_000) {
-        setResult({ state: "failed" });
-        setStep("result");
-        return;
-      }
-      setTimeout(poll, 3000);
-    };
-    const t = setTimeout(poll, 4000);
-    return () => {
-      stop = true;
-      clearTimeout(t);
-    };
-  }, [step]);
-
-  useEffect(() => {
-    if (step === "running" || step === "result") topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [step]);
-
   const challengeText = challenge.trim().replace(/[.!\s]+$/, "");
 
   async function submit(e: FormEvent) {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!noWebsite && !/\.[a-z]{2,}/i.test(url.trim())) errs.url = "Bitte gib deine Website-Adresse ein, z. B. meinbetrieb.de";
+    if (!EMAIL_RE.test(email.trim())) errs.email = "Bitte gib deine E-Mail-Adresse ein.";
     if (name.trim().length < 2) errs.name = "Bitte gib deinen Namen ein.";
     if (company.trim().length < 2) errs.company = "Bitte gib den Namen deines Betriebs ein.";
     if (phone.replace(/\D/g, "").length < 7) errs.phone = "Bitte gib deine Handynummer ein.";
@@ -265,13 +149,27 @@ export default function FlyerCheck() {
       const res = await fetch(API, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${publicAnonKey}` },
-        body: JSON.stringify({ url: noWebsite ? "" : url.trim(), noWebsite, name: name.trim(), company: company.trim(), phone: phone.trim(), challenge: challengeText, consent, source, website: honey }),
+        body: JSON.stringify({
+          url: noWebsite ? "" : url.trim(),
+          noWebsite,
+          email: email.trim(),
+          name: name.trim(),
+          company: company.trim(),
+          phone: phone.trim(),
+          challenge: challengeText,
+          consent,
+          source,
+          website: honey,
+        }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) {
         const map: Record<string, string> = {
           invalid_url: "Diese Website-Adresse können wir nicht prüfen. Stimmt die Schreibweise?",
           invalid_phone: "Diese Telefonnummer sieht nicht richtig aus.",
+          invalid_email: "Diese E-Mail-Adresse sieht nicht richtig aus.",
+          email_disposable: "Bitte nutze deine echte E-Mail-Adresse, an Wegwerf-Adressen schicken wir keinen Report.",
+          email_domain: "An diese E-Mail-Adresse können wir nichts schicken. Stimmt die Schreibweise?",
           rate_limited: "Von hier kamen heute schon viele Checks. Schreib uns einfach direkt auf WhatsApp.",
         };
         setFailMsg(map[data.error] ?? "Da ist etwas schiefgegangen. Versuch es noch einmal oder schreib uns direkt auf WhatsApp.");
@@ -279,13 +177,7 @@ export default function FlyerCheck() {
         return;
       }
       trackGaEvent("flyer_check_submit", { flyer: source || "unbekannt", has_website: noWebsite ? "nein" : "ja" });
-      idRef.current = data.id ?? null;
-      if (noWebsite || !data.id) {
-        setResult({ state: "no_site" });
-        setStep("result");
-      } else {
-        setStep("running");
-      }
+      setStep("sent");
     } catch {
       setFailMsg("Keine Verbindung. Prüf dein Internet und versuch es noch einmal.");
       setStep("form");
@@ -295,12 +187,9 @@ export default function FlyerCheck() {
   const first = name.trim().split(/\s+/)[0] || "";
   const intro = `Hallo nüll., ich bin ${name.trim()} von ${company.trim()}.`;
   const challengeLine = challengeText ? ` Meine größte Herausforderung gerade: ${challengeText}.` : "";
-  const waText =
-    result?.state === "done" && result.score != null
-      ? `${intro} Meine Website ${result.host ?? host} hat im Website-Check ${result.score}/100 bekommen. Ich möchte ein Angebot.${challengeLine}`
-      : result?.state === "no_site"
-        ? `${intro} Wir haben noch keine Website und möchten ein Angebot.${challengeLine}`
-        : `${intro} Ich habe den Website-Check für ${host} gemacht und möchte ein Angebot.${challengeLine}`;
+  const waText = noWebsite
+    ? `${intro} Wir haben noch keine Website und möchten ein Angebot.${challengeLine}`
+    : `${intro} Ich habe gerade den Website-Check für ${host} gemacht und möchte ein Angebot.${challengeLine}`;
 
   return (
     <div className="min-h-screen bg-[#f4f4f6] font-sans text-[#0e0e10]">
@@ -311,14 +200,14 @@ export default function FlyerCheck() {
         <span className="rounded-full border border-[#dcdce2] bg-white px-3 py-1 text-[0.78rem] font-bold text-[#6e6e76]">Kostenlos</span>
       </header>
 
-      <main ref={topRef} className="mx-auto max-w-[560px] px-5 pb-16 pt-7">
-        {step === "form" || step === "sending" ? (
+      <main className="mx-auto max-w-[560px] px-5 pb-16 pt-7">
+        {step !== "sent" ? (
           <>
             <h1 className="text-center text-[2.35rem] font-extrabold leading-[1.02] tracking-[-0.05em] sm:text-[2.8rem]">
               Kostenloser Website-Check <span className="text-[#007aff]">&amp; Angebot.</span>
             </h1>
             <p className="mt-3 text-center text-[1.08rem] leading-relaxed text-[#4a4a52]">
-              In etwa einer Minute bekommst du eine Note von 0 bis 100 und deine drei wichtigsten Baustellen. Dein Angebot bekommst du danach direkt per WhatsApp.
+              Deine Note von 0 bis 100 und die drei wichtigsten Baustellen bekommst du per E-Mail. Dein Angebot direkt per WhatsApp.
             </p>
 
             <form onSubmit={submit} noValidate className="mt-7 space-y-4 rounded-[22px] bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.06),0_18px_48px_-24px_rgba(15,23,42,0.25)] sm:p-7">
@@ -338,6 +227,9 @@ export default function FlyerCheck() {
                 <input type="checkbox" checked={noWebsite} onChange={(e) => { setNoWebsite(e.target.checked); setErrors((x) => ({ ...x, url: "" })); }} className="h-5 w-5 accent-[#007aff]" />
                 Ich habe noch keine Website
               </label>
+              <Field label={<>Deine E-Mail <span className="font-normal text-[#a3a3ab]">(dorthin schicken wir den Report)</span></>} error={errors.email}>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@betrieb.de" type="email" inputMode="email" autoComplete="email" autoCapitalize="none" className={inputCls(!!errors.email)} />
+              </Field>
               <Field label="Dein Name" error={errors.name}>
                 <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Vor- und Nachname" autoComplete="name" className={inputCls(!!errors.name)} />
               </Field>
@@ -392,57 +284,35 @@ export default function FlyerCheck() {
               </div>
             </div>
           </>
-        ) : step === "running" ? (
-          <Running host={host} />
-        ) : result ? (
-          <div>
-            {result.state === "done" && result.score != null ? (
-              <section>
-                <p className="text-[0.95rem] font-semibold text-[#6e6e76]">{first ? `${first}, dein Ergebnis für` : "Ergebnis für"} {result.host ?? host}</p>
-                <div className="mt-5 flex items-center gap-5">
-                  <ScoreRing value={result.score} />
-                  <div>
-                    <p className="text-[1.6rem] font-extrabold leading-[1.05] tracking-[-0.045em]" style={{ color: tone(result.score) }}>
-                      {result.band ? BAND[result.band] ?? "" : ""}
-                    </p>
-                    {result.builtBy && <p className="mt-1.5 text-[0.9rem] text-[#6e6e76]">Diese Website hat nüll. gebaut.</p>}
-                  </div>
-                </div>
-                {result.top.length > 0 && (
-                  <>
-                    <h2 className="mt-10 text-[1.25rem] font-extrabold tracking-[-0.03em]">Deine drei wichtigsten Baustellen</h2>
-                    <ol className="mt-2">
-                      {result.top.map((t, i) => (
-                        <li key={t.title} className="flex gap-3.5 border-b border-[#e2e2e7] py-4 last:border-b-0">
-                          <span className="mt-0.5 w-6 flex-none text-[1.05rem] font-extrabold tabular-nums" style={{ color: t.status === "fail" ? BAD : MID }}>{String(i + 1).padStart(2, "0")}</span>
-                          <div>
-                            <p className="text-[1.02rem] font-bold leading-snug">{t.title}</p>
-                            {t.detail && <p className="mt-1 text-[0.93rem] leading-relaxed text-[#4a4a52]">{t.detail}</p>}
-                          </div>
-                        </li>
-                      ))}
-                    </ol>
-                  </>
-                )}
-              </section>
-            ) : result.state === "no_site" ? (
-              <section>
-                <p className="text-[1.75rem] font-extrabold leading-[1.06] tracking-[-0.045em]">{first ? `${first}, ohne` : "Ohne"} Website findet dich bei Google kaum ein Kunde.</p>
-                <p className="mt-3 text-[1.02rem] leading-relaxed text-[#4a4a52]">
-                  Die meisten Kunden suchen heute am Handy nach einem Betrieb in der Nähe. Wir bauen dir eine Website, die bei Google gefunden wird und Anfragen bringt.
-                </p>
-              </section>
-            ) : (
-              <section>
-                <p className="text-[1.6rem] font-extrabold leading-[1.08] tracking-[-0.045em]">
-                  {result.state === "unreachable" ? `Unter ${host} war gerade keine Website erreichbar.` : "Den Check konnten wir gerade nicht abschließen."}
-                </p>
-                <p className="mt-3 text-[1.02rem] leading-relaxed text-[#4a4a52]">Kein Problem: Wir schauen uns deine Website persönlich an. Deine Angaben sind schon bei uns.</p>
-              </section>
-            )}
+        ) : (
+          <div aria-live="polite">
+            <section>
+              <p className="flex items-center gap-2 text-[0.92rem] font-bold text-[#1a9f4b]">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#1a9f4b] text-white">
+                  <Check size={12} strokeWidth={3.5} aria-hidden />
+                </span>
+                {noWebsite ? "Anfrage ist bei uns" : "Website-Check läuft"}
+              </p>
+              {noWebsite ? (
+                <>
+                  <p className="mt-2.5 text-[1.55rem] font-extrabold leading-[1.08] tracking-[-0.045em]">Danke{first ? `, ${first}` : ""}. Deine Anfrage ist bei uns.</p>
+                  <p className="mt-2 text-[0.98rem] leading-relaxed text-[#4a4a52]">Am schnellsten geht es per WhatsApp, dann bekommst du dein Angebot direkt.</p>
+                </>
+              ) : (
+                <>
+                  <p className="mt-2.5 text-[1.55rem] font-extrabold leading-[1.08] tracking-[-0.045em]">{first ? `${first}, dein` : "Dein"} Report kommt per E-Mail.</p>
+                  <p className="mt-2 flex items-start gap-2 text-[0.98rem] leading-relaxed text-[#4a4a52]">
+                    <Mail size={18} className="mt-0.5 flex-none text-[#6e6e76]" aria-hidden />
+                    <span>
+                      In ein bis zwei Minuten an <b className="text-[#0e0e10]">{email.trim()}</b>. Schau auch im Spam-Ordner nach.
+                    </span>
+                  </p>
+                </>
+              )}
+            </section>
             <WhatsAppCta text={waText} source={source} />
           </div>
-        ) : null}
+        )}
       </main>
     </div>
   );

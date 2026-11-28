@@ -28,10 +28,10 @@ async function sha256(value: string) {
 }
 
 const clean = (v: unknown, max: number) => String(v ?? "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, max);
-const EMAIL_RE = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']{2,}$/;
+export const EMAIL_RE = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']{2,}$/;
 
 // Throwaway inbox providers: a report there is never read, so these are refused.
-const DISPOSABLE = new Set([
+export const DISPOSABLE = new Set([
   "mailinator.com", "mailinator.net", "10minutemail.com", "10minutemail.net", "10minutemail.de", "guerrillamail.com", "guerrillamail.de",
   "guerrillamail.net", "guerrillamailblock.com", "sharklasers.com", "grr.la", "pokemail.net", "spam4.me", "yopmail.com", "yopmail.fr",
   "yopmail.net", "temp-mail.org", "tempmail.com", "tempmail.de", "tempmailo.com", "tempr.email", "temp-mail.io", "trashmail.com",
@@ -44,7 +44,7 @@ const DISPOSABLE = new Set([
 // Does the domain accept mail? An MX record, or an A record as the fallback mail host (RFC 5321).
 // A "null MX" ("0 .", RFC 7505) means the domain takes no mail at all.
 // Asked over DNS-over-HTTPS; if the lookup itself fails we let the address through rather than block a real person.
-async function domainAcceptsMail(domain: string): Promise<boolean> {
+export async function domainAcceptsMail(domain: string): Promise<boolean> {
   // deno-lint-ignore no-explicit-any
   const ask = async (type: "MX" | "A"): Promise<any | null> => {
     const ctrl = new AbortController();
