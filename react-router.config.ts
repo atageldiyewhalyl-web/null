@@ -37,6 +37,8 @@ export default {
     "/referenzen/by",
     "/preise",
     "/website-check",
+    // Flyer QR landing page (noindex); ?f=allgemein|handwerk is read client-side
+    "/check-flyer",
     "/blog",
     ...BLOG_PATHS,
     "/datenschutz",
