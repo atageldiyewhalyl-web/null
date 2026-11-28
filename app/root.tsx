@@ -62,7 +62,8 @@ export default function App() {
   const isAdmin = location.pathname.startsWith("/admin");
   // GA4 (nuell-agentur.com), only after analytics consent; see utils/ga4.ts
   useEffect(() => startGa4(), []);
-  const isOnboarding = location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/interview") || isAdmin;
+  // /check-flyer (flyer QR landing page) is a focused funnel: no site navbar, footer or website-check pop-up
+  const isOnboarding = location.pathname.startsWith("/onboarding") || location.pathname.startsWith("/interview") || location.pathname.startsWith("/check-flyer") || isAdmin;
   // v2-design pages bring their own navbar and footer; only the legal pages (and the 404) still use the old shell
   const p = location.pathname.replace(/\/+$/, "") || "/";
   const isBlankCanvas =
@@ -169,7 +170,7 @@ function AnchorScrollProvider({ pathname }: { pathname: string }) {
 
 function SmoothScrollProvider({ pathname }: { pathname: string }) {
   useEffect(() => {
-    const isAdminOrOnboarding = pathname.startsWith("/admin") || pathname.startsWith("/onboarding") || pathname.startsWith("/interview");
+    const isAdminOrOnboarding = pathname.startsWith("/admin") || pathname.startsWith("/onboarding") || pathname.startsWith("/interview") || pathname.startsWith("/check-flyer");
     const isTouchOnlyDevice = navigator.maxTouchPoints > 0 && window.matchMedia("(hover: none)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isSmallViewport = window.innerWidth < 768;

@@ -34,6 +34,7 @@ export default [
 
   route("preise", "routes/preise.tsx"),
   route("website-check", "routes/website-check.tsx"),
+  route("check-flyer", "routes/check-flyer.tsx"),
 
   // legal pages (old design for now, text unchanged)
   route("datenschutz", "routes/datenschutz.tsx"),

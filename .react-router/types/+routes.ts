@@ -97,6 +97,9 @@ type Pages = {
   "/website-check": {
     params: {};
   };
+  "/check-flyer": {
+    params: {};
+  };
   "/datenschutz": {
     params: {};
   };
@@ -145,7 +148,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/:service/:city" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/standorte" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/goeren" | "/referenzen/entruemplerhelden" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
+    page: "/" | "/leistungen" | "/leistungen/webdesign" | "/leistungen/:service/:city" | "/leistungen/seo" | "/leistungen/google-ads" | "/leistungen/ki-sichtbarkeit" | "/leistungen/content" | "/standorte" | "/referenzen" | "/referenzen/waschbar" | "/referenzen/orchidee" | "/referenzen/bergstone" | "/referenzen/treu" | "/referenzen/herkules" | "/referenzen/dogru" | "/referenzen/goeren" | "/referenzen/entruemplerhelden" | "/referenzen/sg" | "/referenzen/so" | "/referenzen/ft" | "/referenzen/onkel" | "/referenzen/by" | "/blog" | "/blog/:slug" | "/preise" | "/website-check" | "/check-flyer" | "/datenschutz" | "/impressum" | "/onboarding/:slug" | "/interview/:slug" | "/tr/*" | "/admin/login" | "/admin" | "/admin/projects" | "/admin/jobs" | "/admin/jobs/:id" | "/*";
   };
   "routes/home-v2.tsx": {
     id: "routes/home-v2";
@@ -255,6 +258,10 @@ type RouteFiles = {
     id: "routes/website-check";
     page: "/website-check";
   };
+  "routes/check-flyer.tsx": {
+    id: "routes/check-flyer";
+    page: "/check-flyer";
+  };
   "routes/datenschutz.tsx": {
     id: "routes/datenschutz";
     page: "/datenschutz";
@@ -334,6 +341,7 @@ type RouteModules = {
   "routes/v2-blog-post": typeof import("./app/routes/v2-blog-post.tsx");
   "routes/preise": typeof import("./app/routes/preise.tsx");
   "routes/website-check": typeof import("./app/routes/website-check.tsx");
+  "routes/check-flyer": typeof import("./app/routes/check-flyer.tsx");
   "routes/datenschutz": typeof import("./app/routes/datenschutz.tsx");
   "routes/impressum": typeof import("./app/routes/impressum.tsx");
   "routes/client-onboarding": typeof import("./app/routes/client-onboarding.tsx");

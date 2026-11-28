@@ -4,6 +4,7 @@ import { logger } from "npm:hono/logger";
 import * as kv from "./kv_store.ts";
 import { registerClientOnboarding } from "./client_onboarding.ts";
 import { registerWebsiteCheck } from "./website_check.ts";
+import { registerFlyerCheck } from "./flyer_check.ts";
 const app = new Hono();
 
 // Enable logger
@@ -25,6 +26,9 @@ registerClientOnboarding(app);
 
 // Website-Check lead magnet (/website-check)
 registerWebsiteCheck(app);
+
+// Flyer funnel (/check-flyer): QR code -> form -> score on screen -> WhatsApp
+registerFlyerCheck(app);
 
 // Health check endpoint
 app.get("*/health", (c) => {
